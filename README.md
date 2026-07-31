@@ -44,7 +44,7 @@ the collection domain, so the app code is identical in dev and production.
 
 ### Who it's for, and the need it addresses
 
-The intended user is a **museum visitor — in the gallery or online — standing in
+The intended user is a **museum visitor — in the gallery — standing in
 front of this one object and wanting more than the label offers.**
 
 A physical label gives you a few lines. The genuinely interesting story — that a
@@ -108,16 +108,22 @@ which from the publications.
 
 ## What I'd improve or build next
 
+- **Improve the user interface.** Refine the UI, apply my craft, enable panning on 
+  the 3D model.
+- **Explore and validate the quiz.** Real opportunity for a museum wide feature, 
+  multiplayer quiz within the museums own app. Think Kahoot. Need validation.
 - **Generalise from one object to many.** The field mapping already supports it; add
   a small "related objects" strip driven by a collection query (e.g. the whole
   Blaschka set) so one object becomes a doorway into others.
+- **Investigate AI generated code** Inspect the code in mroe detail, look for 
+  refactoring opportunities.
+- **Include test case** Add and improve test cases.
 - **A provenance layer for the curious.** Optionally let an interested or expert user
   toggle *"where did this claim come from?"* to reveal the structured-vs-publication
   sourcing that is deliberately seamless by default.
-- **Real assets.** Replace the generated video and 3D model with photogrammetry or
-  commissioned media; add captions/transcript for the audio.
-- **Accessibility pass.** Keyboard navigation for the canvas modes, focus
-  management, `prefers-reduced-motion`, and proper labelling throughout.
+- **Refine the assets.** Refine the generated video, 3D model and transcript for the audio.
+- **Accessibility pass.** Keyboard navigation, focus
+  management, and proper labelling throughout.
 - **Performance on gallery wifi.** The 3D and video assets are ~10–30MB; add smarter
   lazy-loading, smaller derivatives, and real device/network testing.
 - **Follow the loose threads.** Surface the genuinely interesting unresolved details
@@ -139,7 +145,7 @@ The brief asks for this explicitly, so in full:
   ran as a background tab).
 - **Generated media.** The three non-photographic representations of the object —
   the short **video**, the **3D model**, and the spoken **audio guide** — were
-  produced with generative-AI tools from the Museum's own photographs and the
+  produced with generative-AI tools (Fimga Weave) from the Museum's own photographs and the
   written narrative. They are labelled in the interface as generated (and the 3D
   model as *not a scan*) so a visitor is never misled about what is real.
 
@@ -165,6 +171,3 @@ The brief asks for this explicitly, so in full:
 - Shaw MD et al. (2017), *Ideas made glass: Blaschka glass models at Canterbury
   Museum*, **Records of the Canterbury Museum 31**
   <https://cms.canterburymuseum.com/assets/Canterbury-Museum-Records-2017.pdf>
-
-Museum content is licensed **CC BY-NC 4.0**; the collection images and any
-derivatives inherit those terms.

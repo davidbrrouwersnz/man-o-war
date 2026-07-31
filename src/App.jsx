@@ -111,8 +111,10 @@ const IconImage = () => (
   </svg>
 )
 const IconVideo = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M8 5v14l11-7z" />
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"
+       strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <rect x="3" y="3" width="18" height="18" rx="2" />
+    <path d="M7.5 3v18M16.5 3v18M3 12h18M3 7.5h4.5M16.5 7.5h4.5M3 16.5h4.5M16.5 16.5h4.5" />
   </svg>
 )
 const IconCube = () => (
