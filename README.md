@@ -110,8 +110,8 @@ which from the publications.
 
 ## What I'd improve or build next
 
-- **Improve the user interface.** Refine the UI, apply my craft, enable panning on 
-  the 3D model.
+- **Improve the user interface.** Refine the UI, apply my craft, and make panning the
+  3D model more discoverable (it's right-click / two-finger drag today, which isn't obvious).
 - **Explore and validate the quiz.** Real opportunity for a museum-wide feature, 
   multiplayer quiz within the museum's own app. Think Kahoot. Needs validation.
 - **Generalise from one object to many.** The field mapping already supports it; add
