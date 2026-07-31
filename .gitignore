@@ -16,3 +16,5 @@ Thumbs.db
 public/Voice.wav
 public/*Seed Audio*
 public/*.zip
+
+.vercel

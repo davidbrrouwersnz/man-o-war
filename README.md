@@ -10,9 +10,13 @@ and a 3D model — read its story, and test yourself with a three-question quiz.
 
 > Built as a scoped ~2-hour exercise. It is a prototype, not a production app.
 
+**▶ Live demo (nothing to install): <https://manowar.vercel.app>**
+
 ---
 
 ## Run it
+
+Prefer to run it locally instead of using the [live demo](https://manowar.vercel.app):
 
 ```bash
 npm install
