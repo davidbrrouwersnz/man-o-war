@@ -161,8 +161,6 @@ The brief asks for this explicitly, so in full:
 - **[`<model-viewer>`](https://modelviewer.dev/)** for the GLB (orbit / pan / pinch,
   touch and mouse) — loaded via a single script tag.
 - **[`@panzoom/panzoom`](https://github.com/timmywil/panzoom)** for image pan/zoom.
-- Everything else — layout, icons (inline SVG), the sliding sheet, the quiz — is
-  hand-written.
 
 ## Sources
 
