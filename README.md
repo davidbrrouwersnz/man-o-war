@@ -12,6 +12,8 @@ and a 3D model — read its story, and test yourself with a three-question quiz.
 
 **▶ Live demo (nothing to install): <https://manowar.vercel.app>**
 
+![The companion app: the glass Portuguese man o' war fitted to the screen on a dark ground, with the object title and description top-left, canvas-mode controls (image, video, 3D) down the left rail, and audio / story / quiz buttons top-right.](docs/screenshot.png)
+
 ---
 
 ## Run it
@@ -110,14 +112,14 @@ which from the publications.
 
 - **Improve the user interface.** Refine the UI, apply my craft, enable panning on 
   the 3D model.
-- **Explore and validate the quiz.** Real opportunity for a museum wide feature, 
-  multiplayer quiz within the museums own app. Think Kahoot. Need validation.
+- **Explore and validate the quiz.** Real opportunity for a museum-wide feature, 
+  multiplayer quiz within the museum's own app. Think Kahoot. Needs validation.
 - **Generalise from one object to many.** The field mapping already supports it; add
   a small "related objects" strip driven by a collection query (e.g. the whole
   Blaschka set) so one object becomes a doorway into others.
-- **Investigate AI generated code** Inspect the code in mroe detail, look for 
+- **Investigate AI-generated code.** Inspect the code in more detail, look for 
   refactoring opportunities.
-- **Include test case** Add and improve test cases.
+- **Include test cases.** Add and improve test cases.
 - **A provenance layer for the curious.** Optionally let an interested or expert user
   toggle *"where did this claim come from?"* to reveal the structured-vs-publication
   sourcing that is deliberately seamless by default.
@@ -145,7 +147,7 @@ The brief asks for this explicitly, so in full:
   ran as a background tab).
 - **Generated media.** The three non-photographic representations of the object —
   the short **video**, the **3D model**, and the spoken **audio guide** — were
-  produced with generative-AI tools (Fimga Weave) from the Museum's own photographs and the
+  produced with generative-AI tools (Figma Weave) from the Museum's own photographs and the
   written narrative. They are labelled in the interface as generated (and the 3D
   model as *not a scan*) so a visitor is never misled about what is real.
 
