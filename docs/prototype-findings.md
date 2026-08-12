@@ -43,7 +43,32 @@ rectangle. `.127` (Venus girdle) has the same problem: a flat pale ribbon that s
 
 **The titles carry the tiles, not the images.** Where a tile reads, it reads because the title says
 what is behind it. That is an argument *for* §9's eleven-titled-things decision and against the
-image-first reading of it. Screenshot: `tmp/` grid capture, all eleven at once.
+image-first reading of it.
+
+#### Update — representatives now chosen by blackest ground
+
+Reselected mechanically: for each group, the photograph with the highest proportion of near-black
+frame wins (`scripts/representatives.mjs`, `1884.137.92` excluded by rule). **Ten of eleven
+changed.** The mount-board problem is gone — the grid is now uniformly dark and looks like one
+system rather than eleven unrelated photographs.
+
+**It bought that consistency at a cost, and the cost is on the same question.** Maximum blackness
+selects for *the object occupying least of the frame*, which is the other way a tile fails to read:
+
+| | Subject fills | Consequence |
+|---|---|---|
+| `.136` corals | **3%** | A tiny pale star in an empty field. Also the object whose identification is a vernacular reading of an old label — §6 says its caption must say so, which makes it a poor face for the page. |
+| `.90` worms | **3%** | Legible, but only just. |
+| `.53`, `.94`, `.84` | 5–6% | Small; readable as "something pale" rather than as the group. |
+
+**And it removed the man o' war from its own page.** Group 2 is titled *The man o' war and other
+floating colonies*; its tile is now `1884.137.114`. `1884.137.33` is the one object on display, the
+only object with a written story, the target of the only QR code, and the thing the app is named
+for. A purely photometric rule cannot know that.
+
+**The rule needs one clause and one exception**, both cheap: require the subject to fill at least
+~8% of the frame before a photograph is eligible, and pin `1884.137.33` as group 2's
+representative. That keeps the dark grid and gives back the two tiles it cost.
 
 ### 2. Is a group page finishable?
 
