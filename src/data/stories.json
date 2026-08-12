@@ -1,0 +1,31 @@
+{
+  "note": "The one story that exists. Layers 1-2 only, per docs/story-man-o-war.md. The other 127 objects have no story and fall back to the catalogue's brief_desc, badged as a placeholder in the UI.",
+  "stories": {
+    "1884.137.33": {
+      "headline": "Portuguese man o' war",
+      "segments": [
+        {
+          "id": "look",
+          "heading": "Look closely",
+          "text": "The whole thing is glass. It stands about 28 centimetres tall. Two long tentacles hang from it, and seven shorter ones. You can count them. It rests on a green wire rod.\n\nThis is a Portuguese man o' war. In New Zealand waters it is better known as the bluebottle. Its other name comes from its resemblance to an 18th-century Portuguese sailing warship."
+        },
+        {
+          "id": "not-one-animal",
+          "heading": "Not one animal",
+          "text": "A man o' war is related to true jellyfish. But it is not one. And it is not a single creature either.\n\nIt is a colonial organism, made up of many individual organisms called zooids. Zooids stay connected as they grow. Each one has its own specialised job. None of them can survive alone."
+        },
+        {
+          "id": "float-and-sail",
+          "heading": "A float, and a sail",
+          "text": "Look at the top section. In a living man o' war that part does two jobs at once. It is a float, and it is a sail. They travel on the currents and the wind.\n\nEvery man o' war is either left-handed or right-handed, depending on which way that sail curves.\n\nThe tentacles below can reach ten metres. They catch small crustaceans and fish."
+        }
+      ]
+    }
+  },
+  "panels": {
+    "floating-colonies": {
+      "panel": "A Portuguese man o' war is not one animal. It is hundreds, fused into a single drifting colony — some members sting, some digest, some reproduce — and not one of them could survive alone. What you are looking at is less a creature than a crew.",
+      "ending": "These go where the water goes. The next page belongs to animals that solved the same problem — open water, nowhere to hide — a completely different way."
+    }
+  }
+}

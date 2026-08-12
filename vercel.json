@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/api/:path*",
-      "destination": "https://collection.canterburymuseum.com/api/:path*"
+      "source": "/((?!assets/).*)",
+      "destination": "/index.html"
     }
   ]
 }
