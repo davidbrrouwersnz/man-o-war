@@ -304,9 +304,27 @@ on jumps; dark grid and dark wells with a `prefers-color-scheme` reading area; t
 built), `/all`, search, layers 3–5, trails, quiz, audio, video, NZSL, languages, service worker,
 NFC, the seen-set, desktop's sticky-media behaviour.
 
-**Untested:** anything on real hardware. Every number here is emulated Chrome. Nobody has held this
-on a phone, and nobody has stood in a gallery with it. The five-second QR claim in question 3 is an
-inference from LCP, not an observation of a person.
+**Confirmed on a real phone.** Deployed as a Vercel preview and opened on a physical device: the
+three routes load and the app functions. That retires the "never left the emulator" caveat.
+
+**Still not established, and the distinction matters.** *It works* is not *it works well*. Every
+number in this document is still emulated Chrome, and the four questions are judgment calls that a
+functioning build does not answer:
+
+- whether a visitor can tell what is behind each tile **before tapping it** (question 1)
+- whether anyone actually **reaches the bottom** of 11.7 screen-heights (question 2)
+- whether the QR arrival reads as *the right thing* **within five seconds** to someone who did not
+  build it (question 3) — that claim is still an inference from a 2.4s LCP, not an observation of a
+  person
+- what any of it feels like **standing up, in a gallery**, at 2–3% of visitors' attention
+
+Those need someone other than the author, and question 4's numbers need a real throttled connection
+rather than an emulated one.
+
+**Operational note.** The preview is deployed into the existing `manowar` Vercel project, so this
+worktree is linked to the project that serves live v1. A `vercel --prod` run from this directory
+would replace the job-application build. Deploy previews only, or move to a separate project before
+that becomes a habit.
 
 ## Scripts
 
