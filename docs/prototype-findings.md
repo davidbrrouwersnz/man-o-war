@@ -256,10 +256,32 @@ in `.gitignore` and `.vercelignore`** — untracked, and excluded from Vercel up
 reach a build via a local `vite build` in your own checkout, and they never reached the deployed
 v1. Nothing needed doing.
 
-**Still present and not on the removal list:** `public/audio-guide.mp3` (5MB) and
-`public/man-o-war.mp4` (1.9MB). Audio and video are out of scope for the prototype but §12 keeps
-video in the product, so I left both rather than widen the cleanup. They add ~7MB to a build and
-zero bytes to a visitor. Your call.
+**Removed beyond the list, on request:** `public/audio-guide.mp3` (5MB) and `public/man-o-war.mp4`
+(1.9MB) — v1's own assets. `public/` is now empty. §12 keeps assembly video in the *product*, but
+that will be per-object generated media, not this file; and §13 inverts v1 by deriving audio from
+the text, so v1's separately-authored recording is superseded rather than pending. Both are
+recoverable from git history if a future build wants them.
+
+`dist/` is now **three files, 425KB**, down from ~7.4MB.
+
+**Also dead, and removed:** `vite.config.js` still carried the `/api` CORS proxy for dev and
+preview. v1 needed a server-side hop because the collection API only allows the vendor's own docs
+origin; v2 harvests at build time and makes no runtime call, so the proxy was doing nothing in
+either config. Same category as the `vercel.json` rewrite in finding 10 — both would have sat there
+looking load-bearing.
+
+**Deliberately left**, because it is authored or reference material rather than shipped code:
+`src/data/fallback.json` (the captured API record — unimported, so it costs nothing in the build,
+and it is the response-shape reference for anyone touching the harvest), `BUILD-SPEC.md`,
+`docs/man-o-war-{audio-guide,object-story,quiz}.md` (v1's two texts are the inputs to §6's merge),
+and `docs/screenshot.png`.
+
+**One thing left that is now wrong: `README.md`.** It describes v1 — a single object, three canvas
+modes including 3D, a video, a quiz, and "the live fetch is real, every session". Every one of those
+is false in v2, and §5 explicitly says the README has to be rewritten because "v1's pitch was 'the
+live fetch is real, every session,' and this changes that story". The house rules for this build say
+no readme, so I did not touch it. **It needs a rewrite before this is shown to anyone**, and that is
+a writing task, not a cleanup one.
 
 ### 10. `vercel.json`'s API proxy is now dead, and the rewrite it needs instead is different
 

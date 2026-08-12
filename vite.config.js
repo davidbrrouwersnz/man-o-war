@@ -1,14 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// The collection API only allows the vendor's own docs origin via CORS, so every
-// browser fetch must go through this server-side hop. See BUILD-SPEC.md §2.
-const proxy = {
-  '/api': { target: 'https://collection.canterburymuseum.com', changeOrigin: true },
-}
-
+// No dev/preview proxy. v1 fetched the collection API in the browser and needed a server-side hop
+// around CORS; v2 harvests at build time (BUILD-SPEC-v2.md §5) and never calls it at runtime.
 export default defineConfig({
   plugins: [react()],
-  server: { proxy },
-  preview: { proxy },
 })
