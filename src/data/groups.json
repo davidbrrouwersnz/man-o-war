@@ -1,5 +1,5 @@
 {
-  "note": "Hand-authored grouping. NOT derived from collection data - taxonomy fields are empty on all 127. Built from binomials resolved through WoRMS to accepted names first, because ~57% of the catalogue names are superseded. Order of groups, and order within each group, is deliberate and load-bearing: do not re-sort. 1884.137.110 was recovered manually: its `collection` field is empty so the collection query never returned it, though it is in Shaw et al. 2017. Harvest on maker_name, not collection. slug is hand-authored and stable: a title edit must never change a URL. representative is the blackest photograph in each group, chosen mechanically by scripts/representatives.mjs so every tile is an object on black rather than a mount board. 1884.137.92 is excluded by rule.",
+  "note": "Hand-authored grouping. NOT derived from collection data - taxonomy fields are empty on all 127. Built from binomials resolved through WoRMS to accepted names first, because ~57% of the catalogue names are superseded. Order of groups, and order within each group, is deliberate and load-bearing: do not re-sort. 1884.137.110 was recovered manually: its `collection` field is empty so the collection query never returned it, though it is in Shaw et al. 2017. Harvest on maker_name, not collection. slug is hand-authored and stable: a title edit must never change a URL. representative is chosen mechanically by scripts/representatives.mjs: the blackest photograph in the group among those where the lit object fills at least 8% of the frame, so every tile is an object on black rather than a mount board and none of them reads as an empty frame. 1884.137.92 is excluded by rule. This is a photometric choice, not a curatorial one - it does not know which object matters most to a page.",
   "groupCount": 11,
   "totalPlaced": 128,
   "groups": [
@@ -24,8 +24,8 @@
         "1884.137.72"
       ],
       "slug": "jellyfish",
-      "representative": "1884.137.113",
-      "representativeRationale": "blackest ground in the group ( 90% of frame below luminance 32, subject   8%); chosen by scripts/representatives.mjs, not by eye"
+      "representative": "1884.137.108",
+      "representativeRationale": "blackest ground among photographs where the object fills at least   8% of the frame (black  88%, subject   9%); chosen by scripts/representatives.mjs, not by eye"
     },
     {
       "order": 2,
@@ -43,8 +43,8 @@
         "1884.137.59"
       ],
       "slug": "floating-colonies",
-      "representative": "1884.137.114",
-      "representativeRationale": "blackest ground in the group ( 91% of frame below luminance 32, subject   6%); chosen by scripts/representatives.mjs, not by eye"
+      "representative": "1884.137.111",
+      "representativeRationale": "blackest ground among photographs where the object fills at least   8% of the frame (black  89%, subject   9%); chosen by scripts/representatives.mjs, not by eye"
     },
     {
       "order": 3,
@@ -63,8 +63,8 @@
         "1884.137.14"
       ],
       "slug": "see-through-swimmers",
-      "representative": "1884.137.53",
-      "representativeRationale": "blackest ground in the group ( 93% of frame below luminance 32, subject   5%); chosen by scripts/representatives.mjs, not by eye"
+      "representative": "1884.137.99",
+      "representativeRationale": "blackest ground among photographs where the object fills at least   8% of the frame (black  78%, subject  19%); chosen by scripts/representatives.mjs, not by eye"
     },
     {
       "order": 4,
@@ -84,8 +84,8 @@
         "1884.137.129"
       ],
       "slug": "sea-squirts-and-salps",
-      "representative": "1884.137.85",
-      "representativeRationale": "blackest ground in the group ( 88% of frame below luminance 32, subject   8%); chosen by scripts/representatives.mjs, not by eye"
+      "representative": "1884.137.58",
+      "representativeRationale": "blackest ground among photographs where the object fills at least   8% of the frame (black  83%, subject  13%); chosen by scripts/representatives.mjs, not by eye"
     },
     {
       "order": 5,
@@ -103,7 +103,7 @@
       ],
       "slug": "cephalopods",
       "representative": "1884.137.67",
-      "representativeRationale": "blackest ground in the group ( 81% of frame below luminance 32, subject  13%); chosen by scripts/representatives.mjs, not by eye"
+      "representativeRationale": "blackest ground among photographs where the object fills at least   8% of the frame (black  81%, subject  13%); chosen by scripts/representatives.mjs, not by eye"
     },
     {
       "order": 6,
@@ -127,8 +127,8 @@
         "1884.137.87"
       ],
       "slug": "sea-slugs",
-      "representative": "1884.137.94",
-      "representativeRationale": "blackest ground in the group ( 93% of frame below luminance 32, subject   5%); chosen by scripts/representatives.mjs, not by eye"
+      "representative": "1884.137.117",
+      "representativeRationale": "blackest ground among photographs where the object fills at least   8% of the frame (black  86%, subject  11%); chosen by scripts/representatives.mjs, not by eye"
     },
     {
       "order": 7,
@@ -158,7 +158,7 @@
       ],
       "slug": "sea-anemones",
       "representative": "1884.137.124",
-      "representativeRationale": "blackest ground in the group ( 83% of frame below luminance 32, subject  13%); chosen by scripts/representatives.mjs, not by eye"
+      "representativeRationale": "blackest ground among photographs where the object fills at least   8% of the frame (black  83%, subject  13%); chosen by scripts/representatives.mjs, not by eye"
     },
     {
       "order": 8,
@@ -183,8 +183,8 @@
         "1884.137.92"
       ],
       "slug": "corals-and-sea-fans",
-      "representative": "1884.137.136",
-      "representativeRationale": "blackest ground in the group ( 95% of frame below luminance 32, subject   3%); chosen by scripts/representatives.mjs, not by eye"
+      "representative": "1884.137.73",
+      "representativeRationale": "blackest ground among photographs where the object fills at least   8% of the frame (black  83%, subject  11%); chosen by scripts/representatives.mjs, not by eye"
     },
     {
       "order": 9,
@@ -202,8 +202,8 @@
         "1884.137.25"
       ],
       "slug": "sea-cucumbers-and-stars",
-      "representative": "1884.137.84",
-      "representativeRationale": "blackest ground in the group ( 91% of frame below luminance 32, subject   6%); chosen by scripts/representatives.mjs, not by eye"
+      "representative": "1884.137.2",
+      "representativeRationale": "blackest ground among photographs where the object fills at least   8% of the frame (black  84%, subject  10%); chosen by scripts/representatives.mjs, not by eye"
     },
     {
       "order": 10,
@@ -228,8 +228,8 @@
         "1884.137.125"
       ],
       "slug": "worms",
-      "representative": "1884.137.90",
-      "representativeRationale": "blackest ground in the group ( 95% of frame below luminance 32, subject   3%); chosen by scripts/representatives.mjs, not by eye"
+      "representative": "1884.137.20",
+      "representativeRationale": "blackest ground among photographs where the object fills at least   8% of the frame (black  77%, subject  17%); chosen by scripts/representatives.mjs, not by eye"
     },
     {
       "order": 11,
@@ -249,8 +249,8 @@
         "1884.137.128"
       ],
       "slug": "never-went-to-sea",
-      "representative": "1884.137.86",
-      "representativeRationale": "blackest ground in the group ( 91% of frame below luminance 32, subject   7%); chosen by scripts/representatives.mjs, not by eye"
+      "representative": "1884.137.69",
+      "representativeRationale": "blackest ground among photographs where the object fills at least   8% of the frame (black  87%, subject   9%); chosen by scripts/representatives.mjs, not by eye"
     }
   ]
 }

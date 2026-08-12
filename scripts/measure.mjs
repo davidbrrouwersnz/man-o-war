@@ -148,6 +148,7 @@ async function measure(path, { settle = 6000, scroll = false, shot = null, jump 
       lcp: window.__lcp,
       arrivedFlag: !!document.querySelector('.arrived-flag'),
       arrivedTop: (document.querySelector('.arrived-flag')||{getBoundingClientRect:()=>({top:null})}).getBoundingClientRect().top,
+      headers: [...document.querySelectorAll('.object')].map(s=>({ name: s.querySelector('.object-name').textContent, cat: s.querySelector('.object-catalogue')?.textContent ?? null })),
       sections: [...document.querySelectorAll('.object')].map(s=>({
         h: Math.round(s.getBoundingClientRect().height),
         stub: !!s.querySelector('.is-placeholder')
@@ -193,6 +194,13 @@ const report = (r, note) => {
   console.log(`  by type: ${Object.entries(byType).map(([k, v]) => `${k} ${kb(v)}`).join(', ')}`)
   console.log(`  media wells ${r.dom.wells}, image elements mounted ${r.dom.mounted}, loaded ${r.dom.loaded}`)
   if (r.dom.arrivedFlag) console.log(`  arrival marker present, at y=${Math.round(r.dom.arrivedTop)}px`)
+  if (r.dom.headers) {
+    console.log('  headers:')
+    for (const h of r.dom.headers) {
+      console.log(`    ${h.name}`)
+      console.log(h.cat ? `      ${h.cat}` : `      [catalogue line dropped — would have repeated the heading]`)
+    }
+  }
   if (r.dom.sections?.length) {
     const stub = r.dom.sections.filter((s) => s.stub).map((s) => s.h)
     const written = r.dom.sections.filter((s) => !s.stub).map((s) => s.h)

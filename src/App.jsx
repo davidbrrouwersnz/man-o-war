@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import manifest from './data/manifest.json'
 import groupData from './data/groups.json'
 import storyData from './data/stories.json'
+import nameData from './data/names.json'
 
 const OBJECTS = new Map(manifest.objects.map((o) => [o.accession, o]))
 const GROUPS = groupData.groups
@@ -164,11 +165,18 @@ function ObjectSection({ object, arrived, registry }) {
   const story = storyData.stories[object.accession]
   const size = object.measurements[0]?.replace(/^Dimensions \(LxWxH\):\s*/i, '').trim()
 
+  // §10 wants a plain-English headline with the catalogue string demoted beneath it. Where no
+  // English name exists the headline falls back to the catalogue's own name, and the demoted line
+  // would then repeat it word for word — so it is dropped rather than printed twice.
+  const plainName = nameData.names[object.accession]?.name
+  const headline = story?.headline ?? plainName ?? object.title
+  const showCatalogue = headline !== object.title
+
   return (
     <article className={`object${arrived ? ' is-arrived' : ''}`} ref={ref} id={`obj-${object.accession}`}>
       {arrived && <p className="arrived-flag">The object you scanned</p>}
-      <h2 className="object-name">{story?.headline ?? object.title}</h2>
-      <p className="object-catalogue">{object.catalogueName}</p>
+      <h2 className="object-name">{headline}</h2>
+      {showCatalogue && <p className="object-catalogue">{object.catalogueName}</p>}
 
       <Media object={object} priority={arrived} />
 

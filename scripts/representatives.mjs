@@ -17,6 +17,10 @@ const WRITE = process.argv.includes('--write')
 // one of the blackest frames in the collection — so the rule has to exclude it explicitly.
 const NEVER = new Set(['1884.137.92'])
 
+// Blackest ground alone selects for the object filling least of the frame, which is the other way a
+// tile fails to read. A photograph is only eligible if the lit subject fills at least this much.
+const MIN_SUBJECT = 0.08
+
 const CHROME = [
   'C:/Program Files/Google/Chrome/Application/chrome.exe',
   'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe',
@@ -113,7 +117,9 @@ for (const g of groups.groups) {
     .map((a) => ({ a, ...stats[a] }))
     .sort((x, y) => y.black - x.black)
 
-  const pick = ranked[0]
+  const eligible = ranked.filter((r) => r.subject >= MIN_SUBJECT)
+  if (!eligible.length) console.log(`   !! nothing in this group reaches ${pct(MIN_SUBJECT)} subject fill — falling back to blackest`)
+  const pick = eligible[0] ?? ranked[0]
   const was = g.representative
 
   console.log(`\n${g.order}. ${g.title}`)
@@ -123,7 +129,7 @@ for (const g of groups.groups) {
     const old = r.a === was ? '  (was)' : ''
     console.log(`${mark} ${r.a.padEnd(14)} ${pct(r.black)}  ${pct(r.subject)}   ${String(r.median).padStart(3)}${old}`)
   }
-  if (pick.subject < 0.04) console.log(`   !! subject fills only ${pct(pick.subject)} of the frame - likely reads as an empty tile`)
+  console.log(`   pick: ${pick.a}  black ${pct(pick.black)}  subject ${pct(pick.subject)}`)
   if (pick.a !== was) {
     console.log(`   changed: ${was} -> ${pick.a}`)
     changed++
@@ -133,7 +139,7 @@ for (const g of groups.groups) {
 
   if (WRITE) {
     g.representative = pick.a
-    g.representativeRationale = `blackest ground in the group (${pct(pick.black)} of frame below luminance 32, subject ${pct(pick.subject)}); chosen by scripts/representatives.mjs, not by eye`
+    g.representativeRationale = `blackest ground among photographs where the object fills at least ${pct(MIN_SUBJECT)} of the frame (black ${pct(pick.black)}, subject ${pct(pick.subject)}); chosen by scripts/representatives.mjs, not by eye`
   }
 }
 
@@ -141,8 +147,8 @@ console.log(`\n${changed} of ${groups.groups.length} representatives change unde
 
 if (WRITE) {
   groups.note = groups.note.replace(
-    'representative choices are a first pass made WITHOUT viewing the images and need visual confirmation at tile size.',
-    'representative is the blackest photograph in each group, chosen mechanically by scripts/representatives.mjs so every tile is an object on black rather than a mount board. 1884.137.92 is excluded by rule.'
+    /representative[^]*$/,
+    `representative is chosen mechanically by scripts/representatives.mjs: the blackest photograph in the group among those where the lit object fills at least ${pct(MIN_SUBJECT).trim()} of the frame, so every tile is an object on black rather than a mount board and none of them reads as an empty frame. 1884.137.92 is excluded by rule. This is a photometric choice, not a curatorial one - it does not know which object matters most to a page.`
   )
   writeFileSync('src/data/groups.json', JSON.stringify(groups, null, 2) + '\n')
   console.log('Wrote src/data/groups.json')

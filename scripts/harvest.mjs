@@ -195,6 +195,24 @@ check(badAspect.length === 0, `every aspect ratio is a number (${badAspect.lengt
 const reps = groups.groups.map((g) => g.representative)
 check(!reps.includes('1884.137.92'), `1884.137.92 is not a representative image`)
 
+// Plain-English names are authored, so they can drift from the manifest silently. They cannot here.
+const names = JSON.parse(readFileSync(new URL('../src/data/names.json', import.meta.url), 'utf8'))
+const named = Object.keys(names.names)
+const unnamed = names.deliberatelyUnnamed.accessions
+const strayName = [...named, ...unnamed].filter((a) => !manifestAcc.has(a))
+check(strayName.length === 0, `every named accession exists (${strayName.length} stray: ${strayName.join(', ')})`)
+
+const bothWays = named.filter((a) => unnamed.includes(a))
+check(bothWays.length === 0, `no accession is both named and deliberately unnamed (${bothWays.join(', ')})`)
+
+const uncovered = [...manifestAcc].filter((a) => !named.includes(a) && !unnamed.includes(a))
+check(uncovered.length === 0, `every object is either named or explicitly unnamed (${uncovered.length} missed: ${uncovered.join(', ')})`)
+
+check(
+  names.counts.total === objects.length && names.counts.named === named.length && names.counts.unnamed === unnamed.length,
+  `names.json counts match reality (says ${names.counts.named}/${names.counts.unnamed}, actual ${named.length}/${unnamed.length})`
+)
+
 // ---------------------------------------------------------------- write
 
 const manifest = {

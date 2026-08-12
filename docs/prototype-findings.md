@@ -162,9 +162,35 @@ a regex over a cataloguer's prose will produce a confident wrong name on the obj
 matters, and §6 forbids the catalogue's words being restyled as ours.
 
 **This is a content commitment the spec does not name.** §5's manifest table has no vernacular-name
-field and §6's content table has no `headline`. 128 plain-English names have to be written and
-checked by someone, or §10's header collapses to one line. It should be in the §5 content record
-next to `story`.
+field and §6's content table has no `headline`. It should be in the §5 content record next to
+`story`.
+
+#### Resolved — names written, awaiting curator review
+
+`src/data/names.json` now carries a plain-English name for **106 of the 128 objects**, and names the
+other 22 as deliberately unnamed. Four build assertions keep it honest: every entry must exist in
+the manifest, nothing may be both named and unnamed, every object must be covered by one or the
+other, and the stated counts must match reality.
+
+**Every name records where it came from, because that is what a reviewer needs to check:**
+
+| `source` | Count | What it means |
+|---|---|---|
+| `catalogue` | 44 | The word appears in the Museum's own `brief_desc`. We are quoting them. |
+| `common` | 56 | A well-established English name we supplied. **This is where errors will be.** |
+| `descriptor` | 6 | No vernacular name exists; a plain phrase from the catalogue's own wording. |
+| *(unnamed)* | 22 | Nothing defensible. The heading falls back to the scientific name and the duplicate catalogue line is suppressed. |
+
+**The `common` names carry a hidden claim a curator must test.** Roughly 57% of the catalogue's
+binomials are superseded, so the English name of the *currently accepted* species is a statement
+about identification, not only about language. *Actinia mesembrianthemum* → beadlet anemone,
+*Sagartia bellis* → daisy anemone and *Bunodes gemmacea* → gem anemone each depend on a synonymy
+holding. Those are flagged individually in the file.
+
+**Nothing was invented.** Where no English name exists the object shows its scientific name alone —
+21 of the 22 are nudibranchs, anemones and siphonophores whose only vernacular word is the group
+name itself, which would have printed "Sea slug" nine times down one page and told a visitor
+nothing. Those are the first entries a curator could improve.
 
 ### 2. §10's own worked example contradicts §6's word-count benchmark
 
