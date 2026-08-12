@@ -122,6 +122,7 @@ async function measure(path, { settle = 6000, scroll = false, shot = null, jump 
   cdp.on(off)
   await send('Page.setLifecycleEventsEnabled', { enabled: true })
 
+  if (process.env.DARK) await send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-color-scheme', value: 'dark' }] })
   await send('Page.navigate', { url: ORIGIN + path })
   await new Promise((r) => setTimeout(r, settle))
 
