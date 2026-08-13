@@ -66,9 +66,32 @@ floating colonies*; its tile is now `1884.137.114`. `1884.137.33` is the one obj
 only object with a written story, the target of the only QR code, and the thing the app is named
 for. A purely photometric rule cannot know that.
 
-**The rule needs one clause and one exception**, both cheap: require the subject to fill at least
-~8% of the frame before a photograph is eligible, and pin `1884.137.33` as group 2's
-representative. That keeps the dark grid and gives back the two tiles it cost.
+#### Update — a fill floor, and the first two tiles chosen by eye
+
+Two changes, and together they settle question 1 as far as a build can.
+
+**A minimum subject fill of 8%.** No photograph is eligible unless the lit object fills at least
+that much of the frame. The 3% tiles are gone; every formula pick now fills 9–19%.
+
+**Groups 1 and 2 are chosen by hand and pinned**, using `scripts/contact-sheet.mjs`, which renders
+every photograph in a group at real tile size so the choice can be made by looking rather than by
+arithmetic. What the contact sheet showed:
+
+- **Jellyfish → `1884.137.32`, the moon jelly.** The one bell a visitor recognises on sight, filling
+  the frame on pure black. **Nine of the thirteen alternatives are a small specimen photographed
+  with its wooden mount and printed label card in shot** — at tile size the label is legible clutter
+  and the animal is tiny. The formula had picked one of them.
+- **Floating colonies → `1884.137.33`, the man o' war.** Not the prettiest photograph in the group —
+  `1884.137.59`, the blue button, is plainly the best image in the collection so far. But this is
+  the page named after the man o' war, the one object on display, the only object with a written
+  story, and the target of the only QR code. **A tile has to show the thing it promises.**
+
+**The general finding, which is the useful part.** A photometric rule is a good default and a bad
+judge. It reliably removes mount board and empty frames — worth having across 128 objects nobody
+will review individually. It cannot see a printed label card, and it does not know which object a
+page is *about*. **Both failures land on the same eleven images that carry the entire first
+impression**, so those eleven are exactly where hand-selection is worth the time and the other 117
+are exactly where it is not.
 
 ### 2. Is a group page finishable?
 
