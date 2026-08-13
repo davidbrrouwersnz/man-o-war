@@ -119,9 +119,11 @@ const en = JSON.parse(readFileSync(new URL('en.json', langDir), 'utf8'))
 const flat = (o, p = '') => Object.entries(o).flatMap(([k, v]) => (v && typeof v === 'object' ? flat(v, `${p}${k}.`) : [`${p}${k}`]))
 const enKeys = flat(en.ui).map((k) => `ui.${k}`)
 
+const allAccessions = new Set(manifest.objects.map((o) => o.accession))
+
 const packs = []
 for (const file of readdirSync(langDir)) {
-  if (file === 'en.json' || file === 'layers') continue
+  if (file === 'en.json' || file === 'layers' || file === 'stories') continue
   const code = file.replace(/\.json$/, '')
   const pack = JSON.parse(readFileSync(new URL(file, langDir), 'utf8'))
   if (pack.__code !== code) throw new Error(`${file}: __code is "${pack.__code}"`)
@@ -142,15 +144,28 @@ for (const file of readdirSync(langDir)) {
     layersDone = Object.keys(tl.layers ?? {}).length
   }
 
+  // Object story translations, keyed by accession, in their own file per language for the same
+  // reason as the layers: a language gains story coverage incrementally without touching anything
+  // else, and coverage (128 max) is countable independent of the interface and layer tiers.
+  const storyFile = new URL(`stories/${code}.json`, langDir)
+  let storiesDone = 0
+  if (existsSync(storyFile)) {
+    const ts = JSON.parse(readFileSync(storyFile, 'utf8'))
+    const stray = Object.keys(ts.stories ?? {}).filter((a) => !allAccessions.has(a))
+    if (stray.length) throw new Error(`stories/${code}.json: accessions not in the manifest: ${stray.join(', ')}`)
+    pack.stories = ts.stories
+    storiesDone = Object.keys(ts.stories ?? {}).length
+  }
+
   const panelsDone = Object.keys(pack.panels ?? {}).length
   const json = JSON.stringify(pack)
   writeFileSync(new URL(`lang-${code}.json`, dir), json)
-  packs.push({ code, missing: missing.length, panels: panelsDone, layers: layersDone, kb: (gzipSync(json).length / 1024).toFixed(1) })
+  packs.push({ code, missing: missing.length, panels: panelsDone, layers: layersDone, stories: storiesDone, kb: (gzipSync(json).length / 1024).toFixed(1) })
 }
 
 console.log('')
 for (const p of packs) {
-  console.log(`  ${p.code.padEnd(8)} ui ${String(enKeys.length - p.missing).padStart(2)}/${enKeys.length}  panels ${String(p.panels).padStart(2)}/11  layers ${p.layers}/3  ${p.kb}KB gz${p.missing ? '  <- falls back to English' : ''}`)
+  console.log(`  ${p.code.padEnd(8)} ui ${String(enKeys.length - p.missing).padStart(2)}/${enKeys.length}  panels ${String(p.panels).padStart(2)}/11  layers ${p.layers}/3  stories ${String(p.stories).padStart(3)}/128  ${p.kb}KB gz${p.missing ? '  <- falls back to English' : ''}`)
 }
 
 index.languages = packs.map((p) => p.code)

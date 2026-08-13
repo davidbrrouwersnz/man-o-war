@@ -29,8 +29,11 @@ function useT() {
   // englishOverride is for content that lives in a data chunk rather than in en.json — a group
   // panel, say. The English is already loaded; only the translation needs resolving.
   const tr = (path, vars, englishOverride) => {
-    const fromEn = path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), englishPack)
-    const r = resolve(pack, path, englishOverride ?? fromEn ?? path)
+    // path may be a dot-string ("ui.language") or an array of keys — arrays are required wherever
+    // a key can itself contain a dot, which every accession number does (i18n.js explains why).
+    const keys = Array.isArray(path) ? path : path.split('.')
+    const fromEn = keys.reduce((o, k) => (o == null ? undefined : o[k]), englishPack)
+    const r = resolve(pack, keys, englishOverride ?? fromEn ?? keys.join('.'))
     const text = vars ? r.text.replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? `{${k}}`) : r.text
     return { ...r, text }
   }
@@ -221,6 +224,9 @@ function Home({ go }) {
 
 function ObjectSection({ object, arrived, registry }) {
   const ref = useRef(null)
+  const [t, tr] = useT()
+  const { code } = useLang()
+  const langName = BY_CODE.get(code)?.endonym ?? 'English'
   // Layout effect, not passive: child layout effects run before the parent's, so the registry is
   // populated by the time GroupPage tries to scroll to the arrived-at object.
   useLayoutEffect(() => {
@@ -231,25 +237,34 @@ function ObjectSection({ object, arrived, registry }) {
   const { story } = object
   const size = object.measurements[0]?.replace(/^Dimensions \(LxWxH\):\s*/i, '').trim()
 
+  // A per-language story override, if one has been translated for this accession. Resolved the
+  // same way as everything else: selected language -> English. Untranslated objects (most of them,
+  // in most languages) fall through cleanly to the English story already in the chunk.
+  // Array form, not a dot-string: the accession itself contains dots ("1884.137.33"), which would
+  // otherwise be shredded into bogus path segments by a naive split('.') — see src/i18n.js.
+  const base = ['stories', object.accession]
+  const headlineR = tr([...base, 'headline'], null, story?.headline ?? object.name ?? object.title)
+  const catalogueR = tr([...base, 'catalogueName'], null, object.catalogueName)
+  const identificationR = story?.identification ? tr([...base, 'identification'], null, story.identification) : null
+
   // §10 wants a plain-English headline with the catalogue string demoted beneath it. Where no
-  // English name exists the headline falls back to the catalogue's own name, and the demoted line
-  // would then repeat it word for word — so it is dropped rather than printed twice.
-  const headline = story?.headline ?? object.name ?? object.title
-  const showCatalogue = headline !== object.title
+  // name exists the headline falls back to the catalogue's own name, and the demoted line would
+  // then repeat it word for word — so it is dropped rather than printed twice.
+  const showCatalogue = headlineR.text !== object.title && headlineR.text !== catalogueR.text
 
   return (
     <article className={`object${arrived ? ' is-arrived' : ''}`} ref={ref} id={`obj-${object.accession}`}>
-      {arrived && <p className="arrived-flag">The object you scanned</p>}
-      {/* The object name and the catalogue string are English until the stories are translated,
-          so they carry their own direction rather than inheriting the page's. §7: lang and dir
-          follow what is rendered. The binomial is marked so a screen reader does not read Latin
-          with the phonetics of the surrounding language. */}
-      <h2 className="object-name" lang="en" dir="ltr">
-        {headline}
+      {arrived && <p className="arrived-flag">{t('ui.scanned')}</p>}
+      {/* §7: lang and dir follow what is actually rendered, on the element itself. An untranslated
+          headline is English inside whatever page language is active; a translated one carries its
+          own language. The binomial inside object.catalogueName is marked in CSS via .binomial
+          where authored, so a screen reader does not read Latin with the surrounding phonetics. */}
+      <h2 className="object-name" {...langAttrs(headlineR)}>
+        {headlineR.text}
       </h2>
       {showCatalogue && (
-        <p className="object-catalogue" lang="en" dir="ltr">
-          {object.catalogueName}
+        <p className="object-catalogue" {...langAttrs(catalogueR)}>
+          {catalogueR.text}
         </p>
       )}
 
@@ -257,31 +272,41 @@ function ObjectSection({ object, arrived, registry }) {
 
       <p className="object-meta">
         {object.accession}
-        {size && <> · {size}</>} · {object.rights ? object.rights : 'Canterbury Museum — rights not stated on this record'}
+        {size && <> · {size}</>} · {object.rights ? object.rights : t('ui.rightsUnstated')}
       </p>
 
       {story ? (
-        <Fallback className="story" lang="en">
-          {story.segments.map((s) => (
-            <section key={s.id}>
-              <h3>{s.heading}</h3>
-              {s.text.split('\n\n').map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
-            </section>
-          ))}
-          {story.identification && <p className="identification">{story.identification}</p>}
-          {story.drafted && (
-            <p className="draft-flag">
-              Draft, not yet checked. This entry was written from general natural history rather than from the Museum's
-              own published writing, and no curator has reviewed it.
+        <div className="story">
+          {story.segments.map((s, si) => {
+            const heading = tr([...base, 'segments', si, 'heading'], null, s.heading)
+            const body = tr([...base, 'segments', si, 'text'], null, s.text)
+            return (
+              <section key={s.id}>
+                <h3 {...langAttrs(heading)}>{heading.text}</h3>
+                <div {...langAttrs(body)}>
+                  {body.fellBack && code !== 'en' && (
+                    <p className="fallback-notice">{t('ui.fallbackNotice', { language: langName })}</p>
+                  )}
+                  {body.text.split('\n\n').map((p, i) => (
+                    <p key={i}>{p}</p>
+                  ))}
+                </div>
+              </section>
+            )
+          })}
+          {identificationR && (
+            <p className="identification" {...langAttrs(identificationR)}>
+              {identificationR.text}
             </p>
           )}
-        </Fallback>
+          {story.drafted && <p className="draft-flag">{t('ui.draftNotice')}</p>}
+        </div>
       ) : (
         <div className="story is-placeholder">
-          <p className="placeholder-flag">No story written yet. Below is the catalogue record's own description.</p>
-          <p className="catalogue-words">{object.description}</p>
+          <p className="placeholder-flag">{t('ui.noStory')}</p>
+          <p className="catalogue-words" lang="en" dir="ltr">
+            {object.description}
+          </p>
         </div>
       )}
     </article>

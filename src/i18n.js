@@ -85,8 +85,14 @@ export function remember(code) {
 
 // Resolution per piece of content. Returns the text AND the language it is actually in, because
 // §7 requires lang and dir to follow what is rendered rather than what was selected.
+// path may be a dot-joined string ("ui.language") OR an array of keys. The array form exists
+// because accession numbers (e.g. "1884.137.33") contain dots themselves — splitting a path like
+// "stories.1884.137.33.headline" on "." shreds the accession into four bogus keys and the lookup
+// silently misses every translated story. Any path segment holding an accession must be passed as
+// its own array element, never interpolated into a dot-string.
 export function resolve(pack, path, english) {
-  const translated = path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), pack ?? {})
+  const keys = Array.isArray(path) ? path : path.split('.')
+  const translated = keys.reduce((o, k) => (o == null ? undefined : o[k]), pack ?? {})
   if (typeof translated === 'string' && translated.trim()) return { text: translated, lang: pack.__code, fellBack: false }
   return { text: english, lang: 'en', fellBack: true }
 }
