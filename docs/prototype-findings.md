@@ -410,11 +410,40 @@ The placeholders are **73% of the compressed manifest** and are the whole reason
 133KB gzipped rather than ~75KB. Because the manifest is bundled into the SPA, **every visitor
 downloads all 128 objects' placeholders to see one page of eight.**
 
-The spec never says the manifest must be one file, and nothing in §8's routing needs it to be. A
-per-group split would take the group page's blocking payload from 133KB to roughly 55KB — around
-0.6s off first paint at 130KB/s. **I did not build it**, because it is not in scope and the spec's
-single-manifest framing is load-bearing for §5's "harvest once" argument. It is the highest-value
-change available and should be a decision, not an oversight.
+The spec never says the manifest must be one file, and nothing in §8's routing needs it to be.
+
+#### Resolved — split per group, and it halved first paint
+
+`scripts/split.mjs` runs as a prebuild step and turns the harvest output into one chunk per group
+plus a small index. §5's argument is untouched: the harvest still happens once, at build time, and
+the live API is still never called at runtime. Only the packaging changed.
+
+**What stays in the main bundle** is the index — eleven titles, eleven representative images, the
+build-time reading times, and the accession-to-group map that `/o/{accession}` needs in order to
+route at all. **6KB gzipped.** Everything else arrives when its page is asked for.
+
+| | Before | After |
+|---|---|---|
+| Main bundle | 445KB / **141KB gz** | 169KB / **56KB gz** |
+| Group chunk, on demand | — | 8–19KB gz |
+
+Measured at 390×844, throttled to 130KB/s, cold cache:
+
+| Route | First paint before | **after** | Transferred before | **after** |
+|---|---|---|---|---|
+| `/` eleven tiles | 1,728ms | **876ms** | 404KB | **295KB** |
+| `/g/floating-colonies` | 1,664ms | **824ms** | 204KB | **105KB** |
+| `/o/1884.137.33` | 1,652ms | **820ms** | 265KB | **166KB** |
+| `/g/sea-anemones` | 1,732ms | **820ms** | 296KB | **206KB** |
+
+**First paint halved — 1.66s to 0.82s — on every route.** The estimate was 0.6s; the measured saving
+is 0.84s, because the split removes the data from the parse and execute path as well as the wire.
+
+The QR arrival's largest paint dropped from 2,636ms to **2,068ms**, and the anemone page's from
+1,732ms to **1,140ms**.
+
+**§5's ~150KB budget is now the wrong question.** No visitor loads the manifest. The number that
+matters is what a single page costs, and that is 56KB of bundle plus one 8–19KB chunk.
 
 ### 5. The ~18.7KB metadata block is far worse on the small derivatives than §12 implies
 

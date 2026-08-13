@@ -1,57 +1,16 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import manifest from './data/manifest.json'
-import groupData from './data/groups.json'
-import storyData from './data/stories.json'
-import nameData from './data/names.json'
-import draftedData from './data/stories-drafted.json'
+import index from './data/chunks/index.json'
 
-// Two provenances, deliberately in two files: stories.json is paraphrased from the Museum's own
-// published writing; stories-drafted.json is written from third-party natural history and is
-// unverified. The Museum's version wins where both exist.
-const STORIES = { ...draftedData.stories, ...storyData.stories }
-const DRAFTED = new Set(Object.keys(draftedData.stories))
+// One chunk per group, fetched only when that page is visited. The manifest used to be a single
+// file compiled into the bundle, so every visitor downloaded all 128 objects — and 113KB of base64
+// placeholders — to read a page of eight. What stays in the main bundle is this index: eleven
+// titles, eleven representative images, the reading times, and the accession-to-group map that
+// /o/{accession} needs in order to route at all.
+const CHUNKS = import.meta.glob(['./data/chunks/*.json', '!./data/chunks/index.json'])
+const loadChunk = (slug) => CHUNKS[`./data/chunks/${slug}.json`]?.().then((m) => m.default ?? m)
 
-const OBJECTS = new Map(manifest.objects.map((o) => [o.accession, o]))
-const GROUPS = groupData.groups
+const GROUPS = index.groups
 const BY_SLUG = new Map(GROUPS.map((g) => [g.slug, g]))
-const GROUP_OF = new Map(GROUPS.flatMap((g) => g.accessions.map((a) => [a, g])))
-
-// All eleven group pages render. They were stubbed while only one object had a story.
-
-const WPM = 150
-// §6 makes the man o' war's story the benchmark for a written layer-1–2 entry. An object with no
-// story yet is costed at that length, because §9's number exists to tell a visitor what the page
-// costs — and §6 commits every object to a real story. Costing the placeholder instead understates
-// a 19-object page by a factor of six.
-const BENCHMARK_WORDS = 231
-
-const words = (s) => (s ? s.trim().split(/\s+/).length : 0)
-
-function storyWords(accession) {
-  const story = STORIES[accession]
-  return story ? story.segments.reduce((t, s) => t + words(s.heading) + words(s.text), 0) : null
-}
-
-// Derived from the content, once, at module load — never a number anyone typed. Adding a story
-// changes it automatically.
-const READING = new Map(
-  GROUPS.map((g) => {
-    const p = storyData.panels[g.slug]
-    // Every group has a drafted panel seed even where the final panel is unwritten.
-    let total = words(p?.panel ?? g.panelSeed) + words(p?.ending)
-    let written = 0
-    for (const accession of g.accessions) {
-      const n = storyWords(accession)
-      if (n === null) {
-        total += BENCHMARK_WORDS
-      } else {
-        total += n
-        written++
-      }
-    }
-    return [g.slug, { minutes: Math.max(1, Math.round(total / WPM)), written, size: g.accessions.length }]
-  })
-)
 
 // ------------------------------------------------------------------ routing
 // /                  the eleven group tiles
@@ -63,11 +22,11 @@ function parse(pathname) {
   const path = decodeURIComponent(pathname).replace(/\/+$/, '') || '/'
   if (path === '/') return { view: 'home' }
   const g = path.match(/^\/g\/([^/]+)$/)
-  if (g) return { view: 'group', slug: g[1] }
+  if (g) return BY_SLUG.has(g[1]) ? { view: 'group', slug: g[1] } : { view: 'missing' }
   const o = path.match(/^\/o\/([^/]+)$/)
   if (o) {
-    const group = GROUP_OF.get(o[1])
-    return group ? { view: 'group', slug: group.slug, arrivedAt: o[1] } : { view: 'missing', accession: o[1] }
+    const slug = index.groupOf[o[1]]
+    return slug ? { view: 'group', slug, arrivedAt: o[1] } : { view: 'missing', accession: o[1] }
   }
   return { view: 'missing' }
 }
@@ -149,31 +108,27 @@ function Home({ go }) {
         </p>
       </header>
       <ol className="grid">
-        {GROUPS.map((g) => {
-          const rep = OBJECTS.get(g.representative)
-          return (
-            <li key={g.slug} className="tile">
-              <a href={`/g/${g.slug}`} onClick={go(`/g/${g.slug}`)}>
-                <div className="tile-well">
-                  <img className="tile-blur" src={rep.placeholder} alt="" aria-hidden="true" />
-                  <img className="tile-img" src={rep.image.large.url} alt="" loading="lazy" decoding="async" />
-                </div>
-                <div className="tile-text">
-                  <h2>{g.title}</h2>
-                  <p>
-                    {g.size} models. About {READING.get(g.slug).minutes} minutes.
-                  </p>
-                </div>
-              </a>
-            </li>
-          )
-        })}
+        {GROUPS.map((g) => (
+          <li key={g.slug} className="tile">
+            <a href={`/g/${g.slug}`} onClick={go(`/g/${g.slug}`)}>
+              <div className="tile-well">
+                <img className="tile-blur" src={g.representative.placeholder} alt="" aria-hidden="true" />
+                <img className="tile-img" src={g.representative.url} alt="" loading="lazy" decoding="async" />
+              </div>
+              <div className="tile-text">
+                <h2>{g.title}</h2>
+                <p>
+                  {g.size} models. About {g.minutes} minutes.
+                </p>
+              </div>
+            </a>
+          </li>
+        ))}
       </ol>
       <p className="foot">
         Prototype. Object count is what the collection record holds, not a published total — the published figures
-        disagree. Times are computed from the writing at {WPM} words a minute and are not asserted; they move as the
-        writing changes. Most object entries are drafts written from general natural history and are marked as such
-        where they appear.
+        disagree. Times are computed at build time from the writing, at 150 words a minute, and are not asserted. Most
+        object entries are drafts written from general natural history and are marked as such where they appear.
       </p>
     </main>
   )
@@ -190,14 +145,13 @@ function ObjectSection({ object, arrived, registry }) {
     return () => registry.current.delete(object.accession)
   }, [object.accession, registry])
 
-  const story = STORIES[object.accession]
+  const { story } = object
   const size = object.measurements[0]?.replace(/^Dimensions \(LxWxH\):\s*/i, '').trim()
 
   // §10 wants a plain-English headline with the catalogue string demoted beneath it. Where no
   // English name exists the headline falls back to the catalogue's own name, and the demoted line
   // would then repeat it word for word — so it is dropped rather than printed twice.
-  const plainName = nameData.names[object.accession]?.name
-  const headline = story?.headline ?? plainName ?? object.title
+  const headline = story?.headline ?? object.name ?? object.title
   const showCatalogue = headline !== object.title
 
   return (
@@ -224,7 +178,7 @@ function ObjectSection({ object, arrived, registry }) {
             </section>
           ))}
           {story.identification && <p className="identification">{story.identification}</p>}
-          {DRAFTED.has(object.accession) && (
+          {story.drafted && (
             <p className="draft-flag">
               Draft, not yet checked. This entry was written from general natural history rather than from the Museum's
               own published writing, and no curator has reviewed it.
@@ -244,22 +198,35 @@ function ObjectSection({ object, arrived, registry }) {
 function GroupPage({ route, go }) {
   const group = BY_SLUG.get(route.slug)
   const registry = useRef(new Map())
+  const [data, setData] = useState(null)
 
+  useEffect(() => {
+    let live = true
+    setData(null)
+    loadChunk(route.slug)?.then((d) => {
+      if (live) setData(d)
+    })
+    return () => {
+      live = false
+    }
+  }, [route.slug])
+
+  // The scroll has to wait for the chunk: until the objects render there is nothing to scroll to.
   useLayoutEffect(() => {
     if (!group) return
     document.title = `${group.title} — the Blaschka collection`
-    // Arriving at /o/{accession} scrolls to that object without animation.
+    if (!data) return
     if (route.arrivedAt) {
       const el = registry.current.get(route.arrivedAt)
       if (el) scrollTo({ top: el.offsetTop - 8, behavior: 'instant' })
     } else {
       scrollTo(0, 0)
     }
-  }, [group, route.arrivedAt, route.slug])
+  }, [group, data, route.arrivedAt, route.slug])
 
   // replaceState as the visitor scrolls, so the URL always names what is on screen.
   useEffect(() => {
-    if (!group) return
+    if (!group || !data) return
     const onScroll = () => {
       // The URL names the object whose section actually holds the middle of the screen. While the
       // middle is still in the group's header or panel, nothing has been scrolled past yet and the
@@ -279,11 +246,10 @@ function GroupPage({ route, go }) {
     addEventListener('scroll', onScroll, { passive: true })
     onScroll()
     return () => removeEventListener('scroll', onScroll)
-  }, [group])
+  }, [group, data])
 
   if (!group) return <Missing go={go} />
 
-  const panel = storyData.panels[group.slug]
   const prev = GROUPS[group.order - 2]
   const next = GROUPS[group.order]
 
@@ -294,22 +260,22 @@ function GroupPage({ route, go }) {
       </a>
       <h1 className="group-title">{group.title}</h1>
       <p className="group-cost">
-        {group.size} models. About {READING.get(group.slug).minutes} minutes.
-        {READING.get(group.slug).written < group.size && (
-          <span className="cost-caveat">
-            {' '}
-            Costed as if every object were written; {group.size - READING.get(group.slug).written} of {group.size} are
-            still placeholders.
-          </span>
-        )}
+        {group.size} models. About {group.minutes} minutes.
       </p>
-      {panel && <p className="group-panel">{panel.panel}</p>}
 
-      {group.accessions.map((acc) => (
-        <ObjectSection key={acc} object={OBJECTS.get(acc)} arrived={acc === route.arrivedAt} registry={registry} />
-      ))}
+      {data ? (
+        <>
+          {data.panel && <p className="group-panel">{data.panel}</p>}
 
-      {panel && <p className="group-ending">{panel.ending}</p>}
+          {data.objects.map((o) => (
+            <ObjectSection key={o.accession} object={o} arrived={o.accession === route.arrivedAt} registry={registry} />
+          ))}
+
+          {data.ending && <p className="group-ending">{data.ending}</p>}
+        </>
+      ) : (
+        <p className="loading">Loading the objects…</p>
+      )}
 
       <nav className="group-nav">
         {prev ? (
