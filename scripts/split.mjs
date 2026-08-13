@@ -20,7 +20,6 @@ const drafted = read('stories-drafted.json')
 
 const OBJECTS = new Map(manifest.objects.map((o) => [o.accession, o]))
 const STORIES = { ...drafted.stories, ...museum.stories }
-const DRAFTED = new Set(Object.keys(drafted.stories))
 
 const WPM = 150
 const words = (s) => (s ? s.trim().split(/\s+/).length : 0)
@@ -51,7 +50,7 @@ for (const g of groups.groups) {
       aspect: o.aspect,
       placeholder: o.placeholder,
       image: { xlarge: o.image.xlarge, large: o.image.large },
-      story: story ? { ...story, drafted: DRAFTED.has(accession) } : null,
+      story,
     }
   })
 

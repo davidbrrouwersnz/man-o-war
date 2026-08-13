@@ -316,8 +316,6 @@ a {
   font-size: 1rem;
 }
 
-/* An unverified entry has to say so, and the seam between the two provenances stays visible. */
-.draft-flag,
 .identification {
   font-family: var(--sans);
   font-size: 0.75rem;
@@ -326,10 +324,6 @@ a {
   border-left: 2px solid var(--rule);
   padding-left: 0.75rem;
   margin: 1.2rem 0 0;
-}
-
-.identification + .draft-flag {
-  margin-top: 0.5rem;
 }
 
 /* ------------------------------------------------------------------ the QR arrival */
@@ -440,7 +434,6 @@ a {
 }
 
 [dir='rtl'] .is-placeholder,
-[dir='rtl'] .draft-flag,
 [dir='rtl'] .identification,
 [dir='rtl'] .fallback-notice {
   border-left: 0;

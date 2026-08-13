@@ -299,7 +299,6 @@ function ObjectSection({ object, arrived, registry }) {
               {identificationR.text}
             </p>
           )}
-          {story.drafted && <p className="draft-flag">{t('ui.draftNotice')}</p>}
         </div>
       ) : (
         <div className="story is-placeholder">
