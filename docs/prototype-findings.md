@@ -229,6 +229,46 @@ holding. Those are flagged individually in the file.
 name itself, which would have printed "Sea slug" nine times down one page and told a visitor
 nothing. Those are the first entries a curator could improve.
 
+### 1b. There is Museum writing for 12 objects, and none for the other 116
+
+Asked directly whether the sources exist to write 128 stories. They do not. Measured:
+
+| Source | Per-object interpretive writing |
+|---|---|
+| Museum's Blaschka page (Le Grice) | **12 objects**, 90–150 words each, with accession and Blaschka number |
+| Shaw et al. 2017, *Ideas made glass* (80pp) | **0 objects.** ~9,200 words of collection history, plus a plate appendix |
+| Collection record `brief_desc` | 128 objects, median 37 words — a cataloguer's physical description, which §6 forbids as a story |
+
+**So 9% of the collection has a story that can be written from Museum copy, and 91% does not.** The
+twelve are written and shipped. The other 116 need either commissioned writing or paraphrase from
+third-party natural-history sources, which is a different provenance and should be a decision rather
+than a default.
+
+**Shaw et al. is the wrong shape for object stories and the right shape for layers 3–5.** It is
+about Haast's order, Dohrn and the Naples station, Haeckel, and the teaching of evolution — written
+once, never duplicated onto object pages. That is exactly §6's layers 3 and 4, already researched.
+
+**What the twelve cost, and what that says about the benchmark.** Written from the Museum's own
+material without padding, they run **92–191 words, averaging 127** — well under the 231-word
+benchmark §6 takes from the man o' war. The man o' war is the outlier, because it is the one object
+with two v1 texts merged into it. If 127 is the realistic length, the collection is nearer 110
+minutes than 200. **The benchmark is set from a sample of one and should be reset once a dozen real
+entries exist.** It is now possible to do that.
+
+### 1c. The Blaschka number crosswalk already exists in print
+
+§5 says the Blaschka number "is not in the API at all" and that a route key on it "requires a
+hand-authored crosswalk the Museum must own… do not imply the data provides it."
+
+The first half is right. The second is wrong in a useful direction: **the Museum has already
+published the crosswalk**, in the plate captions of Shaw et al. 2017. Extracted mechanically to
+`src/data/blaschka-numbers.json` — **117 of 128 objects**, each with its model number and the
+1880s name the paper prints. Eleven have none.
+
+**Every accession in the paper is in the manifest and none is stray**, which independently validates
+the harvest against a published source rather than against itself. The ask in §5 should change from
+*please build us a crosswalk* to *please confirm the one you published*.
+
 ### 2. §10's own worked example contradicts §6's word-count benchmark
 
 §10 prints "8 models. About 9 minutes." for the floating-colonies page, computed at 150wpm. §6

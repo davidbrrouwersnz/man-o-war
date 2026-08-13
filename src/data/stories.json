@@ -1,8 +1,23 @@
 {
-  "note": "The one story that exists. Layers 1-2 only, per docs/story-man-o-war.md. The other 127 objects have no story and fall back to the catalogue's brief_desc, badged as a placeholder in the UI.",
+  "note": "Object stories, layers 1-2 only. Written to the read-and-heard standard in BUILD-SPEC-v2.md §6: the spoken words are the printed words, so no line refers to its own medium, none assumes the object is physically in front of the reader, and there is no visual-only structure inside a segment. Every story here is a paraphrase of writing the Museum has already published about that specific object. Nothing is invented: where a fact is not in the source it is not here. Segment ids are the audio chapter boundaries and the skip targets.",
+  "coverage": {
+    "written": 12,
+    "total": 128,
+    "why": "Only 12 objects have Museum-authored interpretive writing anywhere. The other 116 have a cataloguer's physical description and nothing else, and §6 forbids that standing in for a story. Writing them requires either third-party natural-history sources or a commission - see docs/prototype-findings.md."
+  },
+  "sources": {
+    "museum-blaschka-page": {
+      "citation": "Le Grice R. The Blaschka Collection. Canterbury Museum.",
+      "url": "https://www.canterburymuseum.com/explore/collections/the-blaschka-collection",
+      "retrieved": "2026-08-13",
+      "note": "Twelve collection highlights, each with a paragraph of interpretive writing, an accession number and a Blaschka model number. Paraphrased here, not reproduced. Several of its identifications differ from the collection record; where they do, the difference is recorded on the story."
+    }
+  },
   "stories": {
     "1884.137.33": {
       "headline": "Portuguese man o' war",
+      "source": "museum-blaschka-page",
+      "identification": "The Museum's page gives this as Physalia physalis. The collection record says Physalia pelagica.",
       "segments": [
         {
           "id": "look",
@@ -18,6 +33,217 @@
           "id": "float-and-sail",
           "heading": "A float, and a sail",
           "text": "Look at the top section. In a living man o' war that part does two jobs at once. It is a float, and it is a sail. They travel on the currents and the wind.\n\nEvery man o' war is either left-handed or right-handed, depending on which way that sail curves.\n\nThe tentacles below can reach ten metres. They catch small crustaceans and fish."
+        }
+      ]
+    },
+
+    "1884.137.32": {
+      "headline": "Moon jellyfish",
+      "source": "museum-blaschka-page",
+      "segments": [
+        {
+          "id": "look",
+          "heading": "Look closely",
+          "text": "A shallow glass bell, fringed with fine tentacles all the way around the rim. Beneath it hang four longer arms with frilled edges.\n\nNear the top of the bell are four crescent shapes, picked out here in red and pink. Those are the reproductive organs. On a moon jellyfish they are very nearly the only coloured part. The rest of the animal is white, or no colour at all."
+        },
+        {
+          "id": "how-it-eats",
+          "heading": "How it eats",
+          "text": "The short tentacles around the rim sting, and hold what they catch still. The four long frilled arms then carry the food up to the mouth.\n\nA full-grown bell can reach 45 centimetres across."
+        },
+        {
+          "id": "blooms",
+          "heading": "Blooms, and going backwards",
+          "text": "Moon jellyfish sometimes gather in enormous numbers in one stretch of sea. These gatherings are called blooms, and they appear to be happening more often. Part of the reason is that the animals which eat moon jellyfish, among them turtles and sharks, are in trouble themselves.\n\nThere is one more thing. A moon jellyfish can go backwards through its own life cycle, and return to a stage it had already passed."
+        }
+      ]
+    },
+
+    "1884.137.68": {
+      "headline": "Barrel jellyfish",
+      "source": "museum-blaschka-page",
+      "segments": [
+        {
+          "id": "look",
+          "heading": "Look closely",
+          "text": "A heavy white bell, shaped something like a mushroom, with eight thick arms gathered below it.\n\nThis is a giant. Large ones reach 150 centimetres. Its other name is the dustbin-lid jellyfish, and that is the size being described."
+        },
+        {
+          "id": "how-it-eats",
+          "heading": "Frills full of holes",
+          "text": "The eight arms are covered in frills, and the frills are full of tiny openings. The animal draws water through them and strains out its food. What it is straining for is plankton."
+        },
+        {
+          "id": "where",
+          "heading": "Where they gather",
+          "text": "Barrel jellyfish are common in the eastern Atlantic and the Mediterranean. In the warmer months they swarm together close to shore, and they often end up washed onto beaches.\n\nThey are the favourite meal of the leatherback turtle."
+        }
+      ]
+    },
+
+    "1884.137.104": {
+      "headline": "Compass jellyfish",
+      "source": "museum-blaschka-page",
+      "segments": [
+        {
+          "id": "look",
+          "heading": "Look closely",
+          "text": "Brown markings run outward across the top of the bell, dividing it into segments. They look like the face of a compass, and that is where the name comes from.\n\nThe rest of the bell is translucent, somewhere between yellow and white. At full size it is about 25 centimetres across."
+        },
+        {
+          "id": "two-kinds-of-arm",
+          "heading": "Two kinds of arm",
+          "text": "There are two different things hanging underneath, and they do different jobs.\n\nThe four broad arms are for feeding. The many slender tentacles are the weapons. They carry stinging cells, which disable prey and defend the animal against the things that hunt it. Sunfish and leatherback turtles both eat compass jellyfish."
+        }
+      ]
+    },
+
+    "1884.137.105": {
+      "headline": "Night-light jellyfish",
+      "source": "museum-blaschka-page",
+      "segments": [
+        {
+          "id": "look",
+          "heading": "A colour the glass does not show",
+          "text": "The living animal is usually a distinct purple. The model is not, so this is one place where the glass does not tell you everything.\n\nIt is a small jellyfish. It grows to around 12 centimetres across, and it is found in warm seas all over the world."
+        },
+        {
+          "id": "two-names",
+          "heading": "Two names, one habit",
+          "text": "This animal is called the mauve stinger, and it is also called the night-light jellyfish.\n\nThe second name is the more interesting one. It glows in the dark. The word for making your own light is bioluminescence, and this jellyfish does it."
+        }
+      ]
+    },
+
+    "1884.137.44": {
+      "headline": "Many-ribbed jellyfish",
+      "source": "museum-blaschka-page",
+      "segments": [
+        {
+          "id": "look",
+          "heading": "Count the ribs",
+          "text": "Ridges run out from the centre of the bell towards the rim, studded with small warty bumps. Those ridges are what separate this animal from its closest relatives, and they are what gave it its name.\n\nThe bell reaches about 40 centimetres across."
+        },
+        {
+          "id": "the-yellow",
+          "heading": "The pale yellow is real",
+          "text": "The soft yellow in this model is not a decision the glassmaker made for effect. It matches the written scientific description of the animal, and the colour comes from its reproductive organs. How strong it is depends on whether the animal is male or female.\n\nThis one goes by several names. Many-ribbed jellyfish is one. Crystal jelly and water jelly are others. Like the man o' war, it is a relative of the true jellyfish rather than one of them."
+        }
+      ]
+    },
+
+    "1884.137.61": {
+      "headline": "Hula-skirt siphonophore",
+      "source": "museum-blaschka-page",
+      "identification": "The Museum's page gives this as Physophora hydrostatica, and numbers it 1884.137.61b. The collection record says Physophora magnifica and holds no sub-part suffix.",
+      "segments": [
+        {
+          "id": "look",
+          "heading": "Look closely",
+          "text": "The top is a stack of clear bells, sitting one on another. Below them, a ring of short tentacles hangs out and down, and that ring is where the name comes from. It looks like a skirt.\n\nThose tentacles are how the animal catches plankton."
+        },
+        {
+          "id": "a-colony",
+          "heading": "Many animals, one body",
+          "text": "A siphonophore is not an individual. It is a colony of parts called zooids, which stay joined together as they grow.\n\nEach zooid has one job. Some feed, some reproduce, some swim. All of them work for the whole, and not one of them could live on its own."
+        },
+        {
+          "id": "the-float",
+          "heading": "Rising and sinking",
+          "text": "At the bottom of the float is a small pore that lets gas out. That is how the animal controls whether it rises or sinks.\n\nIt lives deep down, where no sunlight reaches. The only light there is light that living things make for themselves."
+        }
+      ]
+    },
+
+    "1884.137.100": {
+      "headline": "Sea angel",
+      "source": "museum-blaschka-page",
+      "segments": [
+        {
+          "id": "look",
+          "heading": "A sea slug that swims",
+          "text": "Two wing-shaped lobes stand out from the body. Almost every other sea slug crawls along the seabed. This one does not touch it. It swims in open water, and it beats those two lobes to do it.\n\nIt is called the sea angel, and also the sea cherub."
+        },
+        {
+          "id": "the-hunt",
+          "heading": "What the name hides",
+          "text": "The name suggests something gentle. The animal is not.\n\nIt hunts. It shoots out a long feeding tube covered in hooks and teeth, and takes hold of its prey with it. What it mostly eats is sea butterflies, which are swimming sea snails."
+        }
+      ]
+    },
+
+    "1884.137.10": {
+      "headline": "Greater argonaut",
+      "source": "museum-blaschka-page",
+      "segments": [
+        {
+          "id": "look",
+          "heading": "The shell is not a home",
+          "text": "The white curved shell is the thing everyone notices. It is not what it looks like. This animal is an octopus, and the shell is not the sort a snail lives in.\n\nShe makes it herself, and she uses it two ways. It helps her control how she floats, and it is where she keeps her eggs."
+        },
+        {
+          "id": "male-and-female",
+          "heading": "Two sizes",
+          "text": "The difference between the sexes is extreme. A male grows to about 2 centimetres. A female can be more than ten times that.\n\nArgonauts live out in open water, in tropical and warm seas around the world."
+        },
+        {
+          "id": "the-jellyfish",
+          "heading": "Riding on jellyfish",
+          "text": "An argonaut will take hold of a jellyfish and stay with it. The jellyfish becomes three things at once. It is cover from anything hunting the octopus. It is a way of getting about. And it is food, because the argonaut eats the jellyfish a little at a time, and eats what the jellyfish has caught as well."
+        }
+      ]
+    },
+
+    "1884.137.8": {
+      "headline": "Melibe nudibranch",
+      "source": "museum-blaschka-page",
+      "identification": "The Museum's page gives this as Melibe viridis. The collection record says Melibe fimbriata.",
+      "segments": [
+        {
+          "id": "look",
+          "heading": "An odd shape, for a reason",
+          "text": "Along each side of the body are paired lobes, and at the head end is something most sea slugs do not have. It is a wide hood.\n\nThat hood is the mouth."
+        },
+        {
+          "id": "the-net",
+          "heading": "Casting a net",
+          "text": "Most sea slugs feed with a rasping tongue called a radula. This group has none. The hood does the work instead.\n\nThe animal opens the hood wide, throws it forward over the seabed, and draws it back closed. Anything small enough is caught inside. Small crustaceans are what it is after."
+        }
+      ]
+    },
+
+    "1884.137.70": {
+      "headline": "Sandy creeplet",
+      "source": "museum-blaschka-page",
+      "identification": "The Museum's page gives this as Epizoanthus couchii. The collection record says Zoanthus couchii.",
+      "segments": [
+        {
+          "id": "look",
+          "heading": "Look closely",
+          "text": "This is a colony, not a single animal. Each member is a small sea anemone, and they grow joined together.\n\nOne member can carry as many as 32 tentacles. Each tentacle is translucent, with a bright white rounded tip."
+        },
+        {
+          "id": "disappearing",
+          "heading": "How it disappears",
+          "text": "Disturb this animal and the tentacles pull in. Once they are in, there is very little left to see.\n\nIt lives fixed to rocks and shells, sometimes in large spreading masses, around the coasts of Britain, Ireland, France and Spain. Its body is often covered in a layer of sand, which is where the name comes from."
+        }
+      ]
+    },
+
+    "1884.137.93": {
+      "headline": "Dorid nudibranch",
+      "source": "museum-blaschka-page",
+      "identification": "The Museum's page gives this as Dendrodoris nigra. The collection record says Actinodoris australis.",
+      "segments": [
+        {
+          "id": "look",
+          "heading": "Look closely",
+          "text": "A broad flat body with two horns at the front and a rosette of fine gills at the back. It grows to between 4 and 7 centimetres."
+        },
+        {
+          "id": "colour",
+          "heading": "The colour changes with age",
+          "text": "This species does not keep one colour. A young one is pink or orange. An adult is black.\n\nIt is a very common animal. It lives in the intertidal zone, under stones in shallow sandy pools, in warm and temperate seas nearly everywhere. The one part of the world it is missing from is the tropical American coast."
         }
       ]
     }

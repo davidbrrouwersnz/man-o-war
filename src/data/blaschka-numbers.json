@@ -1,0 +1,492 @@
+{
+  "note": "Blaschka model numbers, transcribed from the plate captions of Shaw et al. 2017, Records of the Canterbury Museum 31: 5-84. This is the Museum's own publication, so the crosswalk BUILD-SPEC-v2.md §5 asks the Museum to author already exists in print. Not verified object by object against the plates by a human; the extraction is mechanical and the paper is the authority. catalogueNameInPaper is the name the paper prints, which is the 1880s catalogue name and often differs from the currently accepted one.",
+  "source": {
+    "citation": "Shaw MD, Szczepanski JZ, Murray SF, Hodge S, Vink CJ. 2017. Ideas made glass: Blaschka glass models at Canterbury Museum. Records of the Canterbury Museum 31: 5-84.",
+    "url": "https://cms.canterburymuseum.com/assets/Ideas-made-glass.pdf",
+    "retrieved": "2026-08-13"
+  },
+  "count": 117,
+  "withoutNumber": [
+    "1884.137.72",
+    "1884.137.88",
+    "1884.137.105",
+    "1884.137.136",
+    "1884.137.111",
+    "1884.137.126",
+    "1884.137.120",
+    "1884.137.106",
+    "1884.137.16",
+    "1884.137.43",
+    "1884.137.92"
+  ],
+  "numbers": {
+    "1884.137.57": {
+      "blaschkaNumber": 1,
+      "catalogueNameInPaper": "Alcyonium digitatum"
+    },
+    "1884.137.21": {
+      "blaschkaNumber": 5,
+      "catalogueNameInPaper": "Corallium rubrum"
+    },
+    "1884.137.81": {
+      "blaschkaNumber": 6,
+      "catalogueNameInPaper": "Gorgonia verrucosa"
+    },
+    "1884.137.121": {
+      "blaschkaNumber": 10,
+      "catalogueNameInPaper": "Pennatula rubra"
+    },
+    "1884.137.118": {
+      "blaschkaNumber": 12,
+      "catalogueNameInPaper": "Renilla violacea"
+    },
+    "1884.137.71": {
+      "blaschkaNumber": 14,
+      "catalogueNameInPaper": "Sympodium caeruleum"
+    },
+    "1884.137.31": {
+      "blaschkaNumber": 16,
+      "catalogueNameInPaper": "Tubipora hemiprichii"
+    },
+    "1884.137.115": {
+      "blaschkaNumber": 20,
+      "catalogueNameInPaper": "Actineria hemprichi"
+    },
+    "1884.137.5": {
+      "blaschkaNumber": 22,
+      "catalogueNameInPaper": "Actinia mesembrianthemum"
+    },
+    "1884.137.29": {
+      "blaschkaNumber": 27,
+      "catalogueNameInPaper": "Actinoloba dianthus"
+    },
+    "1884.137.56": {
+      "blaschkaNumber": 36,
+      "catalogueNameInPaper": "Anthea cereus var. maxima"
+    },
+    "1884.137.74": {
+      "blaschkaNumber": 41,
+      "catalogueNameInPaper": "Bolocera eques"
+    },
+    "1884.137.123": {
+      "blaschkaNumber": 48,
+      "catalogueNameInPaper": "Bunodes gemmacea"
+    },
+    "1884.137.64": {
+      "blaschkaNumber": 54,
+      "catalogueNameInPaper": "Cerianthus membranaceus"
+    },
+    "1884.137.34": {
+      "blaschkaNumber": 55,
+      "catalogueNameInPaper": "Corynactis clavigera"
+    },
+    "1884.137.96": {
+      "blaschkaNumber": 63,
+      "catalogueNameInPaper": "Halcampa chrysanthellum"
+    },
+    "1884.137.26": {
+      "blaschkaNumber": 67,
+      "catalogueNameInPaper": "Ilanthos scoticus"
+    },
+    "1884.137.124": {
+      "blaschkaNumber": 68,
+      "catalogueNameInPaper": "Nemactis primula"
+    },
+    "1884.137.55": {
+      "blaschkaNumber": 70,
+      "catalogueNameInPaper": "Paractis adhaerens"
+    },
+    "1884.137.28": {
+      "blaschkaNumber": 73,
+      "catalogueNameInPaper": "Peachia hastata"
+    },
+    "1884.137.65": {
+      "blaschkaNumber": 83,
+      "catalogueNameInPaper": "Phymactis pustulata"
+    },
+    "1884.137.30": {
+      "blaschkaNumber": 85,
+      "catalogueNameInPaper": "Phymanthus loligo"
+    },
+    "1884.137.122": {
+      "blaschkaNumber": 88,
+      "catalogueNameInPaper": "Sagartia bellis var. tyriensis"
+    },
+    "1884.137.27": {
+      "blaschkaNumber": 109,
+      "catalogueNameInPaper": "Tealia crassicornis var. purpurea"
+    },
+    "1884.137.62": {
+      "blaschkaNumber": 115,
+      "catalogueNameInPaper": "Thalassianthus aster"
+    },
+    "1884.137.70": {
+      "blaschkaNumber": 117,
+      "catalogueNameInPaper": "Zoanthus couchii"
+    },
+    "1884.137.73": {
+      "blaschkaNumber": 119,
+      "catalogueNameInPaper": "Astroides calycularis"
+    },
+    "1884.137.41": {
+      "blaschkaNumber": 138,
+      "catalogueNameInPaper": "Carmarina hastata, female"
+    },
+    "1884.137.42": {
+      "blaschkaNumber": 139,
+      "catalogueNameInPaper": "Carmarina hastata, male"
+    },
+    "1884.137.108": {
+      "blaschkaNumber": 140,
+      "catalogueNameInPaper": "Carmarina hastata, stages of development"
+    },
+    "1884.137.107": {
+      "blaschkaNumber": 157,
+      "catalogueNameInPaper": "Lafoea calcarata"
+    },
+    "1884.137.109": {
+      "blaschkaNumber": 167,
+      "catalogueNameInPaper": "Obelia dichotoma, male polyps and medusa"
+    },
+    "1884.137.113": {
+      "blaschkaNumber": 169,
+      "catalogueNameInPaper": "Oceania phosphorica"
+    },
+    "1884.137.63": {
+      "blaschkaNumber": 191,
+      "catalogueNameInPaper": "Tubularia indivisa, stages of development"
+    },
+    "1884.137.44": {
+      "blaschkaNumber": 196,
+      "catalogueNameInPaper": "Zygodactyla crassa"
+    },
+    "1884.137.114": {
+      "blaschkaNumber": 203,
+      "catalogueNameInPaper": "Diphyes sieboldii"
+    },
+    "1884.137.33": {
+      "blaschkaNumber": 211,
+      "catalogueNameInPaper": "Physalia pelagica"
+    },
+    "1884.137.61": {
+      "blaschkaNumber": 213,
+      "catalogueNameInPaper": "Physophora magnifica"
+    },
+    "1884.137.40": {
+      "blaschkaNumber": 214,
+      "catalogueNameInPaper": "Physophora magnifica, stages of development"
+    },
+    "1884.137.59": {
+      "blaschkaNumber": 216,
+      "catalogueNameInPaper": "Porpita mediterranea"
+    },
+    "1884.137.36": {
+      "blaschkaNumber": 220,
+      "catalogueNameInPaper": "Stephanomia canariensis"
+    },
+    "1884.137.54": {
+      "blaschkaNumber": 222,
+      "catalogueNameInPaper": "Vellela spirans"
+    },
+    "1884.137.32": {
+      "blaschkaNumber": 224,
+      "catalogueNameInPaper": "Aurelia aurita, adult"
+    },
+    "1884.137.24": {
+      "blaschkaNumber": 225,
+      "catalogueNameInPaper": "Aurelia aurita, stages of development"
+    },
+    "1884.137.104": {
+      "blaschkaNumber": 227,
+      "catalogueNameInPaper": "Chrysaora hysoscella"
+    },
+    "1884.137.68": {
+      "blaschkaNumber": 238,
+      "catalogueNameInPaper": "Rhizostoma pulmo"
+    },
+    "1884.137.52": {
+      "blaschkaNumber": 241,
+      "catalogueNameInPaper": "Bero� punctata"
+    },
+    "1884.137.127": {
+      "blaschkaNumber": 242,
+      "catalogueNameInPaper": "Cestum veneris"
+    },
+    "1884.137.53": {
+      "blaschkaNumber": 247,
+      "catalogueNameInPaper": "Pleurobranchia pileus"
+    },
+    "1884.137.13": {
+      "blaschkaNumber": 249,
+      "catalogueNameInPaper": "Comatula hamata"
+    },
+    "1884.137.25": {
+      "blaschkaNumber": 252,
+      "catalogueNameInPaper": "Amphiura filiformis, stages of development"
+    },
+    "1884.137.84": {
+      "blaschkaNumber": 267,
+      "catalogueNameInPaper": "Cucumeria hyndmannii"
+    },
+    "1884.137.75": {
+      "blaschkaNumber": 274,
+      "catalogueNameInPaper": "Holothuria tubulosa"
+    },
+    "1884.137.2": {
+      "blaschkaNumber": 277,
+      "catalogueNameInPaper": "Psolus phantapus"
+    },
+    "1884.137.23": {
+      "blaschkaNumber": 282,
+      "catalogueNameInPaper": "Synapta beselii"
+    },
+    "1884.137.3": {
+      "blaschkaNumber": 289,
+      "catalogueNameInPaper": "Synapta oceanica"
+    },
+    "1884.137.82": {
+      "blaschkaNumber": 291,
+      "catalogueNameInPaper": "Thyone fusus"
+    },
+    "1884.137.49": {
+      "blaschkaNumber": 295,
+      "catalogueNameInPaper": "Borlasia trilineata"
+    },
+    "1884.137.97": {
+      "blaschkaNumber": 297,
+      "catalogueNameInPaper": "Centrostomum polycyclium"
+    },
+    "1884.137.37": {
+      "blaschkaNumber": 306,
+      "catalogueNameInPaper": "Neckelia macrorrhochma"
+    },
+    "1884.137.128": {
+      "blaschkaNumber": 308,
+      "catalogueNameInPaper": "Planaria lactea"
+    },
+    "1884.137.112": {
+      "blaschkaNumber": 320,
+      "catalogueNameInPaper": "Thysanozoon discoideum"
+    },
+    "1884.137.48": {
+      "blaschkaNumber": 324,
+      "catalogueNameInPaper": "Bonellia viridis"
+    },
+    "1884.137.125": {
+      "blaschkaNumber": 326,
+      "catalogueNameInPaper": "Priapulus caudatus"
+    },
+    "1884.137.35": {
+      "blaschkaNumber": 328,
+      "catalogueNameInPaper": "Clepsine marginata"
+    },
+    "1884.137.9": {
+      "blaschkaNumber": 331,
+      "catalogueNameInPaper": "Arenicola marina"
+    },
+    "1884.137.90": {
+      "blaschkaNumber": 334,
+      "catalogueNameInPaper": "Eunice norvegica"
+    },
+    "1884.137.20": {
+      "blaschkaNumber": 337,
+      "catalogueNameInPaper": "Nereis margaritacea"
+    },
+    "1884.137.18": {
+      "blaschkaNumber": 339,
+      "catalogueNameInPaper": "Phyllodoce parettii"
+    },
+    "1884.137.98": {
+      "blaschkaNumber": 342,
+      "catalogueNameInPaper": "Sabella penicillus"
+    },
+    "1884.137.15": {
+      "blaschkaNumber": 343,
+      "catalogueNameInPaper": "Serpula contortuplicata"
+    },
+    "1884.137.91": {
+      "blaschkaNumber": 344,
+      "catalogueNameInPaper": "Siphonostoma diplochaitos"
+    },
+    "1884.137.22": {
+      "blaschkaNumber": 348,
+      "catalogueNameInPaper": "Terebella conchilega"
+    },
+    "1884.137.110": {
+      "blaschkaNumber": 349,
+      "catalogueNameInPaper": "Terebella conchilega, stages of development"
+    },
+    "1884.137.78": {
+      "blaschkaNumber": 352,
+      "catalogueNameInPaper": "Clio borealis"
+    },
+    "1884.137.100": {
+      "blaschkaNumber": 353,
+      "catalogueNameInPaper": "Clionopsis krohnii"
+    },
+    "1884.137.103": {
+      "blaschkaNumber": 354,
+      "catalogueNameInPaper": "Clionopsis krohnii, anatomy"
+    },
+    "1884.137.99": {
+      "blaschkaNumber": 359,
+      "catalogueNameInPaper": "Tiedemannia neapolitana, adult"
+    },
+    "1884.137.95": {
+      "blaschkaNumber": 360,
+      "catalogueNameInPaper": "Tiedemannia neapolitana, stages of development"
+    },
+    "1884.137.93": {
+      "blaschkaNumber": 361,
+      "catalogueNameInPaper": "Actinodoris australis"
+    },
+    "1884.137.89": {
+      "blaschkaNumber": 365,
+      "catalogueNameInPaper": "Aeolis exigua"
+    },
+    "1884.137.7": {
+      "blaschkaNumber": 395,
+      "catalogueNameInPaper": "Dendronotos arborescens var. carneus"
+    },
+    "1884.137.46": {
+      "blaschkaNumber": 415,
+      "catalogueNameInPaper": "Doris formosa"
+    },
+    "1884.137.60": {
+      "blaschkaNumber": 423,
+      "catalogueNameInPaper": "Doris pantherina"
+    },
+    "1884.137.76": {
+      "blaschkaNumber": 432,
+      "catalogueNameInPaper": "Elysia chlorotica"
+    },
+    "1884.137.117": {
+      "blaschkaNumber": 455,
+      "catalogueNameInPaper": "Goniodorus verrucosa"
+    },
+    "1884.137.8": {
+      "blaschkaNumber": 460,
+      "catalogueNameInPaper": "Melibe fimbriata"
+    },
+    "1884.137.87": {
+      "blaschkaNumber": 464,
+      "catalogueNameInPaper": "Phyllobranchus orientalis"
+    },
+    "1884.137.116": {
+      "blaschkaNumber": 467,
+      "catalogueNameInPaper": "Plocamophorus imperialis"
+    },
+    "1884.137.12": {
+      "blaschkaNumber": 482,
+      "catalogueNameInPaper": "Tethys leporina"
+    },
+    "1884.137.11": {
+      "blaschkaNumber": 489,
+      "catalogueNameInPaper": "Aplysia inca"
+    },
+    "1884.137.94": {
+      "blaschkaNumber": 491,
+      "catalogueNameInPaper": "Dolabrifera fusca"
+    },
+    "1884.137.83": {
+      "blaschkaNumber": 507,
+      "catalogueNameInPaper": "Planorbis corneus"
+    },
+    "1884.137.45": {
+      "blaschkaNumber": 510,
+      "catalogueNameInPaper": "Arion empiricorum var. ater"
+    },
+    "1884.137.50": {
+      "blaschkaNumber": 513,
+      "catalogueNameInPaper": "Arion empiricorum, anatomy"
+    },
+    "1884.137.86": {
+      "blaschkaNumber": 525,
+      "catalogueNameInPaper": "Helix ?pomatia"
+    },
+    "1884.137.69": {
+      "blaschkaNumber": 526,
+      "catalogueNameInPaper": "Helix pomatia, anatomy"
+    },
+    "1884.137.14": {
+      "blaschkaNumber": 526,
+      "catalogueNameInPaper": "Carinaria mediterranea"
+    },
+    "1884.137.77": {
+      "blaschkaNumber": 527,
+      "catalogueNameInPaper": "Limax agrestis"
+    },
+    "1884.137.19": {
+      "blaschkaNumber": 529,
+      "catalogueNameInPaper": "Limax arborum"
+    },
+    "1884.137.1": {
+      "blaschkaNumber": 534,
+      "catalogueNameInPaper": "Limax maximus"
+    },
+    "1884.137.10": {
+      "blaschkaNumber": 549,
+      "catalogueNameInPaper": "Argonauta argo, female"
+    },
+    "1884.137.39": {
+      "blaschkaNumber": 556,
+      "catalogueNameInPaper": "Histioteuthis bonelliana"
+    },
+    "1884.137.6": {
+      "blaschkaNumber": 558,
+      "catalogueNameInPaper": "Loligo vulgaris"
+    },
+    "1884.137.17": {
+      "blaschkaNumber": 583,
+      "catalogueNameInPaper": "Onychoteuthis lichtensteinii"
+    },
+    "1884.137.38": {
+      "blaschkaNumber": 589,
+      "catalogueNameInPaper": "Sepia officinalis"
+    },
+    "1884.137.67": {
+      "blaschkaNumber": 592,
+      "catalogueNameInPaper": "Sepiola rondeleti"
+    },
+    "1884.137.80": {
+      "blaschkaNumber": 599,
+      "catalogueNameInPaper": "Appendicularia flagellum"
+    },
+    "1884.137.129": {
+      "blaschkaNumber": 602,
+      "catalogueNameInPaper": "Botryllus gemmeus"
+    },
+    "1884.137.85": {
+      "blaschkaNumber": 609,
+      "catalogueNameInPaper": "Boltenia rubra"
+    },
+    "1884.137.119": {
+      "blaschkaNumber": 613,
+      "catalogueNameInPaper": "Clavellina lepadiformis"
+    },
+    "1884.137.4": {
+      "blaschkaNumber": 615,
+      "catalogueNameInPaper": "Cynthia pyriformis"
+    },
+    "1884.137.58": {
+      "blaschkaNumber": 618,
+      "catalogueNameInPaper": "Phallusia pustulosa"
+    },
+    "1884.137.66": {
+      "blaschkaNumber": 620,
+      "catalogueNameInPaper": "Pyrosoma atlanticum"
+    },
+    "1884.137.79": {
+      "blaschkaNumber": 621,
+      "catalogueNameInPaper": "Doliolum Ehrenbergii-Troschelii"
+    },
+    "1884.137.51": {
+      "blaschkaNumber": 626,
+      "catalogueNameInPaper": "Salpa democratica-mucronata"
+    },
+    "1884.137.47": {
+      "blaschkaNumber": 627,
+      "catalogueNameInPaper": "Salpa pinnata"
+    }
+  }
+}
