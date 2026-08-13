@@ -7,7 +7,7 @@
 //
 //   node scripts/split.mjs
 
-import { mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
 import { gzipSync } from 'node:zlib'
 
 const read = (p) => JSON.parse(readFileSync(new URL(`../src/data/${p}`, import.meta.url), 'utf8'))
@@ -121,7 +121,7 @@ const enKeys = flat(en.ui).map((k) => `ui.${k}`)
 
 const packs = []
 for (const file of readdirSync(langDir)) {
-  if (file === 'en.json') continue
+  if (file === 'en.json' || file === 'layers') continue
   const code = file.replace(/\.json$/, '')
   const pack = JSON.parse(readFileSync(new URL(file, langDir), 'utf8'))
   if (pack.__code !== code) throw new Error(`${file}: __code is "${pack.__code}"`)
@@ -131,15 +131,26 @@ for (const file of readdirSync(langDir)) {
   const extra = [...have].filter((k) => !enKeys.includes(k))
   if (extra.length) throw new Error(`${file}: keys not in the English source: ${extra.join(', ')}`)
 
+  // Layer essays live in their own files so a language can gain the deep tier without rewriting its
+  // interface pack. §7 tiers by verification burden: orientation goes widest, object stories next,
+  // the deep reading layer narrowest, because review cost is what scales and not generation.
+  const layerFile = new URL(`layers/${code}.json`, langDir)
+  let layersDone = 0
+  if (existsSync(layerFile)) {
+    const tl = JSON.parse(readFileSync(layerFile, 'utf8'))
+    pack.layers = tl.layers
+    layersDone = Object.keys(tl.layers ?? {}).length
+  }
+
   const panelsDone = Object.keys(pack.panels ?? {}).length
   const json = JSON.stringify(pack)
   writeFileSync(new URL(`lang-${code}.json`, dir), json)
-  packs.push({ code, missing: missing.length, panels: panelsDone, kb: (gzipSync(json).length / 1024).toFixed(1) })
+  packs.push({ code, missing: missing.length, panels: panelsDone, layers: layersDone, kb: (gzipSync(json).length / 1024).toFixed(1) })
 }
 
 console.log('')
 for (const p of packs) {
-  console.log(`  ${p.code.padEnd(8)} ui ${String(enKeys.length - p.missing).padStart(2)}/${enKeys.length}  panels ${String(p.panels).padStart(2)}/11  ${p.kb}KB gz${p.missing ? '  <- falls back to English' : ''}`)
+  console.log(`  ${p.code.padEnd(8)} ui ${String(enKeys.length - p.missing).padStart(2)}/${enKeys.length}  panels ${String(p.panels).padStart(2)}/11  layers ${p.layers}/3  ${p.kb}KB gz${p.missing ? '  <- falls back to English' : ''}`)
 }
 
 index.languages = packs.map((p) => p.code)

@@ -351,7 +351,7 @@ function GroupPage({ route, go }) {
   return (
     <main className="reading">
       <a className="back" href="/" onClick={go('/')}>
-        ← Collection
+        ← {t('ui.backToCollection')}
       </a>
       <h1 className="group-title" {...langAttrs(title)}>{title.text}</h1>
       <p className="group-cost">
@@ -373,7 +373,7 @@ function GroupPage({ route, go }) {
           <nav className="continuations">
             {index.layers.map((l) => (
               <a key={l.slug} href={`/${l.slug}`} onClick={go(`/${l.slug}`)}>
-                {l.title}
+                {tr(`layerTitles.${l.slug}`, null, l.title).text}
               </a>
             ))}
           </nav>
@@ -476,7 +476,7 @@ function SearchPage({ go }) {
   return (
     <main className="reading">
       <a className="back" href="/" onClick={go('/')}>
-        ← Collection
+        ← {t('ui.backToCollection')}
       </a>
       <h1 className="group-title">Search</h1>
       <p className="group-cost">
@@ -518,7 +518,9 @@ function SearchPage({ go }) {
 // object page (§6).
 
 function LayerPage({ route, go }) {
-  const [t] = useT()
+  const [t, tr] = useT()
+  const { code } = useLang()
+  const langName = BY_CODE.get(code)?.endonym ?? 'English'
   const [data, setData] = useState(null)
   useEffect(() => {
     scrollTo(0, 0)
@@ -531,26 +533,38 @@ function LayerPage({ route, go }) {
   }, [layer])
 
   const meta = index.layers.find((l) => l.slug === route.slug)
+  const layerTitle = tr(`layerTitles.${route.slug}`, null, meta?.title ?? '')
 
   return (
     <main className="reading">
       <a className="back" href="/" onClick={go('/')}>
-        ← Collection
+        ← {t('ui.backToCollection')}
       </a>
-      <h1 className="group-title">{meta?.title}</h1>
+      <h1 className="group-title" {...langAttrs(layerTitle)}>
+        {layerTitle.text}
+      </h1>
       {layer ? (
         <>
-          <p className="group-panel">{layer.standfirst}</p>
-          {layer.segments.map((s) => (
-            <section key={s.id} className="layer-section">
-              <h2>{s.heading}</h2>
-              {s.text.split('\n\n').map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
-            </section>
-          ))}
+          <Translated className="group-panel" r={tr(`layers.${route.slug}.standfirst`, null, layer.standfirst)} />
+          {layer.segments.map((s, si) => {
+            const heading = tr(`layers.${route.slug}.segments.${si}.heading`, null, s.heading)
+            const body = tr(`layers.${route.slug}.segments.${si}.text`, null, s.text)
+            return (
+              <section key={s.id} className="layer-section">
+                <h2 {...langAttrs(heading)}>{heading.text}</h2>
+                <div {...langAttrs(body)}>
+                  {body.fellBack && code !== 'en' && (
+                    <p className="fallback-notice">{t('ui.fallbackNotice', { language: langName })}</p>
+                  )}
+                  {body.text.split('\n\n').map((p, i) => (
+                    <p key={i}>{p}</p>
+                  ))}
+                </div>
+              </section>
+            )
+          })}
           <div className="layer-sources">
-            <h2>Sources</h2>
+            <h2>{t('ui.sources')}</h2>
             <ul>
               {layer.sources.map((s) => (
                 <li key={s.url}>
@@ -570,7 +584,7 @@ function LayerPage({ route, go }) {
           .filter((l) => l.slug !== route.slug)
           .map((l) => (
             <a key={l.slug} href={`/${l.slug}`} onClick={go(`/${l.slug}`)}>
-              {l.title} →
+              {tr(`layerTitles.${l.slug}`, null, l.title).text} →
             </a>
           ))}
       </nav>
@@ -585,7 +599,7 @@ function Missing({ route, go }) {
   return (
     <main className="reading">
       <a className="back" href="/" onClick={go('/')}>
-        ← Collection
+        ← {t('ui.backToCollection')}
       </a>
       <h1 className="group-title">Not found</h1>
       <p className="stub-note">
