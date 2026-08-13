@@ -13,17 +13,39 @@ const GROUP_OF = new Map(GROUPS.flatMap((g) => g.accessions.map((a) => [a, g])))
 const BUILT = 'floating-colonies'
 
 const WPM = 150
+// §6 makes the man o' war's story the benchmark for a written layer-1–2 entry. An object with no
+// story yet is costed at that length, because §9's number exists to tell a visitor what the page
+// costs — and §6 commits every object to a real story. Costing the placeholder instead understates
+// a 19-object page by a factor of six.
+const BENCHMARK_WORDS = 231
+
 const words = (s) => (s ? s.trim().split(/\s+/).length : 0)
 
-function readingMinutes(group) {
-  const p = storyData.panels[group.slug]
-  let n = words(p?.panel) + words(p?.ending)
-  for (const acc of group.accessions) {
-    const story = storyData.stories[acc]
-    n += story ? story.segments.reduce((t, s) => t + words(s.heading) + words(s.text), 0) : words(OBJECTS.get(acc)?.description)
-  }
-  return Math.max(1, Math.round(n / WPM))
+function storyWords(accession) {
+  const story = storyData.stories[accession]
+  return story ? story.segments.reduce((t, s) => t + words(s.heading) + words(s.text), 0) : null
 }
+
+// Derived from the content, once, at module load — never a number anyone typed. Adding a story
+// changes it automatically.
+const READING = new Map(
+  GROUPS.map((g) => {
+    const p = storyData.panels[g.slug]
+    // Every group has a drafted panel seed even where the final panel is unwritten.
+    let total = words(p?.panel ?? g.panelSeed) + words(p?.ending)
+    let written = 0
+    for (const accession of g.accessions) {
+      const n = storyWords(accession)
+      if (n === null) {
+        total += BENCHMARK_WORDS
+      } else {
+        total += n
+        written++
+      }
+    }
+    return [g.slug, { minutes: Math.max(1, Math.round(total / WPM)), written, size: g.accessions.length }]
+  })
+)
 
 // ------------------------------------------------------------------ routing
 // /                  the eleven group tiles
@@ -134,7 +156,7 @@ function Home({ go }) {
                 <div className="tile-text">
                   <h2>{g.title}</h2>
                   <p>
-                    {g.size} models. About {readingMinutes(g)} minutes.
+                    {g.size} models. About {READING.get(g.slug).minutes} minutes.
                     {!built && <span className="tile-stub"> Not built in this prototype.</span>}
                   </p>
                 </div>
@@ -145,7 +167,9 @@ function Home({ go }) {
       </ol>
       <p className="foot">
         Prototype. One group page of eleven is built. Object count is what the collection record holds, not a published
-        total — the published figures disagree.
+        total — the published figures disagree. Times are computed from the writing at {WPM} words a minute, costing an
+        object with no story yet at the length of the one that exists; they are not asserted, and they move as stories
+        are written.
       </p>
     </main>
   )
@@ -277,7 +301,14 @@ function GroupPage({ route, go }) {
       </a>
       <h1 className="group-title">{group.title}</h1>
       <p className="group-cost">
-        {group.size} models. About {readingMinutes(group)} minutes.
+        {group.size} models. About {READING.get(group.slug).minutes} minutes.
+        {READING.get(group.slug).written < group.size && (
+          <span className="cost-caveat">
+            {' '}
+            Costed as if every object were written; {group.size - READING.get(group.slug).written} of {group.size} are
+            still placeholders.
+          </span>
+        )}
       </p>
       {panel && <p className="group-panel">{panel.panel}</p>}
 

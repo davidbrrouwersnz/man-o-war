@@ -242,6 +242,39 @@ One of the two numbers is wrong and it matters, because §9 requires the cost to
 visitor before they commit. **A page that says 9 minutes and takes 13 is worse than one that says
 nothing.**
 
+#### Resolved — the figure is computed, and the bug was in what it counted
+
+Settled in favour of the arithmetic: the label says 13, not 9. But fixing it surfaced a worse
+problem than the contradiction.
+
+**The estimate was counting the placeholders.** It summed whatever text would actually render, which
+for ten of eleven groups is a catalogue description of about 37 words per object rather than a story
+of 231. So the collection view was **understating every group by four to six times** — the anemone
+page advertised five minutes for a page that will take thirty. That is the exact number §9 says a
+visitor uses to decide whether to commit, and it was wrong in the direction that loses their trust.
+
+An object with no story is now costed at the §6 benchmark, because §6 commits every object to a real
+story and the figure exists to describe the finished page. Nothing is asserted; adding a story moves
+the number automatically. The group page states its own basis rather than hiding it — *"8 models.
+About 13 minutes. Costed as if every object were written; 7 of 8 are still placeholders."*
+
+| Page | Was | Now |
+|---|---|---|
+| Jellyfish (13) | 4 min | **20 min** |
+| The man o' war and other floating colonies (8) | 4 min | **13 min** |
+| Sea slugs (14) | 3 min | **22 min** |
+| Sea anemones (19) | 5 min | **30 min** |
+| Worms of the seabed (15) | 4 min | **23 min** |
+
+**The whole collection comes to 30,041 words — 200 minutes, about 3 hours 20 minutes of reading.**
+That number did not exist before
+and it is the strongest argument in the scaling case — for the writing budget, and for the claim
+that eleven finite pages beat one unreachable scroll.
+
+**It also sharpens question 2 rather than settling it.** Thirty minutes is not a gallery visit; it
+is an evening at home. Either the anemone page splits, or the app has to be honest that its biggest
+pages are for the sofa rather than the vitrine.
+
 ### 3. Four prefix spellings, confirmed — and §5 still says three
 
 `BUILD-SPEC-v2.md` §5 asserts three and instructs the build to assert three. The build prompt

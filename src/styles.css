@@ -200,6 +200,11 @@ a {
   margin: 0 0 1.5rem;
 }
 
+.cost-caveat {
+  display: block;
+  margin-top: 0.2rem;
+}
+
 .group-panel {
   font-size: 1.1875rem;
   line-height: 1.5;
