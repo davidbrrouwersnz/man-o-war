@@ -110,6 +110,32 @@ The build prompt's estimate of ~43 screen-heights for 19 objects is close — **
 because seven of its eight entries are stubs at 60% the height of a written one. **The scroll
 problem is real and the spec did not overstate it.**
 
+#### Measured, not extrapolated — the 19-object page now exists
+
+All eleven group pages render, so the anemone page can be measured directly instead of predicted:
+
+| | Predicted | **Measured** |
+|---|---|---|
+| Sea anemones, 19 objects | 38.4–43 screen-heights | **30.4** |
+| The man o' war page, 8 objects | 17.0 | **14.5** |
+
+**Both predictions were 25–30% too tall**, for the same reason the reading time was too long: they
+assumed a 231-word entry, and a real one is nearer 101. The spec's ~43 was never wrong about the
+shape of the problem, only about its size.
+
+**Thirty screen-heights is still thirty screen-heights.** It is about three and a half minutes of
+continuous scrolling before the ending, and no one has yet done it in a gallery.
+
+**And this is where lazy media earns its place**, measured on the worst page in the collection:
+
+| Sea anemones, 19 objects | Transferred |
+|---|---|
+| On arrival | **296KB**, 2 of 19 images mounted |
+| Scrolled to the very end | **1,373KB**, all 19 |
+
+**Loading the page eagerly would cost 1.08MB more** — about eight seconds of extra wait at 130KB/s,
+paid up front, by every visitor, most of whom will never reach object nineteen.
+
 **Reading time, and a spec contradiction — see finding 2 below.** At 150wpm the page as built is
 4.4 minutes. With all eight written to the man o' war's 231-word benchmark it is **12.8 minutes**,
 not the "About 9 minutes" §10's own diagram prints for this exact page.

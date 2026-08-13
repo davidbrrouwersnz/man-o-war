@@ -16,8 +16,7 @@ const GROUPS = groupData.groups
 const BY_SLUG = new Map(GROUPS.map((g) => [g.slug, g]))
 const GROUP_OF = new Map(GROUPS.flatMap((g) => g.accessions.map((a) => [a, g])))
 
-// Only one group page is built in this prototype (scope: /g/floating-colonies).
-const BUILT = 'floating-colonies'
+// All eleven group pages render. They were stubbed while only one object had a story.
 
 const WPM = 150
 // §6 makes the man o' war's story the benchmark for a written layer-1–2 entry. An object with no
@@ -152,7 +151,6 @@ function Home({ go }) {
       <ol className="grid">
         {GROUPS.map((g) => {
           const rep = OBJECTS.get(g.representative)
-          const built = g.slug === BUILT
           return (
             <li key={g.slug} className="tile">
               <a href={`/g/${g.slug}`} onClick={go(`/g/${g.slug}`)}>
@@ -164,7 +162,6 @@ function Home({ go }) {
                   <h2>{g.title}</h2>
                   <p>
                     {g.size} models. About {READING.get(g.slug).minutes} minutes.
-                    {!built && <span className="tile-stub"> Not built in this prototype.</span>}
                   </p>
                 </div>
               </a>
@@ -173,10 +170,10 @@ function Home({ go }) {
         })}
       </ol>
       <p className="foot">
-        Prototype. One group page of eleven is built. Object count is what the collection record holds, not a published
-        total — the published figures disagree. Times are computed from the writing at {WPM} words a minute, costing an
-        object with no story yet at the length of the one that exists; they are not asserted, and they move as stories
-        are written.
+        Prototype. Object count is what the collection record holds, not a published total — the published figures
+        disagree. Times are computed from the writing at {WPM} words a minute and are not asserted; they move as the
+        writing changes. Most object entries are drafts written from general natural history and are marked as such
+        where they appear.
       </p>
     </main>
   )
@@ -262,7 +259,7 @@ function GroupPage({ route, go }) {
 
   // replaceState as the visitor scrolls, so the URL always names what is on screen.
   useEffect(() => {
-    if (!group || group.slug !== BUILT) return
+    if (!group) return
     const onScroll = () => {
       // The URL names the object whose section actually holds the middle of the screen. While the
       // middle is still in the group's header or panel, nothing has been scrolled past yet and the
@@ -289,24 +286,6 @@ function GroupPage({ route, go }) {
   const panel = storyData.panels[group.slug]
   const prev = GROUPS[group.order - 2]
   const next = GROUPS[group.order]
-
-  if (group.slug !== BUILT) {
-    return (
-      <main className="reading">
-        <a className="back" href="/" onClick={go('/')}>
-          ← Collection
-        </a>
-        <h1 className="group-title">{group.title}</h1>
-        <p className="group-cost">{group.size} models.</p>
-        <p className="stub-note">
-          This group page is not built in this prototype. Only <em>{BY_SLUG.get(BUILT).title}</em> is.
-        </p>
-        <a className="stub-link" href={`/g/${BUILT}`} onClick={go(`/g/${BUILT}`)}>
-          Go to the page that is built →
-        </a>
-      </main>
-    )
-  }
 
   return (
     <main className="reading">

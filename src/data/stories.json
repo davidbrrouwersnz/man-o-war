@@ -248,10 +248,51 @@
       ]
     }
   },
+  "panelsNote": "Eleven panels and endings, from docs/group-panels.md. Two faults the draft's own notes identified are fixed here. Idiom no longer carries a sentence on its own — the plain clause states the meaning and the figure follows as a bonus, which is what §7 needs for translation. And no ending asserts what the reader just did: §11 says arriving by code is the normal case, so every panel and ending has to read correctly for someone who landed here directly and will read no other page. The chain between pages is the second reading, never the first.",
   "panels": {
+    "jellyfish": {
+      "panel": "A jellyfish is a bell of almost pure water, pulsing, trailing threads that sting. That is the whole design. Here it runs from one the size of a dinner plate down to others you could rest on a fingertip — and three times over, the same animal shown as male, as female, and as an infant.",
+      "ending": "Every animal on this page is a jellyfish. The next page opens with the most famous jellyfish of all, which turns out not to be one."
+    },
     "floating-colonies": {
-      "panel": "A Portuguese man o' war is not one animal. It is hundreds, fused into a single drifting colony — some members sting, some digest, some reproduce — and not one of them could survive alone. What you are looking at is less a creature than a crew.",
-      "ending": "These go where the water goes. The next page belongs to animals that solved the same problem — open water, nowhere to hide — a completely different way."
+      "panel": "A Portuguese man o' war is not one animal. It is hundreds, fused into a single drifting colony. Some members sting, some digest, some reproduce, and not one of them could survive alone. It is less a creature than a crew.",
+      "ending": "These animals go where the water goes. The next page belongs to animals that solved the same problem — open water, nowhere to hide — a completely different way."
+    },
+    "see-through-swimmers": {
+      "panel": "In open water there is nowhere to hide. So these animals, unrelated and from different branches of the tree, arrived at the same two answers. Become invisible, and swim by beating something. Glass is the only material that could ever have shown you the first one.",
+      "ending": "Transparency is a defence. On the next page a body so plain it looks like nothing much hides one of the strangest facts in this collection."
+    },
+    "sea-squirts-and-salps": {
+      "panel": "They look like nothing much: a jelly sack, pumping seawater in one opening and out the other. But somewhere in the life cycle of every one of them sits a swimming, tadpole-shaped animal with a stiff rod down its back. Of everything in this collection, these are your closest relatives.",
+      "ending": "This page holds both kinds of life. Some of these animals drift; the rest are fixed to a rock. Everything from here on lives on the seabed."
+    },
+    "cephalopods": {
+      "panel": "Molluscs that gave up the shell and became hunters instead: arms, suckers, and an eye very nearly as good as yours. The argonaut is here twice, deliberately. The female builds a paper cradle for her eggs. The male is barely a centimetre long.",
+      "ending": "Losing the shell bought speed, arms and eyes. On the next page, the same decision was paid for very differently."
+    },
+    "sea-slugs": {
+      "panel": "Take a snail's shell away and it needs another answer. These fourteen found several: poison, colour loud enough to work as a warning, stinging cells stolen from the animals they eat. One goes further. It steals the working parts out of the algae it eats, keeps them alive, and runs partly on sunlight.",
+      "ending": "Every animal so far has moved under its own power. From here, most of them stay where they are."
+    },
+    "sea-anemones": {
+      "panel": "An anemone is a ring of poisoned tentacles on top of a stomach, on top of a foot. That is the entire animal. These nineteen show how far one simple idea can be pushed. It is the largest group here, and that is not an accident. Anemones were the great Victorian obsession, and the one thing nobody could keep alive in a jar.",
+      "ending": "One animal, nineteen ways. Next: what happens when that same animal stops being one and becomes thousands."
+    },
+    "corals-and-sea-fans": {
+      "panel": "Every branch, fan and stony twig on this page is a city. Each is thousands of tiny anemone-like animals sharing a single skeleton. That is how they grow like plants without being plants, and why a coral can be red, blue, feathered, or turned entirely to stone.",
+      "ending": "These built upward from the rock. The last two pages of the sea belong to animals that went the other way, down into it."
+    },
+    "sea-cucumbers-and-stars": {
+      "panel": "A sausage, a feather and a star. Nothing about these eight looks related, and that is the point. Count in fives, look for hundreds of tiny water-powered feet, and they turn out to be built on a starfish's plan. There is not one starfish among the models here, and the reason is the reason this collection exists: a starfish dries and keeps. These do not.",
+      "ending": "Built like a starfish, shaped like anything but. The next page is a whole group defined the same way — by a solution rather than a family."
+    },
+    "worms": {
+      "panel": "A worm is not a family. It is a solution — a long soft body for pushing through sediment — arrived at separately by four different branches of the animal kingdom. Three here hide the body in a tube altogether and put out a crown so fine it was long mistaken for a flower.",
+      "ending": "That is the last of the sea. One page remains, and not one animal on it ever went there."
+    },
+    "never-went-to-sea": {
+      "panel": "Ten of the models in this collection never saw salt water: garden slugs, a Roman snail cut open to show its insides, a leech from a pond. The Blaschkas supplied classrooms as well as museums, and a lecture room needed the animal in the cabbage patch as much as the one in the Bay of Naples.",
+      "ending": "Two men in a landlocked city built an ocean out of illustrations, letters, and animals shipped to them alive. These ten are the only ones they could have walked outside and caught."
     }
   }
 }
