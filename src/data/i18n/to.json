@@ -1,0 +1,94 @@
+{
+  "__code": "to",
+  "reviewed": false,
+  "qualityWarning": "Machine translated into a low-resource language with no human review. See sm.json — the same caveat applies, and §7's resource-level inversion is the point. Tongan content should be community-produced and paid for.",
+  "ui": {
+    "collectionTitle": "Ko e tānaki Blaschka",
+    "collectionIntro": "Ko e ngaahi fakatātā kalasi ʻo e monumanu taʻehokotuʻa, naʻe ngaohi ʻe Leopold mo Rudolf Blaschka ʻi Dresden pea fakatau ʻe he Falemaʻumaʻu ʻo Canterbury ʻi he 1883. ʻOku fakahā ha taha. Ko e toenga ʻoku tauhi ʻi loto.",
+    "backToCollection": "Tānaki",
+    "everyObject": "Meʻa kotoa",
+    "everyObjectIntro": "Ko e ngaahi fakatātā kotoa, ʻi he hokohoko ʻo e lau. Ko e vakai ni naʻe fetongi ʻe he peesi ʻe hongofulu mā taha, ka ʻoku kei tuʻu he ko ia pē ʻoku lava ke ke fili ai ʻaki ho mata.",
+    "search": "Kumi",
+    "searchHelp": "ʻI he peesi kotoa ʻe hongofulu mā taha. ʻAhiʻahi ha hingoa angamaheni, ha hingoa fakasaienisi, pe ha fika tauhi.",
+    "searchPlaceholder": "ʻalu, Physalia, 1884.137.33",
+    "searchNothing": "ʻIkai ha meʻa ʻe felāveʻi.",
+    "models": "fakatātā",
+    "aboutMinutes": "Meimei miniti ʻe {m}.",
+    "scanned": "Ko e meʻa naʻa ke sikeni",
+    "rightsUnstated": "Falemaʻumaʻu ʻo Canterbury — ʻoku ʻikai fakahā ha totonu ʻi he lekooti ni",
+    "draftNotice": "Ko ha tohi ʻuluaki, teʻeki ke fakapapauʻi. Naʻe tohi mei he ʻilo lahi ki he moʻui fakanatula, kae ʻikai mei he ngaahi tohi kuo pulusi ʻe he falemaʻumaʻu, pea teʻeki ke vakaiʻi ʻe ha tokotaha tauhi tānaki.",
+    "noStory": "Teʻeki ke tohi ha talanoa. ʻI lalo ko e fakamatala ʻa e lekooti tauhi tonu.",
+    "sources": "Ngaahi maʻuʻanga",
+    "language": "Lea",
+    "loading": "Fakahū…",
+    "notFound": "ʻIkai maʻu",
+    "notFoundBody": "ʻOku ʻikai ʻi ai ʻa e tuʻasila ko ia.",
+    "fallbackNotice": "ʻOku teʻeki ke maʻu ʻeni ʻi he {language} — ʻoku fakahā ʻi he lea faka-Pilitānia.",
+    "translationNotice": "Liliu ʻe he mīsini, teʻeki ke vakaiʻi ʻe ha tangata.",
+    "prototypeNote": "Ko ha sīpinga ʻuluaki. Ko e lau ʻo e ngaahi meʻa ko ia ʻoku ʻi he lekooti ʻo e tānaki, ʻo ʻikai ko ha fika kuo pulusi — ʻoku ʻikai felāveʻi ʻa e ngaahi fika kuo pulusi. Ko e taimi lau ʻoku fika ʻi he taimi langa mei he lau ʻo e foʻi lea, ʻi he 150 ʻi he miniti, pea ʻoku ʻikai fili fakakaukau."
+  },
+  "groups": {
+    "jellyfish": "ʻAlu, lalahi mo īkiiki",
+    "floating-colonies": "Ko e vaka Potukali mo e ngaahi kolo tēteka kehe",
+    "see-through-swimmers": "ʻAlu selu mo e pepe ʻo e tahi — ko e kau kakau ʻoku ʻasi atu",
+    "sea-squirts-and-salps": "Sea squirt mo e salp",
+    "cephalopods": "Feke, kupenga mo e argonaut",
+    "sea-slugs": "Sisi tahi taʻe-ʻumu",
+    "sea-anemones": "ʻAnemone ʻo e tahi",
+    "corals-and-sea-fans": "Feoʻoli, ili ʻo e tahi mo e hydroid — monumanu ʻoku tupu hangē ha ʻakau",
+    "sea-cucumbers-and-stars": "Loli, fetuʻu fulufulu mo e fetuʻu nima",
+    "worms": "Kelemutu ʻo e takeleʻanga tahi",
+    "never-went-to-sea": "Naʻe ʻikai ʻalu ki tahi"
+  },
+  "layerTitles": {
+    "how-it-was-made": "Naʻe ngaohi fēfē",
+    "how-it-got-here": "Naʻe haʻu fēfē ki heni",
+    "how-we-know": "ʻOku tau ʻilo fēfē"
+  },
+  "panels": {
+    "jellyfish": {
+      "panel": "Ko e ʻalu ko ha fafie vai meimei haohaoa, ʻoku ne tā mo toho ha ngaahi filo ʻoku huhu. Ko e mape kātoa ia. ʻOku ʻi heni mei ha meʻa lahi hangē ha peleti ki ha meʻa siʻi ʻe lava ke tuʻu ʻi ho louhiʻi nima — pea ko e monumanu tatau ʻe tuʻo tolu: tangata, fefine, mo e kiʻi valevale.",
+      "ending": "Ko e monumanu kotoa ʻi he peesi ni ko e ʻalu. Ko e peesi hoko ʻoku kamata ʻaki ʻa e ʻalu ʻiloa taha, ka ʻoku ʻikai ko ha ʻalu ia."
+    },
+    "floating-colonies": {
+      "panel": "Ko e vaka Potukali ʻoku ʻikai ko ha monumanu pē taha. Ko e laui teau, kuo fakatahaʻi ki ha kolo tēteka pē taha. ʻOku huhu ha niʻihi, ʻoku fakaʻau ha niʻihi, ʻoku fakatupu ha niʻihi, pea ʻoku ʻikai lava ʻe ha taha ke moʻui tokotaha. ʻOku hangē ange ha kau vaka ʻi ha monumanu pē taha.",
+      "ending": "ʻOku ʻalu ʻa e fanga monumanu ni ki he feituʻu ʻoku ʻalu ki ai ʻa e vai. Ko e peesi hoko ʻoku ʻo e fanga monumanu naʻa nau fakalelei ʻa e palopalema tatau — tahi ʻataʻatā, ʻikai ha toitoiʻanga — ʻi ha founga kehe ʻaupito."
+    },
+    "see-through-swimmers": {
+      "panel": "ʻI he tahi ʻataʻatā ʻoku ʻikai ha toitoiʻanga. Ko ia ai ko e fanga monumanu ni, ʻoku ʻikai ha kāinga pea mei ha vaʻa kehekehe ʻo e ʻakau, naʻa nau aʻu ki he tali tatau ʻe ua: ke hoko ʻo taʻe-hāmai, pea ke kakau ʻaki hono tā ha meʻa. Ko e kalasi pē naʻe lava ke fakahā atu ʻa e ʻuluaki.",
+      "ending": "Ko e ʻasi atu ko ha malu. ʻI he peesi hoko, ko ha sino ʻoku hā angamaheni ʻaupito ʻoku ne fufuuʻi ha taha ʻo e ngaahi meʻa fakaofo taha ʻi he tānaki ni."
+    },
+    "sea-squirts-and-salps": {
+      "panel": "ʻOku ʻikai ke nau hā mahuʻinga: ko ha kato pipisi ʻoku ne fakahū ʻa e vai tahi ʻi he ava ʻe taha pea tukuange ʻi he taha. Ka ʻi he moʻui ʻa e taha kotoa ʻoku ʻi ai ha monumanu kakau hangē ha kiʻi poʻuli, mo ha vaʻa fefeka ʻi hono tuʻa. Mei he meʻa kotoa ʻi he tānaki ni, ko kinautolu ʻa ho kāinga ofi taha.",
+      "ending": "ʻOku ʻi he peesi ni ʻa e founga moʻui ʻe ua. ʻOku tēteka ha niʻihi, ʻoku pipiki ʻa e toenga ki he maka. Ko e meʻa kotoa mei heni ʻoku moʻui ʻi he takeleʻanga tahi."
+    },
+    "cephalopods": {
+      "panel": "Ko e monumanu molū naʻa nau liʻaki ʻa e ʻumu pea hoko ko e kau tuli: nima, mimi, mo ha mata ʻoku meimei lelei ke tatau mo ho mata. ʻOku tuʻo ua ʻa e argonaut ʻi heni, pea ko ha fili. ʻOku langa ʻe he fefine ha mohenga pepa ki heʻene foʻi manu. Ko e tangata ʻoku toko taha senitimita pē.",
+      "ending": "Ko e mole ʻa e ʻumu naʻe fakatau ʻaki ʻa e veʻe vave, nima mo e mata. ʻI he peesi hoko, naʻe totongi kehe ʻaupito ʻa e fili tatau."
+    },
+    "sea-slugs": {
+      "panel": "Toʻo ʻa e ʻumu ʻo ha sisi pea ʻoku fiemaʻu ha tali kehe. Naʻe maʻu ʻe he hongofulu mā fā ni ha ngaahi tali: kona, lanu mālohi ke hoko ko ha fakatokanga, mo e sela huhu naʻe kaihaʻasi mei he monumanu ʻoku nau kai. ʻOku ʻalu ha taha ʻo lahi ange: ʻoku ne kaihaʻasi mei he limu ʻoku ne kai ʻa e ngaahi konga ʻoku ngāue, tauhi ke moʻui, pea moʻui ai ʻi ha konga mei he laʻā.",
+      "ending": "Ko e monumanu kotoa ʻo aʻu mai ki heni naʻe ngāue ʻaki honau mālohi. Mei heni, ʻoku nofo ʻa e tokolahi ʻi honau potu."
+    },
+    "sea-anemones": {
+      "panel": "Ko e ʻanemone ʻo e tahi ko ha takai ʻo e ngaahi kaufana kona ʻi ha kete, ʻi ha vaʻe. Ko e monumanu kātoa ia. Ko e hongofulu mā hiva ni ʻoku fakahā ʻa e mamaʻo ʻe lava ke tekeʻi ki ai ha fakakaukau faingofua pē taha. Ko e kulupu lahi taha ʻi heni, pea ʻoku ʻikai ko ha meʻa fakafokifā: ko e ʻanemone ko e manako lahi ʻa e kuonga Vikatōlia, pea ko e monumanu pē taha naʻe ʻikai lava ʻe ha taha ke tauhi moʻui ʻi ha hina.",
+      "ending": "Ko e monumanu pē taha, founga ʻe hongofulu mā hiva. Ko e hoko mai: ko e hā ʻe hoko ʻi he taimi ʻoku ʻikai kei taha ai ʻa e monumanu tatau ka kuo hoko ko e laui afe."
+    },
+    "corals-and-sea-fans": {
+      "panel": "Ko e vaʻa kotoa, ili kotoa, mo e vaʻa maka kotoa ʻi he peesi ni ko ha kolo. Ko e taha kotoa ko e laui afe monumanu īkiiki hangē ha ʻanemone, ʻoku nau vahevahe ha hui pē taha. Ko ia ai ʻoku nau tupu hangē ha ʻakau kae ʻikai ko ha ʻakau, pea ko ia ai ʻe lava ke kulokula, lanumoana, fulufulu, pe liliu kātoa ki he maka ha feoʻoli.",
+      "ending": "Naʻe langa hake ʻa e ngaahi meʻa ni mei he maka. Ko e peesi fakaʻosi ʻe ua ʻo e tahi ʻoku ʻo e fanga monumanu naʻa nau ʻalu ki he tafaʻaki kehe — ki loto."
+    },
+    "sea-cucumbers-and-stars": {
+      "panel": "Ko ha sosisi, ko ha fulufulu, mo ha fetuʻu. ʻOku ʻikai ha meʻa ʻi he valu ni ʻoku hā ʻoku felāveʻi, pea ko e poini tonu ia. Lau ʻi he nima, kumi ʻa e laui teau kiʻi vaʻe ʻoku ngāue ʻaki ʻa e vai, pea ʻe hā mai kuo langa kotoa ʻi he mape ʻo ha fetuʻu tahi. ʻOku ʻikai ha fetuʻu tahi pē taha ʻi he ngaahi fakatātā ni, pea ko e ʻuhinga ko e ʻuhinga tofu pē ʻoku ʻi ai ai ʻa e tānaki ni: ʻoku momoa ha fetuʻu tahi pea tolonga. ʻOku ʻikai tolonga ʻa e ngaahi meʻa ni.",
+      "ending": "Langa hangē ha fetuʻu tahi, ka fuʻu kehe ʻa e sino. Ko e peesi hoko ko ha kulupu kātoa kuo fakamatalaʻi ʻi he founga tatau — ʻaki ha tali, ʻo ʻikai ha fāmili."
+    },
+    "worms": {
+      "panel": "Ko e kelemutu ʻoku ʻikai ko ha fāmili. Ko ha tali — ko ha sino loloa mo molū ke tekeʻi ʻi he ʻoneʻone — naʻe aʻu ki ai ha vaʻa kehekehe ʻe fā ʻo e puleʻanga monumanu, taki taha. Ko e tolu ʻi heni ʻoku nau fufuuʻi kātoa ʻa e sino ʻi ha ʻalofi pea tuku atu ha kalauni ʻoku fuʻu lelei ʻo aʻu ki hono mahalo ko ha matalaʻiʻakau.",
+      "ending": "Ko e ngataʻanga ia ʻo e tahi. ʻOku toe ha peesi ʻe taha, pea ʻoku ʻikai ha monumanu ʻe taha ʻi ai naʻe ʻalu ki ai."
+    },
+    "never-went-to-sea": {
+      "panel": "Ko e hongofulu ʻo e fakatātā ʻi he tānaki ni naʻe ʻikai te nau sio ki ha vai masima: ko e sisi ʻo e ngoue, ko ha sisi Loma naʻe fahiʻi ke fakahā hono loto, ko ha kelemutu mimisi mei ha ano. Naʻe tokonaki ʻa e Blaschka ki he ngaahi loki ako pea mo e ngaahi falemaʻumaʻu, pea naʻe fiemaʻu ʻe ha loki ako ʻa e monumanu ʻi he ngoue kāpisi ʻo hangē ko e monumanu ʻi he Fanga ʻo Naples.",
+      "ending": "Ko e tangata ʻe toko ua ʻi ha kolo ʻoku ʻikai ha tahi naʻa na langa ha moana mei he ngaahi tā, tohi, mo e monumanu naʻe ʻave moʻui kiate kinaua. Ko e hongofulu ni ko e meʻa pē naʻe lava ke na ō ki tuʻa ʻo puke."
+    }
+  }
+}

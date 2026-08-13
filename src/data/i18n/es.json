@@ -1,0 +1,93 @@
+{
+  "__code": "es",
+  "reviewed": false,
+  "ui": {
+    "collectionTitle": "La colección Blaschka",
+    "collectionIntro": "Modelos de vidrio de invertebrados, hechos por Leopold y Rudolf Blaschka en Dresde y adquiridos por el Canterbury Museum en 1883. Uno está expuesto. El resto está en depósito.",
+    "backToCollection": "Colección",
+    "everyObject": "Todos los objetos",
+    "everyObjectIntro": "Todos los modelos, en orden de lectura. Esta vista fue sustituida por las once páginas y se conserva porque es la única que permite elegir con la vista.",
+    "search": "Buscar",
+    "searchHelp": "En las once páginas. Pruebe con un nombre común, un nombre científico o un número de inventario.",
+    "searchPlaceholder": "medusa, Physalia, 1884.137.33",
+    "searchNothing": "No hay coincidencias.",
+    "models": "modelos",
+    "aboutMinutes": "Unos {m} minutos.",
+    "scanned": "El objeto que ha escaneado",
+    "rightsUnstated": "Canterbury Museum — este registro no indica derechos",
+    "draftNotice": "Borrador, aún sin comprobar. Este texto se escribió a partir de conocimientos generales de historia natural, no de lo publicado por el museo, y ningún conservador lo ha revisado.",
+    "noStory": "Todavía no hay texto escrito. Debajo está la descripción del propio registro de inventario.",
+    "sources": "Fuentes",
+    "language": "Idioma",
+    "loading": "Cargando…",
+    "notFound": "No encontrado",
+    "notFoundBody": "Esa dirección no existe.",
+    "fallbackNotice": "Aún no disponible en {language} — se muestra en inglés.",
+    "translationNotice": "Traducción automática, todavía sin revisión humana.",
+    "prototypeNote": "Prototipo. El número de objetos es el que consta en el registro de la colección, no un total publicado — las cifras publicadas no coinciden. Los tiempos de lectura se calculan al compilar a partir del número de palabras, a 150 palabras por minuto, y no se fijan a mano."
+  },
+  "groups": {
+    "jellyfish": "Medusas, grandes y pequeñas",
+    "floating-colonies": "La carabela portuguesa y otras colonias flotantes",
+    "see-through-swimmers": "Ctenóforos y mariposas de mar — los nadadores transparentes",
+    "sea-squirts-and-salps": "Ascidias y salpas",
+    "cephalopods": "Calamares, sepias y el argonauta",
+    "sea-slugs": "Babosas de mar",
+    "sea-anemones": "Anémonas de mar",
+    "corals-and-sea-fans": "Corales, gorgonias e hidrozoos — animales que crecen como plantas",
+    "sea-cucumbers-and-stars": "Pepinos de mar, lirios de mar y ofiuras",
+    "worms": "Gusanos del fondo marino",
+    "never-went-to-sea": "Nunca fueron al mar"
+  },
+  "layerTitles": {
+    "how-it-was-made": "Cómo se hizo",
+    "how-it-got-here": "Cómo llegó aquí",
+    "how-we-know": "Cómo lo sabemos"
+  },
+  "panels": {
+    "jellyfish": {
+      "panel": "Una medusa es una campana de agua casi pura que late y arrastra tras de sí hilos urticantes. Ese es todo el diseño. Aquí va desde una del tamaño de un plato hasta otras que cabrían en la yema de un dedo — y tres veces el mismo animal: macho, hembra y cría.",
+      "ending": "Todos los animales de esta página son medusas. La siguiente empieza con la medusa más famosa de todas, que resulta no serlo."
+    },
+    "floating-colonies": {
+      "panel": "Una carabela portuguesa no es un animal. Son cientos, fundidos en una única colonia a la deriva. Unos pican, otros digieren, otros se reproducen, y ninguno sobreviviría solo. Es menos una criatura que una tripulación.",
+      "ending": "Estos animales van donde va el agua. La página siguiente es de animales que resolvieron el mismo problema — mar abierto, ningún escondite — de una manera completamente distinta."
+    },
+    "see-through-swimmers": {
+      "panel": "En mar abierto no hay dónde esconderse. Por eso estos animales, sin parentesco entre sí y de ramas distintas del árbol, llegaron a las mismas dos respuestas: volverse invisibles y nadar batiendo algo. Solo el vidrio podía enseñarle la primera.",
+      "ending": "La transparencia es una defensa. En la página siguiente, un cuerpo de aspecto de lo más corriente esconde uno de los hechos más extraños de esta colección."
+    },
+    "sea-squirts-and-salps": {
+      "panel": "No parecen gran cosa: un saco gelatinoso que bombea agua de mar por una abertura y la expulsa por la otra. Pero en el ciclo vital de cada una hay un animal nadador con forma de renacuajo y una varilla rígida a lo largo del dorso. De todo lo que hay en esta colección, estos son sus parientes más cercanos.",
+      "ending": "Esta página reúne las dos formas de vida. Algunas van a la deriva; el resto está fijado a la roca. Todo lo que sigue vive en el fondo."
+    },
+    "cephalopods": {
+      "panel": "Moluscos que renunciaron a la concha y se hicieron cazadores: brazos, ventosas y un ojo casi tan bueno como el suyo. El argonauta aparece aquí dos veces, a propósito. La hembra construye a sus huevos una cuna de papel. El macho apenas mide un centímetro.",
+      "ending": "Perder la concha compró velocidad, brazos y ojos. En la página siguiente, la misma decisión se pagó de manera muy distinta."
+    },
+    "sea-slugs": {
+      "panel": "Quítele la concha a un caracol y necesitará otra respuesta. Estas catorce encontraron varias: veneno, un color lo bastante llamativo para servir de advertencia, células urticantes robadas a los animales que comen. Una va más lejos: roba las piezas activas de las algas que ingiere, las mantiene vivas y vive en parte de la luz del sol.",
+      "ending": "Hasta aquí, todos los animales se han movido por su propia fuerza. A partir de ahora, la mayoría se queda donde está."
+    },
+    "sea-anemones": {
+      "panel": "Una anémona de mar es un anillo de tentáculos venenosos sobre un estómago, sobre un pie. Ese es el animal entero. Estas diecinueve muestran hasta dónde puede llevarse una sola idea sencilla. Es el grupo más numeroso de aquí, y no por casualidad: las anémonas fueron la gran obsesión victoriana, y el único animal que nadie lograba mantener vivo en un frasco.",
+      "ending": "Un animal, diecinueve maneras. A continuación: qué ocurre cuando ese mismo animal deja de ser uno y se convierte en miles."
+    },
+    "corals-and-sea-fans": {
+      "panel": "Cada rama, cada abanico y cada ramita pétrea de esta página es una ciudad. Cada una son miles de animales diminutos, parecidos a anémonas, que comparten un mismo esqueleto. Así crecen como plantas sin serlo, y por eso un coral puede ser rojo, azul, plumoso o estar enteramente convertido en piedra.",
+      "ending": "Estos construyeron hacia arriba desde la roca. Las dos últimas páginas del mar son de animales que fueron en la dirección contraria: hacia dentro."
+    },
+    "sea-cucumbers-and-stars": {
+      "panel": "Una salchicha, una pluma y una estrella. Nada en estos ocho parece emparentado, y de eso se trata. Cuente de cinco en cinco, busque los cientos de piececillos movidos por agua, y resulta que todos están construidos según el plano de una estrella de mar. No hay ni una sola estrella de mar entre estos modelos, y la razón es la misma por la que existe esta colección: una estrella de mar se seca y se conserva. Estos no.",
+      "ending": "Construidos como una estrella de mar, con la forma de cualquier otra cosa. La página siguiente es todo un grupo definido igual: por una solución, no por una familia."
+    },
+    "worms": {
+      "panel": "Un gusano no es una familia. Es una solución — un cuerpo largo y blando para abrirse paso por el sedimento — a la que llegaron por separado cuatro ramas distintas del reino animal. Tres de los de aquí esconden el cuerpo por completo en un tubo y sacan una corona tan fina que durante mucho tiempo se tomó por una flor.",
+      "ending": "Ahí termina el mar. Queda una página, y ni uno solo de sus animales estuvo nunca en él."
+    },
+    "never-went-to-sea": {
+      "panel": "Diez de los modelos de esta colección nunca vieron agua salada: babosas de jardín, un caracol de Borgoña abierto para mostrar sus vísceras, una sanguijuela de estanque. Los Blaschka surtían tanto a las aulas como a los museos, y un aula necesitaba el animal del huerto tanto como el de la bahía de Nápoles.",
+      "ending": "Dos hombres en una ciudad sin costa construyeron un océano con láminas, cartas y animales enviados vivos. Estos diez son los únicos que habrían podido salir a cazar ellos mismos."
+    }
+  }
+}

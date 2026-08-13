@@ -1,0 +1,94 @@
+{
+  "__code": "so",
+  "reviewed": false,
+  "qualityWarning": "Machine translated into a low-resource language with no human review. §7 names Somali among the languages serving resident and refugee communities in Christchurch, and warns that naive expansion serves them worst of all. This needs a paid community reviewer, not a pipeline.",
+  "ui": {
+    "collectionTitle": "Ururinta Blaschka",
+    "collectionIntro": "Muunado quruurad ah oo xayawaan aan lafdhabar lahayn, waxaa sameeyay Leopold iyo Rudolf Blaschka magaalada Dresden, waxaana iibsaday Matxafka Canterbury sanadkii 1883. Mid ayaa la soo bandhigay. Inta kale way kaydsan yihiin.",
+    "backToCollection": "Ururinta",
+    "everyObject": "Dhammaan alaabta",
+    "everyObjectIntro": "Dhammaan muunadaha, siday u kala horreeyaan akhrinta. Muuqaalkan waxaa beddelay kow iyo tobanka bog, laakiin waa la hayaa maxaa yeelay waa waxa keliya ee kuu ogolaanaya inaad indhaha ku dooratid.",
+    "search": "Raadi",
+    "searchHelp": "Kow iyo tobanka bog oo dhan. Isku day magac caadi ah, magac cilmiyeed, ama lambar diiwaangelin.",
+    "searchPlaceholder": "jellyfish, Physalia, 1884.137.33",
+    "searchNothing": "Waxba lama helin.",
+    "models": "muunad",
+    "aboutMinutes": "Qiyaastii {m} daqiiqo.",
+    "scanned": "Shayga aad iskaanka ku samaysay",
+    "rightsUnstated": "Matxafka Canterbury — diiwaankan xuquuq lagama sheegin",
+    "draftNotice": "Qoraal qabyo ah, weli lama hubin. Waxaa laga qoray aqoon guud oo taariikhda dabiiciga ah, ee lagama qorin waxa matxafku daabacay, mana uusan dib u eegin qof matxaf hayn ah.",
+    "noStory": "Weli sheeko lama qorin. Hoos waxaa ku qoran sharraxaadda diiwaanka diiwaangelinta laftiisa.",
+    "sources": "Ilaha",
+    "language": "Luqadda",
+    "loading": "Waa la soo rarayaa…",
+    "notFound": "Lama helin",
+    "notFoundBody": "Ciwaankaas ma jiro.",
+    "fallbackNotice": "Kani weli laguma heli karo {language} — waxaa lagu soo bandhigayaa Ingiriisi.",
+    "translationNotice": "Waa turjumaad mashiin, weli qofna ma eegin.",
+    "prototypeNote": "Tijaabo. Tirada alaabta waa tii diiwaanka ururinta ku jirta, mana aha wadar la daabacay — tirooyinka la daabacay isma waafaqsana. Waqtiga akhrinta waxaa lagu xisaabiyaa marka la dhisayo, 150 eray daqiiqadii, mana aha wax gacanta lagu dhigay."
+  },
+  "groups": {
+    "jellyfish": "Jellyfish, waaweyn iyo yaryar",
+    "floating-colonies": "Maraakiibta Boortaqiiska iyo ururo kale oo sabbaynaya",
+    "see-through-swimmers": "Jellyfish shanlo leh iyo balanbaallis badeed — dabbaalayaasha la arki karo",
+    "sea-squirts-and-salps": "Sea squirt iyo salp",
+    "cephalopods": "Squid, cuttlefish iyo nautilus-ka warqadda",
+    "sea-slugs": "Bakhaylaha badda",
+    "sea-anemones": "Ubaxyada badda",
+    "corals-and-sea-fans": "Coral, marwaxadaha badda iyo hydroid — xayawaan u koraya sida geedo",
+    "sea-cucumbers-and-stars": "Qajaarka badda, xiddigaha baalasha leh iyo xiddigaha jajabaya",
+    "worms": "Dixiriga sagxadda badda",
+    "never-went-to-sea": "Weligood badda ma tegin"
+  },
+  "layerTitles": {
+    "how-it-was-made": "Sida loo sameeyay",
+    "how-it-got-here": "Sida halkan loogu keenay",
+    "how-we-know": "Sida aan u ognahay"
+  },
+  "panels": {
+    "jellyfish": {
+      "panel": "Jellyfish waa gambar biyo dhow oo saafi ah, oo garaaca, isagoo jiidaya xadhko wax qaniina. Naqshaddu intaas bay tahay. Halkan waxaa ka bilaabma mid saxan le'eg ilaa kuwo farta lagu qaadi karo — oo isla xayawaanka saddex jeer: lab, dhedig iyo dhallaan.",
+      "ending": "Xayawaan kasta oo boggan ku jira waa jellyfish. Bogga xiga wuxuu ku bilaabmayaa jellyfish-ka ugu caansan oo dhan, kaas oo aan ahayn mid."
+    },
+    "floating-colonies": {
+      "panel": "Markabka dagaalka Boortaqiiska ma aha hal xayawaan. Waa boqolaal shaqsi oo ku milmay hal urur oo sabbaynaya. Qaar way qaniinaan, qaar way dheefshiidaan, qaarna way tarmaan, midkoodna keligiis ma noolaan karo. Waa shaqaale markab intii uu noqon lahaa hal uun.",
+      "ending": "Xayawaankaan waxay tagaan meesha biyuhu tagaan. Bogga xiga wuxuu leeyahay xayawaan xalliyay dhibaato la mid ah — badda furan, meel lagu dhuunto oo la'aan — si gebi ahaanba ka duwan."
+    },
+    "see-through-swimmers": {
+      "panel": "Badda furan meel lagu dhuunto ma jirto. Sidaas darteed xayawaankaan, oo aan xigaalo ahayn oo laamo kala duwan ka soo jeeda, waxay gaareen isla laba jawaab: inay noqdaan kuwo aan la arki karin, iyo inay dabbaashaan iyagoo wax garaacaya. Quruuradda oo keliya ayaa kuu tusi kartay tan koowaad.",
+      "ending": "Muuqaal-la'aantu waa difaac. Bogga xiga, jidh aad u caadi ah ayaa qarinaya mid ka mid ah xaqiiqooyinka ugu yaab badan ururintan."
+    },
+    "sea-squirts-and-salps": {
+      "panel": "Waxba uma muuqdaan: bac jelly ah oo biyaha badda ka nuugaya hal daloolka kana saaraya kan kale. Laakiin nolol-socodkooda mid kastaa waxaa ku jira xayawaan dabbaalaya oo u eg rahyar, oo dhabarka ku leh ul adag. Wixii ururintan ku jira oo dhan, kuwaas ayaa ah qaraabadaada ugu dhow.",
+      "ending": "Boggani wuxuu wataa labada nooc ee nolosha. Qaar way sabbaynayaan, inta kalena dhagax bay ku dhegan yihiin. Wax kasta oo halkan ka dambeeya wuxuu ku noolyahay sagxadda badda."
+    },
+    "cephalopods": {
+      "panel": "Xayawaan jilicsan oo qolofta iska daayay oo noqday ugaadhsadayaal: gacmo, nuugayaal, iyo il ku dhow tayada tan aad leedahay. Nautilus-ka warqaddu halkan laba jeer buu ku jiraa, taasna waa loo talo galay. Dheddigu ugxantiisa waxay u dhistaa sariir warqad u eg. Labku wuxuu si dirqi ah u gaaraa hal sentimitir.",
+      "ending": "Lumitaanka qolofta wuxuu iibsaday xawaare, gacmo iyo indho. Bogga xiga, isla go'aankaas si aad u kala duwan ayaa loo bixiyay."
+    },
+    "sea-slugs": {
+      "panel": "Ka qaad qolofta bakhaylaha, wuxuu u baahan yahay jawaab kale. Afartankan iyo tobanku waxay heleen dhowr: sun, midab aad u cad oo digniin u dhigma, iyo unugyo wax qaniina oo laga xaday xayawaanka ay cunaan. Mid ayaa ka fog tegey: wuxuu ka xadaa qaybaha shaqeeya ee cawska badda uu cuno, wuu nooleeyaa, oo qayb ahaan qorraxda ayuu ku noolaadaa.",
+      "ending": "Ilaa hadda xayawaan kastaa awooddiisa ayuu ku dhaqaaqay. Halkan ka dib, badidoodu meeshay joogaan bay ku hadhaan."
+    },
+    "sea-anemones": {
+      "panel": "Ubaxa baddu waa giraan qaanjaro sun leh oo saaran caloosha, taasoo saaran cag. Xayawaanka oo dhan intaas buu yahay. Sagaashan iyo tobankan waxay muujinayaan inta ay fikrad fudud oo keliya la geyn karo. Waa kooxda ugu weyn halkan, taasna shil ma aha: ubaxyada badda waxay ahaayeen jacaylka weyn ee xilligii Fiktooriya, waana xayawaanka keliya ee aan qofna ku hayn karin dhalo.",
+      "ending": "Hal xayawaan, sagaashan iyo toban qaab. Xiga: waxa dhacaya marka isla xayawaankaas uu joojiyo inuu mid yahay oo uu noqdo kumanaan."
+    },
+    "corals-and-sea-fans": {
+      "panel": "Laan kasta, marwaxad kasta, iyo laan dhagax ah oo boggan ku jirta waa magaalo. Mid kastaa waa kumanaan xayawaan yaryar oo u eg ubaxa badda, oo wadaaga hal lafo. Sidaas ayay u koraan sida geedo iyagoon geed ahayn, taasina waa sababta coral-ku u noqon karo casaan, buluug, baal, ama gebi ahaanba dhagax.",
+      "ending": "Kuwani dhagaxa ayay kor uga dhiseen. Labada bog ee ugu dambeeya ee badda waxay leeyihiin xayawaan dhinaca kale aaday — gudaha."
+    },
+    "sea-cucumbers-and-stars": {
+      "panel": "Sooseej, baal, iyo xiddig. Waxba siddeedan kama muuqdaan kuwo xiriir leh, taasna waa qodobka. Ku tiri shanaad, raadi boqolaal cago yaryar oo biyo ku shaqeeya, waxaana soo baxaya inay dhammaantood ku dhisan yihiin naqshadda xiddigta badda. Muunadahan mid xiddig badeed ah kuma jiro, sababtuna waa isla sababta ay ururintani u jirto: xiddigta baddu way qallashaa oo way hartaa. Kuwani ma haraan.",
+      "ending": "Loo dhisay sida xiddig badeed, laakiin qaab kasta oo aan kaas ahayn. Bogga xiga waa koox dhan oo si isku mid ah loo qeexay — xal, ee ma aha qoys."
+    },
+    "worms": {
+      "panel": "Dixiri ma aha qoys. Waa xal — jidh dheer oo jilicsan oo lagu riixo dhoobada — oo afar laamood oo kala duwan oo boqortooyada xayawaanka ah ay si gaar ah u gaareen. Saddex halkan ku jira jidhkooda gebi ahaanba tuubbo bay ku qariyaan, waxayna soo saaraan taaj aad u fiican oo muddo dheer ubax loo maleynayay.",
+      "ending": "Halkaas ayay baddu ku dhammaanaysaa. Hal bog baa hadhay, xayawaan keliyana ma jiro oo weligiis halkaas tegey."
+    },
+    "never-went-to-sea": {
+      "panel": "Toban muunadood oo ururintan ku jira weligood biyo cusbo leh ma arag: bakhaylaha beerta, qanjaruufo Roomaan ah oo la kala jeexay si loo tuso waxa gudaha ku jira, iyo culeys balliga ka yimid. Blaschka-yaashu waxay wax siin jireen fasallada sida ay matxafyada u siin jireen, qol casharkuna wuxuu u baahnaa xayawaanka beerta kaabashka sida uu ugu baahnaa kan Gacanka Naples.",
+      "ending": "Laba nin oo ku nool magaalo aan badda lahayn ayaa bad ka dhisay sawirro, waraaqo, iyo xayawaan iyagoo nool loo soo diray. Tobankan ayaa ah kuwa keliya ee ay bannaanka u bixi lahaayeen oo ay gacanta ku qaban lahaayeen."
+    }
+  }
+}

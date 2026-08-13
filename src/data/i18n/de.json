@@ -1,0 +1,93 @@
+{
+  "__code": "de",
+  "reviewed": false,
+  "ui": {
+    "collectionTitle": "Die Blaschka-Sammlung",
+    "collectionIntro": "Glasmodelle wirbelloser Tiere, hergestellt von Leopold und Rudolf Blaschka in Dresden und 1883 vom Canterbury Museum erworben. Eines ist ausgestellt. Der Rest liegt im Depot.",
+    "backToCollection": "Sammlung",
+    "everyObject": "Alle Objekte",
+    "everyObjectIntro": "Alle Modelle, in Lesereihenfolge. Diese Ansicht wurde durch die elf Seiten ersetzt und blieb erhalten, weil man nur hier mit den Augen auswählen kann.",
+    "search": "Suche",
+    "searchHelp": "Über alle elf Seiten hinweg. Versuchen Sie einen Namen, einen wissenschaftlichen Namen oder eine Inventarnummer.",
+    "searchPlaceholder": "Qualle, Physalia, 1884.137.33",
+    "searchNothing": "Dazu gibt es keine Treffer.",
+    "models": "Modelle",
+    "aboutMinutes": "Etwa {m} Minuten.",
+    "scanned": "Das Objekt, das Sie gescannt haben",
+    "rightsUnstated": "Canterbury Museum — zu diesem Datensatz sind keine Rechte angegeben",
+    "draftNotice": "Entwurf, noch nicht geprüft. Dieser Text entstand aus allgemeinem naturkundlichem Wissen und nicht aus den Veröffentlichungen des Museums; eine kuratorische Prüfung steht aus.",
+    "noStory": "Noch kein Text geschrieben. Unten steht die Beschreibung des Inventarbucheintrags selbst.",
+    "sources": "Quellen",
+    "language": "Sprache",
+    "loading": "Wird geladen…",
+    "notFound": "Nicht gefunden",
+    "notFoundBody": "Diese Adresse gibt es nicht.",
+    "fallbackNotice": "Auf {language} noch nicht verfügbar — Anzeige auf Englisch.",
+    "translationNotice": "Maschinell übersetzt und noch nicht von einem Menschen geprüft.",
+    "prototypeNote": "Prototyp. Die Objektzahl ist der Bestand laut Sammlungsdatenbank, keine veröffentlichte Gesamtzahl — die publizierten Angaben widersprechen einander. Lesezeiten werden beim Build aus dem Textumfang berechnet, mit 150 Wörtern pro Minute, und sind nicht gesetzt."
+  },
+  "groups": {
+    "jellyfish": "Quallen, große und kleine",
+    "floating-colonies": "Die Portugiesische Galeere und andere treibende Kolonien",
+    "see-through-swimmers": "Rippenquallen und Seeschmetterlinge — die durchsichtigen Schwimmer",
+    "sea-squirts-and-salps": "Seescheiden und Salpen",
+    "cephalopods": "Kalmare, Tintenfische und das Papierboot",
+    "sea-slugs": "Nacktschnecken",
+    "sea-anemones": "Seeanemonen",
+    "corals-and-sea-fans": "Korallen, Gorgonien und Hydrozoen — Tiere, die wie Pflanzen wachsen",
+    "sea-cucumbers-and-stars": "Seegurken, Haarsterne und Schlangensterne",
+    "worms": "Würmer des Meeresbodens",
+    "never-went-to-sea": "Nie im Meer gewesen"
+  },
+  "layerTitles": {
+    "how-it-was-made": "Wie es gemacht wurde",
+    "how-it-got-here": "Wie es hierherkam",
+    "how-we-know": "Woher wir das wissen"
+  },
+  "panels": {
+    "jellyfish": {
+      "panel": "Eine Qualle ist eine Glocke aus fast reinem Wasser, die pulsiert und nesselnde Fäden hinter sich herzieht. Das ist der ganze Bauplan. Hier reicht er von einer Qualle so groß wie ein Teller bis zu solchen, die auf eine Fingerkuppe passen — und dreimal dasselbe Tier: als Männchen, als Weibchen und als Jungtier.",
+      "ending": "Jedes Tier auf dieser Seite ist eine Qualle. Die nächste Seite beginnt mit der berühmtesten Qualle von allen, die gar keine ist."
+    },
+    "floating-colonies": {
+      "panel": "Eine Portugiesische Galeere ist kein einzelnes Tier. Sie ist ein Verbund aus Hunderten, verschmolzen zu einer einzigen treibenden Kolonie. Manche nesseln, manche verdauen, manche pflanzen sich fort, und keines von ihnen könnte allein überleben. Sie ist weniger ein Geschöpf als eine Mannschaft.",
+      "ending": "Diese Tiere gehen dorthin, wohin das Wasser geht. Die nächste Seite gehört Tieren, die dasselbe Problem — offenes Wasser, kein Versteck — auf völlig andere Weise gelöst haben."
+    },
+    "see-through-swimmers": {
+      "panel": "Im offenen Wasser gibt es kein Versteck. Also kamen diese Tiere, nicht miteinander verwandt und aus verschiedenen Zweigen des Stammbaums, auf dieselben zwei Antworten: unsichtbar werden und sich durch Schlagen fortbewegen. Nur Glas konnte Ihnen die erste je zeigen.",
+      "ending": "Durchsichtigkeit ist eine Verteidigung. Auf der nächsten Seite verbirgt ein völlig unscheinbarer Körper eine der seltsamsten Tatsachen dieser Sammlung."
+    },
+    "sea-squirts-and-salps": {
+      "panel": "Sie sehen nach wenig aus: ein Gallertsack, der Meerwasser durch die eine Öffnung ein- und durch die andere auspumpt. Doch im Lebenslauf jedes einzelnen steckt ein schwimmendes, kaulquappenförmiges Tier mit einem steifen Stab im Rücken. Von allem in dieser Sammlung sind das Ihre nächsten Verwandten.",
+      "ending": "Diese Seite trägt beide Lebensweisen. Einige treiben, die übrigen sitzen auf dem Fels. Alles von hier an lebt am Meeresboden."
+    },
+    "cephalopods": {
+      "panel": "Weichtiere, die die Schale aufgaben und stattdessen Jäger wurden: Arme, Saugnäpfe und ein Auge, das dem Ihren kaum nachsteht. Das Papierboot ist hier absichtlich zweimal vertreten. Das Weibchen baut seinen Eiern eine papierdünne Wiege. Das Männchen misst kaum einen Zentimeter.",
+      "ending": "Der Verlust der Schale brachte Schnelligkeit, Arme und Augen. Auf der nächsten Seite wurde dieselbe Entscheidung ganz anders bezahlt."
+    },
+    "sea-slugs": {
+      "panel": "Nimm einer Schnecke das Haus, und sie braucht eine andere Antwort. Diese vierzehn fanden mehrere: Gift, eine Färbung laut genug, um als Warnung zu dienen, und Nesselzellen, gestohlen von den Tieren, die sie fressen. Eine geht weiter: Sie stiehlt die arbeitenden Teile aus den Algen, die sie frisst, hält sie am Leben und lebt teilweise vom Sonnenlicht.",
+      "ending": "Bis hierher hat sich jedes Tier aus eigener Kraft bewegt. Von hier an bleiben die meisten, wo sie sind."
+    },
+    "sea-anemones": {
+      "panel": "Eine Seeanemone ist ein Kranz vergifteter Tentakel auf einem Magen, der auf einem Fuß sitzt. Mehr ist das Tier nicht. Diese neunzehn zeigen, wie weit sich eine einzige einfache Idee treiben lässt. Es ist die größte Gruppe hier, und das ist kein Zufall: Seeanemonen waren die große viktorianische Besessenheit — und das eine Tier, das niemand im Glas am Leben halten konnte.",
+      "ending": "Ein Tier, neunzehn Arten. Als Nächstes: was geschieht, wenn dasselbe Tier aufhört, eines zu sein, und zu Tausenden wird."
+    },
+    "corals-and-sea-fans": {
+      "panel": "Jeder Zweig, jeder Fächer, jedes steinerne Ästchen auf dieser Seite ist eine Stadt. Jede besteht aus Tausenden winziger, anemonenähnlicher Tiere, die ein Skelett teilen. So wachsen sie wie Pflanzen, ohne welche zu sein, und deshalb kann eine Koralle rot, blau, gefiedert oder ganz zu Stein geworden sein.",
+      "ending": "Diese bauten vom Fels aus nach oben. Die letzten beiden Seiten des Meeres gehören Tieren, die den anderen Weg nahmen: hinein."
+    },
+    "sea-cucumbers-and-stars": {
+      "panel": "Eine Wurst, eine Feder und ein Stern. Nichts an diesen acht sieht verwandt aus, und genau darum geht es. Zählen Sie in Fünfern, suchen Sie die Hunderte winziger, wassergetriebener Füßchen, und es zeigt sich: Alle sind nach dem Bauplan eines Seesterns gebaut. Unter diesen Modellen ist kein einziger Seestern, und der Grund ist derselbe, aus dem es diese Sammlung gibt: Ein Seestern trocknet und bleibt erhalten. Diese nicht.",
+      "ending": "Gebaut wie ein Seestern, geformt wie alles andere. Die nächste Seite ist eine ganze Gruppe, die genauso definiert wird — über eine Lösung, nicht über eine Familie."
+    },
+    "worms": {
+      "panel": "Ein Wurm ist keine Familie. Er ist eine Lösung — ein langer weicher Körper, um sich durch Sediment zu schieben —, auf die vier verschiedene Zweige des Tierreichs unabhängig voneinander kamen. Drei hier verbergen den Körper ganz in einer Röhre und strecken eine Krone heraus, die so fein ist, dass man sie lange für eine Blume hielt.",
+      "ending": "Damit endet das Meer. Eine Seite bleibt, und kein einziges Tier darauf war je dort."
+    },
+    "never-went-to-sea": {
+      "panel": "Zehn der Modelle dieser Sammlung haben nie Salzwasser gesehen: Gartenschnecken, eine aufgeschnittene Weinbergschnecke, die ihr Inneres zeigt, ein Blutegel aus dem Teich. Die Blaschkas belieferten Hörsäle ebenso wie Museen, und ein Hörsaal brauchte das Tier aus dem Kohlbeet genauso wie das aus dem Golf von Neapel.",
+      "ending": "Zwei Männer in einer Stadt ohne Meer bauten aus Abbildungen, Briefen und lebend verschickten Tieren einen Ozean. Diese zehn sind die einzigen, die sie vor der Tür selbst hätten fangen können."
+    }
+  }
+}

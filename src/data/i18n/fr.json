@@ -1,0 +1,93 @@
+{
+  "__code": "fr",
+  "reviewed": false,
+  "ui": {
+    "collectionTitle": "La collection Blaschka",
+    "collectionIntro": "Modèles en verre d'invertébrés, réalisés par Leopold et Rudolf Blaschka à Dresde et acquis par le Canterbury Museum en 1883. Un seul est exposé. Les autres sont en réserve.",
+    "backToCollection": "Collection",
+    "everyObject": "Tous les objets",
+    "everyObjectIntro": "Tous les modèles, dans l'ordre de lecture. Cette vue a été remplacée par les onze pages ; elle subsiste parce qu'elle seule permet de choisir à l'œil.",
+    "search": "Recherche",
+    "searchHelp": "Sur les onze pages. Essayez un nom courant, un nom scientifique ou un numéro d'inventaire.",
+    "searchPlaceholder": "méduse, Physalia, 1884.137.33",
+    "searchNothing": "Aucun résultat.",
+    "models": "modèles",
+    "aboutMinutes": "Environ {m} minutes.",
+    "scanned": "L'objet que vous avez scanné",
+    "rightsUnstated": "Canterbury Museum — aucun droit n'est indiqué dans cette notice",
+    "draftNotice": "Brouillon, non vérifié. Ce texte a été écrit à partir de connaissances générales d'histoire naturelle et non des publications du musée ; aucun conservateur ne l'a relu.",
+    "noStory": "Aucun texte rédigé pour l'instant. Ci-dessous, la description de la notice d'inventaire elle-même.",
+    "sources": "Sources",
+    "language": "Langue",
+    "loading": "Chargement…",
+    "notFound": "Introuvable",
+    "notFoundBody": "Cette adresse n'existe pas.",
+    "fallbackNotice": "Pas encore disponible en {language} — affichage en anglais.",
+    "translationNotice": "Traduction automatique, pas encore relue par une personne.",
+    "prototypeNote": "Prototype. Le nombre d'objets est celui de la notice de collection, non un total publié — les chiffres publiés se contredisent. Les durées de lecture sont calculées à la compilation d'après le nombre de mots, à 150 mots par minute, et ne sont pas décrétées."
+  },
+  "groups": {
+    "jellyfish": "Méduses, grandes et petites",
+    "floating-colonies": "La galère portugaise et autres colonies flottantes",
+    "see-through-swimmers": "Cténaires et papillons de mer — les nageurs transparents",
+    "sea-squirts-and-salps": "Ascidies et salpes",
+    "cephalopods": "Calmars, seiches et argonaute",
+    "sea-slugs": "Limaces de mer",
+    "sea-anemones": "Anémones de mer",
+    "corals-and-sea-fans": "Coraux, gorgones et hydraires — des animaux qui poussent comme des plantes",
+    "sea-cucumbers-and-stars": "Concombres de mer, comatules et ophiures",
+    "worms": "Vers des fonds marins",
+    "never-went-to-sea": "Jamais allés à la mer"
+  },
+  "layerTitles": {
+    "how-it-was-made": "Comment c'était fabriqué",
+    "how-it-got-here": "Comment c'est arrivé ici",
+    "how-we-know": "Comment nous le savons"
+  },
+  "panels": {
+    "jellyfish": {
+      "panel": "Une méduse est une cloche d'eau presque pure, qui pulse en traînant des filaments urticants. Tout le plan tient là. On passe ici d'une méduse grande comme une assiette à d'autres qui tiendraient sur le bout d'un doigt — et trois fois le même animal : mâle, femelle et juvénile.",
+      "ending": "Tous les animaux de cette page sont des méduses. La suivante s'ouvre sur la plus célèbre de toutes, qui n'en est pas une."
+    },
+    "floating-colonies": {
+      "panel": "Une galère portugaise n'est pas un animal. C'est une centaine d'individus fondus en une seule colonie dérivante. Certains piquent, d'autres digèrent, d'autres se reproduisent, et aucun ne survivrait seul. C'est moins une créature qu'un équipage.",
+      "ending": "Ces animaux vont où va l'eau. La page suivante appartient à des animaux qui ont résolu le même problème — l'eau libre, aucun abri — d'une tout autre manière."
+    },
+    "see-through-swimmers": {
+      "panel": "En pleine eau, aucun abri. Ces animaux, sans lien de parenté et venus de branches différentes de l'arbre, sont donc arrivés aux deux mêmes réponses : devenir invisible, et nager en battant quelque chose. Seul le verre pouvait vous montrer la première.",
+      "ending": "La transparence est une défense. À la page suivante, un corps d'apparence tout à fait ordinaire cache l'un des faits les plus étranges de cette collection."
+    },
+    "sea-squirts-and-salps": {
+      "panel": "Elles ne paient pas de mine : un sac gélatineux qui pompe l'eau de mer par une ouverture et la rejette par l'autre. Mais dans le cycle de vie de chacune se tient un animal nageur en forme de têtard, avec une tige rigide dans le dos. De tout ce que contient cette collection, ce sont vos plus proches parents.",
+      "ending": "Cette page réunit les deux modes de vie. Certaines dérivent, les autres sont fixées au rocher. Tout ce qui suit vit sur le fond."
+    },
+    "cephalopods": {
+      "panel": "Des mollusques qui ont abandonné la coquille pour devenir chasseurs : des bras, des ventouses, et un œil presque aussi bon que le vôtre. L'argonaute figure ici deux fois, délibérément. La femelle construit à ses œufs un berceau de papier. Le mâle atteint à peine un centimètre.",
+      "ending": "Perdre la coquille a acheté la vitesse, les bras et les yeux. À la page suivante, la même décision s'est payée très différemment."
+    },
+    "sea-slugs": {
+      "panel": "Ôtez sa coquille à un escargot et il lui faut une autre réponse. Ces quatorze en ont trouvé plusieurs : le poison, une couleur assez forte pour valoir avertissement, des cellules urticantes volées aux animaux qu'ils mangent. L'un va plus loin : il vole les pièces actives des algues qu'il consomme, les garde en vie, et vit en partie de la lumière du soleil.",
+      "ending": "Jusqu'ici, chaque animal se déplaçait par ses propres moyens. À partir d'ici, la plupart restent où ils sont."
+    },
+    "sea-anemones": {
+      "panel": "Une anémone de mer, c'est une couronne de tentacules empoisonnés sur un estomac, posé sur un pied. L'animal entier tient là. Ces dix-neuf montrent jusqu'où l'on peut pousser une seule idée simple. C'est le plus grand groupe ici, et ce n'est pas un hasard : les anémones furent la grande obsession victorienne, et le seul animal que personne ne parvenait à garder vivant dans un bocal.",
+      "ending": "Un animal, dix-neuf façons. Ensuite : ce qui arrive quand ce même animal cesse d'être un et devient des milliers."
+    },
+    "corals-and-sea-fans": {
+      "panel": "Chaque branche, chaque éventail, chaque rameau pierreux de cette page est une cité. Chacun réunit des milliers de petits animaux proches des anémones, partageant un même squelette. Voilà comment ils poussent comme des plantes sans en être, et pourquoi un corail peut être rouge, bleu, plumeux, ou entièrement changé en pierre.",
+      "ending": "Ceux-ci ont bâti vers le haut depuis le rocher. Les deux dernières pages de la mer appartiennent à des animaux qui ont pris l'autre direction : vers l'intérieur."
+    },
+    "sea-cucumbers-and-stars": {
+      "panel": "Une saucisse, une plume et une étoile. Rien chez ces huit-là n'a l'air apparenté, et c'est tout l'intérêt. Comptez par cinq, cherchez les centaines de petits pieds mus par l'eau, et ils se révèlent bâtis sur le plan d'une étoile de mer. Il n'y a pas une seule étoile de mer parmi ces modèles, et la raison est celle même de l'existence de cette collection : une étoile de mer sèche et se conserve. Pas celles-ci.",
+      "ending": "Bâtis comme une étoile de mer, façonnés comme tout sauf elle. La page suivante est un groupe entier défini de la même façon — par une solution, non par une famille."
+    },
+    "worms": {
+      "panel": "Un ver n'est pas une famille. C'est une solution — un corps long et mou pour se pousser dans le sédiment — trouvée séparément par quatre branches différentes du règne animal. Trois d'entre eux, ici, cachent entièrement le corps dans un tube et déploient une couronne si fine qu'on l'a longtemps prise pour une fleur.",
+      "ending": "Ainsi s'achève la mer. Il reste une page, et pas un seul de ses animaux n'y est jamais allé."
+    },
+    "never-went-to-sea": {
+      "panel": "Dix des modèles de cette collection n'ont jamais vu l'eau salée : des limaces de jardin, un escargot de Bourgogne ouvert pour montrer ses organes, une sangsue d'étang. Les Blaschka fournissaient les salles de cours autant que les musées, et une salle de cours avait autant besoin de l'animal du potager que de celui de la baie de Naples.",
+      "ending": "Deux hommes, dans une ville sans mer, ont bâti un océan avec des planches gravées, des lettres et des animaux expédiés vivants. Ces dix sont les seuls qu'ils auraient pu attraper en sortant de chez eux."
+    }
+  }
+}

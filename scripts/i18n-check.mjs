@@ -67,7 +67,8 @@ for (const [tag, expect] of [
   ['zh-Hant-TW', 'zh-Hant'],
   ['en-NZ', 'en'],
   ['ar-EG', 'ar'],
-  ['de-CH', 'en'], // no German pack yet: falls through to English rather than guessing
+  ['de-CH', 'de'],
+  ['pt-BR', 'en'], // no Portuguese pack: falls through rather than guessing
 ]) {
   await send('Network.enable')
   await send('Network.setUserAgentOverride', { userAgent: '', acceptLanguage: tag })

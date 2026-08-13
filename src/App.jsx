@@ -212,11 +212,7 @@ function Home({ go }) {
           {t('ui.search')} →
         </a>
       </nav>
-      <p className="foot">
-        Prototype. Object count is what the collection record holds, not a published total — the published figures
-        disagree. Times are computed at build time from the writing, at 150 words a minute, and are not asserted. Most
-        object entries are drafts written from general natural history and are marked as such where they appear.
-      </p>
+      <Translated className="foot" r={tr('ui.prototypeNote')} />
     </main>
   )
 }
