@@ -21,6 +21,10 @@ const BY_SLUG = new Map(GROUPS.map((g) => [g.slug, g]))
 function parse(pathname) {
   const path = decodeURIComponent(pathname).replace(/\/+$/, '') || '/'
   if (path === '/') return { view: 'home' }
+  if (path === '/all') return { view: 'all' }
+  if (path === '/search') return { view: 'search' }
+  const layer = index.layers.find((l) => path === `/${l.slug}`)
+  if (layer) return { view: 'layer', slug: layer.slug }
   const g = path.match(/^\/g\/([^/]+)$/)
   if (g) return BY_SLUG.has(g[1]) ? { view: 'group', slug: g[1] } : { view: 'missing' }
   const o = path.match(/^\/o\/([^/]+)$/)
@@ -125,6 +129,14 @@ function Home({ go }) {
           </li>
         ))}
       </ol>
+      <nav className="home-secondary">
+        <a href="/all" onClick={go('/all')}>
+          Every object →
+        </a>
+        <a href="/search" onClick={go('/search')}>
+          Search →
+        </a>
+      </nav>
       <p className="foot">
         Prototype. Object count is what the collection record holds, not a published total — the published figures
         disagree. Times are computed at build time from the writing, at 150 words a minute, and are not asserted. Most
@@ -272,6 +284,16 @@ function GroupPage({ route, go }) {
           ))}
 
           {data.ending && <p className="group-ending">{data.ending}</p>}
+
+          {/* §10: layers 3–5 are reached from the end of a group page, as named continuations —
+              not repeated under every object, and never a generic "more". */}
+          <nav className="continuations">
+            {index.layers.map((l) => (
+              <a key={l.slug} href={`/${l.slug}`} onClick={go(`/${l.slug}`)}>
+                {l.title}
+              </a>
+            ))}
+          </nav>
         </>
       ) : (
         <p className="loading">Loading the objects…</p>
@@ -290,6 +312,181 @@ function GroupPage({ route, go }) {
             {next.title} →
           </a>
         )}
+      </nav>
+    </main>
+  )
+}
+
+// ------------------------------------------------------------------ everything, and finding things
+
+// §9 keeps the full grid as a secondary route rather than the front door: it rescues browsing by eye
+// and the completionist, and it costs one page. Its chunk is only fetched when someone asks for it.
+function AllPage({ go }) {
+  const [data, setData] = useState(null)
+  useEffect(() => {
+    document.title = 'Every object — the Blaschka collection'
+    scrollTo(0, 0)
+    loadChunk('all')?.then(setData)
+  }, [])
+
+  return (
+    <main className="home">
+      <header className="home-head">
+        <a className="back back-dark" href="/" onClick={go('/')}>
+          ← Collection
+        </a>
+        <h1>Every object</h1>
+        <p>
+          All {data ? data.objects.length : ''} models, in reading order. This is the view the eleven pages replaced —
+          kept because nothing else lets you choose by eye.
+        </p>
+      </header>
+      {data ? (
+        <ol className="grid grid-dense">
+          {data.objects.map((o) => (
+            <li key={o.accession} className="tile">
+              <a href={`/o/${o.accession}`} onClick={go(`/o/${o.accession}`)}>
+                <div className="tile-well">
+                  <img className="tile-blur" src={o.placeholder} alt="" aria-hidden="true" />
+                  <img className="tile-img" src={o.url} alt="" loading="lazy" decoding="async" />
+                </div>
+                <div className="tile-text">
+                  <h2 className="tile-small">{o.name}</h2>
+                  <p>{o.accession}</p>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ol>
+      ) : (
+        <p className="loading loading-dark">Loading every object…</p>
+      )}
+    </main>
+  )
+}
+
+// §6: grouping by appearance spreads Cnidaria across four pages and Mollusca across three, so there
+// is no page for "all the jellyfish-type things". The spec says that has to be bought back with
+// search that works across pages, and budgeted as part of accepting the grouping.
+function SearchPage({ go }) {
+  const [data, setData] = useState(null)
+  const [q, setQ] = useState('')
+  useEffect(() => {
+    document.title = 'Search — the Blaschka collection'
+    scrollTo(0, 0)
+    loadChunk('search')?.then(setData)
+  }, [])
+
+  const term = q.trim().toLowerCase()
+  const hits = !term
+    ? []
+    : (data?.objects ?? []).filter(
+        (o) =>
+          o.accession.toLowerCase().includes(term) ||
+          (o.name && o.name.toLowerCase().includes(term)) ||
+          o.title.toLowerCase().includes(term) ||
+          o.group.toLowerCase().includes(term)
+      )
+
+  return (
+    <main className="reading">
+      <a className="back" href="/" onClick={go('/')}>
+        ← Collection
+      </a>
+      <h1 className="group-title">Search</h1>
+      <p className="group-cost">
+        Across all eleven pages. Try a name, a scientific name, or an accession number.
+      </p>
+      <input
+        className="search-input"
+        type="search"
+        value={q}
+        onChange={(e) => setQ(e.target.value)}
+        placeholder="jellyfish, Physalia, 1884.137.33"
+        autoFocus
+        aria-label="Search the collection"
+      />
+      {term && (
+        <p className="search-count">
+          {hits.length === 0 ? 'Nothing matches that.' : `${hits.length} of ${data.objects.length}`}
+        </p>
+      )}
+      <ol className="search-results">
+        {hits.map((o) => (
+          <li key={o.accession}>
+            <a href={`/o/${o.accession}`} onClick={go(`/o/${o.accession}`)}>
+              <strong>{o.name ?? o.title}</strong>
+              {o.name && <span className="search-latin">{o.title}</span>}
+              <span className="search-where">
+                {o.accession} · {o.group}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </main>
+  )
+}
+
+// ------------------------------------------------------------------ layers 3–5
+// Written once, reached from any object at the point they become relevant, never duplicated onto an
+// object page (§6).
+
+function LayerPage({ route, go }) {
+  const [data, setData] = useState(null)
+  useEffect(() => {
+    scrollTo(0, 0)
+    loadChunk('layers')?.then(setData)
+  }, [route.slug])
+
+  const layer = data?.layers[route.slug]
+  useEffect(() => {
+    if (layer) document.title = `${layer.title} — the Blaschka collection`
+  }, [layer])
+
+  const meta = index.layers.find((l) => l.slug === route.slug)
+
+  return (
+    <main className="reading">
+      <a className="back" href="/" onClick={go('/')}>
+        ← Collection
+      </a>
+      <h1 className="group-title">{meta?.title}</h1>
+      {layer ? (
+        <>
+          <p className="group-panel">{layer.standfirst}</p>
+          {layer.segments.map((s) => (
+            <section key={s.id} className="layer-section">
+              <h2>{s.heading}</h2>
+              {s.text.split('\n\n').map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </section>
+          ))}
+          <div className="layer-sources">
+            <h2>Sources</h2>
+            <ul>
+              {layer.sources.map((s) => (
+                <li key={s.url}>
+                  <a href={s.url} target="_blank" rel="noreferrer">
+                    {s.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </>
+      ) : (
+        <p className="loading">Loading…</p>
+      )}
+      <nav className="group-nav layer-nav">
+        {index.layers
+          .filter((l) => l.slug !== route.slug)
+          .map((l) => (
+            <a key={l.slug} href={`/${l.slug}`} onClick={go(`/${l.slug}`)}>
+              {l.title} →
+            </a>
+          ))}
       </nav>
     </main>
   )
@@ -319,5 +516,8 @@ export default function App() {
   const [route, go] = useRoute()
   if (route.view === 'home') return <Home go={go} />
   if (route.view === 'group') return <GroupPage route={route} go={go} />
+  if (route.view === 'all') return <AllPage go={go} />
+  if (route.view === 'search') return <SearchPage go={go} />
+  if (route.view === 'layer') return <LayerPage route={route} go={go} />
   return <Missing route={route} go={go} />
 }

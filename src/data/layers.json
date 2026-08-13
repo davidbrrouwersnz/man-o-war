@@ -1,0 +1,124 @@
+{
+  "note": "Layers 3-5 (BUILD-SPEC-v2.md §6): the making, the collection, the evidence. Written ONCE and reached from any object, never duplicated onto object pages. Sourced from Shaw et al. 2017 and the Museum's own Blaschka page, both cited on the page itself. Same read-and-heard standard as the object stories.",
+  "order": ["how-it-was-made", "how-it-got-here", "how-we-know"],
+  "layers": {
+    "how-it-was-made": {
+      "title": "How it was made",
+      "standfirst": "Why an entire museum collection is made of glass, and how two men in Dresden did it.",
+      "segments": [
+        {
+          "id": "the-problem",
+          "heading": "The problem glass solved",
+          "text": "A museum of the 1880s could keep almost anything. A bird could be skinned. A beetle could be pinned. A fish could go into a jar of alcohol and stay recognisable for a century.\n\nA jellyfish could not. Put a soft-bodied sea animal into preserving fluid and it loses its colour within days and its shape soon after. What is left in the jar is a pale collapsed thing that teaches nobody anything.\n\nSo an entire section of the animal kingdom was missing from museums, and it was missing everywhere, at exactly the moment that marine biology was becoming interesting. That gap is what the Blaschkas filled."
+        },
+        {
+          "id": "the-method",
+          "heading": "Worked cool, not hot",
+          "text": "Leopold and Rudolf Blaschka worked mostly at low temperatures, softening rod and tube over a flame and shaping it with hand tools rather than blowing it hot.\n\nWorking cool is slower, and it is the reason the detail survives. It let them draw glass out into threads, bend it, and build a form up piece by piece rather than in one breath.\n\nThey built in layers, and some of those layers are thinner than an eggshell. That is how a model can be transparent and still show organs inside it, which is the single thing no other material could do."
+        },
+        {
+          "id": "colour",
+          "heading": "Three ways to add colour",
+          "text": "There is no single Blaschka technique for colour. They used at least three, chosen for the job.\n\nSome models are painted. Some are enamelled, with the colour fired into the surface. And some use coloured glass itself, so the colour is inside the material and cannot wear away.\n\nOn many objects the colour sits behind clear glass rather than on top of it. That is why these models still look as they did in 1883, and why handling has cost them so little."
+        },
+        {
+          "id": "mixed-media",
+          "heading": "When glass was not the answer",
+          "text": "The Blaschkas were not sentimental about their material. Where something real would do the job better, they used something real.\n\nA snail's shell keeps perfectly well on its own. It is hard, it does not rot, and modelling it would be effort spent on the one part that needed no help. So on the Roman snail in this collection the body is glass and the shell is an actual shell.\n\nOn a tube-dwelling worm they went further and coated the model in sand, because the animal builds its tube out of sand and no glass imitation would read as truthfully."
+        },
+        {
+          "id": "accuracy",
+          "heading": "Where the accuracy came from",
+          "text": "The models are accurate because the Blaschkas were not working from imagination. They worked from the technical drawings of leading biologists, and from living animals.\n\nAnton Dohrn, who ran the marine station at Naples, shipped live invertebrates to Dresden. That is the link that makes the whole thing possible: a landlocked city, a tank of living Mediterranean animals, and two people who could look at one and make it in glass.\n\nBy 1878 they offered 630 different models. The range eventually passed 700."
+        }
+      ],
+      "sources": [
+        { "text": "Shaw MD, Szczepanski JZ, Murray SF, Hodge S, Vink CJ. 2017. Ideas made glass: Blaschka glass models at Canterbury Museum. Records of the Canterbury Museum 31: 5–84.", "url": "https://cms.canterburymuseum.com/assets/Ideas-made-glass.pdf" },
+        { "text": "Le Grice R. The Blaschka Collection. Canterbury Museum.", "url": "https://www.canterburymuseum.com/explore/collections/the-blaschka-collection" }
+      ]
+    },
+
+    "how-it-got-here": {
+      "title": "How it got here",
+      "standfirst": "An order placed in Dresden in 1882, and what happened to it after it arrived.",
+      "segments": [
+        {
+          "id": "the-gap",
+          "heading": "What a museum wanted in 1880",
+          "text": "A museum of this period was meant to be encyclopaedic. The idea was that a visitor who saw a wide enough range of things could draw their own conclusions about the natural world, so the aim was coverage.\n\nCanterbury Museum's founding director, Julius von Haast, worked to exactly that model. He collected local material and foreign material, and he believed the foreign and the rare would raise the Museum's standing and its usefulness.\n\nMeasured by how many people came through the doors, Christchurch agreed with him."
+        },
+        {
+          "id": "haast",
+          "heading": "The man who ordered them",
+          "text": "Haast was not a trained zoologist. He was, however, extremely well connected and well informed. He corresponded with Charles Darwin, with the botanist Joseph Hooker, and with Ernst Haeckel, whose ideas about evolution were reshaping the subject.\n\nHis letters show someone following fine zoological detail closely.\n\nSo when he set out to fill the gap where the soft-bodied animals should have been, he knew what he was buying and why it mattered."
+        },
+        {
+          "id": "otago-first",
+          "heading": "Otago got there first",
+          "text": "The idea did not start in Christchurch. Frederick Wollaston Hutton, then curator at the Otago University Museum, had already ordered Blaschka models, and they were on display when that museum opened in 1877.\n\nCanterbury's purchase was prompted by that one.\n\nHaast's first thought was simply to duplicate Hutton's order. Leopold Blaschka talked him out of it, on straightforward grounds: he could not remember what Hutton had ordered."
+        },
+        {
+          "id": "the-order",
+          "heading": "1879, 1882, 1883",
+          "text": "The idea was first raised in 1879. The order was not placed until 1882. The models did not arrive until October 1883.\n\nWhat Haast finally ordered was larger than Otago's and substantially different in what it covered.\n\nAnd there is a gap in the record that cannot be closed: the list of what he ordered no longer survives. What the Museum holds is the shipment, not the order."
+        },
+        {
+          "id": "the-gifts",
+          "heading": "Four of them were free",
+          "text": "In a later letter Leopold mentioned that he had substituted a few models, and had added some worms and corals at no charge. They were new work, due to appear in the Blaschkas' next catalogue.\n\nFour objects in this collection are those free additions. Three are enlarged heads of marine worms. The fourth is a single soft coral polyp.\n\nThey were samples. A maker sending a customer the new range."
+        },
+        {
+          "id": "since",
+          "heading": "What happened after",
+          "text": "The models went on show in the Technological Room, presented as industrial art applied to science rather than as zoology. A Christchurch newspaper, the Press, told its readers in October 1883 that the Portuguese man o' war appeared in its true colours and resembled nature so closely as to be deceptive.\n\nThat framing did not last. Within two years the models were being shown alongside preserved specimens, and by 1895 the Technological Room had been taken apart and the models placed among the zoological displays, filed by what they depicted rather than by how they were made.\n\nToday one of them is on display. The rest are in storage."
+        }
+      ],
+      "sources": [
+        { "text": "Shaw MD, Szczepanski JZ, Murray SF, Hodge S, Vink CJ. 2017. Ideas made glass: Blaschka glass models at Canterbury Museum. Records of the Canterbury Museum 31: 5–84.", "url": "https://cms.canterburymuseum.com/assets/Ideas-made-glass.pdf" }
+      ]
+    },
+
+    "how-we-know": {
+      "title": "How we know",
+      "standfirst": "Where the facts on these pages come from, and the places the sources disagree.",
+      "segments": [
+        {
+          "id": "two-voices",
+          "heading": "Two kinds of sentence",
+          "text": "There are two sorts of writing in this app and they are not equally certain.\n\nOne is the Museum's own record of what it holds: an accession number, a set of measurements, a physical description written by a cataloguer. That is evidence.\n\nThe other is interpretation, written to explain what you are looking at. Twelve of the object entries are drawn from writing the Museum has published. The rest are drafts, written from general natural history, and every one of them says so where it appears."
+        },
+        {
+          "id": "the-count",
+          "heading": "Nobody agrees how many there are",
+          "text": "The published figures for this collection do not match, and the disagreement is not a mistake.\n\nThe research paper on the collection counts 133, working from the Blaschkas' own 1878 catalogue. The Museum's database returns 127 or 128, depending on how you ask. An illustrated catalogue documents 122.\n\nThey are counting different things. A single accession number can cover a set of fourteen models on one board, and a model can be catalogued as one object or several. This app shows what the collection record holds, and does not print a total."
+        },
+        {
+          "id": "the-query",
+          "heading": "One model the database will not return",
+          "text": "There is a specific and checkable version of that problem.\n\nAsk the Museum's collection database for everything in the Blaschka collection and you get 127 records. Ask instead for everything made by Leopold Blaschka and you get 128.\n\nThe difference is one object: a developmental series of a marine worm, accession 1884.137.110. Its record is complete except for one field. The field naming its collection is empty, so a search of that collection cannot find it. It is in the database, it is in the published literature, and it does not come back when you ask."
+        },
+        {
+          "id": "the-names",
+          "heading": "The names have moved",
+          "text": "The scientific names on these records were correct when they were written down in the 1880s. Most of them are not the accepted names now. Checked against the current international register, roughly a third still stand.\n\nThat is not unusual and it is not a fault in this collection. Every Blaschka collection in the world has the same property, and the published figure for the corpus as a whole is close to Canterbury's.\n\nSo the catalogue's name stays, because it is what the record says. Where a modern name differs, the difference belongs beside it rather than in place of it."
+        },
+        {
+          "id": "blaschka-numbers",
+          "heading": "The number that is not in the database",
+          "text": "The Blaschkas gave every model in their catalogue a number, and those numbers are how Blaschka collections around the world are compared with one another.\n\nThat number is not in the Museum's database. What the database holds is an internal series number, which looks similar and is not the same thing.\n\nIt is, however, in print. The research paper lists the Blaschka number against the accession number in its plate captions, and 117 of the 128 objects here can be matched that way. The crosswalk everyone assumed would have to be built already exists."
+        },
+        {
+          "id": "gaps",
+          "heading": "What is missing",
+          "text": "Some things simply are not known.\n\nThe list of what Haast ordered has not survived. Nine of the records carry no rights statement at all, and the man o' war is one of them. One object is a broken fragment of a model nobody has identified, and one is named only by two English words on an old label.\n\nThose are recorded here as gaps rather than smoothed over, because a collection that states what it does not know is easier to trust about what it does."
+        }
+      ],
+      "sources": [
+        { "text": "Canterbury Museum collection record 1884.137.33", "url": "https://collection.canterburymuseum.com/objects/glass-model-invertebrate-physalia-pelagica" },
+        { "text": "Le Grice R. The Blaschka Collection. Canterbury Museum.", "url": "https://www.canterburymuseum.com/explore/collections/the-blaschka-collection" },
+        { "text": "Shaw MD, Szczepanski JZ, Murray SF, Hodge S, Vink CJ. 2017. Ideas made glass: Blaschka glass models at Canterbury Museum. Records of the Canterbury Museum 31: 5–84.", "url": "https://cms.canterburymuseum.com/assets/Ideas-made-glass.pdf" },
+        { "text": "World Register of Marine Species (WoRMS)", "url": "https://www.marinespecies.org/" }
+      ]
+    }
+  }
+}
