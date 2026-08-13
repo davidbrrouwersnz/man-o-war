@@ -239,10 +239,52 @@ Asked directly whether the sources exist to write 128 stories. They do not. Meas
 | Shaw et al. 2017, *Ideas made glass* (80pp) | **0 objects.** ~9,200 words of collection history, plus a plate appendix |
 | Collection record `brief_desc` | 128 objects, median 37 words — a cataloguer's physical description, which §6 forbids as a story |
 
-**So 9% of the collection has a story that can be written from Museum copy, and 91% does not.** The
-twelve are written and shipped. The other 116 need either commissioned writing or paraphrase from
-third-party natural-history sources, which is a different provenance and should be a decision rather
-than a default.
+**So 9% of the collection has a story that can be written from Museum copy, and 91% does not.**
+
+#### All 128 are now written, in two provenances that never blur
+
+Instructed to write the remaining 116 from third-party natural history, and to write in the Museum's
+register — an explicit override of §6's "we do not write in the Museum's voice", recorded here
+because it reverses a settled point.
+
+The two bodies of writing live in **two files**, not one, so provenance is structural rather than a
+field somebody can forget to check:
+
+| File | Objects | Provenance |
+|---|---|---|
+| `stories.json` | 12 | Paraphrased from the Museum's own published writing |
+| `stories-drafted.json` | 116 | Written from general natural history. **Unverified.** |
+
+Every drafted entry carries a visible line in the interface saying it is a draft that no curator has
+reviewed. **The seam §6 asks for is between our writing and the Museum's, and this keeps it.**
+
+Each story is two segments. **The first describes the object and is drawn from the collection
+record's own physical description**, so it is checkable against the manifest without any outside
+source. The second is natural history, and that is the half that needs review.
+
+Five build assertions now bind the writing to the data: every story maps to a real object, no object
+is written twice, **every object has a story** (§6's commitment, enforced), every segment is
+complete, and the counts are true. **Eighteen assertions pass.**
+
+#### The realistic length of a story is ~100 words, not 231
+
+Written to what the sources actually support, with no padding:
+
+| | Words |
+|---|---|
+| Shortest | 84 |
+| **Median** | **101** |
+| Longest (the man o' war) | 191 |
+| Whole collection | **13,244 — 88 minutes** |
+
+**§6's 231-word benchmark is 2.3× what the evidence sustains**, and it was set from a sample of one.
+The anemone page is now 13 minutes rather than the 30 the benchmark projected, and the whole
+collection is an hour and a half rather than three and a half.
+
+That is the difference between a number derived from one atypical object and a number derived from
+128 real ones. **It also removes the stamina problem question 2 was built to expose** — but only
+because these entries are short, and a curator may well decide several deserve to be longer. The
+honest reading is that the depth cliff moved, not that it went away.
 
 **Shaw et al. is the wrong shape for object stories and the right shape for layers 3–5.** It is
 about Haast's order, Dohrn and the Naples station, Haeckel, and the teaching of evolution — written

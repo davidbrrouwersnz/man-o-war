@@ -213,6 +213,29 @@ check(
   `names.json counts match reality (says ${names.counts.named}/${names.counts.unnamed}, actual ${named.length}/${unnamed.length})`
 )
 
+// §6: the build fails if any object has no story. That is a commitment, not a hope.
+const museumStories = JSON.parse(readFileSync(new URL('../src/data/stories.json', import.meta.url), 'utf8'))
+const draftStories = JSON.parse(readFileSync(new URL('../src/data/stories-drafted.json', import.meta.url), 'utf8'))
+const museumAcc = Object.keys(museumStories.stories)
+const draftAcc = Object.keys(draftStories.stories)
+
+const strayStory = [...museumAcc, ...draftAcc].filter((a) => !manifestAcc.has(a))
+check(strayStory.length === 0, `every story maps to a real object (${strayStory.length} stray: ${strayStory.join(', ')})`)
+
+const overlap = museumAcc.filter((a) => draftAcc.includes(a))
+check(overlap.length === 0, `no object is written twice in both provenances (${overlap.join(', ')})`)
+
+const storyless = [...manifestAcc].filter((a) => !museumAcc.includes(a) && !draftAcc.includes(a))
+check(storyless.length === 0, `every object has a story (${storyless.length} without: ${storyless.join(', ')})`)
+
+const emptySegments = [...museumAcc, ...draftAcc].filter((a) => {
+  const s = museumStories.stories[a] ?? draftStories.stories[a]
+  return !s.segments?.length || s.segments.some((x) => !x.id || !x.heading || !x.text?.trim())
+})
+check(emptySegments.length === 0, `every story has complete segments (${emptySegments.join(', ')})`)
+
+console.log(`  --    ${museumAcc.length} stories from Museum copy, ${draftAcc.length} drafted from third-party sources`)
+
 // ---------------------------------------------------------------- write
 
 const manifest = {

@@ -1,0 +1,839 @@
+{
+  "note": "DRAFT stories for the 116 objects with no Museum-authored writing. Kept separate from stories.json, which holds the twelve paraphrased from the Museum's own published copy, so the two provenances never blur. Written to the read-and-heard standard in BUILD-SPEC-v2.md §6 and in the register of the Museum's own Blaschka page, per an explicit instruction overriding §6's 'we do not write in the Museum's voice'.",
+  "provenance": "The first segment of each story describes the object and is drawn from the collection record's own physical description and measurements, so it is checkable against the manifest. The second segment is natural history about the animal, written from general zoological knowledge rather than from a fetched citation. NOTHING IS FABRICATED, but nothing here is verified either: treat every factual claim in a second segment as unreviewed until a curator or a source check confirms it. Where the catalogue's identification is uncertain the story stays at the level the evidence supports, and says so.",
+  "reviewed": false,
+  "verification": "unverified",
+  "stories": {
+    "1884.137.24": {
+      "headline": "Moon jellyfish, developmental stages",
+      "segments": [
+        { "id": "look", "heading": "Fourteen models, one animal", "text": "This is not one model but fourteen, laid out together on a single board. They run from the earliest stages to the adult bell." },
+        { "id": "the-life-cycle", "heading": "Why it takes fourteen", "text": "A moon jellyfish does not grow the way an animal with a backbone grows. It changes shape completely, more than once.\n\nIt begins as a swimming larva. The larva settles on something solid and becomes a small stalked polyp, fixed in place. The polyp then divides across its length into a stack of discs. One by one the discs peel off and swim away, and each is a young jellyfish. Only then does the familiar bell begin to form.\n\nThat is why a single species needs fourteen models to explain it." }
+      ]
+    },
+    "1884.137.41": {
+      "headline": "Hydrozoan medusa, female",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A clear bell with a single tube hanging from the centre underneath, and eight tentacles curling out from the rim. The tentacles here are supported on wire." },
+        { "id": "the-tube", "heading": "The tube in the middle", "text": "That central tube is the mouth and the stomach together. The animal hangs in open water with the tube trailing below, and food taken by the tentacles is passed up into it.\n\nThis species was modelled twice, once as a female and once as a male. Making a matched pair was a deliberate choice: the Blaschkas were supplying teaching collections, and a lecturer needed to show that the difference existed at all." }
+      ]
+    },
+    "1884.137.42": {
+      "headline": "Hydrozoan medusa, male",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A bell in two layers, with a single curved tube hanging beneath it. This is the male of the pair." },
+        { "id": "the-pair", "heading": "One of a pair", "text": "The Museum holds the female of this species as well, modelled separately.\n\nIn animals like this one the sexes are not told apart by size or shape. The difference is internal, in the reproductive tissue carried inside the bell. A model can show it because glass can be clear, which is the whole argument for making these things out of glass rather than wax or plaster." }
+      ]
+    },
+    "1884.137.108": {
+      "headline": "Hydrozoan medusa, three stages of growth",
+      "segments": [
+        { "id": "look", "heading": "Three models, one sequence", "text": "Three separate models, meant to be read in order. The first is a small round bell with six tentacles and little else. By the last, the bell is fuller and the animal is recognisably the adult." },
+        { "id": "why-stages", "heading": "Growing by changing", "text": "A young medusa is not simply a smaller version of the adult. Tentacles are added as it grows, and the number of them is one of the things a zoologist counts.\n\nSets like this were made because a preserved specimen cannot show a sequence. Put a jellyfish in alcohol and it collapses. Three models on one stand do the job that three jars could not." }
+      ]
+    },
+    "1884.137.43": {
+      "headline": "Crystal jelly",
+      "segments": [
+        { "id": "look", "heading": "Hundreds of tentacles", "text": "A shallow blue-tinted bell with a very fine fringe running all the way around its rim. The tentacles are far too many to count, and are carried here on wire." },
+        { "id": "the-glow", "heading": "The jellyfish that changed biology", "text": "This animal belongs to a group of jellyfish that make their own light, in a band around the edge of the bell.\n\nOne member of the group turned out to matter far beyond the sea. The protein that produces its glow was isolated in the twentieth century, and biologists learned to attach it to other things they wanted to watch. It made living cells visible from the inside, and it is now used in laboratories everywhere." }
+      ]
+    },
+    "1884.137.107": {
+      "headline": "Hydroid, three stages of development",
+      "segments": [
+        { "id": "look", "heading": "Three models, two animals", "text": "Three clear models on one mount. One of them is a small jellyfish-like bell. The others are not shaped like that at all." },
+        { "id": "two-lives", "heading": "The same animal, twice", "text": "Many small sea animals live two entirely different lives in one lifetime.\n\nFor most of the year this one is a colony, fixed to a rock or a piece of seaweed, branching like a plant and catching food where it stands. Then it releases tiny swimming bells, which drift away and reproduce.\n\nThe fixed colony and the swimming bell were once described as separate species. They are the same animal at two points in its life, and a set like this is how that gets taught." }
+      ]
+    },
+    "1884.137.113": {
+      "headline": "Oceania phosphorica",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A small bell in two layers, fringed with short glass tentacles. The inner layer is worked separately from the outer one, which is a thing glass can do and almost no other material can." },
+        { "id": "the-name", "heading": "What the name claims", "text": "The second half of this animal's scientific name refers to light. Naturalists of the period gave that name to small jellyfish seen glowing at night in the Mediterranean.\n\nMaking your own light is common in the open sea and it is not rare among animals like this one. The name is a description of what someone saw from a boat, and it has stayed attached ever since." }
+      ]
+    },
+    "1884.137.72": {
+      "headline": "Stalked jellyfish",
+      "segments": [
+        { "id": "look", "heading": "A jellyfish that stays put", "text": "Green glass, with a flat base carrying two trumpet-shaped bodies. Each opens out into a ring of short arms at the top." },
+        { "id": "upside-down", "heading": "Upside down and fixed down", "text": "Almost everything called a jellyfish swims, or at least drifts. This one does neither.\n\nIt lives attached by a stalk to seaweed or rock in cold shallow water, holding its open end upward and waiting. Turn an ordinary jellyfish over and fix it to a stone by the top of its bell, and you have roughly this animal.\n\nThey are small, easy to overlook, and can move slowly to a new spot if they need to." }
+      ]
+    },
+
+    "1884.137.40": {
+      "headline": "Hula-skirt siphonophore, developmental stages",
+      "segments": [
+        { "id": "look", "heading": "Six models, one colony", "text": "Six clear models on a white base, showing how the colony assembles itself." },
+        { "id": "building-a-colony", "heading": "Built one part at a time", "text": "A siphonophore does not hatch complete. It starts as a single individual, and everything else is added by budding — new parts grown from the original and left attached.\n\nEach new part is shaped for one job. The result is a colony that behaves so much like a single animal that it was described as one for a long time.\n\nA sequence like this exists because the finished animal makes no sense on its own. You have to see it being put together." }
+      ]
+    },
+    "1884.137.36": {
+      "headline": "Stephanomia canariensis",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "An elaborate clear model with nine floating parts along a central stem, and long trailing threads hanging below them." },
+        { "id": "a-drifting-net", "heading": "A net that drifts", "text": "Animals of this kind can be extraordinarily long, and almost all of that length is fishing line.\n\nThe swimming parts sit at the top. Below them the stem carries feeding parts and stinging threads, spaced out along its length like a curtain hanging in the water. The colony drifts, and anything that swims into the curtain is caught.\n\nThey are so fragile that a net brings up fragments rather than an animal. That is precisely why they were worth modelling in glass." }
+      ]
+    },
+    "1884.137.114": {
+      "headline": "Diphyes sieboldii",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A long tubular bell in two layers, clear throughout, mounted on a fine wire support." },
+        { "id": "swimming-bells", "heading": "Two engines, one colony", "text": "This is the swimming end of a drifting colony. Bells like this one contract to push water out behind them, and the whole colony moves.\n\nIn this group there are two such bells, arranged one behind the other, and they beat together. The rest of the colony trails behind as a long chain of feeding and reproductive parts.\n\nThe chain breaks easily. A model shows the arrangement that a collecting jar almost never preserves." }
+      ]
+    },
+    "1884.137.54": {
+      "headline": "By-the-wind sailor",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A flat oval disc with a short upright crest standing along the top of it, and a fringe of short tentacles beneath." },
+        { "id": "the-sail", "heading": "It cannot steer", "text": "The crest on top is a sail, and it is set at an angle across the body rather than straight along it.\n\nThat angle decides where the animal goes. Some are built with the sail leaning one way and some the other, so a single population is pushed apart by the same wind, and only half of any group is ever driven ashore.\n\nThey have no way of correcting course. When the wind holds onshore for long enough they arrive on beaches in their millions." }
+      ]
+    },
+    "1884.137.111": {
+      "headline": "By-the-wind sailor, two stages",
+      "segments": [
+        { "id": "look", "heading": "Two stages", "text": "Two models. The first is a clear disc with blue lines painted on and a sail standing above it. The second shows a different point in the animal's life." },
+        { "id": "the-other-half", "heading": "The half nobody sees", "text": "The sailing disc is only one part of the story. It releases tiny medusae, far too small to notice, which swim down away from the surface and reproduce there.\n\nWhat comes back up eventually grows into another sailing disc.\n\nSo the animal that washes up on a beach in its thousands is one stage of something that spends the rest of its life somewhere nobody is looking." }
+      ]
+    },
+    "1884.137.59": {
+      "headline": "Blue button",
+      "identification": "The collection record gives a genus only, with no species. The story stays at the level the record supports.",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A flat round float with a fringe of branched tentacles radiating out all the way around it, like the rays of a drawn sun." },
+        { "id": "not-one-animal", "heading": "A colony, not a jellyfish", "text": "This looks like a very small jellyfish and it is not one. The central disc is a float, and everything around the edge is a separate individual, all of them joined.\n\nIt drifts at the surface of warm seas and has no control over where it goes. It arrives on New Zealand beaches with the man o' war and the by-the-wind sailor, all three blown in by the same weather.\n\nThe blue is real, and it is the same blue as the others." }
+      ]
+    },
+
+    "1884.137.52": {
+      "headline": "Comb jelly",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A clear oval body, open at one end, with fine lines running from end to end along the outside." },
+        { "id": "the-combs", "heading": "Rows of paddles", "text": "Those lines are not decoration. Each one is a row of tiny plates, and each plate is a bundle of fused hairs that beats like an oar.\n\nEight rows run down the body and they beat in waves. This is the largest animal in the world that moves itself this way.\n\nIn life the rows split light as they beat, and colour runs along the body in bands. The animal is not producing that colour. It is bending daylight." }
+      ]
+    },
+    "1884.137.53": {
+      "headline": "Sea gooseberry",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A spherical clear body about the size of a small fruit, with rows of fine plates running over it and two long trailing threads." },
+        { "id": "sticky-not-stinging", "heading": "Sticky, not stinging", "text": "A jellyfish stings. This animal cannot. It catches things a completely different way.\n\nThe two long threads are covered in cells that produce glue. Small prey touches a thread and sticks to it, and the thread is then drawn back in towards the mouth.\n\nIt is not related to jellyfish at all, despite looking as though it should be. Comb jellies are a separate branch of the animal kingdom, and they arrived at transparency independently." }
+      ]
+    },
+    "1884.137.127": {
+      "headline": "Venus's girdle",
+      "segments": [
+        { "id": "look", "heading": "A ribbon, not a blob", "text": "A long flat ribbon of glass in two layers, with a fine trailing edge. Nothing else in this collection is shaped like it." },
+        { "id": "the-ribbon", "heading": "The shape is the point", "text": "This is a comb jelly that has been flattened and drawn out sideways until it is a band. A large one can be more than a metre long and only a few centimetres deep.\n\nIt swims by rippling the whole length of the ribbon, and it is nearly invisible while doing it.\n\nThe name is old and it stuck. It was named for a belt worn by a goddess, which tells you what nineteenth-century naturalists thought when they first saw one in the water." }
+      ]
+    },
+    "1884.137.78": {
+      "headline": "Sea angel",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A clear body with the internal organs painted in red, and a pair of small wings where a snail's foot would be." },
+        { "id": "no-shell", "heading": "A snail that gave up the shell", "text": "This is a sea snail. It has no shell, it never touches the bottom, and it swims by flapping.\n\nIt lives in cold water, including under sea ice, and in some seas it is abundant enough to matter to everything above it in the food chain.\n\nWhat it eats is one thing almost exclusively: the shelled swimming snails called sea butterflies. It is a specialist, and it hunts them with a set of hooks it can push out of its head." }
+      ]
+    },
+    "1884.137.95": {
+      "headline": "Sea butterfly, developmental stages",
+      "segments": [
+        { "id": "look", "heading": "Nine models", "text": "Nine translucent models on one mount, showing the animal at nine points in its development." },
+        { "id": "swimming-snails", "heading": "Snails that fly", "text": "These are sea snails that never land. The foot, which in a garden snail is the thing it crawls on, has become a pair of wings, and the animal beats them to stay up.\n\nMany of them build a shell so thin it is almost glass, which is why a glass model suits them so well.\n\nThey are eaten in enormous numbers by fish, whales and seabirds, and they are among the first animals to suffer as seawater chemistry changes, because a thin shell is a fragile thing to depend on." }
+      ]
+    },
+    "1884.137.99": {
+      "headline": "Sea butterfly",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A clear model of the adult, marked with brown dots." },
+        { "id": "the-net", "heading": "Feeding on a web", "text": "A sea butterfly does not chase what it eats.\n\nMany of them hang still in the water and spin a sheet of mucus, sometimes far wider than the animal itself. Small drifting food sticks to the sheet. When it has collected enough, the animal eats the sheet and everything caught in it, then makes another.\n\nIt is a fishing net that has to be swallowed each time it is used." }
+      ]
+    },
+    "1884.137.103": {
+      "headline": "Sea angel, enlarged model",
+      "segments": [
+        { "id": "look", "heading": "Bigger than life", "text": "This model is deliberately larger than the animal, with a pair of wing-like projections and the internal parts picked out in colour." },
+        { "id": "why-enlarge", "heading": "Why make it bigger", "text": "The living animal is often smaller than a fingernail. At that size nobody in a lecture room can see anything.\n\nSo the model is scaled up. That is a decision with a cost: an enlarged model tells you about structure and lies about size, and it only works if someone says so out loud.\n\nThe Blaschkas made models to be taught from, not just looked at, and this is what that looks like." }
+      ]
+    },
+    "1884.137.14": {
+      "headline": "Glassy nautilus",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A clear body with two fin-shaped projections and a single umbrella-shaped lobe. There is a small shell, and it is nowhere near large enough to hold the animal." },
+        { "id": "upside-down", "heading": "Swimming on its back", "text": "This is a sea snail that swims upside down, with its foot uppermost, using it as a fin.\n\nThe shell has shrunk to a thin cap that covers the gills and nothing else. Almost the whole animal is transparent, so what a predator looking up sees is mostly water.\n\nDespite the name, it is not related to the nautilus. It is a hunter of other floating animals, including jellyfish." }
+      ]
+    },
+
+    "1884.137.47": {
+      "headline": "Salp",
+      "segments": [
+        { "id": "look", "heading": "Three models", "text": "Three glass models together. One shows a single clear barrel; the others show what happens next." },
+        { "id": "two-forms", "heading": "One alone, then a chain", "text": "A salp lives its life in two forms and they do not look alike.\n\nOne form swims alone. It buds off a chain of copies of itself, joined end to end, and that chain swims as one thing. The chain then produces single animals again, and the cycle repeats.\n\nBecause a salp can copy itself this way, a population can grow faster than almost anything else in the sea. When conditions suit them, they arrive in numbers that clog nets." }
+      ]
+    },
+    "1884.137.51": {
+      "headline": "Salp colony",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "Two models. Each individual in them is clear, and each is banded with a set of muscle hoops around the body." },
+        { "id": "jet-propulsion", "heading": "Pumping to move and to eat", "text": "Those hoops are muscles, and they squeeze the barrel to push water through it from one end to the other.\n\nThe same stroke does two jobs at once. It drives the animal forward, and it drags food out of the water through an internal filter of mucus.\n\nEating and swimming are the same action. The animal cannot do one without the other." }
+      ]
+    },
+    "1884.137.66": {
+      "headline": "Pyrosome",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A glass model in two parts, made as a hollow tube closed at one end." },
+        { "id": "the-tube", "heading": "Thousands of animals, one tube", "text": "This is not one animal. It is thousands of small ones set into a shared jelly wall, arranged so that every one of them pumps water inward.\n\nAll that water leaves through the open end, and the whole tube moves slowly in the opposite direction.\n\nThey glow, strongly enough to be seen from a ship at night, and the name records that. A large one can be long enough for a diver to put an arm inside." }
+      ]
+    },
+    "1884.137.79": {
+      "headline": "Doliolum Ehrenbergii-Troschelii",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "Two clear models, each with an inner layer etched in white bands running around the body." },
+        { "id": "the-bands", "heading": "Barrel hoops", "text": "The white bands are muscle, and they encircle the body like the hoops of a barrel. Squeeze them and water is driven straight through.\n\nAnimals of this kind have one of the more complicated life cycles in the sea, passing through several forms that look almost nothing like one another, including a stage that acts as a nurse and carries the next generation along with it.\n\nNaming them was difficult for exactly that reason. Different stages were described as different animals." }
+      ]
+    },
+    "1884.137.80": {
+      "headline": "Appendicularia flagellum",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A clear bulb with a single long tail descending from it. The internal organs are picked out inside." },
+        { "id": "the-house", "heading": "It builds a house and throws it away", "text": "This animal keeps a tail all its life, which most of its relatives lose.\n\nIt also builds a transparent structure around itself out of mucus, with filters set into it. The tail beats, water is drawn through the filters, and food is trapped.\n\nWhen the filters clog, the whole house is abandoned and a new one built, sometimes several times a day. The discarded houses sink, and they carry a great deal of carbon down with them." }
+      ]
+    },
+    "1884.137.4": {
+      "headline": "Sea peach",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "Four yellow bulbous bodies on a green base, their surfaces roughened with crushed glass to give the texture of skin." },
+        { "id": "two-openings", "heading": "In one hole, out the other", "text": "A sea squirt is a bag with two openings and a filter between them. Water goes in one, food is strained out, water leaves by the other. It stays where it is for life.\n\nThe surprise is what it used to be. Every sea squirt begins as a swimming larva shaped like a tadpole, with a stiff rod down its back. That rod is the same structure that became the backbone in animals like us.\n\nWhen the larva settles, it absorbs its own tail and brain." }
+      ]
+    },
+    "1884.137.85": {
+      "headline": "Stalked sea squirt",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A brown body covered in crushed glass for texture, with two openings visible, raised on a green stalk." },
+        { "id": "the-stalk", "heading": "Why stand up", "text": "The stalk lifts the animal clear of the seabed, and that is worth doing. Higher up there is more current, and more current means more water passing through the filter.\n\nThe outer coat is tough, and it is made of a material almost no other animal makes: the same substance plants use to build wood.\n\nIt is one of the odder facts about this group. An animal related, distantly, to us, wrapped in something closer to cellulose." }
+      ]
+    },
+    "1884.137.58": {
+      "headline": "Sea squirts, a cluster",
+      "segments": [
+        { "id": "look", "heading": "Seven, together", "text": "Seven models clustered on a single base, grown against one another the way they would on a rock." },
+        { "id": "living-in-crowds", "heading": "Why they crowd", "text": "Sea squirts settle where other sea squirts already are. A larva that finds its own kind has found somewhere that evidently works.\n\nThe result is that they arrive in sheets and take over hard surfaces quickly. On a harbour wall or a boat hull they can cover everything in a season.\n\nThis is also why several species in this group have travelled the world on shipping, and why some of them are now problems a long way from home." }
+      ]
+    },
+    "1884.137.119": {
+      "headline": "Light-bulb sea squirt",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "Clear bodies on a fine base, with the internal organs picked out in orange inside each one." },
+        { "id": "the-name", "heading": "Where the name comes from", "text": "The body wall is transparent and the organs inside are not. What you see is a bright shape glowing inside a clear case, which is exactly what a filament looks like inside a bulb.\n\nThey grow in clusters joined at the base, sometimes dozens together.\n\nThis is one of the species that has reached New Zealand on the outside of ships. The glass model arrived here in 1883. The living animal took rather longer." }
+      ]
+    },
+    "1884.137.129": {
+      "headline": "Star ascidian",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "Eight bodies attached to a common base, each marked with a black six-pointed asterisk." },
+        { "id": "the-stars", "heading": "Why it looks like stars", "text": "These animals live embedded in a shared jelly mat, and they arrange themselves in rings and stars around a shared opening.\n\nEach animal draws water in through its own hole. All the animals in one star push their used water out through the single opening at the centre.\n\nThe pattern is not decorative. It is a plumbing arrangement, and it is visible from above as flowers scattered over a rock." }
+      ]
+    },
+
+    "1884.137.6": {
+      "headline": "European squid, female",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A grey body with fins running down its sides, eight arms, and two longer tentacles held back behind them." },
+        { "id": "the-strike", "heading": "The two long ones", "text": "The eight arms hold and manipulate. The two long tentacles do something else entirely.\n\nThey are kept coiled and hidden until the moment of the strike, then shot out to full length to seize prey and drag it back within reach of the arms. The whole action takes a fraction of a second.\n\nSquid see well, move fast, and change colour in an instant. Almost everything about them is built around hunting in open water." }
+      ]
+    },
+    "1884.137.38": {
+      "headline": "Common cuttlefish",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A brown body with two long tentacles and eight shorter webbed arms." },
+        { "id": "the-skin", "heading": "A screen for skin", "text": "A cuttlefish can change the colour and the texture of its skin in under a second, using millions of small pigment sacs pulled open and shut by muscle.\n\nIt does this to hide, and it also does it to communicate. A courting male can hold one pattern on the side facing a female and a different pattern on the side facing a rival.\n\nThe strangest part is that cuttlefish appear to be colour-blind, and match colours they cannot see." }
+      ]
+    },
+    "1884.137.17": {
+      "headline": "Hooked squid",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A grey body flecked with dark grey and blue, with two long tentacles held behind eight shorter arms." },
+        { "id": "the-hooks", "heading": "Hooks instead of suckers", "text": "Most squid hold what they catch with rings of suckers. This group has traded some of those suckers for hooks, curved and hard, set along the arms.\n\nA hooked squid does not need to keep suction on a struggling fish. It only needs to close.\n\nThe hooks survive after the animal is gone, and they turn up in the stomachs of whales, which is one of the main ways anyone learns what lives in the deep ocean." }
+      ]
+    },
+    "1884.137.39": {
+      "headline": "Cock-eyed squid",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A red and brown body, two long tentacles ending in bulbs, and six shorter webbed arms." },
+        { "id": "two-eyes", "heading": "Two different eyes", "text": "The name of this group records a real oddity. The two eyes are not a matched pair. One is much larger than the other, and the two point in different directions.\n\nThe large eye looks upward, watching for shapes against the faint light from the surface. The small one looks downward, watching for the flashes made by animals below.\n\nOne animal, running two kinds of vision at once, because in deep water there are two completely different things worth seeing." }
+      ]
+    },
+    "1884.137.67": {
+      "headline": "Dwarf bobtail squid",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A small brown body dotted with black, with a blue patch around the eyes and rounded fins." },
+        { "id": "the-light-organ", "heading": "Wearing a light to hide", "text": "This is a very small squid that hunts at night in shallow water, and it has a problem: on a moonlit night anything below it sees its silhouette.\n\nIts answer is to glow on the underside, matching the light coming down from above so the silhouette disappears.\n\nIt does not make the light itself. It keeps a colony of luminous bacteria in an organ built for the purpose, feeds them, and vents most of them out each morning to start again." }
+      ]
+    },
+    "1884.137.16": {
+      "headline": "Paper nautilus, males",
+      "segments": [
+        { "id": "look", "heading": "Two males", "text": "Two grey models with blue dots. One has seven ordinary arms and one large bulbous one." },
+        { "id": "the-small-one", "heading": "The one that is barely there", "text": "The female argonaut is the animal everyone knows, with her white shell. The male is a fraction of her size and has no shell at all.\n\nThat swollen arm is the point of him. It is loaded with sperm, and it detaches. He leaves it with the female and does not stay.\n\nWhen the first detached arms were found inside females, they were described as parasitic worms. It took years to work out that they were the missing males." }
+      ]
+    },
+
+    "1884.137.7": {
+      "headline": "Bushy-backed sea slug",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A pink flecked body with orange tentacles, and branching outgrowths standing along its back like small trees." },
+        { "id": "the-branches", "heading": "What the branches are for", "text": "Those branching outgrowths do the work that gills do in a fish. A sea slug has no shell to protect a gill chamber, so the gills are simply carried on the outside.\n\nIt is a risk and it buys a great deal. Every branch adds surface, and the whole back of the animal becomes a place to take up oxygen.\n\nThe shape also breaks up the animal's outline against the seaweed it lives on." }
+      ]
+    },
+    "1884.137.88": {
+      "headline": "Doto coronata",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A brown body carrying seven pairs of studded outgrowths along the back, and two pairs of horns at the head." },
+        { "id": "eating-relatives", "heading": "What it eats", "text": "This small sea slug feeds on hydroids — the branching colonies that grow like plants on rocks and weed.\n\nThat is a demanding diet. Hydroids are armed with stinging cells, and eating one means swallowing the weapons intact.\n\nSlugs in this group have gut linings that let those cells through undamaged and store them in the outgrowths along the back. The slug ends up carrying borrowed stings it never made." }
+      ]
+    },
+    "1884.137.89": {
+      "headline": "Aeolis exigua",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A frosted body with rows of finger-like outgrowths along the back, each tipped in blue with red inside." },
+        { "id": "borrowed-weapons", "heading": "Stolen stings", "text": "The red inside each finger is part of the animal's gut, branched out into the outgrowth. The blue tip is the dangerous end.\n\nThis slug eats stinging animals, moves their unfired stinging cells through its own body without setting them off, and parks them at the tips where a predator will meet them first.\n\nIt is one of the more remarkable pieces of theft in the sea, and the colour is a warning that the theft succeeded." }
+      ]
+    },
+    "1884.137.46": {
+      "headline": "Doris formosa",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A broad flat oval body with two horns at the front and a rosette of feathery gills at the back." },
+        { "id": "horns-and-rosette", "heading": "Smelling, and breathing", "text": "The two horns at the front are chemical sensors. They are how the animal finds food and other slugs in water that may be dark or cloudy.\n\nThe rosette at the back is the gill, and it can be pulled down into the body in an instant if something touches it.\n\nSlugs built to this plan feed mostly on sponges, and many of them take their colour, and sometimes their defensive chemistry, directly from the sponge they are eating." }
+      ]
+    },
+    "1884.137.60": {
+      "headline": "Doris pantherina",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A green body marked with brown, built to the same broad flat plan as its relatives." },
+        { "id": "chemistry", "heading": "Why it can afford to be seen", "text": "A slug with no shell that crawls in the open in daylight is either very well hidden or very well defended.\n\nMany in this group are the second. They take unpleasant chemistry out of the sponges they eat, concentrate it in the skin, and advertise it with strong markings.\n\nA predator that tries one and finds it foul learns the pattern. That is the whole basis of the arrangement, and it only works if the pattern is memorable." }
+      ]
+    },
+    "1884.137.116": {
+      "headline": "Plocamophorus imperialis",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A light brown body covered in dark brown dots, with two grey spiral horns at the head and lobes standing out along the sides." },
+        { "id": "the-lobes", "heading": "The lobes along the side", "text": "The lobes running along the flanks are not gills and not decoration. In this group they can be flexed, and the animal uses them to swim in short bursts.\n\nA sea slug that can leave the seabed, even briefly, has an escape route that most of its relatives do not.\n\nSome members of this group also produce light from the tips of those lobes when they are disturbed." }
+      ]
+    },
+    "1884.137.117": {
+      "headline": "Goniodoris verrucosa",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A brown body finely dotted and studded along its length, with a leaf-shaped profile." },
+        { "id": "what-it-eats", "heading": "Grazing on animals", "text": "Sea slugs in this group feed on sea squirts and on the mat-like colonies that encrust rocks and seaweed.\n\nThose colonies look like moss and are not. Each is thousands of small animals in a shared skeleton, and grazing them is closer to eating a hedge than to eating a leaf.\n\nThe studding on the back may make the slug harder to pick out against exactly that surface." }
+      ]
+    },
+    "1884.137.11": {
+      "headline": "Sea hare",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A brown body with four horn-like projections at the front and a fringed edge running along each side." },
+        { "id": "the-ink", "heading": "Ink, and a name", "text": "The four projections at the head are what gave this animal its name. Two of them stand up like a hare's ears.\n\nIt grazes seaweed, and it takes its colour from what it eats. When something threatens it, it releases a cloud of deep purple ink.\n\nThe ink is not only a smokescreen. It appears to interfere with a predator's sense of smell, so the animal is not just hidden but harder to track." }
+      ]
+    },
+    "1884.137.94": {
+      "headline": "Sea hare",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A red-brown body with four horns at the head, heavier and flatter in build than its relatives." },
+        { "id": "the-shell", "heading": "The shell that stayed inside", "text": "There is a shell in this animal. You cannot see it, because it is buried in the flesh of the back.\n\nSea hares are a halfway case. Their relatives the sea slugs lost the shell completely; snails kept it outside. This group carries a thin plate under the skin, doing very little.\n\nThe side flaps can be lifted and flapped, and some sea hares use them to swim short distances." }
+      ]
+    },
+    "1884.137.12": {
+      "headline": "Tethys leporina",
+      "identification": "The catalogue name has more than one modern reading. The story stays with what the model shows.",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A clear model dominated by one feature: a large hood projecting from the front of the animal." },
+        { "id": "the-hood", "heading": "The hood", "text": "That hood is a trap. The animal holds it open above the sand, and closes it over anything small that moves underneath.\n\nIt is a large sea slug, and an odd one. It sheds parts of itself — the outgrowths along its back detach and go on writhing after they are gone, which may buy the animal time to leave.\n\nGlass suits it. Almost the whole animal is translucent." }
+      ]
+    },
+    "1884.137.76": {
+      "headline": "Eastern emerald elysia",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A green and grey body with a fin along each side and two horns at the head. The green is not a coating; it runs through the animal." },
+        { "id": "solar-power", "heading": "The animal that runs on sunlight", "text": "This slug eats algae, and it does not digest all of it. It keeps the parts that do photosynthesis, moves them into the lining of its own gut, and keeps them working.\n\nThose parts spread out through the branching gut until the whole animal is green. Then it sits in the light.\n\nA fed slug can go a long time on very little, powered partly by sunlight through machinery it stole. Nothing else on this page comes close." }
+      ]
+    },
+    "1884.137.87": {
+      "headline": "Phyllobranchus orientalis",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A green body fringed with numerous leaf-shaped outgrowths standing along the back." },
+        { "id": "leaves", "heading": "Built like a plant, on purpose", "text": "The outgrowths are flat and leaf-shaped, and that shape is doing exactly what a leaf's shape does: spreading a thin layer wide to catch light.\n\nThis slug belongs to the same group as the solar-powered one. Its relatives keep working algal parts inside those flat outgrowths.\n\nHow well any given species manages it varies a great deal, and that is still being worked out. Looking the part is not proof of doing it." }
+      ]
+    },
+
+    "1884.137.5": {
+      "headline": "Beadlet anemone",
+      "identification": "The catalogue name is one that modern authorities no longer accept as valid. The story stays with what is safely known.",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A pink glass column on a brown base, with the tentacles drawn up at the top." },
+        { "id": "the-body-plan", "heading": "The whole animal, in one sentence", "text": "An anemone is a stomach with a ring of tentacles on top and a foot underneath. There is very little else to it.\n\nThe tentacles carry stinging cells, each one a coiled thread under pressure that fires when it is touched. Prey is held, stung, and folded down into the opening in the middle, which is both the mouth and the way out.\n\nThis is one of the commonest anemones on a European shore, and out of water it pulls itself into a smooth blob and waits for the tide." }
+      ]
+    },
+    "1884.137.26": {
+      "headline": "Ilanthos scoticus",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A red column with fourteen striped tentacles, mounted on brown papier-mâché." },
+        { "id": "counting", "heading": "Why anyone counts tentacles", "text": "Fourteen is a number worth recording. Anemones are difficult to tell apart, and for a long time the count and arrangement of the tentacles was one of the few reliable ways to do it.\n\nThey are arranged in rings, added in a fixed order as the animal grows, so the number is not arbitrary.\n\nThat is also why a model is useful. A preserved anemone contracts into a lump and the tentacles are the first thing lost." }
+      ]
+    },
+    "1884.137.27": {
+      "headline": "Northern red anemone",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A pink column studded with raised clear bumps, carrying a full crown of tentacles." },
+        { "id": "the-bumps", "heading": "What the bumps do", "text": "The bumps on the column are sticky. Anemones with them use them to hold gravel, shell fragments and sand against the body.\n\nThe result is camouflage and a certain amount of armour, and in shallow water it also shades the animal.\n\nThis is a cold-water species and a large one. It lives on rock, and it can stay in one place for a very long time — anemones of this kind are among the longest-lived animals anyone has kept." }
+      ]
+    },
+    "1884.137.28": {
+      "headline": "Burrowing anemone",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A brown model with the tentacles folded back at one end, mounted on papier-mâché. There is no broad foot." },
+        { "id": "no-foot", "heading": "Built to go down, not to hold on", "text": "Most anemones grip a rock. This one has nothing to grip with, because it lives buried in sand.\n\nThe lower end is a swollen bulb that works as an anchor. The animal drives it down and inflates it, and the only part left above the surface is the ring of tentacles.\n\nWhat looks from above like a small flower lying on the sand is the top of an animal that may be a long way down." }
+      ]
+    },
+    "1884.137.29": {
+      "headline": "Plumose anemone",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A pink column with a fringed outer edge and finer tentacles crowded inside it." },
+        { "id": "very-many", "heading": "A thousand tentacles", "text": "This anemone does not have a countable ring of tentacles. It has hundreds, packed so densely that the crown looks like a feather duster.\n\nThat many fine tentacles are not for wrestling large prey. They are a fine mesh for taking very small food out of moving water, which is why this species does well on piers, wrecks and anywhere the current runs.\n\nIt can also split itself in two, so a single animal becomes a patch of identical copies." }
+      ]
+    },
+    "1884.137.30": {
+      "headline": "Phymanthus loligo",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A green model with feathery tentacles, on a brown and green base." },
+        { "id": "the-green", "heading": "Why so many are green", "text": "Green is a common colour in shallow-water anemones and it is often not the animal's own.\n\nMany of them house single-celled algae in their tissues. The algae photosynthesise and pass sugars to the anemone; the anemone gives them a lit, protected place to sit.\n\nAn anemone with a good crop of them can get a large share of its food from sunlight, and it will position itself in the light accordingly." }
+      ]
+    },
+    "1884.137.34": {
+      "headline": "Jewel anemone",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A pink model with two rows of clear tentacles, each one ending in a small round knob." },
+        { "id": "the-knobs", "heading": "Knobs on the ends", "text": "The knob at the end of each tentacle is packed with stinging cells. Concentrating them at the tip is a different solution from spreading them along the whole tentacle.\n\nThese are small animals and they live in dense sheets on shaded rock, in colours that look artificial — pink, green, orange, all at once.\n\nA sheet is usually one animal repeated. They divide by splitting, so a patch can be a single individual copied hundreds of times." }
+      ]
+    },
+    "1884.137.55": {
+      "headline": "Paractis adhaerens",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A glass anemone with an even ring of tentacles around the top of a smooth column." },
+        { "id": "moving", "heading": "Anemones do move", "text": "An anemone is not fixed in the way a barnacle is fixed. The foot is muscular, and it can release its grip.\n\nThey move slowly — a few centimetres in a day is normal — but they do it, and they will move away from bad light, poor current or an aggressive neighbour.\n\nSome species also fight. Anemones of certain kinds carry separate stinging structures used only against other anemones crowding them, and a boundary between two patches can be a real front line." }
+      ]
+    },
+    "1884.137.56": {
+      "headline": "Snakelocks anemone",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A glass model with a mass of long tentacles that cannot be fully withdrawn into the body." },
+        { "id": "always-out", "heading": "The one that never closes", "text": "Most anemones pull their tentacles in when threatened or when the tide leaves them. This one cannot do it properly, and largely does not try.\n\nSo it stays in bright, shallow, well-lit water, and it depends heavily on the algae living in its tissues. Its tentacles are often green with purple tips.\n\nSmall shrimps and fish live among those tentacles, unharmed, using the sting as protection from everything else." }
+      ]
+    },
+    "1884.137.62": {
+      "headline": "Thalassianthus aster",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A frosted white model, built around a broad disc rather than a tall column." },
+        { "id": "wide-not-tall", "heading": "Spread wide", "text": "Anemones come in two broad shapes, and the shape says what the animal is doing.\n\nA tall narrow column reaches up into current and catches what passes. A broad flat disc is doing something else: presenting the largest possible surface to the light, for the algae inside it.\n\nThe flatter the animal, the more of its living it is likely to be making from sunlight rather than from hunting." }
+      ]
+    },
+    "1884.137.65": {
+      "headline": "Phymactis pustulata",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A yellow-stalked model with clear tentacles, the stalk studded with yellow blobs." },
+        { "id": "blobs", "heading": "Blisters on the column", "text": "The blobs on the column are a feature that runs through several unrelated groups of anemones, and they are not all doing the same job.\n\nIn some they hold sand and shell. In others they are packed with stinging cells, so that the side of the animal is defended as well as the top.\n\nAnything that has to sit still in one place for years ends up armoured in one way or another." }
+      ]
+    },
+    "1884.137.74": {
+      "headline": "Deeplet anemone",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A yellow model with translucent grey tentacles, mounted on a brown base." },
+        { "id": "deep-water", "heading": "Down where it is dark", "text": "This is a deep-water animal, and that rules some things out. There is no light, so there are no algae in the tissues and no living off sunlight. Everything it eats, it must catch.\n\nIt is large, and its tentacles are unusual in that they can be shed. An anemone gripped by a predator can let a handful of tentacles go and keep the rest of itself.\n\nThey grow back." }
+      ]
+    },
+    "1884.137.96": {
+      "headline": "Burrowing anemone",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A brown model with ten tentacles at the head, mounted on brown papier-mâché. The body is long and worm-like." },
+        { "id": "ten", "heading": "Few tentacles, deep sand", "text": "Ten tentacles is very few for an anemone, and that is what a burrowing life does.\n\nAn animal that spends its time inside sand has no use for a wide crown. It needs a narrow body that can be pulled down fast, and only enough tentacles to work the surface above it.\n\nDisturb the sand and the whole animal vanishes. Most people who have walked over a bed of them have never seen one." }
+      ]
+    },
+    "1884.137.115": {
+      "headline": "Actineria hemprichi",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A pink stalk carrying twenty clear tentacles, and those tentacles are branched rather than simple." },
+        { "id": "branched", "heading": "Branched tentacles", "text": "A simple tentacle is a tube. A branched one is a tree, and it presents far more surface for the same amount of tissue.\n\nAnemones that go this way are usually doing one of two things: farming algae on that extra surface, or catching very small food from the water.\n\nThe cost is fragility. Branched tentacles tear, which is one more reason a glass model outlasts a specimen jar." }
+      ]
+    },
+    "1884.137.122": {
+      "headline": "Daisy anemone",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A grey model carrying a very large number of short brown tentacles across a broad top." },
+        { "id": "the-daisy", "heading": "A flower that is not one", "text": "The crowded tentacles on a wide flat disc are what earned the name. Seen from above in a rock pool it looks like a daisy lying on the water.\n\nThe body below is buried in mud or wedged into a crevice, sometimes a long way down, so the flower is all anyone sees.\n\nThat resemblance is the reason this whole group is named after flowers, and the reason Victorian collectors filled their parlours with them." }
+      ]
+    },
+    "1884.137.123": {
+      "headline": "Gem anemone",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A brown speckled body with grey banded tentacles, on a papier-mâché base." },
+        { "id": "the-craze", "heading": "The animal that started a craze", "text": "In the middle of the nineteenth century, keeping sea anemones at home became a genuine mania in Britain. Books were written, glass tanks were sold, and whole stretches of shore were stripped.\n\nThe word aquarium in its modern sense comes out of that period.\n\nIt is also the reason the Blaschkas had a market. People wanted these animals in the parlour, and the ones that arrived in a bucket mostly died." }
+      ]
+    },
+    "1884.137.124": {
+      "headline": "Nemactis primula",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A frosted white model with a yellow-striped stalk and clear tentacles." },
+        { "id": "clear-glass", "heading": "Why clear glass matters", "text": "A great deal of this collection is clear or frosted rather than coloured, and that is not the glassmaker taking a shortcut.\n\nMany of these animals genuinely are close to colourless. A model that made them opaque would be inventing something.\n\nThe Blaschkas worked in layers, putting colour inside clear glass rather than on top of it, which is how a model can be transparent and still show the organs inside." }
+      ]
+    },
+    "1884.137.64": {
+      "headline": "Tube anemone",
+      "identification": "Not a true sea anemone, though it reads as one. It sits on this page on appearance, and a curator may move it.",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A purple stalk bent into an L, with radiating clear tentacles above it, and two different lengths of tentacle rather than one." },
+        { "id": "the-tube", "heading": "It builds a tube and lives in it", "text": "This animal is not an anemone, although almost nobody would guess that from looking.\n\nIt makes a soft tube, metres long in some cases, out of a felt of discharged stinging threads mixed with mucus, and buries it in sediment. It lives inside and can drop out of sight instantly.\n\nThe two sets of tentacles do different jobs. The long outer ones catch; the short inner ones handle food and hold the tube open." }
+      ]
+    },
+
+    "1884.137.21": {
+      "headline": "Red coral",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "Two pink models with a texture of crushed glass, branching like small bare trees." },
+        { "id": "the-jewel", "heading": "The coral that was money", "text": "This is the red coral of the Mediterranean, and it has been fished, carved and traded for thousands of years.\n\nThe hard branch is a skeleton. In life it is covered by a thin living layer carrying small white polyps, each one a separate animal with eight feathery tentacles.\n\nIt grows extremely slowly — a matter of millimetres a year — and beds that were harvested centuries ago have still not come back." }
+      ]
+    },
+    "1884.137.31": {
+      "headline": "Organ pipe coral",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A brown model carrying several clusters of polyps." },
+        { "id": "the-pipes", "heading": "Where the name comes from", "text": "The skeleton of this animal is a bundle of parallel tubes standing upright, joined at intervals by flat plates. Each tube holds one polyp, and the polyp can withdraw down inside it.\n\nCut across, it looks like a set of organ pipes. Broken up on a beach it is unmistakable, and it is deep red.\n\nThe living animal is not red at all. The polyps that cover it are grey-green, and the colour only appears once the animal is dead." }
+      ]
+    },
+    "1884.137.57": {
+      "headline": "Dead man's fingers",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A grey-pink model, thick and blunt-lobed rather than branching finely." },
+        { "id": "the-name", "heading": "A name from the shore", "text": "The name is old and it is exactly descriptive. A colony washed up and drained of water is a pallid, swollen, finger-like lump.\n\nAlive and underwater it is a different thing entirely. The whole surface opens into a fur of small white polyps, each with eight tentacles, and the colony looks soft and pale and busy.\n\nThere is no hard skeleton. What holds it up is water pressure and a scattering of tiny mineral splinters through the flesh." }
+      ]
+    },
+    "1884.137.71": {
+      "headline": "Soft coral",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A grey model with a flat base carrying twenty-five blue-shaded individuals, each one shaped like a flower." },
+        { "id": "eight", "heading": "Count to eight", "text": "There is one detail that separates this whole group from the anemones and the reef corals: the polyps have eight tentacles, and every tentacle is feathered along its edges.\n\nOnce you know to count, the group is easy to recognise, and it covers red coral, sea fans, sea pens and this.\n\nEight feathered tentacles is a fine mesh, and these animals feed on very small particles rather than on prey they have to overpower." }
+      ]
+    },
+    "1884.137.81": {
+      "headline": "Pink sea fan",
+      "segments": [
+        { "id": "look", "heading": "Two models, two scales", "text": "Two models on one mount. One shows the whole fan; the other shows a single branch close up, so the individual polyps can be seen." },
+        { "id": "facing-the-current", "heading": "A fan is aimed", "text": "A sea fan grows in one plane, and that plane is set across the prevailing current rather than along it.\n\nThe colony is a net held up into moving water. Growing in any other direction would mean catching less.\n\nThey grow very slowly and live for decades, which means a fan broken by an anchor or a net is not replaced in a human lifetime. Showing the whole and the detail together is a teaching decision: you cannot understand either alone." }
+      ]
+    },
+    "1884.137.118": {
+      "headline": "Sea pansy",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A blue model with twenty-two twisting tentacles rising from a base shaped like a lily pad." },
+        { "id": "on-the-sand", "heading": "A colony lying on sand", "text": "This is a colony flattened into a disc, with a short stalk underneath anchoring it in sand. The polyps stand on the upper face.\n\nIt lives on shallow sandy bottoms and it can pull itself down out of sight.\n\nIt also glows. Disturbed at night, waves of light run out across the disc from the point that was touched — which is how the protein now used throughout biology to make light was first studied in this animal's relatives." }
+      ]
+    },
+    "1884.137.121": {
+      "headline": "Sea pen",
+      "segments": [
+        { "id": "look", "heading": "Two parts", "text": "A red model in two parts. The main body is a large feather shape, and the second part shows the detail." },
+        { "id": "the-quill", "heading": "Planted like a quill", "text": "A sea pen is a colony built around one enormous primary polyp. That polyp forms the central stem, and every other individual grows off it.\n\nThe base is driven into soft sediment and inflated to anchor. The rest stands up into the current like a feather stuck upright in the seabed, which is where the name comes from.\n\nMany can deflate and withdraw into the sediment completely, and many produce light when disturbed." }
+      ]
+    },
+    "1884.137.73": {
+      "headline": "Orange cup coral",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A colony on a humped, dimpled grey base, carrying twenty-seven orange polyps." },
+        { "id": "no-algae", "heading": "A coral without sunlight", "text": "This is a stony coral, the same broad kind that builds tropical reefs, but it is not doing that job.\n\nReef-building corals depend on algae in their tissues and therefore on light. This one has none. It lives on shaded rock and in caves in the Mediterranean and eastern Atlantic, and it catches everything it eats.\n\nFreed from needing light, it grows where reef corals cannot — which is a reminder that coral is a kind of animal, not a kind of habitat." }
+      ]
+    },
+    "1884.137.106": {
+      "headline": "Devonshire cup coral",
+      "segments": [
+        { "id": "look", "heading": "Two models", "text": "Two clear models, painted white, red and green, on a papier-mâché base." },
+        { "id": "solitary", "heading": "A coral that is one animal", "text": "Most corals are colonies. This is not. It is a single polyp sitting in a single stony cup, and it stays that way.\n\nThe cup is built by the animal beneath and around itself, and the ridges inside it are what a specialist uses to identify the species.\n\nIt is a cold-water animal, common on rock around Britain, and it is proof that coral does not mean the tropics." }
+      ]
+    },
+    "1884.137.120": {
+      "headline": "Tree coral",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A grey model with eleven polyps branching off a main stalk." },
+        { "id": "branching", "heading": "Why branch at all", "text": "A branching colony is solving the same problem as a tree. Every polyp needs to be in moving water, and stacking them on a shared trunk lifts them clear of one another and of the seabed.\n\nThe trunk is a shared skeleton, and it is built by the colony as it grows.\n\nColonies of this kind form deep-water thickets that shelter a great many other animals, in places nobody sees and trawls reach easily." }
+      ]
+    },
+    "1884.137.63": {
+      "headline": "Oaten pipes hydroid",
+      "segments": [
+        { "id": "look", "heading": "Two parts", "text": "A model in two parts: the colony as a whole, and a closer view of the individual." },
+        { "id": "not-a-plant", "heading": "It grows like grass and it is not", "text": "This animal grows as a stand of unbranched stalks, each one topped by a single polyp with two rings of tentacles. From a distance it looks like a patch of pale grass on a rock.\n\nIt is an animal, and each stalk is an individual joined to the others at the base.\n\nIt likes strong current, and it settles on piers, wrecks and anything else that will hold still in a tideway." }
+      ]
+    },
+    "1884.137.126": {
+      "headline": "Oaten pipes hydroid, male",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "Seven clear tubes topped with red polyps, and nine open clear structures alongside them." },
+        { "id": "no-free-medusa", "heading": "The young that never leave", "text": "Many animals of this kind release tiny free-swimming medusae which drift off and reproduce elsewhere.\n\nThis one does not. The reproductive structures stay attached to the parent colony, hanging in clusters below the ring of tentacles, and the young are released directly.\n\nThat is why the Museum holds a male modelled separately. The difference is visible on the colony itself, which is exactly the sort of thing a teaching collection needed to show." }
+      ]
+    },
+    "1884.137.109": {
+      "headline": "Sea fur, polyps and medusa",
+      "segments": [
+        { "id": "look", "heading": "Three parts", "text": "A model in three parts. Two of them belong together and show the attached colony. The third is a small free-swimming bell." },
+        { "id": "one-animal-two-lives", "heading": "Both of these are the same species", "text": "This is the clearest statement of the two-life problem anywhere in the collection.\n\nThe branching colony grows fixed to seaweed or stone, feeding where it stands. It buds off tiny bells, which swim away, live independently, and reproduce. Their young settle and grow into a new colony.\n\nFor years the two forms sat in separate parts of the scientific literature under separate names. A model that shows them on one stand is an argument, not just an illustration." }
+      ]
+    },
+    "1884.137.136": {
+      "headline": "Soft coral polyp",
+      "identification": "The only identification for this object is two English words on an old label. It is the label's reading, not ours, and it has never been checked.",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A single clear polyp with eight radiating branched tentacles, on a bent wire support." },
+        { "id": "eight-again", "heading": "What can be said, and what cannot", "text": "Count the tentacles: eight, and each one feathered along its edges. That places the animal in the soft coral group with reasonable confidence, and it is as far as the evidence goes.\n\nThere is no species name on this record, and no genus either. What the Museum holds is a label with two English words on it.\n\nSo this is a model of a single member of a colony, separated from the colony, and nobody currently knows which one." }
+      ]
+    },
+    "1884.137.92": {
+      "headline": "A fragment from an unknown model",
+      "identification": "Not a model of an animal. No biological identification is possible and none should be implied.",
+      "segments": [
+        { "id": "look", "heading": "What this is", "text": "A single studded glass spike. It is a broken piece of something larger, and the rest of that something is gone." },
+        { "id": "why-keep-it", "heading": "Why it is still here", "text": "This is the one object in the collection that depicts nothing. It cannot be identified, it cannot be grouped by what it shows, and it is on this page on the weakest argument in the whole scheme — its shape.\n\nIt is kept and numbered anyway, because a collection records what it holds rather than what it would prefer to hold.\n\nSomewhere there was a complete model that this came off. That is all anyone can say." }
+      ]
+    },
+
+    "1884.137.75": {
+      "headline": "Sea cucumber",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A black and white model with a ring of white-tipped feeding tentacles at one end." },
+        { "id": "five", "heading": "Count in fives", "text": "A sea cucumber looks like nothing else on this page, and it is built to the same plan as a starfish.\n\nThe plan is five-fold. Take a starfish, stand it on one arm-tip, stretch it into a sausage and lie it on its side, and the five lines of tube feet run the length of the body instead of out along arms.\n\nThe tentacles around the mouth are tube feet too, enlarged. This one uses them to shovel sediment in and digest what is living in it." }
+      ]
+    },
+    "1884.137.2": {
+      "headline": "Sea cucumber",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A brown model with a textured surface of crushed glass, carrying tiny white feet along the body." },
+        { "id": "tube-feet", "heading": "Feet run by water", "text": "Those small feet are not muscular in the way a leg is. Each one is a tube filled with seawater, and the animal extends it by pumping water into it and pulls it back by squeezing.\n\nThe whole system runs on water pressure through a network of internal canals. It is slow, it is powerful, and no other group of animals uses it.\n\nThis species keeps its feet in defined rows, and its body curves so that both ends sit up while the middle stays down." }
+      ]
+    },
+    "1884.137.82": {
+      "headline": "Sea cucumber",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A brown studded body with eight feeding tentacles gathered around the mouth." },
+        { "id": "filter-feeding", "heading": "Feeding on the current", "text": "Not all sea cucumbers eat sediment. This kind buries most of its body and holds only the tentacles up into moving water.\n\nThe tentacles are sticky and branched. Small drifting particles land on them, and one at a time the animal puts a tentacle into its mouth and wipes it clean.\n\nIt is a slow, methodical business, and it goes on continuously while the current runs." }
+      ]
+    },
+    "1884.137.84": {
+      "headline": "Sea cucumber",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A grey body with blue painted stripes and ten feeding tentacles at the mouth." },
+        { "id": "the-stripes", "heading": "Stripes with a purpose", "text": "The stripes mark where the rows of tube feet run. On a sea cucumber those rows are the five lines of the underlying body plan, and colour often follows them.\n\nThree rows are usually turned down against the ground and carry the feet used for gripping. Two are turned up and their feet are reduced.\n\nSo an animal that appears to have a top and a bottom actually has five sides, three of which have been pressed into service as a sole." }
+      ]
+    },
+    "1884.137.3": {
+      "headline": "Sea cucumber",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A frosted model with rows of coarse glass tufts alternating with smooth lengthways bands. It is long and soft-bodied." },
+        { "id": "no-feet", "heading": "The ones that gave up feet", "text": "This group has lost its tube feet altogether. It burrows, and it moves by driving waves of muscle down the body, the way an earthworm does.\n\nIt has no need of grip and it has kept none.\n\nWhat it does keep is anchors: microscopic hooks set in the skin, which catch on sediment and stop the animal sliding backwards. Handle one and it sticks slightly to the skin, and that is what you are feeling." }
+      ]
+    },
+    "1884.137.23": {
+      "headline": "Sea cucumber",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A long light brown coiled body with branched feeding tentacles, made from a clear glass core." },
+        { "id": "coming-apart", "heading": "It breaks on purpose", "text": "Animals of this kind are notoriously difficult to collect whole. Handled at all, they break themselves into pieces.\n\nThat is not weakness; it is a defence. A predator gets a fragment and the rest of the animal is elsewhere. Given time, the missing parts regrow.\n\nIt also explains why a glass model was worth buying. A specimen that arrives in a jar as five unrelated lengths teaches nobody what the animal looks like." }
+      ]
+    },
+    "1884.137.13": {
+      "headline": "Feather star",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A green model with ten arms, feathered along both edges and tipped in yellow, with root-like structures at the base." },
+        { "id": "the-oldest-shape", "heading": "The oldest shape here", "text": "This animal holds its arms up and open into the current, catching particles on sticky grooves that run along every branch and carry food down to the mouth in the middle.\n\nAnimals built this way, on a stalk, were once among the commonest things in the sea, and they fill whole beds of fossil limestone.\n\nA feather star is one that let go of the stalk. Those root-like structures at the base grip a rock, and the animal can release them and move." }
+      ]
+    },
+    "1884.137.25": {
+      "headline": "Brittle star, developmental stages",
+      "segments": [
+        { "id": "look", "heading": "Nine models", "text": "Nine clear models on a white base, showing the animal from its earliest form to something recognisable." },
+        { "id": "a-different-animal", "heading": "It starts as something else", "text": "The young of a brittle star looks nothing like the adult. It is a small, transparent, drifting thing held up by long stiffened arms, and it is bilateral — it has a left and a right, as we do.\n\nThe five-fold adult grows inside that larva as a separate structure, and eventually takes over. The larval body is largely discarded.\n\nSo the animal changes its fundamental symmetry partway through its life. There are few stranger things in the sea, and nine models is what it takes to show it." }
+      ]
+    },
+
+    "1884.137.9": {
+      "headline": "Lugworm",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A green segmented body with many rings, carrying fourteen pairs of branched yellow gills along its middle section." },
+        { "id": "the-cast", "heading": "The animal under the cast", "text": "Anyone who has walked a beach at low tide has seen the work of this animal without seeing the animal. The coiled casts on the sand are what it leaves behind.\n\nIt lives in a U-shaped burrow, eating sand at one end for the organic matter in it and passing the cleaned sand out at the other.\n\nThe branched gills along the middle are red with the same oxygen-carrying pigment we use, which is why a lugworm out of the sand looks bloody." }
+      ]
+    },
+    "1884.137.20": {
+      "headline": "Ragworm",
+      "segments": [
+        { "id": "look", "heading": "Two parts", "text": "A model in two parts. The first is the whole body, carrying hundreds of paired projections down each side; the second is a detail." },
+        { "id": "paddles", "heading": "A leg on every segment", "text": "Each of those paired projections is a flap carrying bundles of stiff bristles. There is one pair per segment, all the way down.\n\nThey work as paddles for swimming, as legs for walking through a burrow, and as gills.\n\nThis is a hunter with jaws that can be shot out of the head, and at spawning time whole populations leave the bottom at once and swim at the surface on particular nights of the year." }
+      ]
+    },
+    "1884.137.18": {
+      "headline": "Paddle worm",
+      "segments": [
+        { "id": "look", "heading": "Two models", "text": "Two green models of the same animal. The first is the entire body with hundreds of leaf-like projections; the second shows the detail." },
+        { "id": "the-leaves", "heading": "Why they are flat", "text": "In this group the side flaps are flattened into broad leaf shapes, and they overlap down the body like tiles.\n\nFlat means surface, and surface means oxygen. These worms breathe through those flaps, and they can live where the water holds very little.\n\nThey are active, fast, often iridescent green, and they hunt other worms — following a scent trail along the seabed and taking prey with a muscular proboscis they turn inside out." }
+      ]
+    },
+    "1884.137.90": {
+      "headline": "Bristle worm",
+      "segments": [
+        { "id": "look", "heading": "Two parts", "text": "A brown model of a segmented bristle worm in two parts, the second showing the structure close up." },
+        { "id": "jaws", "heading": "Jaws that fossilise", "text": "Worms of this group carry a set of hardened jaws inside the throat, thrown forward to seize prey and pulled back to swallow it.\n\nThose jaws are tough enough to survive after everything else has rotted, and they are found in rocks hundreds of millions of years old. For a long time nobody knew what animal they came from.\n\nSome members of this group live among deep-water corals, and some grow to a length nobody quite believes." }
+      ]
+    },
+    "1884.137.91": {
+      "headline": "Bristle worm",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A green body with hundreds of fine bristle-like projections running along the sides." },
+        { "id": "the-bristles", "heading": "What the bristles are for", "text": "The bristles are made of the same material as an insect's shell, and they are anchored deep in the body wall by muscle so they can be pushed out and drawn back.\n\nIn a burrowing worm they work as grip. Pushed out, they lock the animal against the walls of its tube so the front end can stretch forward without the whole animal sliding.\n\nIn other species they are purely defensive, and long enough to be worth avoiding." }
+      ]
+    },
+    "1884.137.48": {
+      "headline": "Green spoon worm",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A green model with a sac-like body and a long grooved extension at one end, forked at its tip." },
+        { "id": "the-proboscis", "heading": "The strangest sex life here", "text": "The body stays hidden in a crevice. The long forked extension is stretched out over the seabed to sweep up food, and it can reach many times the length of the animal.\n\nThen there is the other thing. Larvae that settle on clean seabed become females. Larvae that land on an existing female become males — and the males end up tiny, living inside her body, doing nothing but fertilising eggs.\n\nSex is decided by where the larva happens to land." }
+      ]
+    },
+    "1884.137.15": {
+      "headline": "Tube worms",
+      "identification": "The catalogue name is one modern authorities treat as doubtful. The story stays with what the model shows.",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A grey and red model of a group of worms, each in a hard twisting tube, with a crown standing out of the open end." },
+        { "id": "the-tube", "heading": "A worm that builds in stone", "text": "The tube is not sand or mucus. The animal secretes it as hard calcium carbonate, cemented to rock, and it is a permanent address.\n\nWhat comes out of the top is a crown of feathered tentacles, used both to breathe and to catch particles.\n\nOne of those tentacles is modified into a stopper. When the crown is pulled in, the stopper plugs the tube behind it, and the animal is sealed in." }
+      ]
+    },
+    "1884.137.22": {
+      "headline": "Sand mason worm",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A model coated over most of its length in sand and small stones. The upper body is clear glass beneath." },
+        { "id": "building", "heading": "A worm that builds with what it finds", "text": "This animal makes a tube out of sand grains and shell fragments, selecting them and cementing them one at a time.\n\nThe top of the tube is frayed out into a small tree of branches standing above the sediment, which is unmistakable on a beach at low tide.\n\nIt feeds with long sticky threads that spread out over the surface around the opening, gathering particles and drawing them back. The threads can extend a surprising distance." }
+      ]
+    },
+    "1884.137.110": {
+      "headline": "Sand mason worm, developmental stages",
+      "identification": "This is the object the Museum's own collection query cannot return, because its collection field is empty.",
+      "segments": [
+        { "id": "look", "heading": "Three parts", "text": "A clear model in three parts, showing the worm at three stages of its development." },
+        { "id": "the-missing-one", "heading": "The one that goes missing", "text": "A sequence like this exists because the young of a tube-building worm does not build. It swims, for weeks, as part of the plankton, and only then settles and starts gathering sand.\n\nThis particular model matters for a second reason that has nothing to do with the animal. Its record carries an empty collection field, so a search of the Museum's own Blaschka collection does not return it.\n\nIt is in the database. It is in the published literature. It simply does not come back when you ask." }
+      ]
+    },
+    "1884.137.98": {
+      "headline": "Fan worm",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A brown model with a crown of branched feeding tentacles, mounted on white glass." },
+        { "id": "lyttelton", "heading": "It arrived here in 2008", "text": "This is a Mediterranean animal that lives in a leathery tube with a large feathered crown standing out of the top, and it filters and breathes with that crown.\n\nA glass model of it has been in Christchurch since 1883.\n\nThe living animal reached Lyttelton Harbour in 2008, almost certainly on a hull. It grows fast, it grows in dense stands, and it is now treated as a notifiable organism that cannot be eradicated. The model and the animal arrived a hundred and twenty-five years apart." }
+      ]
+    },
+    "1884.137.37": {
+      "headline": "Ribbon worm",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A yellow model, flattened and ribbon-like, with fins at one end." },
+        { "id": "the-proboscis", "heading": "The weapon in the head", "text": "A ribbon worm carries a proboscis in a fluid-filled chamber running most of the length of its body. Pressure fires it out of the head, far faster than muscle could push it.\n\nIn many species it is armed with a stylet and carries toxin. It wraps around prey and does not let go.\n\nThese are unsegmented, soft, and among the longest animals in existence: one North Atlantic species has been recorded at lengths that outstrip any whale." }
+      ]
+    },
+    "1884.137.49": {
+      "headline": "Ribbon worm",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A brown model with a lighter band running along it." },
+        { "id": "fragile", "heading": "Why so few people have seen one", "text": "Ribbon worms are common on shores everywhere and almost nobody notices them, because they are usually under stones and they come apart when handled.\n\nA disturbed one may break into several pieces. In some species those pieces regrow into whole animals.\n\nThey have a complete gut with a mouth at one end and an opening at the other — an arrangement that seems obvious and was, in evolutionary terms, a substantial innovation. The flatworms on the next models never managed it." }
+      ]
+    },
+    "1884.137.97": {
+      "headline": "Flatworm",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A flat model marked with four sets of concentric circles arranged around two parallel lines." },
+        { "id": "no-plumbing", "heading": "Flat because it has to be", "text": "This animal has no gills, no blood system and no heart. Oxygen reaches its tissues by seeping straight through the skin.\n\nThat only works over very short distances, which is why the animal is flat. No part of it can be far from the outside.\n\nThe gut has one opening, used for both taking in and putting out, and it branches through the body so that food is delivered where circulation would otherwise be needed." }
+      ]
+    },
+    "1884.137.112": {
+      "headline": "Flatworm",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A flat orange model with many upward-pointing brown-tipped spikes across its upper surface." },
+        { "id": "swimming", "heading": "It swims by rippling", "text": "Marine flatworms of this kind move by sending waves along their frilled edges, and a swimming one looks like a piece of fabric moving through water under its own power.\n\nThe projections on the back increase surface area for taking up oxygen, and in brightly coloured species they carry warning colouring as well.\n\nMany are toxic, and several harmless animals have evolved to look like them." }
+      ]
+    },
+    "1884.137.125": {
+      "headline": "Priapulid worm",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "An orange model with a brown bell-shaped end and a clump of branched appendages at the other." },
+        { "id": "old", "heading": "A very old design", "text": "This animal belongs to a small group that has changed remarkably little in an extremely long time. Animals of closely similar shape appear in some of the earliest well-preserved fossil beds of complex life.\n\nIt burrows in cold-water mud, using a spiny retractable head end that it pushes out and drags itself forward on.\n\nIt is a predator, and it survives in seabed conditions with very little oxygen, where most things cannot." }
+      ]
+    },
+
+    "1884.137.1": {
+      "headline": "Leopard slug",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A grey model with black stripes and blotches running the length of the body." },
+        { "id": "hanging", "heading": "They mate in mid-air", "text": "This is a large land slug and a very common one, and it does something almost nothing else does.\n\nA pair climbs a wall or a branch, produces a rope of mucus, and lowers itself into the air on it. They hang there entwined and mate suspended, sometimes for hours.\n\nBoth animals are male and female at once, as most slugs and snails are, so both can end up carrying eggs. Afterwards one of them usually eats the rope." }
+      ]
+    },
+    "1884.137.19": {
+      "headline": "Tree slug",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A clear model with two black areas painted from the inside, and four tentacles at the head." },
+        { "id": "painted-inside", "heading": "Painted from within", "text": "The colour on this model is behind the glass, not on it. That is a decision with consequences: colour applied outside wears off with handling, and colour sealed inside does not.\n\nIt is one reason these models still look as they did.\n\nThe animal itself lives on tree trunks and walls in damp weather, grazing the thin film of algae and lichen growing there, and it is far more often seen after rain than at any other time." }
+      ]
+    },
+    "1884.137.77": {
+      "headline": "Grey field slug",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A light grey model with four black horns at the head, on a white base." },
+        { "id": "four-tentacles", "heading": "Two for seeing, two for smelling", "text": "A land slug carries four tentacles and they do different jobs. The upper pair carry the eyes at their tips. The lower, shorter pair are for touch and chemistry, and are held down near the ground.\n\nAll four can be pulled in, turning inside out as they retract.\n\nThis species is the one gardeners mean when they complain, and it is among the most widely distributed agricultural pests in the world." }
+      ]
+    },
+    "1884.137.45": {
+      "headline": "Black slug",
+      "segments": [
+        { "id": "look", "heading": "Look closely", "text": "A black model on a white base, heavy-bodied, with a distinct shield behind the head." },
+        { "id": "the-mantle", "heading": "The shield behind the head", "text": "That shield is the mantle, and in a snail it is the part that builds and lines the shell. In a slug the shell is gone or reduced to a fragment buried under it, and the mantle remains.\n\nThe breathing hole sits on its right-hand edge, and it opens and closes.\n\nThreatened, this species contracts into a hemisphere, and rocks from side to side. Whether that discourages anything is disputed, but it is unmistakable once seen." }
+      ]
+    },
+    "1884.137.50": {
+      "headline": "Black slug, internal anatomy",
+      "segments": [
+        { "id": "look", "heading": "Four parts", "text": "Four models, or two with two small detached sections, showing the internal reproductive organs of both sexes." },
+        { "id": "why-dissect", "heading": "A dissection that keeps", "text": "This is a teaching model, and it is doing something a real dissection cannot: staying still.\n\nA dissected slug is usable for a day. A glass one is usable for a century, and every student sees the same arrangement rather than whatever their own specimen happened to look like.\n\nThe reproductive anatomy is the subject because in slugs it is also the identification. Several species that look alike from outside are separated on these organs alone." }
+      ]
+    },
+    "1884.137.86": {
+      "headline": "Roman snail",
+      "segments": [
+        { "id": "look", "heading": "Glass and shell together", "text": "This model is mixed media. The body is glass, and it sits inside a real shell rather than a modelled one." },
+        { "id": "using-the-real-thing", "heading": "When the real thing was easier", "text": "A shell keeps perfectly well on its own. It is hard, it does not rot, and it needs no modelling at all.\n\nSo the Blaschkas did not model it. They made the soft parts, which are the parts that decay, and put them inside an actual shell.\n\nThat is a straightforwardly practical decision, and it tells you exactly what these models were for. They existed to supply what preservation could not, and nothing more." }
+      ]
+    },
+    "1884.137.69": {
+      "headline": "Roman snail, dissected",
+      "segments": [
+        { "id": "look", "heading": "Two parts", "text": "A dissected snail in glass, now in two parts, showing the internal anatomy." },
+        { "id": "the-twist", "heading": "The animal is twisted", "text": "A snail's body is not simply coiled to fit its shell. Early in its development the whole rear of the animal rotates through half a turn relative to the head.\n\nThe result is that the gut doubles back and the breathing chamber ends up above the head, and some organs on one side are lost entirely.\n\nIt is the single strangest thing about snails, it cannot be seen from outside, and it is what a model like this exists to show." }
+      ]
+    },
+    "1884.137.83": {
+      "headline": "Great ramshorn snail",
+      "segments": [
+        { "id": "look", "heading": "Glass and shell together", "text": "A brown glass body with four tentacles at the head, fitted into a real ramshorn shell coiled in a flat spiral." },
+        { "id": "red-blood", "heading": "The pond snail with red blood", "text": "This is a freshwater animal, from ponds and slow ditches, and its shell coils in one plane like a rope laid down flat.\n\nMost snails carry a blue-green oxygen-carrying pigment based on copper. This group is unusual in using an iron-based one instead, the same kind we use, so the animal is genuinely red.\n\nIt also breathes air, coming to the surface to fill a lung, and can survive in water too stagnant for gills to work." }
+      ]
+    },
+    "1884.137.35": {
+      "headline": "Freshwater leeches",
+      "segments": [
+        { "id": "look", "heading": "Two models", "text": "Two leeches on one base, each with the internal organs painted in red and visible through the body." },
+        { "id": "the-eggs", "heading": "The leech that carries its young", "text": "A leech is a segmented worm that has given up bristles and gained a sucker at each end.\n\nThis kind is a flattened freshwater species that feeds on snails rather than on anything large, and it does something unusual for a worm. It broods. The eggs are carried on the underside of the parent, and the young stay attached to her after hatching, riding underneath.\n\nA disturbed adult keeps them and moves off with the whole brood still aboard." }
+      ]
+    },
+    "1884.137.128": {
+      "headline": "Freshwater flatworm",
+      "identification": "This one has two competing readings in the modern literature, and nineteenth-century usage points at a different animal from the currently accepted name. Both should be shown rather than one chosen.",
+      "segments": [
+        { "id": "look", "heading": "Two models", "text": "Two clear models with the internal organs painted in red, on a white glass base." },
+        { "id": "cut-in-half", "heading": "Cut it in half and it does not die", "text": "This is the animal that appears in every school biology course, and for one reason.\n\nCut it across and both halves regrow what they are missing. The front half grows a new tail, the back half grows a new head, and both carry on. Very small fragments can do it too.\n\nThe capacity comes from a population of unspecialised cells distributed through the body, able to become any tissue required. Almost everything known about how regeneration works began here." }
+      ]
+    }
+  }
+}

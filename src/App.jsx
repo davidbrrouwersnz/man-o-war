@@ -3,6 +3,13 @@ import manifest from './data/manifest.json'
 import groupData from './data/groups.json'
 import storyData from './data/stories.json'
 import nameData from './data/names.json'
+import draftedData from './data/stories-drafted.json'
+
+// Two provenances, deliberately in two files: stories.json is paraphrased from the Museum's own
+// published writing; stories-drafted.json is written from third-party natural history and is
+// unverified. The Museum's version wins where both exist.
+const STORIES = { ...draftedData.stories, ...storyData.stories }
+const DRAFTED = new Set(Object.keys(draftedData.stories))
 
 const OBJECTS = new Map(manifest.objects.map((o) => [o.accession, o]))
 const GROUPS = groupData.groups
@@ -22,7 +29,7 @@ const BENCHMARK_WORDS = 231
 const words = (s) => (s ? s.trim().split(/\s+/).length : 0)
 
 function storyWords(accession) {
-  const story = storyData.stories[accession]
+  const story = STORIES[accession]
   return story ? story.segments.reduce((t, s) => t + words(s.heading) + words(s.text), 0) : null
 }
 
@@ -186,7 +193,7 @@ function ObjectSection({ object, arrived, registry }) {
     return () => registry.current.delete(object.accession)
   }, [object.accession, registry])
 
-  const story = storyData.stories[object.accession]
+  const story = STORIES[object.accession]
   const size = object.measurements[0]?.replace(/^Dimensions \(LxWxH\):\s*/i, '').trim()
 
   // §10 wants a plain-English headline with the catalogue string demoted beneath it. Where no
@@ -219,10 +226,17 @@ function ObjectSection({ object, arrived, registry }) {
               ))}
             </section>
           ))}
+          {story.identification && <p className="identification">{story.identification}</p>}
+          {DRAFTED.has(object.accession) && (
+            <p className="draft-flag">
+              Draft, not yet checked. This entry was written from general natural history rather than from the Museum's
+              own published writing, and no curator has reviewed it.
+            </p>
+          )}
         </div>
       ) : (
         <div className="story is-placeholder">
-          <p className="placeholder-flag">Placeholder — no story written yet. Below is the catalogue record's own description.</p>
+          <p className="placeholder-flag">No story written yet. Below is the catalogue record's own description.</p>
           <p className="catalogue-words">{object.description}</p>
         </div>
       )}
