@@ -128,6 +128,20 @@ At 130KB/s, cold cache:
 | `/o/1884.137.33` | **1,460ms** | **2,428ms** | 234KB | 13 |
 | `/g/floating-colonies` scrolled to the end | — | 7,956ms | **552KB** | 19 |
 
+**Re-measured against the live deployment** at `https://manowar.vercel.app`, over real TLS and a
+real CDN rather than localhost. The numbers hold:
+
+| Route | FCP | LCP | Transferred |
+|---|---|---|---|
+| `/` — eleven tiles | 2,084ms | 3,864ms | 362KB |
+| `/g/floating-colonies` | 1,556ms | 4,324ms | **175KB** |
+| `/o/1884.137.33` | 1,660ms | **2,676ms** | 236KB |
+| scrolled to the end | — | — | 559KB |
+
+First paint is 100–600ms slower in the wild than on localhost, which is the TLS handshake and the
+CDN hop. Everything else is within noise of the local figures, and the lazy-media saving is
+identical: **175KB up front against 559KB for the whole page.**
+
 **Text at ~1.45s, the photograph at 2.4–4.2s.** Lazy media works: the group page mounts **1 of 8**
 image elements up front and transfers 38KB of image, against 416KB if it loaded all eight. Nothing
 reflows when an image lands, because the well is a fixed 70dvh and the aspect is in the manifest.
