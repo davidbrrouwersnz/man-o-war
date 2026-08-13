@@ -111,6 +111,39 @@ const search = {
 const searchJson = JSON.stringify(search)
 writeFileSync(new URL('search.json', dir), searchJson)
 
+// One pack per language, loaded only when that language is active. English is compiled into the
+// main bundle instead, because §7 makes it the terminal fallback: it has to be there before any
+// resolution runs, or the chain dead-ends on a blank while a chunk is still in flight.
+const langDir = new URL('../src/data/i18n/', import.meta.url)
+const en = JSON.parse(readFileSync(new URL('en.json', langDir), 'utf8'))
+const flat = (o, p = '') => Object.entries(o).flatMap(([k, v]) => (v && typeof v === 'object' ? flat(v, `${p}${k}.`) : [`${p}${k}`]))
+const enKeys = flat(en.ui).map((k) => `ui.${k}`)
+
+const packs = []
+for (const file of readdirSync(langDir)) {
+  if (file === 'en.json') continue
+  const code = file.replace(/\.json$/, '')
+  const pack = JSON.parse(readFileSync(new URL(file, langDir), 'utf8'))
+  if (pack.__code !== code) throw new Error(`${file}: __code is "${pack.__code}"`)
+
+  const have = new Set(flat(pack.ui ?? {}).map((k) => `ui.${k}`))
+  const missing = enKeys.filter((k) => !have.has(k))
+  const extra = [...have].filter((k) => !enKeys.includes(k))
+  if (extra.length) throw new Error(`${file}: keys not in the English source: ${extra.join(', ')}`)
+
+  const panelsDone = Object.keys(pack.panels ?? {}).length
+  const json = JSON.stringify(pack)
+  writeFileSync(new URL(`lang-${code}.json`, dir), json)
+  packs.push({ code, missing: missing.length, panels: panelsDone, kb: (gzipSync(json).length / 1024).toFixed(1) })
+}
+
+console.log('')
+for (const p of packs) {
+  console.log(`  ${p.code.padEnd(8)} ui ${String(enKeys.length - p.missing).padStart(2)}/${enKeys.length}  panels ${String(p.panels).padStart(2)}/11  ${p.kb}KB gz${p.missing ? '  <- falls back to English' : ''}`)
+}
+
+index.languages = packs.map((p) => p.code)
+
 // Layers 3–5, written once and reached from any group page (§6, §10).
 const layers = read('layers.json')
 const layersJson = JSON.stringify(layers)
@@ -129,4 +162,4 @@ console.log(`\nindex (always loaded)   ${(gzipSync(indexJson).length / 1024).toF
 console.log(`chunks (loaded on demand, total across all 11)   ${(chunkTotal / 1024).toFixed(0)}KB gz`)
 console.log(`was: ${(before / 1024).toFixed(0)}KB gz of data in the main bundle, every route`)
 
-if (readdirSync(dir).length !== groups.groups.length + 4) throw new Error('chunk count mismatch')
+if (readdirSync(dir).length !== groups.groups.length + 4 + index.languages.length) throw new Error('chunk count mismatch')

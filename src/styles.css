@@ -385,6 +385,85 @@ a {
   max-width: 45%;
 }
 
+/* ------------------------------------------------------------------ language (§7) */
+
+.lang-picker {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin: 0 0 1.75rem;
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+}
+
+.lang-label {
+  color: var(--dark-ink-soft);
+}
+
+.lang-picker select {
+  font: inherit;
+  color: var(--dark-ink);
+  background: transparent;
+  border: 1px solid #2a2a2c;
+  border-radius: 3px;
+  padding: 0.3rem 0.4rem;
+}
+
+.lang-picker option {
+  color: #111;
+  background: #fff;
+}
+
+/* The stated fallback. §7: silent degradation reads as a broken app; a stated one reads as an
+   honest one, and it also tells the Museum which languages to fund next. */
+.fallback-notice {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--ink-faint);
+  border-left: 2px solid var(--rule);
+  padding-left: 0.75rem;
+  margin: 0 0 0.8rem;
+}
+
+/* §7: mirror the layout, do not mirror the media. The wells and their images keep LTR so a
+   photograph is never flipped, and the reading column mirrors around them. */
+[dir='rtl'] .well,
+[dir='rtl'] .tile-well {
+  direction: ltr;
+}
+
+[dir='rtl'] .back,
+[dir='rtl'] .object-catalogue,
+[dir='rtl'] .object-meta {
+  direction: rtl;
+}
+
+[dir='rtl'] .is-placeholder,
+[dir='rtl'] .draft-flag,
+[dir='rtl'] .identification,
+[dir='rtl'] .fallback-notice {
+  border-left: 0;
+  border-right: 2px solid var(--rule);
+  padding-left: 0;
+  padding-right: 0.75rem;
+}
+
+[dir='rtl'] .continuations a::after {
+  content: ' ←';
+}
+
+[dir='rtl'] .layer-sources ul {
+  padding-left: 0;
+  padding-right: 1rem;
+}
+
+/* A binomial inside non-Latin text must be marked, or a screen reader speaks it with the wrong
+   phonetics — §7 names this explicitly, because every object here carries one. */
+.binomial {
+  font-style: italic;
+}
+
 /* ------------------------------------------------------------------ /all, search, layers */
 
 .grid-dense {

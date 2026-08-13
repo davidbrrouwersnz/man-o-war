@@ -1,0 +1,29 @@
+{
+  "__code": "en",
+  "note": "The English source. §7 makes English the terminal fallback, so this file must be complete or the resolution chain dead-ends on a blank. Every other pack is checked against these keys at build time.",
+  "ui": {
+    "collectionTitle": "The Blaschka collection",
+    "collectionIntro": "Glass models of invertebrates, made by Leopold and Rudolf Blaschka in Dresden and acquired by Canterbury Museum in 1883. One is on display. The rest are in storage.",
+    "backToCollection": "Collection",
+    "everyObject": "Every object",
+    "everyObjectIntro": "All the models, in reading order. This is the view the eleven pages replaced — kept because nothing else lets you choose by eye.",
+    "search": "Search",
+    "searchHelp": "Across all eleven pages. Try a name, a scientific name, or an accession number.",
+    "searchPlaceholder": "jellyfish, Physalia, 1884.137.33",
+    "searchNothing": "Nothing matches that.",
+    "models": "models",
+    "aboutMinutes": "About {m} minutes.",
+    "scanned": "The object you scanned",
+    "rightsUnstated": "Canterbury Museum — rights not stated on this record",
+    "draftNotice": "Draft, not yet checked. This entry was written from general natural history rather than from the Museum's own published writing, and no curator has reviewed it.",
+    "noStory": "No story written yet. Below is the catalogue record's own description.",
+    "sources": "Sources",
+    "language": "Language",
+    "loading": "Loading…",
+    "notFound": "Not found",
+    "notFoundBody": "That address does not exist.",
+    "fallbackNotice": "This isn't available in {language} yet — showing English.",
+    "translationNotice": "Machine translated and not yet reviewed by a person.",
+    "prototypeNote": "Prototype. Object count is what the collection record holds, not a published total — the published figures disagree. Times are computed at build time from the writing, at 150 words a minute, and are not asserted."
+  }
+}

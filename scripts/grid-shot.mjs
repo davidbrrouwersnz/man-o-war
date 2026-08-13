@@ -60,6 +60,11 @@ await send('Page.enable')
 await send('Runtime.enable')
 // Tall viewport at phone width so all eleven tiles fit one frame at their real rendered size.
 await send('Emulation.setDeviceMetricsOverride', { width: 390, height: TALL ? 3000 : 844, deviceScaleFactor: 2, mobile: true })
+if (process.env.LOCALE) {
+  await send('Network.enable')
+  await send('Network.setUserAgentOverride', { userAgent: '', acceptLanguage: process.env.LOCALE })
+  await send('Emulation.setLocaleOverride', { locale: process.env.LOCALE })
+}
 await send('Page.navigate', { url: ORIGIN + PATH })
 await new Promise((r) => setTimeout(r, 4000))
 

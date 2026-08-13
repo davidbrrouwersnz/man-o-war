@@ -1,5 +1,7 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { createContext, useContext, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import index from './data/chunks/index.json'
+import englishPack from './data/i18n/en.json'
+import { BY_CODE, LANGUAGES, detect, dirOf, remember, resolve } from './i18n.js'
 
 // One chunk per group, fetched only when that page is visited. The manifest used to be a single
 // file compiled into the bundle, so every visitor downloaded all 128 objects — and 113KB of base64
@@ -11,6 +13,77 @@ const loadChunk = (slug) => CHUNKS[`./data/chunks/${slug}.json`]?.().then((m) =>
 
 const GROUPS = index.groups
 const BY_SLUG = new Map(GROUPS.map((g) => [g.slug, g]))
+const SUPPORTED = LANGUAGES.filter((l) => l.code === 'en' || index.languages.includes(l.code))
+
+// ------------------------------------------------------------------ language
+// §7. English is compiled in because it is the terminal fallback and must be present before any
+// resolution runs. Every other pack is a chunk fetched when its language is selected.
+
+const Lang = createContext({ code: 'en', pack: englishPack, setCode: () => {} })
+const useLang = () => useContext(Lang)
+
+// t() returns the string. tr() returns the string AND the language it is actually in, for the
+// places that must carry lang/dir on the element itself.
+function useT() {
+  const { pack } = useLang()
+  // englishOverride is for content that lives in a data chunk rather than in en.json — a group
+  // panel, say. The English is already loaded; only the translation needs resolving.
+  const tr = (path, vars, englishOverride) => {
+    const fromEn = path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), englishPack)
+    const r = resolve(pack, path, englishOverride ?? fromEn ?? path)
+    const text = vars ? r.text.replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? `{${k}}`) : r.text
+    return { ...r, text }
+  }
+  return [(path, vars) => tr(path, vars).text, tr]
+}
+
+// §7: lang and dir follow what is actually rendered. These two put that on the element itself,
+// so an English fallback inside an Arabic page is an LTR block carrying lang="en".
+const langAttrs = (r) => ({ lang: r.lang, dir: dirOf(r.lang) })
+
+function Translated({ r, className }) {
+  return (
+    <p className={className} {...langAttrs(r)}>
+      {r.text}
+    </p>
+  )
+}
+
+// §7: the fallback must be visible, never silent. A Samoan speaker who gets an English story with
+// no explanation reasonably concludes the app has no Samoan in it — when the orientation around
+// them is Samoan. One quiet line, and the block carries lang="en" so a screen reader does not read
+// English words with Samoan phonetics.
+function Fallback({ children, lang, className }) {
+  const { code } = useLang()
+  const [t] = useT()
+  const fellBack = lang === 'en' && code !== 'en'
+  if (!fellBack) return <div className={className}>{children}</div>
+  return (
+    <div className={className}>
+      <p className="fallback-notice">{t('ui.fallbackNotice', { language: BY_CODE.get(code)?.endonym ?? code })}</p>
+      <div lang="en" dir="ltr">
+        {children}
+      </div>
+    </div>
+  )
+}
+
+function LanguagePicker() {
+  const { code, setCode } = useLang()
+  const [t] = useT()
+  return (
+    <label className="lang-picker">
+      <span className="lang-label">{t('ui.language')}</span>
+      <select value={code} onChange={(e) => setCode(e.target.value)}>
+        {SUPPORTED.map((l) => (
+          <option key={l.code} value={l.code} lang={l.code}>
+            {l.endonym}
+          </option>
+        ))}
+      </select>
+    </label>
+  )
+}
 
 // ------------------------------------------------------------------ routing
 // /                  the eleven group tiles
@@ -97,18 +170,20 @@ function Media({ object, priority }) {
 // ------------------------------------------------------------------ home
 
 function Home({ go }) {
+  const [t, tr] = useT()
   useLayoutEffect(() => {
-    document.title = 'The Blaschka collection — Canterbury Museum'
+    document.title = `${t('ui.collectionTitle')} — Canterbury Museum`
     scrollTo(0, 0)
-  }, [])
+  }, [t])
 
+  const intro = tr('ui.collectionIntro')
   return (
     <main className="home">
       <header className="home-head">
-        <h1>The Blaschka collection</h1>
-        <p>
-          Glass models of invertebrates, made by Leopold and Rudolf Blaschka in Dresden and acquired by Canterbury Museum
-          in 1883. One is on display. The rest are in storage.
+        <LanguagePicker />
+        <h1>{t('ui.collectionTitle')}</h1>
+        <p lang={intro.lang} dir={dirOf(intro.lang)}>
+          {intro.text}
         </p>
       </header>
       <ol className="grid">
@@ -120,9 +195,9 @@ function Home({ go }) {
                 <img className="tile-img" src={g.representative.url} alt="" loading="lazy" decoding="async" />
               </div>
               <div className="tile-text">
-                <h2>{g.title}</h2>
+                <h2 {...langAttrs(tr(`groups.${g.slug}`, null, g.title))}>{tr(`groups.${g.slug}`, null, g.title).text}</h2>
                 <p>
-                  {g.size} models. About {g.minutes} minutes.
+                  {g.size} {t('ui.models')}. {t('ui.aboutMinutes', { m: g.minutes })}
                 </p>
               </div>
             </a>
@@ -131,10 +206,10 @@ function Home({ go }) {
       </ol>
       <nav className="home-secondary">
         <a href="/all" onClick={go('/all')}>
-          Every object →
+          {t('ui.everyObject')} →
         </a>
         <a href="/search" onClick={go('/search')}>
-          Search →
+          {t('ui.search')} →
         </a>
       </nav>
       <p className="foot">
@@ -169,8 +244,18 @@ function ObjectSection({ object, arrived, registry }) {
   return (
     <article className={`object${arrived ? ' is-arrived' : ''}`} ref={ref} id={`obj-${object.accession}`}>
       {arrived && <p className="arrived-flag">The object you scanned</p>}
-      <h2 className="object-name">{headline}</h2>
-      {showCatalogue && <p className="object-catalogue">{object.catalogueName}</p>}
+      {/* The object name and the catalogue string are English until the stories are translated,
+          so they carry their own direction rather than inheriting the page's. §7: lang and dir
+          follow what is rendered. The binomial is marked so a screen reader does not read Latin
+          with the phonetics of the surrounding language. */}
+      <h2 className="object-name" lang="en" dir="ltr">
+        {headline}
+      </h2>
+      {showCatalogue && (
+        <p className="object-catalogue" lang="en" dir="ltr">
+          {object.catalogueName}
+        </p>
+      )}
 
       <Media object={object} priority={arrived} />
 
@@ -180,7 +265,7 @@ function ObjectSection({ object, arrived, registry }) {
       </p>
 
       {story ? (
-        <div className="story">
+        <Fallback className="story" lang="en">
           {story.segments.map((s) => (
             <section key={s.id}>
               <h3>{s.heading}</h3>
@@ -196,7 +281,7 @@ function ObjectSection({ object, arrived, registry }) {
               own published writing, and no curator has reviewed it.
             </p>
           )}
-        </div>
+        </Fallback>
       ) : (
         <div className="story is-placeholder">
           <p className="placeholder-flag">No story written yet. Below is the catalogue record's own description.</p>
@@ -208,6 +293,7 @@ function ObjectSection({ object, arrived, registry }) {
 }
 
 function GroupPage({ route, go }) {
+  const [t, tr] = useT()
   const group = BY_SLUG.get(route.slug)
   const registry = useRef(new Map())
   const [data, setData] = useState(null)
@@ -264,26 +350,27 @@ function GroupPage({ route, go }) {
 
   const prev = GROUPS[group.order - 2]
   const next = GROUPS[group.order]
+  const title = tr(`groups.${group.slug}`, null, group.title)
 
   return (
     <main className="reading">
       <a className="back" href="/" onClick={go('/')}>
         ← Collection
       </a>
-      <h1 className="group-title">{group.title}</h1>
+      <h1 className="group-title" {...langAttrs(title)}>{title.text}</h1>
       <p className="group-cost">
-        {group.size} models. About {group.minutes} minutes.
+        {group.size} {t('ui.models')}. {t('ui.aboutMinutes', { m: group.minutes })}
       </p>
 
       {data ? (
         <>
-          {data.panel && <p className="group-panel">{data.panel}</p>}
+          {data.panel && <Translated className="group-panel" r={tr(`panels.${group.slug}.panel`, null, data.panel)} />}
 
           {data.objects.map((o) => (
             <ObjectSection key={o.accession} object={o} arrived={o.accession === route.arrivedAt} registry={registry} />
           ))}
 
-          {data.ending && <p className="group-ending">{data.ending}</p>}
+          {data.ending && <Translated className="group-ending" r={tr(`panels.${group.slug}.ending`, null, data.ending)} />}
 
           {/* §10: layers 3–5 are reached from the end of a group page, as named continuations —
               not repeated under every object, and never a generic "more". */}
@@ -322,6 +409,7 @@ function GroupPage({ route, go }) {
 // §9 keeps the full grid as a secondary route rather than the front door: it rescues browsing by eye
 // and the completionist, and it costs one page. Its chunk is only fetched when someone asks for it.
 function AllPage({ go }) {
+  const [t] = useT()
   const [data, setData] = useState(null)
   useEffect(() => {
     document.title = 'Every object — the Blaschka collection'
@@ -333,7 +421,7 @@ function AllPage({ go }) {
     <main className="home">
       <header className="home-head">
         <a className="back back-dark" href="/" onClick={go('/')}>
-          ← Collection
+          ← {t('ui.backToCollection')}
         </a>
         <h1>Every object</h1>
         <p>
@@ -369,6 +457,7 @@ function AllPage({ go }) {
 // is no page for "all the jellyfish-type things". The spec says that has to be bought back with
 // search that works across pages, and budgeted as part of accepting the grouping.
 function SearchPage({ go }) {
+  const [t] = useT()
   const [data, setData] = useState(null)
   const [q, setQ] = useState('')
   useEffect(() => {
@@ -433,6 +522,7 @@ function SearchPage({ go }) {
 // object page (§6).
 
 function LayerPage({ route, go }) {
+  const [t] = useT()
   const [data, setData] = useState(null)
   useEffect(() => {
     scrollTo(0, 0)
@@ -495,6 +585,7 @@ function LayerPage({ route, go }) {
 // ------------------------------------------------------------------ missing
 
 function Missing({ route, go }) {
+  const [t] = useT()
   return (
     <main className="reading">
       <a className="back" href="/" onClick={go('/')}>
@@ -513,6 +604,45 @@ function Missing({ route, go }) {
 // ------------------------------------------------------------------ app
 
 export default function App() {
+  const [code, setCodeRaw] = useState(() => {
+    const d = detect()
+    return SUPPORTED.some((l) => l.code === d.code) ? d.code : 'en'
+  })
+  const [pack, setPack] = useState(englishPack)
+
+  useEffect(() => {
+    if (code === 'en') {
+      setPack(englishPack)
+      return
+    }
+    let live = true
+    loadChunk(`lang-${code}`)?.then((p) => {
+      if (live) setPack(p)
+    })
+    return () => {
+      live = false
+    }
+  }, [code])
+
+  // §7: lang and dir go on the root, and dir is mirrored for the layout — never for the media.
+  useEffect(() => {
+    document.documentElement.lang = code
+    document.documentElement.dir = dirOf(code)
+  }, [code])
+
+  const setCode = (next) => {
+    remember(next)
+    setCodeRaw(next)
+  }
+
+  return (
+    <Lang.Provider value={{ code, pack, setCode }}>
+      <Routes />
+    </Lang.Provider>
+  )
+}
+
+function Routes() {
   const [route, go] = useRoute()
   if (route.view === 'home') return <Home go={go} />
   if (route.view === 'group') return <GroupPage route={route} go={go} />
