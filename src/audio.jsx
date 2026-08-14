@@ -14,6 +14,8 @@
 
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react'
 import { PauseIcon, PlayIcon, SkipBackIcon, SkipForwardIcon, XIcon } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { Slider } from '@/components/ui/slider'
 import { useT } from './lang.jsx'
 import { useA11y } from './a11y.jsx'
 
@@ -518,22 +520,26 @@ export function AudioBar() {
 
   return (
     <div className="audio-bar" role="region" aria-label={t('ui.audioGuide')}>
-      {/* A real slider rather than the read-only bar this used to be. Native input[type=range]
-          because it arrives with role="slider", the arrow/Home/End keys and drag-free keyboard
-          operation already correct — SC 2.5.7 requires that a drag is never the only way. */}
-      <label className="audio-seek">
-        <span className="visually-hidden">{t('ui.audioPosition')}</span>
-        <input
-          type="range"
-          min="0"
+      {/* shadcn's Slider, not its Progress. Progress is a read-out — role="progressbar", no
+          keyboard, nothing to grab — and this control has to be seekable, so Progress would have
+          silently removed the ability to move through a 137-minute guide. Slider is the seekable
+          one, and it keeps what the native range gave us: role="slider", arrow/Home/End keys, and
+          therefore no drag-only interaction, which is what SC 2.5.7 requires. */}
+      <div className="audio-seek">
+        <span className="visually-hidden" id="audio-seek-label">
+          {t('ui.audioPosition')}
+        </span>
+        <Slider
+          aria-labelledby="audio-seek-label"
+          min={0}
           max={Number.isFinite(duration) && duration > 0 ? duration : 0}
-          step="0.5"
-          value={Math.min(time, duration || 0)}
-          onChange={(e) => a.seek(Number(e.target.value))}
-          aria-valuetext={t('ui.audioElapsed', { elapsed: spoken(time), total: spoken(duration) })}
+          step={0.5}
+          value={[Math.min(time, duration || 0)]}
+          onValueChange={(v) => a.seek(Array.isArray(v) ? v[0] : v)}
+          getAriaValueText={() => t('ui.audioElapsed', { elapsed: spoken(time), total: spoken(duration) })}
           disabled={!duration}
         />
-      </label>
+      </div>
 
       <div className="audio-row">
         <div className="audio-what">
@@ -553,11 +559,12 @@ export function AudioBar() {
           {/* Not mirrored under dir="rtl", unlike the back and prev/next arrows. These point along
               the recording rather than along the reading, and a tape does not run the other way for
               an Arabic listener. Matches the convention every other player follows. */}
-          <button type="button" onClick={() => a.skip(-1)} disabled={at === 0} aria-label={t('ui.audioPrevious')}>
+          <Button variant="bare" size="icon-touch" onClick={() => a.skip(-1)} disabled={at === 0} aria-label={t('ui.audioPrevious')}>
             <SkipBackIcon aria-hidden="true" focusable="false" />
-          </button>
-          <button
-            type="button"
+          </Button>
+          <Button
+            variant="quiet"
+            size="icon-touch"
             className="audio-play"
             onClick={a.toggle}
             aria-label={playing ? t('ui.audioPause') : t('ui.audioPlay')}
@@ -565,15 +572,16 @@ export function AudioBar() {
             {playing
               ? <PauseIcon aria-hidden="true" focusable="false" />
               : <PlayIcon aria-hidden="true" focusable="false" />}
-          </button>
-          <button
-            type="button"
+          </Button>
+          <Button
+            variant="bare"
+            size="icon-touch"
             onClick={() => a.skip(1)}
             disabled={at + 1 >= queue.items.length}
             aria-label={t('ui.audioNext')}
           >
             <SkipForwardIcon aria-hidden="true" focusable="false" />
-          </button>
+          </Button>
 
           <label className="audio-rate">
             <span className="visually-hidden">{t('ui.audioSpeed')}</span>
@@ -590,9 +598,9 @@ export function AudioBar() {
             {fmt(time)} / {fmt(duration)}
           </span>
 
-          <button type="button" onClick={a.stop} aria-label={t('ui.audioStop')}>
+          <Button variant="bare" size="icon-touch" onClick={a.stop} aria-label={t('ui.audioStop')}>
             <XIcon aria-hidden="true" focusable="false" />
-          </button>
+          </Button>
         </div>
       </div>
 

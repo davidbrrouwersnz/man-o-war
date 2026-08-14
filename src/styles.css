@@ -1206,6 +1206,16 @@ svg.lucide {
     max-width: var(--measure);
   }
 
+  /* The head is on cream at this width, so the control tokens go back to the reading palette. One
+     declaration covers every shadcn component in the header, because they all resolve their colours
+     through these. */
+  .home-head {
+    --control-ink: var(--ink);
+    --control-edge: var(--edge);
+    --control-ground: var(--paper);
+    --control-ring: var(--brand);
+  }
+
   .home-head .listen {
     color: var(--ink);
     border-color: var(--edge);
@@ -1391,25 +1401,22 @@ svg.lucide {
   margin: 0;
 }
 
-.audio-seek input {
-  display: block;
+/* The scrubber is shadcn's Slider now, so what is left here is the two things its utilities do not
+   cover: the full width of the bar, and a hit area that clears the 44px floor.
+
+   The 44px touch target had to be fixed in components/ui/slider.jsx rather than here: Tailwind
+   utilities sit in the last cascade layer, so a rule in this file cannot reach the thumb. */
+.audio-seek [data-slot='slider'] {
   width: 100%;
-  height: 14px;
-  margin: -6px 0;
-  padding: 0;
-  background: transparent;
-  accent-color: var(--brand);
   cursor: pointer;
+  /* Room for the thumb. The track is 4px and sits flush with the top edge of the transport bar, so
+     a 16px thumb centred on it hung 6px out over the page above. Padding on the root rather than a
+     margin on the thumb, because the thumb is styled by utilities this file cannot outrank. */
+  padding-block: 7px;
 }
 
-.audio-seek input:disabled {
-  cursor: default;
-  opacity: 0.5;
-}
-
-.audio-seek input:focus-visible {
-  outline: 2px solid var(--brand);
-  outline-offset: -2px;
+.audio-seek [data-slot='slider-track'] {
+  cursor: pointer;
 }
 
 .audio-row {
@@ -1640,26 +1647,59 @@ html:has(.audio-bar) {
     /* light-dark() reads this. The meta tag in index.html declares the same pair. */
     color-scheme: light dark;
 
-    --background: light-dark(oklch(1 0 0), oklch(0.145 0 0));
-    --foreground: light-dark(oklch(0.145 0 0), oklch(0.985 0 0));
-    --card: light-dark(oklch(1 0 0), oklch(0.205 0 0));
-    --card-foreground: light-dark(oklch(0.145 0 0), oklch(0.985 0 0));
-    --popover: light-dark(oklch(1 0 0), oklch(0.205 0 0));
-    --popover-foreground: light-dark(oklch(0.145 0 0), oklch(0.985 0 0));
-    --primary: light-dark(oklch(0.205 0 0), oklch(0.922 0 0));
-    --primary-foreground: light-dark(oklch(0.985 0 0), oklch(0.205 0 0));
-    --secondary: light-dark(oklch(0.97 0 0), oklch(0.269 0 0));
-    --secondary-foreground: light-dark(oklch(0.205 0 0), oklch(0.985 0 0));
-    --muted: light-dark(oklch(0.97 0 0), oklch(0.269 0 0));
-    --muted-foreground: light-dark(oklch(0.556 0 0), oklch(0.708 0 0));
-    --accent: light-dark(oklch(0.97 0 0), oklch(0.269 0 0));
-    --accent-foreground: light-dark(oklch(0.205 0 0), oklch(0.985 0 0));
-    --destructive: light-dark(oklch(0.577 0.245 27.325), oklch(0.704 0.191 22.216));
-    --border: light-dark(oklch(0.922 0 0), oklch(1 0 0 / 15%));
-    --input: light-dark(oklch(0.922 0 0), oklch(1 0 0 / 15%));
-    --ring: light-dark(oklch(0.708 0 0), oklch(0.556 0 0));
+    /* Pointed at the museum palette rather than shadcn's neutral greys.
+
+       This is what makes shadcn components safe to use here. Every colour above the line in this
+       file is asserted by scripts/contrast.mjs, 34 pairs across four palettes, and that check
+       exists because §15's control-border bug has shipped twice. A component drawing itself in
+       oklch(0.708 0 0) is a colour no assertion covers; the same component drawing itself in
+       var(--edge) is one that cannot drift without the build failing.
+
+       Dark handling changes with it. These were light-dark() pairs; the app tokens already flip
+       under prefers-color-scheme, so the aliases inherit that and there is one place to look
+       instead of two. color-scheme stays, because form controls still read it. */
+    --background: var(--paper);
+    --foreground: var(--ink);
+    --card: var(--paper);
+    --card-foreground: var(--ink);
+    --popover: var(--paper);
+    --popover-foreground: var(--ink);
+    --primary: var(--ink);
+    --primary-foreground: var(--paper);
+    --secondary: var(--rule);
+    --secondary-foreground: var(--ink);
+    --muted: var(--rule);
+    --muted-foreground: var(--ink-meta);
+    --accent: var(--rule);
+    --accent-foreground: var(--ink);
+    --destructive: var(--brand);
+    /* --edge is the control-boundary token, floor 3:1, and never used for text. --rule is the
+       decorative hairline. shadcn uses --border for both jobs, so it takes the stricter one. */
+    --border: var(--edge);
+    --input: var(--edge);
+    --ring: var(--brand);
 
     --radius: 0.625rem;
+  }
+
+  /* Controls that sit on the permanently-dark collection header need the dark palette, and the
+     switch has to happen in a token rather than in a component — §15's "chrome over media is
+     light-on-dark regardless of theme, care at the boundary". A shadcn component styles itself with
+     Tailwind utilities, which live in the last cascade layer and so beat anything this file says
+     about them; the only lever left that still works from here is what those utilities resolve to.
+     Hence a control-scoped pair, flipped by context, consumed by the button variants. */
+  :root {
+    --control-ink: var(--ink);
+    --control-edge: var(--edge);
+    --control-ground: var(--paper);
+    --control-ring: var(--brand);
+  }
+
+  .home-head {
+    --control-ink: var(--dark-ink);
+    --control-edge: var(--dark-edge);
+    --control-ground: var(--dark);
+    --control-ring: var(--dark-brand);
   }
 
   /* Kept so a manual theme toggle stays possible later (§15's "dimmed gallery mode" fallback).

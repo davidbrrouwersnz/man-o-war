@@ -3,6 +3,7 @@
 
 import { Suspense, lazy, useState } from 'react'
 import { ContrastIcon, GlobeIcon } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 import { useLang, useT } from '../lang.jsx'
 import { SUPPORTED } from '../collection.js'
 
@@ -21,21 +22,21 @@ function LanguagePicker() {
   const { code, setCode } = useLang()
   const [t] = useT()
   return (
-    <label className="lang-picker">
+    <div className="lang-picker">
       {/* The word "Language" is hidden, not deleted. An icon is a hint, not a name — a select with
           no accessible name is announced as just "combo box", and the one control on the page a
           visitor most needs when they cannot read the page is the one that stops saying what it is.
           So the globe carries the meaning visually and the word carries it to a screen reader. */}
-      <span className="visually-hidden">{t('ui.language')}</span>
+      <span className="visually-hidden" id="lang-label">{t('ui.language')}</span>
       <GlobeIcon className="lang-globe" size={18} aria-hidden="true" focusable="false" />
-      <select value={code} onChange={(e) => setCode(e.target.value)}>
+      <select value={code} onChange={(e) => setCode(e.target.value)} aria-labelledby="lang-label">
         {SUPPORTED.map((l) => (
           <option key={l.code} value={l.code} lang={l.code}>
             {l.endonym}
           </option>
         ))}
       </select>
-    </label>
+    </div>
   )
 }
 
@@ -52,8 +53,9 @@ function DisplaySettings() {
 
   return (
     <>
-      <button
-        type="button"
+      <Button
+        variant="quiet"
+        size="icon-touch"
         className="tool-button"
         aria-label={t('ui.display')}
         aria-haspopup="dialog"
@@ -65,7 +67,7 @@ function DisplaySettings() {
         {/* The half-filled circle is the conventional contrast glyph, and it is what this panel is
             mostly for. */}
         <ContrastIcon size={18} aria-hidden="true" focusable="false" />
-      </button>
+      </Button>
       {wanted && (
         <Suspense fallback={null}>
           <DisplayPanel open={open} onOpenChange={setOpen} />

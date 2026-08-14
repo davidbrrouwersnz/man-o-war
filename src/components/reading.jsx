@@ -3,6 +3,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { PauseIcon, PlayIcon } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 import { langAttrs, useT } from '../lang.jsx'
 import { Spoken, useAudio } from '../audio.jsx'
 
@@ -40,9 +41,15 @@ function Listen({ queue, available, note, pending = false }) {
   const playing = isThis && audio.playing
   return (
     <p className="object-listen">
-      <button
-        type="button"
-        className={`listen${playing ? ' is-playing' : ''}`}
+      {/* shadcn's Button, in the app's own `quiet` variant at the `touch` size — see
+          components/ui/button.jsx for why the museum's controls are variants there rather than
+          rules in styles.css. The `listen` class is kept only as a hook for the few rules CSS still
+          owns and for the scripts that measure this control. */}
+      <Button
+        variant="quiet"
+        size="touch"
+        className="listen"
+        data-playing={playing ? 'true' : 'false'}
         onClick={() => audio.start(queue)}
         disabled={pending}
         aria-label={playing ? t('ui.listenStop') : `${t('ui.listen')} — ${queue.title}`}
@@ -51,7 +58,7 @@ function Listen({ queue, available, note, pending = false }) {
           ? <PauseIcon aria-hidden="true" focusable="false" />
           : <PlayIcon aria-hidden="true" focusable="false" />}
         {playing ? t('ui.listenStop') : t('ui.listen')}
-      </button>
+      </Button>
       {note && <span className="listen-note">{note}</span>}
     </p>
   )
