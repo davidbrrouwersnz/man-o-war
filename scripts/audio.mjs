@@ -245,7 +245,13 @@ function assertIntegrity(unit, ssml) {
 
 // ---------------------------------------------------------------- synthesis
 
-const hashOf = (s) => createHash('sha256').update(s).digest('hex').slice(0, 16)
+// Bumped whenever cue generation changes, so fixing the VTTs actually rebuilds them instead of
+// being skipped by the cache. The audio is unchanged by a cue fix, but the two are written
+// together and it is not worth a second cache to keep them apart.
+const PIPELINE = 2
+
+const hashOf = (s) => createHash('sha256').update(`v${PIPELINE}
+${s}`).digest('hex').slice(0, 16)
 
 async function synthesise(ssml, key, region) {
   const sdk = await import('microsoft-cognitiveservices-speech-sdk')
@@ -292,12 +298,47 @@ const stamp = (ms) => {
 // One cue per word, so the page can follow the narration. The end of a word is the start of the
 // next one rather than start+duration: Azure's durations exclude the silence between words, and a
 // highlight that blinks off in the gaps looks broken.
-function buildVtt(words, totalMs) {
-  const lines = ['WEBVTT', '']
-  for (const [i, w] of words.entries()) {
-    const end = i + 1 < words.length ? words[i + 1].start : Math.max(w.start + w.duration, totalMs)
-    lines.push(`${i + 1}`, `${stamp(w.start)} --> ${stamp(end)}`, w.text, '')
+//
+// Two corrections are applied to what Azure reports, both found by reading the generated cues:
+//
+//   Punctuation-only cues. Azure splits "man o' war" into "man", "o", "'", "war" and reports the
+//   bare apostrophe as its own word. Highlighting a lone apostrophe for a tenth of a second reads
+//   as a glitch, so those cues are folded into the word before them.
+//
+//   <sub> segments get ONE cue for the whole line. Azure reports word offsets as positions in the
+//   SSML it was given, and the SDK slices the text out using them - which works while the spoken
+//   words and the written words are the same string. Inside <sub> they are not, so the slices land
+//   on raw markup and the cues come back containing things like '">1884.137.33'. The timings are
+//   not recoverable, so rather than ship convincing-looking nonsense the whole line becomes a
+//   single cue. That is the honest resolution for a line of metadata anyway.
+function buildVtt(unit, words, totalMs) {
+  const cues = []
+
+  if (unit.kind === 'meta') {
+    cues.push({ start: 0, end: totalMs, text: printedTextOf(unit) })
+  } else {
+    const merged = []
+    for (const w of words) {
+      const isPunctuation = !/[A-Za-z0-9]/.test(w.text)
+      if (isPunctuation && merged.length) {
+        const prev = merged[merged.length - 1]
+        prev.text += w.text
+        prev.duration = w.start + w.duration - prev.start
+        continue
+      }
+      merged.push({ ...w })
+    }
+    for (const [i, w] of merged.entries()) {
+      cues.push({
+        start: w.start,
+        end: i + 1 < merged.length ? merged[i + 1].start : Math.max(w.start + w.duration, totalMs),
+        text: w.text,
+      })
+    }
   }
+
+  const lines = ['WEBVTT', '']
+  for (const [i, c] of cues.entries()) lines.push(`${i + 1}`, `${stamp(c.start)} --> ${stamp(c.end)}`, c.text, '')
   return lines.join('\n')
 }
 
@@ -372,7 +413,7 @@ async function main() {
     const { audio, words, durationMs } = await synthesise(ssml, key, region)
     mkdirSync(dirname(mp3.pathname.replace(/^\/([A-Za-z]:)/, '$1')), { recursive: true })
     writeFileSync(mp3, audio)
-    writeFileSync(vtt, buildVtt(words, durationMs))
+    writeFileSync(vtt, buildVtt(unit, words, durationMs))
 
     index.segments[unit.id] = { hash, durationMs, words: words.length, bytes: audio.length, track: unit.track, kind: unit.kind }
     made++

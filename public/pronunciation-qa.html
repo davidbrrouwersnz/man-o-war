@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pronunciation check — Blaschka audio guide</title>
+<style>
+  :root { --ink:#14110f; --paper:#faf8f5; --line:#e0dad2; --quiet:#6b625a; --flag:#8a3324; }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink:#f0ece7; --paper:#14110f; --line:#332e29; --quiet:#a49a90; --flag:#e0785f; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; padding:2.5rem 1.25rem 6rem; background:var(--paper); color:var(--ink);
+         font:16px/1.55 ui-serif, Georgia, serif; }
+  main { max-width: 46rem; margin: 0 auto; }
+  h1 { font-size:1.6rem; margin:0 0 .4rem; }
+  .lede { color:var(--quiet); margin:0 0 2.5rem; }
+  h2 { font-size:1.05rem; margin:2.5rem 0 .25rem; text-transform:uppercase;
+       letter-spacing:.06em; font-family:ui-sans-serif,system-ui,sans-serif; }
+  .count { color:var(--quiet); font-weight:400; }
+  .blurb { color:var(--quiet); margin:0 0 1.25rem; font-size:.92rem; }
+  .entry { display:grid; grid-template-columns: 12rem 1fr; gap:.2rem 1.25rem;
+           padding:.9rem 0; border-top:1px solid var(--line); align-items:baseline; }
+  .entry.silent { opacity:.5; }
+  .word { font-size:1.05rem; }
+  .kind { display:block; font-size:.75rem; color:var(--quiet); font-family:ui-sans-serif,system-ui,sans-serif; }
+  .say { font-family:ui-monospace,Menlo,Consolas,monospace; font-size:.95rem; }
+  .why { grid-column:2; color:var(--quiet); font-size:.88rem; }
+  .clips { grid-column:2; margin-top:.45rem; display:flex; gap:.5rem; flex-wrap:wrap; }
+  button { font:inherit; font-size:.85rem; font-family:ui-sans-serif,system-ui,sans-serif;
+           padding:.3rem .7rem; border:1px solid var(--line); border-radius:2rem;
+           background:transparent; color:var(--ink); cursor:pointer; }
+  button:hover { border-color:var(--ink); }
+  button[aria-pressed="true"] { background:var(--ink); color:var(--paper); }
+  .none { font-size:.85rem; color:var(--quiet); }
+  @media (max-width: 34rem) { .entry { grid-template-columns:1fr; } .why,.clips { grid-column:1; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Pronunciation check</h1>
+  <p class="lede">
+    Every word below is one the narration says aloud and I was not certain about.
+    Press <strong>hear it</strong> to jump straight to the word in the real audio.
+    You do not need to write phonetics — just say whether it is right.
+  </p>
+  
+  <section>
+    <h2>Needs an answer <span class="count">17</span></h2>
+    <p class="blurb">These are guesses. Nearly all are named after people, and a person’s name does not follow Latin rules — no amount of rule-following gets you there.</p>
+    
+    <article class="entry">
+      <div class="word">
+        <strong>couchii</strong>
+        <span class="kind">species</span>
+      </div>
+      <div class="say">KOOCH-ee-eye</div>
+      <div class="why">Eponym - after Jonathan Couch, Cornish naturalist (KOOCH).</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.70/00-title.mp3" data-at="4.21">▶ hear it 1</button><button data-src="/audio/en/1884.137.70/99-identification.mp3" data-at="2.55">▶ hear it 2</button><button data-src="/audio/en/1884.137.70/99-identification.mp3" data-at="6.38">▶ hear it 3</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>krohnii</strong>
+        <span class="kind">species</span>
+      </div>
+      <div class="say">KROHN-ee-eye</div>
+      <div class="why">Eponym - after August Krohn, German.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.100/00-title.mp3" data-at="4.14">▶ hear it 1</button><button data-src="/audio/en/1884.137.103/00-title.mp3" data-at="5.28">▶ hear it 2</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Tiedemannia</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">tee-duh-MAN-ee-uh</div>
+      <div class="why">Eponym - after Friedrich Tiedemann, German (TEE-duh-mahn).</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.95/00-title.mp3" data-at="4.94">▶ hear it 1</button><button data-src="/audio/en/1884.137.99/00-title.mp3" data-at="3.38">▶ hear it 2</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>beselii</strong>
+        <span class="kind">species</span>
+      </div>
+      <div class="say">beh-SEL-ee-eye</div>
+      <div class="why">Eponym - after Besel.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.23/00-title.mp3" data-at="3.96">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Boltenia</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">bol-TEE-nee-uh</div>
+      <div class="why">Eponym - after Bolten. German 'BOL-ten' would give bol-TAY-nee-uh.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.85/00-title.mp3" data-at="3.57">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Borlasia</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">bor-LAY-zee-uh</div>
+      <div class="why">Eponym - after William Borlase (BOR-lass).</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.49/00-title.mp3" data-at="3.15">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>hemiprichii</strong>
+        <span class="kind">species</span>
+      </div>
+      <div class="say">hem-ih-PRIK-ee-eye</div>
+      <div class="why">The catalogue's variant spelling of hemprichii - same person.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.31/00-title.mp3" data-at="4.28">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>hemprichi</strong>
+        <span class="kind">species</span>
+      </div>
+      <div class="say">HEM-prik-ee</div>
+      <div class="why">Eponym - after Wilhelm Hemprich, German.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.115/00-title.mp3" data-at="0.36">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>hyndmanni</strong>
+        <span class="kind">species</span>
+      </div>
+      <div class="say">HYND-muh-nye</div>
+      <div class="why">Eponym - after George Hyndman.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.84/00-title.mp3" data-at="4.21">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Ilanthos</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">ih-LAN-thoss</div>
+      <div class="why">Obscure genus; little spoken precedent.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.26/00-title.mp3" data-at="0.00">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Lafoea</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">luh-FEE-uh</div>
+      <div class="why">Eponym - after Lafoe.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.107/00-title.mp3" data-at="5.05">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>lichtensteinii</strong>
+        <span class="kind">species</span>
+      </div>
+      <div class="say">LIK-ten-styne-ee-eye</div>
+      <div class="why">Eponym - after Hinrich Lichtenstein, German.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.17/00-title.mp3" data-at="4.02">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Meckelia</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">meh-KEE-lee-uh</div>
+      <div class="why">Eponym - after J.F. Meckel, German (MECK-el).</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.37/00-title.mp3" data-at="3.09">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>parettii</strong>
+        <span class="kind">species</span>
+      </div>
+      <div class="say">puh-RET-ee-eye</div>
+      <div class="why">Eponym - after Paretti.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.18/00-title.mp3" data-at="3.86">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>rondeleti</strong>
+        <span class="kind">species</span>
+      </div>
+      <div class="say">ron-duh-LET-ee</div>
+      <div class="why">Eponym - after Guillaume Rondelet, French.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.67/00-title.mp3" data-at="4.52">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>sieboldii</strong>
+        <span class="kind">species</span>
+      </div>
+      <div class="say">SEE-bolt-ee-eye</div>
+      <div class="why">Eponym - after Philipp von Siebold, German (ZEE-bolt).</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.114/00-title.mp3" data-at="0.20">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Tealia</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">TEE-lee-uh</div>
+      <div class="why">Eponym - after Thomas Teale. Could equally be 'TAY-lee-uh'.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.27/00-title.mp3" data-at="2.57">▶ hear it</button>
+      </div>
+    </article>
+  </section>
+  
+  <section>
+    <h2>Worth a look <span class="count">35</span></h2>
+    <p class="blurb">Defensible either way. A specialist may prefer the other variant.</p>
+    
+    <article class="entry">
+      <div class="word">
+        <strong>Blaschkas</strong>
+        <span class="kind">name</span>
+      </div>
+      <div class="say">BLASH-kuhz</div>
+      <div class="why"></div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.103/why-enlarge.mp3" data-at="23.27">▶ hear it 1</button><button data-src="/audio/en/1884.137.123/the-craze.mp3" data-at="21.18">▶ hear it 2</button><button data-src="/audio/en/1884.137.124/clear-glass.mp3" data-at="18.39">▶ hear it 3</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Melibe</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">meh-LY-bee</div>
+      <div class="why">MEL-ih-bee also used.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.8/00-title.mp3" data-at="0.00">▶ hear it 1</button><button data-src="/audio/en/1884.137.8/00-title.mp3" data-at="2.61">▶ hear it 2</button><button data-src="/audio/en/1884.137.8/99-identification.mp3" data-at="1.68">▶ hear it 3</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Arion</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">ARR-ee-on</div>
+      <div class="why">uh-RY-on also heard for the slug genus.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.45/00-title.mp3" data-at="3.34">▶ hear it 1</button><button data-src="/audio/en/1884.137.50/00-title.mp3" data-at="4.55">▶ hear it 2</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Elysia</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">ih-LIZ-ee-uh</div>
+      <div class="why">ih-LEE-zee-uh also common.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.76/00-title.mp3" data-at="0.47">▶ hear it 1</button><button data-src="/audio/en/1884.137.76/00-title.mp3" data-at="2.77">▶ hear it 2</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Loligo</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">luh-LY-goh</div>
+      <div class="why">loh-LEE-goh also heard.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.30/00-title.mp3" data-at="0.35">▶ hear it 1</button><button data-src="/audio/en/1884.137.6/00-title.mp3" data-at="4.32">▶ hear it 2</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Amphiura</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">am-fee-YOOR-uh</div>
+      <div class="why"></div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.25/00-title.mp3" data-at="4.92">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Aplysia</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">uh-PLIZ-ee-uh</div>
+      <div class="why">uh-PLEE-zee-uh is also widely used.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.11/00-title.mp3" data-at="3.13">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Blaschka</strong>
+        <span class="kind">name</span>
+      </div>
+      <div class="say">BLASH-kuh</div>
+      <div class="why">German. The family's own pronunciation is the one that matters - worth asking the Museum, since their name is on everything.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.110/the-missing-one.mp3" data-at="25.71">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Bolocera</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">buh-LOSS-uh-ruh</div>
+      <div class="why"></div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.74/00-title.mp3" data-at="2.35">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Bonellia</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">buh-NELL-ee-uh</div>
+      <div class="why">Eponym - after Franco Bonelli, Italian.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.48/00-title.mp3" data-at="3.57">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>bonelliana</strong>
+        <span class="kind">species</span>
+      </div>
+      <div class="say">bon-el-ee-AH-nuh</div>
+      <div class="why">Eponym - after Bonelli, Italian.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.39/00-title.mp3" data-at="4.27">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Centrostomum</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">sen-TROSS-tuh-mum</div>
+      <div class="why"></div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.97/00-title.mp3" data-at="3.06">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Chrysaora</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">kriss-AY-oh-ruh</div>
+      <div class="why">ch is hard 'k'. kry-SOR-uh also heard.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.104/00-title.mp3" data-at="3.52">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Clepsine</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">KLEP-sih-nee</div>
+      <div class="why">Final -e sounds; not 'klep-SEEN'.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.35/00-title.mp3" data-at="3.64">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Cucumeria</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">kyoo-kyoo-MEER-ee-uh</div>
+      <div class="why"></div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.84/00-title.mp3" data-at="3.30">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Diphyes</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">DIFF-ee-eez</div>
+      <div class="why">Final -es is 'eez'. dy-FY-eez also defensible.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.114/00-title.mp3" data-at="0.00">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>diplochaitos</strong>
+        <span class="kind">species</span>
+      </div>
+      <div class="say">dip-loh-KY-toss</div>
+      <div class="why">-chaitos is 'KY-toss', ch hard.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.91/00-title.mp3" data-at="4.17">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Dolabrifera</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">doll-uh-BRIF-uh-ruh</div>
+      <div class="why"></div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.94/00-title.mp3" data-at="3.03">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Halcampa</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">hal-KAM-puh</div>
+      <div class="why"></div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.96/00-title.mp3" data-at="2.39">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>hysoscella</strong>
+        <span class="kind">species</span>
+      </div>
+      <div class="say">hy-soh-SELL-uh</div>
+      <div class="why"></div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.104/00-title.mp3" data-at="4.28">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>macrorrhochma</strong>
+        <span class="kind">species</span>
+      </div>
+      <div class="say">mak-roh-ROK-muh</div>
+      <div class="why">-rrh- is a plain 'r'.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.37/00-title.mp3" data-at="3.78">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>mesembrianthemum</strong>
+        <span class="kind">species</span>
+      </div>
+      <div class="say">meh-sem-bree-AN-thih-mum</div>
+      <div class="why"></div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.5/00-title.mp3" data-at="3.07">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Nereis</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">NEER-ee-iss</div>
+      <div class="why">NEE-ree-iss also defensible.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.20/00-title.mp3" data-at="3.05">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Peachia</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">PEECH-ee-uh</div>
+      <div class="why">Eponym - after Charles Peach. Latin rules alone would give 'pee-AK-ee-uh', which is wrong.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.28/00-title.mp3" data-at="2.30">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Phallusia</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">fuh-LOO-zee-uh</div>
+      <div class="why"></div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.58/00-title.mp3" data-at="3.89">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>phantapus</strong>
+        <span class="kind">species</span>
+      </div>
+      <div class="say">FAN-tuh-puss</div>
+      <div class="why"></div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.2/00-title.mp3" data-at="3.89">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>pileus</strong>
+        <span class="kind">species</span>
+      </div>
+      <div class="say">PILL-ee-uss</div>
+      <div class="why"></div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.53/00-title.mp3" data-at="4.17">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Plocamophorus</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">plok-uh-MOFF-uh-russ</div>
+      <div class="why"></div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.116/00-title.mp3" data-at="0.00">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Sagartia</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">suh-GAR-tee-uh</div>
+      <div class="why">suh-GAR-shuh also heard.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.122/00-title.mp3" data-at="2.19">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Sepiola</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">sep-ee-OH-luh</div>
+      <div class="why"></div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.67/00-title.mp3" data-at="3.68">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Siphonostoma</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">sy-fuh-NOSS-tuh-muh</div>
+      <div class="why"></div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.91/00-title.mp3" data-at="3.11">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>smithii</strong>
+        <span class="kind">species</span>
+      </div>
+      <div class="say">SMITH-ee-eye</div>
+      <div class="why">-ii on an English surname is 'ee-eye'.</div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.106/00-title.mp3" data-at="4.59">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="word">
+        <strong>Thalassianthus</strong>
+        <span class="kind">genus</span>
+      </div>
+      <div class="say">thuh-lass-ee-AN-thuss</div>
+      <div class="why"></div>
+      <div class="clips">
+        <button data-src="/audio/en/1884.137.62/00-title.mp3" data-at="0.00">▶ hear it</button>
+      </div>
+    </article>
+    <article class="entry silent">
+      <div class="word">
+        <strong>Haast</strong>
+        <span class="kind">name</span>
+      </div>
+      <div class="say">HAHST</div>
+      <div class="why">Julius von Haast, German. Widely said 'HAHST' in NZ; 'HAST' also heard.</div>
+      <div class="clips">
+        <span class="none">never spoken on the site</span>
+      </div>
+    </article>
+    <article class="entry silent">
+      <div class="word">
+        <strong>Leopold</strong>
+        <span class="kind">name</span>
+      </div>
+      <div class="say">LEE-uh-pohld</div>
+      <div class="why">German 'LAY-oh-polt' is the family's own; English speakers say LEE-uh-pohld.</div>
+      <div class="clips">
+        <span class="none">never spoken on the site</span>
+      </div>
+    </article>
+  </section>
+</main>
+<script>
+  // One audio element, reused. Playing a second clip stops the first, which is what you want when
+  // comparing two readings of the same word.
+  const audio = new Audio();
+  let active = null;
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest('button[data-src]');
+    if (!b) return;
+    if (active === b && !audio.paused) { audio.pause(); b.setAttribute('aria-pressed','false'); active = null; return; }
+    if (active) active.setAttribute('aria-pressed','false');
+    active = b;
+    b.setAttribute('aria-pressed','true');
+    if (audio.src !== location.origin + b.dataset.src) audio.src = b.dataset.src;
+    const go = () => { audio.currentTime = Number(b.dataset.at); audio.play(); };
+    if (audio.readyState >= 1) go(); else audio.addEventListener('loadedmetadata', go, { once:true });
+  });
+  audio.addEventListener('ended', () => { if (active) active.setAttribute('aria-pressed','false'); active = null; });
+</script>
+</body>
+</html>
