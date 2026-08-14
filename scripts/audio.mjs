@@ -27,7 +27,7 @@
 // it sidesteps a known Azure bug where bookmark offsets drift when a <break> precedes them, and it
 // means editing one paragraph re-synthesises one paragraph instead of a whole object.
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync, statSync } from 'node:fs'
+import { readFileSync, writeFileSync, mkdirSync, existsSync, statSync, rmSync } from 'node:fs'
 import { createHash } from 'node:crypto'
 import { dirname } from 'node:path'
 
@@ -59,7 +59,6 @@ const layers = read('layers.json')
 const groups = read('groups.json')
 const pron = read('pronunciation.json')
 const MANIFEST = read('manifest.json').objects
-const EN = read('i18n/en.json')
 const STORIES = { ...drafted.stories, ...museum.stories }
 
 // One flat list of everything to voice. Each unit is exactly one printed segment, which is what
@@ -68,7 +67,7 @@ function collect() {
   const units = []
 
   // Page order, because that is the order a visitor meets it and the order a skip button walks.
-  // Mirrors the object route in src/App.jsx: headline, catalogue line, meta line, story segments,
+  // Mirrors the object route in src/App.jsx: headline and catalogue line, story segments,
   // identification note. Nothing here is composed or reworded - each unit is a block that is
   // already on the screen, which is the whole of the brief: voice the text that is displayed.
   for (const rec of MANIFEST) {
@@ -88,18 +87,12 @@ function collect() {
       text: showCatalogue ? `${headline}\n\n${rec.catalogueName}` : headline,
     })
 
-    // The accession, size and rights line. Ugly to listen to, and skippable in one press because
-    // it is its own file - but it is the ONLY place the object's real size is stated, and with the
-    // audio-description track cut there is nowhere else for a blind visitor to learn how big the
-    // thing is. Leaving it out would quietly remove the last bit of physical description.
-    const size = rec.measurements?.[0]?.replace(/^Dimensions \(LxWxH\):\s*/i, '').trim()
-    // The rights fallback is read out of the app's own English strings rather than written out
-    // again here. Duplicating it is how nine objects - the man o' war among them - ended up with
-    // narration that said "this record does not state rights" while the page printed "rights not
-    // stated on this record". The integrity check could not catch that: it proves the SSML matches
-    // the string it was handed, not that the string matches what React renders.
-    const meta = [accession, size, rec.rights || EN.ui.rightsUnstated].filter(Boolean).join(' · ')
-    units.push({ kind: 'meta', id: `${accession}/01-meta`, track: 'interpretation', heading: null, text: meta })
+    // The accession/size/rights line is deliberately NOT voiced. It is printed on the page, so a
+    // screen reader already reads it on request - narrating it again adds nothing for the visitor
+    // who wants it and is pure noise for everyone else. "1 - model: 200 x 90 x 90mm · CC-BY-NC" is
+    // catalogue notation, not description, and reading it aloud was never the right way to tell
+    // anyone how big a thing is. The proper answer is the §13 audio-description track; until that
+    // exists the honest position is silence rather than a bad substitute.
 
     if (story) {
       for (const seg of story.segments) {
@@ -171,24 +164,6 @@ function markUp(text, mode) {
   return out.join('')
 }
 
-// The meta line is notation, not prose: "1884.137.47 · whole: 109 x 142 x 33mm · CC-BY-NC".
-// Left alone a voice says "eks" for the multiplication sign, "mm" as two letters, and turns the
-// accession number into a decimal. None of those are words, so spelling out how they are read does
-// not change any word - and the integrity check still passes, because <sub> keeps the printed text
-// inside it. This is the ONLY place in the pipeline where notation is expanded, and it is confined
-// to this one line on purpose.
-function metaAlias(text) {
-  return text
-    // 1884.137.47 -> read as grouped digits, the way a number is dictated rather than counted.
-    .replace(/\b(\d{4})\.(\d+)\.(\d+)\b/g, (_m, a, b, c) =>
-      [a, b, c].map((part) => part.split('').join(' ')).join(' dot ')
-    )
-    .replace(/(\d)\s*x\s*(?=\d)/g, '$1 by ')
-    .replace(/(\d)\s*mm\b/g, '$1 millimetres')
-    .replace(/·/g, ',')
-    .replace(/\bCC-BY-NC\b/g, 'Creative Commons, attribution, non-commercial')
-}
-
 // Paragraphs become <p>. That is how SSML expresses a paragraph pause, and it is better than
 // inserting <break> tags by hand: it reads naturally and it keeps explicit breaks out of the
 // document, which is what makes the word-offset stream trustworthy.
@@ -200,11 +175,7 @@ function buildSsml(unit, mode) {
   const body = blocks
     .map((b) => b.trim())
     .filter(Boolean)
-    .map((b) =>
-      unit.kind === 'meta'
-        ? `<p><sub alias="${esc(metaAlias(b))}">${esc(b)}</sub></p>`
-        : `<p>${markUp(b, mode)}</p>`
-    )
+    .map((b) => `<p>${markUp(b, mode)}</p>`)
     .join('\n    ')
 
   return `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="${LOCALE}">
@@ -318,9 +289,7 @@ const stamp = (ms) => {
 function buildVtt(unit, words, totalMs) {
   const cues = []
 
-  if (unit.kind === 'meta') {
-    cues.push({ start: 0, end: totalMs, text: printedTextOf(unit) })
-  } else {
+  {
     const merged = []
     for (const w of words) {
       const isPunctuation = !/[A-Za-z0-9]/.test(w.text)
@@ -423,6 +392,22 @@ async function main() {
     made++
     bytes += audio.length
     process.stdout.write(`\r  ${made} synthesised, ${cached} cached — ${unit.id}`.padEnd(90))
+  }
+
+  // Drop entries for segments that are no longer voiced, and delete their files. Without this,
+  // removing something from collect() leaves its audio on disk and in the index forever - shipped,
+  // deployed, and silently wrong the moment anyone trusts the index to say what exists.
+  if (!ONLY) {
+    const live = new Set(units.map((u) => u.id))
+    for (const id of Object.keys(index.segments)) {
+      if (live.has(id)) continue
+      delete index.segments[id]
+      for (const ext of ['mp3', 'vtt']) {
+        const f = new URL(`${id}.${ext}`, OUT)
+        if (existsSync(f)) rmSync(f)
+      }
+      console.log(`  removed ${id} — no longer voiced`)
+    }
   }
 
   writeFileSync(INDEX, `${JSON.stringify(index, null, 2)}\n`)

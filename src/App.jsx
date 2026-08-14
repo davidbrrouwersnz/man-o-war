@@ -286,7 +286,9 @@ function ObjectSection({ object, arrived, registry }) {
         label: t('ui.audioName'),
         blocks: showCatalogue ? [headlineR.text, catalogueR.text] : [headlineR.text],
       },
-      { id: `${object.accession}/01-meta`, label: t('ui.audioDetails'), blocks: [metaLine] },
+      // No entry for the accession/size/rights line. It is printed right there on the page, so a
+      // screen reader reads it on request — narrating it adds nothing for the visitor who wants it
+      // and is noise for everyone else. See the note in scripts/audio.mjs.
       ...parts.map((p) => ({
         id: `${object.accession}/${p.s.id}`,
         label: p.heading.text,
@@ -316,9 +318,7 @@ function ObjectSection({ object, arrived, registry }) {
 
       <Media object={object} priority={arrived} />
 
-      <p className="object-meta">
-        <Spoken text={metaLine} itemId={`${object.accession}/01-meta`} block={0} />
-      </p>
+      <p className="object-meta">{metaLine}</p>
 
       {englishOnScreen && (
         <p className="object-listen">

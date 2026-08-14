@@ -9,25 +9,30 @@ Everything below is done and tested except the part that needs an Azure key.
 
 ## What gets voiced
 
-**552 audio files**, one per block of text on the page, in the order the page shows it:
+**424 audio files**, one per block of text on the page, in the order the page shows it:
 
 | | |
 |---|---|
 | the name | plain-English headline, then the catalogue's scientific name |
-| the details | accession number, size, rights |
 | the story | one file per section — 261 of them |
 | the identification note | where the Museum's page and its own record disagree |
 
-Plus the 21 group panel and ending texts. That is 100 minutes of speech.
+Plus the 21 group panel and ending texts. That is 110 minutes of speech.
 
 Nothing here is newly written. Every file is a block already printed on the screen, which is what
 "only voice the text that is displayed" means in practice.
 
+**The accession/size/rights line is deliberately not voiced.** It is printed on the page, so a
+screen reader reads it on request — narrating it as well adds nothing for the visitor who wants it
+and is noise for everyone else. There is also no way to know which visitor is which: browsers do
+not expose whether a screen reader is running, deliberately, and inferring it from behaviour would
+be both unreliable and othering. So the audio does not try to guess an audience.
+
 **The audio description track from §13 is not being built.** §13 wanted a second track describing
 form, scale, colour and mount, on by default, because a blind visitor cannot see the photograph the
-story assumes you are looking at. That was cut by decision. One consequence is worth naming: the
-details line is now the *only* place the object's physical size is spoken, which is why it is
-voiced at all despite being ugly to listen to.
+story assumes you are looking at. That was cut by decision, and it is the real gap here: reading
+`1 - model: 200 x 90 x 90mm` aloud was never a description, and dropping it does not make the gap
+worse — it just stops pretending it was filled.
 
 ## Skipping between sections
 

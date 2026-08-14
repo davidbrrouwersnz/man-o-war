@@ -10,14 +10,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.33/01-meta": {
-      "hash": "72bdb793d60e8b15",
-      "durationMs": 12525,
-      "words": 30,
-      "bytes": 75456,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.33/look": {
       "hash": "9e48c03f207740c8",
       "durationMs": 31123,
@@ -58,14 +50,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.47/01-meta": {
-      "hash": "8806ee27e58cfcbe",
-      "durationMs": 13301,
-      "words": 27,
-      "bytes": 80208,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.47/look": {
       "hash": "c885dbc0214d5572",
       "durationMs": 9551,
@@ -89,14 +73,6 @@
       "bytes": 37152,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.48/01-meta": {
-      "hash": "91a4e9b5df0b03d6",
-      "durationMs": 13038,
-      "words": 27,
-      "bytes": 78624,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.48/look": {
       "hash": "9e5042c3b259a50e",
@@ -122,14 +98,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.49/01-meta": {
-      "hash": "527b1910ee871f70",
-      "durationMs": 12747,
-      "words": 27,
-      "bytes": 76896,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.49/look": {
       "hash": "0de4f888c62e99b9",
       "durationMs": 5605,
@@ -153,14 +121,6 @@
       "bytes": 48960,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.50/01-meta": {
-      "hash": "39f67cd3fd6c38ab",
-      "durationMs": 13933,
-      "words": 27,
-      "bytes": 83952,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.50/look": {
       "hash": "8f12d4b38b163726",
@@ -186,14 +146,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.51/01-meta": {
-      "hash": "fdd885d89d7d2443",
-      "durationMs": 12407,
-      "words": 27,
-      "bytes": 74736,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.51/look": {
       "hash": "c7fd23817c0929ee",
       "durationMs": 10102,
@@ -217,14 +169,6 @@
       "bytes": 34128,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.52/01-meta": {
-      "hash": "7cfb760458541c5b",
-      "durationMs": 11683,
-      "words": 27,
-      "bytes": 70416,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.52/look": {
       "hash": "d381e3edb8dc78e5",
@@ -250,14 +194,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.53/01-meta": {
-      "hash": "5fefab4b1dcd918b",
-      "durationMs": 12762,
-      "words": 27,
-      "bytes": 76896,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.53/look": {
       "hash": "b0e5d29c3581e63d",
       "durationMs": 10721,
@@ -281,14 +217,6 @@
       "bytes": 37008,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.54/01-meta": {
-      "hash": "0a1d35c9804c787f",
-      "durationMs": 11894,
-      "words": 27,
-      "bytes": 71712,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.54/look": {
       "hash": "fa070c5d5f5876d6",
@@ -314,14 +242,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.57/01-meta": {
-      "hash": "bfea63482b151eef",
-      "durationMs": 11300,
-      "words": 27,
-      "bytes": 68112,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.57/look": {
       "hash": "e91444cfce801656",
       "durationMs": 6945,
@@ -346,14 +266,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.58/01-meta": {
-      "hash": "33c2106fe1e4142e",
-      "durationMs": 11670,
-      "words": 27,
-      "bytes": 70416,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.58/look": {
       "hash": "dd8fed5e7d7eb0f5",
       "durationMs": 8472,
@@ -377,14 +289,6 @@
       "bytes": 30672,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.59/01-meta": {
-      "hash": "859b0a6954b9e63a",
-      "durationMs": 11696,
-      "words": 27,
-      "bytes": 70560,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.59/look": {
       "hash": "ceb5268dc658155a",
@@ -418,14 +322,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.60/01-meta": {
-      "hash": "2c97043efd1cdbf1",
-      "durationMs": 11946,
-      "words": 27,
-      "bytes": 72000,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.60/look": {
       "hash": "ccde846b6a591b5e",
       "durationMs": 8012,
@@ -449,14 +345,6 @@
       "bytes": 15408,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.62/01-meta": {
-      "hash": "0e9eca3ac04a5397",
-      "durationMs": 12117,
-      "words": 27,
-      "bytes": 73008,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.62/look": {
       "hash": "c343f1e219bd4aa4",
@@ -482,14 +370,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.63/01-meta": {
-      "hash": "2340d0f68ac4fc5d",
-      "durationMs": 14591,
-      "words": 29,
-      "bytes": 87840,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.63/look": {
       "hash": "b6429b09cee693ea",
       "durationMs": 7906,
@@ -513,14 +393,6 @@
       "bytes": 32688,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.64/01-meta": {
-      "hash": "b3eecab586c2e0c9",
-      "durationMs": 11999,
-      "words": 27,
-      "bytes": 72288,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.64/look": {
       "hash": "8b02a009f7af3923",
@@ -554,14 +426,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.65/01-meta": {
-      "hash": "755fdadbfea1ae84",
-      "durationMs": 13684,
-      "words": 27,
-      "bytes": 82512,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.65/look": {
       "hash": "5dcd85bf2cf7558b",
       "durationMs": 7366,
@@ -585,14 +449,6 @@
       "bytes": 37440,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.66/01-meta": {
-      "hash": "e6af07ac5eae54c4",
-      "durationMs": 12039,
-      "words": 27,
-      "bytes": 72576,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.66/look": {
       "hash": "1368769f2904b5e9",
@@ -618,14 +474,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.67/01-meta": {
-      "hash": "5068200254ed837d",
-      "durationMs": 12394,
-      "words": 29,
-      "bytes": 74736,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.67/look": {
       "hash": "d62103d6d749e296",
       "durationMs": 8420,
@@ -649,14 +497,6 @@
       "bytes": 38160,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.68/01-meta": {
-      "hash": "7d5b3e370b5cfa87",
-      "durationMs": 11630,
-      "words": 29,
-      "bytes": 70128,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.68/look": {
       "hash": "4ba10281209df8a1",
@@ -690,14 +530,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.69/01-meta": {
-      "hash": "e743bb259845bac2",
-      "durationMs": 14525,
-      "words": 31,
-      "bytes": 87552,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.69/look": {
       "hash": "ed64487e20cf9968",
       "durationMs": 7865,
@@ -721,14 +553,6 @@
       "bytes": 38016,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.70/01-meta": {
-      "hash": "85478fa6747c51e7",
-      "durationMs": 12339,
-      "words": 29,
-      "bytes": 74448,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.70/look": {
       "hash": "43ced1344b62f57b",
@@ -762,14 +586,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.71/01-meta": {
-      "hash": "bb6cc3a70b9bf5c2",
-      "durationMs": 12418,
-      "words": 29,
-      "bytes": 74880,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.71/look": {
       "hash": "d8f9bf9b58c53709",
       "durationMs": 9289,
@@ -793,14 +609,6 @@
       "bytes": 40176,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.72/01-meta": {
-      "hash": "7d9a194d6da1cf14",
-      "durationMs": 12444,
-      "words": 29,
-      "bytes": 75024,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.72/look": {
       "hash": "1e0661533ab0627b",
@@ -826,14 +634,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.73/01-meta": {
-      "hash": "8852c80842c08301",
-      "durationMs": 12249,
-      "words": 29,
-      "bytes": 73872,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.73/look": {
       "hash": "b07e0e436365ab18",
       "durationMs": 8104,
@@ -857,14 +657,6 @@
       "bytes": 29520,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.74/01-meta": {
-      "hash": "378cebc6bfd2e2e9",
-      "durationMs": 13434,
-      "words": 27,
-      "bytes": 80928,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.74/look": {
       "hash": "f9efefe0c024ee45",
@@ -890,14 +682,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.75/01-meta": {
-      "hash": "8f6bcc6183edb243",
-      "durationMs": 12551,
-      "words": 27,
-      "bytes": 75600,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.75/look": {
       "hash": "3188f169745f2266",
       "durationMs": 7302,
@@ -921,14 +705,6 @@
       "bytes": 31968,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.76/01-meta": {
-      "hash": "908cf5af5a4a2107",
-      "durationMs": 11670,
-      "words": 27,
-      "bytes": 70416,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.76/look": {
       "hash": "367f7180375b3396",
@@ -954,14 +730,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.77/01-meta": {
-      "hash": "d69b3b122c1a9066",
-      "durationMs": 11275,
-      "words": 27,
-      "bytes": 67968,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.77/look": {
       "hash": "28a9da4a63067749",
       "durationMs": 6960,
@@ -985,14 +753,6 @@
       "bytes": 35712,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.78/01-meta": {
-      "hash": "b51a18280e48f33d",
-      "durationMs": 11657,
-      "words": 27,
-      "bytes": 70272,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.78/look": {
       "hash": "7a797d79d7664988",
@@ -1018,14 +778,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.79/01-meta": {
-      "hash": "d7f9cf5d60d31fed",
-      "durationMs": 12867,
-      "words": 27,
-      "bytes": 77616,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.79/look": {
       "hash": "7a1304985a4d2d3d",
       "durationMs": 7802,
@@ -1049,14 +801,6 @@
       "bytes": 36720,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.81/01-meta": {
-      "hash": "98a73303387e279e",
-      "durationMs": 12865,
-      "words": 27,
-      "bytes": 77616,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.81/look": {
       "hash": "61f18be57df071db",
@@ -1082,14 +826,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.82/01-meta": {
-      "hash": "73fc515f2bd2d7c6",
-      "durationMs": 12144,
-      "words": 29,
-      "bytes": 73152,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.82/look": {
       "hash": "4d744e030cda882a",
       "durationMs": 7037,
@@ -1113,14 +849,6 @@
       "bytes": 38304,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.84/01-meta": {
-      "hash": "430c5934c510fd6f",
-      "durationMs": 11986,
-      "words": 29,
-      "bytes": 72288,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.84/look": {
       "hash": "3f0b2761075b1ecc",
@@ -1146,14 +874,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.85/01-meta": {
-      "hash": "599d6c9adaecaa24",
-      "durationMs": 12694,
-      "words": 29,
-      "bytes": 76464,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.85/look": {
       "hash": "e911a65968c1c655",
       "durationMs": 8986,
@@ -1177,14 +897,6 @@
       "bytes": 35136,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.86/01-meta": {
-      "hash": "e1986de00605d85e",
-      "durationMs": 11708,
-      "words": 27,
-      "bytes": 70560,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.86/look": {
       "hash": "c44163b678b08946",
@@ -1210,14 +922,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.87/01-meta": {
-      "hash": "5d3c1226ad56e1fc",
-      "durationMs": 12526,
-      "words": 29,
-      "bytes": 75456,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.87/look": {
       "hash": "51dc446fd2111567",
       "durationMs": 7525,
@@ -1241,14 +945,6 @@
       "bytes": 13680,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.88/01-meta": {
-      "hash": "5d73b2802dd8386d",
-      "durationMs": 12536,
-      "words": 29,
-      "bytes": 75600,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.88/look": {
       "hash": "1dd1a8fe38f7102c",
@@ -1274,14 +970,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.89/01-meta": {
-      "hash": "bf554f739dcf2e79",
-      "durationMs": 11959,
-      "words": 27,
-      "bytes": 72144,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.89/look": {
       "hash": "e0941252dc9a6619",
       "durationMs": 9038,
@@ -1305,14 +993,6 @@
       "bytes": 34272,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.90/01-meta": {
-      "hash": "25424a62b0b39073",
-      "durationMs": 12578,
-      "words": 30,
-      "bytes": 75888,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.90/look": {
       "hash": "c4f27708e781b4c5",
@@ -1338,14 +1018,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.91/01-meta": {
-      "hash": "a769976e5cd848f8",
-      "durationMs": 12420,
-      "words": 27,
-      "bytes": 74880,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.91/look": {
       "hash": "f51e20c40a63985c",
       "durationMs": 7708,
@@ -1369,14 +1041,6 @@
       "bytes": 33840,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.93/01-meta": {
-      "hash": "f68670542f531e3a",
-      "durationMs": 11946,
-      "words": 27,
-      "bytes": 72000,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.93/look": {
       "hash": "a0d23d0349c953a3",
@@ -1410,14 +1074,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.94/01-meta": {
-      "hash": "aa429f84118a83a8",
-      "durationMs": 12170,
-      "words": 29,
-      "bytes": 73440,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.94/look": {
       "hash": "9f2558bffe607bcf",
       "durationMs": 8273,
@@ -1441,14 +1097,6 @@
       "bytes": 48960,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.95/01-meta": {
-      "hash": "fd98afaf0ec6be46",
-      "durationMs": 12380,
-      "words": 29,
-      "bytes": 74592,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.95/look": {
       "hash": "6641b88d14f0ded7",
@@ -1474,14 +1122,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.96/01-meta": {
-      "hash": "80c560f0229516c8",
-      "durationMs": 11880,
-      "words": 27,
-      "bytes": 71712,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.96/look": {
       "hash": "468aae06a66ee858",
       "durationMs": 10470,
@@ -1505,14 +1145,6 @@
       "bytes": 37728,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.97/01-meta": {
-      "hash": "41f6fdc610af3b8b",
-      "durationMs": 11894,
-      "words": 29,
-      "bytes": 71712,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.97/look": {
       "hash": "a1941e3bd4024269",
@@ -1538,14 +1170,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.99/01-meta": {
-      "hash": "627fd6eb52c4f104",
-      "durationMs": 12407,
-      "words": 29,
-      "bytes": 74736,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.99/look": {
       "hash": "8d9c4d3d2dd7920a",
       "durationMs": 6210,
@@ -1569,14 +1193,6 @@
       "bytes": 37296,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.100/01-meta": {
-      "hash": "667ded870b136653",
-      "durationMs": 12973,
-      "words": 30,
-      "bytes": 78192,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.100/look": {
       "hash": "58de2c4d05bd3db2",
@@ -1602,14 +1218,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.104/01-meta": {
-      "hash": "fed8026b1e1acb9d",
-      "durationMs": 12236,
-      "words": 28,
-      "bytes": 73728,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.104/look": {
       "hash": "953668964b6342dc",
       "durationMs": 22496,
@@ -1634,14 +1242,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.105/01-meta": {
-      "hash": "bf9a2f014aaf1c8f",
-      "durationMs": 12788,
-      "words": 28,
-      "bytes": 77040,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.105/look": {
       "hash": "7788ca27ae630f41",
       "durationMs": 22023,
@@ -1665,14 +1265,6 @@
       "bytes": 30960,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.136/01-meta": {
-      "hash": "b84f9dcbdacae591",
-      "durationMs": 12130,
-      "words": 28,
-      "bytes": 73152,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.136/look": {
       "hash": "52e01d5c70c3c7a7",
@@ -1706,14 +1298,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.107/01-meta": {
-      "hash": "f5fdd0375d291f16",
-      "durationMs": 13460,
-      "words": 31,
-      "bytes": 81072,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.107/look": {
       "hash": "6cd60c38337cd0d1",
       "durationMs": 12576,
@@ -1737,14 +1321,6 @@
       "bytes": 62640,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.108/01-meta": {
-      "hash": "3119a128ace2a4ac",
-      "durationMs": 13170,
-      "words": 31,
-      "bytes": 79344,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.108/look": {
       "hash": "aab88b26a2d643b3",
@@ -1770,14 +1346,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.111/01-meta": {
-      "hash": "a5f0ba793f89ae36",
-      "durationMs": 14276,
-      "words": 31,
-      "bytes": 85968,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.111/look": {
       "hash": "b45728204b856ba5",
       "durationMs": 13481,
@@ -1801,14 +1369,6 @@
       "bytes": 15408,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.113/01-meta": {
-      "hash": "9597675e6eb7d70f",
-      "durationMs": 13209,
-      "words": 28,
-      "bytes": 79632,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.113/look": {
       "hash": "b0a016dd425e7c87",
@@ -1834,14 +1394,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.114/01-meta": {
-      "hash": "0ba68b50164de8c3",
-      "durationMs": 11947,
-      "words": 28,
-      "bytes": 72000,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.114/look": {
       "hash": "f9634b8eea99fd3f",
       "durationMs": 8288,
@@ -1865,14 +1417,6 @@
       "bytes": 14544,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.115/01-meta": {
-      "hash": "e14a2496af28b8a6",
-      "durationMs": 13709,
-      "words": 28,
-      "bytes": 82656,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.115/look": {
       "hash": "d1c6c48162159df8",
@@ -1898,14 +1442,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.116/01-meta": {
-      "hash": "45bd01d681adb638",
-      "durationMs": 13433,
-      "words": 31,
-      "bytes": 80928,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.116/look": {
       "hash": "29467f71a98d01f3",
       "durationMs": 10578,
@@ -1929,14 +1465,6 @@
       "bytes": 16272,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.117/01-meta": {
-      "hash": "bcdfd310b64b6a7a",
-      "durationMs": 12894,
-      "words": 30,
-      "bytes": 77760,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.117/look": {
       "hash": "757078c43f39d512",
@@ -1962,14 +1490,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.118/01-meta": {
-      "hash": "4bfc395cb1cd6891",
-      "durationMs": 13236,
-      "words": 28,
-      "bytes": 79776,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.118/look": {
       "hash": "3e3346bed11491e8",
       "durationMs": 8117,
@@ -1993,14 +1513,6 @@
       "bytes": 41616,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.119/01-meta": {
-      "hash": "6d627145cea8373e",
-      "durationMs": 12499,
-      "words": 30,
-      "bytes": 75312,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.119/look": {
       "hash": "750b9f7b5ee0e4fb",
@@ -2026,14 +1538,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.122/01-meta": {
-      "hash": "cd899970ab00a4dd",
-      "durationMs": 12130,
-      "words": 28,
-      "bytes": 73152,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.122/look": {
       "hash": "e86c9ab90a4e1b44",
       "durationMs": 7959,
@@ -2057,14 +1561,6 @@
       "bytes": 28944,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.123/01-meta": {
-      "hash": "f2753a063caec966",
-      "durationMs": 12078,
-      "words": 28,
-      "bytes": 72864,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.123/look": {
       "hash": "d058933e06528556",
@@ -2090,14 +1586,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.124/01-meta": {
-      "hash": "f9577e6eaa2ca9f7",
-      "durationMs": 12051,
-      "words": 28,
-      "bytes": 72720,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.124/look": {
       "hash": "23224aba64b16570",
       "durationMs": 6881,
@@ -2121,14 +1609,6 @@
       "bytes": 47664,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.109/01-meta": {
-      "hash": "a00d9c82feb89963",
-      "durationMs": 13459,
-      "words": 34,
-      "bytes": 81072,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.109/look": {
       "hash": "815a570a5069b37f",
@@ -2154,14 +1634,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.126/01-meta": {
-      "hash": "3a949a206ee2eaad",
-      "durationMs": 13867,
-      "words": 28,
-      "bytes": 83520,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.126/look": {
       "hash": "9b753d7ee6a1cc30",
       "durationMs": 8420,
@@ -2186,14 +1658,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.127/01-meta": {
-      "hash": "84411471e0288476",
-      "durationMs": 13854,
-      "words": 28,
-      "bytes": 83520,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.127/look": {
       "hash": "9128e4c104c77577",
       "durationMs": 11366,
@@ -2217,14 +1681,6 @@
       "bytes": 37872,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.128/01-meta": {
-      "hash": "e26b49d4a6005dbb",
-      "durationMs": 12867,
-      "words": 28,
-      "bytes": 77616,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.128/look": {
       "hash": "dc2fd88a31685ad2",
@@ -2258,14 +1714,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.129/01-meta": {
-      "hash": "0b5f68b69b548e55",
-      "durationMs": 13012,
-      "words": 28,
-      "bytes": 78480,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.129/look": {
       "hash": "eb60f230aca0ef35",
       "durationMs": 8013,
@@ -2289,14 +1737,6 @@
       "bytes": 37872,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.112/01-meta": {
-      "hash": "f9f9bf75c110b94e",
-      "durationMs": 11736,
-      "words": 28,
-      "bytes": 70704,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.112/look": {
       "hash": "849a5852b878544a",
@@ -2322,14 +1762,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.120/01-meta": {
-      "hash": "176d799575878a74",
-      "durationMs": 14051,
-      "words": 28,
-      "bytes": 84672,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.120/look": {
       "hash": "bcd668f23ff29caf",
       "durationMs": 6421,
@@ -2353,14 +1785,6 @@
       "bytes": 33408,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.121/01-meta": {
-      "hash": "4260d809eb41bd83",
-      "durationMs": 13184,
-      "words": 28,
-      "bytes": 79488,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.121/look": {
       "hash": "c232085dc3e047e5",
@@ -2386,14 +1810,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.125/01-meta": {
-      "hash": "fcf1f130b559f693",
-      "durationMs": 13486,
-      "words": 28,
-      "bytes": 81216,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.125/look": {
       "hash": "c8e352d2a82859d7",
       "durationMs": 7959,
@@ -2417,14 +1833,6 @@
       "bytes": 45504,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.106/01-meta": {
-      "hash": "bf0fdc6eb2f9fd4c",
-      "durationMs": 14576,
-      "words": 31,
-      "bytes": 87840,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.106/look": {
       "hash": "efa7e7110d99ad7d",
@@ -2450,14 +1858,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.83/01-meta": {
-      "hash": "258819be15297e42",
-      "durationMs": 11880,
-      "words": 29,
-      "bytes": 71712,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.83/look": {
       "hash": "c313d482c293d758",
       "durationMs": 10327,
@@ -2481,14 +1881,6 @@
       "bytes": 59472,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.110/01-meta": {
-      "hash": "392a0ba07035a938",
-      "durationMs": 12907,
-      "words": 31,
-      "bytes": 77760,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.110/look": {
       "hash": "7876587f941b82a4",
@@ -2522,14 +1914,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.35/01-meta": {
-      "hash": "39972b526557b2e6",
-      "durationMs": 12355,
-      "words": 27,
-      "bytes": 74448,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.35/look": {
       "hash": "1bda23e1607baec9",
       "durationMs": 8681,
@@ -2553,14 +1937,6 @@
       "bytes": 36288,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.37/01-meta": {
-      "hash": "f4d3ce5c8186da3e",
-      "durationMs": 12486,
-      "words": 27,
-      "bytes": 75312,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.37/look": {
       "hash": "1b4571d518b8a783",
@@ -2586,14 +1962,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.38/01-meta": {
-      "hash": "7f68d14feef5bcd1",
-      "durationMs": 13841,
-      "words": 27,
-      "bytes": 83376,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.38/look": {
       "hash": "96a514edebed3d09",
       "durationMs": 7183,
@@ -2617,14 +1985,6 @@
       "bytes": 35856,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.1/01-meta": {
-      "hash": "8f355af25be46444",
-      "durationMs": 12394,
-      "words": 26,
-      "bytes": 74736,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.1/look": {
       "hash": "ca139e26f4eae397",
@@ -2650,14 +2010,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.2/01-meta": {
-      "hash": "74e5cbac6b47aa4a",
-      "durationMs": 11591,
-      "words": 26,
-      "bytes": 69840,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.2/look": {
       "hash": "5d0e4bf57ddb220a",
       "durationMs": 8657,
@@ -2681,14 +2033,6 @@
       "bytes": 37008,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.3/01-meta": {
-      "hash": "601f8b2d60d2fb2d",
-      "durationMs": 12025,
-      "words": 26,
-      "bytes": 72576,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.3/look": {
       "hash": "ecfc20e05c6bfe15",
@@ -2714,14 +2058,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.4/01-meta": {
-      "hash": "9c9c16ca80e32d35",
-      "durationMs": 11420,
-      "words": 26,
-      "bytes": 68832,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.4/look": {
       "hash": "cdaf8b360b43b301",
       "durationMs": 9525,
@@ -2745,14 +2081,6 @@
       "bytes": 33120,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.5/01-meta": {
-      "hash": "c5934a54b6b1c955",
-      "durationMs": 11538,
-      "words": 26,
-      "bytes": 69552,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.5/look": {
       "hash": "a76d5161e5bd3b14",
@@ -2786,14 +2114,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.6/01-meta": {
-      "hash": "bdf72954a2a2b1b5",
-      "durationMs": 12447,
-      "words": 26,
-      "bytes": 75024,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.6/look": {
       "hash": "79c02745666ac8bb",
       "durationMs": 9539,
@@ -2818,14 +2138,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.7/01-meta": {
-      "hash": "81cabedcac061835",
-      "durationMs": 12315,
-      "words": 26,
-      "bytes": 74304,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.7/look": {
       "hash": "2e0ec0f4a58144e2",
       "durationMs": 9288,
@@ -2849,14 +2161,6 @@
       "bytes": 32400,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.8/01-meta": {
-      "hash": "b00511d0180f242e",
-      "durationMs": 13604,
-      "words": 26,
-      "bytes": 81936,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.8/look": {
       "hash": "03022bef3721c134",
@@ -2890,14 +2194,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.9/01-meta": {
-      "hash": "88c4b489d7e6f751",
-      "durationMs": 12526,
-      "words": 26,
-      "bytes": 75456,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.9/look": {
       "hash": "6656d00f7852a5e5",
       "durationMs": 9736,
@@ -2921,14 +2217,6 @@
       "bytes": 36144,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.10/01-meta": {
-      "hash": "f40537c013a3ba61",
-      "durationMs": 13788,
-      "words": 27,
-      "bytes": 83088,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.10/look": {
       "hash": "b31c62f4cba16458",
@@ -2962,14 +2250,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.11/01-meta": {
-      "hash": "7b5b99d47956cd8e",
-      "durationMs": 12933,
-      "words": 27,
-      "bytes": 77904,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.11/look": {
       "hash": "764904967ec47f13",
       "durationMs": 8815,
@@ -2993,14 +2273,6 @@
       "bytes": 13392,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.12/01-meta": {
-      "hash": "bdf0871022fdde11",
-      "durationMs": 13775,
-      "words": 27,
-      "bytes": 82944,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.12/look": {
       "hash": "b7640613addf390a",
@@ -3034,14 +2306,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.13/01-meta": {
-      "hash": "d5192365b14ddb52",
-      "durationMs": 13538,
-      "words": 27,
-      "bytes": 81648,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.13/look": {
       "hash": "3cf457249c488821",
       "durationMs": 9604,
@@ -3066,14 +2330,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.14/01-meta": {
-      "hash": "2e7d1893281daf3a",
-      "durationMs": 11262,
-      "words": 27,
-      "bytes": 67968,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.14/look": {
       "hash": "8a98a4eee2b9bcb3",
       "durationMs": 12957,
@@ -3097,14 +2353,6 @@
       "bytes": 38592,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.15/01-meta": {
-      "hash": "fed3b71ee51e56f6",
-      "durationMs": 14039,
-      "words": 27,
-      "bytes": 84528,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.15/look": {
       "hash": "fd372afbcfa11cdd",
@@ -3138,14 +2386,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.16/01-meta": {
-      "hash": "ca3fcab360ea5a41",
-      "durationMs": 13025,
-      "words": 27,
-      "bytes": 78480,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.16/look": {
       "hash": "26c30340349e9021",
       "durationMs": 9456,
@@ -3169,14 +2409,6 @@
       "bytes": 35856,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.18/01-meta": {
-      "hash": "b707de2cc54062e2",
-      "durationMs": 12802,
-      "words": 29,
-      "bytes": 77184,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.18/look": {
       "hash": "dcf61b368c95fc4d",
@@ -3202,14 +2434,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.17/01-meta": {
-      "hash": "d991b1b60d47848b",
-      "durationMs": 11999,
-      "words": 28,
-      "bytes": 72288,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.17/look": {
       "hash": "4d0f74054d5c6994",
       "durationMs": 8946,
@@ -3233,14 +2457,6 @@
       "bytes": 34560,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.19/01-meta": {
-      "hash": "3c2468c6963f3353",
-      "durationMs": 12709,
-      "words": 28,
-      "bytes": 76608,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.19/look": {
       "hash": "cb6e7548a4bc36bf",
@@ -3266,14 +2482,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.20/01-meta": {
-      "hash": "2add80ed898ffbc0",
-      "durationMs": 11578,
-      "words": 28,
-      "bytes": 69840,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.20/look": {
       "hash": "34defb968605683f",
       "durationMs": 11944,
@@ -3297,14 +2505,6 @@
       "bytes": 35280,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.21/01-meta": {
-      "hash": "6832ee1737e02300",
-      "durationMs": 12144,
-      "words": 27,
-      "bytes": 73296,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.21/look": {
       "hash": "90a0c9287b578029",
@@ -3330,14 +2530,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.22/01-meta": {
-      "hash": "eea341e72ba8cd09",
-      "durationMs": 12776,
-      "words": 27,
-      "bytes": 77040,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.22/look": {
       "hash": "3716897f3dbb4e9c",
       "durationMs": 10078,
@@ -3361,14 +2553,6 @@
       "bytes": 57024,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.24/01-meta": {
-      "hash": "edcfecae1fc2fc24",
-      "durationMs": 13091,
-      "words": 27,
-      "bytes": 78912,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.24/look": {
       "hash": "d698abe6e282e0a5",
@@ -3394,14 +2578,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.25/01-meta": {
-      "hash": "4f2eb1b8d51e0642",
-      "durationMs": 13472,
-      "words": 27,
-      "bytes": 81216,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.25/look": {
       "hash": "cf3aabbcc9e436ab",
       "durationMs": 9233,
@@ -3425,14 +2601,6 @@
       "bytes": 14400,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.26/01-meta": {
-      "hash": "e6ec7e09b78e81cc",
-      "durationMs": 10946,
-      "words": 27,
-      "bytes": 66096,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.26/look": {
       "hash": "ebc5899789399092",
@@ -3458,14 +2626,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.27/01-meta": {
-      "hash": "970a9dcac6f63ad3",
-      "durationMs": 12775,
-      "words": 27,
-      "bytes": 77040,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.27/look": {
       "hash": "84250b5b7c2ae090",
       "durationMs": 7736,
@@ -3489,14 +2649,6 @@
       "bytes": 28800,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.28/01-meta": {
-      "hash": "9878fd98851d197a",
-      "durationMs": 11775,
-      "words": 27,
-      "bytes": 70992,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.28/look": {
       "hash": "6a12b105411dc0d4",
@@ -3522,14 +2674,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.29/01-meta": {
-      "hash": "42721721a5baff13",
-      "durationMs": 11854,
-      "words": 27,
-      "bytes": 71424,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.29/look": {
       "hash": "8c2fbad7b3351147",
       "durationMs": 7762,
@@ -3553,14 +2697,6 @@
       "bytes": 14832,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.30/01-meta": {
-      "hash": "476025c0a0289409",
-      "durationMs": 11815,
-      "words": 27,
-      "bytes": 71280,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.30/look": {
       "hash": "305b41f016b27f24",
@@ -3586,14 +2722,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.31/01-meta": {
-      "hash": "24ed2217e8c9a817",
-      "durationMs": 13920,
-      "words": 33,
-      "bytes": 83808,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.31/look": {
       "hash": "ac2291f87ddcd4ac",
       "durationMs": 5894,
@@ -3617,14 +2745,6 @@
       "bytes": 41472,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.32/01-meta": {
-      "hash": "85a3b547e3be9769",
-      "durationMs": 12591,
-      "words": 27,
-      "bytes": 75888,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.32/look": {
       "hash": "b3f265a9ccc574f3",
@@ -3658,14 +2778,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.34/01-meta": {
-      "hash": "0124c4cda4ec46a7",
-      "durationMs": 12736,
-      "words": 27,
-      "bytes": 76752,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.34/look": {
       "hash": "3135140247ccbc70",
       "durationMs": 8116,
@@ -3689,14 +2801,6 @@
       "bytes": 39168,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.39/01-meta": {
-      "hash": "1765b9c2f558edca",
-      "durationMs": 13339,
-      "words": 27,
-      "bytes": 80352,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.39/look": {
       "hash": "4f3422cef3f60c1d",
@@ -3722,14 +2826,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.40/01-meta": {
-      "hash": "400c4f9ca25c4dfb",
-      "durationMs": 13657,
-      "words": 27,
-      "bytes": 82368,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.40/look": {
       "hash": "a0229fa2d9eba32d",
       "durationMs": 8563,
@@ -3753,14 +2849,6 @@
       "bytes": 48672,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.41/01-meta": {
-      "hash": "3bc44dc4dcf1d0d1",
-      "durationMs": 12946,
-      "words": 27,
-      "bytes": 78048,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.41/look": {
       "hash": "1ab04b649725dd99",
@@ -3786,14 +2874,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.42/01-meta": {
-      "hash": "f83a6ab4871738b9",
-      "durationMs": 13880,
-      "words": 27,
-      "bytes": 83664,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.42/look": {
       "hash": "b1c65db8a5446326",
       "durationMs": 9209,
@@ -3817,14 +2897,6 @@
       "bytes": 35712,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.43/01-meta": {
-      "hash": "ccdce1ba2b94e1cf",
-      "durationMs": 12854,
-      "words": 27,
-      "bytes": 77472,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.43/look": {
       "hash": "782d469cb7369f13",
@@ -3850,14 +2922,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.44/01-meta": {
-      "hash": "7ec205ca2e285244",
-      "durationMs": 12367,
-      "words": 27,
-      "bytes": 74592,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.44/look": {
       "hash": "63e966f92b9cc21e",
       "durationMs": 19059,
@@ -3881,14 +2945,6 @@
       "bytes": 42912,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.45/01-meta": {
-      "hash": "d011479f523043af",
-      "durationMs": 12592,
-      "words": 27,
-      "bytes": 75888,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.45/look": {
       "hash": "c7de13631ef04e3c",
@@ -3914,14 +2970,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.46/01-meta": {
-      "hash": "aa13b556e5f6dd24",
-      "durationMs": 12697,
-      "words": 27,
-      "bytes": 76608,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.46/look": {
       "hash": "891af3e4dba08a90",
       "durationMs": 8367,
@@ -3945,14 +2993,6 @@
       "bytes": 17712,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.36/01-meta": {
-      "hash": "e1684a2defd8dcc2",
-      "durationMs": 19696,
-      "words": 41,
-      "bytes": 118512,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.36/look": {
       "hash": "a21104154480961e",
@@ -3978,14 +3018,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.55/01-meta": {
-      "hash": "6f2f3d704379caac",
-      "durationMs": 14920,
-      "words": 36,
-      "bytes": 89856,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.55/look": {
       "hash": "7d53e9b9831947b0",
       "durationMs": 7579,
@@ -4010,14 +3042,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.56/01-meta": {
-      "hash": "85c26eb68c753f69",
-      "durationMs": 14722,
-      "words": 35,
-      "bytes": 88704,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.56/look": {
       "hash": "16ead53554bc7307",
       "durationMs": 7894,
@@ -4041,14 +3065,6 @@
       "bytes": 33984,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.61/01-meta": {
-      "hash": "353244bfd38ee5d4",
-      "durationMs": 13605,
-      "words": 32,
-      "bytes": 81936,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.61/look": {
       "hash": "bdaa46349e2a150c",
@@ -4090,14 +3106,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.80/01-meta": {
-      "hash": "8d10aa96d0f7eace",
-      "durationMs": 12341,
-      "words": 30,
-      "bytes": 74448,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.80/look": {
       "hash": "088918711b8774b6",
       "durationMs": 9552,
@@ -4121,14 +3129,6 @@
       "bytes": 48816,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.92/01-meta": {
-      "hash": "587c975d8cdb2dcb",
-      "durationMs": 7723,
-      "words": 18,
-      "bytes": 46656,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.92/look": {
       "hash": "5fb1ddbe0aefb48f",
@@ -4162,14 +3162,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.98/01-meta": {
-      "hash": "8e03e3d178da2676",
-      "durationMs": 13657,
-      "words": 33,
-      "bytes": 82368,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.98/look": {
       "hash": "d479dbefe606a0fe",
       "durationMs": 7631,
@@ -4194,14 +3186,6 @@
       "track": "interpretation",
       "kind": "title"
     },
-    "1884.137.103/01-meta": {
-      "hash": "58152b1a9cf4f54f",
-      "durationMs": 15249,
-      "words": 34,
-      "bytes": 91872,
-      "track": "interpretation",
-      "kind": "meta"
-    },
     "1884.137.103/look": {
       "hash": "308d2e0eee5f7369",
       "durationMs": 10182,
@@ -4225,14 +3209,6 @@
       "bytes": 36432,
       "track": "interpretation",
       "kind": "title"
-    },
-    "1884.137.23/01-meta": {
-      "hash": "50b100eb83ac1b26",
-      "durationMs": 14089,
-      "words": 30,
-      "bytes": 84960,
-      "track": "interpretation",
-      "kind": "meta"
     },
     "1884.137.23/look": {
       "hash": "eb7ffda9b37a030f",
