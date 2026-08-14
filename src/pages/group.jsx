@@ -7,7 +7,7 @@ import { Spoken, blocksOf } from '../audio.jsx'
 import { BY_SLUG, GROUPS, index, loadChunk } from '../collection.js'
 import { Listen, Media, Translated, firstWords } from '../components/reading.jsx'
 import { Tools } from '../components/tools.jsx'
-import { Missing } from './search.jsx'
+import { Missing } from './missing.jsx'
 
 // ------------------------------------------------------------------ group page
 

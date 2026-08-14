@@ -267,14 +267,6 @@ function Home({ go, route }) {
             })}
           </div>
         )}
-
-        <nav className="home-secondary">
-          {/* "Every object" used to live here as a link to its own page. It is a tab now, so the
-              only thing left down here is search. */}
-          <a href="/search" onClick={go('/search')}>
-            {t('ui.search')} →
-          </a>
-        </nav>
       </div>
     </main>
   )

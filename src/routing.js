@@ -16,7 +16,6 @@ function parse(pathname) {
   // Every object is a tab on the collection page rather than a page of its own. The path survives
   // so that anything already pointing at it opens the right tab instead of a dead end.
   if (path === '/all') return { view: 'home', tab: 'all' }
-  if (path === '/search') return { view: 'search' }
   // The two reading essays used to be pages of their own. They now sit on the collection page, but
   // the old paths still resolve — a printed QR code or a shared link lands on the section rather
   // than on a dead end.

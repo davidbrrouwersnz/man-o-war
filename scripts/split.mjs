@@ -126,21 +126,6 @@ all.objects.sort((x, y) => order.get(x.accession) - order.get(y.accession))
 const allJson = JSON.stringify(all)
 writeFileSync(new URL('all.json', dir), allJson)
 
-// Search. §6: grouping by appearance spreads phyla across pages, so there is no page for "all the
-// jellyfish-type things" and that has to be bought back with search. The index is names, catalogue
-// names and accession numbers — no story text, which would make it far larger for little gain.
-const search = {
-  objects: manifest.objects.map((o) => ({
-    accession: o.accession,
-    name: names.names[o.accession]?.name ?? null,
-    title: o.title,
-    slug: index.groupOf[o.accession],
-    group: BY_ORDER.get(index.groupOf[o.accession]),
-  })),
-}
-const searchJson = JSON.stringify(search)
-writeFileSync(new URL('search.json', dir), searchJson)
-
 // One pack per language, loaded only when that language is active. English is compiled into the
 // main bundle instead, because §7 makes it the terminal fallback: it has to be there before any
 // resolution runs, or the chain dead-ends on a blank while a chunk is still in flight.
@@ -220,7 +205,6 @@ const indexJson = JSON.stringify(index)
 writeFileSync(new URL('index.json', dir), indexJson)
 
 console.log(`all (128 tiles)         ${(gzipSync(allJson).length / 1024).toFixed(0)}KB gz`)
-console.log(`search                  ${(gzipSync(searchJson).length / 1024).toFixed(0)}KB gz`)
 console.log(`layers 3-5              ${(gzipSync(layersJson).length / 1024).toFixed(0)}KB gz`)
 
 const before = gzipSync(JSON.stringify(manifest)).length + gzipSync(JSON.stringify(museum)).length + gzipSync(JSON.stringify(drafted)).length + gzipSync(JSON.stringify(names)).length + gzipSync(JSON.stringify(groups)).length
@@ -228,4 +212,5 @@ console.log(`\nindex (always loaded)   ${(gzipSync(indexJson).length / 1024).toF
 console.log(`chunks (loaded on demand, total across all 11)   ${(chunkTotal / 1024).toFixed(0)}KB gz`)
 console.log(`was: ${(before / 1024).toFixed(0)}KB gz of data in the main bundle, every route`)
 
-if (readdirSync(dir).length !== groups.groups.length + 4 + index.languages.length) throw new Error('chunk count mismatch')
+// index, all, layers — search.json was the fourth until search was removed.
+if (readdirSync(dir).length !== groups.groups.length + 3 + index.languages.length) throw new Error('chunk count mismatch')

@@ -15,7 +15,6 @@ const ROUTES = [
   // Every object is a tab on the collection page now. The old path still resolves, opening that
   // tab rather than a page of its own.
   ['/all', '.grid-dense li', null],
-  ['/search', '.search-input', null],
   // The two essays moved onto the collection page; the old paths still resolve there, scrolled
   // to the section, so a printed link never dead-ends.
   ['/how-it-was-made', '.essay', null],

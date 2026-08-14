@@ -96,7 +96,7 @@ const checks = [
   ['light', 'body text', '--ink', '--paper', 4.5],
   ['light', 'secondary prose', '--ink-soft', '--paper', 4.5],
   ['light', 'captions, eyebrows, metadata at 13px', '--ink-meta', '--paper', 4.5],
-  ['light', 'control boundaries: .listen, .search-input, .audio-play, .audio-rate', '--edge', '--paper', 3],
+  ['light', 'control boundaries: .listen, .audio-play, .audio-rate, the language select', '--edge', '--paper', 3],
   ['light', 'brand as link and focus ring', '--brand', '--paper', 4.5],
   ['light', 'arrival marker text on its own ground', '--brand', '--brand-bg', 4.5],
   ['light', 'read-along highlight: body ink over the tint', '--ink', '--mark-bg', 4.5],
