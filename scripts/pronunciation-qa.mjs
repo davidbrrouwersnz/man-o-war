@@ -147,12 +147,18 @@ const html = `<!doctype html>
 <main>
   <h1>Pronunciation check</h1>
   <p class="lede">
-    Every word below is one the narration says aloud and I was not certain about.
-    Press <strong>hear it</strong> to jump straight to the word in the real audio.
-    You do not need to write phonetics — just say whether it is right.
+    ${
+      pron.reviewed
+        ? `Approved by ${esc(pron.reviewedBy ?? 'a reviewer')} on ${esc(pron.reviewedOn ?? '')}. Kept as the record of which readings were a judgement call rather than a rule, and so anyone can hear them. Press <strong>hear it</strong> to jump straight to the word in the real audio.`
+        : `Every word below is one the narration says aloud and I was not certain about. Press <strong>hear it</strong> to jump straight to the word in the real audio. You do not need to write phonetics — just say whether it is right.`
+    }
   </p>
-  ${section('low', 'Needs an answer', 'These are guesses. Nearly all are named after people, and a person’s name does not follow Latin rules — no amount of rule-following gets you there.')}
-  ${section('medium', 'Worth a look', 'Defensible either way. A specialist may prefer the other variant.')}
+  ${section(
+    'low',
+    pron.reviewed ? 'Judgement, not rule' : 'Needs an answer',
+    'Nearly all are named after people, and a person’s name does not follow Latin rules — no amount of rule-following gets you there.'
+  )}
+  ${section('medium', pron.reviewed ? 'Defensible either way' : 'Worth a look', 'A specialist may prefer the other variant.')}
 </main>
 <script>
   // One audio element, reused. Playing a second clip stops the first, which is what you want when
@@ -180,7 +186,11 @@ writeFileSync(join(root, 'public/pronunciation-qa.html'), html)
 
 const low = entries.filter((e) => e.confidence === 'low').length
 const withClip = entries.filter((e) => e.total > 0).length
-console.log(`public/pronunciation-qa.html — ${entries.length} entries to check (${low} need an answer)`)
+console.log(
+  pron.reviewed
+    ? `public/pronunciation-qa.html — ${entries.length} entries, approved ${pron.reviewedOn} (${low} were judgement calls)`
+    : `public/pronunciation-qa.html — ${entries.length} entries to check (${low} need an answer)`
+)
 console.log(`  ${withClip} have audio to play; ${entries.length - withClip} are never spoken on the site`)
 console.log(`  indexed ${vtts.length} timing files`)
 console.log(`  open http://localhost:5173/pronunciation-qa.html after npm run dev`)

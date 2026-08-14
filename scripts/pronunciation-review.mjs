@@ -46,11 +46,17 @@ for (const [group, label] of Object.entries(GROUPS)) {
 const shown = URGENT ? rows.filter((r) => r.confidence === 'low') : rows
 shown.sort((a, b) => RANK[a.confidence] - RANK[b.confidence] || b.heard - a.heard || a.word.localeCompare(b.word))
 
-const HEADING = {
-  low: 'NEEDS AN ANSWER — I am guessing, and a guess read aloud in a gallery is worse than a gap',
-  medium: 'WORTH A LOOK — defensible, but a specialist may prefer the other variant',
-  high: 'CONFIDENT — rule-derived; skim for anything that looks wrong',
-}
+const HEADING = pron.reviewed
+  ? {
+      low: 'JUDGEMENT, NOT RULE — eponyms, where the sound follows a person. Approved as they stand',
+      medium: 'DEFENSIBLE EITHER WAY — a specialist may prefer the other variant',
+      high: 'RULE-DERIVED — the ordinary cases',
+    }
+  : {
+      low: 'NEEDS AN ANSWER — I am guessing, and a guess read aloud in a gallery is worse than a gap',
+      medium: 'WORTH A LOOK — defensible, but a specialist may prefer the other variant',
+      high: 'CONFIDENT — rule-derived; skim for anything that looks wrong',
+    }
 
 if (MD) {
   console.log(`# Pronunciation review — Blaschka audio guide\n`)

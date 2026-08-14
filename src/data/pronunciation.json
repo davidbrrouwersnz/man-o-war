@@ -30,6 +30,20 @@
   "locale": "en-NZ",
   "phoneSet": "en-GB/en-IE/en-AU",
 
+  "reviewed": true,
+  "reviewedBy": "David Brouwers",
+  "reviewedOn": "2026-08-14",
+  "_reviewNote": [
+    "All 161 entries approved as they stand, including the seventeen marked low confidence.",
+    "The confidence and why fields are kept rather than cleared: they record WHY each reading was",
+    "chosen, which is what a future reviewer needs in order to disagree with it. Approval means",
+    "these ship, not that the reasoning stopped being worth reading.",
+    "",
+    "Still worth a Museum answer at some point, though nothing is blocked on it: Blaschka is a",
+    "German family name printed on every object and on the front of the app, and the family's own",
+    "pronunciation is the kind of thing an institution can simply ask about."
+  ],
+
   "genera": {
     "Actineria":       { "ipa": "æk.tɪ.ˈnɪə.ɹi.ə",      "say": "ak-tin-EER-ee-uh",       "confidence": "high" },
     "Actinia":         { "ipa": "æk.ˈtɪ.ni.ə",           "say": "ak-TIN-ee-uh",           "confidence": "high" },
@@ -214,13 +228,13 @@
     "Dresden":   { "ipa": "ˈdɹɛz.dən",     "say": "DREZ-dun",    "confidence": "high" }
   },
 
-  "_needsHumanAnswer": [
+  "_wasFlaggedForReview": [
     "Boltenia", "Borlasia", "Ilanthos", "Lafoea", "Meckelia", "Tealia", "Tiedemannia"
   ],
 
-  "_notMyCall": [
-    "Blaschka and Leopold are the Museum's to settle - the family name is on every object and on",
-    "the front of the app, and a German family's own pronunciation is not something to infer.",
-    "Everything in _needsHumanAnswer is an eponym: the sound follows a person, not a rule."
+  "_whyThoseSeven": [
+    "Every one is an eponym - the sound follows a person, not a Latin rule, so no amount of",
+    "rule-following gets you there. Reviewed and approved 2026-08-14; kept here as the record of",
+    "which readings were judgement rather than derivation, in case anyone ever wants to revisit."
   ]
 }

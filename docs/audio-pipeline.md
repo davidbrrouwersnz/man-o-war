@@ -80,11 +80,18 @@ for a human, e.g.
 > **Psolus** → *SOH-luss*. The p is silent, as in *psychology*.
 > **Physalia** → *fy-SAY-lee-uh*. The man o' war, and the most-spoken name on the site.
 
-**17 entries need a human answer** and `npm run pronunciation` lists them first. All 17 are named
-after people — *Tealia* after Thomas Teale, *Sieboldii* after Philipp von Siebold — and a person's
-name follows the person, not Latin. No amount of rule-following gets you there. The Blaschka family
-name is on that list too: it is on every object and on the front of the app, and a German family's
-own pronunciation is the Museum's to confirm, not mine to infer.
+**All 161 were reviewed and approved on 14 August 2026.** Seventeen of them were judgement rather
+than derivation — every one named after a person, *Tealia* after Thomas Teale, *sieboldii* after
+Philipp von Siebold — where the sound follows the person and no Latin rule gets you there. Those
+are still marked as such in the data, because that is what a future reviewer needs in order to
+disagree with one.
+
+`npm run pronunciation:qa` regenerates `/pronunciation-qa.html`, which plays any entry at the exact
+second it is spoken. It is now a record rather than a request, and worth keeping for that.
+
+One thing still worth an institutional answer, though nothing is blocked on it: **Blaschka** is a
+German family name printed on every object and on the front of the app, and the family's own
+pronunciation is the kind of thing a museum can simply ask about.
 
 The other ~75 species names are ordinary Latin adjectives (*vulgaris*, *borealis*, *marina*) left
 deliberately unmarked. Marking up everything makes narration worse and buries the entries that
@@ -159,8 +166,12 @@ looking at *is* the English.
 
 ## Still to do
 
-- Listen to it. Nothing here substitutes for hearing Molly read a story end to end.
-- The 17 eponyms — `npm run dev`, then `/pronunciation-qa.html`.
-- The player's own labels ("Listen", "Details") are English-only. They are only ever shown beside
-  English text, so nothing is currently mismatched, but they are not translated.
-- No group-level "play the whole page". Each object is its own queue.
+- **The audio description track.** The one real gap. §13 wanted form, scale, colour and mount
+  described for a visitor who cannot see the photograph — "a clear glass bell about the width of a
+  saucer" rather than `200 x 90 x 90mm`. It is the only part of §13's audio model still missing.
+- **English only.** The other twelve languages have no narration, and four of them (Samoan, Tongan,
+  Tigrinya, Dari) have no synthetic voice in existence from any provider. See
+  `docs/audio-generation.md` — that is a human-recording question, not a technical one.
+- The player's own labels ("Listen", "Stop listening") are English-only. They are only ever shown
+  beside English text, so nothing is currently mismatched, but they are not translated.
+- Ask the Museum how the family says **Blaschka**.
