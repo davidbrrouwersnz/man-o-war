@@ -398,6 +398,70 @@ a {
   max-width: var(--measure);
 }
 
+/* ------------------------------------------------- the collection page at desktop
+
+   Browsing on the left, reading on the right — the same move the group pages make one level down,
+   where the photograph holds the left and its story runs beside it. Stacked, this page put a
+   550px-wide header in a 1440px window with 60% of it empty, and pushed a thousand words of essay
+   below a grid most visitors never scroll past.
+
+   80rem rather than 64rem, and that is a reading measure rather than a device: at 1024px the right
+   column comes out around 460px, about 52 characters, which is under the measure. At 1280 it is
+   ~570px, which --measure (62ch) fits exactly. A 1366px laptop gets the split; anything narrower
+   keeps the stacked page unchanged.
+
+   The columns are full-bleed on purpose. A cream panel floating inside a black page reads as a
+   mistake; a cream column running to the right edge reads as a decision. §15's rule survives it —
+   the grid is dark whatever the device is doing, the reading area follows the device — except that
+   the boundary between them is now vertical. */
+@media (min-width: 80rem) {
+  .home {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    grid-template-areas:
+      'browse head'
+      'browse read';
+    /* Flexible second row, for the reason the object page needed one: with two auto rows, a browse
+       column taller than head + read has its excess split between them, which opens a gap under
+       the title. The slack belongs to the reading row. */
+    grid-template-rows: auto 1fr;
+    column-gap: clamp(2rem, 4vw, 4rem);
+    row-gap: 0;
+    padding: 0;
+  }
+
+  .home-head {
+    grid-area: head;
+    /* The head sits on the reading ground now, not the dark one. Its text colours and its controls
+       are further down this file, after the dark rules they have to beat. */
+    background: var(--paper);
+    color: var(--ink);
+    max-width: none;
+    padding: 3.5rem clamp(1.5rem, 3vw, 3rem) 1.5rem;
+  }
+
+  .home-browse {
+    grid-area: browse;
+    /* Named here and nowhere else, so the tile-count container queries further down cannot reach
+       the stacked layout below this breakpoint. */
+    container-type: inline-size;
+    container-name: browse;
+    /* Matches the head's top padding so the tab bar and the collection title start on the same
+       line. Without it the grid began at the very top edge while the reading column sat 56px down,
+       and the two halves read as unrelated. */
+    padding-top: 3.5rem;
+  }
+
+  /* Stretched so the cream runs to the bottom of the page rather than stopping where the essays
+     end. With row-gap 0 the head and this form one continuous field. */
+  .home-read {
+    grid-area: read;
+    align-self: stretch;
+    background: var(--paper);
+    color: var(--ink);
+  }
+}
+
 .home-head h1 {
   font-size: var(--step-4);
   line-height: 1.1;
@@ -1051,6 +1115,41 @@ a {
   }
 }
 
+/* The tile counts inside the desktop split. These have to sit AFTER every .grid and .grid-dense
+   media query above, not beside the .grid rules where they belong logically: a container query
+   carries no more specificity than a media query, so whichever comes last wins. Placed earlier,
+   the 64rem media query above put six dense tiles in a 739px column.
+
+   Widths in px, not rem, for the same reason the touch targets are: a container query resolves rem
+   against the ROOT font size, so at the 200% text setting 30rem becomes 960px, neither query
+   matched a 739px column, and the tile count fell back to the viewport rule — three columns at
+   230px each. How wide a column is does not change when the type does.
+
+   `container-name: browse` is declared ONLY inside the 80rem media query, so with no named
+   container below the split there is nothing here to match and the stacked layout is untouched. */
+@container browse (min-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: none;
+    margin: 0;
+  }
+
+  .grid-dense {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* A very wide window gives the browse column enough room for another tile. */
+@container browse (min-width: 928px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .grid-dense {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
 .tile-small {
   font-size: var(--step--1) !important;
 }
@@ -1076,6 +1175,96 @@ a {
 .home-secondary a {
   color: var(--dark-ink-soft);
   text-decoration: none;
+}
+
+/* ------------------------------------------------- the head, once it is on cream
+
+   Everything above that targets .home-head is written in the --dark-* tokens, because until the
+   desktop split that header had only ever sat on black. Above 80rem it sits on the reading ground
+   instead, so each of those has to come back to the reading tokens — this is exactly the boundary
+   §15 warns about, and the same one that left the Listen control at 1.2:1 earlier in this work.
+
+   Placed here, after every rule it overrides, rather than scoping eight separate rules with a
+   max-width query. A media query adds no specificity, so order is what decides this. */
+@media (min-width: 80rem) {
+  /* The standfirst. This one has to be here rather than beside the other .home-head rules above:
+     `.home-head p { color: var(--dark-ink-soft) }` comes later in the file, a media query adds no
+     specificity, and the later rule wins — which rendered the collection's opening sentence at
+     2.65:1 on cream. */
+  .home-head p {
+    color: var(--ink-soft);
+    max-width: var(--measure);
+  }
+
+  .home-head .listen {
+    color: var(--ink);
+    border-color: var(--edge);
+  }
+
+  .home-head .listen:hover {
+    border-color: var(--ink);
+  }
+
+  .home-head .listen.is-playing {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  .home-head .listen-note {
+    color: var(--ink-meta);
+  }
+
+  .home-head .tool-button {
+    color: var(--ink-soft);
+  }
+
+  .home-head .tool-button:hover {
+    color: var(--ink);
+    border-color: var(--edge);
+  }
+
+  .home-head .lang-globe {
+    color: var(--ink-meta);
+  }
+
+  .home-head .lang-picker:hover .lang-globe,
+  .home-head .lang-picker:focus-within .lang-globe {
+    color: var(--ink);
+  }
+
+  .home-head .lang-picker select {
+    color: var(--ink);
+    border-color: var(--edge);
+  }
+
+  .home-secondary a {
+    color: var(--ink-soft);
+  }
+
+  /* .home forces the ring to --dark-brand for the whole page. Both halves of the reading column
+     take it back — .home-essays already does, but the search link below it is not inside it. */
+  .home-head :focus-visible,
+  .home-read :focus-visible {
+    outline-color: var(--brand);
+  }
+
+  /* The essays were a full-bleed light slab announcing that browsing had ended and reading had
+     begun. The column does that now, so the slab loses its own ground and its separating margin. */
+  .home-essays {
+    background: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .essay {
+    margin: 0;
+    padding: 2rem clamp(1.5rem, 3vw, 3rem);
+  }
+
+  .home-secondary {
+    padding: 0 clamp(1.5rem, 3vw, 3rem) 3rem;
+  }
 }
 
 .search-input {

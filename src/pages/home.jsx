@@ -169,103 +169,113 @@ function Home({ go, route }) {
         </p>
         <Listen queue={homeQueue} available={intro.lang === 'en'} />
       </header>
-      {/* Two ways into the same 128 objects. §9 kept the full grid as a secondary route rather than
-          the front door — it rescues browsing by eye and the completionist — and a tab does that
-          job better than a page: it is visible from the front rather than found, and it costs
-          nothing until it is opened. */}
-      <div className="tabs" role="tablist" aria-label={t('ui.collectionTitle')} ref={tabsRef} onKeyDown={onTabKey}>
-        <button
-          type="button"
-          role="tab"
-          id="tab-groups"
-          aria-selected={tab === 'groups'}
-          aria-controls="panel-groups"
-          tabIndex={tab === 'groups' ? 0 : -1}
-          className={tab === 'groups' ? 'is-current' : ''}
-          onClick={() => setTab('groups')}
-        >
-          {t('ui.byGroup')}
-        </button>
-        <button
-          type="button"
-          role="tab"
-          id="tab-all"
-          aria-selected={tab === 'all'}
-          aria-controls="panel-all"
-          tabIndex={tab === 'all' ? 0 : -1}
-          className={tab === 'all' ? 'is-current' : ''}
-          onClick={() => setTab('all')}
-        >
-          {t('ui.everyObject')}
-        </button>
-      </div>
-
-      {tab === 'groups' ? (
-        <div role="tabpanel" id="panel-groups" aria-labelledby="tab-groups">
-          <ol className="grid">
-            {GROUPS.map((g) => (
-              <li key={g.slug} className="tile">
-                <a href={`/g/${g.slug}`} onClick={go(`/g/${g.slug}`)}>
-                  <div className="tile-well">
-                    <img className="tile-blur" src={g.representative.placeholder} alt="" aria-hidden="true" />
-                    <img className="tile-img" src={g.representative.url} alt="" loading="lazy" decoding="async" />
-                  </div>
-                  <div className="tile-text">
-                    <h2 {...langAttrs(tr(`groups.${g.slug}`, null, g.title))}>{tr(`groups.${g.slug}`, null, g.title).text}</h2>
-                    <p>
-                      {g.size} {t('ui.models')}. {t('ui.aboutMinutes', { m: g.minutes })}
-                    </p>
-                  </div>
-                </a>
-              </li>
-            ))}
-          </ol>
+      {/* Two wrappers, and they exist for the desktop layout: browsing on the left, reading on the
+          right. `home-head` deliberately stays outside both, first in the DOM, because that is what
+          keeps the phone order intact — head, tabs, tiles, essays — while the desktop grid moves
+          the head into the right-hand column. Same technique as the object page. */}
+      <div className="home-browse">
+        {/* Two ways into the same 128 objects. §9 kept the full grid as a secondary route rather
+            than the front door — it rescues browsing by eye and the completionist — and a tab does
+            that job better than a page: it is visible from the front rather than found, and it
+            costs nothing until it is opened. */}
+        <div className="tabs" role="tablist" aria-label={t('ui.collectionTitle')} ref={tabsRef} onKeyDown={onTabKey}>
+          <button
+            type="button"
+            role="tab"
+            id="tab-groups"
+            aria-selected={tab === 'groups'}
+            aria-controls="panel-groups"
+            tabIndex={tab === 'groups' ? 0 : -1}
+            className={tab === 'groups' ? 'is-current' : ''}
+            onClick={() => setTab('groups')}
+          >
+            {t('ui.byGroup')}
+          </button>
+          <button
+            type="button"
+            role="tab"
+            id="tab-all"
+            aria-selected={tab === 'all'}
+            aria-controls="panel-all"
+            tabIndex={tab === 'all' ? 0 : -1}
+            className={tab === 'all' ? 'is-current' : ''}
+            onClick={() => setTab('all')}
+          >
+            {t('ui.everyObject')}
+          </button>
         </div>
-      ) : (
-        <div role="tabpanel" id="panel-all" aria-labelledby="tab-all">
-          {all ? (
-            <ol className="grid grid-dense">
-              {all.objects.map((o) => (
-                <li key={o.accession} className="tile">
-                  <a href={`/o/${o.accession}`} onClick={go(`/o/${o.accession}`)}>
+
+        {tab === 'groups' ? (
+          <div role="tabpanel" id="panel-groups" aria-labelledby="tab-groups">
+            <ol className="grid">
+              {GROUPS.map((g) => (
+                <li key={g.slug} className="tile">
+                  <a href={`/g/${g.slug}`} onClick={go(`/g/${g.slug}`)}>
                     <div className="tile-well">
-                      <img className="tile-blur" src={o.placeholder} alt="" aria-hidden="true" />
-                      <img className="tile-img" src={o.url} alt="" loading="lazy" decoding="async" />
+                      <img className="tile-blur" src={g.representative.placeholder} alt="" aria-hidden="true" />
+                      <img className="tile-img" src={g.representative.url} alt="" loading="lazy" decoding="async" />
                     </div>
                     <div className="tile-text">
-                      <h2 className="tile-small">{o.name}</h2>
-                      <p>{o.accession}</p>
+                      <h2 {...langAttrs(tr(`groups.${g.slug}`, null, g.title))}>{tr(`groups.${g.slug}`, null, g.title).text}</h2>
+                      <p>
+                        {g.size} {t('ui.models')}. {t('ui.aboutMinutes', { m: g.minutes })}
+                      </p>
                     </div>
                   </a>
                 </li>
               ))}
             </ol>
-          ) : (
-            <p className="loading loading-dark">{t('ui.loading')}</p>
-          )}
-        </div>
-      )}
-      {/* The background reading, on the collection page rather than on pages of its own. It sits
-          below the grid because the collection is what a visitor came for; this is what they read
-          once something has caught them. Light on dark: the grid is a dark well because 79 of the
-          128 images are objects on black, and long-form text does not belong on that ground. */}
-      {layers && (
-        <div className="home-essays">
-          {index.layers.map((meta) => {
-            const l = layers.layers[meta.slug]
-            if (!l) return null
-            return <Essay key={meta.slug} slug={meta.slug} layer={l} meta={meta} code={code} langName={langName} />
-          })}
-        </div>
-      )}
+          </div>
+        ) : (
+          <div role="tabpanel" id="panel-all" aria-labelledby="tab-all">
+            {all ? (
+              <ol className="grid grid-dense">
+                {all.objects.map((o) => (
+                  <li key={o.accession} className="tile">
+                    <a href={`/o/${o.accession}`} onClick={go(`/o/${o.accession}`)}>
+                      <div className="tile-well">
+                        <img className="tile-blur" src={o.placeholder} alt="" aria-hidden="true" />
+                        <img className="tile-img" src={o.url} alt="" loading="lazy" decoding="async" />
+                      </div>
+                      <div className="tile-text">
+                        <h2 className="tile-small">{o.name}</h2>
+                        <p>{o.accession}</p>
+                      </div>
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            ) : (
+              <p className="loading loading-dark">{t('ui.loading')}</p>
+            )}
+          </div>
+        )}
+      </div>
 
-      <nav className="home-secondary">
-        {/* "Every object" used to live here as a link to its own page. It is a tab now, so the
-            only thing left down here is search. */}
-        <a href="/search" onClick={go('/search')}>
-          {t('ui.search')} →
-        </a>
-      </nav>
+      {/* The background reading. On a phone it sits below the grid, because the collection is what
+          a visitor came for and this is what they read once something has caught them. At desktop
+          it becomes the right-hand column beside the tiles. Light on dark either way: the grid is
+          a dark field because 79 of the 128 photographs are objects on black, and long-form text
+          does not belong on that ground. */}
+      <div className="home-read">
+        {layers && (
+          <div className="home-essays">
+            {index.layers.map((meta) => {
+              const l = layers.layers[meta.slug]
+              if (!l) return null
+              return <Essay key={meta.slug} slug={meta.slug} layer={l} meta={meta} code={code} langName={langName} />
+            })}
+          </div>
+        )}
+
+        <nav className="home-secondary">
+          {/* "Every object" used to live here as a link to its own page. It is a tab now, so the
+              only thing left down here is search. */}
+          <a href="/search" onClick={go('/search')}>
+            {t('ui.search')} →
+          </a>
+        </nav>
+      </div>
     </main>
   )
 }
