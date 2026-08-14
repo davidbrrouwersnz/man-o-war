@@ -589,23 +589,34 @@ function ObjectSection({ object, arrived, registry }) {
   return (
     <article className={`object${arrived ? ' is-arrived' : ''}`} ref={ref} id={`obj-${object.accession}`}>
       {arrived && <p className="arrived-flag">{t('ui.scanned')}</p>}
-      {/* §7: lang and dir follow what is actually rendered, on the element itself. An untranslated
-          headline is English inside whatever page language is active; a translated one carries its
-          own language. The binomial inside object.catalogueName is marked in CSS via .binomial
-          where authored, so a screen reader does not read Latin with the surrounding phonetics. */}
-      <h2 className="object-name" {...langAttrs(headlineR)}>
-        <Spoken text={headlineR.text} itemId={`${object.accession}/00-title`} block={0} />
-      </h2>
-      {showCatalogue && (
-        <p className="object-catalogue" {...langAttrs(catalogueR)}>
-          <Spoken text={catalogueR.text} itemId={`${object.accession}/00-title`} block={1} />
-        </p>
-      )}
+      {/* Three wrappers, and they exist for the desktop layout in §10 — media holding position
+          while its text scrolls beside it. Grid areas do the moving, so the DOM keeps the order a
+          phone needs: name, then the photograph, then the story. That order is load-bearing on the
+          QR route, where the point is to see the name and the object within a few seconds. */}
+      <div className="object-head">
+        {/* §7: lang and dir follow what is actually rendered, on the element itself. An
+            untranslated headline is English inside whatever page language is active; a translated
+            one carries its own language. The binomial inside object.catalogueName is marked in CSS
+            via .binomial where authored, so a screen reader does not read Latin with the
+            surrounding phonetics. */}
+        <h2 className="object-name" {...langAttrs(headlineR)}>
+          <Spoken text={headlineR.text} itemId={`${object.accession}/00-title`} block={0} />
+        </h2>
+        {showCatalogue && (
+          <p className="object-catalogue" {...langAttrs(catalogueR)}>
+            <Spoken text={catalogueR.text} itemId={`${object.accession}/00-title`} block={1} />
+          </p>
+        )}
+      </div>
 
-      <Media object={object} priority={arrived} />
+      {/* A photograph and the line that credits it are a figure and its caption. It was a div and
+          a loose <p>, which said nothing about the relationship to anything reading the markup. */}
+      <figure className="object-media">
+        <Media object={object} priority={arrived} />
+        <figcaption className="object-meta">{metaLine}</figcaption>
+      </figure>
 
-      <p className="object-meta">{metaLine}</p>
-
+      <div className="object-body">
       <Listen queue={queue} available={english} note={code !== 'en' ? t('ui.audioEnglishOnly') : null} />
 
       {story ? (
@@ -647,6 +658,7 @@ function ObjectSection({ object, arrived, registry }) {
           </p>
         </div>
       )}
+      </div>
     </article>
   )
 }

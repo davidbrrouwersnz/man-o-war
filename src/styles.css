@@ -395,14 +395,54 @@ a {
 
 /* ------------------------------------------------------------------ group page */
 
+/* A breakout grid rather than one centred column. Prose stays at --measure; an object can step out
+   to the full width when there is width to step into. Before this, `.reading` was max-width 34rem
+   at every viewport — a 1440px screen showed a 544px column and 900px of nothing. */
 .reading {
-  max-width: var(--measure);
+  --gutter: 1.25rem;
+  --content: min(var(--measure), 100% - var(--gutter) * 2);
+
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(var(--gutter), 1fr)
+    [content-start] var(--content) [content-end]
+    minmax(var(--gutter), 1fr) [full-end];
+  max-width: 76rem; /* the same cap the collection grid uses at >=64rem */
   margin: 0 auto;
-  padding: 1rem 1.25rem 5rem;
+  padding: 1rem 0 5rem;
+
+  /* The object below asks this element how wide it is, not the window. Same component, and it
+     would lay out correctly if it were ever dropped into something narrower than the page. */
+  container-type: inline-size;
+  container-name: reading;
+}
+
+.reading > * {
+  grid-column: content;
+}
+
+/* Once objects break out to the full width, a centred reading column leaves the group title
+   starting 330px to the right of the photograph beneath it, and the page reads as two layouts
+   stacked. Left-aligning the column to the same edge is both tidier and closer to the Museum's own
+   pages, which are left-aligned editorial inside a wide container.
+
+   A media query rather than a container query because this styles `.reading` itself, and an
+   element cannot query its own container. 64rem is the width at which the container query below
+   fires, so the two cannot disagree. */
+@media (min-width: 64rem) {
+  .reading {
+    grid-template-columns:
+      [full-start] var(--gutter)
+      [content-start] var(--content) [content-end]
+      minmax(var(--gutter), 1fr) [full-end];
+  }
 }
 
 .back {
   display: inline-block;
+  /* Grid items are blockified, so without this the link — and its focus ring — would stretch the
+     whole content column for the sake of two words. */
+  justify-self: start;
   font-size: var(--step--1);
   text-decoration: none;
   color: var(--ink-soft);
@@ -443,6 +483,60 @@ a {
   margin: 0 0 2.5rem;
   border-bottom: 1px solid var(--rule);
   scroll-margin-top: 0.5rem;
+}
+
+.object-media {
+  margin: 0;
+}
+
+/* ------------------------------------------------- §10's desktop layout
+   "Desktop: media holds position while its object's text scrolls beside it, releasing at the
+   section boundary." Unbuilt until now — the reading column was 34rem at every width.
+
+   Grid areas rather than reordering, so the DOM stays in the order a phone needs. `position:
+   sticky` inside a grid area releases at the end of that area by itself, which is exactly the
+   "releasing at the section boundary" behaviour, and it needs no JavaScript.
+
+   Worth being honest about what the sticky part buys: §10 was written when a story was expected to
+   run ~231 words. They came in at 95 median, so the text column is SHORTER than the photograph in
+   63 of the 128 objects and the media has nothing to scroll against. It costs nothing where it
+   does not apply, and the two-column layout is the real gain — it roughly halves every page. */
+@container reading (min-width: 64rem) {
+  .reading > .object {
+    grid-column: full;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    grid-template-areas:
+      'flag  flag'
+      'media head'
+      'media body';
+    column-gap: clamp(2rem, 4cqi, 3.5rem);
+    align-items: start;
+  }
+
+  .object > .arrived-flag {
+    grid-area: flag;
+  }
+
+  .object-head {
+    grid-area: head;
+  }
+
+  .object-body {
+    grid-area: body;
+  }
+
+  .object-media {
+    grid-area: media;
+    position: sticky;
+    top: 1.5rem;
+  }
+
+  /* The well is capped at 70svh of the viewport; in a column roughly half the page wide that cap
+     is rarely what binds, so most objects render at their true aspect. */
+  .object-media .well {
+    max-height: 78svh;
+  }
 }
 
 .object-name {

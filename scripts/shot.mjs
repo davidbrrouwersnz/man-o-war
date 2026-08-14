@@ -21,6 +21,9 @@ const PATH = process.argv[4] ?? '/'
 const [W, H] = (process.argv[5] ?? '390x844').split('x').map(Number)
 const SCHEME = process.argv[6] ?? 'light'
 const FULL = (process.argv[7] ?? 'fold') === 'full'
+// Optional 8th argument: scroll this many px before capturing. Needed to see anything sticky,
+// which by definition looks identical to static until the page moves.
+const SCROLL = Number(process.argv[8] ?? 0)
 const PNG = OUT.endsWith('.png')
 
 const CHROME = [
@@ -112,10 +115,24 @@ if (FULL) {
   })
 }
 
+if (SCROLL) {
+  await send('Runtime.evaluate', {
+    expression: `(async()=>{ scrollTo(0, ${SCROLL}); await new Promise(r=>setTimeout(r,900)) })()`,
+    awaitPromise: true,
+  })
+}
+
 const { result } = await send('Runtime.evaluate', {
   expression: `JSON.stringify({
     h: document.documentElement.scrollHeight,
     vw: innerWidth,
+    stuck: (() => {
+      const f = [...document.querySelectorAll('.object-media')]
+        .map(el => ({ top: Math.round(el.getBoundingClientRect().top),
+                      pos: getComputedStyle(el).position }))
+        .filter(x => x.top > -400 && x.top < innerHeight);
+      return f.length ? f.map(x => x.pos + '@' + x.top).join(' ') : 'none in view';
+    })(),
     screens: +(document.documentElement.scrollHeight / innerHeight).toFixed(1),
     cols: (() => { const g = document.querySelector('.grid');
       return g ? getComputedStyle(g).gridTemplateColumns.split(' ').length : null })(),
@@ -128,7 +145,8 @@ const info = JSON.parse(result.value)
 console.log(
   `${PATH}  ${info.vw}px  ${info.h}px tall = ${info.screens} screens` +
     (info.cols ? `  grid: ${info.cols} col` : '') +
-    `  h-overflow: ${info.overflow}`
+    `  h-overflow: ${info.overflow}` +
+    (SCROLL ? `\n  scrolled ${SCROLL}px — media wells in view: ${info.stuck}` : '')
 )
 
 const { data } = await send(
