@@ -75,18 +75,10 @@ function Media({ object, priority }) {
   const large = object.image?.large
   const src = xlarge?.url
 
-  // The well used to be a flat 70dvh for every object, and 89 of the 128 photographs are
-  // landscape — so on a phone not one of them filled it and the mean well was 49% empty black.
-  // That is most of why a 19-object page measured 30 screen-heights.
-  //
-  // The fixed height was chosen so nothing reflows when a lazy image lands and so a QR arrival
-  // keeps its scroll position. That still holds: what the guarantee actually needs is for the
-  // height to be KNOWN before the image loads, not for it to be the same for everything. `aspect`
-  // is in the manifest for all 128, so the box is exact from first paint.
-  const aspect = object.aspect > 0 ? object.aspect : null
-
+  // The well is one shape for every object — see the note on .well in styles.css. It used to be
+  // cut to each photograph's own aspect, which is why this passed one in as a custom property.
   return (
-    <div className="well" ref={ref} style={aspect ? { '--aspect': aspect } : undefined}>
+    <div className="well" ref={ref}>
       <img className="well-blur" src={object.placeholder} alt="" aria-hidden="true" />
       {near && src && (
         <img

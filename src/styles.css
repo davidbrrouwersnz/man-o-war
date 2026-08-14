@@ -709,21 +709,31 @@ a {
   margin: 0 0 0.9rem;
 }
 
-/* §10 asks for media at ~70% of viewport height. It used to be exactly that for every object —
-   `height: 70dvh` — and that was the single most expensive layout decision in the app: 89 of the
-   128 photographs are landscape, so on a phone not one of them filled the well and the mean well
-   was 49% empty black.
+/* One frame for every object, and the photograph centred inside it.
 
-   The real photograph shape drives the box now, capped at 70dvh so a tall object still cannot run
-   past the fold. The zero-reflow guarantee the fixed height was protecting is intact, because it
-   only ever needed the height to be KNOWN before the image loads — `aspect` is in the manifest
-   for all 128 objects and is set as an inline custom property.
+   This box has been three things. It was `height: 70dvh` for everything, which wasted 49% of the
+   well on average because 89 of the 128 photographs are landscape. Then it was cut to each
+   photograph's own aspect, which fixed the waste but made every object a different shape — so the
+   glass landed at a different size and offset down the page, and the column read as ragged.
 
-   svh rather than dvh for the cap: dvh re-resolves every time a mobile toolbar slides, which
-   relayouts a page carrying a sticky media column (§10, desktop) on every scroll gesture. */
+   4/3 is not an arbitrary compromise: it is the median aspect of the collection, 1.33 exactly.
+   Photographs fill 88% of the width and 95% of the height of this frame on average, so there is
+   very little letterboxing — and what there is cannot be seen, because every one of the 128
+   photographs has a near-black border (measured: the brightest is luminance 18 of 255, see
+   scripts/backgrounds.mjs) and so does this well. The seam between photograph and frame is
+   invisible, which is what makes a uniform frame free.
+
+   It is also shorter than cutting to aspect — mean well 263px against 301px on a phone — and it
+   matches the 4/3 the collection tiles already use.
+
+   Nothing reflows when a lazy image lands, which is what the original fixed height was protecting:
+   the height is known before load, and now it is the same known height for every object.
+
+   svh rather than dvh: dvh re-resolves every time a mobile toolbar slides, which would relayout a
+   page carrying a sticky media column (§10, desktop) on every scroll gesture. */
 .well {
   position: relative;
-  aspect-ratio: var(--aspect, 3 / 4);
+  aspect-ratio: 4 / 3;
   max-height: 70vh;
   max-height: 70svh;
   background: var(--dark);
