@@ -223,9 +223,6 @@ function Home({ go, route }) {
         </div>
       ) : (
         <div role="tabpanel" id="panel-all" aria-labelledby="tab-all">
-          {/* The page used to print this sentence in English regardless of the session language,
-              while a translated version of it sat unused in every pack. */}
-          <Translated className="tab-intro" r={tr('ui.everyObjectIntro')} />
           {all ? (
             <ol className="grid grid-dense">
               {all.objects.map((o) => (

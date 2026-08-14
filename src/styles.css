@@ -452,15 +452,6 @@ a {
   outline-offset: -4px;
 }
 
-.tab-intro {
-  max-width: var(--measure);
-  margin: 0 0 1.5rem;
-  padding: 0 1.25rem;
-  font-size: var(--step-0);
-  line-height: 1.5;
-  color: var(--dark-ink-soft);
-}
-
 .grid {
   list-style: none;
   margin: 0;
