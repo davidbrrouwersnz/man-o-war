@@ -6,6 +6,7 @@ import { BY_CODE, dirOf } from '../i18n.js'
 import { langAttrs, useLang, useT } from '../lang.jsx'
 import { Spoken, blocksOf } from '../audio.jsx'
 import { GROUPS, index, loadChunk } from '../collection.js'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Listen, Translated } from '../components/reading.jsx'
 import { Tools } from '../components/tools.jsx'
 
@@ -115,7 +116,6 @@ function Home({ go, route }) {
   const [layers, setLayers] = useState(null)
   const [tab, setTab] = useState(route?.tab === 'all' ? 'all' : 'groups')
   const [all, setAll] = useState(null)
-  const tabsRef = useRef(null)
 
   useLayoutEffect(() => {
     document.title = `${t('ui.collectionTitle')} — Canterbury Museum`
@@ -134,22 +134,6 @@ function Home({ go, route }) {
     const href = tab === 'all' ? '/all' : '/'
     if (location.pathname !== href) history.replaceState(null, '', href)
   }, [tab])
-
-  // Arrow keys move between tabs, which is what a tablist is expected to do and what a keyboard
-  // user will try. Without it the only way across is Tab, Tab, and hope.
-  const onTabKey = (e) => {
-    const order = ['groups', 'all']
-    const i = order.indexOf(tab)
-    let next = null
-    if (e.key === 'ArrowRight') next = order[(i + 1) % order.length]
-    if (e.key === 'ArrowLeft') next = order[(i - 1 + order.length) % order.length]
-    if (e.key === 'Home') next = order[0]
-    if (e.key === 'End') next = order[order.length - 1]
-    if (!next) return
-    e.preventDefault()
-    setTab(next)
-    tabsRef.current?.querySelector(`#tab-${next}`)?.focus()
-  }
 
   // The essays are a chunk, fetched after the page is up rather than compiled into the bundle. The
   // front page is the one every visitor loads first and §2's visitor is on a museum connection —
@@ -246,35 +230,21 @@ function Home({ go, route }) {
             than the front door — it rescues browsing by eye and the completionist — and a tab does
             that job better than a page: it is visible from the front rather than found, and it
             costs nothing until it is opened. */}
-        <div className="tabs" role="tablist" aria-label={t('ui.collectionTitle')} ref={tabsRef} onKeyDown={onTabKey}>
-          <button
-            type="button"
-            role="tab"
-            id="tab-groups"
-            aria-selected={tab === 'groups'}
-            aria-controls="panel-groups"
-            tabIndex={tab === 'groups' ? 0 : -1}
-            className={tab === 'groups' ? 'is-current' : ''}
-            onClick={() => setTab('groups')}
-          >
-            {t('ui.byGroup')}
-          </button>
-          <button
-            type="button"
-            role="tab"
-            id="tab-all"
-            aria-selected={tab === 'all'}
-            aria-controls="panel-all"
-            tabIndex={tab === 'all' ? 0 : -1}
-            className={tab === 'all' ? 'is-current' : ''}
-            onClick={() => setTab('all')}
-          >
-            {t('ui.everyObject')}
-          </button>
-        </div>
+        {/* shadcn's Tabs. The ids are kept: the smoke test addresses them by name, and the
+            twenty-odd lines of roving tabindex and arrow/Home/End handling that used to sit in this
+            file are the primitive's job now. Inactive panels are not rendered, which is what keeps
+            the 62KB of 128 tiles from being fetched until someone opens that tab. */}
+        <Tabs value={tab} onValueChange={setTab} className="gap-0">
+          <TabsList variant="line" activateOnFocus aria-label={t('ui.collectionTitle')} className="tabs h-auto w-full justify-start gap-1 rounded-none border-b border-[var(--dark-rule)] bg-transparent py-0 px-5 mb-6">
+            <TabsTrigger value="groups" id="tab-groups" className="h-auto min-h-11 flex-none rounded-none border-0 px-3.5 py-2.5 font-normal text-[length:var(--step-0)] text-[var(--control-ink-soft)] hover:text-[var(--control-ink)] data-active:bg-transparent data-active:text-[var(--control-ink)] after:bg-[var(--control-ink)] group-data-horizontal/tabs:after:bottom-[-1px] focus-visible:ring-0 focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[color:var(--control-ring)]">
+              {t('ui.byGroup')}
+            </TabsTrigger>
+            <TabsTrigger value="all" id="tab-all" className="h-auto min-h-11 flex-none rounded-none border-0 px-3.5 py-2.5 font-normal text-[length:var(--step-0)] text-[var(--control-ink-soft)] hover:text-[var(--control-ink)] data-active:bg-transparent data-active:text-[var(--control-ink)] after:bg-[var(--control-ink)] group-data-horizontal/tabs:after:bottom-[-1px] focus-visible:ring-0 focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[color:var(--control-ring)]">
+              {t('ui.everyObject')}
+            </TabsTrigger>
+          </TabsList>
 
-        {tab === 'groups' ? (
-          <div role="tabpanel" id="panel-groups" aria-labelledby="tab-groups">
+          <TabsContent value="groups" id="panel-groups">
             <ol className="grid">
               {GROUPS.map((g) => (
                 <li key={g.slug} className="tile">
@@ -293,9 +263,9 @@ function Home({ go, route }) {
                 </li>
               ))}
             </ol>
-          </div>
-        ) : (
-          <div role="tabpanel" id="panel-all" aria-labelledby="tab-all">
+          </TabsContent>
+
+          <TabsContent value="all" id="panel-all">
             {all ? (
               <ol className="grid grid-dense">
                 {all.objects.map((o) => (
@@ -315,8 +285,8 @@ function Home({ go, route }) {
             ) : (
               <p className="loading loading-dark">{t('ui.loading')}</p>
             )}
-          </div>
-        )}
+          </TabsContent>
+        </Tabs>
       </div>
 
       {/* The background reading. On a phone it sits below the grid, because the collection is what

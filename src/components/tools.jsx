@@ -4,6 +4,7 @@
 import { Suspense, lazy, useState } from 'react'
 import { ContrastIcon, GlobeIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { useLang, useT } from '../lang.jsx'
 import { SUPPORTED } from '../collection.js'
 
@@ -29,13 +30,31 @@ function LanguagePicker() {
           So the globe carries the meaning visually and the word carries it to a screen reader. */}
       <span className="visually-hidden" id="lang-label">{t('ui.language')}</span>
       <GlobeIcon className="lang-globe" size={18} aria-hidden="true" focusable="false" />
-      <select value={code} onChange={(e) => setCode(e.target.value)} aria-labelledby="lang-label">
-        {SUPPORTED.map((l) => (
-          <option key={l.code} value={l.code} lang={l.code}>
-            {l.endonym}
-          </option>
-        ))}
-      </select>
+      {/* shadcn's Select. It replaces a native <select>, and that is a genuine trade rather than a
+          free upgrade: the native one handed a phone its own full-screen picker, which is large,
+          familiar and works with VoiceOver without anyone writing a line. What this buys back is
+          one appearance on every browser — a native select is the control least amenable to being
+          styled, and it was the one piece of chrome that did not look like the rest of the app.
+
+          `items` is passed so the trigger can render an endonym for the current value rather than
+          the raw code. Each option keeps its own lang attribute, which is what tells a screen
+          reader to pronounce Deutsch in German. */}
+      <Select
+        value={code}
+        onValueChange={(v) => v && setCode(v)}
+        items={SUPPORTED.map((l) => ({ value: l.code, label: l.endonym }))}
+      >
+        <SelectTrigger className="lang-trigger min-h-11" size="touch" aria-labelledby="lang-label">
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          {SUPPORTED.map((l) => (
+            <SelectItem key={l.code} value={l.code} lang={l.code}>
+              {l.endonym}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
     </div>
   )
 }

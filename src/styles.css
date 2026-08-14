@@ -514,41 +514,13 @@ svg.lucide {
 /* Two ways into the same objects, on the dark home ground. Underline rather than a pill or a box:
    the tiles below are already a field of rectangles, and another one competes with them. */
 
-.tabs {
-  display: flex;
-  gap: 0.25rem;
-  padding: 0 1.25rem;
-  margin: 0 0 1.5rem;
-  border-bottom: 1px solid var(--dark-rule);
-}
+/* The tab bar is shadcn's Tabs now. Its look lives in the className on TabsList/TabsTrigger in
+   pages/home.jsx rather than here — Tailwind utilities sit in the last cascade layer, so rules in
+   this file cannot reach a shadcn component. Only the colours are still decided here, through
+   --control-* , which is what keeps the dark-ground decision documented and asserted.
 
-.tabs button {
-  font: inherit;
-  font-size: var(--step-0);
-  font-weight: 400;
-  color: var(--dark-ink-soft);
-  background: none;
-  border: 0;
-  border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
-  padding: 0.7rem 0.9rem;
-  cursor: pointer;
-  /* A comfortable thumb target on a phone held one-handed in a gallery. */
-  min-height: 44px;
-}
-
-.tabs button:hover {
-  color: var(--dark-ink);
-}
-
-.tabs button.is-current {
-  color: var(--dark-ink);
-  border-bottom-color: var(--dark-ink);
-}
-
-.tabs button:focus-visible {
-  outline-offset: -4px;
-}
+   What went with the old rules: a hand-written roving tabindex and an arrow/Home/End key handler,
+   about twenty lines, now the primitive's job. */
 
 .grid {
   list-style: none;
@@ -1211,6 +1183,7 @@ svg.lucide {
      through these. */
   .home-head {
     --control-ink: var(--ink);
+    --control-ink-soft: var(--ink-soft);
     --control-edge: var(--edge);
     --control-ground: var(--paper);
     --control-ring: var(--brand);
@@ -1690,13 +1663,19 @@ html:has(.audio-bar) {
      Hence a control-scoped pair, flipped by context, consumed by the button variants. */
   :root {
     --control-ink: var(--ink);
+    --control-ink-soft: var(--ink-soft);
     --control-edge: var(--edge);
     --control-ground: var(--paper);
     --control-ring: var(--brand);
   }
 
-  .home-head {
+  /* Both halves of the collection page that stay dark at every width. The head rejoins the reading
+     palette at desktop, further down; the browsing column never does, because the tile grid is a
+     dark field whatever the device is doing (§9). */
+  .home-head,
+  .home-browse {
     --control-ink: var(--dark-ink);
+    --control-ink-soft: var(--dark-ink-soft);
     --control-edge: var(--dark-edge);
     --control-ground: var(--dark);
     --control-ring: var(--dark-brand);
