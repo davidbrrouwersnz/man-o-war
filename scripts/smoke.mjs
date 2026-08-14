@@ -164,6 +164,24 @@ tab('arrow key moves between tabs', arrowed.selected === 'tab-groups', arrowed.s
 tab('arrow key moves focus with it', arrowed.focused === 'tab-groups', arrowed.focused)
 tab('the URL follows back', arrowed.path === '/', arrowed.path)
 
+// The language select shows a globe instead of the word "Language". The word has to survive in the
+// accessibility tree — an unnamed select is announced as "combo box", and this is the one control a
+// visitor reaches for precisely when they cannot read the page.
+await send('Accessibility.enable')
+const ax = await rpc('Accessibility.getFullAXTree', {}, sessionId)
+const combo = ax.nodes.find((n) => n.role?.value === 'combobox')
+tab('language select keeps its accessible name', combo?.name?.value === 'Language', JSON.stringify(combo?.name?.value))
+
+const globe = JSON.parse(
+  await evaluate(`JSON.stringify({
+    svg: !!document.querySelector('.lang-globe'),
+    hidden: !!document.querySelector('.lang-picker .visually-hidden'),
+    decorative: (document.querySelector('.lang-globe')||{}).getAttribute?.('aria-hidden') === 'true',
+  })`)
+)
+tab('globe icon is present', globe.svg)
+tab('globe is decorative, the word is hidden text', globe.decorative && globe.hidden)
+
 // An old link to /all must open the tab, not a page.
 await send('Page.navigate', { url: `${ORIGIN}/all` })
 await wait(1800)

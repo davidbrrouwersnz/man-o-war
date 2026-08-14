@@ -111,7 +111,20 @@ function LanguagePicker() {
   const [t] = useT()
   return (
     <label className="lang-picker">
-      <span className="lang-label">{t('ui.language')}</span>
+      {/* The word "Language" is hidden, not deleted. An icon is a hint, not a name — a select with
+          no accessible name is announced as just "combo box", and the one control on the page a
+          visitor most needs when they cannot read the page is the one that stops saying what it is.
+          So the globe carries the meaning visually and the word carries it to a screen reader.
+          Drawn inline rather than fetched: no request, and it inherits the text colour. */}
+      <span className="visually-hidden">{t('ui.language')}</span>
+      <svg className="lang-globe" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+        <g fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M3 12h18" />
+          {/* The two meridians are what stop it reading as a clock face. */}
+          <path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18Z" />
+        </g>
+      </svg>
       <select value={code} onChange={(e) => setCode(e.target.value)}>
         {SUPPORTED.map((l) => (
           <option key={l.code} value={l.code} lang={l.code}>

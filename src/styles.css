@@ -475,17 +475,26 @@ a {
 
 /* ------------------------------------------------------------------ language (§7) */
 
+/* Centred rather than baseline-aligned: with the word gone there is no text on the left to share a
+   baseline with, and an icon hung off one sits visibly low against the select beside it. */
 .lang-picker {
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   margin: 0 0 1.75rem;
   font-family: var(--sans);
   font-size: 0.8125rem;
+  cursor: pointer;
 }
 
-.lang-label {
+.lang-globe {
   color: var(--dark-ink-soft);
+  flex: none;
+}
+
+.lang-picker:hover .lang-globe,
+.lang-picker:focus-within .lang-globe {
+  color: var(--dark-ink);
 }
 
 .lang-picker select {
