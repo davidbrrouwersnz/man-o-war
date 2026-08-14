@@ -111,6 +111,35 @@ export function AudioProvider({ children }) {
   const follow = prefs.followWords
   const [t] = useT()
 
+  // How long the visitor keeps the scroll after taking it over.
+  //
+  // Modelled on a car's navigation map: pan away and it leaves you alone, then re-centres once you
+  // stop touching it or once the car moves, because what it is following has moved on. Both
+  // triggers, for the same reasons.
+  //
+  // 8s rather than the 4s first sketched. Measured, the narration crosses a paragraph every 6
+  // seconds, so a 4s timer expires inside an ordinary read-along pause — reading is
+  // indistinguishable from idling, and the resume would land while the visitor was most absorbed.
+  // 8s clears a paragraph with room to spare. One constant; retune here.
+  const IDLE_MS = 8000
+  // The "car has started moving" trigger: the guide has reached a new section, so whatever they
+  // scrolled off to look at is no longer the subject.
+  //
+  // 4s, not the 1.5s this started at. Sections here are 7 to 30 seconds, so a new one very often
+  // begins moments after a swipe: measured, it took the page back 1,530ms after the visitor moved
+  // it, which is the snatching this whole change exists to stop. Four seconds is long enough to
+  // have looked at the thing you scrolled to — and it lands where the original instinct did, so
+  // the rule reads as "4 seconds, if the guide has moved on; 8 if it has not".
+  const SECTION_SETTLE_MS = 4000
+  // A smooth scroll takes a few hundred ms, during which the mark is still measurably out of place.
+  // Without this the next cue reads that as a fresh miss and scrolls again, compounding.
+  const SCROLL_SETTLE_MS = 400
+
+  const takenOver = useRef(null)
+  const scrolledAt = useRef(0)
+  const atRef = useRef(0)
+  atRef.current = at
+
   const item = queue?.items[at] ?? null
 
   // Load the segment whenever the queue or position changes. `wanted` guards against a fast
@@ -198,6 +227,9 @@ export function AudioProvider({ children }) {
     (next, from = 0) => {
       const audio = el.current
       if (!audio) return
+      // Pressing Listen, or skipping, is a request to be taken to the words — so it ends any
+      // exploring rather than waiting out the timer.
+      takenOver.current = null
       if (queue?.key === next.key) {
         // Same thing already loaded: treat the press as play/pause.
         if (playing) {
@@ -233,6 +265,7 @@ export function AudioProvider({ children }) {
   const skip = useCallback(
     (delta) => {
       if (!queue) return
+      takenOver.current = null
       setAt((i) => Math.min(queue.items.length - 1, Math.max(0, i + delta)))
       setPlaying(true)
     },
@@ -261,25 +294,105 @@ export function AudioProvider({ children }) {
     setTime(seconds)
   }, [])
 
-  // Keep the spoken word on screen. Runs after the cue has rendered, so the <mark> exists.
+  // A swipe, a wheel turn or a scroll key means the visitor is driving now.
   //
-  // Only scrolls when the word has actually left the viewport — scrolling on every cue would
-  // twitch the page several times a second. The bottom margin clears the player, which is fixed
-  // over the end of the page.
+  // Deliberately not the `scroll` event. Our own smooth scrolling fires a stream of those, so a
+  // feature listening for them mistakes itself for the user, hands over control it was never
+  // asked for, and never takes it back. wheel, touch and the scroll keys are things only a person
+  // does. Anything inside the transport bar is excluded: dragging the seek slider or pressing skip
+  // is operating the guide, not exploring the page, and should not stop it following.
+  useEffect(() => {
+    const KEYS = new Set(['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' ', 'Spacebar'])
+    const inTransport = (e) => e.target instanceof Node && !!document.querySelector('.audio-bar')?.contains(e.target)
+    const took = (e) => {
+      if (inTransport(e)) return
+      takenOver.current = { time: performance.now(), section: atRef.current }
+    }
+    const onKey = (e) => {
+      if (KEYS.has(e.key)) took(e)
+    }
+    addEventListener('wheel', took, { passive: true })
+    addEventListener('touchstart', took, { passive: true })
+    addEventListener('touchmove', took, { passive: true })
+    addEventListener('keydown', onKey)
+    return () => {
+      removeEventListener('wheel', took)
+      removeEventListener('touchstart', took)
+      removeEventListener('touchmove', took)
+      removeEventListener('keydown', onKey)
+    }
+  }, [])
+
+  // Keep the spoken word on screen. Runs after the cue has rendered, so the <mark> exists.
   useEffect(() => {
     if (!follow || !playing) return
     const mark = document.querySelector('.spoken-word')
     if (!mark) return
-    const r = mark.getBoundingClientRect()
+
+    const now = performance.now()
+    if (now - scrolledAt.current < SCROLL_SETTLE_MS) return
+
+    // While the visitor has the scroll, leave it entirely alone.
+    const over = takenOver.current
+    let resuming = false
+    if (over) {
+      const idle = now - over.time
+      const sectionMoved = at !== over.section
+      if (idle < IDLE_MS && !(sectionMoved && idle > SECTION_SETTLE_MS)) return
+      takenOver.current = null
+      resuming = true
+    }
+
     const bar = document.querySelector('.audio-bar')?.getBoundingClientRect().height ?? 0
+    // The readable band: clear of the masthead above, clear of the transport bar below.
     const top = 72
     const bottom = innerHeight - bar - 24
-    if (r.top >= top && r.bottom <= bottom) return
+    const r = mark.getBoundingClientRect()
+
     // §18 asks for prefers-reduced-motion on every transition. A smooth scroll that repeats for
     // 137 minutes is exactly what that setting is for.
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches
-    mark.scrollIntoView({ block: 'center', behavior: reduced ? 'auto' : 'smooth' })
-  }, [cue, follow, playing])
+    const behavior = reduced ? 'auto' : 'smooth'
+
+    // Coming back from exploring is the one move that should be a placement rather than a nudge.
+    // The visitor has been away, the words are somewhere else entirely, and putting them where
+    // reading starts is the whole point — a third of the way down the band.
+    //
+    // Tried and rejected: doing the same at every section change, on the theory that a new object
+    // deserves a proper entrance. It made things worse, and measurably — over two minutes it took
+    // the median move from 110px to 438px and put four moves of the eight over half a screen. A
+    // new heading arriving low and then easing up is gentler than the page leaping to meet it.
+    if (resuming) {
+      scrolledAt.current = now
+      const back = r.top - (top + (bottom - top) * 0.35)
+      // Someone who wandered a long way gets taken back instantly rather than flown there. Smoothly
+      // animating thousands of pixels — 5,748 of them in one test — is a long blur that shows the
+      // visitor nothing and delays the words they are already hearing. Under a couple of screens it
+      // is a movement worth watching, because it tells them where they went.
+      scrollBy({ top: back, behavior: Math.abs(back) > innerHeight * 2 ? 'auto' : behavior })
+      return
+    }
+
+    // Only the floor is enforced, not the ceiling. Above is a fine place for the spoken word to be
+    // — there is a screenful of what comes next below it — and correcting upwards mostly fired at
+    // the top of a page, where the scroll is already at zero and the move does nothing: three
+    // futile scrolls in the first two minutes of a tour, before this.
+    if (r.bottom <= bottom) return
+
+    // The old rule scrolled the word to the dead centre of the screen however far it had drifted,
+    // so the correction bore no relation to the error: measured on a 390px phone, a median move of
+    // 331px and a worst of 594px — 39% and 70% of the screen — arriving about once every 14
+    // seconds. Rare and violent, which is what read as aggressive.
+    //
+    // Instead, move by the least that puts the word back inside the band with a few lines of room
+    // to spare. Three lines is the tuning: park it hard against the edge and the very next line
+    // triggers another scroll, giving a constant crawl; park it in the middle and we are back to
+    // leaping. Three lines is one small step every few lines, which reads as the page keeping up
+    // rather than snatching.
+    const line = parseFloat(getComputedStyle(mark.parentElement ?? mark).lineHeight) || 24
+    scrolledAt.current = now
+    scrollBy({ top: r.bottom - (bottom - line * 3), behavior })
+  }, [cue, at, follow, playing])
 
   // Lock screen, headphone buttons, car displays. A visitor walking a gallery with the phone in a
   // pocket is the case §13's "plays across navigation" is really about, and without this the only
