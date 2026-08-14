@@ -45,7 +45,8 @@
     "audioSeconds": "{n} secondes",
     "reading": "Suivi du texte",
     "followWords": "Faire défiler pour suivre les mots au fil de la lecture",
-    "notFoundAccession": "{accession} n’est pas un numéro d’inventaire de cette collection."
+    "notFoundAccession": "{accession} n’est pas un numéro d’inventaire de cette collection.",
+    "collectionIntroOnDisplay": "Un seul est exposé"
   },
   "groups": {
     "jellyfish": "Méduses, grandes et petites",

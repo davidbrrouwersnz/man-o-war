@@ -45,7 +45,8 @@
     "audioSeconds": "{n} 秒",
     "reading": "読み上げ",
     "followWords": "読み上げに合わせてスクロールする",
-    "notFoundAccession": "{accession} はこのコレクションの登録番号ではありません。"
+    "notFoundAccession": "{accession} はこのコレクションの登録番号ではありません。",
+    "collectionIntroOnDisplay": "展示されているのは1点だけ"
   },
   "groups": {
     "jellyfish": "クラゲ、大小さまざま",

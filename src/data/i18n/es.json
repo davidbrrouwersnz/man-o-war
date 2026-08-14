@@ -45,7 +45,8 @@
     "audioSeconds": "{n} segundos",
     "reading": "Lectura",
     "followWords": "Desplazar para seguir las palabras a medida que se leen",
-    "notFoundAccession": "{accession} no es un número de inventario de esta colección."
+    "notFoundAccession": "{accession} no es un número de inventario de esta colección.",
+    "collectionIntroOnDisplay": "Uno está expuesto"
   },
   "groups": {
     "jellyfish": "Medusas, grandes y pequeñas",

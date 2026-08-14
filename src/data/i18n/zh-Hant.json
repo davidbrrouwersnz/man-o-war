@@ -45,7 +45,8 @@
     "audioSeconds": "{n} 秒",
     "reading": "閱讀",
     "followWords": "隨朗讀捲動跟隨文字",
-    "notFoundAccession": "{accession} 不是本館藏的登錄編號。"
+    "notFoundAccession": "{accession} 不是本館藏的登錄編號。",
+    "collectionIntroOnDisplay": "其中一件正在展出"
   },
   "groups": {
     "jellyfish": "水母，大與小",

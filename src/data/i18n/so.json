@@ -46,7 +46,8 @@
     "audioSeconds": "{n} ilbiriqsiyo",
     "reading": "Akhriska",
     "followWords": "Wareeji si aad u raacdo erayada marka la akhrinayo",
-    "notFoundAccession": "{accession} ma aha lambar diiwaangelineed oo ururintan ku jira."
+    "notFoundAccession": "{accession} ma aha lambar diiwaangelineed oo ururintan ku jira.",
+    "collectionIntroOnDisplay": "Mid ayaa la soo bandhigay"
   },
   "groups": {
     "jellyfish": "Jellyfish, waaweyn iyo yaryar",

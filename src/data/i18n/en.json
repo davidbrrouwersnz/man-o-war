@@ -45,6 +45,7 @@
     "audioSeconds": "{n} seconds",
     "reading": "Reading",
     "followWords": "Scroll to follow the words as they are read",
-    "notFoundAccession": "{accession} is not an accession number in this collection."
+    "notFoundAccession": "{accession} is not an accession number in this collection.",
+    "collectionIntroOnDisplay": "One is on display"
   }
 }

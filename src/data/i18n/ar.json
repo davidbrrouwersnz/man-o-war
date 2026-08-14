@@ -45,7 +45,8 @@
     "audioSeconds": "{n} ثوانٍ",
     "reading": "القراءة",
     "followWords": "التمرير لمتابعة الكلمات أثناء قراءتها",
-    "notFoundAccession": "رقم الاقتناء {accession} غير موجود في هذه المجموعة."
+    "notFoundAccession": "رقم الاقتناء {accession} غير موجود في هذه المجموعة.",
+    "collectionIntroOnDisplay": "واحد منها معروض"
   },
   "groups": {
     "jellyfish": "قناديل البحر، كبيرها وصغيرها",

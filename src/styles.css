@@ -470,6 +470,19 @@ a {
   font-weight: 400;
 }
 
+/* The one link in the collection standfirst, pointing at the object that is actually on display.
+   Underlined because colour alone must not carry it — WCAG 1.4.1 — and the standfirst is prose. */
+.intro-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  text-decoration-thickness: 1px;
+}
+
+.intro-link:hover {
+  text-decoration-thickness: 2px;
+}
+
 .home-head p {
   margin: 0;
   color: var(--dark-ink-soft);
@@ -965,14 +978,6 @@ a {
   margin: 0 0 0.6rem;
 }
 
-/* ------------------------------------------------------------------ end of page */
-
-.group-ending {
-  font-size: var(--step-1);
-  line-height: 1.5;
-  margin: 0 0 2.5rem;
-}
-
 .group-nav {
   display: flex;
   justify-content: space-between;
@@ -1079,10 +1084,6 @@ a {
   border-right: 2px solid var(--rule);
   padding-left: 0;
   padding-right: 0.75rem;
-}
-
-[dir='rtl'] .continuations a::after {
-  content: ' ←';
 }
 
 [dir='rtl'] .layer-sources ul {
@@ -1269,27 +1270,6 @@ a {
   font-size: var(--step-0);
   margin-bottom: 0.5rem;
   color: var(--ink-soft);
-}
-
-/* §10: named continuations at the end of a group page, never a generic "more". */
-.continuations {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  border-top: 1px solid var(--rule);
-  padding-top: 1.5rem;
-  margin: 0 0 2.5rem;
-  font-size: var(--step-0);
-}
-
-.continuations a {
-  text-decoration: none;
-  color: var(--ink-soft);
-}
-
-.continuations a::after {
-  content: ' →';
-  color: var(--ink-meta);
 }
 
 .stub-note {

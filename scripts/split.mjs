@@ -88,7 +88,9 @@ for (const g of groups.groups) {
   // §10 wants the cost computed at build time from word counts, never asserted. This is where.
   const total = words(panel?.panel) + words(panel?.ending) + objects.reduce((t, o) => t + (o.story ? storyWords(o.story) : 0), 0)
 
-  const chunk = { slug: g.slug, title: g.title, panel: panel?.panel ?? null, ending: panel?.ending ?? null, objects }
+  // No ending. The closing line is no longer rendered or narrated, so shipping it would be bytes
+  // on a gallery connection that nobody reads. The text stays in src/data/stories.json.
+  const chunk = { slug: g.slug, title: g.title, panel: panel?.panel ?? null, objects }
   const json = JSON.stringify(chunk)
   writeFileSync(new URL(`${g.slug}.json`, dir), json)
   chunkTotal += gzipSync(json).length

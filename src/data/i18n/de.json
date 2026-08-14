@@ -45,7 +45,8 @@
     "audioSeconds": "{n} Sekunden",
     "reading": "Lesen",
     "followWords": "Mitscrollen, um den vorgelesenen Wörtern zu folgen",
-    "notFoundAccession": "{accession} ist keine Inventarnummer in dieser Sammlung."
+    "notFoundAccession": "{accession} ist keine Inventarnummer in dieser Sammlung.",
+    "collectionIntroOnDisplay": "Eines ist ausgestellt"
   },
   "groups": {
     "jellyfish": "Quallen, große und kleine",

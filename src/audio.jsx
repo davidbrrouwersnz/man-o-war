@@ -356,15 +356,22 @@ export function AudioProvider({ children }) {
 // One block of printed text, with the word currently being spoken wrapped in a <mark>.
 // When nothing is playing this renders the plain string, so the markup only exists while it means
 // something - a page full of empty spans is worse for a screen reader, not better.
-export function Spoken({ text, itemId, block }) {
+// `offset` is where this run of text starts inside its block, and it exists so a block can be
+// broken up — to put a link inside a sentence, say — without the read-along losing its place. The
+// cue's from/to are offsets into the whole block, so a run that starts partway through subtracts
+// its own start and clamps to its own length. Left at 0 the behaviour is unchanged.
+export function Spoken({ text, itemId, block, offset = 0 }) {
   const audio = useAudio()
   const c = audio?.cue
   if (!c || c.itemId !== itemId || c.block !== block) return text
+  const from = Math.max(0, Math.min(text.length, c.from - offset))
+  const to = Math.max(0, Math.min(text.length, c.to - offset))
+  if (from >= to) return text
   return (
     <>
-      {text.slice(0, c.from)}
-      <mark className="spoken-word">{text.slice(c.from, c.to)}</mark>
-      {text.slice(c.to)}
+      {text.slice(0, from)}
+      <mark className="spoken-word">{text.slice(from, to)}</mark>
+      {text.slice(to)}
     </>
   )
 }

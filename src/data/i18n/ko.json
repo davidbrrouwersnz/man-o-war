@@ -45,7 +45,8 @@
     "audioSeconds": "{n}초",
     "reading": "읽기",
     "followWords": "읽는 위치에 맞춰 스크롤하기",
-    "notFoundAccession": "{accession}은(는) 이 컬렉션의 소장 번호가 아닙니다."
+    "notFoundAccession": "{accession}은(는) 이 컬렉션의 소장 번호가 아닙니다.",
+    "collectionIntroOnDisplay": "전시 중인 것은 한 점뿐"
   },
   "groups": {
     "jellyfish": "해파리, 큰 것과 작은 것",

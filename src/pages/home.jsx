@@ -9,6 +9,9 @@ import { GROUPS, index, loadChunk } from '../collection.js'
 import { Listen, Translated } from '../components/reading.jsx'
 import { Tools } from '../components/tools.jsx'
 
+// 1884.137.33, the Portuguese man o' war. One object of the 128 is on display; this is it.
+const ON_DISPLAY = '1884.137.33'
+
 // ------------------------------------------------------------------ home
 
 // One of the two reading essays. It was a page of its own until the content moved onto the
@@ -152,6 +155,10 @@ function Home({ go, route }) {
 
   const intro = tr('ui.collectionIntro')
   const title = t('ui.collectionTitle')
+  // The one object of the 128 that is out of storage and in the gallery — the thing the QR code
+  // beside it points at, and the reason this app exists.
+  const onDisplay = t('ui.collectionIntroOnDisplay')
+  const onDisplayAt = intro.text.indexOf(onDisplay)
   const homeQueue = {
     key: 'home',
     title,
@@ -164,8 +171,31 @@ function Home({ go, route }) {
         <h1>
           <Spoken text={title} itemId="home/00-intro" block={0} />
         </h1>
+        {/* "One is on display" is the one sentence on this page that points at a real object, so it
+            links to it. The phrase is a per-language key rather than a match on English, and it is
+            looked up as a substring of the intro the visitor is actually reading — if a translation
+            ever stops containing it, the paragraph renders unlinked instead of breaking.
+
+            Split into three runs so the link can sit inside the sentence; each run carries its own
+            offset into the block, which is what keeps the read-along highlight landing on the right
+            word (see Spoken in audio.jsx). */}
         <p lang={intro.lang} dir={dirOf(intro.lang)}>
-          <Spoken text={intro.text} itemId="home/00-intro" block={1} />
+          {onDisplayAt < 0 ? (
+            <Spoken text={intro.text} itemId="home/00-intro" block={1} />
+          ) : (
+            <>
+              <Spoken text={intro.text.slice(0, onDisplayAt)} itemId="home/00-intro" block={1} />
+              <a className="intro-link" href={`/o/${ON_DISPLAY}`} onClick={go(`/o/${ON_DISPLAY}`)}>
+                <Spoken text={onDisplay} itemId="home/00-intro" block={1} offset={onDisplayAt} />
+              </a>
+              <Spoken
+                text={intro.text.slice(onDisplayAt + onDisplay.length)}
+                itemId="home/00-intro"
+                block={1}
+                offset={onDisplayAt + onDisplay.length}
+              />
+            </>
+          )}
         </p>
         <Listen queue={homeQueue} available={intro.lang === 'en'} />
       </header>
@@ -239,7 +269,6 @@ function Home({ go, route }) {
                       </div>
                       <div className="tile-text">
                         <h2 className="tile-small">{o.name}</h2>
-                        <p>{o.accession}</p>
                       </div>
                     </a>
                   </li>
