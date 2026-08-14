@@ -58,6 +58,21 @@ export default function DisplayPanel({ open, onOpenChange }) {
             {t('ui.highContrast')}
           </label>
         </fieldset>
+
+        {/* §13's cues map one-to-one onto the printed segments, which is only worth anything if
+            the highlighted word is on screen. A preference rather than a player button: it
+            persists, and it keeps the bar to five controls. */}
+        <fieldset className="setting">
+          <legend>{t('ui.reading')}</legend>
+          <label className="setting-switch">
+            <input
+              type="checkbox"
+              checked={prefs.followWords}
+              onChange={(e) => set({ followWords: e.target.checked })}
+            />
+            {t('ui.followWords')}
+          </label>
+        </fieldset>
       </DialogContent>
     </Dialog>
   )

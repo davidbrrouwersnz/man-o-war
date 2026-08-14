@@ -1236,27 +1236,42 @@ a {
   padding-bottom: env(safe-area-inset-bottom, 0);
 }
 
-/* The bar covers the end of the page, so give the document somewhere to scroll to. */
-body:has(.audio-bar) {
-  padding-bottom: 5.5rem;
-}
-
-/* WCAG 2.2 SC 2.4.11, Focus Not Obscured. Tabbing down a group page scrolls the focused element
-   just into view — which, with a fixed bar across the bottom, is underneath it. Padding the
-   scrollport keeps whatever has focus above the player. */
-html:has(.audio-bar) {
-  scroll-padding-block-end: 7rem;
-}
-
-.audio-progress {
-  height: 2px;
-  background: var(--rule);
-}
-
-.audio-progress span {
+/* The read-only 2px bar this replaces could not be operated at all. A native range gives keyboard
+   seeking for free, which SC 2.5.7 requires — a drag must never be the only way to move a
+   control. Styled to the same 2px line so the bar still reads as a hairline until touched. */
+.audio-seek {
   display: block;
-  height: 100%;
-  background: var(--ink);
+  padding: 0;
+  margin: 0;
+}
+
+.audio-seek input {
+  display: block;
+  width: 100%;
+  height: 14px;
+  margin: -6px 0;
+  padding: 0;
+  background: transparent;
+  accent-color: var(--brand);
+  cursor: pointer;
+}
+
+.audio-seek input:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.audio-seek input:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: -2px;
+}
+
+.audio-follow {
+  color: var(--ink-meta);
+}
+
+.audio-follow.is-on {
+  color: var(--brand);
 }
 
 .audio-row {
@@ -1363,15 +1378,54 @@ html:has(.audio-bar) {
   white-space: nowrap;
 }
 
-/* On a narrow screen the elapsed time goes first — the progress bar already says it, and the
-   controls have to stay reachable with a thumb. */
-@media (max-width: 30rem) {
+/* On a narrow screen the elapsed time goes first — the seek bar already says it, and the controls
+   have to stay reachable with a thumb.
+
+   The title then takes its own row. Five 44px controls plus the speed select is about 260px, so on
+   a 390px phone a single row left roughly 90px for the title and it rendered as "The…", which
+   tells a visitor nothing about what is playing. */
+@media (max-width: 34rem) {
   .audio-time {
     display: none;
   }
 
   .audio-row {
-    padding: 0.5rem 0.6rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    padding: 0.4rem 0.6rem 0.5rem;
+  }
+
+  .audio-what {
+    flex: 1 0 100%;
+  }
+
+  .audio-what strong,
+  .audio-what span {
+    white-space: normal;
+  }
+}
+
+/* The bar covers the end of the page, so give the document somewhere to scroll to — and pad the
+   scrollport by more than the bar's height, or tabbing down a group page lands the focused element
+   underneath the player (WCAG 2.2 SC 2.4.11, Focus Not Obscured).
+
+   Two rows on a phone and one above it, so two values. In rem because the bar's own height is
+   driven by its type, which the text-size setting changes. */
+body:has(.audio-bar) {
+  padding-bottom: 8rem;
+}
+
+html:has(.audio-bar) {
+  scroll-padding-block-end: 9rem;
+}
+
+@media (min-width: 34.0625rem) {
+  body:has(.audio-bar) {
+    padding-bottom: 5.5rem;
+  }
+
+  html:has(.audio-bar) {
+    scroll-padding-block-end: 7rem;
   }
 }
 

@@ -80,6 +80,20 @@ const { targetId } = await rpc('Target.createTarget', { url: 'about:blank' })
 const { sessionId } = await rpc('Target.attachToTarget', { targetId, flatten: true })
 const send = (m, p) => rpc(m, p, sessionId)
 
+// A screenshot can look completely correct while the console is full of React warnings or a
+// thrown error has left half the page unmounted. Captured and reported at the end.
+const problems = []
+ws.addEventListener('message', (ev) => {
+  const m = JSON.parse(ev.data)
+  if (m.method === 'Runtime.exceptionThrown') {
+    const d = m.params?.exceptionDetails
+    problems.push(`EXCEPTION ${d?.exception?.description ?? d?.text ?? 'unknown'}`.split('\n')[0])
+  }
+  if (m.method === 'Runtime.consoleAPICalled' && ['error', 'warning', 'assert'].includes(m.params?.type)) {
+    problems.push(`${m.params.type}: ${m.params.args?.map((a) => a.value ?? a.description ?? '').join(' ').slice(0, 220)}`)
+  }
+})
+
 await send('Page.enable')
 await send('Runtime.enable')
 await send('Emulation.setDeviceMetricsOverride', {
@@ -202,6 +216,13 @@ const { data } = await send(
 )
 writeFileSync(OUT, Buffer.from(data, 'base64'))
 console.log('wrote ' + OUT)
+
+if (problems.length) {
+  console.log(`\nconsole (${problems.length}):`)
+  for (const p of [...new Set(problems)].slice(0, 12)) console.log('  ' + p)
+} else {
+  console.log('console: clean')
+}
 
 chrome.kill()
 process.exit(0)

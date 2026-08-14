@@ -22,7 +22,11 @@ const KEY = 'a11yPrefs'
 // arbitrary maximum.
 export const TEXT_SCALES = [1, 1.25, 1.5, 2]
 
-const DEFAULTS = { textScale: 1, highContrast: false }
+// followWords lives here rather than in the audio provider because it is a preference, not a
+// transport control — it belongs beside text size, and it should still be set the next time the
+// visitor opens the app. Keeping it out of the player also keeps the bar to five controls, which
+// is what fits across a 390px phone without crushing the title to "The…".
+const DEFAULTS = { textScale: 1, highContrast: false, followWords: true }
 
 const Ctx = createContext({ prefs: DEFAULTS, set: () => {} })
 export const useA11y = () => useContext(Ctx)
@@ -37,6 +41,7 @@ function read() {
       // stale or hand-edited entry could otherwise render the app at 40x and leave no way back.
       textScale: TEXT_SCALES.includes(p?.textScale) ? p.textScale : DEFAULTS.textScale,
       highContrast: p?.highContrast === true,
+      followWords: p?.followWords !== false,
     }
   } catch {
     // Private browsing throws on localStorage. The controls still work for the session.

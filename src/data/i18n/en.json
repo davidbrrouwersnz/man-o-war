@@ -34,6 +34,23 @@
     "displayHelp": "These settings are remembered on this device.",
     "textSize": "Text size",
     "contrast": "Contrast",
-    "highContrast": "Use high contrast"
+    "highContrast": "Use high contrast",
+    "audioGuide": "Audio guide",
+    "audioPrevious": "Previous section",
+    "audioNext": "Next section",
+    "audioPlay": "Play",
+    "audioPause": "Pause",
+    "audioStop": "Stop and close the audio guide",
+    "audioSpeed": "Speed",
+    "audioPosition": "Position in this section",
+    "audioFailed": "That section would not play.",
+    "audioSection": "{n} of {total}",
+    "audioElapsed": "{elapsed} of {total}",
+    "audioMinute": "{n} minute",
+    "audioMinutes": "{n} minutes",
+    "audioSecond": "{n} second",
+    "audioSeconds": "{n} seconds",
+    "reading": "Reading",
+    "followWords": "Scroll to follow the words as they are read"
   }
 }
