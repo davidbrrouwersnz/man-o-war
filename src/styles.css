@@ -695,15 +695,27 @@ a {
     grid-area: body;
   }
 
+  /* Stretched, so the well can run down to meet the bottom of the text beside it rather than
+     stopping short and leaving the column ragged. The grid row is already the height of whichever
+     side is taller, so filling it costs no extra page height.
+
+     This is also what finally retires the sticky media. `position: sticky` needs the photograph to
+     be SHORTER than the text to have any travel, and stretching it to match guarantees it never
+     is. It was close to inert already — measured on the worst page, only 2 of 19 objects gave it
+     room to move, because §10 was written expecting ~231-word stories and the real ones run 95.
+     Leaving a declaration that provably cannot fire is worse than removing it. */
   .object-media {
     grid-area: media;
-    position: sticky;
-    top: 1.5rem;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
   }
 
-  /* The well is capped at 70svh of the viewport; in a column roughly half the page wide that cap
-     is rarely what binds, so most objects render at their true aspect. */
   .object-media .well {
+    /* Grows into whatever height the row has, so the photograph's frame ends level with the story.
+       The cap still governs the well's NATURAL height, which is what sets the row's minimum when
+       the photograph is the taller side. */
+    flex: 1 1 auto;
     max-height: 78svh;
   }
 }
