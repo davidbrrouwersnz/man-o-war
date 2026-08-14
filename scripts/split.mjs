@@ -25,6 +25,34 @@ const WPM = 150
 const words = (s) => (s ? s.trim().split(/\s+/).length : 0)
 const storyWords = (s) => s.segments.reduce((t, x) => t + words(x.heading) + words(x.text), 0)
 
+// ------------------------------------------------------------------ how long a group takes
+//
+// "8 models. About 7 minutes." used to be a word count divided by 150wpm — a guess about a
+// recording that did not exist yet. It exists now: scripts/audio.mjs synthesises one file per
+// printed block and records each measured length in src/data/audio-index.json. So the number on the
+// tile is the sum of the files a visitor would actually hear, and because this script runs on
+// prebuild, predev and prepreview, it follows the audio on its own. Regenerate a segment, rewrite a
+// story, add an object — the next build restates the cost without anyone remembering to.
+//
+// The old estimate was also drifting: it still counted each group's closing line, which stopped
+// being printed or spoken several commits ago.
+const AUDIO = new URL('../src/data/audio-index.json', import.meta.url)
+const durations = existsSync(AUDIO) ? JSON.parse(readFileSync(AUDIO, 'utf8')).segments : null
+
+// The exact queue a group's Listen control builds, in order: the panel, then each object's title
+// and its story segments. Spelled out rather than pattern-matched on the audio index, because that
+// index still holds units the app retired — 10 group endings, 14 identification notes — and a
+// prefix match would quietly bill visitors for audio no page can play.
+const tourSegments = (slug, panel, objects) => [
+  ...(panel ? [`groups/${slug}/00-panel`] : []),
+  ...objects.flatMap((o) => [
+    `${o.accession}/00-title`,
+    ...(o.story?.segments ?? []).map((s) => `${o.accession}/${s.id}`),
+  ]),
+]
+
+const fellBack = []
+
 const dir = new URL('../src/data/chunks/', import.meta.url)
 rmSync(dir, { recursive: true, force: true })
 mkdirSync(dir, { recursive: true })
@@ -85,8 +113,20 @@ for (const g of groups.groups) {
     }
   })
 
-  // §10 wants the cost computed at build time from word counts, never asserted. This is where.
-  const total = words(panel?.panel) + words(panel?.ending) + objects.reduce((t, o) => t + (o.story ? storyWords(o.story) : 0), 0)
+  // §10 wants the cost computed at build time, never asserted. This is where.
+  //
+  // Measured from the narration where the narration exists, and only where ALL of it exists: a
+  // half-generated group would otherwise report the few files it has and read as a short visit.
+  // Where it does not, this falls back to the old 150wpm estimate and says so, so a checkout with
+  // no audio still builds and nobody has to wonder which number they are looking at.
+  const ids = tourSegments(g.slug, panel?.panel, objects)
+  const missing = durations ? ids.filter((id) => !durations[id]) : ids
+  const heardMs = durations ? ids.reduce((t, id) => t + (durations[id]?.durationMs ?? 0), 0) : 0
+
+  const total = words(panel?.panel) + objects.reduce((t, o) => t + (o.story ? storyWords(o.story) : 0), 0)
+  const measured = missing.length === 0
+  const minutes = Math.max(1, Math.round(measured ? heardMs / 60000 : total / WPM))
+  if (!measured) fellBack.push(`${g.slug} (${durations ? `${missing.length}/${ids.length} segments missing` : 'no audio index'})`)
 
   // No ending. The closing line is no longer rendered or narrated, so shipping it would be bytes
   // on a gallery connection that nobody reads. The text stays in src/data/stories.json.
@@ -101,13 +141,14 @@ for (const g of groups.groups) {
     title: g.title,
     order: g.order,
     size: g.accessions.length,
-    minutes: Math.max(1, Math.round(total / WPM)),
+    minutes,
     words: total,
     representative: { url: rep.image.large.url, placeholder: rep.placeholder },
   })
   for (const a of g.accessions) index.groupOf[a] = g.slug
 
-  console.log(`  ${g.slug.padEnd(24)} ${String(objects.length).padStart(2)} objects  ${(gzipSync(json).length / 1024).toFixed(0)}KB gz  ${index.groups.at(-1).minutes} min`)
+  const exact = measured ? `${(heardMs / 60000).toFixed(1)} min of audio` : `${total} words, estimated`
+  console.log(`  ${g.slug.padEnd(24)} ${String(objects.length).padStart(2)} objects  ${(gzipSync(json).length / 1024).toFixed(0)}KB gz  ${String(minutes).padStart(2)} min  (${exact})`)
 }
 
 // /all — the full 128-tile grid. §9 keeps it as a secondary route, not the front door, so it is a
@@ -216,3 +257,15 @@ console.log(`was: ${(before / 1024).toFixed(0)}KB gz of data in the main bundle,
 
 // index, all, layers — search.json was the fourth until search was removed.
 if (readdirSync(dir).length !== groups.groups.length + 3 + index.languages.length) throw new Error('chunk count mismatch')
+
+// Loud rather than silent. A tile reading "About 3 minutes." when the narration is really eleven is
+// worse than an ugly build log — a visitor deciding whether they have time for a group is the whole
+// reason §10 asks for the number.
+if (fellBack.length) {
+  console.log(`\n⚠ run time estimated from word counts, not measured, for ${fellBack.length} of ${groups.groups.length} groups:`)
+  for (const line of fellBack) console.log(`    ${line}`)
+  console.log('  run `npm run audio` to generate the missing narration, and these become measured.')
+} else {
+  const totalMin = index.groups.reduce((t, g) => t + g.minutes, 0)
+  console.log(`\nrun times measured from the narration — ${totalMin} minutes across ${groups.groups.length} groups`)
+}
