@@ -97,8 +97,36 @@ if (process.env.LOCALE) {
   await send('Emulation.setLocaleOverride', { locale: process.env.LOCALE })
 }
 
+// SEED writes localStorage before the app boots, so a persisted preference (a11yPrefs, lang) is
+// already in place on first paint rather than applied a frame later.
+//   SEED='{"a11yPrefs":{"textScale":2,"highContrast":true}}' node scripts/shot.mjs …
+if (process.env.SEED) {
+  const entries = Object.entries(JSON.parse(process.env.SEED))
+  await send('Page.addScriptToEvaluateOnNewDocument', {
+    source: entries.map(([k, v]) => `localStorage.setItem(${JSON.stringify(k)}, ${JSON.stringify(JSON.stringify(v))});`).join(''),
+  })
+}
+
 await send('Page.navigate', { url: ORIGIN + PATH })
 await new Promise((r) => setTimeout(r, 3500))
+
+// CLICK opens whatever the screenshot is meant to show — a dialog is invisible until something
+// presses the button.
+//   CLICK='.tool-button' node scripts/shot.mjs …
+if (process.env.CLICK) {
+  const { result: clicked } = await send('Runtime.evaluate', {
+    expression: `(async()=>{
+      const el = document.querySelector(${JSON.stringify(process.env.CLICK)});
+      if (!el) return 'no match';
+      el.click();
+      await new Promise(r=>setTimeout(r,1400));
+      return 'clicked';
+    })()`,
+    awaitPromise: true,
+    returnByValue: true,
+  })
+  console.log(`click ${process.env.CLICK}: ${clicked.value}`)
+}
 
 // Only when capturing the whole page: mount every lazy image first, or the tail of a long group
 // page screenshots as a column of empty wells.
@@ -136,8 +164,26 @@ const { result } = await send('Runtime.evaluate', {
     screens: +(document.documentElement.scrollHeight / innerHeight).toFixed(1),
     cols: (() => { const g = document.querySelector('.grid');
       return g ? getComputedStyle(g).gridTemplateColumns.split(' ').length : null })(),
-    overflow: document.documentElement.scrollWidth > innerWidth
-      ? document.documentElement.scrollWidth + ' > ' + innerWidth : 'none',
+    // Compared against the DEVICE width, not innerWidth. On a mobile viewport an overflowing
+    // element widens the layout viewport itself, so innerWidth grows to match and
+    // scrollWidth > innerWidth stays false while the page is visibly too wide.
+    overflow: innerWidth > ${W}
+      ? 'layout viewport widened to ' + innerWidth + ' on a ${W}px device'
+      : document.documentElement.scrollWidth > innerWidth
+        ? document.documentElement.scrollWidth + ' > ' + innerWidth : 'none',
+    widest: (() => {
+      if (innerWidth <= ${W} && document.documentElement.scrollWidth <= innerWidth) return null;
+      let worst = null;
+      for (const el of document.querySelectorAll('body *')) {
+        const r = el.getBoundingClientRect();
+        if (r.right > ${W} + 1 && (!worst || r.right > worst.right)) {
+          worst = { right: Math.round(r.right), w: Math.round(r.width),
+                    sel: el.tagName.toLowerCase() + (el.className && typeof el.className === 'string'
+                      ? '.' + el.className.trim().split(/\\s+/).join('.') : '') };
+        }
+      }
+      return worst;
+    })(),
   })`,
   returnByValue: true,
 })
@@ -146,6 +192,7 @@ console.log(
   `${PATH}  ${info.vw}px  ${info.h}px tall = ${info.screens} screens` +
     (info.cols ? `  grid: ${info.cols} col` : '') +
     `  h-overflow: ${info.overflow}` +
+    (info.widest ? `\n  widest offender: ${info.widest.sel} (${info.widest.w}px wide, right edge ${info.widest.right})` : '') +
     (SCROLL ? `\n  scrolled ${SCROLL}px — media wells in view: ${info.stuck}` : '')
 )
 

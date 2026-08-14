@@ -1,8 +1,16 @@
-import { createContext, useContext, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { Suspense, lazy, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import index from './data/chunks/index.json'
 import englishPack from './data/i18n/en.json'
-import { BY_CODE, LANGUAGES, detect, dirOf, remember, resolve } from './i18n.js'
+import { BY_CODE, LANGUAGES, detect, dirOf, remember } from './i18n.js'
+import { Lang, langAttrs, useLang, useT } from './lang.jsx'
 import { AudioBar, AudioProvider, Spoken, blocksOf, useAudio } from './audio.jsx'
+import { A11yProvider } from './a11y.jsx'
+
+// Base UI's dialog is ~34KB gzipped — more than half the size of everything else in the main
+// bundle — and almost nobody opens a settings panel. §18 makes data cost an equity issue and the
+// prototype measured a 1.45s floor on gallery wifi that was almost entirely blocking JavaScript,
+// so this is fetched on the first press of the button and never before.
+const DisplayPanel = lazy(() => import('./display-settings.jsx'))
 
 // One chunk per group, fetched only when that page is visited. The manifest used to be a single
 // file compiled into the bundle, so every visitor downloaded all 128 objects — and 113KB of base64
@@ -19,31 +27,7 @@ const SUPPORTED = LANGUAGES.filter((l) => l.code === 'en' || index.languages.inc
 // ------------------------------------------------------------------ language
 // §7. English is compiled in because it is the terminal fallback and must be present before any
 // resolution runs. Every other pack is a chunk fetched when its language is selected.
-
-const Lang = createContext({ code: 'en', pack: englishPack, setCode: () => {} })
-const useLang = () => useContext(Lang)
-
-// t() returns the string. tr() returns the string AND the language it is actually in, for the
-// places that must carry lang/dir on the element itself.
-function useT() {
-  const { pack } = useLang()
-  // englishOverride is for content that lives in a data chunk rather than in en.json — a group
-  // panel, say. The English is already loaded; only the translation needs resolving.
-  const tr = (path, vars, englishOverride) => {
-    // path may be a dot-string ("ui.language") or an array of keys — arrays are required wherever
-    // a key can itself contain a dot, which every accession number does (i18n.js explains why).
-    const keys = Array.isArray(path) ? path : path.split('.')
-    const fromEn = keys.reduce((o, k) => (o == null ? undefined : o[k]), englishPack)
-    const r = resolve(pack, keys, englishOverride ?? fromEn ?? keys.join('.'))
-    const text = vars ? r.text.replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? `{${k}}`) : r.text
-    return { ...r, text }
-  }
-  return [(path, vars) => tr(path, vars).text, tr]
-}
-
-// §7: lang and dir follow what is actually rendered. These two put that on the element itself,
-// so an English fallback inside an Arabic page is an LTR block carrying lang="en".
-const langAttrs = (r) => ({ lang: r.lang, dir: dirOf(r.lang) })
+// The context itself lives in src/lang.jsx — see the note there.
 
 function Translated({ r, className, itemId, block = 0 }) {
   return (
@@ -133,6 +117,58 @@ function LanguagePicker() {
         ))}
       </select>
     </label>
+  )
+}
+
+// §18: large text and high contrast are the primary vision provision for the reading layer, which
+// means controls, which means somewhere to put them. Native radios and a native checkbox rather
+// than styled substitutes — they arrive with grouping, keyboard behaviour and state announcement
+// already correct, and this is the one dialog in the app that must not be clever.
+// The button is in the main bundle; the panel behind it is not. `wanted` latches on the first
+// press so the chunk is fetched once and the dialog can then open and close without refetching.
+function DisplaySettings() {
+  const [t] = useT()
+  const [wanted, setWanted] = useState(false)
+  const [open, setOpen] = useState(false)
+
+  return (
+    <>
+      <button
+        type="button"
+        className="tool-button"
+        aria-label={t('ui.display')}
+        aria-haspopup="dialog"
+        onClick={() => {
+          setWanted(true)
+          setOpen(true)
+        }}
+      >
+        {/* The half-filled circle is the conventional contrast glyph. Drawn inline for the same
+            reason as the globe: no request, and it takes the surrounding text colour. */}
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="1.6" />
+          <path d="M12 3a9 9 0 0 1 0 18Z" fill="currentColor" />
+        </svg>
+      </button>
+      {wanted && (
+        <Suspense fallback={null}>
+          <DisplayPanel open={open} onOpenChange={setOpen} />
+        </Suspense>
+      )}
+    </>
+  )
+}
+
+// The language picker used to be rendered by Home and by nothing else. A visitor who scans a code
+// in the gallery lands on /o/{accession}, which is a group page — so the one control §7 is built
+// around was unreachable from the one route §11 is built around, unless they first went "back" to
+// a collection page they had never seen. Both tools now travel together and appear on every route.
+function Tools() {
+  return (
+    <div className="tools">
+      <LanguagePicker />
+      <DisplaySettings />
+    </div>
   )
 }
 
@@ -393,9 +429,9 @@ function Home({ go, route }) {
     items: [{ id: 'home/00-intro', label: title, blocks: [title, intro.text] }],
   }
   return (
-    <main className="home">
+    <main className="home" id="main" tabIndex={-1}>
       <header className="home-head">
-        <LanguagePicker />
+        <Tools />
         <h1>
           <Spoken text={title} itemId="home/00-intro" block={0} />
         </h1>
@@ -744,10 +780,13 @@ function GroupPage({ route, go }) {
   }
 
   return (
-    <main className="reading">
-      <a className="back" href="/" onClick={go('/')}>
-        ← {t('ui.backToCollection')}
-      </a>
+    <main className="reading" id="main" tabIndex={-1}>
+      <div className="page-top">
+        <a className="back" href="/" onClick={go('/')}>
+          ← {t('ui.backToCollection')}
+        </a>
+        <Tools />
+      </div>
       <h1 className="group-title" {...langAttrs(title)}>
         <Spoken text={title.text} itemId={`groups/${group.slug}/00-panel`} block={0} />
       </h1>
@@ -840,10 +879,13 @@ function SearchPage({ go }) {
       )
 
   return (
-    <main className="reading">
-      <a className="back" href="/" onClick={go('/')}>
-        ← {t('ui.backToCollection')}
-      </a>
+    <main className="reading" id="main" tabIndex={-1}>
+      <div className="page-top">
+        <a className="back" href="/" onClick={go('/')}>
+          ← {t('ui.backToCollection')}
+        </a>
+        <Tools />
+      </div>
       <h1 className="group-title">Search</h1>
       <p className="group-cost">
         Across all eleven pages. Try a name, a scientific name, or an accession number.
@@ -884,10 +926,13 @@ function SearchPage({ go }) {
 function Missing({ route, go }) {
   const [t] = useT()
   return (
-    <main className="reading">
-      <a className="back" href="/" onClick={go('/')}>
-        ← {t('ui.backToCollection')}
-      </a>
+    <main className="reading" id="main" tabIndex={-1}>
+      <div className="page-top">
+        <a className="back" href="/" onClick={go('/')}>
+          ← {t('ui.backToCollection')}
+        </a>
+        <Tools />
+      </div>
       <h1 className="group-title">Not found</h1>
       <p className="stub-note">
         {route?.accession
@@ -934,18 +979,52 @@ export default function App() {
 
   return (
     <Lang.Provider value={{ code, pack, setCode }}>
-      {/* §13: the narration plays across navigation, so the player sits above the router. Moving
-          it inside a page would unmount and silence it every time someone opened another object. */}
-      <AudioProvider>
-        <Routes />
-        <AudioBar />
-      </AudioProvider>
+      <A11yProvider>
+        {/* §13: the narration plays across navigation, so the player sits above the router. Moving
+            it inside a page would unmount and silence it every time someone opened another object. */}
+        <AudioProvider>
+          <SkipLink />
+          <Routes />
+          <AudioBar />
+        </AudioProvider>
+      </A11yProvider>
     </Lang.Provider>
+  )
+}
+
+// Every page is one <main>, and on a group page the first thing in it is up to nineteen objects.
+// Without this the only way past the header to the content is to tab through it.
+function SkipLink() {
+  const [t] = useT()
+  return (
+    <a className="skip-link" href="#main">
+      {t('ui.skipToContent')}
+    </a>
   )
 }
 
 function Routes() {
   const [route, go] = useRoute()
+
+  // A client-side navigation changes everything on screen and says nothing to a screen reader —
+  // focus stays wherever the old page left it. Moving it to the new page's heading is what makes
+  // "next group" announce the group you just opened.
+  const firstRender = useRef(true)
+  useEffect(() => {
+    if (firstRender.current) {
+      // Not on arrival. A QR visitor lands mid-page at their object, and stealing focus to the
+      // group title would undo the one thing §11 asks this route to get right.
+      firstRender.current = false
+      return
+    }
+    const h1 = document.querySelector('main h1')
+    if (!h1) return
+    // Set here rather than in the markup so a heading is only in the tab order at the moment it
+    // needs to receive focus, and never as a stop a keyboard user has to pass through.
+    h1.tabIndex = -1
+    h1.focus({ preventScroll: true })
+  }, [route.view, route.slug, route.arrivedAt])
+
   if (route.view === 'home') return <Home go={go} route={route} />
   if (route.view === 'group') return <GroupPage route={route} go={go} />
   if (route.view === 'search') return <SearchPage go={go} />

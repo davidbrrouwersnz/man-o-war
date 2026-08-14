@@ -52,6 +52,18 @@ if (JSON.stringify(dark) === JSON.stringify(light)) {
   throw new Error('the dark palette resolved identical to light — the token block was not found')
 }
 
+// §18's high-contrast mode. Same tokens, swapped by a data-contrast attribute on <html>, so the
+// same checks run against it at a higher floor.
+const hcLight = { ...light, ...parse(blockAfter("\n:root[data-contrast='high'] {")) }
+const hcDark = {
+  ...hcLight,
+  ...parse(blockAfter("@media (prefers-color-scheme: dark) {\n  :root[data-contrast='high'] {")),
+}
+
+if (JSON.stringify(hcLight) === JSON.stringify(light)) {
+  throw new Error('the high-contrast palette resolved identical to the default')
+}
+
 // ---------------------------------------------------------------- contrast
 
 const lin = (c) => {
@@ -104,13 +116,37 @@ const checks = [
   ['always-dark', 'tile metadata and the standfirst on black', '--dark-ink-soft', BLACK, 4.5],
   ['always-dark', 'control boundaries on black: the language select', '--dark-edge', BLACK, 3],
   ['always-dark', 'focus ring on the collection page', '--dark-brand', BLACK, 3],
+
+  // --- §18's high-contrast mode. 7:1 for text, not 4.5 — the whole point of the setting is to
+  //     give more than the default already does, and §18 calls it the primary vision provision
+  //     for the reading layer rather than a nicety. -----------------------------------
+  ['hc-light', 'body text', '--ink', '--paper', 7],
+  ['hc-light', 'secondary prose', '--ink-soft', '--paper', 7],
+  ['hc-light', 'captions and eyebrows', '--ink-meta', '--paper', 7],
+  ['hc-light', 'control boundaries', '--edge', '--paper', 3],
+  ['hc-light', 'brand', '--brand', '--paper', 7],
+  ['hc-light', 'arrival marker on its own ground', '--brand', '--brand-bg', 7],
+  ['hc-light', 'read-along highlight', '--ink', '--mark-bg', 7],
+  ['hc-light', 'collection heading on black', '--dark-ink', BLACK, 7],
+  ['hc-light', 'control boundaries on black', '--dark-edge', BLACK, 3],
+
+  ['hc-dark', 'body text', '--ink', '--paper', 7],
+  ['hc-dark', 'secondary prose', '--ink-soft', '--paper', 7],
+  ['hc-dark', 'captions and eyebrows', '--ink-meta', '--paper', 7],
+  ['hc-dark', 'control boundaries', '--edge', '--paper', 3],
+  ['hc-dark', 'brand', '--brand', '--paper', 7],
+  ['hc-dark', 'arrival marker on its own ground', '--brand', '--brand-bg', 7],
+  ['hc-dark', 'read-along highlight', '--ink', '--mark-bg', 7],
 ]
 
 let failures = 0
 let current = null
 
+const PALETTES = { light, dark, 'always-dark': light, 'hc-light': hcLight, 'hc-dark': hcDark }
+
 for (const [scheme, what, fg, bg, floor] of checks) {
-  const vars = scheme === 'dark' ? dark : light
+  const vars = PALETTES[scheme]
+  if (!vars) throw new Error(`unknown palette ${scheme}`)
   const a = vars[fg]
   const b = bg.startsWith('--') ? vars[bg] : bg
   if (!a) throw new Error(`${fg} is not defined in styles.css (${scheme})`)

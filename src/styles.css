@@ -72,7 +72,11 @@
   --dark-rule: #2a2a2c; /*  decorative only */
   --dark-brand: #ee3424; /*  5.15:1 */
 
-  --measure: 34rem;
+  /* In ch, not rem. A measure is a character count — 62ch is ~550px at the default size, which is
+     what this was before — and ch tracks the font size, so the line stays about 62 characters at
+     every text-size setting. In rem it would have doubled to 1088px at 200%, which on a wide
+     screen is a very long line for a reader who asked for larger type. */
+  --measure: 62ch;
 
   /* One 1.2 modular scale from a 16px base. §15 asks for the Museum's 16px/24px, which is
      --step-0 at line-height 1.5, exactly.
@@ -191,7 +195,190 @@ a {
   color: var(--dark-ink-soft);
 }
 
-/* ------------------------------------------------------------------ home */
+/* --------------------------------------------------- §18: text size and contrast
+
+   Every value below is asserted by scripts/contrast.mjs against a 7:1 floor for text, not the
+   4.5:1 the ordinary palette clears. §18 calls this the primary vision provision for the reading
+   layer, so "high contrast" has to mean meaningfully more than the default already gives.
+
+   The always-dark surfaces (§9) stay dark here too. Inverting the grid would put 128 photographs
+   of objects shot on black onto white, which does not raise contrast — it destroys the subject. */
+:root[data-contrast='high'] {
+  --ink: #000000; /* 21.00:1 */
+  --ink-soft: #262626; /* 15.13:1 */
+  --ink-meta: #3f3f3f; /* 10.53:1 */
+  --edge: #000000; /* 21.00:1 */
+  --rule: #767676;
+  --paper: #ffffff;
+  --brand: #8f190e; /*  9.08:1 */
+  --brand-bg: #ffe8e4; /*  --brand on this: 7.74:1 */
+  --mark-bg: #ffe9a8; /*  --ink on this: 17.47:1 */
+
+  --dark-ink: #ffffff; /* 21.00:1 on black */
+  --dark-ink-soft: #e0e0e0; /* 15.91:1 */
+  --dark-edge: #ffffff; /* 21.00:1 */
+  --dark-rule: #6a6259;
+  --dark-brand: #ff8a78; /*  9.16:1 */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-contrast='high'] {
+    --ink: #ffffff; /* 21.00:1 */
+    --ink-soft: #e0e0e0; /* 15.91:1 */
+    --ink-meta: #cfcfcf; /* 13.48:1 */
+    --edge: #ffffff; /* 21.00:1 */
+    --rule: #6a6259;
+    --paper: #000000;
+    --brand: #ff8a78; /*  9.16:1 */
+    --brand-bg: #3d0f08; /*  --brand on this: 7.21:1 */
+    --mark-bg: #4a3400; /*  --ink on this: 11.78:1 */
+  }
+}
+
+/* --------------------------------------------------- chrome: skip link and tools */
+
+.skip-link {
+  position: absolute;
+  left: 0.5rem;
+  top: -4rem;
+  z-index: 40;
+  padding: 0.6rem 1rem;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--edge);
+  border-radius: 3px;
+  font-size: var(--step--1);
+  text-decoration: none;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skip-link {
+    transition: none;
+  }
+}
+
+/* The focus ring is the only thing that says where you are; never remove it from the thing that
+   was just focused programmatically. */
+#main:focus {
+  outline: none;
+}
+
+.tools {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.page-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* Wraps rather than overflows at 200% text, where the back link alone is most of the width. */
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin: 0 0 0.25rem;
+}
+
+.tool-button {
+  display: inline-grid;
+  place-items: center;
+  /* WCAG 2.2 SC 2.5.8 puts the floor at 24px. A gallery is one-handed and moving, so 44.
+     In px, not rem, and that matters: every touch target in this file was 2.75rem, so at the
+     200% text setting they became 88px and pushed the layout viewport wider than the phone. A
+     touch target is sized by fingers, which do not grow when the type does. */
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+.tool-button:hover {
+  color: var(--ink);
+  border-color: var(--edge);
+}
+
+.home-head .tool-button {
+  color: var(--dark-ink-soft);
+}
+
+.home-head .tool-button:hover {
+  color: var(--dark-ink);
+  border-color: var(--dark-edge);
+}
+
+/* --------------------------------------------------- the display dialog */
+
+/* The icons carry a size attribute so they render before CSS arrives, but they should grow with
+   the text-size setting like everything else — an 18px glyph beside 32px type reads as a
+   rendering fault. The 44px minimum on the button is a floor, not a size, so it still holds. */
+.tool-button svg,
+.lang-globe {
+  width: 1.15em;
+  height: 1.15em;
+}
+
+/* Native radios and checkboxes, in the brand rather than the operating system's blue. */
+.settings {
+  accent-color: var(--brand);
+}
+
+.settings fieldset {
+  border: 0;
+  padding: 0;
+  margin: 1.25rem 0 0;
+  min-width: 0;
+}
+
+.settings legend {
+  padding: 0;
+  font-size: var(--step--1);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-meta);
+}
+
+.setting-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+.setting-choices label,
+.setting-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--edge);
+  border-radius: 3px;
+  font-size: var(--step--1);
+  cursor: pointer;
+}
+
+.setting-choices label.is-current {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.setting-switch {
+  margin-top: 0.6rem;
+  font-size: var(--step-0);
+}
+
+/* --------------------------------------------------- home */
 
 .home {
   background: var(--dark);
@@ -243,7 +430,7 @@ a {
   padding: 0.7rem 0.9rem;
   cursor: pointer;
   /* A comfortable thumb target on a phone held one-handed in a gallery. */
-  min-height: 2.75rem;
+  min-height: 44px;
 }
 
 .tabs button:hover {
@@ -999,7 +1186,7 @@ a {
   background: transparent;
   color: var(--ink);
   cursor: pointer;
-  min-height: 2.75rem;
+  min-height: 44px;
 }
 
 .listen:hover {
@@ -1052,6 +1239,13 @@ a {
 /* The bar covers the end of the page, so give the document somewhere to scroll to. */
 body:has(.audio-bar) {
   padding-bottom: 5.5rem;
+}
+
+/* WCAG 2.2 SC 2.4.11, Focus Not Obscured. Tabbing down a group page scrolls the focused element
+   just into view — which, with a fixed bar across the bottom, is underneath it. Padding the
+   scrollport keeps whatever has focus above the player. */
+html:has(.audio-bar) {
+  scroll-padding-block-end: 7rem;
 }
 
 .audio-progress {
@@ -1107,8 +1301,8 @@ body:has(.audio-bar) {
 .audio-controls button {
   font: inherit;
   font-size: var(--step-0);
-  min-width: 2.75rem;
-  min-height: 2.75rem;
+  min-width: 44px;
+  min-height: 44px;
   display: grid;
   place-items: center;
   border: 0;
@@ -1143,7 +1337,7 @@ body:has(.audio-bar) {
   border-radius: 0.25rem;
   background: transparent;
   color: var(--ink);
-  min-height: 2.25rem;
+  min-height: 44px;
 }
 
 .audio-time {

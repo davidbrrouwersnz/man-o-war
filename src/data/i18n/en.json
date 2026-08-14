@@ -28,6 +28,12 @@
     "listenStop": "Stop listening",
     "audioEnglishOnly": "The audio guide is in English.",
     "audioName": "Name",
-    "audioIdentification": "Identification"
+    "audioIdentification": "Identification",
+    "skipToContent": "Skip to the collection",
+    "display": "Display",
+    "displayHelp": "These settings are remembered on this device.",
+    "textSize": "Text size",
+    "contrast": "Contrast",
+    "highContrast": "Use high contrast"
   }
 }
