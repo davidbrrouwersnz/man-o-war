@@ -1,6 +1,22 @@
 /* The reading area follows prefers-color-scheme. The grid and the media wells are always dark —
    79 of the 128 primary images are the object on pure black. */
 
+/* Tailwind is imported in pieces rather than as one `@import "tailwindcss"` so the layer order is
+   ours rather than its. Everything hand-written below sits in `app`, between Preflight and the
+   utilities — so a utility class can still override a component when we reach for one, but
+   Preflight can never quietly beat a rule we wrote on purpose.
+
+   Unlayered CSS outranks every layer, so leaving the 900 lines below unlayered would have made
+   utility classes inert on exactly the elements we style. The `@layer app { … }` wrapper at the
+   end of this file is what prevents that; it changes nothing about how these rules rank against
+   each other. */
+@layer theme, base, app, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/preflight.css' layer(base);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+@layer app {
+
 :root {
   --ink: #16130f;
   --ink-soft: #5d564d;
@@ -960,3 +976,23 @@ body:has(.audio-bar) {
     padding: 0.5rem 0.6rem;
   }
 }
+
+/* ------------------------------------------------------- what Preflight takes away
+
+   Two things below used to come from the browser's own defaults, and Preflight removes both.
+   Restated here explicitly, which is where they should have been anyway. */
+
+/* Preflight sets `list-style: none` on every ul. The sources list is prose and wants its bullets. */
+.layer-sources ul {
+  list-style: disc;
+}
+
+/* Preflight sets `text-decoration: inherit` on links, so these lost the underline they relied on.
+   A link inside a paragraph of prose needs more than colour to mark it — WCAG 1.4.1. */
+.layer-sources a {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+}
+/* ^ closes @layer app */
