@@ -12,6 +12,8 @@ const ORIGIN = process.argv[2] ?? 'http://127.0.0.1:4181'
 
 const ROUTES = [
   ['/', 'h1', 'The Blaschka collection'],
+  // Every object is a tab on the collection page now. The old path still resolves, opening that
+  // tab rather than a page of its own.
   ['/all', '.grid-dense li', null],
   ['/search', '.search-input', null],
   // The two essays moved onto the collection page; the old paths still resolve there, scrolled
@@ -99,6 +101,84 @@ for (const [path, selector, expectText] of ROUTES) {
   if (errors.length) console.log(`        console: ${errors.slice(0, 2).join(' | ')}`)
 }
 
-console.log(failed ? `\n${failed} route(s) failed` : `\nall ${ROUTES.length} routes render`)
+// ------------------------------------------------------------------ the collection page tabs
+//
+// A route test only proves the markup arrived. These press the thing.
+
+const evaluate = async (expression, userGesture = false) => {
+  const { result } = await send('Runtime.evaluate', { expression, returnByValue: true, userGesture })
+  return result.value
+}
+const wait = (ms) => new Promise((r) => setTimeout(r, ms))
+
+let tabChecks = 0
+const tab = (name, ok, detail = '') => {
+  tabChecks++
+  if (!ok) failed++
+  console.log(`  ${ok ? 'ok  ' : 'FAIL'}  ${name}${detail ? ` — ${detail}` : ''}`)
+}
+
+console.log('')
+await send('Page.navigate', { url: `${ORIGIN}/` })
+await wait(1500)
+
+const start = JSON.parse(
+  await evaluate(`JSON.stringify({
+    tabs: document.querySelectorAll('[role=tab]').length,
+    selected: (document.querySelector('[role=tab][aria-selected=true]')||{}).id || '',
+    tiles: document.querySelectorAll('#panel-groups .tile').length,
+    dense: document.querySelectorAll('.grid-dense').length,
+  })`)
+)
+tab('collection page has two tabs', start.tabs === 2, `${start.tabs} found`)
+tab('opens on the groups tab', start.selected === 'tab-groups', start.selected)
+tab('shows the eleven group tiles', start.tiles === 11, `${start.tiles} tiles`)
+tab('has not loaded the 128-object grid yet', start.dense === 0)
+
+await evaluate(`document.getElementById('tab-all').click(); true`, true)
+await wait(1800)
+const opened = JSON.parse(
+  await evaluate(`JSON.stringify({
+    selected: (document.querySelector('[role=tab][aria-selected=true]')||{}).id || '',
+    tiles: document.querySelectorAll('#panel-all .tile').length,
+    path: location.pathname,
+    groupsGone: document.querySelectorAll('#panel-groups').length === 0,
+  })`)
+)
+tab('switching selects the other tab', opened.selected === 'tab-all', opened.selected)
+tab('shows all 128 objects', opened.tiles === 128, `${opened.tiles} tiles`)
+tab('only one panel is rendered', opened.groupsGone)
+tab('the URL follows the tab', opened.path === '/all', opened.path)
+
+// Arrow keys are what a keyboard user will actually try on a tablist.
+await evaluate(`document.getElementById('tab-all').dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowLeft',bubbles:true})); true`, true)
+await wait(600)
+const arrowed = JSON.parse(
+  await evaluate(`JSON.stringify({
+    selected: (document.querySelector('[role=tab][aria-selected=true]')||{}).id || '',
+    focused: (document.activeElement||{}).id || '',
+    path: location.pathname,
+  })`)
+)
+tab('arrow key moves between tabs', arrowed.selected === 'tab-groups', arrowed.selected)
+tab('arrow key moves focus with it', arrowed.focused === 'tab-groups', arrowed.focused)
+tab('the URL follows back', arrowed.path === '/', arrowed.path)
+
+// An old link to /all must open the tab, not a page.
+await send('Page.navigate', { url: `${ORIGIN}/all` })
+await wait(1800)
+const deep = JSON.parse(
+  await evaluate(`JSON.stringify({
+    selected: (document.querySelector('[role=tab][aria-selected=true]')||{}).id || '',
+    tiles: document.querySelectorAll('#panel-all .tile').length,
+    h1: (document.querySelector('h1')||{}).textContent || '',
+  })`)
+)
+tab('/all opens the tab on the collection page', deep.selected === 'tab-all' && deep.tiles === 128, `${deep.tiles} tiles`)
+tab('...and it is the collection page, not a page of its own', deep.h1.includes('Blaschka'), deep.h1)
+
+console.log(
+  failed ? `\n${failed} check(s) failed` : `\nall ${ROUTES.length} routes render, all ${tabChecks} tab checks pass`
+)
 chrome.kill()
 process.exit(failed ? 1 : 0)

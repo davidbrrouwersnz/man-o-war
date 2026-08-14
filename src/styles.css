@@ -82,6 +82,57 @@ a {
   line-height: 1.5;
 }
 
+/* Two ways into the same objects, on the dark home ground. Underline rather than a pill or a box:
+   the tiles below are already a field of rectangles, and another one competes with them. */
+
+.tabs {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0 1.25rem;
+  margin: 0 0 1.5rem;
+  border-bottom: 1px solid #2a2a2c;
+}
+
+.tabs button {
+  font: inherit;
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--dark-ink-soft);
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  padding: 0.7rem 0.9rem;
+  cursor: pointer;
+  /* A comfortable thumb target on a phone held one-handed in a gallery. */
+  min-height: 2.75rem;
+}
+
+.tabs button:hover {
+  color: var(--dark-ink);
+}
+
+.tabs button.is-current {
+  color: var(--dark-ink);
+  border-bottom-color: var(--dark-ink);
+}
+
+.tabs button:focus-visible {
+  outline: 2px solid var(--dark-ink);
+  outline-offset: -4px;
+}
+
+.tab-intro {
+  max-width: var(--measure);
+  margin: 0 0 1.5rem;
+  padding: 0 1.25rem;
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--dark-ink-soft);
+}
+
 .grid {
   list-style: none;
   margin: 0;

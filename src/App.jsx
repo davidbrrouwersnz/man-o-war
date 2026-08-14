@@ -132,7 +132,9 @@ function LanguagePicker() {
 function parse(pathname) {
   const path = decodeURIComponent(pathname).replace(/\/+$/, '') || '/'
   if (path === '/') return { view: 'home' }
-  if (path === '/all') return { view: 'all' }
+  // Every object is a tab on the collection page rather than a page of its own. The path survives
+  // so that anything already pointing at it opens the right tab instead of a dead end.
+  if (path === '/all') return { view: 'home', tab: 'all' }
   if (path === '/search') return { view: 'search' }
   // The two reading essays used to be pages of their own. They now sit on the collection page, but
   // the old paths still resolve — a printed QR code or a shared link lands on the section rather
@@ -297,11 +299,43 @@ function Home({ go, route }) {
   const { code } = useLang()
   const langName = BY_CODE.get(code)?.endonym ?? 'English'
   const [layers, setLayers] = useState(null)
+  const [tab, setTab] = useState(route?.tab === 'all' ? 'all' : 'groups')
+  const [all, setAll] = useState(null)
+  const tabsRef = useRef(null)
 
   useLayoutEffect(() => {
     document.title = `${t('ui.collectionTitle')} — Canterbury Museum`
     if (!route?.at) scrollTo(0, 0)
   }, [t, route?.at])
+
+  // 62KB of tiles for 128 objects, fetched only if that tab is opened. It is by far the largest
+  // chunk in the app and most visitors never ask for it.
+  useEffect(() => {
+    if (tab === 'all' && !all) loadChunk('all')?.then(setAll)
+  }, [tab, all])
+
+  // The visible tab is in the URL so the view can be linked and shared, but with replaceState —
+  // flicking between two tabs is not navigation and should not fill up the back button.
+  useEffect(() => {
+    const href = tab === 'all' ? '/all' : '/'
+    if (location.pathname !== href) history.replaceState(null, '', href)
+  }, [tab])
+
+  // Arrow keys move between tabs, which is what a tablist is expected to do and what a keyboard
+  // user will try. Without it the only way across is Tab, Tab, and hope.
+  const onTabKey = (e) => {
+    const order = ['groups', 'all']
+    const i = order.indexOf(tab)
+    let next = null
+    if (e.key === 'ArrowRight') next = order[(i + 1) % order.length]
+    if (e.key === 'ArrowLeft') next = order[(i - 1 + order.length) % order.length]
+    if (e.key === 'Home') next = order[0]
+    if (e.key === 'End') next = order[order.length - 1]
+    if (!next) return
+    e.preventDefault()
+    setTab(next)
+    tabsRef.current?.querySelector(`#tab-${next}`)?.focus()
+  }
 
   // The essays are a chunk, fetched after the page is up rather than compiled into the bundle. The
   // front page is the one every visitor loads first and §2's visitor is on a museum connection —
@@ -336,24 +370,85 @@ function Home({ go, route }) {
         </p>
         <Listen queue={homeQueue} available={intro.lang === 'en'} />
       </header>
-      <ol className="grid">
-        {GROUPS.map((g) => (
-          <li key={g.slug} className="tile">
-            <a href={`/g/${g.slug}`} onClick={go(`/g/${g.slug}`)}>
-              <div className="tile-well">
-                <img className="tile-blur" src={g.representative.placeholder} alt="" aria-hidden="true" />
-                <img className="tile-img" src={g.representative.url} alt="" loading="lazy" decoding="async" />
-              </div>
-              <div className="tile-text">
-                <h2 {...langAttrs(tr(`groups.${g.slug}`, null, g.title))}>{tr(`groups.${g.slug}`, null, g.title).text}</h2>
-                <p>
-                  {g.size} {t('ui.models')}. {t('ui.aboutMinutes', { m: g.minutes })}
-                </p>
-              </div>
-            </a>
-          </li>
-        ))}
-      </ol>
+      {/* Two ways into the same 128 objects. §9 kept the full grid as a secondary route rather than
+          the front door — it rescues browsing by eye and the completionist — and a tab does that
+          job better than a page: it is visible from the front rather than found, and it costs
+          nothing until it is opened. */}
+      <div className="tabs" role="tablist" aria-label={t('ui.collectionTitle')} ref={tabsRef} onKeyDown={onTabKey}>
+        <button
+          type="button"
+          role="tab"
+          id="tab-groups"
+          aria-selected={tab === 'groups'}
+          aria-controls="panel-groups"
+          tabIndex={tab === 'groups' ? 0 : -1}
+          className={tab === 'groups' ? 'is-current' : ''}
+          onClick={() => setTab('groups')}
+        >
+          {t('ui.byGroup')}
+        </button>
+        <button
+          type="button"
+          role="tab"
+          id="tab-all"
+          aria-selected={tab === 'all'}
+          aria-controls="panel-all"
+          tabIndex={tab === 'all' ? 0 : -1}
+          className={tab === 'all' ? 'is-current' : ''}
+          onClick={() => setTab('all')}
+        >
+          {t('ui.everyObject')}
+        </button>
+      </div>
+
+      {tab === 'groups' ? (
+        <div role="tabpanel" id="panel-groups" aria-labelledby="tab-groups">
+          <ol className="grid">
+            {GROUPS.map((g) => (
+              <li key={g.slug} className="tile">
+                <a href={`/g/${g.slug}`} onClick={go(`/g/${g.slug}`)}>
+                  <div className="tile-well">
+                    <img className="tile-blur" src={g.representative.placeholder} alt="" aria-hidden="true" />
+                    <img className="tile-img" src={g.representative.url} alt="" loading="lazy" decoding="async" />
+                  </div>
+                  <div className="tile-text">
+                    <h2 {...langAttrs(tr(`groups.${g.slug}`, null, g.title))}>{tr(`groups.${g.slug}`, null, g.title).text}</h2>
+                    <p>
+                      {g.size} {t('ui.models')}. {t('ui.aboutMinutes', { m: g.minutes })}
+                    </p>
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </div>
+      ) : (
+        <div role="tabpanel" id="panel-all" aria-labelledby="tab-all">
+          {/* The page used to print this sentence in English regardless of the session language,
+              while a translated version of it sat unused in every pack. */}
+          <Translated className="tab-intro" r={tr('ui.everyObjectIntro')} />
+          {all ? (
+            <ol className="grid grid-dense">
+              {all.objects.map((o) => (
+                <li key={o.accession} className="tile">
+                  <a href={`/o/${o.accession}`} onClick={go(`/o/${o.accession}`)}>
+                    <div className="tile-well">
+                      <img className="tile-blur" src={o.placeholder} alt="" aria-hidden="true" />
+                      <img className="tile-img" src={o.url} alt="" loading="lazy" decoding="async" />
+                    </div>
+                    <div className="tile-text">
+                      <h2 className="tile-small">{o.name}</h2>
+                      <p>{o.accession}</p>
+                    </div>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          ) : (
+            <p className="loading loading-dark">{t('ui.loading')}</p>
+          )}
+        </div>
+      )}
       {/* The background reading, on the collection page rather than on pages of its own. It sits
           below the grid because the collection is what a visitor came for; this is what they read
           once something has caught them. Light on dark: the grid is a dark well because 79 of the
@@ -369,9 +464,8 @@ function Home({ go, route }) {
       )}
 
       <nav className="home-secondary">
-        <a href="/all" onClick={go('/all')}>
-          {t('ui.everyObject')} →
-        </a>
+        {/* "Every object" used to live here as a link to its own page. It is a tab now, so the
+            only thing left down here is search. */}
         <a href="/search" onClick={go('/search')}>
           {t('ui.search')} →
         </a>
@@ -675,55 +769,6 @@ function GroupPage({ route, go }) {
   )
 }
 
-// ------------------------------------------------------------------ everything, and finding things
-
-// §9 keeps the full grid as a secondary route rather than the front door: it rescues browsing by eye
-// and the completionist, and it costs one page. Its chunk is only fetched when someone asks for it.
-function AllPage({ go }) {
-  const [t] = useT()
-  const [data, setData] = useState(null)
-  useEffect(() => {
-    document.title = 'Every object — the Blaschka collection'
-    scrollTo(0, 0)
-    loadChunk('all')?.then(setData)
-  }, [])
-
-  return (
-    <main className="home">
-      <header className="home-head">
-        <a className="back back-dark" href="/" onClick={go('/')}>
-          ← {t('ui.backToCollection')}
-        </a>
-        <h1>Every object</h1>
-        <p>
-          All {data ? data.objects.length : ''} models, in reading order. This is the view the eleven pages replaced —
-          kept because nothing else lets you choose by eye.
-        </p>
-      </header>
-      {data ? (
-        <ol className="grid grid-dense">
-          {data.objects.map((o) => (
-            <li key={o.accession} className="tile">
-              <a href={`/o/${o.accession}`} onClick={go(`/o/${o.accession}`)}>
-                <div className="tile-well">
-                  <img className="tile-blur" src={o.placeholder} alt="" aria-hidden="true" />
-                  <img className="tile-img" src={o.url} alt="" loading="lazy" decoding="async" />
-                </div>
-                <div className="tile-text">
-                  <h2 className="tile-small">{o.name}</h2>
-                  <p>{o.accession}</p>
-                </div>
-              </a>
-            </li>
-          ))}
-        </ol>
-      ) : (
-        <p className="loading loading-dark">Loading every object…</p>
-      )}
-    </main>
-  )
-}
-
 // §6: grouping by appearance spreads Cnidaria across four pages and Mollusca across three, so there
 // is no page for "all the jellyfish-type things". The spec says that has to be bought back with
 // search that works across pages, and budgeted as part of accepting the grouping.
@@ -857,7 +902,6 @@ function Routes() {
   const [route, go] = useRoute()
   if (route.view === 'home') return <Home go={go} route={route} />
   if (route.view === 'group') return <GroupPage route={route} go={go} />
-  if (route.view === 'all') return <AllPage go={go} />
   if (route.view === 'search') return <SearchPage go={go} />
   return <Missing route={route} go={go} />
 }
