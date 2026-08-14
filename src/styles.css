@@ -736,6 +736,16 @@ a {
    page carrying a sticky media column (§10, desktop) on every scroll gesture. */
 .well {
   position: relative;
+  /* Explicit, and it is the whole point of this rule. With `width: auto` the aspect ratio and the
+     max-height below fight each other: when the cap bites on a tall photograph the browser keeps
+     the ratio by shrinking the WIDTH as well, so on a page of siphonophores every well came out a
+     different width — 478px for the man o' war against 578px for a landscape neighbour, in a
+     column that is 578px wide. A definite width stops the constrained height transferring back.
+
+     The box then stops matching the photograph's ratio once capped, and that is correct: the
+     photograph is centred in it by object-fit, and the bars either side are invisible because
+     every one of the 128 photographs has a near-black border (scripts/backgrounds.mjs). */
+  width: 100%;
   aspect-ratio: var(--aspect, 4 / 3);
   max-height: 70vh;
   max-height: 70svh;
