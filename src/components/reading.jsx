@@ -75,10 +75,13 @@ function Media({ object, priority }) {
   const large = object.image?.large
   const src = xlarge?.url
 
-  // The well is one shape for every object — see the note on .well in styles.css. It used to be
-  // cut to each photograph's own aspect, which is why this passed one in as a custom property.
+  // Every well is the same width and takes its height from the photograph — see the note on .well
+  // in styles.css. Known before the image loads, so nothing reflows and a QR arrival keeps its
+  // scroll position.
+  const aspect = object.aspect > 0 ? object.aspect : null
+
   return (
-    <div className="well" ref={ref}>
+    <div className="well" ref={ref} style={aspect ? { '--aspect': aspect } : undefined}>
       <img className="well-blur" src={object.placeholder} alt="" aria-hidden="true" />
       {near && src && (
         <img

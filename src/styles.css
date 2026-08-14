@@ -560,16 +560,20 @@ a {
    at every viewport — a 1440px screen showed a 544px column and 900px of nothing. */
 .reading {
   --gutter: 1.25rem;
-  --content: min(var(--measure), 100% - var(--gutter) * 2);
+  --content: min(var(--measure), 100%);
 
   display: grid;
   grid-template-columns:
-    [full-start] minmax(var(--gutter), 1fr)
+    [full-start] minmax(0, 1fr)
     [content-start] var(--content) [content-end]
-    minmax(var(--gutter), 1fr) [full-end];
+    minmax(0, 1fr) [full-end];
   max-width: 76rem; /* the same cap the collection grid uses at >=64rem */
   margin: 0 auto;
-  padding: 1rem 0 5rem;
+  /* The gutter is padding rather than a pair of grid tracks, and that is load-bearing rather than
+     tidy: with it as a track, `grid-column: full` spanned INTO it, so on desktop every photograph
+     sat 20px to the left of the title, the back link and its own caption. Measured — media at
+     x=112, all text at x=132. As padding, full-start and content-start coincide. */
+  padding: 1rem var(--gutter) 5rem;
 
   /* The object below asks this element how wide it is, not the window. Same component, and it
      would lay out correctly if it were ever dropped into something narrower than the page. */
@@ -592,9 +596,8 @@ a {
 @media (min-width: 64rem) {
   .reading {
     grid-template-columns:
-      [full-start] var(--gutter)
-      [content-start] var(--content) [content-end]
-      minmax(var(--gutter), 1fr) [full-end];
+      [full-start content-start] var(--content) [content-end]
+      minmax(0, 1fr) [full-end];
   }
 }
 
@@ -709,31 +712,31 @@ a {
   margin: 0 0 0.9rem;
 }
 
-/* One frame for every object, and the photograph centred inside it.
+/* Every well is the same width; the height follows the photograph.
 
-   This box has been three things. It was `height: 70dvh` for everything, which wasted 49% of the
-   well on average because 89 of the 128 photographs are landscape. Then it was cut to each
-   photograph's own aspect, which fixed the waste but made every object a different shape — so the
-   glass landed at a different size and offset down the page, and the column read as ragged.
+   The box has been three things and this is the settled one. It was `height: 70dvh` for
+   everything, which wasted 49% of the well on average because 89 of the 128 photographs are
+   landscape. It was briefly a uniform 4/3 — the collection's median aspect — which made every
+   frame identical but cost the objects furthest from that shape half their width: 1884.137.33 is
+   0.68 and filled only 51% of the frame, on the QR screen §11 says the app is judged on.
 
-   4/3 is not an arbitrary compromise: it is the median aspect of the collection, 1.33 exactly.
-   Photographs fill 88% of the width and 95% of the height of this frame on average, so there is
-   very little letterboxing — and what there is cannot be seen, because every one of the 128
-   photographs has a near-black border (measured: the brightest is luminance 18 of 255, see
-   scripts/backgrounds.mjs) and so does this well. The seam between photograph and frame is
-   invisible, which is what makes a uniform frame free.
+   Matching widths were what was actually wanted, and they were never the problem — see the note on
+   .reading's gutter for what was. So the height follows each photograph and every object gets the
+   full width of the column.
 
-   It is also shorter than cutting to aspect — mean well 263px against 301px on a phone — and it
-   matches the 4/3 the collection tiles already use.
+   The letterboxing that remains when the cap bites is invisible: every one of the 128 photographs
+   has a near-black border — measured, the brightest is luminance 18 of 255, see
+   scripts/backgrounds.mjs — and so does this well.
 
-   Nothing reflows when a lazy image lands, which is what the original fixed height was protecting:
-   the height is known before load, and now it is the same known height for every object.
+   Nothing reflows when a lazy image lands, which is what the original fixed height was protecting.
+   That only ever needed the height to be KNOWN before load, and `aspect` is in the manifest for
+   all 128.
 
    svh rather than dvh: dvh re-resolves every time a mobile toolbar slides, which would relayout a
    page carrying a sticky media column (§10, desktop) on every scroll gesture. */
 .well {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: var(--aspect, 4 / 3);
   max-height: 70vh;
   max-height: 70svh;
   background: var(--dark);
