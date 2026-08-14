@@ -10,10 +10,11 @@
     "prebuild": "node scripts/split.mjs",
     "predev": "node scripts/split.mjs",
     "prepreview": "node scripts/split.mjs",
-    "audio": "node scripts/audio.mjs",
+    "audio": "node --env-file-if-exists=.env.local scripts/audio.mjs",
     "audio:check": "node scripts/audio.mjs --dry-run",
-    "audio:probe": "node scripts/audio.mjs --probe",
-    "pronunciation": "node scripts/pronunciation-review.mjs"
+    "audio:probe": "node --env-file-if-exists=.env.local scripts/audio.mjs --probe",
+    "pronunciation": "node scripts/pronunciation-review.mjs",
+    "pronunciation:qa": "node scripts/pronunciation-qa.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

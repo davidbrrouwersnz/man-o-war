@@ -6,6 +6,14 @@ dist/
 dist-ssr/
 *.local
 
+# Secrets. The real key lives in .env.local; .env.example is the checked-in template and is the
+# ONLY one of these that should ever be committed. "*.local" above already catches .env.local, but
+# these are spelled out because the failure is silent and expensive: a plain ".env" was not covered,
+# so anyone who named the file the obvious thing would have committed their key.
+.env
+.env.*
+!.env.example
+
 # Editor / OS
 .DS_Store
 Thumbs.db
