@@ -14,7 +14,9 @@ import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
-const css = readFileSync(join(root, 'src/styles.css'), 'utf8')
+// Normalised, because the markers below match on \n and git hands this file back with CRLF on a
+// Windows checkout — which failed the build with "could not find @media (prefers-color-scheme…".
+const css = readFileSync(join(root, 'src/styles.css'), 'utf8').replace(/\r\n/g, '\n')
 
 // ---------------------------------------------------------------- token extraction
 

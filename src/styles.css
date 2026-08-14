@@ -460,12 +460,23 @@ a {
   margin: 0 0 0.9rem;
 }
 
-/* Media at ~70% of viewport height. The height does not depend on the image, so nothing reflows
-   when a lazy image arrives and the scroll position on a QR arrival stays put. */
+/* §10 asks for media at ~70% of viewport height. It used to be exactly that for every object —
+   `height: 70dvh` — and that was the single most expensive layout decision in the app: 89 of the
+   128 photographs are landscape, so on a phone not one of them filled the well and the mean well
+   was 49% empty black.
+
+   The real photograph shape drives the box now, capped at 70dvh so a tall object still cannot run
+   past the fold. The zero-reflow guarantee the fixed height was protecting is intact, because it
+   only ever needed the height to be KNOWN before the image loads — `aspect` is in the manifest
+   for all 128 objects and is set as an inline custom property.
+
+   svh rather than dvh for the cap: dvh re-resolves every time a mobile toolbar slides, which
+   relayouts a page carrying a sticky media column (§10, desktop) on every scroll gesture. */
 .well {
   position: relative;
-  height: 70vh;
-  height: 70dvh;
+  aspect-ratio: var(--aspect, 3 / 4);
+  max-height: 70vh;
+  max-height: 70svh;
   background: var(--dark);
   overflow: hidden;
 }
@@ -492,6 +503,14 @@ a {
 
 .well-img.is-loaded {
   opacity: 1;
+}
+
+/* §18: prefers-reduced-motion on every transition. This one was missed — on a long group page it
+   fires once per object as you scroll, which is the most frequent animation in the app. */
+@media (prefers-reduced-motion: reduce) {
+  .well-img {
+    transition: none;
+  }
 }
 
 .object-meta {
