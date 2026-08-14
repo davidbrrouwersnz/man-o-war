@@ -158,6 +158,59 @@ a {
   color: #6a6259;
 }
 
+/* The two reading essays, on the collection page below the grid. Light ground on the dark home
+   page: the grid is dark because 79 of the 128 primary images are objects on black, and long-form
+   reading does not belong on that. The switch also does the work a page break used to — you can
+   see at a glance that the browsing has ended and the reading has begun. */
+
+.home-essays {
+  background: var(--paper);
+  color: var(--ink);
+  margin: 4rem 0 0;
+  padding: 1rem 0 0.5rem;
+}
+
+.essay {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem;
+  scroll-margin-top: 0.5rem;
+}
+
+.essay + .essay {
+  border-top: 1px solid var(--rule);
+}
+
+.essay-title {
+  font-size: clamp(1.6rem, 6vw, 2.1rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+  margin: 0 0 0.75rem;
+}
+
+/* The essays inherit the group page's reading styles, but their headings dropped a level when they
+   moved here — the collection title is the h1 now — so the rules follow them down. */
+.essay .layer-section h3 {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: var(--ink-faint);
+  margin: 0 0 0.5rem;
+}
+
+.essay .layer-sources h3 {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: var(--ink-faint);
+  margin: 0 0 0.5rem;
+}
+
 /* ------------------------------------------------------------------ group page */
 
 .reading {

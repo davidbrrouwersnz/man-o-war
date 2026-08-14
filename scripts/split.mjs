@@ -116,6 +116,8 @@ writeFileSync(new URL('search.json', dir), searchJson)
 const langDir = new URL('../src/data/i18n/', import.meta.url)
 const en = JSON.parse(readFileSync(new URL('en.json', langDir), 'utf8'))
 const flat = (o, p = '') => Object.entries(o).flatMap(([k, v]) => (v && typeof v === 'object' ? flat(v, `${p}${k}.`) : [`${p}${k}`]))
+const LAYERS = read('layers.json')
+const LAYER_COUNT = LAYERS.order.length
 const enKeys = flat(en.ui).map((k) => `ui.${k}`)
 
 const allAccessions = new Set(manifest.objects.map((o) => o.accession))
@@ -164,16 +166,16 @@ for (const file of readdirSync(langDir)) {
 
 console.log('')
 for (const p of packs) {
-  console.log(`  ${p.code.padEnd(8)} ui ${String(enKeys.length - p.missing).padStart(2)}/${enKeys.length}  panels ${String(p.panels).padStart(2)}/11  layers ${p.layers}/3  stories ${String(p.stories).padStart(3)}/128  ${p.kb}KB gz${p.missing ? '  <- falls back to English' : ''}`)
+  console.log(`  ${p.code.padEnd(8)} ui ${String(enKeys.length - p.missing).padStart(2)}/${enKeys.length}  panels ${String(p.panels).padStart(2)}/11  layers ${p.layers}/${LAYER_COUNT}  stories ${String(p.stories).padStart(3)}/128  ${p.kb}KB gz${p.missing ? '  <- falls back to English' : ''}`)
 }
 
 index.languages = packs.map((p) => p.code)
 
 // Layers 3–5, written once and reached from any group page (§6, §10).
-const layers = read('layers.json')
-const layersJson = JSON.stringify(layers)
+
+const layersJson = JSON.stringify(LAYERS)
 writeFileSync(new URL('layers.json', dir), layersJson)
-index.layers = layers.order.map((slug) => ({ slug, title: layers.layers[slug].title }))
+index.layers = LAYERS.order.map((slug) => ({ slug, title: LAYERS.layers[slug].title }))
 
 const indexJson = JSON.stringify(index)
 writeFileSync(new URL('index.json', dir), indexJson)

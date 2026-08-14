@@ -55,35 +55,6 @@
           "text": "Die Modelle kamen im Technologischen Saal zur Aufstellung, vorgeführt als industrielle Kunst im Dienst der Wissenschaft, nicht als Zoologie. Eine Christchurcher Zeitung, die Press, teilte ihren Lesern im Oktober 1883 mit, die Portugiesische Galeere erscheine in ihren wahren Farben und gleiche der Natur so sehr, dass es täusche.\n\nDiese Rahmung hielt nicht. Binnen zwei Jahren wurden die Modelle neben Präparaten gezeigt, und 1895 war der Technologische Saal aufgelöst und die Modelle standen in den zoologischen Abteilungen, geordnet nach dem, was sie darstellten, statt danach, wie sie gemacht waren.\n\nHeute ist eines ausgestellt. Der Rest liegt im Depot."
         }
       ]
-    },
-    "how-we-know": {
-      "standfirst": "Woher die Angaben auf diesen Seiten stammen, und an welchen Stellen die Quellen sich widersprechen.",
-      "segments": [
-        {
-          "heading": "Zwei Arten von Sätzen",
-          "text": "In dieser App stehen zwei Arten von Text, und sie sind nicht gleich sicher.\n\nDas eine ist die Aufzeichnung des Museums über seinen Bestand: eine Inventarnummer, Maße, eine von einem Katalogisierer verfasste Beschreibung. Das ist Beleg.\n\nDas andere ist Deutung, geschrieben, um zu erklären, was Sie sehen. Zwölf der Objekttexte stammen aus Veröffentlichungen des Museums. Der Rest sind Entwürfe aus allgemeinem naturkundlichem Wissen, und jeder einzelne sagt das dort, wo er steht."
-        },
-        {
-          "heading": "Niemand ist sich einig, wie viele es sind",
-          "text": "Die veröffentlichten Zahlen zu dieser Sammlung stimmen nicht überein, und das ist kein Versehen.\n\nDie Forschungsarbeit zur Sammlung zählt 133 und geht dabei vom Blaschka-Katalog von 1878 aus. Die Datenbank des Museums liefert 127 oder 128, je nachdem, wie man fragt. Ein Bildkatalog verzeichnet 122.\n\nSie zählen Verschiedenes. Eine einzige Inventarnummer kann einen Satz von vierzehn Modellen auf einer Tafel umfassen, und ein Modell kann als ein Objekt oder als mehrere geführt werden. Diese App zeigt den Bestand laut Sammlungsdatenbank und druckt keine Gesamtzahl."
-        },
-        {
-          "heading": "Ein Modell, das die Datenbank nicht ausgibt",
-          "text": "Es gibt eine ganz konkrete, überprüfbare Fassung dieses Problems.\n\nFragen Sie die Sammlungsdatenbank des Museums nach allem in der Blaschka-Sammlung, erhalten Sie 127 Datensätze. Fragen Sie stattdessen nach allem von Leopold Blaschka, erhalten Sie 128.\n\nDer Unterschied ist ein Objekt: eine Entwicklungsreihe eines Meereswurms, Inventarnummer 1884.137.110. Der Datensatz ist vollständig bis auf ein Feld. Das Feld, das die Sammlung nennt, ist leer, deshalb kann eine Suche in dieser Sammlung ihn nicht finden. Er steht in der Datenbank, er steht in der Literatur, und er kommt nicht zurück, wenn man fragt."
-        },
-        {
-          "heading": "Die Namen haben sich verschoben",
-          "text": "Die wissenschaftlichen Namen in diesen Datensätzen waren richtig, als man sie in den 1880er Jahren aufschrieb. Die meisten sind heute nicht mehr die gültigen. Geprüft am aktuellen internationalen Register hält etwa ein Drittel stand.\n\nDas ist nicht ungewöhnlich und kein Mangel dieser Sammlung. Jede Blaschka-Sammlung der Welt hat dieselbe Eigenschaft, und der veröffentlichte Wert für den Gesamtbestand liegt nahe bei dem von Canterbury.\n\nDer Katalogname bleibt also stehen, weil er das ist, was der Datensatz sagt. Wo ein moderner Name abweicht, gehört der Unterschied daneben und nicht an seine Stelle."
-        },
-        {
-          "heading": "Die Nummer, die nicht in der Datenbank steht",
-          "text": "Die Blaschkas gaben jedem Modell ihres Katalogs eine Nummer, und über diese Nummern werden Blaschka-Sammlungen weltweit miteinander verglichen.\n\nDiese Nummer steht nicht in der Datenbank des Museums. Dort steht eine interne Seriennummer, die ähnlich aussieht und etwas anderes ist.\n\nGedruckt steht sie allerdings sehr wohl. Die Forschungsarbeit führt in ihren Tafelunterschriften die Blaschka-Nummer neben der Inventarnummer, und 117 der 128 Objekte lassen sich so zuordnen. Die Konkordanz, von der alle annahmen, man müsse sie erst erstellen, gibt es bereits."
-        },
-        {
-          "heading": "Was fehlt",
-          "text": "Manches ist schlicht nicht bekannt.\n\nDie Liste dessen, was Haast bestellte, ist nicht erhalten. Neun der Datensätze tragen überhaupt keine Rechteangabe, und die Portugiesische Galeere ist einer davon. Ein Objekt ist das Bruchstück eines Modells, das niemand bestimmt hat, und eines trägt als Namen nur zwei englische Wörter auf einem alten Etikett.\n\nDas steht hier als Lücke, statt geglättet zu werden, denn einer Sammlung, die sagt, was sie nicht weiß, glaubt man leichter, was sie weiß."
-        }
-      ]
     }
   }
 }

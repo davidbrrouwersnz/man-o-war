@@ -3505,62 +3505,6 @@
       "bytes": 287712,
       "track": "reading",
       "kind": "layer"
-    },
-    "layers/how-we-know/00-standfirst": {
-      "hash": "4f5bc6ad1e90255f",
-      "durationMs": 7038,
-      "words": 19,
-      "bytes": 42624,
-      "track": "reading",
-      "kind": "layer"
-    },
-    "layers/how-we-know/two-voices": {
-      "hash": "3af0c35dc33263b1",
-      "durationMs": 37294,
-      "words": 102,
-      "bytes": 224064,
-      "track": "reading",
-      "kind": "layer"
-    },
-    "layers/how-we-know/the-count": {
-      "hash": "f5f4e8fef8370764",
-      "durationMs": 48186,
-      "words": 110,
-      "bytes": 289440,
-      "track": "reading",
-      "kind": "layer"
-    },
-    "layers/how-we-know/the-query": {
-      "hash": "e425654c4d4af2f0",
-      "durationMs": 49006,
-      "words": 115,
-      "bytes": 294336,
-      "track": "reading",
-      "kind": "layer"
-    },
-    "layers/how-we-know/the-names": {
-      "hash": "a1470ef5f886940e",
-      "durationMs": 41554,
-      "words": 116,
-      "bytes": 249696,
-      "track": "reading",
-      "kind": "layer"
-    },
-    "layers/how-we-know/blaschka-numbers": {
-      "hash": "701b4465a255fffe",
-      "durationMs": 43691,
-      "words": 113,
-      "bytes": 262512,
-      "track": "reading",
-      "kind": "layer"
-    },
-    "layers/how-we-know/gaps": {
-      "hash": "3ca1b45c761b15df",
-      "durationMs": 34075,
-      "words": 99,
-      "bytes": 204768,
-      "track": "reading",
-      "kind": "layer"
     }
   }
 }

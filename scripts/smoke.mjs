@@ -14,9 +14,11 @@ const ROUTES = [
   ['/', 'h1', 'The Blaschka collection'],
   ['/all', '.grid-dense li', null],
   ['/search', '.search-input', null],
-  ['/how-it-was-made', '.layer-section', null],
-  ['/how-it-got-here', '.layer-section', null],
-  ['/how-we-know', '.layer-section', null],
+  // The two essays moved onto the collection page; the old paths still resolve there, scrolled
+  // to the section, so a printed link never dead-ends.
+  ['/how-it-was-made', '.essay', null],
+  ['/how-it-got-here', '.essay', null],
+  ['/how-we-know', '.stub-note', null],
   ['/g/jellyfish', '.object', null],
   ['/g/sea-anemones', '.object', null],
   ['/o/1884.137.33', '.arrived-flag', null],

@@ -169,26 +169,28 @@ check('stop closes the player', stopped === true)
 // object page above is checked in more depth; here the point is coverage - that the front page,
 // the group tours and the three reading essays all actually have audio and not just files on disk.
 
+// The third field is the control to press. A page can carry several - the collection page has one
+// for its introduction and one for each essay - and querying for the first .listen would silently
+// test whichever happened to come first in the DOM while reporting it as something else.
 const PAGES = [
-  ['/', 'front page'],
-  ['/g/jellyfish', 'group tour'],
-  ['/g/never-went-to-sea', 'group tour (no closing line)'],
-  ['/how-it-was-made', 'reading layer'],
-  ['/how-it-got-here', 'reading layer'],
-  ['/how-we-know', 'reading layer'],
+  ['/', 'front page introduction', '.home-head .listen'],
+  ['/g/jellyfish', 'group tour', '.listen'],
+  ['/g/never-went-to-sea', 'group tour (no closing line)', '.listen'],
+  ['/how-it-was-made', 'essay, arrived by its old path', '#how-it-was-made .listen'],
+  ['/how-it-got-here', 'essay, arrived by its old path', '#how-it-got-here .listen'],
 ]
 
-for (const [path, what] of PAGES) {
+for (const [path, what, selector] of PAGES) {
   errors.length = 0
   await send('Page.navigate', { url: ORIGIN + path })
-  await wait(1800)
+  await wait(2200)
 
-  const has = await evaluate(`!!document.querySelector('.listen')`)
+  const has = await evaluate(`!!document.querySelector(${JSON.stringify(selector)})`)
   if (!has) {
-    check(`${path} — has a listen control (${what})`, false)
+    check(`${path} — has a listen control (${what})`, false, `no ${selector}`)
     continue
   }
-  await evaluate(`document.querySelector('.listen').click(); true`, true)
+  await evaluate(`document.querySelector(${JSON.stringify(selector)}).click(); true`, true)
   await wait(3000)
 
   const state = JSON.parse(

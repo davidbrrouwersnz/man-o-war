@@ -55,35 +55,6 @@
           "text": "Les modèles furent exposés dans la Salle Technologique, présentés comme un art industriel appliqué à la science plutôt que comme de la zoologie. Un journal de Christchurch, le Press, annonça à ses lecteurs en octobre 1883 que la galère portugaise apparaissait dans ses couleurs véritables et ressemblait à la nature au point d'y être trompeuse.\n\nCette présentation ne dura pas. En deux ans, les modèles furent exposés aux côtés de spécimens conservés, et en 1895 la Salle Technologique avait été démantelée, les modèles placés parmi les collections zoologiques, classés selon ce qu'ils représentaient plutôt que selon leur fabrication.\n\nAujourd'hui, l'un d'eux est exposé. Les autres sont en réserve."
         }
       ]
-    },
-    "how-we-know": {
-      "standfirst": "D'où viennent les faits présentés sur ces pages, et où les sources se contredisent.",
-      "segments": [
-        {
-          "heading": "Deux sortes de phrases",
-          "text": "Il y a deux sortes d'écriture dans cette application, et elles ne sont pas également certaines.\n\nL'une est le registre propre du musée sur ce qu'il conserve : un numéro d'inventaire, des mesures, une description physique rédigée par un cataloguiste. C'est une preuve.\n\nL'autre est de l'interprétation, écrite pour expliquer ce que vous regardez. Douze des notices d'objets sont tirées de textes publiés par le musée. Le reste sont des brouillons, écrits à partir de connaissances générales d'histoire naturelle, et chacun le dit là où il apparaît."
-        },
-        {
-          "heading": "Personne ne s'accorde sur le nombre",
-          "text": "Les chiffres publiés pour cette collection ne concordent pas, et ce désaccord n'est pas une erreur.\n\nL'article de recherche sur la collection en compte 133, en s'appuyant sur le catalogue Blaschka de 1878. La base de données du musée renvoie 127 ou 128, selon la question posée. Un catalogue illustré en documente 122.\n\nCes chiffres comptent des choses différentes. Un seul numéro d'inventaire peut couvrir un ensemble de quatorze modèles sur une même planche, et un modèle peut être catalogué comme un seul objet ou comme plusieurs. Cette application montre ce que contient le registre de la collection, et n'imprime pas de total."
-        },
-        {
-          "heading": "Un modèle que la base de données ne renvoie pas",
-          "text": "Il existe une version précise et vérifiable de ce problème.\n\nDemandez à la base de données du musée tout ce qui appartient à la collection Blaschka, et vous obtenez 127 notices. Demandez plutôt tout ce qui a été fait par Leopold Blaschka, et vous en obtenez 128.\n\nLa différence tient à un seul objet : une série développementale d'un ver marin, numéro d'inventaire 1884.137.110. Sa notice est complète, sauf pour un champ : celui qui nomme sa collection est vide, si bien qu'une recherche dans cette collection ne peut le trouver. Il est dans la base de données, il est dans la littérature publiée, et il ne revient pas quand on le demande."
-        },
-        {
-          "heading": "Les noms ont bougé",
-          "text": "Les noms scientifiques sur ces registres étaient exacts lorsqu'ils furent consignés dans les années 1880. La plupart ne sont plus les noms reconnus aujourd'hui. Vérifiés par rapport au registre international actuel, environ un tiers tiennent encore.\n\nCe n'est pas inhabituel, et ce n'est pas un défaut propre à cette collection. Chaque collection Blaschka au monde présente la même caractéristique, et le chiffre publié pour l'ensemble du corpus est proche de celui de Canterbury.\n\nLe nom du catalogue demeure donc, parce que c'est ce que dit le registre. Là où un nom moderne diffère, la différence trouve sa place à côté, et non à sa place."
-        },
-        {
-          "heading": "Le numéro absent de la base de données",
-          "text": "Les Blaschka donnaient un numéro à chaque modèle de leur catalogue, et ce sont ces numéros qui permettent de comparer les collections Blaschka entre elles, partout dans le monde.\n\nCe numéro ne figure pas dans la base de données du musée. Ce qu'elle contient est un numéro de série interne, qui se ressemble mais n'est pas la même chose.\n\nIl est pourtant bien imprimé quelque part. L'article de recherche fait figurer le numéro Blaschka en regard du numéro d'inventaire dans les légendes de ses planches, et 117 des 128 objets ici peuvent ainsi être identifiés. La table de correspondance que tout le monde pensait devoir construire existe déjà."
-        },
-        {
-          "heading": "Ce qui manque",
-          "text": "Certaines choses sont simplement inconnues.\n\nLa liste de ce que Haast commanda n'a pas survécu. Neuf des notices ne portent aucune mention de droits, et la galère portugaise en fait partie. Un objet est un fragment brisé d'un modèle que personne n'a identifié, et un autre ne porte pour nom que deux mots anglais sur une vieille étiquette.\n\nCela est consigné ici comme des lacunes plutôt que gommé, parce qu'une collection qui déclare ce qu'elle ignore inspire plus facilement confiance sur ce qu'elle sait."
-        }
-      ]
     }
   }
 }

@@ -9,17 +9,17 @@ Generated, wired into every page that carries writing, tested in a real browser,
 
 ## What gets voiced
 
-**446 audio files**, one per block of text on the page, in the order the page shows it — every
+**438 audio files**, one per block of text on the page, in the order the page shows it — every
 page that carries writing, not just the objects:
 
 | page | what is voiced |
 |---|---|
-| front page | the collection title and introduction, and the prototype note |
+| front page | the collection title and introduction |
 | each of the 11 groups | the group's title and panel, and its closing line |
 | each of the 128 objects | the name and catalogue line, each story section, the identification note |
-| the 3 reading essays | the title and standfirst, then every section |
+| the 2 reading essays | the title and standfirst, then every section |
 
-That is 122 minutes of speech.
+That is 118 minutes of speech.
 
 Navigation is not voiced: the eleven tiles, the "13 models, about 12 minutes" lines, and the source
 lists at the foot of the essays. Reading signposts aloud is how an audio guide becomes a chore.
@@ -28,11 +28,15 @@ lists at the foot of the essays. Reading signposts aloud is how an audio guide b
 closing line. Jellyfish is 43 sections end to end. Each object keeps its own control for anyone who
 only wants the thing in front of them, and both play exactly the same files.
 
+The essays now sit on the collection page rather than on pages of their own, each with its own
+Listen control. Their old paths still resolve there, scrolled to the section, so nothing printed or
+shared has to be reissued.
+
 §13 puts the reading essays outside the audio scope, with one exception: where no device voice
 exists for a shipped language, the reading layer is pre-rendered too. We ship one voice and one
-language, so that exception covers everything we ship — and those three essays are the deepest
-writing in the collection, so stopping the guide at their doorstep would end it exactly where the
-material gets good.
+language, so that exception covers everything we ship — and those essays are the deepest writing in
+the collection, so stopping the guide at their doorstep would end it exactly where the material
+gets good.
 
 Nothing here is newly written. Every file is a block already printed on the screen, which is what
 "only voice the text that is displayed" means in practice.
@@ -103,7 +107,7 @@ Every narration script is stripped back to plain text and compared against the s
 character. **If they differ at all, the build stops.** That is the mechanical enforcement of §13's
 first rule — the spoken words are the printed words — and there is no flag to skip it.
 
-It runs on all 446 segments today and passes, with no exceptions and nothing exempted. The one
+It runs on all 438 segments today and passes, with no exceptions and nothing exempted. The one
 place notation used to be expanded — the details line, where `109 x 142 x 33mm` was spoken as "109
 by 142 by 33 millimetres" — is no longer voiced at all, so that machinery is gone too.
 
@@ -134,7 +138,7 @@ English but not for New Zealand English. Molly is not flagged as lacking phoneme
 very likely just a documentation gap — but "very likely" is not "tested", so the pipeline sends a
 single test word before doing anything else and falls back to plain respellings if it is rejected.
 On the real run Molly accepted the phonemes, so the good path is what ships. The probe stays: we
-just find out which path on the first run rather than after 446 files.
+just find out which path on the first run rather than after 438 files.
 
 ## Cost
 
@@ -169,9 +173,11 @@ looking at *is* the English.
 - **The audio description track.** The one real gap. §13 wanted form, scale, colour and mount
   described for a visitor who cannot see the photograph — "a clear glass bell about the width of a
   saucer" rather than `200 x 90 x 90mm`. It is the only part of §13's audio model still missing.
-- **English only.** The other twelve languages have no narration, and four of them (Samoan, Tongan,
-  Tigrinya, Dari) have no synthetic voice in existence from any provider. See
-  `docs/audio-generation.md` — that is a human-recording question, not a technical one.
+- **English only.** The other eight languages have no narration. Samoan, Tongan, Tigrinya and Dari
+  have since been withdrawn from the app entirely — they were four of the five §7 called low
+  resource, and the four with no synthetic voice in existence from any provider. Somali remains and
+  is still unvoiced. See `docs/audio-generation.md`; it is a human-recording question, not a
+  technical one.
 - The player's own labels ("Listen", "Stop listening") are English-only. They are only ever shown
   beside English text, so nothing is currently mismatched, but they are not translated.
 - Ask the Museum how the family says **Blaschka**.

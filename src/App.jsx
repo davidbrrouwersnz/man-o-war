@@ -87,10 +87,10 @@ function Listen({ queue, available, note }) {
   )
 }
 
-// §7: the fallback must be visible, never silent. A Samoan speaker who gets an English story with
-// no explanation reasonably concludes the app has no Samoan in it — when the orientation around
-// them is Samoan. One quiet line, and the block carries lang="en" so a screen reader does not read
-// English words with Samoan phonetics.
+// §7: the fallback must be visible, never silent. A Somali speaker who gets an English story with
+// no explanation reasonably concludes the app has no Somali in it — when the orientation around
+// them is Somali. One quiet line, and the block carries lang="en" so a screen reader does not read
+// English words with Somali phonetics.
 function Fallback({ children, lang, className }) {
   const { code } = useLang()
   const [t] = useT()
@@ -134,8 +134,11 @@ function parse(pathname) {
   if (path === '/') return { view: 'home' }
   if (path === '/all') return { view: 'all' }
   if (path === '/search') return { view: 'search' }
+  // The two reading essays used to be pages of their own. They now sit on the collection page, but
+  // the old paths still resolve — a printed QR code or a shared link lands on the section rather
+  // than on a dead end.
   const layer = index.layers.find((l) => path === `/${l.slug}`)
-  if (layer) return { view: 'layer', slug: layer.slug }
+  if (layer) return { view: 'home', at: layer.slug }
   const g = path.match(/^\/g\/([^/]+)$/)
   if (g) return BY_SLUG.has(g[1]) ? { view: 'group', slug: g[1] } : { view: 'missing' }
   const o = path.match(/^\/o\/([^/]+)$/)
@@ -207,12 +210,112 @@ function Media({ object, priority }) {
 
 // ------------------------------------------------------------------ home
 
-function Home({ go }) {
+// One of the two reading essays. It was a page of its own until the content moved onto the
+// collection page; what it keeps is its own heading, its sources and its own Listen control,
+// because each essay is a separate sitting rather than part of one continuous tour.
+//
+// Heading levels shift with the move: on its own page the title was an h1, but here the collection
+// title holds that, so the essay is an h2 and its sections are h3. A page with two h1s reads to a
+// screen reader as two documents stapled together.
+function Essay({ slug, layer, meta, code, langName }) {
   const [t, tr] = useT()
+  const titleR = tr(`layerTitles.${slug}`, null, meta.title)
+  const standfirstR = tr(`layers.${slug}.standfirst`, null, layer.standfirst)
+  const parts = layer.segments.map((s, si) => ({
+    s,
+    si,
+    heading: tr(`layers.${slug}.segments.${si}.heading`, null, s.heading),
+    body: tr(`layers.${slug}.segments.${si}.text`, null, s.text),
+  }))
+
+  const available =
+    titleR.lang === 'en' &&
+    standfirstR.lang === 'en' &&
+    parts.every((p) => p.heading.lang === 'en' && p.body.lang === 'en')
+
+  const queue = {
+    key: `l:${slug}`,
+    title: titleR.text,
+    items: [
+      { id: `layers/${slug}/00-standfirst`, label: titleR.text, blocks: [titleR.text, standfirstR.text] },
+      ...parts.map((p) => ({
+        id: `layers/${slug}/${p.s.id}`,
+        label: p.heading.text,
+        blocks: blocksOf(p.heading.text, p.body.text),
+      })),
+    ],
+  }
+
+  return (
+    <section className="essay" id={slug}>
+      <h2 className="essay-title" {...langAttrs(titleR)}>
+        <Spoken text={titleR.text} itemId={`layers/${slug}/00-standfirst`} block={0} />
+      </h2>
+      <Translated className="group-panel" r={standfirstR} itemId={`layers/${slug}/00-standfirst`} block={1} />
+      <Listen queue={queue} available={available} note={code !== 'en' ? t('ui.audioEnglishOnly') : null} />
+
+      {parts.map(({ s, heading, body }) => {
+        const itemId = `layers/${slug}/${s.id}`
+        const blocks = blocksOf(heading.text, body.text)
+        return (
+          <section key={s.id} className="layer-section">
+            <h3 {...langAttrs(heading)}>
+              <Spoken text={heading.text} itemId={itemId} block={0} />
+            </h3>
+            <div {...langAttrs(body)}>
+              {body.fellBack && code !== 'en' && (
+                <p className="fallback-notice">{t('ui.fallbackNotice', { language: langName })}</p>
+              )}
+              {body.text.split('\n\n').map((p, i) => (
+                <p key={i}>
+                  <Spoken text={p} itemId={itemId} block={blocks.indexOf(p.trim())} />
+                </p>
+              ))}
+            </div>
+          </section>
+        )
+      })}
+
+      <div className="layer-sources">
+        <h3>{t('ui.sources')}</h3>
+        <ul>
+          {layer.sources.map((s) => (
+            <li key={s.url}>
+              <a href={s.url} target="_blank" rel="noreferrer">
+                {s.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}
+
+function Home({ go, route }) {
+  const [t, tr] = useT()
+  const { code } = useLang()
+  const langName = BY_CODE.get(code)?.endonym ?? 'English'
+  const [layers, setLayers] = useState(null)
+
   useLayoutEffect(() => {
     document.title = `${t('ui.collectionTitle')} — Canterbury Museum`
-    scrollTo(0, 0)
-  }, [t])
+    if (!route?.at) scrollTo(0, 0)
+  }, [t, route?.at])
+
+  // The essays are a chunk, fetched after the page is up rather than compiled into the bundle. The
+  // front page is the one every visitor loads first and §2's visitor is on a museum connection —
+  // the tiles must not wait on eleven thousand words of background reading.
+  useEffect(() => {
+    loadChunk('layers')?.then(setLayers)
+  }, [])
+
+  // An arrival on an old /how-it-was-made link cannot scroll until the chunk it points at exists.
+  useLayoutEffect(() => {
+    if (!route?.at || !layers) return
+    const el = document.getElementById(route.at)
+    if (el) scrollTo({ top: el.offsetTop - 8, behavior: 'instant' })
+  }, [route?.at, layers])
 
   const intro = tr('ui.collectionIntro')
   const title = t('ui.collectionTitle')
@@ -251,6 +354,20 @@ function Home({ go }) {
           </li>
         ))}
       </ol>
+      {/* The background reading, on the collection page rather than on pages of its own. It sits
+          below the grid because the collection is what a visitor came for; this is what they read
+          once something has caught them. Light on dark: the grid is a dark well because 79 of the
+          128 images are objects on black, and long-form text does not belong on that ground. */}
+      {layers && (
+        <div className="home-essays">
+          {index.layers.map((meta) => {
+            const l = layers.layers[meta.slug]
+            if (!l) return null
+            return <Essay key={meta.slug} slug={meta.slug} layer={l} meta={meta} code={code} langName={langName} />
+          })}
+        </div>
+      )}
+
       <nav className="home-secondary">
         <a href="/all" onClick={go('/all')}>
           {t('ui.everyObject')} →
@@ -524,8 +641,10 @@ function GroupPage({ route, go }) {
             <Translated className="group-ending" r={endingR} itemId={`groups/${group.slug}/99-ending`} />
           )}
 
-          {/* §10: layers 3–5 are reached from the end of a group page, as named continuations —
-              not repeated under every object, and never a generic "more". */}
+          {/* §10: the reading essays are reached from the end of a group page, as named
+              continuations — not repeated under every object, and never a generic "more". They now
+              live on the collection page, so these links land there scrolled to the essay. The
+              paths are unchanged, which is why nothing printed or shared has to be reissued. */}
           <nav className="continuations">
             {index.layers.map((l) => (
               <a key={l.slug} href={`/${l.slug}`} onClick={go(`/${l.slug}`)}>
@@ -669,122 +788,6 @@ function SearchPage({ go }) {
   )
 }
 
-// ------------------------------------------------------------------ layers 3–5
-// Written once, reached from any object at the point they become relevant, never duplicated onto an
-// object page (§6).
-
-function LayerPage({ route, go }) {
-  const [t, tr] = useT()
-  const { code } = useLang()
-  const langName = BY_CODE.get(code)?.endonym ?? 'English'
-  const [data, setData] = useState(null)
-  useEffect(() => {
-    scrollTo(0, 0)
-    loadChunk('layers')?.then(setData)
-  }, [route.slug])
-
-  const layer = data?.layers[route.slug]
-  useEffect(() => {
-    if (layer) document.title = `${layer.title} — the Blaschka collection`
-  }, [layer])
-
-  const meta = index.layers.find((l) => l.slug === route.slug)
-  const layerTitle = tr(`layerTitles.${route.slug}`, null, meta?.title ?? '')
-
-  const standfirstR = tr(`layers.${route.slug}.standfirst`, null, layer?.standfirst ?? '')
-  const layerParts = (layer?.segments ?? []).map((s, si) => ({
-    s,
-    si,
-    heading: tr(`layers.${route.slug}.segments.${si}.heading`, null, s.heading),
-    body: tr(`layers.${route.slug}.segments.${si}.text`, null, s.text),
-  }))
-
-  // §13 leaves the reading layer text-only EXCEPT where no device voice exists for a shipped
-  // language — and with one voice in one language, that exception covers everything we ship. These
-  // three essays are also the deepest writing in the collection, so stopping the audio guide at
-  // their doorstep would end it exactly where the material gets good.
-  const layerAvailable =
-    !!layer && layerTitle.lang === 'en' && standfirstR.lang === 'en' && layerParts.every((p) => p.heading.lang === 'en' && p.body.lang === 'en')
-  const layerQueue = {
-    key: `l:${route.slug}`,
-    title: layerTitle.text,
-    items: [
-      { id: `layers/${route.slug}/00-standfirst`, label: layerTitle.text, blocks: [layerTitle.text, standfirstR.text] },
-      ...layerParts.map((p) => ({
-        id: `layers/${route.slug}/${p.s.id}`,
-        label: p.heading.text,
-        blocks: blocksOf(p.heading.text, p.body.text),
-      })),
-    ],
-  }
-
-  return (
-    <main className="reading">
-      <a className="back" href="/" onClick={go('/')}>
-        ← {t('ui.backToCollection')}
-      </a>
-      <h1 className="group-title" {...langAttrs(layerTitle)}>
-        <Spoken text={layerTitle.text} itemId={`layers/${route.slug}/00-standfirst`} block={0} />
-      </h1>
-      {layer ? (
-        <>
-          <Translated
-            className="group-panel"
-            r={standfirstR}
-            itemId={`layers/${route.slug}/00-standfirst`}
-            block={1}
-          />
-          <Listen queue={layerQueue} available={layerAvailable} note={code !== 'en' ? t('ui.audioEnglishOnly') : null} />
-          {layerParts.map(({ s, heading, body }) => {
-            const itemId = `layers/${route.slug}/${s.id}`
-            const blocks = blocksOf(heading.text, body.text)
-            return (
-              <section key={s.id} className="layer-section">
-                <h2 {...langAttrs(heading)}>
-                  <Spoken text={heading.text} itemId={itemId} block={0} />
-                </h2>
-                <div {...langAttrs(body)}>
-                  {body.fellBack && code !== 'en' && (
-                    <p className="fallback-notice">{t('ui.fallbackNotice', { language: langName })}</p>
-                  )}
-                  {body.text.split('\n\n').map((p, i) => (
-                    <p key={i}>
-                      <Spoken text={p} itemId={itemId} block={blocks.indexOf(p.trim())} />
-                    </p>
-                  ))}
-                </div>
-              </section>
-            )
-          })}
-          <div className="layer-sources">
-            <h2>{t('ui.sources')}</h2>
-            <ul>
-              {layer.sources.map((s) => (
-                <li key={s.url}>
-                  <a href={s.url} target="_blank" rel="noreferrer">
-                    {s.text}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </>
-      ) : (
-        <p className="loading">Loading…</p>
-      )}
-      <nav className="group-nav layer-nav">
-        {index.layers
-          .filter((l) => l.slug !== route.slug)
-          .map((l) => (
-            <a key={l.slug} href={`/${l.slug}`} onClick={go(`/${l.slug}`)}>
-              {tr(`layerTitles.${l.slug}`, null, l.title).text} →
-            </a>
-          ))}
-      </nav>
-    </main>
-  )
-}
-
 // ------------------------------------------------------------------ missing
 
 function Missing({ route, go }) {
@@ -852,10 +855,9 @@ export default function App() {
 
 function Routes() {
   const [route, go] = useRoute()
-  if (route.view === 'home') return <Home go={go} />
+  if (route.view === 'home') return <Home go={go} route={route} />
   if (route.view === 'group') return <GroupPage route={route} go={go} />
   if (route.view === 'all') return <AllPage go={go} />
   if (route.view === 'search') return <SearchPage go={go} />
-  if (route.view === 'layer') return <LayerPage route={route} go={go} />
   return <Missing route={route} go={go} />
 }

@@ -55,35 +55,6 @@
           "text": "Los modelos se exhibieron en la Sala Tecnológica, presentados como arte industrial aplicado a la ciencia y no como zoología. Un periódico de Christchurch, el Press, informó a sus lectores en octubre de 1883 de que la carabela portuguesa aparecía en sus colores verdaderos y se parecía a la naturaleza hasta resultar engañosa.\n\nEsa presentación no duró. En dos años, los modelos se exhibían junto a especímenes conservados, y para 1895 la Sala Tecnológica había sido desmantelada y los modelos colocados entre las exposiciones zoológicas, clasificados por lo que representaban y no por cómo se hicieron.\n\nHoy uno de ellos está expuesto. El resto está en depósito."
         }
       ]
-    },
-    "how-we-know": {
-      "standfirst": "De dónde proceden los datos de estas páginas, y en qué puntos discrepan las fuentes.",
-      "segments": [
-        {
-          "heading": "Dos tipos de frase",
-          "text": "Hay dos tipos de texto en esta aplicación, y no son igual de fiables.\n\nUno es el propio registro del museo sobre lo que conserva: un número de inventario, un conjunto de medidas, una descripción física escrita por un catalogador. Eso es evidencia.\n\nEl otro es interpretación, escrita para explicar lo que está mirando. Doce de las fichas de objetos proceden de textos que el museo ha publicado. El resto son borradores, escritos a partir de conocimiento general de historia natural, y cada uno lo indica donde aparece."
-        },
-        {
-          "heading": "Nadie se pone de acuerdo en cuántos hay",
-          "text": "Las cifras publicadas para esta colección no coinciden, y esa discrepancia no es un error.\n\nEl artículo de investigación sobre la colección cuenta 133, a partir del propio catálogo Blaschka de 1878. La base de datos del museo devuelve 127 o 128, según cómo se pregunte. Un catálogo ilustrado documenta 122.\n\nEstán contando cosas distintas. Un solo número de inventario puede cubrir un conjunto de catorce modelos en una misma tabla, y un modelo puede catalogarse como un objeto o como varios. Esta aplicación muestra lo que contiene el registro de la colección, y no imprime un total."
-        },
-        {
-          "heading": "Un modelo que la base de datos no devuelve",
-          "text": "Existe una versión concreta y comprobable de ese problema.\n\nPregunte a la base de datos del museo por todo lo que hay en la colección Blaschka y obtendrá 127 registros. Pregunte en cambio por todo lo hecho por Leopold Blaschka y obtendrá 128.\n\nLa diferencia es un objeto: una serie del desarrollo de un gusano marino, número de inventario 1884.137.110. Su registro está completo salvo por un campo. El campo que nombra su colección está vacío, así que una búsqueda en esa colección no puede encontrarlo. Está en la base de datos, está en la bibliografía publicada, y no aparece cuando se pregunta."
-        },
-        {
-          "heading": "Los nombres se han movido",
-          "text": "Los nombres científicos de estos registros eran correctos cuando se anotaron en la década de 1880. La mayoría ya no son los nombres aceptados. Comprobados contra el registro internacional actual, aproximadamente un tercio siguen vigentes.\n\nEso no es inusual ni un defecto de esta colección. Toda colección Blaschka del mundo tiene la misma propiedad, y la cifra publicada para el conjunto del corpus está cerca de la de Canterbury.\n\nAsí que el nombre del catálogo permanece, porque es lo que dice el registro. Donde un nombre moderno difiere, la diferencia va al lado, no en su lugar."
-        },
-        {
-          "heading": "El número que no está en la base de datos",
-          "text": "Los Blaschka dieron un número a cada modelo de su catálogo, y esos números son la forma en que las colecciones Blaschka del mundo se comparan entre sí.\n\nEse número no está en la base de datos del museo. Lo que la base de datos tiene es un número de serie interno, que se parece pero no es lo mismo.\n\nSin embargo, sí está impreso. El artículo de investigación enumera el número Blaschka junto al número de inventario en los pies de sus láminas, y 117 de los 128 objetos aquí se pueden emparejar así. La tabla de correspondencias que todos suponían había que construir ya existe."
-        },
-        {
-          "heading": "Lo que falta",
-          "text": "Algunas cosas simplemente no se saben.\n\nLa lista de lo que Haast pidió no ha sobrevivido. Nueve de los registros no llevan ninguna declaración de derechos, y la carabela portuguesa es uno de ellos. Un objeto es un fragmento roto de un modelo que nadie ha identificado, y otro solo tiene nombre por dos palabras en inglés en una etiqueta antigua.\n\nEsto se anota aquí como vacíos en lugar de disimularse, porque una colección que dice lo que no sabe resulta más fácil de creer en lo que sí sabe."
-        }
-      ]
     }
   }
 }

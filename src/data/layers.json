@@ -1,6 +1,9 @@
 {
   "note": "Layers 3-5 (BUILD-SPEC-v2.md §6): the making, the collection, the evidence. Written ONCE and reached from any object, never duplicated onto object pages. Sourced from Shaw et al. 2017 and the Museum's own Blaschka page, both cited on the page itself. Same read-and-heard standard as the object stories.",
-  "order": ["how-it-was-made", "how-it-got-here", "how-we-know"],
+  "order": [
+    "how-it-was-made",
+    "how-it-got-here"
+  ],
   "layers": {
     "how-it-was-made": {
       "title": "How it was made",
@@ -33,11 +36,16 @@
         }
       ],
       "sources": [
-        { "text": "Shaw MD, Szczepanski JZ, Murray SF, Hodge S, Vink CJ. 2017. Ideas made glass: Blaschka glass models at Canterbury Museum. Records of the Canterbury Museum 31: 5–84.", "url": "https://cms.canterburymuseum.com/assets/Ideas-made-glass.pdf" },
-        { "text": "Le Grice R. The Blaschka Collection. Canterbury Museum.", "url": "https://www.canterburymuseum.com/explore/collections/the-blaschka-collection" }
+        {
+          "text": "Shaw MD, Szczepanski JZ, Murray SF, Hodge S, Vink CJ. 2017. Ideas made glass: Blaschka glass models at Canterbury Museum. Records of the Canterbury Museum 31: 5–84.",
+          "url": "https://cms.canterburymuseum.com/assets/Ideas-made-glass.pdf"
+        },
+        {
+          "text": "Le Grice R. The Blaschka Collection. Canterbury Museum.",
+          "url": "https://www.canterburymuseum.com/explore/collections/the-blaschka-collection"
+        }
       ]
     },
-
     "how-it-got-here": {
       "title": "How it got here",
       "standfirst": "An order placed in Dresden in 1882, and what happened to it after it arrived.",
@@ -74,50 +82,10 @@
         }
       ],
       "sources": [
-        { "text": "Shaw MD, Szczepanski JZ, Murray SF, Hodge S, Vink CJ. 2017. Ideas made glass: Blaschka glass models at Canterbury Museum. Records of the Canterbury Museum 31: 5–84.", "url": "https://cms.canterburymuseum.com/assets/Ideas-made-glass.pdf" }
-      ]
-    },
-
-    "how-we-know": {
-      "title": "How we know",
-      "standfirst": "Where the facts on these pages come from, and the places the sources disagree.",
-      "segments": [
         {
-          "id": "two-voices",
-          "heading": "Two kinds of sentence",
-          "text": "There are two sorts of writing in this app and they are not equally certain.\n\nOne is the Museum's own record of what it holds: an accession number, a set of measurements, a physical description written by a cataloguer. That is evidence.\n\nThe other is interpretation, written to explain what you are looking at. Twelve of the object entries are drawn from writing the Museum has published. The rest are drafts, written from general natural history, and every one of them says so where it appears."
-        },
-        {
-          "id": "the-count",
-          "heading": "Nobody agrees how many there are",
-          "text": "The published figures for this collection do not match, and the disagreement is not a mistake.\n\nThe research paper on the collection counts 133, working from the Blaschkas' own 1878 catalogue. The Museum's database returns 127 or 128, depending on how you ask. An illustrated catalogue documents 122.\n\nThey are counting different things. A single accession number can cover a set of fourteen models on one board, and a model can be catalogued as one object or several. This app shows what the collection record holds, and does not print a total."
-        },
-        {
-          "id": "the-query",
-          "heading": "One model the database will not return",
-          "text": "There is a specific and checkable version of that problem.\n\nAsk the Museum's collection database for everything in the Blaschka collection and you get 127 records. Ask instead for everything made by Leopold Blaschka and you get 128.\n\nThe difference is one object: a developmental series of a marine worm, accession 1884.137.110. Its record is complete except for one field. The field naming its collection is empty, so a search of that collection cannot find it. It is in the database, it is in the published literature, and it does not come back when you ask."
-        },
-        {
-          "id": "the-names",
-          "heading": "The names have moved",
-          "text": "The scientific names on these records were correct when they were written down in the 1880s. Most of them are not the accepted names now. Checked against the current international register, roughly a third still stand.\n\nThat is not unusual and it is not a fault in this collection. Every Blaschka collection in the world has the same property, and the published figure for the corpus as a whole is close to Canterbury's.\n\nSo the catalogue's name stays, because it is what the record says. Where a modern name differs, the difference belongs beside it rather than in place of it."
-        },
-        {
-          "id": "blaschka-numbers",
-          "heading": "The number that is not in the database",
-          "text": "The Blaschkas gave every model in their catalogue a number, and those numbers are how Blaschka collections around the world are compared with one another.\n\nThat number is not in the Museum's database. What the database holds is an internal series number, which looks similar and is not the same thing.\n\nIt is, however, in print. The research paper lists the Blaschka number against the accession number in its plate captions, and 117 of the 128 objects here can be matched that way. The crosswalk everyone assumed would have to be built already exists."
-        },
-        {
-          "id": "gaps",
-          "heading": "What is missing",
-          "text": "Some things simply are not known.\n\nThe list of what Haast ordered has not survived. Nine of the records carry no rights statement at all, and the man o' war is one of them. One object is a broken fragment of a model nobody has identified, and one is named only by two English words on an old label.\n\nThose are recorded here as gaps rather than smoothed over, because a collection that states what it does not know is easier to trust about what it does."
+          "text": "Shaw MD, Szczepanski JZ, Murray SF, Hodge S, Vink CJ. 2017. Ideas made glass: Blaschka glass models at Canterbury Museum. Records of the Canterbury Museum 31: 5–84.",
+          "url": "https://cms.canterburymuseum.com/assets/Ideas-made-glass.pdf"
         }
-      ],
-      "sources": [
-        { "text": "Canterbury Museum collection record 1884.137.33", "url": "https://collection.canterburymuseum.com/objects/glass-model-invertebrate-physalia-pelagica" },
-        { "text": "Le Grice R. The Blaschka Collection. Canterbury Museum.", "url": "https://www.canterburymuseum.com/explore/collections/the-blaschka-collection" },
-        { "text": "Shaw MD, Szczepanski JZ, Murray SF, Hodge S, Vink CJ. 2017. Ideas made glass: Blaschka glass models at Canterbury Museum. Records of the Canterbury Museum 31: 5–84.", "url": "https://cms.canterburymuseum.com/assets/Ideas-made-glass.pdf" },
-        { "text": "World Register of Marine Species (WoRMS)", "url": "https://www.marinespecies.org/" }
       ]
     }
   }

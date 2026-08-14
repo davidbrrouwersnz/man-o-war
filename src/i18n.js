@@ -6,19 +6,25 @@
 //     subtag first.
 //   - Resolution runs per piece of content, not per session: selected -> device -> English.
 //   - English is the terminal fallback, so it must be complete. It is.
-//   - The fallback is never silent. A visitor reading English inside a Samoan session is told why,
-//     once, quietly - otherwise they reasonably conclude the app has no Samoan in it at all.
+//   - The fallback is never silent. A visitor reading English inside an Arabic session is told why,
+//     once, quietly - otherwise they reasonably conclude the app has no Arabic in it at all.
 //   - lang and dir follow what is actually RENDERED, not what was selected. An English story inside
 //     an Arabic session is an LTR block carrying lang="en" inside an RTL page.
 
 // §7 tiers by verification burden rather than language count, and names its own examples: high
-// resource (zh, ja, ko, de, fr, es) against low resource (sm, to, prs, ti, so). This is the
-// core-interpretation tier of twelve.
+// resource (zh, ja, ko, de, fr, es) against low resource (sm, to, prs, ti, so). Four of those five
+// low-resource languages have since been withdrawn - see the note on LANGUAGES below.
 //
 // te reo Maori is deliberately ABSENT and must stay absent from any automated set. §7 puts English,
 // te reo and NZSL outside this framework entirely - human, iwi-partnered, Deaf-led - and §6 already
 // answered the te reo question: no species names, the blank is content, and the ask goes to the
 // Museum rather than around it.
+// Samoan, Tongan, Tigrinya and Dari were shipped and have been withdrawn. Their translations are in
+// the history if they are ever wanted back. Worth recording why it matters rather than just that it
+// happened: those four, plus Somali, were exactly the languages §7 named as low resource, and they
+// are also the four with no synthetic voice in existence from any provider (see
+// docs/audio-generation.md). Dropping them leaves the shipped set as the languages that were always
+// going to be easy. Somali stays, so the low-resource tier is not empty - but it is now one deep.
 export const LANGUAGES = [
   { code: 'en', name: 'English', endonym: 'English', dir: 'ltr', tier: 'source' },
   { code: 'zh-Hant', name: 'Chinese (Traditional)', endonym: '繁體中文', dir: 'ltr', tier: 'high' },
@@ -27,19 +33,17 @@ export const LANGUAGES = [
   { code: 'de', name: 'German', endonym: 'Deutsch', dir: 'ltr', tier: 'high' },
   { code: 'fr', name: 'French', endonym: 'Français', dir: 'ltr', tier: 'high' },
   { code: 'es', name: 'Spanish', endonym: 'Español', dir: 'ltr', tier: 'high' },
-  { code: 'sm', name: 'Samoan', endonym: 'Gagana Sāmoa', dir: 'ltr', tier: 'low' },
-  { code: 'to', name: 'Tongan', endonym: 'Lea faka-Tonga', dir: 'ltr', tier: 'low' },
   { code: 'ar', name: 'Arabic', endonym: 'العربية', dir: 'rtl', tier: 'low' },
-  { code: 'prs', name: 'Dari', endonym: 'دری', dir: 'rtl', tier: 'low' },
-  { code: 'ti', name: 'Tigrinya', endonym: 'ትግርኛ', dir: 'rtl-script-ltr', tier: 'low' },
   { code: 'so', name: 'Somali', endonym: 'Soomaali', dir: 'ltr', tier: 'low' },
 ]
 
 export const BY_CODE = new Map(LANGUAGES.map((l) => [l.code, l]))
 const CODES = LANGUAGES.map((l) => l.code)
 
-// Tigrinya is written in Ge'ez script, which runs left to right. Guard against the assumption that
-// a non-Latin script implies RTL.
+// dir is a property of the language, never inferred from the script. The 'rtl-script-ltr' value
+// exists for the case that catches people out - Tigrinya, written in Ge'ez, which is non-Latin and
+// runs left to right. Tigrinya is no longer shipped, but the guard stays: the wrong assumption is
+// one line away from being made again, and nothing about it was specific to that language.
 export const dirOf = (code) => (BY_CODE.get(code)?.dir === 'rtl' ? 'rtl' : 'ltr')
 
 // BCP 47 lookup (RFC 4647 §3.4): progressively drop the last subtag until something matches.
