@@ -450,6 +450,38 @@ a {
        line. Without it the grid began at the very top edge while the reading column sat 56px down,
        and the two halves read as unrelated. */
     padding-top: 3.5rem;
+
+    /* The tiles stay on screen while the essays are read beside them.
+
+       What was wrong: the essays are much the longer column — 4,674px of page against 2,245px of
+       tiles at 1440x900 — so the grid ran out at about the halfway mark and the rest of the scroll
+       was an empty black field beside the reading.
+
+       Sticky alone will not fix it, because the tiles are still taller than the window: 2,245px on
+       By group, 5,813px on Every object's 128, against 900px of screen. An element taller than the
+       viewport pins its top at the ceiling and puts its bottom permanently out of reach. Capping it
+       at the window and giving it its own scroll is what makes "never disappears" true rather than
+       "never moves".
+
+       This is the independently scrolling pane the split deliberately avoided when it was first
+       built. Keeping the collection in view while the essays are read is worth the trade, and only
+       this column pays it — the reading side still scrolls with the page exactly as before. */
+    position: sticky;
+    top: 0;
+    /* Grid items stretch to their row by default, which would leave a sticky element no room to
+       travel. Starting it also lets `overflow` resolve its automatic minimum size to zero, so a
+       4,674px column stops forcing the row open. */
+    align-self: start;
+    max-height: 100vh;
+    max-height: 100svh;
+    overflow-y: auto;
+    /* Clears the transport bar, which is fixed over the foot of the window while audio plays. The
+       last row of tiles would otherwise sit under it with no way to scroll them clear, the pane
+       being at its own end. Same 5rem allowance .reading makes for the same reason. */
+    padding-bottom: 5rem;
+    /* A default scrollbar is a bright rail down a black column. */
+    scrollbar-width: thin;
+    scrollbar-color: var(--dark-edge) transparent;
   }
 
   /* Stretched so the cream runs to the bottom of the page rather than stopping where the essays
