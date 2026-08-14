@@ -598,6 +598,43 @@ worktree is linked to the project that serves live v1. A `vercel --prod` run fro
 would replace the job-application build. Deploy previews only, or move to a separate project before
 that becomes a habit.
 
+## After the UI rework — remeasured
+
+Same harness, same conditions: `node scripts/measure.mjs http://127.0.0.1:4174`, throttled to
+130KB/s with 150ms latency, viewport 390×844, cache disabled.
+
+| Route | FCP | LCP | Transferred |
+|---|---|---|---|
+| `/` — eleven tiles | 1,460 → **996ms** | 3,832 → **2,896ms** | 419 → **266KB** |
+| `/g/floating-colonies` | 1,444 → **960ms** | 4,212 → 4,212ms | 173 → **122KB** |
+| `/o/1884.137.33` | 1,460 → **952ms** | 2,428 → **2,200ms** | 234 → **183KB** |
+| `/g/floating-colonies`, scrolled to the end | — | 7,956 → **4,216ms** | 552 → **501KB** |
+| `/g/sea-anemones` | — | **1,288ms** | 296 → **223KB** |
+| `/g/sea-anemones`, scrolled to the end | — | — | 1,373 → **1,300KB** |
+
+**First paint is a third faster on every route and no route got heavier.** The lazy-media saving
+still holds: the worst page in the collection is 223KB on arrival against 1,300KB scrolled to the
+bottom, so the ~1MB is still only paid by someone who actually reaches object nineteen.
+
+Page heights, `node scripts/heights.mjs http://127.0.0.1:4174 390x844`:
+
+| | before | phone, aspect-driven wells | desktop, two columns |
+|---|---|---|---|
+| sea anemones, 19 objects | 29.9 | **23.2** | **14.5** |
+| worms, 15 | 24.4 | 18.6 | 11.3 |
+| jellyfish, 13 | 21.8 | 19.6 | 12.4 |
+| floating colonies, 8 | 14.4 | 12.9 | 8.0 |
+| **all eleven** | **210.4** | **166.5** | **102.6** |
+
+**Thirty screen-heights is now twenty-three, and fourteen on a laptop.** It is still a long page.
+Nobody has yet scrolled any version of it in a gallery, and that remains question 2's real answer.
+
+Verified alongside: 34 contrast pairs across four palettes; the skip link is first in the tab order
+and lands focus in `<main>`; the display dialog moves focus in, traps it, marks `#root` inert and
+restores focus to its trigger on Escape; 200% text produces no horizontal overflow on a 390px
+phone; Arabic mirrors the layout without flipping the photographs; and the narration plays with the
+spoken word highlighted and kept on screen.
+
 ## Scripts
 
 | | |

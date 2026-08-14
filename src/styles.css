@@ -966,8 +966,14 @@ a {
   direction: ltr;
 }
 
+/* These two carry no dir of their own — the back link is translated chrome and the credit line is
+   assembled from an accession, a measurement and a rights string — so they follow the page.
+
+   .object-catalogue used to be in this list and should not have been. It carries dir from
+   langAttrs(), because it is usually an untranslated Latin binomial, and forcing rtl on top of
+   that right-aligned English underneath a left-aligned English heading. Where the catalogue name
+   IS translated its own dir attribute already handles it. */
 [dir='rtl'] .back,
-[dir='rtl'] .object-catalogue,
 [dir='rtl'] .object-meta {
   direction: rtl;
 }

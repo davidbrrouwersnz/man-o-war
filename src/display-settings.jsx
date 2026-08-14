@@ -7,6 +7,7 @@
 // keyboard behaviour and state announcement already correct, and this is the one dialog in the app
 // that must not be clever.
 
+import { useEffect } from 'react'
 import { TEXT_SCALES, useA11y } from './a11y.jsx'
 import { useT } from './lang.jsx'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
@@ -14,6 +15,20 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 export default function DisplayPanel({ open, onOpenChange }) {
   const [t] = useT()
   const { prefs, set } = useA11y()
+
+  // §18: "The sheet must implement the modal behaviour it declares — focus moved in, Tab trapped,
+  // focus restored on close, background inert. v1 declared role="dialog" and implemented none of
+  // it." Base UI does the first three, and marks #root aria-hidden — which hides the page from a
+  // screen reader but leaves every link in it still focusable. `inert` is the attribute that does
+  // both. Safe to set here because the dialog is portalled to a sibling of #root, not inside it.
+  useEffect(() => {
+    const root = document.getElementById('root')
+    if (!root || !open) return
+    root.inert = true
+    return () => {
+      root.inert = false
+    }
+  }, [open])
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>

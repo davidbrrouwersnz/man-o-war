@@ -117,7 +117,14 @@ if (process.env.LOCALE) {
 if (process.env.SEED) {
   const entries = Object.entries(JSON.parse(process.env.SEED))
   await send('Page.addScriptToEvaluateOnNewDocument', {
-    source: entries.map(([k, v]) => `localStorage.setItem(${JSON.stringify(k)}, ${JSON.stringify(JSON.stringify(v))});`).join(''),
+    // Strings are stored raw. localStorage holds `lang` as a bare code, so JSON-stringifying it
+    // would write `"ar"` with the quotes included and i18n.js would reject it as unknown.
+    source: entries
+      .map(([k, v]) => {
+        const raw = typeof v === 'string' ? v : JSON.stringify(v)
+        return `localStorage.setItem(${JSON.stringify(k)}, ${JSON.stringify(raw)});`
+      })
+      .join(''),
   })
 }
 
