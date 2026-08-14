@@ -1,6 +1,7 @@
 // A group page: the panel, every object in the group inline, and an ending in words (§10).
 
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react'
 import { BY_CODE } from '../i18n.js'
 import { langAttrs, useLang, useT } from '../lang.jsx'
 import { Spoken, blocksOf } from '../audio.jsx'
@@ -242,7 +243,7 @@ function GroupPage({ route, go }) {
     <main className="reading" id="main" tabIndex={-1}>
       <div className="page-top">
         <a className="back" href="/" onClick={go('/')}>
-          ← {t('ui.backToCollection')}
+          <ArrowLeftIcon aria-hidden="true" focusable="false" /> {t('ui.backToCollection')}
         </a>
         <Tools />
       </div>
@@ -282,14 +283,14 @@ function GroupPage({ route, go }) {
       <nav className="group-nav">
         {prev ? (
           <a href={`/g/${prev.slug}`} onClick={go(`/g/${prev.slug}`)}>
-            ← {prev.title}
+            <ArrowLeftIcon aria-hidden="true" focusable="false" /> {prev.title}
           </a>
         ) : (
           <span />
         )}
         {next && (
           <a href={`/g/${next.slug}`} onClick={go(`/g/${next.slug}`)}>
-            {next.title} →
+            {next.title} <ArrowRightIcon aria-hidden="true" focusable="false" />
           </a>
         )}
       </nav>

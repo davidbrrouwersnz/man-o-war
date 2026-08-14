@@ -2,6 +2,7 @@
 // button (§18).
 
 import { Suspense, lazy, useState } from 'react'
+import { ContrastIcon, GlobeIcon } from 'lucide-react'
 import { useLang, useT } from '../lang.jsx'
 import { SUPPORTED } from '../collection.js'
 
@@ -24,17 +25,9 @@ function LanguagePicker() {
       {/* The word "Language" is hidden, not deleted. An icon is a hint, not a name — a select with
           no accessible name is announced as just "combo box", and the one control on the page a
           visitor most needs when they cannot read the page is the one that stops saying what it is.
-          So the globe carries the meaning visually and the word carries it to a screen reader.
-          Drawn inline rather than fetched: no request, and it inherits the text colour. */}
+          So the globe carries the meaning visually and the word carries it to a screen reader. */}
       <span className="visually-hidden">{t('ui.language')}</span>
-      <svg className="lang-globe" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
-        <g fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
-          <circle cx="12" cy="12" r="9" />
-          <path d="M3 12h18" />
-          {/* The two meridians are what stop it reading as a clock face. */}
-          <path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18Z" />
-        </g>
-      </svg>
+      <GlobeIcon className="lang-globe" size={18} aria-hidden="true" focusable="false" />
       <select value={code} onChange={(e) => setCode(e.target.value)}>
         {SUPPORTED.map((l) => (
           <option key={l.code} value={l.code} lang={l.code}>
@@ -69,12 +62,9 @@ function DisplaySettings() {
           setOpen(true)
         }}
       >
-        {/* The half-filled circle is the conventional contrast glyph. Drawn inline for the same
-            reason as the globe: no request, and it takes the surrounding text colour. */}
-        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
-          <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="1.6" />
-          <path d="M12 3a9 9 0 0 1 0 18Z" fill="currentColor" />
-        </svg>
+        {/* The half-filled circle is the conventional contrast glyph, and it is what this panel is
+            mostly for. */}
+        <ContrastIcon size={18} aria-hidden="true" focusable="false" />
       </button>
       {wanted && (
         <Suspense fallback={null}>

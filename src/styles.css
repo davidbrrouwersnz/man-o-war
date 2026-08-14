@@ -323,13 +323,34 @@ a {
 
 /* --------------------------------------------------- the display dialog */
 
-/* The icons carry a size attribute so they render before CSS arrives, but they should grow with
-   the text-size setting like everything else — an 18px glyph beside 32px type reads as a
-   rendering fault. The 44px minimum on the button is a floor, not a size, so it still holds. */
-.tool-button svg,
-.lang-globe {
+/* ------------------------------------------------------------------ icons
+
+   Every icon in the app is a lucide glyph, and lucide-react stamps `lucide` on each one — so one
+   rule sizes the lot, including any added later.
+
+   In em, not px, because §18 makes large text the primary vision provision: an 18px glyph beside
+   32px type reads as a rendering fault. The size attribute lucide writes is a pre-CSS fallback, not
+   the size. The 44px minimum on the buttons is a floor rather than a size, so it still holds.
+
+   display and vertical-align only reach the two inline cases, the back link and the prev/next pair;
+   the rest sit in flex or grid parents that ignore both. Tailwind's Preflight sets every svg to
+   `display: block`, which is right for a figure and wrong for a glyph inside a sentence: it put the
+   back arrow on a line of its own above the word. This layer comes after Preflight's, so it wins. */
+svg.lucide {
   width: 1.15em;
   height: 1.15em;
+  flex: none;
+  display: inline-block;
+  vertical-align: -0.2em;
+}
+
+/* The ← and → these replaced were mirrored for free: both are Bidi_Mirrored characters, so the
+   browser turned them round in an Arabic page. A drawing gets no such help and has to be asked.
+   Only the arrows that point along the reading — §7's "mirror the layout, do not mirror the media",
+   and a back arrow is layout. The transport's skip pair is deliberately not here; see AudioBar. */
+[dir='rtl'] .back svg,
+[dir='rtl'] .group-nav svg {
+  transform: scaleX(-1);
 }
 
 /* Native radios and checkboxes, in the brand rather than the operating system's blue. */

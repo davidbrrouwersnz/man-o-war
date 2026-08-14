@@ -2,6 +2,7 @@
 // media well.
 
 import { useEffect, useRef, useState } from 'react'
+import { PauseIcon, PlayIcon } from 'lucide-react'
 import { langAttrs, useT } from '../lang.jsx'
 import { Spoken, useAudio } from '../audio.jsx'
 
@@ -46,7 +47,9 @@ function Listen({ queue, available, note, pending = false }) {
         disabled={pending}
         aria-label={playing ? t('ui.listenStop') : `${t('ui.listen')} — ${queue.title}`}
       >
-        <span aria-hidden="true">{playing ? '⏸' : '▶'}</span>
+        {playing
+          ? <PauseIcon aria-hidden="true" focusable="false" />
+          : <PlayIcon aria-hidden="true" focusable="false" />}
         {playing ? t('ui.listenStop') : t('ui.listen')}
       </button>
       {note && <span className="listen-note">{note}</span>}

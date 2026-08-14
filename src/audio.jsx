@@ -13,6 +13,7 @@
 //   - cues map one-to-one onto printed segments, generated at production time. We only read them.
 
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react'
+import { PauseIcon, PlayIcon, SkipBackIcon, SkipForwardIcon, XIcon } from 'lucide-react'
 import { useT } from './lang.jsx'
 import { useA11y } from './a11y.jsx'
 
@@ -436,8 +437,11 @@ export function AudioBar() {
         </div>
 
         <div className="audio-controls">
+          {/* Not mirrored under dir="rtl", unlike the back and prev/next arrows. These point along
+              the recording rather than along the reading, and a tape does not run the other way for
+              an Arabic listener. Matches the convention every other player follows. */}
           <button type="button" onClick={() => a.skip(-1)} disabled={at === 0} aria-label={t('ui.audioPrevious')}>
-            <span aria-hidden="true">⏮</span>
+            <SkipBackIcon aria-hidden="true" focusable="false" />
           </button>
           <button
             type="button"
@@ -445,7 +449,9 @@ export function AudioBar() {
             onClick={a.toggle}
             aria-label={playing ? t('ui.audioPause') : t('ui.audioPlay')}
           >
-            <span aria-hidden="true">{playing ? '⏸' : '▶'}</span>
+            {playing
+              ? <PauseIcon aria-hidden="true" focusable="false" />
+              : <PlayIcon aria-hidden="true" focusable="false" />}
           </button>
           <button
             type="button"
@@ -453,7 +459,7 @@ export function AudioBar() {
             disabled={at + 1 >= queue.items.length}
             aria-label={t('ui.audioNext')}
           >
-            <span aria-hidden="true">⏭</span>
+            <SkipForwardIcon aria-hidden="true" focusable="false" />
           </button>
 
           <label className="audio-rate">
@@ -472,7 +478,7 @@ export function AudioBar() {
           </span>
 
           <button type="button" onClick={a.stop} aria-label={t('ui.audioStop')}>
-            <span aria-hidden="true">✕</span>
+            <XIcon aria-hidden="true" focusable="false" />
           </button>
         </div>
       </div>
