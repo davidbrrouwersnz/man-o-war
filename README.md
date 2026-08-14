@@ -83,18 +83,25 @@ photographs, because only media near the viewport loads.
 
 ## What is built, and what is not
 
-**Built.** The harvest, with ten assertions that fail the build if the data shifts. `/` — the eleven
-group tiles. `/g/floating-colonies` — one group page in full: panel, eight objects inline, ending.
-`/o/{accession}` — for all 128, resolving to the group page and scrolling to the object. Lazy media,
-a dark grid, and a reading area that follows `prefers-color-scheme`.
+**Built.** The harvest, with assertions that fail the build if the data shifts — including a
+non-empty story on all 128 (§20). All eleven group pages. `/` — the eleven group tiles, with every
+object as a second tab. `/o/{accession}` for all 128, resolving to the group page and scrolling to
+the object. Search across the collection. The two reading essays. Nine languages with RTL. A
+552-file audio guide with word-level read-along, a scrubber and lock-screen controls. Lazy media, a
+dark grid, and a reading area that follows `prefers-color-scheme`.
 
-**Not built, deliberately.** The other ten group pages, the full 128-tile grid, search, the deeper
-content layers, trails, the quiz, audio, video, sign video, other languages, offline support and
-NFC. This is roughly the 10% of the specified product that could be built before the writing exists.
+**A desktop layout.** §10's media-beside-text, at 64rem and above. It roughly halves every group
+page: sea anemones runs 22.8 screen-heights in one column and 14.5 in two.
 
-**One story exists.** `1884.137.33`, 231 words, three segments. The other 127 objects show the
-catalogue record's own description, **visibly badged as a placeholder** — because one of the things
-worth testing is whether a short entry sitting beside a real one reads as neglect.
+**Text size and high contrast** (§18), persisted, reachable from every route alongside the language
+picker — which matters most on the QR route, where a visitor lands on a group page rather than here.
+
+**Not built, deliberately.** Trails, the quiz, video, sign video, offline support, NFC, the
+seen-set, and deep zoom — §12 defers that last one until the Museum can export larger derivatives.
+
+**All 128 stories are written**, 95 words median. The depth cliff the prototype was built to test —
+one long entry beside 127 placeholders — no longer exists, and `scripts/split.mjs` now fails the
+build if a story is ever emptied.
 
 ---
 

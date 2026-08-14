@@ -274,6 +274,12 @@ a {
   gap: 0.4rem;
 }
 
+/* On the collection page the tools stand alone above the title rather than sharing a row with a
+   back link, so they carry the gap the language picker used to. */
+.home-head .tools {
+  margin: 0 0 1.5rem;
+}
+
 .page-top {
   display: flex;
   align-items: center;
@@ -525,10 +531,6 @@ a {
   color: var(--dark-ink-soft);
 }
 
-.tile-stub {
-  color: var(--dark-ink-soft);
-}
-
 /* The two reading essays, on the collection page below the grid. Light ground on the dark home
    page: the grid is dark because 79 of the 128 primary images are objects on black, and long-form
    reading does not belong on that. The switch also does the work a page break used to — you can
@@ -558,26 +560,6 @@ a {
   letter-spacing: -0.02em;
   font-weight: 400;
   margin: 0 0 0.75rem;
-}
-
-/* The essays inherit the group page's reading styles, but their headings dropped a level when they
-   moved here — the collection title is the h1 now — so the rules follow them down. */
-.essay .layer-section h3 {
-  font-size: var(--step--1);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 700;
-  color: var(--ink-meta);
-  margin: 0 0 0.5rem;
-}
-
-.essay .layer-sources h3 {
-  font-size: var(--step--1);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 700;
-  color: var(--ink-meta);
-  margin: 0 0 0.5rem;
 }
 
 /* ------------------------------------------------------------------ group page */
@@ -648,11 +630,6 @@ a {
   font-size: var(--step--1);
   color: var(--ink-meta);
   margin: 0 0 1.5rem;
-}
-
-.cost-caveat {
-  display: block;
-  margin-top: 0.2rem;
 }
 
 .group-panel {
@@ -804,7 +781,15 @@ a {
   margin: 0 0 1.5rem;
 }
 
-.story h3 {
+/* The small uppercase heading above a passage of reading. It was written out five times — once
+   for object stories, twice for the essays, and twice more for a heading level the essays stopped
+   using when they moved onto the collection page. One rule, three live places.
+
+   The essays' own headings are h3 rather than h2 because the collection title holds the h1 there;
+   a page with two h1s reads to a screen reader as two documents stapled together. */
+.story h3,
+.essay .layer-section h3,
+.essay .layer-sources h3 {
   font-size: var(--step--1);
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -817,16 +802,34 @@ a {
   margin: 0 0 0.9rem;
 }
 
-/* The stub is meant to look temporary. Question 2 is partly whether it reads as neglect. */
-.is-placeholder {
+/* Three asides shared this shape and each was written out separately: the placeholder banner
+   on an object with no story yet, the identification note, and the language fallback notice.
+   All three are small meta text set off by a left rule, and [dir='rtl'] already flips them
+   together further down.
+
+   The placeholder path is still reachable-by-design rather than dead: scripts/split.mjs now
+   asserts a non-empty story on all 128 (§20), so it should never render — but an app that says
+   "no story yet" beats one that renders an empty block if that assertion is ever removed. */
+.is-placeholder,
+.identification,
+.fallback-notice {
   border-left: 2px solid var(--rule);
+  padding-left: 0.75rem;
+}
+
+.placeholder-flag,
+.identification,
+.fallback-notice {
+  font-size: var(--step--1);
+  line-height: 1.45;
+  color: var(--ink-meta);
+}
+
+.is-placeholder {
   padding-left: 1rem;
 }
 
 .placeholder-flag {
-  font-size: var(--step--1);
-  line-height: 1.45;
-  color: var(--ink-meta);
   margin: 0 0 0.6rem !important;
 }
 
@@ -836,11 +839,6 @@ a {
 }
 
 .identification {
-  font-size: var(--step--1);
-  line-height: 1.45;
-  color: var(--ink-meta);
-  border-left: 2px solid var(--rule);
-  padding-left: 0.75rem;
   margin: 1.2rem 0 0;
 }
 
@@ -903,30 +901,53 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  margin: 0 0 1.75rem;
+  margin: 0;
   font-size: var(--step--1);
   cursor: pointer;
 }
 
+/* These were written in the dark tokens, because until now the picker existed only in the
+   collection header and that header is black whatever the device is doing. Putting it on every
+   route (§7 — it has to be reachable from a QR arrival) put near-white text on cream paper, which
+   is the same mistake the Listen control had. Reading-surface colours are the default now and the
+   dark header overrides them, rather than the other way round. */
 .lang-globe {
-  color: var(--dark-ink-soft);
+  color: var(--ink-meta);
   flex: none;
 }
 
 .lang-picker:hover .lang-globe,
 .lang-picker:focus-within .lang-globe {
-  color: var(--dark-ink);
+  color: var(--ink);
 }
 
 .lang-picker select {
   font: inherit;
-  color: var(--dark-ink);
+  color: var(--ink);
   background: transparent;
-  border: 1px solid var(--dark-edge);
+  border: 1px solid var(--edge);
   border-radius: 3px;
   padding: 0.3rem 0.4rem;
+  /* The 44px floor is on the tool button beside it; matching it here keeps the row even. */
+  min-height: 44px;
 }
 
+.home-head .lang-globe {
+  color: var(--dark-ink-soft);
+}
+
+.home-head .lang-picker:hover .lang-globe,
+.home-head .lang-picker:focus-within .lang-globe {
+  color: var(--dark-ink);
+}
+
+.home-head .lang-picker select {
+  color: var(--dark-ink);
+  border-color: var(--dark-edge);
+}
+
+/* The option list is drawn by the operating system, not by this stylesheet, so it is pinned to a
+   light pair rather than left to inherit a colour the popup will not use. */
 .lang-picker option {
   color: #111;
   background: #fff;
@@ -935,11 +956,6 @@ a {
 /* The stated fallback. §7: silent degradation reads as a broken app; a stated one reads as an
    honest one, and it also tells the Museum which languages to fund next. */
 .fallback-notice {
-  font-size: var(--step--1);
-  line-height: 1.45;
-  color: var(--ink-meta);
-  border-left: 2px solid var(--rule);
-  padding-left: 0.75rem;
   margin: 0 0 0.8rem;
 }
 
@@ -1001,10 +1017,6 @@ a {
 
 .tile-small {
   font-size: var(--step--1) !important;
-}
-
-.back-dark {
-  color: var(--dark-ink-soft);
 }
 
 .loading {
@@ -1087,15 +1099,6 @@ a {
   margin: 0 0 2rem;
 }
 
-.layer-section h2 {
-  font-size: var(--step--1);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 700;
-  color: var(--ink-meta);
-  margin: 0 0 0.6rem;
-}
-
 .layer-section p {
   margin: 0 0 0.9rem;
 }
@@ -1104,15 +1107,6 @@ a {
   border-top: 1px solid var(--rule);
   padding-top: 1.5rem;
   margin-top: 2.5rem;
-}
-
-.layer-sources h2 {
-  font-size: var(--step--1);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 700;
-  color: var(--ink-meta);
-  margin: 0 0 0.7rem;
 }
 
 .layer-sources ul {
@@ -1124,11 +1118,6 @@ a {
   font-size: var(--step-0);
   margin-bottom: 0.5rem;
   color: var(--ink-soft);
-}
-
-.layer-nav {
-  flex-direction: column;
-  gap: 0.6rem;
 }
 
 /* §10: named continuations at the end of a group page, never a generic "more". */
@@ -1154,10 +1143,6 @@ a {
 
 .stub-note {
   color: var(--ink-soft);
-}
-
-.stub-link {
-  font-size: var(--step-0);
 }
 
 /* ------------------------------------------------------------------ audio guide (§13)
@@ -1264,14 +1249,6 @@ a {
 .audio-seek input:focus-visible {
   outline: 2px solid var(--brand);
   outline-offset: -2px;
-}
-
-.audio-follow {
-  color: var(--ink-meta);
-}
-
-.audio-follow.is-on {
-  color: var(--brand);
 }
 
 .audio-row {

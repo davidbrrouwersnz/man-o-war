@@ -33,6 +33,30 @@ const index = { groups: [], groupOf: {} }
 const BY_ORDER = new Map(groups.groups.map((g) => [g.slug, g.title]))
 let chunkTotal = 0
 
+// §20: "Before launch, not before step 3: assert a non-empty `story` on all 127. The commitment in
+// §6 is a build assertion or it is a wish."
+//
+// All 128 are written, so this passes today. It exists so that the day one is emptied, deleted or
+// left half-authored, the build says so — rather than the page quietly rendering the cataloguer's
+// physical description in its place, which §6 forbids as a story.
+{
+  const missing = []
+  for (const g of groups.groups) {
+    for (const accession of g.accessions) {
+      const s = STORIES[accession]
+      const empty = !s || !Array.isArray(s.segments) || s.segments.length === 0 ||
+        s.segments.every((seg) => !String(seg.text ?? '').trim())
+      if (empty) missing.push(accession)
+    }
+  }
+  if (missing.length) {
+    throw new Error(
+      `§6/§20: ${missing.length} object(s) have no story: ${missing.slice(0, 8).join(', ')}` +
+        (missing.length > 8 ? ` and ${missing.length - 8} more` : '')
+    )
+  }
+}
+
 for (const g of groups.groups) {
   const panel = museum.panels[g.slug]
 
