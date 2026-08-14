@@ -1004,16 +1004,6 @@ svg.lucide {
    route (§7 — it has to be reachable from a QR arrival) put near-white text on cream paper, which
    is the same mistake the Listen control had. Reading-surface colours are the default now and the
    dark header overrides them, rather than the other way round. */
-.lang-globe {
-  color: var(--ink-meta);
-  flex: none;
-}
-
-.lang-picker:hover .lang-globe,
-.lang-picker:focus-within .lang-globe {
-  color: var(--ink);
-}
-
 .lang-picker select {
   font: inherit;
   color: var(--ink);
@@ -1023,15 +1013,6 @@ svg.lucide {
   padding: 0.3rem 0.4rem;
   /* The 44px floor is on the tool button beside it; matching it here keeps the row even. */
   min-height: 44px;
-}
-
-.home-head .lang-globe {
-  color: var(--dark-ink-soft);
-}
-
-.home-head .lang-picker:hover .lang-globe,
-.home-head .lang-picker:focus-within .lang-globe {
-  color: var(--dark-ink);
 }
 
 .home-head .lang-picker select {
@@ -1217,16 +1198,7 @@ svg.lucide {
     border-color: var(--edge);
   }
 
-  .home-head .lang-globe {
-    color: var(--ink-meta);
-  }
-
-  .home-head .lang-picker:hover .lang-globe,
-  .home-head .lang-picker:focus-within .lang-globe {
-    color: var(--ink);
-  }
-
-  .home-head .lang-picker select {
+    .home-head .lang-picker select {
     color: var(--ink);
     border-color: var(--edge);
   }

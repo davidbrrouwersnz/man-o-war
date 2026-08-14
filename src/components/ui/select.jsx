@@ -48,7 +48,12 @@ function SelectTrigger({
       {children}
       <SelectPrimitive.Icon
         render={
-          <ChevronDownIcon className="pointer-events-none size-4 text-muted-foreground" />
+          /* --control-ink-soft, not text-muted-foreground. That token is the reading
+            palette's grey, and on the permanently-dark collection header it put the chevron
+            at about 3.5:1 — over the 3:1 floor an affordance has to clear, but visibly
+            dimmer than the globe and the label beside it. The control token flips with the
+            ground, the way everything else in this header does. */
+          <ChevronDownIcon className="pointer-events-none size-4 text-[var(--control-ink-soft)]" />
         } />
     </SelectPrimitive.Trigger>
   );

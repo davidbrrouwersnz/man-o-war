@@ -29,7 +29,6 @@ function LanguagePicker() {
           visitor most needs when they cannot read the page is the one that stops saying what it is.
           So the globe carries the meaning visually and the word carries it to a screen reader. */}
       <span className="visually-hidden" id="lang-label">{t('ui.language')}</span>
-      <GlobeIcon className="lang-globe" size={18} aria-hidden="true" focusable="false" />
       {/* shadcn's Select. It replaces a native <select>, and that is a genuine trade rather than a
           free upgrade: the native one handed a phone its own full-screen picker, which is large,
           familiar and works with VoiceOver without anyone writing a line. What this buys back is
@@ -45,6 +44,16 @@ function LanguagePicker() {
         items={SUPPORTED.map((l) => ({ value: l.code, label: l.endonym }))}
       >
         <SelectTrigger className="lang-trigger min-h-11" size="touch" aria-labelledby="lang-label">
+          {/* Inside the control, not beside it: globe, language, chevron reads as one thing to
+              press. Loose, the globe was a label floating next to a button, and on a phone it was
+              a 18px target's worth of dead space that looked pressable and was not.
+
+              size-[1.15em] rather than the size prop, because the trigger forces every svg without
+              a size- class to 1rem — the class is how that selector is opted out of, and 1.15em is
+              what every other icon in the app uses. It has no colour of its own now; it takes the
+              trigger's, which is what puts it on the right side of the §15 boundary on the dark
+              collection header without a rule of its own. */}
+          <GlobeIcon className="lang-globe size-[1.15em]" aria-hidden="true" focusable="false" />
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
