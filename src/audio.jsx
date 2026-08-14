@@ -13,6 +13,8 @@
 //   - cues map one-to-one onto printed segments, generated at production time. We only read them.
 
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react'
+import { useT } from './lang.jsx'
+import { useA11y } from './a11y.jsx'
 
 const BASE = '/audio/en'
 export const RATES = [0.5, 0.75, 1, 1.25, 1.5, 2]
@@ -98,6 +100,15 @@ export function AudioProvider({ children }) {
   const [time, setTime] = useState(0)
   const [duration, setDuration] = useState(0)
   const [failed, setFailed] = useState(false)
+
+  // Read-along only works if the highlighted word is on screen, and until now nothing kept it
+  // there — the narration ran on while the visitor sat looking at a paragraph it had left. On by
+  // default because following the words is the whole point of §13's one-to-one cue mapping;
+  // switchable, because auto-scroll fights anyone who wants to read ahead or back. The switch is
+  // in Display settings (§18) rather than the player: it is a preference, and it should persist.
+  const { prefs } = useA11y()
+  const follow = prefs.followWords
+  const [t] = useT()
 
   const item = queue?.items[at] ?? null
 
@@ -242,6 +253,81 @@ export function AudioProvider({ children }) {
 
   const setRate = useCallback((r) => setRateRaw(r), [])
 
+  const seek = useCallback((seconds) => {
+    const audio = el.current
+    if (!audio || !Number.isFinite(seconds)) return
+    audio.currentTime = seconds
+    setTime(seconds)
+  }, [])
+
+  // Keep the spoken word on screen. Runs after the cue has rendered, so the <mark> exists.
+  //
+  // Only scrolls when the word has actually left the viewport — scrolling on every cue would
+  // twitch the page several times a second. The bottom margin clears the player, which is fixed
+  // over the end of the page.
+  useEffect(() => {
+    if (!follow || !playing) return
+    const mark = document.querySelector('.spoken-word')
+    if (!mark) return
+    const r = mark.getBoundingClientRect()
+    const bar = document.querySelector('.audio-bar')?.getBoundingClientRect().height ?? 0
+    const top = 72
+    const bottom = innerHeight - bar - 24
+    if (r.top >= top && r.bottom <= bottom) return
+    // §18 asks for prefers-reduced-motion on every transition. A smooth scroll that repeats for
+    // 137 minutes is exactly what that setting is for.
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches
+    mark.scrollIntoView({ block: 'center', behavior: reduced ? 'auto' : 'smooth' })
+  }, [cue, follow, playing])
+
+  // Lock screen, headphone buttons, car displays. A visitor walking a gallery with the phone in a
+  // pocket is the case §13's "plays across navigation" is really about, and without this the only
+  // way to pause is to take the phone out and find the bar.
+  useEffect(() => {
+    if (!('mediaSession' in navigator)) return
+    if (!queue || !item) {
+      navigator.mediaSession.metadata = null
+      navigator.mediaSession.playbackState = 'none'
+      return
+    }
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: item.label,
+      // For a single object the queue title and the first item's label are the same string, and a
+      // lock screen showing the same words twice reads as a bug.
+      artist: queue.title === item.label ? t('ui.collectionTitle') : queue.title,
+      album: 'Canterbury Museum',
+    })
+    navigator.mediaSession.playbackState = playing ? 'playing' : 'paused'
+  }, [queue, item, playing, t])
+
+  useEffect(() => {
+    if (!('mediaSession' in navigator)) return
+    const handlers = {
+      play: () => toggle(),
+      pause: () => toggle(),
+      previoustrack: () => skip(-1),
+      nexttrack: () => skip(1),
+      stop: () => stop(),
+    }
+    for (const [name, fn] of Object.entries(handlers)) {
+      try {
+        navigator.mediaSession.setActionHandler(name, fn)
+      } catch {
+        // Not every action is supported on every platform; an unsupported one throws and the
+        // rest still register.
+      }
+    }
+    return () => {
+      for (const name of Object.keys(handlers)) {
+        try {
+          navigator.mediaSession.setActionHandler(name, null)
+        } catch {
+          // As above.
+        }
+      }
+    }
+  }, [toggle, skip, stop])
+
   const value = {
     queue,
     at,
@@ -259,6 +345,7 @@ export function AudioProvider({ children }) {
     skip,
     stop,
     setRate,
+    seek,
   }
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>
@@ -292,44 +379,78 @@ const fmt = (s) => {
 
 export function AudioBar() {
   const a = useAudio()
+  const [t] = useT()
   if (!a?.queue) return null
   const { queue, at, playing, rate, time, duration, failed } = a
-  const pct = duration ? Math.min(100, (time / duration) * 100) : 0
+
+  // "134" is what a screen reader reads from a range whose value is seconds, which tells nobody
+  // anything. Spelled out, and singular and plural are separate keys rather than a naive "1
+  // minutes" — this is the one string in the app a blind visitor depends on to scrub.
+  const spoken = (s) => {
+    if (!Number.isFinite(s)) return t('ui.audioSeconds', { n: 0 })
+    const m = Math.floor(s / 60)
+    const sec = Math.floor(s % 60)
+    const mPart = m ? t(m === 1 ? 'ui.audioMinute' : 'ui.audioMinutes', { n: m }) : ''
+    const sPart = t(sec === 1 ? 'ui.audioSecond' : 'ui.audioSeconds', { n: sec })
+    return m ? `${mPart} ${sPart}` : sPart
+  }
 
   return (
-    <div className="audio-bar" role="region" aria-label="Audio guide">
-      <div className="audio-progress" aria-hidden="true">
-        <span style={{ width: `${pct}%` }} />
-      </div>
+    <div className="audio-bar" role="region" aria-label={t('ui.audioGuide')}>
+      {/* A real slider rather than the read-only bar this used to be. Native input[type=range]
+          because it arrives with role="slider", the arrow/Home/End keys and drag-free keyboard
+          operation already correct — SC 2.5.7 requires that a drag is never the only way. */}
+      <label className="audio-seek">
+        <span className="visually-hidden">{t('ui.audioPosition')}</span>
+        <input
+          type="range"
+          min="0"
+          max={Number.isFinite(duration) && duration > 0 ? duration : 0}
+          step="0.5"
+          value={Math.min(time, duration || 0)}
+          onChange={(e) => a.seek(Number(e.target.value))}
+          aria-valuetext={t('ui.audioElapsed', { elapsed: spoken(time), total: spoken(duration) })}
+          disabled={!duration}
+        />
+      </label>
 
       <div className="audio-row">
         <div className="audio-what">
           <strong>{queue.title}</strong>
           {/* Announced politely so a screen-reader user hears the section change without having
               the narration itself interrupted. */}
+          {/* The first item of a group tour is the panel, whose label is the group title — so
+              without this the bar printed the same sentence twice, once above the other. */}
           <span aria-live="polite">
-            {queue.items[at]?.label} · {at + 1} of {queue.items.length}
+            {queue.items[at]?.label && queue.items[at].label !== queue.title
+              ? `${queue.items[at].label} · ${t('ui.audioSection', { n: at + 1, total: queue.items.length })}`
+              : t('ui.audioSection', { n: at + 1, total: queue.items.length })}
           </span>
         </div>
 
         <div className="audio-controls">
-          <button type="button" onClick={() => a.skip(-1)} disabled={at === 0} aria-label="Previous section">
-            ⏮
+          <button type="button" onClick={() => a.skip(-1)} disabled={at === 0} aria-label={t('ui.audioPrevious')}>
+            <span aria-hidden="true">⏮</span>
           </button>
-          <button type="button" className="audio-play" onClick={a.toggle} aria-label={playing ? 'Pause' : 'Play'}>
-            {playing ? '⏸' : '▶'}
+          <button
+            type="button"
+            className="audio-play"
+            onClick={a.toggle}
+            aria-label={playing ? t('ui.audioPause') : t('ui.audioPlay')}
+          >
+            <span aria-hidden="true">{playing ? '⏸' : '▶'}</span>
           </button>
           <button
             type="button"
             onClick={() => a.skip(1)}
             disabled={at + 1 >= queue.items.length}
-            aria-label="Next section"
+            aria-label={t('ui.audioNext')}
           >
-            ⏭
+            <span aria-hidden="true">⏭</span>
           </button>
 
           <label className="audio-rate">
-            <span className="visually-hidden">Speed</span>
+            <span className="visually-hidden">{t('ui.audioSpeed')}</span>
             <select value={rate} onChange={(e) => a.setRate(Number(e.target.value))}>
               {RATES.map((r) => (
                 <option key={r} value={r}>
@@ -343,13 +464,13 @@ export function AudioBar() {
             {fmt(time)} / {fmt(duration)}
           </span>
 
-          <button type="button" onClick={a.stop} aria-label="Stop and close the audio guide">
-            ✕
+          <button type="button" onClick={a.stop} aria-label={t('ui.audioStop')}>
+            <span aria-hidden="true">✕</span>
           </button>
         </div>
       </div>
 
-      {failed && <p className="audio-failed">That section would not play.</p>}
+      {failed && <p className="audio-failed">{t('ui.audioFailed')}</p>}
     </div>
   )
 }

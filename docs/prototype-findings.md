@@ -553,14 +553,28 @@ kind of thing that only fails in production.
 
 ## What is built, and what is not
 
-**Built:** the harvest with ten assertions; `/` with all eleven tiles; `/g/floating-colonies` in
-full; `/o/{accession}` for all 128 accessions; lazy media; `replaceState` on scroll and `pushState`
-on jumps; dark grid and dark wells with a `prefers-color-scheme` reading area; the one real story;
-127 labelled placeholders.
+**Built:** the harvest with its assertions; `/` with all eleven tiles and every object as a second
+tab; all eleven group pages; `/o/{accession}` for all 128 accessions; search; the two reading
+essays; lazy media; `replaceState` on scroll and `pushState` on jumps; dark grid and dark wells
+with a `prefers-color-scheme` reading area; **all 128 stories**; nine languages with RTL; the
+audio guide; the desktop layout; text-size and high-contrast controls.
 
-**Not built, per scope:** the other ten group pages (they render a stub page naming the one that is
-built), `/all`, search, layers 3–5, trails, quiz, audio, video, NZSL, languages, service worker,
-NFC, the seen-set, desktop's sticky-media behaviour.
+**Not built, per scope:** trails, quiz, video, NZSL, service worker, NFC, the seen-set, deep zoom.
+
+> **This section is superseded from here down.** Everything below was measured against the build as
+> it stood when only one story existed and the media well was a fixed 70dvh. Two of its findings
+> have since been overtaken:
+>
+> - **The depth cliff is gone.** All 128 stories are written, 95 words median, minimum 78. The
+>   question "does a short entry beside a real one read as neglect" no longer has a subject, and
+>   `scripts/split.mjs` fails the build if a story is emptied.
+> - **The page heights are smaller.** The well now takes its aspect from the manifest rather than
+>   being a fixed 70dvh — 89 of the 128 photographs are landscape, so the old well was on average
+>   49% empty black. Sea anemones went 29.9 → 23.2 screen-heights on a phone, and 22.8 → 14.5 on a
+>   1440px screen once the two-column desktop layout arrived. Reproduce with
+>   `node scripts/heights.mjs http://127.0.0.1:4174 390x844`.
+>
+> The judgment calls below still stand: nobody has held any version of this in a gallery.
 
 **Confirmed on a real phone.** Deployed as a Vercel preview and opened on a physical device: the
 three routes load and the app functions. That retires the "never left the emulator" caveat.
@@ -584,6 +598,43 @@ worktree is linked to the project that serves live v1. A `vercel --prod` run fro
 would replace the job-application build. Deploy previews only, or move to a separate project before
 that becomes a habit.
 
+## After the UI rework — remeasured
+
+Same harness, same conditions: `node scripts/measure.mjs http://127.0.0.1:4174`, throttled to
+130KB/s with 150ms latency, viewport 390×844, cache disabled.
+
+| Route | FCP | LCP | Transferred |
+|---|---|---|---|
+| `/` — eleven tiles | 1,460 → **996ms** | 3,832 → **2,896ms** | 419 → **266KB** |
+| `/g/floating-colonies` | 1,444 → **960ms** | 4,212 → 4,212ms | 173 → **122KB** |
+| `/o/1884.137.33` | 1,460 → **952ms** | 2,428 → **2,200ms** | 234 → **183KB** |
+| `/g/floating-colonies`, scrolled to the end | — | 7,956 → **4,216ms** | 552 → **501KB** |
+| `/g/sea-anemones` | — | **1,288ms** | 296 → **223KB** |
+| `/g/sea-anemones`, scrolled to the end | — | — | 1,373 → **1,300KB** |
+
+**First paint is a third faster on every route and no route got heavier.** The lazy-media saving
+still holds: the worst page in the collection is 223KB on arrival against 1,300KB scrolled to the
+bottom, so the ~1MB is still only paid by someone who actually reaches object nineteen.
+
+Page heights, `node scripts/heights.mjs http://127.0.0.1:4174 390x844`:
+
+| | before | phone, aspect-driven wells | desktop, two columns |
+|---|---|---|---|
+| sea anemones, 19 objects | 29.9 | **23.2** | **14.5** |
+| worms, 15 | 24.4 | 18.6 | 11.3 |
+| jellyfish, 13 | 21.8 | 19.6 | 12.4 |
+| floating colonies, 8 | 14.4 | 12.9 | 8.0 |
+| **all eleven** | **210.4** | **166.5** | **102.6** |
+
+**Thirty screen-heights is now twenty-three, and fourteen on a laptop.** It is still a long page.
+Nobody has yet scrolled any version of it in a gallery, and that remains question 2's real answer.
+
+Verified alongside: 34 contrast pairs across four palettes; the skip link is first in the tab order
+and lands focus in `<main>`; the display dialog moves focus in, traps it, marks `#root` inert and
+restores focus to its trigger on Escape; 200% text produces no horizontal overflow on a 390px
+phone; Arabic mirrors the layout without flipping the photographs; and the narration plays with the
+spoken word highlighted and kept on screen.
+
 ## Scripts
 
 | | |
@@ -591,3 +642,6 @@ that becomes a habit.
 | `node scripts/harvest.mjs` | Re-harvests 128 records, rebuilds `src/data/manifest.json`, runs the assertions. ~9s of Museum server time. |
 | `node scripts/budget.mjs` | Manifest size breakdown and reading-time arithmetic. |
 | `node scripts/measure.mjs <origin>` | The throttled measurements in this document. Needs `npm run preview` running. |
+| `node scripts/contrast.mjs` | Asserts every rendered colour pair against its WCAG floor, across all four palettes. Reads the values out of `src/styles.css`, so they cannot drift. Runs in `prebuild`. |
+| `node scripts/heights.mjs <origin> [WxH]` | Page height for all eleven group pages, in screen-heights. The number question 2 argues about, at any viewport. |
+| `node scripts/shot.mjs <origin> <out> [path] [WxH] [light\|dark] [fold\|full] [scrollPx]` | A faithful screenshot, plus horizontal-overflow and console reporting. `SEED=` pre-seeds localStorage (text size, contrast, language); `CLICK=` presses a selector first, for anything behind a button. **Not** `grid-shot.mjs` — that one forces the grid to two columns so eleven tiles fit one frame, which makes it a contact sheet rather than a rendering. |

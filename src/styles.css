@@ -1,33 +1,113 @@
 /* The reading area follows prefers-color-scheme. The grid and the media wells are always dark —
    79 of the 128 primary images are the object on pure black. */
 
+/* Tailwind is imported in pieces rather than as one `@import "tailwindcss"` so the layer order is
+   ours rather than its. Everything hand-written below sits in `app`, between Preflight and the
+   utilities — so a utility class can still override a component when we reach for one, but
+   Preflight can never quietly beat a rule we wrote on purpose.
+
+   Unlayered CSS outranks every layer, so leaving the 900 lines below unlayered would have made
+   utility classes inert on exactly the elements we style. The `@layer app { … }` wrapper at the
+   end of this file is what prevents that; it changes nothing about how these rules rank against
+   each other. */
+@layer theme, base, shadcn, app, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/preflight.css' layer(base);
+@import 'tailwindcss/utilities.css' layer(utilities);
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+/* shadcn's own default is `(&:is(.dark *))` — a class we never set, because §15 says the reading
+   area follows the device. Left as generated, every shadcn component would have rendered light on
+   a dark-scheme phone while the page around it went dark. Both branches, so an explicit .dark
+   class still works if we ever add a manual theme toggle. */
+@custom-variant dark {
+  @media (prefers-color-scheme: dark) {
+    &:not(.light *) {
+      @slot;
+    }
+  }
+  &:is(.dark *) {
+    @slot;
+  }
+}
+
+@layer app {
+
+/* ------------------------------------------------------------------ tokens
+
+   Every colour pair below is asserted by `node scripts/contrast.mjs`, which fails the build if one
+   drifts. That check exists because §15's control-border bug has now been shipped twice: v1 had
+   them at ~1.75:1 against a 3:1 floor, v2 said "fix this", and v2 shipped them at 1.30:1.
+
+   The single most useful thing here is that `--ink-faint` is gone. It was one token doing two jobs
+   at 3.38:1 — fine as a control border (floor 3:1), failing as 12px text (floor 4.5:1). Splitting
+   it into `--edge` and `--ink-meta` fixes both without inventing a new palette. */
+
 :root {
-  --ink: #16130f;
-  --ink-soft: #5d564d;
-  --ink-faint: #8b8378;
+  --ink: #16130f; /* 16.73:1 on --paper — body */
+  --ink-soft: #5d564d; /*  6.53:1 — secondary prose */
+  --ink-meta: #666666; /*  5.19:1 — captions, eyebrows. The Museum's own dkGrey */
+  --edge: #8b8378; /*  3.38:1 — control boundaries only, never text */
+  --rule: #ddd6ca; /*  decorative hairlines. Not a control edge */
   --paper: #f6f3ee;
-  --rule: #ddd6ca;
-  --flag: #7a3b12;
-  --flag-bg: #f4e6d8;
+
+  /* Canterbury Museum's red is #EE3424. It gives 3.68:1 on this paper, which is under the floor
+     for text, so the light ground uses a darkened #C42718 (5.20:1) and the dark grounds use the
+     brand value itself. Same red, two renderings — the app already does this for ink. */
+  --brand: #c42718;
+  --brand-bg: #f7e2de; /* --brand on this: 4.63:1 */
+
+  /* Deliberately NOT the brand red. This tints the word currently being spoken, for up to 137
+     minutes. A warm neutral can be read over; an alarm colour cannot. --ink on it: 15.13:1 */
+  --mark-bg: #f4e6d8;
+
+  /* §9: the grid and the media wells are dark whatever the device is doing, because 79 of the 128
+     primary photographs are the object on pure black. These never invert. */
   --dark: #000;
   --dark-2: #0c0c0d;
-  --dark-ink: #f2efe9;
-  --dark-ink-soft: #9d968b;
+  --dark-ink: #f2efe9; /* 18.30:1 on black */
+  --dark-ink-soft: #9d968b; /*  7.17:1 */
+  --dark-edge: #6a6259; /*  3.50:1 — control boundaries on black */
+  --dark-rule: #2a2a2c; /*  decorative only */
+  --dark-brand: #ee3424; /*  5.15:1 */
 
-  --measure: 34rem;
-  --serif: ui-serif, Georgia, 'Iowan Old Style', 'Times New Roman', serif;
-  --sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  /* In ch, not rem. A measure is a character count — 62ch is ~550px at the default size, which is
+     what this was before — and ch tracks the font size, so the line stays about 62 characters at
+     every text-size setting. In rem it would have doubled to 1088px at 200%, which on a wide
+     screen is a very long line for a reader who asked for larger type. */
+  --measure: 62ch;
+
+  /* One 1.2 modular scale from a 16px base. §15 asks for the Museum's 16px/24px, which is
+     --step-0 at line-height 1.5, exactly.
+
+     Body is deliberately NOT fluid. The more a size is driven by the viewport, the less the
+     visitor's own zoom does — and §18 makes large text the primary vision provision, so that
+     setting has to keep working. Display sizes may move with the screen; reading text may not.
+     Both clamps keep max ÷ min under 2.5 so text still reaches 200% (WCAG 1.4.4). */
+  --step--1: 0.8125rem; /* 13px — captions, eyebrows, metadata */
+  --step-0: 1rem; /* 16px — body */
+  --step-1: 1.2rem; /* 19px — panels, endings, the collection standfirst */
+  --step-2: 1.44rem; /* 23px — an object's name */
+  --step-3: clamp(1.728rem, 1.55rem + 0.85vw, 2.25rem); /* 28 → 36px */
+  --step-4: clamp(2.074rem, 1.78rem + 1.45vw, 3rem); /* 33 → 48px */
+
+  /* Multiplied into the root font size by the text-size control (§18). Declared here so every
+     rem in the file already respects it before the control exists. */
+  --text-scale: 1;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --ink: #e8e4dc;
-    --ink-soft: #a29a8e;
-    --ink-faint: #7c7469;
-    --paper: #111012;
+    --ink: #e8e4dc; /* 14.97:1 */
+    --ink-soft: #a29a8e; /*  6.82:1 */
+    --ink-meta: #9d968b; /*  6.48:1 */
+    --edge: #7c7469; /*  4.12:1 */
     --rule: #2e2b28;
-    --flag: #e9b98a;
-    --flag-bg: #2a1d12;
+    --paper: #111012;
+    --brand: #f2543f; /*  5.53:1 on --paper */
+    --brand-bg: #2b1411; /*  --brand on this: 5.05:1 */
+    --mark-bg: #2a1d12; /*  --ink on this: 12.91:1 */
   }
 }
 
@@ -37,23 +117,274 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  font-size: calc(100% * var(--text-scale));
 }
 
 body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--serif);
-  font-size: 1.0625rem;
-  line-height: 1.55;
+  font-family: var(--font-sans);
+  font-size: var(--step-0);
+  line-height: 1.5;
   overflow-wrap: break-word;
+}
+
+/* The nine shipped languages do not all want 1.5. Arabic ascenders and descenders need more room,
+   and CJK is set solid enough that Latin leading reads loose. One rule per script beats one number
+   for all of them. */
+:lang(ar) body,
+:lang(ar) .story,
+:lang(ar) .layer-section {
+  line-height: 1.8;
+}
+
+:lang(ja),
+:lang(ko),
+:lang(zh-Hant) {
+  line-height: 1.7;
 }
 
 a {
   color: inherit;
 }
 
-/* ------------------------------------------------------------------ home */
+/* There were four :focus-visible rules in this file and all four were on <button>. Every link —
+   the eleven group tiles, the 128 object tiles, back links, continuations, prev/next, search
+   results, source links — fell through to the browser default, which is inconsistent across
+   engines and close to invisible on the black collection page. */
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.home :focus-visible {
+  outline-color: var(--dark-brand);
+}
+
+/* The essays are a light slab inside the dark collection page, so they take the ring back. */
+.home-essays :focus-visible {
+  outline-color: var(--brand);
+}
+
+/* §15: "Chrome over media is light-on-dark regardless of theme. Care at the boundary."
+   This is that boundary, and it was wrong. `.listen` is coloured with --ink and --edge, which
+   follow the device — but the collection header is black whatever the device is doing. On a phone
+   in light mode the collection page's own Listen control was near-black text on black, at about
+   1.2:1. It looked fine in development only because the machine was in dark mode.
+
+   Scoped to .home-head rather than .home: the essays below the grid are a light slab and their
+   Listen controls are correct as they are. */
+.home-head .listen {
+  color: var(--dark-ink);
+  border-color: var(--dark-edge);
+}
+
+.home-head .listen:hover {
+  border-color: var(--dark-ink);
+}
+
+.home-head .listen.is-playing {
+  background: var(--dark-ink);
+  color: var(--dark);
+  border-color: var(--dark-ink);
+}
+
+.home-head .listen-note {
+  color: var(--dark-ink-soft);
+}
+
+/* --------------------------------------------------- §18: text size and contrast
+
+   Every value below is asserted by scripts/contrast.mjs against a 7:1 floor for text, not the
+   4.5:1 the ordinary palette clears. §18 calls this the primary vision provision for the reading
+   layer, so "high contrast" has to mean meaningfully more than the default already gives.
+
+   The always-dark surfaces (§9) stay dark here too. Inverting the grid would put 128 photographs
+   of objects shot on black onto white, which does not raise contrast — it destroys the subject. */
+:root[data-contrast='high'] {
+  --ink: #000000; /* 21.00:1 */
+  --ink-soft: #262626; /* 15.13:1 */
+  --ink-meta: #3f3f3f; /* 10.53:1 */
+  --edge: #000000; /* 21.00:1 */
+  --rule: #767676;
+  --paper: #ffffff;
+  --brand: #8f190e; /*  9.08:1 */
+  --brand-bg: #ffe8e4; /*  --brand on this: 7.74:1 */
+  --mark-bg: #ffe9a8; /*  --ink on this: 17.47:1 */
+
+  --dark-ink: #ffffff; /* 21.00:1 on black */
+  --dark-ink-soft: #e0e0e0; /* 15.91:1 */
+  --dark-edge: #ffffff; /* 21.00:1 */
+  --dark-rule: #6a6259;
+  --dark-brand: #ff8a78; /*  9.16:1 */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-contrast='high'] {
+    --ink: #ffffff; /* 21.00:1 */
+    --ink-soft: #e0e0e0; /* 15.91:1 */
+    --ink-meta: #cfcfcf; /* 13.48:1 */
+    --edge: #ffffff; /* 21.00:1 */
+    --rule: #6a6259;
+    --paper: #000000;
+    --brand: #ff8a78; /*  9.16:1 */
+    --brand-bg: #3d0f08; /*  --brand on this: 7.21:1 */
+    --mark-bg: #4a3400; /*  --ink on this: 11.78:1 */
+  }
+}
+
+/* --------------------------------------------------- chrome: skip link and tools */
+
+.skip-link {
+  position: absolute;
+  left: 0.5rem;
+  top: -4rem;
+  z-index: 40;
+  padding: 0.6rem 1rem;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--edge);
+  border-radius: 3px;
+  font-size: var(--step--1);
+  text-decoration: none;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skip-link {
+    transition: none;
+  }
+}
+
+/* The focus ring is the only thing that says where you are; never remove it from the thing that
+   was just focused programmatically. */
+#main:focus {
+  outline: none;
+}
+
+.tools {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* On the collection page the tools stand alone above the title rather than sharing a row with a
+   back link, so they carry the gap the language picker used to. */
+.home-head .tools {
+  margin: 0 0 1.5rem;
+}
+
+.page-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* Wraps rather than overflows at 200% text, where the back link alone is most of the width. */
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin: 0 0 0.25rem;
+}
+
+.tool-button {
+  display: inline-grid;
+  place-items: center;
+  /* WCAG 2.2 SC 2.5.8 puts the floor at 24px. A gallery is one-handed and moving, so 44.
+     In px, not rem, and that matters: every touch target in this file was 2.75rem, so at the
+     200% text setting they became 88px and pushed the layout viewport wider than the phone. A
+     touch target is sized by fingers, which do not grow when the type does. */
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+.tool-button:hover {
+  color: var(--ink);
+  border-color: var(--edge);
+}
+
+.home-head .tool-button {
+  color: var(--dark-ink-soft);
+}
+
+.home-head .tool-button:hover {
+  color: var(--dark-ink);
+  border-color: var(--dark-edge);
+}
+
+/* --------------------------------------------------- the display dialog */
+
+/* The icons carry a size attribute so they render before CSS arrives, but they should grow with
+   the text-size setting like everything else — an 18px glyph beside 32px type reads as a
+   rendering fault. The 44px minimum on the button is a floor, not a size, so it still holds. */
+.tool-button svg,
+.lang-globe {
+  width: 1.15em;
+  height: 1.15em;
+}
+
+/* Native radios and checkboxes, in the brand rather than the operating system's blue. */
+.settings {
+  accent-color: var(--brand);
+}
+
+.settings fieldset {
+  border: 0;
+  padding: 0;
+  margin: 1.25rem 0 0;
+  min-width: 0;
+}
+
+.settings legend {
+  padding: 0;
+  font-size: var(--step--1);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-meta);
+}
+
+.setting-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+.setting-choices label,
+.setting-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--edge);
+  border-radius: 3px;
+  font-size: var(--step--1);
+  cursor: pointer;
+}
+
+.setting-choices label.is-current {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.setting-switch {
+  margin-top: 0.6rem;
+  font-size: var(--step-0);
+}
+
+/* --------------------------------------------------- home */
 
 .home {
   background: var(--dark);
@@ -68,17 +399,17 @@ a {
 }
 
 .home-head h1 {
-  font-size: clamp(1.9rem, 7vw, 2.6rem);
+  font-size: var(--step-4);
   line-height: 1.1;
   letter-spacing: -0.02em;
   margin: 0 0 0.75rem;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .home-head p {
   margin: 0;
   color: var(--dark-ink-soft);
-  font-size: 0.95rem;
+  font-size: var(--step-1);
   line-height: 1.5;
 }
 
@@ -90,14 +421,13 @@ a {
   gap: 0.25rem;
   padding: 0 1.25rem;
   margin: 0 0 1.5rem;
-  border-bottom: 1px solid #2a2a2c;
+  border-bottom: 1px solid var(--dark-rule);
 }
 
 .tabs button {
   font: inherit;
-  font-family: var(--sans);
-  font-size: 0.9375rem;
-  font-weight: 500;
+  font-size: var(--step-0);
+  font-weight: 400;
   color: var(--dark-ink-soft);
   background: none;
   border: 0;
@@ -106,7 +436,7 @@ a {
   padding: 0.7rem 0.9rem;
   cursor: pointer;
   /* A comfortable thumb target on a phone held one-handed in a gallery. */
-  min-height: 2.75rem;
+  min-height: 44px;
 }
 
 .tabs button:hover {
@@ -119,18 +449,7 @@ a {
 }
 
 .tabs button:focus-visible {
-  outline: 2px solid var(--dark-ink);
   outline-offset: -4px;
-}
-
-.tab-intro {
-  max-width: var(--measure);
-  margin: 0 0 1.5rem;
-  padding: 0 1.25rem;
-  font-family: var(--sans);
-  font-size: 0.875rem;
-  line-height: 1.5;
-  color: var(--dark-ink-soft);
 }
 
 .grid {
@@ -167,7 +486,7 @@ a {
   aspect-ratio: 4 / 3;
   background: var(--dark-2);
   overflow: hidden;
-  border: 1px solid #1c1c1e;
+  border: 1px solid var(--dark-rule);
 }
 
 .tile-blur,
@@ -190,23 +509,17 @@ a {
 }
 
 .tile-text h2 {
-  font-family: var(--sans);
-  font-size: 1.0625rem;
+  font-size: var(--step-0);
   line-height: 1.25;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.01em;
   margin: 0 0 0.3rem;
 }
 
 .tile-text p {
   margin: 0;
-  font-family: var(--sans);
-  font-size: 0.8125rem;
+  font-size: var(--step--1);
   color: var(--dark-ink-soft);
-}
-
-.tile-stub {
-  color: #6a6259;
 }
 
 /* The two reading essays, on the collection page below the grid. Light ground on the dark home
@@ -233,74 +546,88 @@ a {
 }
 
 .essay-title {
-  font-size: clamp(1.6rem, 6vw, 2.1rem);
+  font-size: var(--step-3);
   line-height: 1.12;
   letter-spacing: -0.02em;
-  font-weight: 500;
+  font-weight: 400;
   margin: 0 0 0.75rem;
-}
-
-/* The essays inherit the group page's reading styles, but their headings dropped a level when they
-   moved here — the collection title is the h1 now — so the rules follow them down. */
-.essay .layer-section h3 {
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 600;
-  color: var(--ink-faint);
-  margin: 0 0 0.5rem;
-}
-
-.essay .layer-sources h3 {
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 600;
-  color: var(--ink-faint);
-  margin: 0 0 0.5rem;
 }
 
 /* ------------------------------------------------------------------ group page */
 
+/* A breakout grid rather than one centred column. Prose stays at --measure; an object can step out
+   to the full width when there is width to step into. Before this, `.reading` was max-width 34rem
+   at every viewport — a 1440px screen showed a 544px column and 900px of nothing. */
 .reading {
-  max-width: var(--measure);
+  --gutter: 1.25rem;
+  --content: min(var(--measure), 100%);
+
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(0, 1fr)
+    [content-start] var(--content) [content-end]
+    minmax(0, 1fr) [full-end];
+  max-width: 76rem; /* the same cap the collection grid uses at >=64rem */
   margin: 0 auto;
-  padding: 1rem 1.25rem 5rem;
+  /* The gutter is padding rather than a pair of grid tracks, and that is load-bearing rather than
+     tidy: with it as a track, `grid-column: full` spanned INTO it, so on desktop every photograph
+     sat 20px to the left of the title, the back link and its own caption. Measured — media at
+     x=112, all text at x=132. As padding, full-start and content-start coincide. */
+  padding: 1rem var(--gutter) 5rem;
+
+  /* The object below asks this element how wide it is, not the window. Same component, and it
+     would lay out correctly if it were ever dropped into something narrower than the page. */
+  container-type: inline-size;
+  container-name: reading;
+}
+
+.reading > * {
+  grid-column: content;
+}
+
+/* Once objects break out to the full width, a centred reading column leaves the group title
+   starting 330px to the right of the photograph beneath it, and the page reads as two layouts
+   stacked. Left-aligning the column to the same edge is both tidier and closer to the Museum's own
+   pages, which are left-aligned editorial inside a wide container.
+
+   A media query rather than a container query because this styles `.reading` itself, and an
+   element cannot query its own container. 64rem is the width at which the container query below
+   fires, so the two cannot disagree. */
+@media (min-width: 64rem) {
+  .reading {
+    grid-template-columns:
+      [full-start content-start] var(--content) [content-end]
+      minmax(0, 1fr) [full-end];
+  }
 }
 
 .back {
   display: inline-block;
-  font-family: var(--sans);
-  font-size: 0.8125rem;
+  /* Grid items are blockified, so without this the link — and its focus ring — would stretch the
+     whole content column for the sake of two words. */
+  justify-self: start;
+  font-size: var(--step--1);
   text-decoration: none;
   color: var(--ink-soft);
   padding: 0.5rem 0;
 }
 
 .group-title {
-  font-size: clamp(1.7rem, 6.5vw, 2.3rem);
+  font-size: var(--step-4);
   line-height: 1.12;
   letter-spacing: -0.02em;
-  font-weight: 500;
+  font-weight: 400;
   margin: 0.5rem 0 0.4rem;
 }
 
 .group-cost {
-  font-family: var(--sans);
-  font-size: 0.8125rem;
-  color: var(--ink-faint);
+  font-size: var(--step--1);
+  color: var(--ink-meta);
   margin: 0 0 1.5rem;
 }
 
-.cost-caveat {
-  display: block;
-  margin-top: 0.2rem;
-}
-
 .group-panel {
-  font-size: 1.1875rem;
+  font-size: var(--step-1);
   line-height: 1.5;
   margin: 0 0 2.5rem;
   padding-bottom: 2.5rem;
@@ -316,28 +643,102 @@ a {
   scroll-margin-top: 0.5rem;
 }
 
+.object-media {
+  margin: 0;
+}
+
+/* ------------------------------------------------- §10's desktop layout
+   "Desktop: media holds position while its object's text scrolls beside it, releasing at the
+   section boundary." Unbuilt until now — the reading column was 34rem at every width.
+
+   Grid areas rather than reordering, so the DOM stays in the order a phone needs. `position:
+   sticky` inside a grid area releases at the end of that area by itself, which is exactly the
+   "releasing at the section boundary" behaviour, and it needs no JavaScript.
+
+   Worth being honest about what the sticky part buys: §10 was written when a story was expected to
+   run ~231 words. They came in at 95 median, so the text column is SHORTER than the photograph in
+   63 of the 128 objects and the media has nothing to scroll against. It costs nothing where it
+   does not apply, and the two-column layout is the real gain — it roughly halves every page. */
+@container reading (min-width: 64rem) {
+  .reading > .object {
+    grid-column: full;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    grid-template-areas:
+      'flag  flag'
+      'media head'
+      'media body';
+    column-gap: clamp(2rem, 4cqi, 3.5rem);
+    align-items: start;
+  }
+
+  .object > .arrived-flag {
+    grid-area: flag;
+  }
+
+  .object-head {
+    grid-area: head;
+  }
+
+  .object-body {
+    grid-area: body;
+  }
+
+  .object-media {
+    grid-area: media;
+    position: sticky;
+    top: 1.5rem;
+  }
+
+  /* The well is capped at 70svh of the viewport; in a column roughly half the page wide that cap
+     is rarely what binds, so most objects render at their true aspect. */
+  .object-media .well {
+    max-height: 78svh;
+  }
+}
+
 .object-name {
-  font-size: 1.4rem;
+  font-size: var(--step-2);
   line-height: 1.2;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: -0.01em;
   margin: 0 0 0.2rem;
 }
 
 .object-catalogue {
-  font-family: var(--sans);
-  font-size: 0.75rem;
+  font-size: var(--step--1);
   letter-spacing: 0.01em;
-  color: var(--ink-faint);
+  color: var(--ink-meta);
   margin: 0 0 0.9rem;
 }
 
-/* Media at ~70% of viewport height. The height does not depend on the image, so nothing reflows
-   when a lazy image arrives and the scroll position on a QR arrival stays put. */
+/* Every well is the same width; the height follows the photograph.
+
+   The box has been three things and this is the settled one. It was `height: 70dvh` for
+   everything, which wasted 49% of the well on average because 89 of the 128 photographs are
+   landscape. It was briefly a uniform 4/3 — the collection's median aspect — which made every
+   frame identical but cost the objects furthest from that shape half their width: 1884.137.33 is
+   0.68 and filled only 51% of the frame, on the QR screen §11 says the app is judged on.
+
+   Matching widths were what was actually wanted, and they were never the problem — see the note on
+   .reading's gutter for what was. So the height follows each photograph and every object gets the
+   full width of the column.
+
+   The letterboxing that remains when the cap bites is invisible: every one of the 128 photographs
+   has a near-black border — measured, the brightest is luminance 18 of 255, see
+   scripts/backgrounds.mjs — and so does this well.
+
+   Nothing reflows when a lazy image lands, which is what the original fixed height was protecting.
+   That only ever needed the height to be KNOWN before load, and `aspect` is in the manifest for
+   all 128.
+
+   svh rather than dvh: dvh re-resolves every time a mobile toolbar slides, which would relayout a
+   page carrying a sticky media column (§10, desktop) on every scroll gesture. */
 .well {
   position: relative;
-  height: 70vh;
-  height: 70dvh;
+  aspect-ratio: var(--aspect, 4 / 3);
+  max-height: 70vh;
+  max-height: 70svh;
   background: var(--dark);
   overflow: hidden;
 }
@@ -366,10 +767,17 @@ a {
   opacity: 1;
 }
 
+/* §18: prefers-reduced-motion on every transition. This one was missed — on a long group page it
+   fires once per object as you scroll, which is the most frequent animation in the app. */
+@media (prefers-reduced-motion: reduce) {
+  .well-img {
+    transition: none;
+  }
+}
+
 .object-meta {
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  color: var(--ink-faint);
+  font-size: var(--step--1);
+  color: var(--ink-meta);
   margin: 0.6rem 0 1.4rem;
 }
 
@@ -377,13 +785,20 @@ a {
   margin: 0 0 1.5rem;
 }
 
-.story h3 {
-  font-family: var(--sans);
-  font-size: 0.75rem;
+/* The small uppercase heading above a passage of reading. It was written out five times — once
+   for object stories, twice for the essays, and twice more for a heading level the essays stopped
+   using when they moved onto the collection page. One rule, three live places.
+
+   The essays' own headings are h3 rather than h2 because the collection title holds the h1 there;
+   a page with two h1s reads to a screen reader as two documents stapled together. */
+.story h3,
+.essay .layer-section h3,
+.essay .layer-sources h3 {
+  font-size: var(--step--1);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-weight: 600;
-  color: var(--ink-faint);
+  font-weight: 700;
+  color: var(--ink-meta);
   margin: 0 0 0.5rem;
 }
 
@@ -391,33 +806,38 @@ a {
   margin: 0 0 0.9rem;
 }
 
-/* The stub is meant to look temporary. Question 2 is partly whether it reads as neglect. */
-.is-placeholder {
+/* Two asides share this shape and each had been written out separately: the placeholder banner
+   on an object with no story yet, and the language fallback notice. Both are small meta text set
+   off by a left rule, and [dir='rtl'] already flips them together further down. (There were three
+   — the identification note was the other, and it is no longer rendered.)
+
+   The placeholder path is still reachable-by-design rather than dead: scripts/split.mjs now
+   asserts a non-empty story on all 128 (§20), so it should never render — but an app that says
+   "no story yet" beats one that renders an empty block if that assertion is ever removed. */
+.is-placeholder,
+.fallback-notice {
   border-left: 2px solid var(--rule);
+  padding-left: 0.75rem;
+}
+
+.placeholder-flag,
+.fallback-notice {
+  font-size: var(--step--1);
+  line-height: 1.45;
+  color: var(--ink-meta);
+}
+
+.is-placeholder {
   padding-left: 1rem;
 }
 
 .placeholder-flag {
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  line-height: 1.45;
-  color: var(--ink-faint);
   margin: 0 0 0.6rem !important;
 }
 
 .catalogue-words {
   color: var(--ink-soft);
-  font-size: 1rem;
-}
-
-.identification {
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  line-height: 1.45;
-  color: var(--ink-faint);
-  border-left: 2px solid var(--rule);
-  padding-left: 0.75rem;
-  margin: 1.2rem 0 0;
+  font-size: var(--step-0);
 }
 
 /* ------------------------------------------------------------------ the QR arrival */
@@ -430,7 +850,7 @@ a {
   content: '';
   position: absolute;
   inset: -0.75rem -1rem 2rem;
-  border: 2px solid var(--flag);
+  border: 2px solid var(--brand);
   border-radius: 3px;
   pointer-events: none;
 }
@@ -438,13 +858,12 @@ a {
 .arrived-flag {
   display: inline-block;
   position: relative;
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: var(--step--1);
+  font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--flag);
-  background: var(--flag-bg);
+  color: var(--brand);
+  background: var(--brand-bg);
   padding: 0.3rem 0.6rem;
   margin: 0 0 0.6rem;
 }
@@ -452,7 +871,7 @@ a {
 /* ------------------------------------------------------------------ end of page */
 
 .group-ending {
-  font-size: 1.1875rem;
+  font-size: var(--step-1);
   line-height: 1.5;
   margin: 0 0 2.5rem;
 }
@@ -463,8 +882,7 @@ a {
   gap: 1.5rem;
   border-top: 1px solid var(--rule);
   padding-top: 1.5rem;
-  font-family: var(--sans);
-  font-size: 0.875rem;
+  font-size: var(--step-0);
 }
 
 .group-nav a {
@@ -481,31 +899,53 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  margin: 0 0 1.75rem;
-  font-family: var(--sans);
-  font-size: 0.8125rem;
+  margin: 0;
+  font-size: var(--step--1);
   cursor: pointer;
 }
 
+/* These were written in the dark tokens, because until now the picker existed only in the
+   collection header and that header is black whatever the device is doing. Putting it on every
+   route (§7 — it has to be reachable from a QR arrival) put near-white text on cream paper, which
+   is the same mistake the Listen control had. Reading-surface colours are the default now and the
+   dark header overrides them, rather than the other way round. */
 .lang-globe {
-  color: var(--dark-ink-soft);
+  color: var(--ink-meta);
   flex: none;
 }
 
 .lang-picker:hover .lang-globe,
 .lang-picker:focus-within .lang-globe {
-  color: var(--dark-ink);
+  color: var(--ink);
 }
 
 .lang-picker select {
   font: inherit;
-  color: var(--dark-ink);
+  color: var(--ink);
   background: transparent;
-  border: 1px solid #2a2a2c;
+  border: 1px solid var(--edge);
   border-radius: 3px;
   padding: 0.3rem 0.4rem;
+  /* The 44px floor is on the tool button beside it; matching it here keeps the row even. */
+  min-height: 44px;
 }
 
+.home-head .lang-globe {
+  color: var(--dark-ink-soft);
+}
+
+.home-head .lang-picker:hover .lang-globe,
+.home-head .lang-picker:focus-within .lang-globe {
+  color: var(--dark-ink);
+}
+
+.home-head .lang-picker select {
+  color: var(--dark-ink);
+  border-color: var(--dark-edge);
+}
+
+/* The option list is drawn by the operating system, not by this stylesheet, so it is pinned to a
+   light pair rather than left to inherit a colour the popup will not use. */
 .lang-picker option {
   color: #111;
   background: #fff;
@@ -514,12 +954,6 @@ a {
 /* The stated fallback. §7: silent degradation reads as a broken app; a stated one reads as an
    honest one, and it also tells the Museum which languages to fund next. */
 .fallback-notice {
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  line-height: 1.45;
-  color: var(--ink-faint);
-  border-left: 2px solid var(--rule);
-  padding-left: 0.75rem;
   margin: 0 0 0.8rem;
 }
 
@@ -530,14 +964,19 @@ a {
   direction: ltr;
 }
 
+/* These two carry no dir of their own — the back link is translated chrome and the credit line is
+   assembled from an accession, a measurement and a rights string — so they follow the page.
+
+   .object-catalogue used to be in this list and should not have been. It carries dir from
+   langAttrs(), because it is usually an untranslated Latin binomial, and forcing rtl on top of
+   that right-aligned English underneath a left-aligned English heading. Where the catalogue name
+   IS translated its own dir attribute already handles it. */
 [dir='rtl'] .back,
-[dir='rtl'] .object-catalogue,
 [dir='rtl'] .object-meta {
   direction: rtl;
 }
 
 [dir='rtl'] .is-placeholder,
-[dir='rtl'] .identification,
 [dir='rtl'] .fallback-notice {
   border-left: 0;
   border-right: 2px solid var(--rule);
@@ -580,22 +1019,17 @@ a {
 }
 
 .tile-small {
-  font-size: 0.8125rem !important;
-}
-
-.back-dark {
-  color: var(--dark-ink-soft);
+  font-size: var(--step--1) !important;
 }
 
 .loading {
-  font-family: var(--sans);
-  font-size: 0.8125rem;
-  color: var(--ink-faint);
+  font-size: var(--step--1);
+  color: var(--ink-meta);
   padding: 2rem 0;
 }
 
 .loading-dark {
-  color: #6a6259;
+  color: var(--dark-ink-soft);
   padding: 2rem 1.25rem;
 }
 
@@ -603,8 +1037,7 @@ a {
   display: flex;
   gap: 1.5rem;
   padding: 2.5rem 1.25rem 0;
-  font-family: var(--sans);
-  font-size: 0.875rem;
+  font-size: var(--step-0);
 }
 
 .home-secondary a {
@@ -615,24 +1048,23 @@ a {
 .search-input {
   width: 100%;
   font: inherit;
-  font-size: 1.0625rem;
+  font-size: var(--step-0);
   padding: 0.7rem 0.85rem;
   margin: 0 0 1rem;
   color: var(--ink);
   background: transparent;
-  border: 1px solid var(--rule);
+  border: 1px solid var(--edge);
   border-radius: 3px;
 }
 
 .search-input:focus {
-  outline: 2px solid var(--flag);
+  outline: 2px solid var(--brand);
   outline-offset: -1px;
 }
 
 .search-count {
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  color: var(--ink-faint);
+  font-size: var(--step--1);
+  color: var(--ink-meta);
   margin: 0 0 1rem;
 }
 
@@ -654,31 +1086,20 @@ a {
 
 .search-results strong {
   display: block;
-  font-weight: 500;
-  font-size: 1.0625rem;
+  font-weight: 400;
+  font-size: var(--step-0);
 }
 
 .search-latin,
 .search-where {
   display: block;
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  color: var(--ink-faint);
+  font-size: var(--step--1);
+  color: var(--ink-meta);
   margin-top: 0.15rem;
 }
 
 .layer-section {
   margin: 0 0 2rem;
-}
-
-.layer-section h2 {
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 600;
-  color: var(--ink-faint);
-  margin: 0 0 0.6rem;
 }
 
 .layer-section p {
@@ -691,30 +1112,15 @@ a {
   margin-top: 2.5rem;
 }
 
-.layer-sources h2 {
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 600;
-  color: var(--ink-faint);
-  margin: 0 0 0.7rem;
-}
-
 .layer-sources ul {
   margin: 0;
   padding-left: 1rem;
 }
 
 .layer-sources li {
-  font-size: 0.875rem;
+  font-size: var(--step-0);
   margin-bottom: 0.5rem;
   color: var(--ink-soft);
-}
-
-.layer-nav {
-  flex-direction: column;
-  gap: 0.6rem;
 }
 
 /* §10: named continuations at the end of a group page, never a generic "more". */
@@ -725,8 +1131,7 @@ a {
   border-top: 1px solid var(--rule);
   padding-top: 1.5rem;
   margin: 0 0 2.5rem;
-  font-family: var(--sans);
-  font-size: 0.9375rem;
+  font-size: var(--step-0);
 }
 
 .continuations a {
@@ -736,16 +1141,11 @@ a {
 
 .continuations a::after {
   content: ' →';
-  color: var(--ink-faint);
+  color: var(--ink-meta);
 }
 
 .stub-note {
   color: var(--ink-soft);
-}
-
-.stub-link {
-  font-family: var(--sans);
-  font-size: 0.875rem;
 }
 
 /* ------------------------------------------------------------------ audio guide (§13)
@@ -764,18 +1164,17 @@ a {
 
 .listen {
   font: inherit;
-  font-family: var(--sans);
-  font-size: 0.9rem;
+  font-size: var(--step-0);
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.45rem 1rem;
-  border: 1px solid var(--rule);
+  border: 1px solid var(--edge);
   border-radius: 2rem;
   background: transparent;
   color: var(--ink);
   cursor: pointer;
-  min-height: 2.75rem;
+  min-height: 44px;
 }
 
 .listen:hover {
@@ -783,7 +1182,6 @@ a {
 }
 
 .listen:focus-visible {
-  outline: 2px solid var(--ink);
   outline-offset: 2px;
 }
 
@@ -794,16 +1192,15 @@ a {
 }
 
 .listen-note {
-  font-family: var(--sans);
-  font-size: 0.8rem;
-  color: var(--ink-faint);
+  font-size: var(--step--1);
+  color: var(--ink-meta);
 }
 
 /* The word being spoken. A background tint rather than a colour change: recolouring the text
    alters its contrast against the page, and this has to stay readable for 137 minutes. No
    transition either — a fade cannot keep up with speech and just smears. */
 .spoken-word {
-  background: var(--flag-bg);
+  background: var(--mark-bg);
   color: inherit;
   border-radius: 0.15em;
   /* Negative margin cancels the padding, so a highlighted word never shifts its line. */
@@ -814,7 +1211,7 @@ a {
 @media (prefers-reduced-motion: reduce) {
   .spoken-word {
     background: none;
-    box-shadow: inset 0 -0.5em 0 var(--flag-bg);
+    box-shadow: inset 0 -0.5em 0 var(--mark-bg);
   }
 }
 
@@ -825,23 +1222,36 @@ a {
   background: var(--paper);
   border-top: 1px solid var(--rule);
   padding-bottom: env(safe-area-inset-bottom, 0);
-  font-family: var(--sans);
 }
 
-/* The bar covers the end of the page, so give the document somewhere to scroll to. */
-body:has(.audio-bar) {
-  padding-bottom: 5.5rem;
-}
-
-.audio-progress {
-  height: 2px;
-  background: var(--rule);
-}
-
-.audio-progress span {
+/* The read-only 2px bar this replaces could not be operated at all. A native range gives keyboard
+   seeking for free, which SC 2.5.7 requires — a drag must never be the only way to move a
+   control. Styled to the same 2px line so the bar still reads as a hairline until touched. */
+.audio-seek {
   display: block;
-  height: 100%;
-  background: var(--ink);
+  padding: 0;
+  margin: 0;
+}
+
+.audio-seek input {
+  display: block;
+  width: 100%;
+  height: 14px;
+  margin: -6px 0;
+  padding: 0;
+  background: transparent;
+  accent-color: var(--brand);
+  cursor: pointer;
+}
+
+.audio-seek input:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.audio-seek input:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: -2px;
 }
 
 .audio-row {
@@ -862,14 +1272,14 @@ body:has(.audio-bar) {
 }
 
 .audio-what strong {
-  font-size: 0.9rem;
+  font-size: var(--step-0);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .audio-what span {
-  font-size: 0.75rem;
+  font-size: var(--step--1);
   color: var(--ink-soft);
   white-space: nowrap;
   overflow: hidden;
@@ -885,9 +1295,9 @@ body:has(.audio-bar) {
 
 .audio-controls button {
   font: inherit;
-  font-size: 1rem;
-  min-width: 2.75rem;
-  min-height: 2.75rem;
+  font-size: var(--step-0);
+  min-width: 44px;
+  min-height: 44px;
   display: grid;
   place-items: center;
   border: 0;
@@ -907,27 +1317,26 @@ body:has(.audio-bar) {
 }
 
 .audio-controls button:focus-visible {
-  outline: 2px solid var(--ink);
   outline-offset: -2px;
 }
 
 .audio-play {
-  border: 1px solid var(--rule);
+  border: 1px solid var(--edge);
 }
 
 .audio-rate select {
   font: inherit;
-  font-size: 0.8rem;
+  font-size: var(--step--1);
   padding: 0.3rem 0.2rem;
-  border: 1px solid var(--rule);
+  border: 1px solid var(--edge);
   border-radius: 0.25rem;
   background: transparent;
   color: var(--ink);
-  min-height: 2.25rem;
+  min-height: 44px;
 }
 
 .audio-time {
-  font-size: 0.75rem;
+  font-size: var(--step--1);
   color: var(--ink-soft);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
@@ -936,8 +1345,8 @@ body:has(.audio-bar) {
 .audio-failed {
   margin: 0;
   padding: 0 1rem 0.6rem;
-  font-size: 0.8rem;
-  color: var(--flag);
+  font-size: var(--step--1);
+  color: var(--brand);
 }
 
 .visually-hidden {
@@ -949,14 +1358,169 @@ body:has(.audio-bar) {
   white-space: nowrap;
 }
 
-/* On a narrow screen the elapsed time goes first — the progress bar already says it, and the
-   controls have to stay reachable with a thumb. */
-@media (max-width: 30rem) {
+/* On a narrow screen the elapsed time goes first — the seek bar already says it, and the controls
+   have to stay reachable with a thumb.
+
+   The title then takes its own row. Five 44px controls plus the speed select is about 260px, so on
+   a 390px phone a single row left roughly 90px for the title and it rendered as "The…", which
+   tells a visitor nothing about what is playing. */
+@media (max-width: 34rem) {
   .audio-time {
     display: none;
   }
 
   .audio-row {
-    padding: 0.5rem 0.6rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    padding: 0.4rem 0.6rem 0.5rem;
+  }
+
+  .audio-what {
+    flex: 1 0 100%;
+  }
+
+  .audio-what strong,
+  .audio-what span {
+    white-space: normal;
+  }
+}
+
+/* The bar covers the end of the page, so give the document somewhere to scroll to — and pad the
+   scrollport by more than the bar's height, or tabbing down a group page lands the focused element
+   underneath the player (WCAG 2.2 SC 2.4.11, Focus Not Obscured).
+
+   Two rows on a phone and one above it, so two values. In rem because the bar's own height is
+   driven by its type, which the text-size setting changes. */
+body:has(.audio-bar) {
+  padding-bottom: 8rem;
+}
+
+html:has(.audio-bar) {
+  scroll-padding-block-end: 9rem;
+}
+
+@media (min-width: 34.0625rem) {
+  body:has(.audio-bar) {
+    padding-bottom: 5.5rem;
+  }
+
+  html:has(.audio-bar) {
+    scroll-padding-block-end: 7rem;
+  }
+}
+
+/* ------------------------------------------------------- what Preflight takes away
+
+   Two things below used to come from the browser's own defaults, and Preflight removes both.
+   Restated here explicitly, which is where they should have been anyway. */
+
+/* Preflight sets `list-style: none` on every ul. The sources list is prose and wants its bullets. */
+.layer-sources ul {
+  list-style: disc;
+}
+
+/* Preflight sets `text-decoration: inherit` on links, so these lost the underline they relied on.
+   A link inside a paragraph of prose needs more than colour to mark it — WCAG 1.4.1. */
+.layer-sources a {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+}
+/* ^ closes @layer app */
+/* ------------------------------------------------------- shadcn's token layer
+
+   Generated by `shadcn init`, then changed in three ways. Each change is here because the
+   generated default fights something this app had already decided.
+
+   1. The two colour blocks were `:root { … }` and `.dark { … }`, both unlayered. Unlayered CSS
+      outranks every layer, so `--accent` and `--border` would have silently beaten the tokens in
+      `@layer app` — the two names collide exactly. They live in `@layer shadcn` now, below `app`.
+
+   2. The dark values were reachable only through a `.dark` class this app never sets, because §15
+      says the reading area follows the device. `light-dark()` makes one declaration serve both,
+      keyed off `color-scheme`, so a Dialog is dark on a dark-scheme phone without a class and
+      without the values being written out twice.
+
+   3. `--chart-*` and `--sidebar-*` are gone. There is no chart and no sidebar in this app, and
+      sixteen tokens that can never be read are sixteen chances to be misread later. */
+
+@theme inline {
+  /* §15: the Museum's own object pages, and no webfont. `shadcn init` set this to Geist and added
+     an @import for it; both are removed. Helvetica Neue is the brand face and it is already on
+     every device we care about. */
+  --font-sans: 'Helvetica Neue', Helvetica, Arial, system-ui, sans-serif;
+  --font-heading: var(--font-sans);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+@layer shadcn {
+  :root {
+    /* light-dark() reads this. The meta tag in index.html declares the same pair. */
+    color-scheme: light dark;
+
+    --background: light-dark(oklch(1 0 0), oklch(0.145 0 0));
+    --foreground: light-dark(oklch(0.145 0 0), oklch(0.985 0 0));
+    --card: light-dark(oklch(1 0 0), oklch(0.205 0 0));
+    --card-foreground: light-dark(oklch(0.145 0 0), oklch(0.985 0 0));
+    --popover: light-dark(oklch(1 0 0), oklch(0.205 0 0));
+    --popover-foreground: light-dark(oklch(0.145 0 0), oklch(0.985 0 0));
+    --primary: light-dark(oklch(0.205 0 0), oklch(0.922 0 0));
+    --primary-foreground: light-dark(oklch(0.985 0 0), oklch(0.205 0 0));
+    --secondary: light-dark(oklch(0.97 0 0), oklch(0.269 0 0));
+    --secondary-foreground: light-dark(oklch(0.205 0 0), oklch(0.985 0 0));
+    --muted: light-dark(oklch(0.97 0 0), oklch(0.269 0 0));
+    --muted-foreground: light-dark(oklch(0.556 0 0), oklch(0.708 0 0));
+    --accent: light-dark(oklch(0.97 0 0), oklch(0.269 0 0));
+    --accent-foreground: light-dark(oklch(0.205 0 0), oklch(0.985 0 0));
+    --destructive: light-dark(oklch(0.577 0.245 27.325), oklch(0.704 0.191 22.216));
+    --border: light-dark(oklch(0.922 0 0), oklch(1 0 0 / 15%));
+    --input: light-dark(oklch(0.922 0 0), oklch(1 0 0 / 15%));
+    --ring: light-dark(oklch(0.708 0 0), oklch(0.556 0 0));
+
+    --radius: 0.625rem;
+  }
+
+  /* Kept so a manual theme toggle stays possible later (§15's "dimmed gallery mode" fallback).
+     Setting color-scheme is all that is needed — every token above follows it. */
+  .light {
+    color-scheme: light;
+  }
+
+  .dark {
+    color-scheme: dark;
+  }
+}
+
+@layer base {
+  /* Scoped to shadcn's own components. As generated this was `*`, which set a border-colour and an
+     outline-colour on every element in the app — harmless today only because nothing sets a border
+     width without also setting a colour. Not a bet worth carrying. */
+  [data-slot] {
+    border-color: var(--border);
+    outline-color: color-mix(in oklch, var(--ring) 50%, transparent);
   }
 }

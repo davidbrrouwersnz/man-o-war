@@ -33,12 +33,43 @@ const index = { groups: [], groupOf: {} }
 const BY_ORDER = new Map(groups.groups.map((g) => [g.slug, g.title]))
 let chunkTotal = 0
 
+// §20: "Before launch, not before step 3: assert a non-empty `story` on all 127. The commitment in
+// §6 is a build assertion or it is a wish."
+//
+// All 128 are written, so this passes today. It exists so that the day one is emptied, deleted or
+// left half-authored, the build says so — rather than the page quietly rendering the cataloguer's
+// physical description in its place, which §6 forbids as a story.
+{
+  const missing = []
+  for (const g of groups.groups) {
+    for (const accession of g.accessions) {
+      const s = STORIES[accession]
+      const empty = !s || !Array.isArray(s.segments) || s.segments.length === 0 ||
+        s.segments.every((seg) => !String(seg.text ?? '').trim())
+      if (empty) missing.push(accession)
+    }
+  }
+  if (missing.length) {
+    throw new Error(
+      `§6/§20: ${missing.length} object(s) have no story: ${missing.slice(0, 8).join(', ')}` +
+        (missing.length > 8 ? ` and ${missing.length - 8} more` : '')
+    )
+  }
+}
+
 for (const g of groups.groups) {
   const panel = museum.panels[g.slug]
 
   const objects = g.accessions.map((accession) => {
     const o = OBJECTS.get(accession)
-    const story = STORIES[accession]
+    // `identification` is dropped from the shipped chunk rather than from the source. Fourteen
+    // objects carry one and none of them is rendered or spoken any more, so shipping the text would
+    // be bytes on a gallery connection that nobody ever reads. The authored text stays in
+    // src/data/stories*.json, so restoring it is one line here plus the render.
+    // Kept undefined when there is no story at all: an empty object here would be truthy, and the
+    // page would render the story branch with no segments instead of the labelled placeholder.
+    const raw = STORIES[accession]
+    const story = raw ? (({ identification, ...rest }) => rest)(raw) : undefined
     return {
       accession,
       title: o.title,
@@ -154,7 +185,15 @@ for (const file of readdirSync(langDir)) {
     const ts = JSON.parse(readFileSync(storyFile, 'utf8'))
     const stray = Object.keys(ts.stories ?? {}).filter((a) => !allAccessions.has(a))
     if (stray.length) throw new Error(`stories/${code}.json: accessions not in the manifest: ${stray.join(', ')}`)
-    pack.stories = ts.stories
+    // Same strip as the English chunk above: the identification note is no longer rendered in any
+    // language, and German is the heaviest pack in the app at ~37KB gzipped. Translated text nobody
+    // can read is the worst kind of payload — it costs the visitor and teaches nothing.
+    pack.stories = Object.fromEntries(
+      Object.entries(ts.stories ?? {}).map(([acc, s]) => {
+        const { identification, ...rest } = s ?? {}
+        return [acc, rest]
+      })
+    )
     storiesDone = Object.keys(ts.stories ?? {}).length
   }
 
