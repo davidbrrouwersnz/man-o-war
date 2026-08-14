@@ -59,6 +59,7 @@ const layers = read('layers.json')
 const groups = read('groups.json')
 const pron = read('pronunciation.json')
 const MANIFEST = read('manifest.json').objects
+const EN = read('i18n/en.json')
 const STORIES = { ...drafted.stories, ...museum.stories }
 
 // One flat list of everything to voice. Each unit is exactly one printed segment, which is what
@@ -92,9 +93,12 @@ function collect() {
     // audio-description track cut there is nowhere else for a blind visitor to learn how big the
     // thing is. Leaving it out would quietly remove the last bit of physical description.
     const size = rec.measurements?.[0]?.replace(/^Dimensions \(LxWxH\):\s*/i, '').trim()
-    const meta = [accession, size, rec.rights || 'Canterbury Museum — this record does not state rights']
-      .filter(Boolean)
-      .join(' · ')
+    // The rights fallback is read out of the app's own English strings rather than written out
+    // again here. Duplicating it is how nine objects - the man o' war among them - ended up with
+    // narration that said "this record does not state rights" while the page printed "rights not
+    // stated on this record". The integrity check could not catch that: it proves the SSML matches
+    // the string it was handed, not that the string matches what React renders.
+    const meta = [accession, size, rec.rights || EN.ui.rightsUnstated].filter(Boolean).join(' · ')
     units.push({ kind: 'meta', id: `${accession}/01-meta`, track: 'interpretation', heading: null, text: meta })
 
     if (story) {

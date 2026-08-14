@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useLayoutEffect, useRef, useState
 import index from './data/chunks/index.json'
 import englishPack from './data/i18n/en.json'
 import { BY_CODE, LANGUAGES, detect, dirOf, remember, resolve } from './i18n.js'
+import { AudioBar, AudioProvider, Spoken, blocksOf, useAudio } from './audio.jsx'
 
 // One chunk per group, fetched only when that page is visited. The manifest used to be a single
 // file compiled into the bundle, so every visitor downloaded all 128 objects — and 113KB of base64
@@ -252,6 +253,51 @@ function ObjectSection({ object, arrived, registry }) {
   // then repeat it word for word — so it is dropped rather than printed twice.
   const showCatalogue = headlineR.text !== object.title && headlineR.text !== catalogueR.text
 
+  // Resolved here rather than inside the render loop, because the audio has to know whether what
+  // is ACTUALLY on screen is English before it offers to read it out.
+  const parts = (story?.segments ?? []).map((s, si) => ({
+    s,
+    si,
+    heading: tr([...base, 'segments', si, 'heading'], null, s.heading),
+    body: tr([...base, 'segments', si, 'text'], null, s.text),
+  }))
+
+  // The narration exists in English only. Offering it beside translated words would break the one
+  // rule the whole pipeline is built on — that the spoken words are the printed words — so the
+  // control appears only when every word on screen is the English the audio was made from. A
+  // visitor reading an untranslated object inside a Samoan session still gets it, because what
+  // they are looking at is the English.
+  const rights = object.rights ? object.rights : t('ui.rightsUnstated')
+  const metaLine = [object.accession, size, rights].filter(Boolean).join(' · ')
+  const englishOnScreen =
+    headlineR.lang === 'en' &&
+    (!identificationR || identificationR.lang === 'en') &&
+    parts.every((p) => p.heading.lang === 'en' && p.body.lang === 'en')
+
+  const audio = useAudio()
+  const queueKey = `o:${object.accession}`
+  const isThis = audio?.queue?.key === queueKey
+  const queue = {
+    key: queueKey,
+    title: headlineR.text,
+    items: [
+      {
+        id: `${object.accession}/00-title`,
+        label: t('ui.audioName'),
+        blocks: showCatalogue ? [headlineR.text, catalogueR.text] : [headlineR.text],
+      },
+      { id: `${object.accession}/01-meta`, label: t('ui.audioDetails'), blocks: [metaLine] },
+      ...parts.map((p) => ({
+        id: `${object.accession}/${p.s.id}`,
+        label: p.heading.text,
+        blocks: blocksOf(p.heading.text, p.body.text),
+      })),
+      ...(identificationR
+        ? [{ id: `${object.accession}/99-identification`, label: t('ui.audioIdentification'), blocks: [identificationR.text] }]
+        : []),
+    ],
+  }
+
   return (
     <article className={`object${arrived ? ' is-arrived' : ''}`} ref={ref} id={`obj-${object.accession}`}>
       {arrived && <p className="arrived-flag">{t('ui.scanned')}</p>}
@@ -260,35 +306,55 @@ function ObjectSection({ object, arrived, registry }) {
           own language. The binomial inside object.catalogueName is marked in CSS via .binomial
           where authored, so a screen reader does not read Latin with the surrounding phonetics. */}
       <h2 className="object-name" {...langAttrs(headlineR)}>
-        {headlineR.text}
+        <Spoken text={headlineR.text} itemId={`${object.accession}/00-title`} block={0} />
       </h2>
       {showCatalogue && (
         <p className="object-catalogue" {...langAttrs(catalogueR)}>
-          {catalogueR.text}
+          <Spoken text={catalogueR.text} itemId={`${object.accession}/00-title`} block={1} />
         </p>
       )}
 
       <Media object={object} priority={arrived} />
 
       <p className="object-meta">
-        {object.accession}
-        {size && <> · {size}</>} · {object.rights ? object.rights : t('ui.rightsUnstated')}
+        <Spoken text={metaLine} itemId={`${object.accession}/01-meta`} block={0} />
       </p>
+
+      {englishOnScreen && (
+        <p className="object-listen">
+          <button
+            type="button"
+            className={`listen${isThis && audio.playing ? ' is-playing' : ''}`}
+            onClick={() => audio.start(queue)}
+            aria-label={isThis && audio.playing ? t('ui.listenStop') : `${t('ui.listen')} — ${headlineR.text}`}
+          >
+            <span aria-hidden="true">{isThis && audio.playing ? '⏸' : '▶'}</span>
+            {isThis && audio.playing ? t('ui.listenStop') : t('ui.listen')}
+          </button>
+          {code !== 'en' && <span className="listen-note">{t('ui.audioEnglishOnly')}</span>}
+        </p>
+      )}
 
       {story ? (
         <div className="story">
-          {story.segments.map((s, si) => {
-            const heading = tr([...base, 'segments', si, 'heading'], null, s.heading)
-            const body = tr([...base, 'segments', si, 'text'], null, s.text)
+          {parts.map(({ s, si, heading, body }) => {
+            const itemId = `${object.accession}/${s.id}`
+            const blocks = blocksOf(heading.text, body.text)
             return (
               <section key={s.id}>
-                <h3 {...langAttrs(heading)}>{heading.text}</h3>
+                <h3 {...langAttrs(heading)}>
+                  <Spoken text={heading.text} itemId={itemId} block={0} />
+                </h3>
                 <div {...langAttrs(body)}>
                   {body.fellBack && code !== 'en' && (
                     <p className="fallback-notice">{t('ui.fallbackNotice', { language: langName })}</p>
                   )}
                   {body.text.split('\n\n').map((p, i) => (
-                    <p key={i}>{p}</p>
+                    // block 0 is the heading, so the paragraphs start at 1 - the same order
+                    // scripts/audio.mjs used when it generated the cues.
+                    <p key={i}>
+                      <Spoken text={p} itemId={itemId} block={blocks.indexOf(p.trim())} />
+                    </p>
                   ))}
                 </div>
               </section>
@@ -296,7 +362,7 @@ function ObjectSection({ object, arrived, registry }) {
           })}
           {identificationR && (
             <p className="identification" {...langAttrs(identificationR)}>
-              {identificationR.text}
+              <Spoken text={identificationR.text} itemId={`${object.accession}/99-identification`} block={0} />
             </p>
           )}
         </div>
@@ -671,7 +737,12 @@ export default function App() {
 
   return (
     <Lang.Provider value={{ code, pack, setCode }}>
-      <Routes />
+      {/* §13: the narration plays across navigation, so the player sits above the router. Moving
+          it inside a page would unmount and silence it every time someone opened another object. */}
+      <AudioProvider>
+        <Routes />
+        <AudioBar />
+      </AudioProvider>
     </Lang.Provider>
   )
 }

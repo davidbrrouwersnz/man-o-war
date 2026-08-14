@@ -644,3 +644,216 @@ a {
   font-family: var(--sans);
   font-size: 0.875rem;
 }
+
+/* ------------------------------------------------------------------ audio guide (§13)
+
+   The narration is 552 files, one per printed block, so "skip this section" is "play the next
+   file". Everything below serves two things: a control that can be hit on a phone held one-handed
+   in a gallery, and a highlighted word that stays readable and never moves the line it sits in. */
+
+.object-listen {
+  margin: 0.75rem 0 1.5rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.listen {
+  font: inherit;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 2rem;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  min-height: 2.75rem;
+}
+
+.listen:hover {
+  border-color: var(--ink);
+}
+
+.listen:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.listen.is-playing {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.listen-note {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+}
+
+/* The word being spoken. A background tint rather than a colour change: recolouring the text
+   alters its contrast against the page, and this has to stay readable for 137 minutes. No
+   transition either — a fade cannot keep up with speech and just smears. */
+.spoken-word {
+  background: var(--flag-bg);
+  color: inherit;
+  border-radius: 0.15em;
+  /* Negative margin cancels the padding, so a highlighted word never shifts its line. */
+  padding: 0.05em 0.1em;
+  margin: -0.05em -0.1em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spoken-word {
+    background: none;
+    box-shadow: inset 0 -0.5em 0 var(--flag-bg);
+  }
+}
+
+.audio-bar {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 20;
+  background: var(--paper);
+  border-top: 1px solid var(--rule);
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  font-family: var(--sans);
+}
+
+/* The bar covers the end of the page, so give the document somewhere to scroll to. */
+body:has(.audio-bar) {
+  padding-bottom: 5.5rem;
+}
+
+.audio-progress {
+  height: 2px;
+  background: var(--rule);
+}
+
+.audio-progress span {
+  display: block;
+  height: 100%;
+  background: var(--ink);
+}
+
+.audio-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 0.6rem 1rem;
+}
+
+.audio-what {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.audio-what strong {
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.audio-what span {
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.audio-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.audio-controls button {
+  font: inherit;
+  font-size: 1rem;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.audio-controls button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.audio-controls button:not(:disabled):hover {
+  background: var(--rule);
+}
+
+.audio-controls button:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: -2px;
+}
+
+.audio-play {
+  border: 1px solid var(--rule);
+}
+
+.audio-rate select {
+  font: inherit;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.2rem;
+  border: 1px solid var(--rule);
+  border-radius: 0.25rem;
+  background: transparent;
+  color: var(--ink);
+  min-height: 2.25rem;
+}
+
+.audio-time {
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.audio-failed {
+  margin: 0;
+  padding: 0 1rem 0.6rem;
+  font-size: 0.8rem;
+  color: var(--flag);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* On a narrow screen the elapsed time goes first — the progress bar already says it, and the
+   controls have to stay reachable with a thumb. */
+@media (max-width: 30rem) {
+  .audio-time {
+    display: none;
+  }
+
+  .audio-row {
+    padding: 0.5rem 0.6rem;
+  }
+}

@@ -112,10 +112,32 @@ About **$1.50** for the English narration. Azure's free tier covers 500,000 char
 this is 90,000, so in practice it is likely free. Re-running after a fix costs nothing — unchanged
 text is never re-synthesised, because each file is cached against a hash of its own script.
 
+## The player
+
+Built and tested. `npm run audio:smoke` drives a real browser through it — 13 checks covering
+playback, highlighting, skipping, navigation and teardown.
+
+A **Listen** button on each object queues that object's blocks in page order. A bar at the bottom
+names what is playing and which section it is on, and carries previous / play / next, a speed
+control (0.5×–2×, pitch preserved) and a stop.
+
+**The word being spoken is highlighted as it is read.** The cues are matched to the rendered text at
+runtime by walking forwards through it — never searching from the start, because a paragraph with
+three "the"s in it would otherwise light up the first one every time. If a cue cannot be placed the
+highlighting stops rather than marking the wrong words, and the audio keeps playing.
+
+**The narration survives navigation**, per §13 — the player lives above the router, so opening
+another object does not cut it off.
+
+**Audio is offered only when every word on screen is English**, since that is the only language it
+exists in. Offering it beside translated text would break the rule the whole pipeline rests on. A
+visitor reading an untranslated object inside a Samoan session still gets it, because what they are
+looking at *is* the English.
+
 ## Still to do
 
-- Run it (needs the key).
-- Listen to it. Nothing above substitutes for hearing 100 minutes of Molly.
-- The 17 eponyms.
-- Wire the player into the app — the audio, the word highlighting and the skip-to-next-section
-  control. The data those need is generated; the interface is not built.
+- Listen to it. Nothing here substitutes for hearing Molly read a story end to end.
+- The 17 eponyms — `npm run dev`, then `/pronunciation-qa.html`.
+- The player's own labels ("Listen", "Details") are English-only. They are only ever shown beside
+  English text, so nothing is currently mismatched, but they are not translated.
+- No group-level "play the whole page". Each object is its own queue.

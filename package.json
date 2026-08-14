@@ -14,7 +14,8 @@
     "audio:check": "node scripts/audio.mjs --dry-run",
     "audio:probe": "node --env-file-if-exists=.env.local scripts/audio.mjs --probe",
     "pronunciation": "node scripts/pronunciation-review.mjs",
-    "pronunciation:qa": "node scripts/pronunciation-qa.mjs"
+    "pronunciation:qa": "node scripts/pronunciation-qa.mjs",
+    "audio:smoke": "node scripts/audio-smoke.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",
