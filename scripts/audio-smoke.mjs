@@ -91,17 +91,24 @@ const check = (name, ok, detail = '') => {
 await send('Page.navigate', { url: ORIGIN + OBJECT })
 await wait(1800)
 
+// The arrived object's OWN control, not the group tour's. A QR arrival renders the group page
+// scrolled to one object, so there are two controls on this page and the tour's comes first in the
+// DOM - querying for the first .listen would silently test the tour and call it the object.
+const OWN = `document.querySelector('.object.is-arrived .listen')`
+
 const before = await evaluate(`JSON.stringify({
-  listen: !!document.querySelector('.listen'),
-  label: (document.querySelector('.listen')||{}).textContent || '',
+  own: !!${OWN},
+  tour: document.querySelectorAll('.listen').length > 1,
+  label: (${OWN}||{}).textContent || '',
   bar: !!document.querySelector('.audio-bar'),
 })`)
 const b = JSON.parse(before)
-check('listen control renders', b.listen, b.label.trim())
+check('object has its own listen control', b.own, b.label.trim())
+check('group tour control is also present', b.tour)
 check('no transport bar before pressing play', !b.bar)
 
 // A real gesture, so the browser applies its normal autoplay rules rather than a test-only path.
-await evaluate(`document.querySelector('.listen').click(); true`, true)
+await evaluate(`${OWN}.click(); true`, true)
 await wait(2500)
 
 const playing = await evaluate(`JSON.stringify({
@@ -155,6 +162,60 @@ await evaluate(`[...document.querySelectorAll('.audio-controls button')].find(b=
 await wait(600)
 const stopped = await evaluate(`!document.querySelector('.audio-bar')`)
 check('stop closes the player', stopped === true)
+
+// ------------------------------------------------------------------ the other pages
+//
+// Same three questions everywhere: is there a control, does it play, does a word light up. The
+// object page above is checked in more depth; here the point is coverage - that the front page,
+// the group tours and the three reading essays all actually have audio and not just files on disk.
+
+const PAGES = [
+  ['/', 'front page'],
+  ['/g/jellyfish', 'group tour'],
+  ['/g/never-went-to-sea', 'group tour (no closing line)'],
+  ['/how-it-was-made', 'reading layer'],
+  ['/how-it-got-here', 'reading layer'],
+  ['/how-we-know', 'reading layer'],
+]
+
+for (const [path, what] of PAGES) {
+  errors.length = 0
+  await send('Page.navigate', { url: ORIGIN + path })
+  await wait(1800)
+
+  const has = await evaluate(`!!document.querySelector('.listen')`)
+  if (!has) {
+    check(`${path} — has a listen control (${what})`, false)
+    continue
+  }
+  await evaluate(`document.querySelector('.listen').click(); true`, true)
+  await wait(3000)
+
+  const state = JSON.parse(
+    await evaluate(`JSON.stringify({
+      width: (document.querySelector('.audio-progress span')||{style:{}}).style.width || '0%',
+      marks: document.querySelectorAll('.spoken-word').length,
+      marked: (document.querySelector('.spoken-word')||{}).textContent || '',
+      section: (document.querySelector('.audio-what span')||{}).textContent || '',
+    })`)
+  )
+  const ok = parseFloat(state.width) > 0 && state.marks === 1 && errors.length === 0
+  check(`${path} — plays and highlights (${what})`, ok, `${state.section} · "${state.marked}"`)
+
+  await evaluate(`const b=[...document.querySelectorAll('.audio-controls button')].find(b=>(b.getAttribute('aria-label')||'').startsWith('Stop')); if(b) b.click(); true`, true)
+  await wait(400)
+}
+
+// The group tour should be the panel, then every object, then the closing line — not just a panel.
+await send('Page.navigate', { url: ORIGIN + '/g/jellyfish' })
+await wait(1800)
+await evaluate(`document.querySelector('.listen').click(); true`, true)
+await wait(1500)
+const tour = JSON.parse(
+  await evaluate(`JSON.stringify({ section: (document.querySelector('.audio-what span')||{}).textContent || '' })`)
+)
+const total = Number((tour.section.match(/of (\d+)/) ?? [])[1] ?? 0)
+check('group tour covers the whole page', total > 40, `${total} sections queued`)
 
 check('no console errors', errors.length === 0, errors.slice(0, 2).join(' | '))
 

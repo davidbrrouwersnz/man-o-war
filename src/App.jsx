@@ -45,10 +45,44 @@ function useT() {
 // so an English fallback inside an Arabic page is an LTR block carrying lang="en".
 const langAttrs = (r) => ({ lang: r.lang, dir: dirOf(r.lang) })
 
-function Translated({ r, className }) {
+function Translated({ r, className, itemId, block = 0 }) {
   return (
     <p className={className} {...langAttrs(r)}>
-      {r.text}
+      {itemId ? <Spoken text={r.text} itemId={itemId} block={block} /> : r.text}
+    </p>
+  )
+}
+
+// The label shown in the player for a block that has no heading of its own — a panel, a standfirst,
+// the prototype note. Its own opening words are a better signpost than any name I could invent,
+// and they cost no new strings to translate.
+const firstWords = (text, max = 42) => {
+  const line = String(text ?? '').split(/[.\n]/)[0].trim()
+  return line.length > max ? `${line.slice(0, max - 1)}…` : line
+}
+
+// Every page that offers audio needs the same control and the same rule about when to show it, so
+// it lives in one place. `available` is the caller's own check that what is rendered is English —
+// the narration exists in English only, and offering it beside translated words would break the
+// rule the whole pipeline is built on.
+function Listen({ queue, available, note }) {
+  const [t] = useT()
+  const audio = useAudio()
+  if (!available) return null
+  const isThis = audio?.queue?.key === queue.key
+  const playing = isThis && audio.playing
+  return (
+    <p className="object-listen">
+      <button
+        type="button"
+        className={`listen${playing ? ' is-playing' : ''}`}
+        onClick={() => audio.start(queue)}
+        aria-label={playing ? t('ui.listenStop') : `${t('ui.listen')} — ${queue.title}`}
+      >
+        <span aria-hidden="true">{playing ? '⏸' : '▶'}</span>
+        {playing ? t('ui.listenStop') : t('ui.listen')}
+      </button>
+      {note && <span className="listen-note">{note}</span>}
     </p>
   )
 }
@@ -181,14 +215,27 @@ function Home({ go }) {
   }, [t])
 
   const intro = tr('ui.collectionIntro')
+  const note = tr('ui.prototypeNote')
+  const title = t('ui.collectionTitle')
+  const homeQueue = {
+    key: 'home',
+    title,
+    items: [
+      { id: 'home/00-intro', label: title, blocks: [title, intro.text] },
+      { id: 'home/99-note', label: firstWords(note.text), blocks: [note.text] },
+    ],
+  }
   return (
     <main className="home">
       <header className="home-head">
         <LanguagePicker />
-        <h1>{t('ui.collectionTitle')}</h1>
+        <h1>
+          <Spoken text={title} itemId="home/00-intro" block={0} />
+        </h1>
         <p lang={intro.lang} dir={dirOf(intro.lang)}>
-          {intro.text}
+          <Spoken text={intro.text} itemId="home/00-intro" block={1} />
         </p>
+        <Listen queue={homeQueue} available={intro.lang === 'en' && note.lang === 'en'} />
       </header>
       <ol className="grid">
         {GROUPS.map((g) => (
@@ -216,12 +263,68 @@ function Home({ go }) {
           {t('ui.search')} →
         </a>
       </nav>
-      <Translated className="foot" r={tr('ui.prototypeNote')} />
+      <Translated className="foot" r={note} itemId="home/99-note" />
     </main>
   )
 }
 
 // ------------------------------------------------------------------ group page
+
+// Everything the audio needs to know about one object, resolved once. Shared by the object's own
+// Listen control and by the group page's, so that playing a whole group plays exactly what each
+// object would have played on its own — the same files, the same order, the same highlighting.
+//
+// `english` is the gate. The narration exists in English only, and offering it beside translated
+// words would break the rule the pipeline is built on: that the spoken words ARE the printed ones.
+// A visitor reading an untranslated object inside a Samoan session still gets it, because what
+// they are looking at IS the English.
+function objectAudio(object, tr, t) {
+  const story = object.story
+  // Array form, not a dot-string: the accession itself contains dots ("1884.137.33"), which a
+  // naive split('.') would shred into bogus path segments — see src/i18n.js.
+  const base = ['stories', object.accession]
+  const headlineR = tr([...base, 'headline'], null, story?.headline ?? object.name ?? object.title)
+  const catalogueR = tr([...base, 'catalogueName'], null, object.catalogueName)
+  const identificationR = story?.identification ? tr([...base, 'identification'], null, story.identification) : null
+
+  // §10 wants a plain-English headline with the catalogue string demoted beneath it. Where no name
+  // exists the headline falls back to the catalogue's own name, and the demoted line would then
+  // repeat it word for word — so it is dropped rather than printed twice.
+  const showCatalogue = headlineR.text !== object.title && headlineR.text !== catalogueR.text
+
+  const parts = (story?.segments ?? []).map((s, si) => ({
+    s,
+    si,
+    heading: tr([...base, 'segments', si, 'heading'], null, s.heading),
+    body: tr([...base, 'segments', si, 'text'], null, s.text),
+  }))
+
+  const english =
+    headlineR.lang === 'en' &&
+    (!identificationR || identificationR.lang === 'en') &&
+    parts.every((p) => p.heading.lang === 'en' && p.body.lang === 'en')
+
+  const items = [
+    {
+      id: `${object.accession}/00-title`,
+      label: headlineR.text,
+      blocks: showCatalogue ? [headlineR.text, catalogueR.text] : [headlineR.text],
+    },
+    // No entry for the accession/size/rights line. It is printed right there on the page, so a
+    // screen reader reads it on request — narrating it adds nothing for the visitor who wants it
+    // and is noise for everyone else. See the note in scripts/audio.mjs.
+    ...parts.map((p) => ({
+      id: `${object.accession}/${p.s.id}`,
+      label: p.heading.text,
+      blocks: blocksOf(p.heading.text, p.body.text),
+    })),
+    ...(identificationR
+      ? [{ id: `${object.accession}/99-identification`, label: t('ui.audioIdentification'), blocks: [identificationR.text] }]
+      : []),
+  ]
+
+  return { headlineR, catalogueR, identificationR, showCatalogue, parts, english, items }
+}
 
 function ObjectSection({ object, arrived, registry }) {
   const ref = useRef(null)
@@ -238,67 +341,10 @@ function ObjectSection({ object, arrived, registry }) {
   const { story } = object
   const size = object.measurements[0]?.replace(/^Dimensions \(LxWxH\):\s*/i, '').trim()
 
-  // A per-language story override, if one has been translated for this accession. Resolved the
-  // same way as everything else: selected language -> English. Untranslated objects (most of them,
-  // in most languages) fall through cleanly to the English story already in the chunk.
-  // Array form, not a dot-string: the accession itself contains dots ("1884.137.33"), which would
-  // otherwise be shredded into bogus path segments by a naive split('.') — see src/i18n.js.
-  const base = ['stories', object.accession]
-  const headlineR = tr([...base, 'headline'], null, story?.headline ?? object.name ?? object.title)
-  const catalogueR = tr([...base, 'catalogueName'], null, object.catalogueName)
-  const identificationR = story?.identification ? tr([...base, 'identification'], null, story.identification) : null
-
-  // §10 wants a plain-English headline with the catalogue string demoted beneath it. Where no
-  // name exists the headline falls back to the catalogue's own name, and the demoted line would
-  // then repeat it word for word — so it is dropped rather than printed twice.
-  const showCatalogue = headlineR.text !== object.title && headlineR.text !== catalogueR.text
-
-  // Resolved here rather than inside the render loop, because the audio has to know whether what
-  // is ACTUALLY on screen is English before it offers to read it out.
-  const parts = (story?.segments ?? []).map((s, si) => ({
-    s,
-    si,
-    heading: tr([...base, 'segments', si, 'heading'], null, s.heading),
-    body: tr([...base, 'segments', si, 'text'], null, s.text),
-  }))
-
-  // The narration exists in English only. Offering it beside translated words would break the one
-  // rule the whole pipeline is built on — that the spoken words are the printed words — so the
-  // control appears only when every word on screen is the English the audio was made from. A
-  // visitor reading an untranslated object inside a Samoan session still gets it, because what
-  // they are looking at is the English.
+  const { headlineR, catalogueR, identificationR, showCatalogue, parts, english, items } = objectAudio(object, tr, t)
   const rights = object.rights ? object.rights : t('ui.rightsUnstated')
   const metaLine = [object.accession, size, rights].filter(Boolean).join(' · ')
-  const englishOnScreen =
-    headlineR.lang === 'en' &&
-    (!identificationR || identificationR.lang === 'en') &&
-    parts.every((p) => p.heading.lang === 'en' && p.body.lang === 'en')
-
-  const audio = useAudio()
-  const queueKey = `o:${object.accession}`
-  const isThis = audio?.queue?.key === queueKey
-  const queue = {
-    key: queueKey,
-    title: headlineR.text,
-    items: [
-      {
-        id: `${object.accession}/00-title`,
-        label: t('ui.audioName'),
-        blocks: showCatalogue ? [headlineR.text, catalogueR.text] : [headlineR.text],
-      },
-      // No entry for the accession/size/rights line. It is printed right there on the page, so a
-      // screen reader reads it on request — narrating it adds nothing for the visitor who wants it
-      // and is noise for everyone else. See the note in scripts/audio.mjs.
-      ...parts.map((p) => ({
-        id: `${object.accession}/${p.s.id}`,
-        label: p.heading.text,
-        blocks: blocksOf(p.heading.text, p.body.text),
-      })),
-      ...(identificationR
-        ? [{ id: `${object.accession}/99-identification`, label: t('ui.audioIdentification'), blocks: [identificationR.text] }]
-        : []),
-    ],
-  }
+  const queue = { key: `o:${object.accession}`, title: headlineR.text, items }
 
   return (
     <article className={`object${arrived ? ' is-arrived' : ''}`} ref={ref} id={`obj-${object.accession}`}>
@@ -320,20 +366,7 @@ function ObjectSection({ object, arrived, registry }) {
 
       <p className="object-meta">{metaLine}</p>
 
-      {englishOnScreen && (
-        <p className="object-listen">
-          <button
-            type="button"
-            className={`listen${isThis && audio.playing ? ' is-playing' : ''}`}
-            onClick={() => audio.start(queue)}
-            aria-label={isThis && audio.playing ? t('ui.listenStop') : `${t('ui.listen')} — ${headlineR.text}`}
-          >
-            <span aria-hidden="true">{isThis && audio.playing ? '⏸' : '▶'}</span>
-            {isThis && audio.playing ? t('ui.listenStop') : t('ui.listen')}
-          </button>
-          {code !== 'en' && <span className="listen-note">{t('ui.audioEnglishOnly')}</span>}
-        </p>
-      )}
+      <Listen queue={queue} available={english} note={code !== 'en' ? t('ui.audioEnglishOnly') : null} />
 
       {story ? (
         <div className="story">
@@ -380,6 +413,7 @@ function ObjectSection({ object, arrived, registry }) {
 
 function GroupPage({ route, go }) {
   const [t, tr] = useT()
+  const { code } = useLang()
   const group = BY_SLUG.get(route.slug)
   const registry = useRef(new Map())
   const [data, setData] = useState(null)
@@ -437,26 +471,63 @@ function GroupPage({ route, go }) {
   const prev = GROUPS[group.order - 2]
   const next = GROUPS[group.order]
   const title = tr(`groups.${group.slug}`, null, group.title)
+  const panelR = tr(`panels.${group.slug}.panel`, null, data?.panel ?? '')
+  const endingR = tr(`panels.${group.slug}.ending`, null, data?.ending ?? '')
+
+  // Built from the objects themselves rather than from a separate list, so the tour can never
+  // drift out of step with what is on the page.
+  const objectAudios = (data?.objects ?? []).map((o) => objectAudio(o, tr, t))
+  const tourAvailable =
+    !!data && title.lang === 'en' && panelR.lang === 'en' && objectAudios.every((a) => a.english)
+  const tourQueue = {
+    key: `g:${group.slug}`,
+    title: title.text,
+    items: [
+      ...(data?.panel ? [{ id: `groups/${group.slug}/00-panel`, label: title.text, blocks: [title.text, panelR.text] }] : []),
+      ...objectAudios.flatMap((a) => a.items),
+      ...(data?.ending
+        ? [{ id: `groups/${group.slug}/99-ending`, label: firstWords(endingR.text), blocks: [endingR.text] }]
+        : []),
+    ],
+  }
 
   return (
     <main className="reading">
       <a className="back" href="/" onClick={go('/')}>
         ← {t('ui.backToCollection')}
       </a>
-      <h1 className="group-title" {...langAttrs(title)}>{title.text}</h1>
+      <h1 className="group-title" {...langAttrs(title)}>
+        <Spoken text={title.text} itemId={`groups/${group.slug}/00-panel`} block={0} />
+      </h1>
       <p className="group-cost">
         {group.size} {t('ui.models')}. {t('ui.aboutMinutes', { m: group.minutes })}
       </p>
 
       {data ? (
         <>
-          {data.panel && <Translated className="group-panel" r={tr(`panels.${group.slug}.panel`, null, data.panel)} />}
+          {data.panel && (
+            <Translated
+              className="group-panel"
+              r={panelR}
+              itemId={`groups/${group.slug}/00-panel`}
+              block={1}
+            />
+          )}
+
+          {/* The whole page as one sitting: the panel, then every object in order, then the
+              closing line. It plays exactly what each object's own control plays, so a visitor can
+              start the tour and stop caring about the interface — which is the point of an audio
+              guide in a gallery. Individual objects keep their own control for anyone who wants
+              just the thing in front of them. */}
+          <Listen queue={tourQueue} available={tourAvailable} note={code !== 'en' ? t('ui.audioEnglishOnly') : null} />
 
           {data.objects.map((o) => (
             <ObjectSection key={o.accession} object={o} arrived={o.accession === route.arrivedAt} registry={registry} />
           ))}
 
-          {data.ending && <Translated className="group-ending" r={tr(`panels.${group.slug}.ending`, null, data.ending)} />}
+          {data.ending && (
+            <Translated className="group-ending" r={endingR} itemId={`groups/${group.slug}/99-ending`} />
+          )}
 
           {/* §10: layers 3–5 are reached from the end of a group page, as named continuations —
               not repeated under every object, and never a generic "more". */}
@@ -625,29 +696,66 @@ function LayerPage({ route, go }) {
   const meta = index.layers.find((l) => l.slug === route.slug)
   const layerTitle = tr(`layerTitles.${route.slug}`, null, meta?.title ?? '')
 
+  const standfirstR = tr(`layers.${route.slug}.standfirst`, null, layer?.standfirst ?? '')
+  const layerParts = (layer?.segments ?? []).map((s, si) => ({
+    s,
+    si,
+    heading: tr(`layers.${route.slug}.segments.${si}.heading`, null, s.heading),
+    body: tr(`layers.${route.slug}.segments.${si}.text`, null, s.text),
+  }))
+
+  // §13 leaves the reading layer text-only EXCEPT where no device voice exists for a shipped
+  // language — and with one voice in one language, that exception covers everything we ship. These
+  // three essays are also the deepest writing in the collection, so stopping the audio guide at
+  // their doorstep would end it exactly where the material gets good.
+  const layerAvailable =
+    !!layer && layerTitle.lang === 'en' && standfirstR.lang === 'en' && layerParts.every((p) => p.heading.lang === 'en' && p.body.lang === 'en')
+  const layerQueue = {
+    key: `l:${route.slug}`,
+    title: layerTitle.text,
+    items: [
+      { id: `layers/${route.slug}/00-standfirst`, label: layerTitle.text, blocks: [layerTitle.text, standfirstR.text] },
+      ...layerParts.map((p) => ({
+        id: `layers/${route.slug}/${p.s.id}`,
+        label: p.heading.text,
+        blocks: blocksOf(p.heading.text, p.body.text),
+      })),
+    ],
+  }
+
   return (
     <main className="reading">
       <a className="back" href="/" onClick={go('/')}>
         ← {t('ui.backToCollection')}
       </a>
       <h1 className="group-title" {...langAttrs(layerTitle)}>
-        {layerTitle.text}
+        <Spoken text={layerTitle.text} itemId={`layers/${route.slug}/00-standfirst`} block={0} />
       </h1>
       {layer ? (
         <>
-          <Translated className="group-panel" r={tr(`layers.${route.slug}.standfirst`, null, layer.standfirst)} />
-          {layer.segments.map((s, si) => {
-            const heading = tr(`layers.${route.slug}.segments.${si}.heading`, null, s.heading)
-            const body = tr(`layers.${route.slug}.segments.${si}.text`, null, s.text)
+          <Translated
+            className="group-panel"
+            r={standfirstR}
+            itemId={`layers/${route.slug}/00-standfirst`}
+            block={1}
+          />
+          <Listen queue={layerQueue} available={layerAvailable} note={code !== 'en' ? t('ui.audioEnglishOnly') : null} />
+          {layerParts.map(({ s, heading, body }) => {
+            const itemId = `layers/${route.slug}/${s.id}`
+            const blocks = blocksOf(heading.text, body.text)
             return (
               <section key={s.id} className="layer-section">
-                <h2 {...langAttrs(heading)}>{heading.text}</h2>
+                <h2 {...langAttrs(heading)}>
+                  <Spoken text={heading.text} itemId={itemId} block={0} />
+                </h2>
                 <div {...langAttrs(body)}>
                   {body.fellBack && code !== 'en' && (
                     <p className="fallback-notice">{t('ui.fallbackNotice', { language: langName })}</p>
                   )}
                   {body.text.split('\n\n').map((p, i) => (
-                    <p key={i}>{p}</p>
+                    <p key={i}>
+                      <Spoken text={p} itemId={itemId} block={blocks.indexOf(p.trim())} />
+                    </p>
                   ))}
                 </div>
               </section>

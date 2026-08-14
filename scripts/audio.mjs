@@ -4,7 +4,6 @@
 //   node scripts/audio.mjs --dry-run     build every SSML document and check it, call nothing
 //   node scripts/audio.mjs --probe       synthesise one short line to test phoneme support
 //   node scripts/audio.mjs --only 1884.137.33
-//   node scripts/audio.mjs --include-layers
 //
 // The rules from §13 that this file exists to enforce, and how:
 //
@@ -40,7 +39,6 @@ const val = (f) => { const i = args.indexOf(f); return i === -1 ? null : args[i 
 const DRY = has('--dry-run')
 const PROBE = has('--probe')
 const ONLY = val('--only')
-const INCLUDE_LAYERS = has('--include-layers')
 
 const VOICE = 'en-NZ-MollyNeural'
 const LOCALE = 'en-NZ'
@@ -59,6 +57,7 @@ const layers = read('layers.json')
 const groups = read('groups.json')
 const pron = read('pronunciation.json')
 const MANIFEST = read('manifest.json').objects
+const EN = read('i18n/en.json')
 const STORIES = { ...drafted.stories, ...museum.stories }
 
 // One flat list of everything to voice. Each unit is exactly one printed segment, which is what
@@ -111,23 +110,43 @@ function collect() {
   }
 
   if (!ONLY) {
+    // The front page. The eleven tiles are navigation rather than prose - "13 models. About 12
+    // minutes." is a signpost, and reading signposts aloud is how an audio guide becomes a chore -
+    // so what gets voiced is the two blocks of actual writing on the page.
+    units.push({
+      kind: 'home',
+      id: 'home/00-intro',
+      track: 'interpretation',
+      heading: null,
+      text: `${EN.ui.collectionTitle}\n\n${EN.ui.collectionIntro}`,
+    })
+    units.push({ kind: 'home', id: 'home/99-note', track: 'interpretation', heading: null, text: EN.ui.prototypeNote })
+
     for (const g of groups.groups) {
       const p = museum.panels[g.slug]
       if (!p) continue
-      for (const key of ['panel', 'ending']) {
-        if (!p[key]) continue
-        units.push({ kind: 'panel', id: `panels/${g.slug}-${key}`, track: 'interpretation', heading: null, text: p[key] })
+      // The group's own title leads its panel, the way the page does. The "N models, about M
+      // minutes" line under it is skipped for the same reason as the tiles.
+      if (p.panel) {
+        units.push({ kind: 'panel', id: `groups/${g.slug}/00-panel`, track: 'interpretation', heading: null, text: `${g.title}\n\n${p.panel}` })
+      }
+      if (p.ending) {
+        units.push({ kind: 'panel', id: `groups/${g.slug}/99-ending`, track: 'interpretation', heading: null, text: p.ending })
       }
     }
 
-    // §13 puts layers 1-2 in scope and leaves 3-5 as text. Off by default, available by flag.
-    if (INCLUDE_LAYERS) {
-      for (const [slug, l] of Object.entries(layers.layers)) {
-        for (const seg of l.segments) {
-          units.push({ kind: 'layer', id: `layers/${slug}-${seg.id}`, track: 'interpretation', heading: seg.heading, text: seg.text })
-        }
+    // §13 puts layers 1-2 in scope and leaves 3-5 as text-only, with one exception: where no device
+    // voice exists for a shipped language, the reading layer is pre-rendered too. We ship one voice
+    // and one language, so that exception is the whole of our situation - and these three essays
+    // are the deepest writing in the collection. Leaving them silent would mean the audio guide
+    // stops exactly where the material gets good.
+    for (const [slug, l] of Object.entries(layers.layers)) {
+      units.push({ kind: 'layer', id: `layers/${slug}/00-standfirst`, track: 'reading', heading: null, text: `${l.title}\n\n${l.standfirst}` })
+      for (const seg of l.segments) {
+        units.push({ kind: 'layer', id: `layers/${slug}/${seg.id}`, track: 'reading', heading: seg.heading, text: seg.text })
       }
     }
+    // The sources list at the foot of a layer page is a set of links, not prose. Not voiced.
   }
 
   return units

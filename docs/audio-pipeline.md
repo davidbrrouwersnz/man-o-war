@@ -1,7 +1,7 @@
 # The audio pipeline
 
 English narration, Azure, Molly (New Zealand English). Built to §13 of the spec.
-Everything below is done and tested except the part that needs an Azure key.
+Generated, wired into every page that carries writing, tested in a real browser, and deployed.
 
     npm run audio:check     build and verify every narration script, call nothing (works today)
     npm run pronunciation   the pronunciation list, for a human to correct
@@ -9,15 +9,30 @@ Everything below is done and tested except the part that needs an Azure key.
 
 ## What gets voiced
 
-**424 audio files**, one per block of text on the page, in the order the page shows it:
+**446 audio files**, one per block of text on the page, in the order the page shows it — every
+page that carries writing, not just the objects:
 
-| | |
+| page | what is voiced |
 |---|---|
-| the name | plain-English headline, then the catalogue's scientific name |
-| the story | one file per section — 261 of them |
-| the identification note | where the Museum's page and its own record disagree |
+| front page | the collection title and introduction, and the prototype note |
+| each of the 11 groups | the group's title and panel, and its closing line |
+| each of the 128 objects | the name and catalogue line, each story section, the identification note |
+| the 3 reading essays | the title and standfirst, then every section |
 
-Plus the 21 group panel and ending texts. That is 110 minutes of speech.
+That is 122 minutes of speech.
+
+Navigation is not voiced: the eleven tiles, the "13 models, about 12 minutes" lines, and the source
+lists at the foot of the essays. Reading signposts aloud is how an audio guide becomes a chore.
+
+**A group page plays as one continuous tour** — the panel, then all its objects in order, then the
+closing line. Jellyfish is 43 sections end to end. Each object keeps its own control for anyone who
+only wants the thing in front of them, and both play exactly the same files.
+
+§13 puts the reading essays outside the audio scope, with one exception: where no device voice
+exists for a shipped language, the reading layer is pre-rendered too. We ship one voice and one
+language, so that exception covers everything we ship — and those three essays are the deepest
+writing in the collection, so stopping the guide at their doorstep would end it exactly where the
+material gets good.
 
 Nothing here is newly written. Every file is a block already printed on the screen, which is what
 "only voice the text that is displayed" means in practice.
@@ -81,12 +96,15 @@ Every narration script is stripped back to plain text and compared against the s
 character. **If they differ at all, the build stops.** That is the mechanical enforcement of §13's
 first rule — the spoken words are the printed words — and there is no flag to skip it.
 
-It runs on all 552 segments today and passes.
+It runs on all 446 segments today and passes, with no exceptions and nothing exempted. The one
+place notation used to be expanded — the details line, where `109 x 142 x 33mm` was spoken as "109
+by 142 by 33 millimetres" — is no longer voiced at all, so that machinery is gone too.
 
-The one deliberate exception is the details line, where `109 x 142 x 33mm` is spoken as "109 by 142
-by 33 millimetres" and the accession number is read out digit by digit. Those are symbols and
-notation, not words; expanding them is what a screen reader does. It is confined to that one line,
-and the guard still holds because the printed text is untouched.
+It cannot catch everything, and it is worth knowing what it misses. It proves the narration matches
+the string it was handed; it has no way to know that string is what the page actually renders. That
+gap is how nine objects were once narrated with a different rights wording than the page printed.
+The fix was not a better check but removing the duplication — the generator now reads the app's own
+strings rather than restating them.
 
 ## What Molly can and cannot do
 
@@ -104,23 +122,23 @@ Researched against Azure's docs, because several widely-recommended SSML feature
 Speaking rate is deliberately left at natural. The app already offers 0.5×–2× playback, so baking a
 rate into the audio would fight the control the visitor already has.
 
-**One unknown remains.** Azure publishes its phonetic alphabet for British, Irish and Australian
+**This turned out fine.** Azure publishes its phonetic alphabet for British, Irish and Australian
 English but not for New Zealand English. Molly is not flagged as lacking phoneme support, so this is
-very likely just a documentation gap — but "very likely" is not "tested". The pipeline therefore
-sends a single test word before doing anything else, and if New Zealand English rejects it, falls
-back automatically to the plain respellings and says so. Either way it produces correct audio; we
-just find out which path on the first run rather than after 552 files.
+very likely just a documentation gap — but "very likely" is not "tested", so the pipeline sends a
+single test word before doing anything else and falls back to plain respellings if it is rejected.
+On the real run Molly accepted the phonemes, so the good path is what ships. The probe stays: we
+just find out which path on the first run rather than after 446 files.
 
 ## Cost
 
-About **$1.50** for the English narration. Azure's free tier covers 500,000 characters a month and
-this is 90,000, so in practice it is likely free. Re-running after a fix costs nothing — unchanged
+About **$1.60** for the English narration. Azure's free tier covers 500,000 characters a month and
+this is roughly 100,000, so in practice it has cost nothing. Re-running after a fix costs nothing — unchanged
 text is never re-synthesised, because each file is cached against a hash of its own script.
 
 ## The player
 
-Built and tested. `npm run audio:smoke` drives a real browser through it — 13 checks covering
-playback, highlighting, skipping, navigation and teardown.
+Built and tested. `npm run audio:smoke` drives a real browser through it — 21 checks covering
+playback, highlighting, skipping, navigation and teardown, on every page that carries audio.
 
 A **Listen** button on each object queues that object's blocks in page order. A bar at the bottom
 names what is playing and which section it is on, and carries previous / play / next, a speed

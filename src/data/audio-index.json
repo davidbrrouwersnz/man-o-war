@@ -3226,15 +3226,31 @@
       "track": "interpretation",
       "kind": "story"
     },
-    "panels/jellyfish-panel": {
-      "hash": "693b30ba92d32d94",
-      "durationMs": 19785,
-      "words": 64,
-      "bytes": 119088,
+    "home/00-intro": {
+      "hash": "cfab7cf67b690df6",
+      "durationMs": 16918,
+      "words": 34,
+      "bytes": 101808,
+      "track": "interpretation",
+      "kind": "home"
+    },
+    "home/99-note": {
+      "hash": "ffcf94361d0d883e",
+      "durationMs": 16247,
+      "words": 42,
+      "bytes": 97776,
+      "track": "interpretation",
+      "kind": "home"
+    },
+    "groups/jellyfish/00-panel": {
+      "hash": "bb9dbbb42f27d0b2",
+      "durationMs": 22851,
+      "words": 69,
+      "bytes": 137520,
       "track": "interpretation",
       "kind": "panel"
     },
-    "panels/jellyfish-ending": {
+    "groups/jellyfish/99-ending": {
       "hash": "978e3df71fe1e75b",
       "durationMs": 10130,
       "words": 29,
@@ -3242,15 +3258,15 @@
       "track": "interpretation",
       "kind": "panel"
     },
-    "panels/floating-colonies-panel": {
-      "hash": "4c49432e5bea4285",
-      "durationMs": 18245,
-      "words": 50,
-      "bytes": 109872,
+    "groups/floating-colonies/00-panel": {
+      "hash": "54928f5a6948f131",
+      "durationMs": 22021,
+      "words": 59,
+      "bytes": 132480,
       "track": "interpretation",
       "kind": "panel"
     },
-    "panels/floating-colonies-ending": {
+    "groups/floating-colonies/99-ending": {
       "hash": "859c09faa8bdfb49",
       "durationMs": 11917,
       "words": 32,
@@ -3258,15 +3274,15 @@
       "track": "interpretation",
       "kind": "panel"
     },
-    "panels/see-through-swimmers-panel": {
-      "hash": "1ec73c5904bc4b61",
-      "durationMs": 19827,
-      "words": 53,
-      "bytes": 119376,
+    "groups/see-through-swimmers/00-panel": {
+      "hash": "de72ae64feaa39ae",
+      "durationMs": 24140,
+      "words": 62,
+      "bytes": 145152,
       "track": "interpretation",
       "kind": "panel"
     },
-    "panels/see-through-swimmers-ending": {
+    "groups/see-through-swimmers/99-ending": {
       "hash": "a76ec5babb4935ee",
       "durationMs": 10246,
       "words": 28,
@@ -3274,15 +3290,15 @@
       "track": "interpretation",
       "kind": "panel"
     },
-    "panels/sea-squirts-and-salps-panel": {
-      "hash": "9b9eafc0456e0e7f",
-      "durationMs": 19430,
-      "words": 57,
-      "bytes": 116928,
+    "groups/sea-squirts-and-salps/00-panel": {
+      "hash": "20129bee5ccd8003",
+      "durationMs": 21983,
+      "words": 61,
+      "bytes": 132192,
       "track": "interpretation",
       "kind": "panel"
     },
-    "panels/sea-squirts-and-salps-ending": {
+    "groups/sea-squirts-and-salps/99-ending": {
       "hash": "94660c7e7aad0348",
       "durationMs": 11446,
       "words": 31,
@@ -3290,15 +3306,15 @@
       "track": "interpretation",
       "kind": "panel"
     },
-    "panels/cephalopods-panel": {
-      "hash": "79e48057356aaf53",
-      "durationMs": 18733,
-      "words": 51,
-      "bytes": 112752,
+    "groups/cephalopods/00-panel": {
+      "hash": "137aaf47e935ba84",
+      "durationMs": 21235,
+      "words": 58,
+      "bytes": 127728,
       "track": "interpretation",
       "kind": "panel"
     },
-    "panels/cephalopods-ending": {
+    "groups/cephalopods/99-ending": {
       "hash": "deb784bf35a9b591",
       "durationMs": 8932,
       "words": 24,
@@ -3306,15 +3322,15 @@
       "track": "interpretation",
       "kind": "panel"
     },
-    "panels/sea-slugs-panel": {
-      "hash": "4f91586ba4a18cb9",
-      "durationMs": 22756,
-      "words": 62,
-      "bytes": 136944,
+    "groups/sea-slugs/00-panel": {
+      "hash": "c1408d74b4890114",
+      "durationMs": 24624,
+      "words": 64,
+      "bytes": 148176,
       "track": "interpretation",
       "kind": "panel"
     },
-    "panels/sea-slugs-ending": {
+    "groups/sea-slugs/99-ending": {
       "hash": "a302ffc2d1e09470",
       "durationMs": 7920,
       "words": 22,
@@ -3322,15 +3338,15 @@
       "track": "interpretation",
       "kind": "panel"
     },
-    "panels/sea-anemones-panel": {
-      "hash": "31f32c56bd3a2882",
-      "durationMs": 24071,
-      "words": 71,
-      "bytes": 144720,
+    "groups/sea-anemones/00-panel": {
+      "hash": "cd35bcb43ec28b1b",
+      "durationMs": 24793,
+      "words": 73,
+      "bytes": 149184,
       "track": "interpretation",
       "kind": "panel"
     },
-    "panels/sea-anemones-ending": {
+    "groups/sea-anemones/99-ending": {
       "hash": "f2ca3bcc77805a57",
       "durationMs": 9104,
       "words": 21,
@@ -3338,15 +3354,15 @@
       "track": "interpretation",
       "kind": "panel"
     },
-    "panels/corals-and-sea-fans-panel": {
-      "hash": "87488c70ea59e7ed",
-      "durationMs": 18919,
-      "words": 55,
-      "bytes": 113904,
+    "groups/corals-and-sea-fans/00-panel": {
+      "hash": "d2829346037a0cf3",
+      "durationMs": 24169,
+      "words": 67,
+      "bytes": 145440,
       "track": "interpretation",
       "kind": "panel"
     },
-    "panels/corals-and-sea-fans-ending": {
+    "groups/corals-and-sea-fans/99-ending": {
       "hash": "5815f0bee931c1ef",
       "durationMs": 8828,
       "words": 27,
@@ -3354,15 +3370,15 @@
       "track": "interpretation",
       "kind": "panel"
     },
-    "panels/sea-cucumbers-and-stars-panel": {
-      "hash": "bb0a2898c59bb343",
-      "durationMs": 26071,
-      "words": 76,
-      "bytes": 156816,
+    "groups/sea-cucumbers-and-stars/00-panel": {
+      "hash": "7d7ae733d30f836d",
+      "durationMs": 30044,
+      "words": 84,
+      "bytes": 180576,
       "track": "interpretation",
       "kind": "panel"
     },
-    "panels/sea-cucumbers-and-stars-ending": {
+    "groups/sea-cucumbers-and-stars/99-ending": {
       "hash": "93c7777af4c46d4b",
       "durationMs": 10301,
       "words": 30,
@@ -3370,15 +3386,15 @@
       "track": "interpretation",
       "kind": "panel"
     },
-    "panels/worms-panel": {
-      "hash": "3f042355b5dece13",
-      "durationMs": 19273,
-      "words": 57,
-      "bytes": 116064,
+    "groups/worms/00-panel": {
+      "hash": "6490e3cf824831f9",
+      "durationMs": 21575,
+      "words": 61,
+      "bytes": 129744,
       "track": "interpretation",
       "kind": "panel"
     },
-    "panels/worms-ending": {
+    "groups/worms/99-ending": {
       "hash": "9fa9ca3d6bce7cdb",
       "durationMs": 7525,
       "words": 22,
@@ -3386,13 +3402,173 @@
       "track": "interpretation",
       "kind": "panel"
     },
-    "panels/never-went-to-sea-panel": {
-      "hash": "4e7bbfbfcc76a43e",
-      "durationMs": 20458,
-      "words": 62,
-      "bytes": 123120,
+    "groups/never-went-to-sea/00-panel": {
+      "hash": "8d577bb4aecb1b29",
+      "durationMs": 22550,
+      "words": 66,
+      "bytes": 135648,
       "track": "interpretation",
       "kind": "panel"
+    },
+    "layers/how-it-was-made/00-standfirst": {
+      "hash": "14e6be71c7eab1dc",
+      "durationMs": 8365,
+      "words": 23,
+      "bytes": 50544,
+      "track": "reading",
+      "kind": "layer"
+    },
+    "layers/how-it-was-made/the-problem": {
+      "hash": "6eb66291d44102ae",
+      "durationMs": 47940,
+      "words": 122,
+      "bytes": 288000,
+      "track": "reading",
+      "kind": "layer"
+    },
+    "layers/how-it-was-made/the-method": {
+      "hash": "152eb8b1f50c4dd9",
+      "durationMs": 38969,
+      "words": 116,
+      "bytes": 234144,
+      "track": "reading",
+      "kind": "layer"
+    },
+    "layers/how-it-was-made/colour": {
+      "hash": "340269b0baad247a",
+      "durationMs": 36452,
+      "words": 98,
+      "bytes": 219024,
+      "track": "reading",
+      "kind": "layer"
+    },
+    "layers/how-it-was-made/mixed-media": {
+      "hash": "105af631e6a54943",
+      "durationMs": 39808,
+      "words": 116,
+      "bytes": 239184,
+      "track": "reading",
+      "kind": "layer"
+    },
+    "layers/how-it-was-made/accuracy": {
+      "hash": "15556cc5cd048fab",
+      "durationMs": 40876,
+      "words": 99,
+      "bytes": 245664,
+      "track": "reading",
+      "kind": "layer"
+    },
+    "layers/how-it-got-here/00-standfirst": {
+      "hash": "0df03fd3d1115edb",
+      "durationMs": 8051,
+      "words": 20,
+      "bytes": 48672,
+      "track": "reading",
+      "kind": "layer"
+    },
+    "layers/how-it-got-here/the-gap": {
+      "hash": "24c750c1501bbcec",
+      "durationMs": 38865,
+      "words": 101,
+      "bytes": 233568,
+      "track": "reading",
+      "kind": "layer"
+    },
+    "layers/how-it-got-here/haast": {
+      "hash": "0594bec94344926d",
+      "durationMs": 33219,
+      "words": 88,
+      "bytes": 199728,
+      "track": "reading",
+      "kind": "layer"
+    },
+    "layers/how-it-got-here/otago-first": {
+      "hash": "52fe2b54c00fc6bc",
+      "durationMs": 34402,
+      "words": 80,
+      "bytes": 206784,
+      "track": "reading",
+      "kind": "layer"
+    },
+    "layers/how-it-got-here/the-order": {
+      "hash": "4347fc5adf4afbd3",
+      "durationMs": 35375,
+      "words": 78,
+      "bytes": 212544,
+      "track": "reading",
+      "kind": "layer"
+    },
+    "layers/how-it-got-here/the-gifts": {
+      "hash": "b41b07c5226a8b26",
+      "durationMs": 32387,
+      "words": 84,
+      "bytes": 194688,
+      "track": "reading",
+      "kind": "layer"
+    },
+    "layers/how-it-got-here/since": {
+      "hash": "46f585e32a8de953",
+      "durationMs": 47903,
+      "words": 122,
+      "bytes": 287712,
+      "track": "reading",
+      "kind": "layer"
+    },
+    "layers/how-we-know/00-standfirst": {
+      "hash": "4f5bc6ad1e90255f",
+      "durationMs": 7038,
+      "words": 19,
+      "bytes": 42624,
+      "track": "reading",
+      "kind": "layer"
+    },
+    "layers/how-we-know/two-voices": {
+      "hash": "3af0c35dc33263b1",
+      "durationMs": 37294,
+      "words": 102,
+      "bytes": 224064,
+      "track": "reading",
+      "kind": "layer"
+    },
+    "layers/how-we-know/the-count": {
+      "hash": "f5f4e8fef8370764",
+      "durationMs": 48186,
+      "words": 110,
+      "bytes": 289440,
+      "track": "reading",
+      "kind": "layer"
+    },
+    "layers/how-we-know/the-query": {
+      "hash": "e425654c4d4af2f0",
+      "durationMs": 49006,
+      "words": 115,
+      "bytes": 294336,
+      "track": "reading",
+      "kind": "layer"
+    },
+    "layers/how-we-know/the-names": {
+      "hash": "a1470ef5f886940e",
+      "durationMs": 41554,
+      "words": 116,
+      "bytes": 249696,
+      "track": "reading",
+      "kind": "layer"
+    },
+    "layers/how-we-know/blaschka-numbers": {
+      "hash": "701b4465a255fffe",
+      "durationMs": 43691,
+      "words": 113,
+      "bytes": 262512,
+      "track": "reading",
+      "kind": "layer"
+    },
+    "layers/how-we-know/gaps": {
+      "hash": "3ca1b45c761b15df",
+      "durationMs": 34075,
+      "words": 99,
+      "bytes": 204768,
+      "track": "reading",
+      "kind": "layer"
     }
   }
 }
