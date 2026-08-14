@@ -62,7 +62,14 @@ for (const g of groups.groups) {
 
   const objects = g.accessions.map((accession) => {
     const o = OBJECTS.get(accession)
-    const story = STORIES[accession]
+    // `identification` is dropped from the shipped chunk rather than from the source. Fourteen
+    // objects carry one and none of them is rendered or spoken any more, so shipping the text would
+    // be bytes on a gallery connection that nobody ever reads. The authored text stays in
+    // src/data/stories*.json, so restoring it is one line here plus the render.
+    // Kept undefined when there is no story at all: an empty object here would be truthy, and the
+    // page would render the story branch with no segments instead of the labelled placeholder.
+    const raw = STORIES[accession]
+    const story = raw ? (({ identification, ...rest }) => rest)(raw) : undefined
     return {
       accession,
       title: o.title,
@@ -178,7 +185,15 @@ for (const file of readdirSync(langDir)) {
     const ts = JSON.parse(readFileSync(storyFile, 'utf8'))
     const stray = Object.keys(ts.stories ?? {}).filter((a) => !allAccessions.has(a))
     if (stray.length) throw new Error(`stories/${code}.json: accessions not in the manifest: ${stray.join(', ')}`)
-    pack.stories = ts.stories
+    // Same strip as the English chunk above: the identification note is no longer rendered in any
+    // language, and German is the heaviest pack in the app at ~37KB gzipped. Translated text nobody
+    // can read is the worst kind of payload — it costs the visitor and teaches nothing.
+    pack.stories = Object.fromEntries(
+      Object.entries(ts.stories ?? {}).map(([acc, s]) => {
+        const { identification, ...rest } = s ?? {}
+        return [acc, rest]
+      })
+    )
     storiesDone = Object.keys(ts.stories ?? {}).length
   }
 

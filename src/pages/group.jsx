@@ -26,7 +26,15 @@ function objectAudio(object, tr, t) {
   const base = ['stories', object.accession]
   const headlineR = tr([...base, 'headline'], null, story?.headline ?? object.name ?? object.title)
   const catalogueR = tr([...base, 'catalogueName'], null, object.catalogueName)
-  const identificationR = story?.identification ? tr([...base, 'identification'], null, story.identification) : null
+
+  // The identification note is no longer shown or spoken. It sat under fourteen objects and read as
+  // a hedge — "The Museum's page gives this as Physalia physalis. The collection record says
+  // Physalia pelagica." The text is still in src/data/stories*.json; scripts/split.mjs strips it out
+  // of the chunks so the payload does not carry words nobody reads.
+  //
+  // Removed from the audio in the same change, deliberately. §13's rule is that the spoken words
+  // ARE the printed words, word for word — so a narration segment whose text is not on the page is
+  // the one thing that pipeline exists to prevent.
 
   // §10 wants a plain-English headline with the catalogue string demoted beneath it. Where no name
   // exists the headline falls back to the catalogue's own name, and the demoted line would then
@@ -41,9 +49,7 @@ function objectAudio(object, tr, t) {
   }))
 
   const english =
-    headlineR.lang === 'en' &&
-    (!identificationR || identificationR.lang === 'en') &&
-    parts.every((p) => p.heading.lang === 'en' && p.body.lang === 'en')
+    headlineR.lang === 'en' && parts.every((p) => p.heading.lang === 'en' && p.body.lang === 'en')
 
   const items = [
     {
@@ -59,12 +65,9 @@ function objectAudio(object, tr, t) {
       label: p.heading.text,
       blocks: blocksOf(p.heading.text, p.body.text),
     })),
-    ...(identificationR
-      ? [{ id: `${object.accession}/99-identification`, label: t('ui.audioIdentification'), blocks: [identificationR.text] }]
-      : []),
   ]
 
-  return { headlineR, catalogueR, identificationR, showCatalogue, parts, english, items }
+  return { headlineR, catalogueR, showCatalogue, parts, english, items }
 }
 
 function ObjectSection({ object, arrived, registry }) {
@@ -82,7 +85,7 @@ function ObjectSection({ object, arrived, registry }) {
   const { story } = object
   const size = object.measurements[0]?.replace(/^Dimensions \(LxWxH\):\s*/i, '').trim()
 
-  const { headlineR, catalogueR, identificationR, showCatalogue, parts, english, items } = objectAudio(object, tr, t)
+  const { headlineR, catalogueR, showCatalogue, parts, english, items } = objectAudio(object, tr, t)
   const rights = object.rights ? object.rights : t('ui.rightsUnstated')
   const metaLine = [object.accession, size, rights].filter(Boolean).join(' · ')
   const queue = { key: `o:${object.accession}`, title: headlineR.text, items }
@@ -145,11 +148,6 @@ function ObjectSection({ object, arrived, registry }) {
               </section>
             )
           })}
-          {identificationR && (
-            <p className="identification" {...langAttrs(identificationR)}>
-              <Spoken text={identificationR.text} itemId={`${object.accession}/99-identification`} block={0} />
-            </p>
-          )}
         </div>
       ) : (
         <div className="story is-placeholder">

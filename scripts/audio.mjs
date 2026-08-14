@@ -99,9 +99,11 @@ function collect() {
         // text exists, so that is what ships. See docs/audio-generation.md.
         units.push({ kind: 'story', id: `${accession}/${seg.id}`, track: 'interpretation', heading: seg.heading, text: seg.text })
       }
-      if (story.identification) {
-        units.push({ kind: 'identification', id: `${accession}/99-identification`, track: 'interpretation', heading: null, text: story.identification })
-      }
+      // No identification unit. The note is no longer printed on the page, and §13's rule is that
+      // the spoken words ARE the printed words — generating narration for text nobody can read is
+      // exactly the divergence this pipeline exists to prevent. The 28 already-generated
+      // 99-identification files under public/audio/en are now unused; they are left in place rather
+      // than deleted, since nothing loads them and regenerating audio costs money.
     } else {
       // Defensive: the harvest asserts every object has a story, so this path should never run.
       // If it ever does, the page shows the catalogue's own words and so should the audio.
