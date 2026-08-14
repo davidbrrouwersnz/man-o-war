@@ -668,6 +668,17 @@ a {
       'flag  flag'
       'media head'
       'media body';
+    /* The third row is flexible and that is the whole point. The media spans the head and body
+       rows, so whenever a photograph is taller than the text beside it — which is most of them —
+       grid grows the spanned rows to fit, and with two auto rows it splits the excess between
+       them. That opened a gap between an object's name and its story: measured at up to 157px on
+       the floating-colonies page, which read as the text being vertically centred against the
+       photograph rather than sitting at the top of it.
+
+       A flexible track takes the slack instead, so the head row stays at its content height and
+       the body starts directly beneath it. `align-items: start` then keeps the text at the top of
+       its own row. */
+    grid-template-rows: auto auto 1fr;
     column-gap: clamp(2rem, 4cqi, 3.5rem);
     align-items: start;
   }
