@@ -4,10 +4,10 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { BY_CODE } from '../i18n.js'
 import { langAttrs, useLang, useT } from '../lang.jsx'
 import { Spoken, blocksOf } from '../audio.jsx'
-import { BY_SLUG, GROUPS, index, loadChunk } from '../collection.js'
-import { Listen, Media, Translated, firstWords } from '../components/reading.jsx'
+import { BY_SLUG, GROUPS, loadChunk } from '../collection.js'
+import { Listen, Media, Translated } from '../components/reading.jsx'
 import { Tools } from '../components/tools.jsx'
-import { Missing } from './search.jsx'
+import { Missing } from './missing.jsx'
 
 // ------------------------------------------------------------------ group page
 
@@ -223,7 +223,6 @@ function GroupPage({ route, go }) {
   const next = GROUPS[group.order]
   const title = tr(`groups.${group.slug}`, null, group.title)
   const panelR = tr(`panels.${group.slug}.panel`, null, data?.panel ?? '')
-  const endingR = tr(`panels.${group.slug}.ending`, null, data?.ending ?? '')
 
   // Built from the objects themselves rather than from a separate list, so the tour can never
   // drift out of step with what is on the page.
@@ -236,9 +235,6 @@ function GroupPage({ route, go }) {
     items: [
       ...(data?.panel ? [{ id: `groups/${group.slug}/00-panel`, label: title.text, blocks: [title.text, panelR.text] }] : []),
       ...objectAudios.flatMap((a) => a.items),
-      ...(data?.ending
-        ? [{ id: `groups/${group.slug}/99-ending`, label: firstWords(endingR.text), blocks: [endingR.text] }]
-        : []),
     ],
   }
 
@@ -278,22 +274,6 @@ function GroupPage({ route, go }) {
           {data.objects.map((o) => (
             <ObjectSection key={o.accession} object={o} arrived={o.accession === route.arrivedAt} registry={registry} />
           ))}
-
-          {data.ending && (
-            <Translated className="group-ending" r={endingR} itemId={`groups/${group.slug}/99-ending`} />
-          )}
-
-          {/* §10: the reading essays are reached from the end of a group page, as named
-              continuations — not repeated under every object, and never a generic "more". They now
-              live on the collection page, so these links land there scrolled to the essay. The
-              paths are unchanged, which is why nothing printed or shared has to be reissued. */}
-          <nav className="continuations">
-            {index.layers.map((l) => (
-              <a key={l.slug} href={`/${l.slug}`} onClick={go(`/${l.slug}`)}>
-                {tr(`layerTitles.${l.slug}`, null, l.title).text}
-              </a>
-            ))}
-          </nav>
         </>
       ) : (
         <p className="loading">Loading the objects…</p>

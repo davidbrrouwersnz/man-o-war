@@ -7,10 +7,6 @@
     "backToCollection": "Collection",
     "everyObject": "Every object",
     "byGroup": "By group",
-    "search": "Search",
-    "searchHelp": "Across all eleven pages. Try a name, a scientific name, or an accession number.",
-    "searchPlaceholder": "jellyfish, Physalia, 1884.137.33",
-    "searchNothing": "Nothing matches that.",
     "models": "models",
     "aboutMinutes": "About {m} minutes.",
     "scanned": "The object you scanned",
@@ -26,7 +22,6 @@
     "listen": "Listen",
     "listenStop": "Stop listening",
     "audioEnglishOnly": "The audio guide is in English.",
-    "audioName": "Name",
     "skipToContent": "Skip to the collection",
     "display": "Display",
     "displayHelp": "These settings are remembered on this device.",
@@ -50,6 +45,7 @@
     "audioSeconds": "{n} seconds",
     "reading": "Reading",
     "followWords": "Scroll to follow the words as they are read",
-    "notFoundAccession": "{accession} is not an accession number in this collection."
+    "notFoundAccession": "{accession} is not an accession number in this collection.",
+    "collectionIntroOnDisplay": "One is on display"
   }
 }

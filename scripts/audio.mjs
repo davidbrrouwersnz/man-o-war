@@ -131,9 +131,9 @@ function collect() {
       if (p.panel) {
         units.push({ kind: 'panel', id: `groups/${g.slug}/00-panel`, track: 'interpretation', heading: null, text: `${g.title}\n\n${p.panel}` })
       }
-      if (p.ending) {
-        units.push({ kind: 'panel', id: `groups/${g.slug}/99-ending`, track: 'interpretation', heading: null, text: p.ending })
-      }
+      // No ending unit. The closing line is no longer printed, and §13's rule is that the spoken
+      // words ARE the printed words. The 20 already-generated 99-ending files under public/audio/en
+      // are unused now; left in place, since nothing loads them and regenerating costs money.
     }
 
     // §13 puts layers 1-2 in scope and leaves 3-5 as text-only, with one exception: where no device

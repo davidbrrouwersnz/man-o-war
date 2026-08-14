@@ -398,12 +398,89 @@ a {
   max-width: var(--measure);
 }
 
+/* ------------------------------------------------- the collection page at desktop
+
+   Browsing on the left, reading on the right — the same move the group pages make one level down,
+   where the photograph holds the left and its story runs beside it. Stacked, this page put a
+   550px-wide header in a 1440px window with 60% of it empty, and pushed a thousand words of essay
+   below a grid most visitors never scroll past.
+
+   80rem rather than 64rem, and that is a reading measure rather than a device: at 1024px the right
+   column comes out around 460px, about 52 characters, which is under the measure. At 1280 it is
+   ~570px, which --measure (62ch) fits exactly. A 1366px laptop gets the split; anything narrower
+   keeps the stacked page unchanged.
+
+   The columns are full-bleed on purpose. A cream panel floating inside a black page reads as a
+   mistake; a cream column running to the right edge reads as a decision. §15's rule survives it —
+   the grid is dark whatever the device is doing, the reading area follows the device — except that
+   the boundary between them is now vertical. */
+@media (min-width: 80rem) {
+  .home {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    grid-template-areas:
+      'browse head'
+      'browse read';
+    /* Flexible second row, for the reason the object page needed one: with two auto rows, a browse
+       column taller than head + read has its excess split between them, which opens a gap under
+       the title. The slack belongs to the reading row. */
+    grid-template-rows: auto 1fr;
+    column-gap: clamp(2rem, 4vw, 4rem);
+    row-gap: 0;
+    padding: 0;
+  }
+
+  .home-head {
+    grid-area: head;
+    /* The head sits on the reading ground now, not the dark one. Its text colours and its controls
+       are further down this file, after the dark rules they have to beat. */
+    background: var(--paper);
+    color: var(--ink);
+    max-width: none;
+    padding: 3.5rem clamp(1.5rem, 3vw, 3rem) 1.5rem;
+  }
+
+  .home-browse {
+    grid-area: browse;
+    /* Named here and nowhere else, so the tile-count container queries further down cannot reach
+       the stacked layout below this breakpoint. */
+    container-type: inline-size;
+    container-name: browse;
+    /* Matches the head's top padding so the tab bar and the collection title start on the same
+       line. Without it the grid began at the very top edge while the reading column sat 56px down,
+       and the two halves read as unrelated. */
+    padding-top: 3.5rem;
+  }
+
+  /* Stretched so the cream runs to the bottom of the page rather than stopping where the essays
+     end. With row-gap 0 the head and this form one continuous field. */
+  .home-read {
+    grid-area: read;
+    align-self: stretch;
+    background: var(--paper);
+    color: var(--ink);
+  }
+}
+
 .home-head h1 {
   font-size: var(--step-4);
   line-height: 1.1;
   letter-spacing: -0.02em;
   margin: 0 0 0.75rem;
   font-weight: 400;
+}
+
+/* The one link in the collection standfirst, pointing at the object that is actually on display.
+   Underlined because colour alone must not carry it — WCAG 1.4.1 — and the standfirst is prose. */
+.intro-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  text-decoration-thickness: 1px;
+}
+
+.intro-link:hover {
+  text-decoration-thickness: 2px;
 }
 
 .home-head p {
@@ -668,6 +745,17 @@ a {
       'flag  flag'
       'media head'
       'media body';
+    /* The third row is flexible and that is the whole point. The media spans the head and body
+       rows, so whenever a photograph is taller than the text beside it — which is most of them —
+       grid grows the spanned rows to fit, and with two auto rows it splits the excess between
+       them. That opened a gap between an object's name and its story: measured at up to 157px on
+       the floating-colonies page, which read as the text being vertically centred against the
+       photograph rather than sitting at the top of it.
+
+       A flexible track takes the slack instead, so the head row stays at its content height and
+       the body starts directly beneath it. `align-items: start` then keeps the text at the top of
+       its own row. */
+    grid-template-rows: auto auto 1fr;
     column-gap: clamp(2rem, 4cqi, 3.5rem);
     align-items: start;
   }
@@ -684,15 +772,27 @@ a {
     grid-area: body;
   }
 
+  /* Stretched, so the well can run down to meet the bottom of the text beside it rather than
+     stopping short and leaving the column ragged. The grid row is already the height of whichever
+     side is taller, so filling it costs no extra page height.
+
+     This is also what finally retires the sticky media. `position: sticky` needs the photograph to
+     be SHORTER than the text to have any travel, and stretching it to match guarantees it never
+     is. It was close to inert already — measured on the worst page, only 2 of 19 objects gave it
+     room to move, because §10 was written expecting ~231-word stories and the real ones run 95.
+     Leaving a declaration that provably cannot fire is worse than removing it. */
   .object-media {
     grid-area: media;
-    position: sticky;
-    top: 1.5rem;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
   }
 
-  /* The well is capped at 70svh of the viewport; in a column roughly half the page wide that cap
-     is rarely what binds, so most objects render at their true aspect. */
   .object-media .well {
+    /* Grows into whatever height the row has, so the photograph's frame ends level with the story.
+       The cap still governs the well's NATURAL height, which is what sets the row's minimum when
+       the photograph is the taller side. */
+    flex: 1 1 auto;
     max-height: 78svh;
   }
 }
@@ -736,6 +836,16 @@ a {
    page carrying a sticky media column (§10, desktop) on every scroll gesture. */
 .well {
   position: relative;
+  /* Explicit, and it is the whole point of this rule. With `width: auto` the aspect ratio and the
+     max-height below fight each other: when the cap bites on a tall photograph the browser keeps
+     the ratio by shrinking the WIDTH as well, so on a page of siphonophores every well came out a
+     different width — 478px for the man o' war against 578px for a landscape neighbour, in a
+     column that is 578px wide. A definite width stops the constrained height transferring back.
+
+     The box then stops matching the photograph's ratio once capped, and that is correct: the
+     photograph is centred in it by object-fit, and the bars either side are invisible because
+     every one of the 128 photographs has a near-black border (scripts/backgrounds.mjs). */
+  width: 100%;
   aspect-ratio: var(--aspect, 4 / 3);
   max-height: 70vh;
   max-height: 70svh;
@@ -868,14 +978,6 @@ a {
   margin: 0 0 0.6rem;
 }
 
-/* ------------------------------------------------------------------ end of page */
-
-.group-ending {
-  font-size: var(--step-1);
-  line-height: 1.5;
-  margin: 0 0 2.5rem;
-}
-
 .group-nav {
   display: flex;
   justify-content: space-between;
@@ -984,10 +1086,6 @@ a {
   padding-right: 0.75rem;
 }
 
-[dir='rtl'] .continuations a::after {
-  content: ' ←';
-}
-
 [dir='rtl'] .layer-sources ul {
   padding-left: 0;
   padding-right: 1rem;
@@ -1018,6 +1116,41 @@ a {
   }
 }
 
+/* The tile counts inside the desktop split. These have to sit AFTER every .grid and .grid-dense
+   media query above, not beside the .grid rules where they belong logically: a container query
+   carries no more specificity than a media query, so whichever comes last wins. Placed earlier,
+   the 64rem media query above put six dense tiles in a 739px column.
+
+   Widths in px, not rem, for the same reason the touch targets are: a container query resolves rem
+   against the ROOT font size, so at the 200% text setting 30rem becomes 960px, neither query
+   matched a 739px column, and the tile count fell back to the viewport rule — three columns at
+   230px each. How wide a column is does not change when the type does.
+
+   `container-name: browse` is declared ONLY inside the 80rem media query, so with no named
+   container below the split there is nothing here to match and the stacked layout is untouched. */
+@container browse (min-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: none;
+    margin: 0;
+  }
+
+  .grid-dense {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* A very wide window gives the browse column enough room for another tile. */
+@container browse (min-width: 928px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .grid-dense {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
 .tile-small {
   font-size: var(--step--1) !important;
 }
@@ -1033,69 +1166,85 @@ a {
   padding: 2rem 1.25rem;
 }
 
-.home-secondary {
-  display: flex;
-  gap: 1.5rem;
-  padding: 2.5rem 1.25rem 0;
-  font-size: var(--step-0);
-}
+/* ------------------------------------------------- the head, once it is on cream
 
-.home-secondary a {
-  color: var(--dark-ink-soft);
-  text-decoration: none;
-}
+   Everything above that targets .home-head is written in the --dark-* tokens, because until the
+   desktop split that header had only ever sat on black. Above 80rem it sits on the reading ground
+   instead, so each of those has to come back to the reading tokens — this is exactly the boundary
+   §15 warns about, and the same one that left the Listen control at 1.2:1 earlier in this work.
 
-.search-input {
-  width: 100%;
-  font: inherit;
-  font-size: var(--step-0);
-  padding: 0.7rem 0.85rem;
-  margin: 0 0 1rem;
-  color: var(--ink);
-  background: transparent;
-  border: 1px solid var(--edge);
-  border-radius: 3px;
-}
+   Placed here, after every rule it overrides, rather than scoping eight separate rules with a
+   max-width query. A media query adds no specificity, so order is what decides this. */
+@media (min-width: 80rem) {
+  /* The standfirst. This one has to be here rather than beside the other .home-head rules above:
+     `.home-head p { color: var(--dark-ink-soft) }` comes later in the file, a media query adds no
+     specificity, and the later rule wins — which rendered the collection's opening sentence at
+     2.65:1 on cream. */
+  .home-head p {
+    color: var(--ink-soft);
+    max-width: var(--measure);
+  }
 
-.search-input:focus {
-  outline: 2px solid var(--brand);
-  outline-offset: -1px;
-}
+  .home-head .listen {
+    color: var(--ink);
+    border-color: var(--edge);
+  }
 
-.search-count {
-  font-size: var(--step--1);
-  color: var(--ink-meta);
-  margin: 0 0 1rem;
-}
+  .home-head .listen:hover {
+    border-color: var(--ink);
+  }
 
-.search-results {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+  .home-head .listen.is-playing {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
 
-.search-results li {
-  border-top: 1px solid var(--rule);
-}
+  .home-head .listen-note {
+    color: var(--ink-meta);
+  }
 
-.search-results a {
-  display: block;
-  padding: 0.85rem 0;
-  text-decoration: none;
-}
+  .home-head .tool-button {
+    color: var(--ink-soft);
+  }
 
-.search-results strong {
-  display: block;
-  font-weight: 400;
-  font-size: var(--step-0);
-}
+  .home-head .tool-button:hover {
+    color: var(--ink);
+    border-color: var(--edge);
+  }
 
-.search-latin,
-.search-where {
-  display: block;
-  font-size: var(--step--1);
-  color: var(--ink-meta);
-  margin-top: 0.15rem;
+  .home-head .lang-globe {
+    color: var(--ink-meta);
+  }
+
+  .home-head .lang-picker:hover .lang-globe,
+  .home-head .lang-picker:focus-within .lang-globe {
+    color: var(--ink);
+  }
+
+  .home-head .lang-picker select {
+    color: var(--ink);
+    border-color: var(--edge);
+  }
+
+  /* .home forces the ring to --dark-brand for the whole page. The reading column takes it back. */
+  .home-head :focus-visible,
+  .home-read :focus-visible {
+    outline-color: var(--brand);
+  }
+
+  /* The essays were a full-bleed light slab announcing that browsing had ended and reading had
+     begun. The column does that now, so the slab loses its own ground and its separating margin. */
+  .home-essays {
+    background: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .essay {
+    margin: 0;
+    padding: 2rem clamp(1.5rem, 3vw, 3rem);
+  }
 }
 
 .layer-section {
@@ -1121,27 +1270,6 @@ a {
   font-size: var(--step-0);
   margin-bottom: 0.5rem;
   color: var(--ink-soft);
-}
-
-/* §10: named continuations at the end of a group page, never a generic "more". */
-.continuations {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  border-top: 1px solid var(--rule);
-  padding-top: 1.5rem;
-  margin: 0 0 2.5rem;
-  font-size: var(--step-0);
-}
-
-.continuations a {
-  text-decoration: none;
-  color: var(--ink-soft);
-}
-
-.continuations a::after {
-  content: ' →';
-  color: var(--ink-meta);
 }
 
 .stub-note {
@@ -1177,12 +1305,21 @@ a {
   min-height: 44px;
 }
 
-.listen:hover {
+.listen:hover:not(:disabled) {
   border-color: var(--ink);
 }
 
 .listen:focus-visible {
   outline-offset: 2px;
+}
+
+/* The collection page's tour control while the essays chunk is still in flight. It holds its place
+   so nothing below it jumps, and it is dimmed so it does not look pressable while it is not. A
+   disabled control is exempt from the contrast floor (WCAG 1.4.3 "inactive user interface
+   components"), which is what makes the opacity acceptable here and nowhere else in this file. */
+.listen:disabled {
+  opacity: 0.5;
+  cursor: default;
 }
 
 .listen.is-playing {

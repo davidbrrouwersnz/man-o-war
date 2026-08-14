@@ -11,7 +11,7 @@ import { SUPPORTED, loadChunk } from './collection.js'
 import { useRoute } from './routing.js'
 import { Home } from './pages/home.jsx'
 import { GroupPage } from './pages/group.jsx'
-import { Missing, SearchPage } from './pages/search.jsx'
+import { Missing } from './pages/missing.jsx'
 
 // ------------------------------------------------------------------ app
 
@@ -97,6 +97,5 @@ function Routes() {
 
   if (route.view === 'home') return <Home go={go} route={route} />
   if (route.view === 'group') return <GroupPage route={route} go={go} />
-  if (route.view === 'search') return <SearchPage go={go} />
   return <Missing route={route} go={go} />
 }

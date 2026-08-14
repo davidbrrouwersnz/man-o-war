@@ -25,11 +25,17 @@ const firstWords = (text, max = 42) => {
 // it lives in one place. `available` is the caller's own check that what is rendered is English —
 // the narration exists in English only, and offering it beside translated words would break the
 // rule the whole pipeline is built on.
-function Listen({ queue, available, note }) {
+//
+// `pending` is for a control whose queue is still being fetched. It holds the button's place and
+// disables it rather than hiding it, because a control that pops into existence a moment after the
+// page paints shoves everything below it down — measured at 0.03 CLS on a phone when the collection
+// page's tour control waited for the essays chunk. Sub-second in practice, and a disabled control
+// is exempt from the contrast floor (WCAG 1.4.3), which is what lets it dim.
+function Listen({ queue, available, note, pending = false }) {
   const [t] = useT()
   const audio = useAudio()
   if (!available) return null
-  const isThis = audio?.queue?.key === queue.key
+  const isThis = !pending && audio?.queue?.key === queue.key
   const playing = isThis && audio.playing
   return (
     <p className="object-listen">
@@ -37,6 +43,7 @@ function Listen({ queue, available, note }) {
         type="button"
         className={`listen${playing ? ' is-playing' : ''}`}
         onClick={() => audio.start(queue)}
+        disabled={pending}
         aria-label={playing ? t('ui.listenStop') : `${t('ui.listen')} — ${queue.title}`}
       >
         <span aria-hidden="true">{playing ? '⏸' : '▶'}</span>
