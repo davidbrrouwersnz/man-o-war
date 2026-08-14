@@ -22,8 +22,7 @@
     "notFound": "Nicht gefunden",
     "notFoundBody": "Diese Adresse gibt es nicht.",
     "fallbackNotice": "Auf {language} noch nicht verfügbar — Anzeige auf Englisch.",
-    "translationNotice": "Maschinell übersetzt und noch nicht von einem Menschen geprüft.",
-    "prototypeNote": "Prototyp. Die Objektzahl ist der Bestand laut Sammlungsdatenbank, keine veröffentlichte Gesamtzahl — die publizierten Angaben widersprechen einander. Lesezeiten werden beim Build aus dem Textumfang berechnet, mit 150 Wörtern pro Minute, und sind nicht gesetzt."
+    "translationNotice": "Maschinell übersetzt und noch nicht von einem Menschen geprüft."
   },
   "groups": {
     "jellyfish": "Quallen, große und kleine",

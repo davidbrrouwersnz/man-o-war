@@ -158,16 +158,6 @@ a {
   color: #6a6259;
 }
 
-.foot {
-  max-width: var(--measure);
-  margin: 3rem 0 0;
-  padding: 0 1.25rem;
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  line-height: 1.5;
-  color: #6a6259;
-}
-
 /* ------------------------------------------------------------------ group page */
 
 .reading {

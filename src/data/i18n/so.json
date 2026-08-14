@@ -23,8 +23,7 @@
     "notFound": "Lama helin",
     "notFoundBody": "Ciwaankaas ma jiro.",
     "fallbackNotice": "Kani weli laguma heli karo {language} — waxaa lagu soo bandhigayaa Ingiriisi.",
-    "translationNotice": "Waa turjumaad mashiin, weli qofna ma eegin.",
-    "prototypeNote": "Tijaabo. Tirada alaabta waa tii diiwaanka ururinta ku jirta, mana aha wadar la daabacay — tirooyinka la daabacay isma waafaqsana. Waqtiga akhrinta waxaa lagu xisaabiyaa marka la dhisayo, 150 eray daqiiqadii, mana aha wax gacanta lagu dhigay."
+    "translationNotice": "Waa turjumaad mashiin, weli qofna ma eegin."
   },
   "groups": {
     "jellyfish": "Jellyfish, waaweyn iyo yaryar",

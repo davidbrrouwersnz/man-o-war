@@ -23,8 +23,7 @@
     "notFound": "E le maua",
     "notFoundBody": "E le o iai lena tuatusi.",
     "fallbackNotice": "E leʻi maua lenei mea i le {language} — o loo faaalia i le Igilisi.",
-    "translationNotice": "Faaliliuina e le masini, e leʻi iloiloina e se tagata.",
-    "prototypeNote": "O se faʻataʻitaʻiga. O le aofaʻi o mea o loo i le faamaumauga o le aoina, e le o se aofaʻiga ua lomia — e le ogatasi numera ua lomia. O taimi faitau e fuafuaina i le taimi e fausia ai, i le 150 upu i le minute, e le o ni numera na filifilia."
+    "translationNotice": "Faaliliuina e le masini, e leʻi iloiloina e se tagata."
   },
   "groups": {
     "jellyfish": "Aluma, lapopoa ma laiti",

@@ -22,8 +22,7 @@
     "notFound": "No encontrado",
     "notFoundBody": "Esa dirección no existe.",
     "fallbackNotice": "Aún no disponible en {language} — se muestra en inglés.",
-    "translationNotice": "Traducción automática, todavía sin revisión humana.",
-    "prototypeNote": "Prototipo. El número de objetos es el que consta en el registro de la colección, no un total publicado — las cifras publicadas no coinciden. Los tiempos de lectura se calculan al compilar a partir del número de palabras, a 150 palabras por minuto, y no se fijan a mano."
+    "translationNotice": "Traducción automática, todavía sin revisión humana."
   },
   "groups": {
     "jellyfish": "Medusas, grandes y pequeñas",

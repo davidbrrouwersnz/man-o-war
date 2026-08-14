@@ -23,8 +23,7 @@
     "notFound": "ʻIkai maʻu",
     "notFoundBody": "ʻOku ʻikai ʻi ai ʻa e tuʻasila ko ia.",
     "fallbackNotice": "ʻOku teʻeki ke maʻu ʻeni ʻi he {language} — ʻoku fakahā ʻi he lea faka-Pilitānia.",
-    "translationNotice": "Liliu ʻe he mīsini, teʻeki ke vakaiʻi ʻe ha tangata.",
-    "prototypeNote": "Ko ha sīpinga ʻuluaki. Ko e lau ʻo e ngaahi meʻa ko ia ʻoku ʻi he lekooti ʻo e tānaki, ʻo ʻikai ko ha fika kuo pulusi — ʻoku ʻikai felāveʻi ʻa e ngaahi fika kuo pulusi. Ko e taimi lau ʻoku fika ʻi he taimi langa mei he lau ʻo e foʻi lea, ʻi he 150 ʻi he miniti, pea ʻoku ʻikai fili fakakaukau."
+    "translationNotice": "Liliu ʻe he mīsini, teʻeki ke vakaiʻi ʻe ha tangata."
   },
   "groups": {
     "jellyfish": "ʻAlu, lalahi mo īkiiki",

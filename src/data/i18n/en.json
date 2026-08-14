@@ -23,7 +23,6 @@
     "notFoundBody": "That address does not exist.",
     "fallbackNotice": "This isn't available in {language} yet — showing English.",
     "translationNotice": "Machine translated and not yet reviewed by a person.",
-    "prototypeNote": "Prototype. Object count is what the collection record holds, not a published total — the published figures disagree. Times are computed at build time from the writing, at 150 words a minute, and are not asserted.",
     "listen": "Listen",
     "listenStop": "Stop listening",
     "audioEnglishOnly": "The audio guide is in English.",

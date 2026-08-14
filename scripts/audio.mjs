@@ -112,7 +112,7 @@ function collect() {
   if (!ONLY) {
     // The front page. The eleven tiles are navigation rather than prose - "13 models. About 12
     // minutes." is a signpost, and reading signposts aloud is how an audio guide becomes a chore -
-    // so what gets voiced is the two blocks of actual writing on the page.
+    // so what gets voiced is the writing at the top of the page.
     units.push({
       kind: 'home',
       id: 'home/00-intro',
@@ -120,7 +120,6 @@ function collect() {
       heading: null,
       text: `${EN.ui.collectionTitle}\n\n${EN.ui.collectionIntro}`,
     })
-    units.push({ kind: 'home', id: 'home/99-note', track: 'interpretation', heading: null, text: EN.ui.prototypeNote })
 
     for (const g of groups.groups) {
       const p = museum.panels[g.slug]

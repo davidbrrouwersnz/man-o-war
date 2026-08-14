@@ -215,15 +215,11 @@ function Home({ go }) {
   }, [t])
 
   const intro = tr('ui.collectionIntro')
-  const note = tr('ui.prototypeNote')
   const title = t('ui.collectionTitle')
   const homeQueue = {
     key: 'home',
     title,
-    items: [
-      { id: 'home/00-intro', label: title, blocks: [title, intro.text] },
-      { id: 'home/99-note', label: firstWords(note.text), blocks: [note.text] },
-    ],
+    items: [{ id: 'home/00-intro', label: title, blocks: [title, intro.text] }],
   }
   return (
     <main className="home">
@@ -235,7 +231,7 @@ function Home({ go }) {
         <p lang={intro.lang} dir={dirOf(intro.lang)}>
           <Spoken text={intro.text} itemId="home/00-intro" block={1} />
         </p>
-        <Listen queue={homeQueue} available={intro.lang === 'en' && note.lang === 'en'} />
+        <Listen queue={homeQueue} available={intro.lang === 'en'} />
       </header>
       <ol className="grid">
         {GROUPS.map((g) => (
@@ -263,7 +259,6 @@ function Home({ go }) {
           {t('ui.search')} →
         </a>
       </nav>
-      <Translated className="foot" r={note} itemId="home/99-note" />
     </main>
   )
 }

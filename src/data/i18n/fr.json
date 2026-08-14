@@ -22,8 +22,7 @@
     "notFound": "Introuvable",
     "notFoundBody": "Cette adresse n'existe pas.",
     "fallbackNotice": "Pas encore disponible en {language} — affichage en anglais.",
-    "translationNotice": "Traduction automatique, pas encore relue par une personne.",
-    "prototypeNote": "Prototype. Le nombre d'objets est celui de la notice de collection, non un total publié — les chiffres publiés se contredisent. Les durées de lecture sont calculées à la compilation d'après le nombre de mots, à 150 mots par minute, et ne sont pas décrétées."
+    "translationNotice": "Traduction automatique, pas encore relue par une personne."
   },
   "groups": {
     "jellyfish": "Méduses, grandes et petites",

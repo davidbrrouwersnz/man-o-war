@@ -22,8 +22,7 @@
     "notFound": "找不到頁面",
     "notFoundBody": "這個網址不存在。",
     "fallbackNotice": "此內容尚無{language}版本 — 顯示英文。",
-    "translationNotice": "機器翻譯，尚未經人工審閱。",
-    "prototypeNote": "原型。藏品數量為收藏記錄所載，並非已發表的總數 — 各方發表的數字並不一致。閱讀時間於建置時依文字量以每分鐘 150 字計算，並非人為指定。"
+    "translationNotice": "機器翻譯，尚未經人工審閱。"
   },
   "groups": {
     "jellyfish": "水母，大與小",
