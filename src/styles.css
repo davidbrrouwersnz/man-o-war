@@ -34,33 +34,76 @@
 
 @layer app {
 
+/* ------------------------------------------------------------------ tokens
+
+   Every colour pair below is asserted by `node scripts/contrast.mjs`, which fails the build if one
+   drifts. That check exists because §15's control-border bug has now been shipped twice: v1 had
+   them at ~1.75:1 against a 3:1 floor, v2 said "fix this", and v2 shipped them at 1.30:1.
+
+   The single most useful thing here is that `--ink-faint` is gone. It was one token doing two jobs
+   at 3.38:1 — fine as a control border (floor 3:1), failing as 12px text (floor 4.5:1). Splitting
+   it into `--edge` and `--ink-meta` fixes both without inventing a new palette. */
+
 :root {
-  --ink: #16130f;
-  --ink-soft: #5d564d;
-  --ink-faint: #8b8378;
+  --ink: #16130f; /* 16.73:1 on --paper — body */
+  --ink-soft: #5d564d; /*  6.53:1 — secondary prose */
+  --ink-meta: #666666; /*  5.19:1 — captions, eyebrows. The Museum's own dkGrey */
+  --edge: #8b8378; /*  3.38:1 — control boundaries only, never text */
+  --rule: #ddd6ca; /*  decorative hairlines. Not a control edge */
   --paper: #f6f3ee;
-  --rule: #ddd6ca;
-  --flag: #7a3b12;
-  --flag-bg: #f4e6d8;
+
+  /* Canterbury Museum's red is #EE3424. It gives 3.68:1 on this paper, which is under the floor
+     for text, so the light ground uses a darkened #C42718 (5.20:1) and the dark grounds use the
+     brand value itself. Same red, two renderings — the app already does this for ink. */
+  --brand: #c42718;
+  --brand-bg: #f7e2de; /* --brand on this: 4.63:1 */
+
+  /* Deliberately NOT the brand red. This tints the word currently being spoken, for up to 137
+     minutes. A warm neutral can be read over; an alarm colour cannot. --ink on it: 15.13:1 */
+  --mark-bg: #f4e6d8;
+
+  /* §9: the grid and the media wells are dark whatever the device is doing, because 79 of the 128
+     primary photographs are the object on pure black. These never invert. */
   --dark: #000;
   --dark-2: #0c0c0d;
-  --dark-ink: #f2efe9;
-  --dark-ink-soft: #9d968b;
+  --dark-ink: #f2efe9; /* 18.30:1 on black */
+  --dark-ink-soft: #9d968b; /*  7.17:1 */
+  --dark-edge: #6a6259; /*  3.50:1 — control boundaries on black */
+  --dark-rule: #2a2a2c; /*  decorative only */
+  --dark-brand: #ee3424; /*  5.15:1 */
 
   --measure: 34rem;
-  --serif: ui-serif, Georgia, 'Iowan Old Style', 'Times New Roman', serif;
-  --sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  /* One 1.2 modular scale from a 16px base. §15 asks for the Museum's 16px/24px, which is
+     --step-0 at line-height 1.5, exactly.
+
+     Body is deliberately NOT fluid. The more a size is driven by the viewport, the less the
+     visitor's own zoom does — and §18 makes large text the primary vision provision, so that
+     setting has to keep working. Display sizes may move with the screen; reading text may not.
+     Both clamps keep max ÷ min under 2.5 so text still reaches 200% (WCAG 1.4.4). */
+  --step--1: 0.8125rem; /* 13px — captions, eyebrows, metadata */
+  --step-0: 1rem; /* 16px — body */
+  --step-1: 1.2rem; /* 19px — panels, endings, the collection standfirst */
+  --step-2: 1.44rem; /* 23px — an object's name */
+  --step-3: clamp(1.728rem, 1.55rem + 0.85vw, 2.25rem); /* 28 → 36px */
+  --step-4: clamp(2.074rem, 1.78rem + 1.45vw, 3rem); /* 33 → 48px */
+
+  /* Multiplied into the root font size by the text-size control (§18). Declared here so every
+     rem in the file already respects it before the control exists. */
+  --text-scale: 1;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --ink: #e8e4dc;
-    --ink-soft: #a29a8e;
-    --ink-faint: #7c7469;
-    --paper: #111012;
+    --ink: #e8e4dc; /* 14.97:1 */
+    --ink-soft: #a29a8e; /*  6.82:1 */
+    --ink-meta: #9d968b; /*  6.48:1 */
+    --edge: #7c7469; /*  4.12:1 */
     --rule: #2e2b28;
-    --flag: #e9b98a;
-    --flag-bg: #2a1d12;
+    --paper: #111012;
+    --brand: #f2543f; /*  5.53:1 on --paper */
+    --brand-bg: #2b1411; /*  --brand on this: 5.05:1 */
+    --mark-bg: #2a1d12; /*  --ink on this: 12.91:1 */
   }
 }
 
@@ -70,20 +113,82 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  font-size: calc(100% * var(--text-scale));
 }
 
 body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--serif);
-  font-size: 1.0625rem;
-  line-height: 1.55;
+  font-family: var(--font-sans);
+  font-size: var(--step-0);
+  line-height: 1.5;
   overflow-wrap: break-word;
+}
+
+/* The nine shipped languages do not all want 1.5. Arabic ascenders and descenders need more room,
+   and CJK is set solid enough that Latin leading reads loose. One rule per script beats one number
+   for all of them. */
+:lang(ar) body,
+:lang(ar) .story,
+:lang(ar) .layer-section {
+  line-height: 1.8;
+}
+
+:lang(ja),
+:lang(ko),
+:lang(zh-Hant) {
+  line-height: 1.7;
 }
 
 a {
   color: inherit;
+}
+
+/* There were four :focus-visible rules in this file and all four were on <button>. Every link —
+   the eleven group tiles, the 128 object tiles, back links, continuations, prev/next, search
+   results, source links — fell through to the browser default, which is inconsistent across
+   engines and close to invisible on the black collection page. */
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.home :focus-visible {
+  outline-color: var(--dark-brand);
+}
+
+/* The essays are a light slab inside the dark collection page, so they take the ring back. */
+.home-essays :focus-visible {
+  outline-color: var(--brand);
+}
+
+/* §15: "Chrome over media is light-on-dark regardless of theme. Care at the boundary."
+   This is that boundary, and it was wrong. `.listen` is coloured with --ink and --edge, which
+   follow the device — but the collection header is black whatever the device is doing. On a phone
+   in light mode the collection page's own Listen control was near-black text on black, at about
+   1.2:1. It looked fine in development only because the machine was in dark mode.
+
+   Scoped to .home-head rather than .home: the essays below the grid are a light slab and their
+   Listen controls are correct as they are. */
+.home-head .listen {
+  color: var(--dark-ink);
+  border-color: var(--dark-edge);
+}
+
+.home-head .listen:hover {
+  border-color: var(--dark-ink);
+}
+
+.home-head .listen.is-playing {
+  background: var(--dark-ink);
+  color: var(--dark);
+  border-color: var(--dark-ink);
+}
+
+.home-head .listen-note {
+  color: var(--dark-ink-soft);
 }
 
 /* ------------------------------------------------------------------ home */
@@ -101,17 +206,17 @@ a {
 }
 
 .home-head h1 {
-  font-size: clamp(1.9rem, 7vw, 2.6rem);
+  font-size: var(--step-4);
   line-height: 1.1;
   letter-spacing: -0.02em;
   margin: 0 0 0.75rem;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .home-head p {
   margin: 0;
   color: var(--dark-ink-soft);
-  font-size: 0.95rem;
+  font-size: var(--step-1);
   line-height: 1.5;
 }
 
@@ -123,14 +228,13 @@ a {
   gap: 0.25rem;
   padding: 0 1.25rem;
   margin: 0 0 1.5rem;
-  border-bottom: 1px solid #2a2a2c;
+  border-bottom: 1px solid var(--dark-rule);
 }
 
 .tabs button {
   font: inherit;
-  font-family: var(--sans);
-  font-size: 0.9375rem;
-  font-weight: 500;
+  font-size: var(--step-0);
+  font-weight: 400;
   color: var(--dark-ink-soft);
   background: none;
   border: 0;
@@ -152,7 +256,6 @@ a {
 }
 
 .tabs button:focus-visible {
-  outline: 2px solid var(--dark-ink);
   outline-offset: -4px;
 }
 
@@ -160,8 +263,7 @@ a {
   max-width: var(--measure);
   margin: 0 0 1.5rem;
   padding: 0 1.25rem;
-  font-family: var(--sans);
-  font-size: 0.875rem;
+  font-size: var(--step-0);
   line-height: 1.5;
   color: var(--dark-ink-soft);
 }
@@ -200,7 +302,7 @@ a {
   aspect-ratio: 4 / 3;
   background: var(--dark-2);
   overflow: hidden;
-  border: 1px solid #1c1c1e;
+  border: 1px solid var(--dark-rule);
 }
 
 .tile-blur,
@@ -223,23 +325,21 @@ a {
 }
 
 .tile-text h2 {
-  font-family: var(--sans);
-  font-size: 1.0625rem;
+  font-size: var(--step-0);
   line-height: 1.25;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.01em;
   margin: 0 0 0.3rem;
 }
 
 .tile-text p {
   margin: 0;
-  font-family: var(--sans);
-  font-size: 0.8125rem;
+  font-size: var(--step--1);
   color: var(--dark-ink-soft);
 }
 
 .tile-stub {
-  color: #6a6259;
+  color: var(--dark-ink-soft);
 }
 
 /* The two reading essays, on the collection page below the grid. Light ground on the dark home
@@ -266,32 +366,30 @@ a {
 }
 
 .essay-title {
-  font-size: clamp(1.6rem, 6vw, 2.1rem);
+  font-size: var(--step-3);
   line-height: 1.12;
   letter-spacing: -0.02em;
-  font-weight: 500;
+  font-weight: 400;
   margin: 0 0 0.75rem;
 }
 
 /* The essays inherit the group page's reading styles, but their headings dropped a level when they
    moved here — the collection title is the h1 now — so the rules follow them down. */
 .essay .layer-section h3 {
-  font-family: var(--sans);
-  font-size: 0.75rem;
+  font-size: var(--step--1);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-weight: 600;
-  color: var(--ink-faint);
+  font-weight: 700;
+  color: var(--ink-meta);
   margin: 0 0 0.5rem;
 }
 
 .essay .layer-sources h3 {
-  font-family: var(--sans);
-  font-size: 0.75rem;
+  font-size: var(--step--1);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-weight: 600;
-  color: var(--ink-faint);
+  font-weight: 700;
+  color: var(--ink-meta);
   margin: 0 0 0.5rem;
 }
 
@@ -305,25 +403,23 @@ a {
 
 .back {
   display: inline-block;
-  font-family: var(--sans);
-  font-size: 0.8125rem;
+  font-size: var(--step--1);
   text-decoration: none;
   color: var(--ink-soft);
   padding: 0.5rem 0;
 }
 
 .group-title {
-  font-size: clamp(1.7rem, 6.5vw, 2.3rem);
+  font-size: var(--step-4);
   line-height: 1.12;
   letter-spacing: -0.02em;
-  font-weight: 500;
+  font-weight: 400;
   margin: 0.5rem 0 0.4rem;
 }
 
 .group-cost {
-  font-family: var(--sans);
-  font-size: 0.8125rem;
-  color: var(--ink-faint);
+  font-size: var(--step--1);
+  color: var(--ink-meta);
   margin: 0 0 1.5rem;
 }
 
@@ -333,7 +429,7 @@ a {
 }
 
 .group-panel {
-  font-size: 1.1875rem;
+  font-size: var(--step-1);
   line-height: 1.5;
   margin: 0 0 2.5rem;
   padding-bottom: 2.5rem;
@@ -350,18 +446,17 @@ a {
 }
 
 .object-name {
-  font-size: 1.4rem;
+  font-size: var(--step-2);
   line-height: 1.2;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: -0.01em;
   margin: 0 0 0.2rem;
 }
 
 .object-catalogue {
-  font-family: var(--sans);
-  font-size: 0.75rem;
+  font-size: var(--step--1);
   letter-spacing: 0.01em;
-  color: var(--ink-faint);
+  color: var(--ink-meta);
   margin: 0 0 0.9rem;
 }
 
@@ -400,9 +495,8 @@ a {
 }
 
 .object-meta {
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  color: var(--ink-faint);
+  font-size: var(--step--1);
+  color: var(--ink-meta);
   margin: 0.6rem 0 1.4rem;
 }
 
@@ -411,12 +505,11 @@ a {
 }
 
 .story h3 {
-  font-family: var(--sans);
-  font-size: 0.75rem;
+  font-size: var(--step--1);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-weight: 600;
-  color: var(--ink-faint);
+  font-weight: 700;
+  color: var(--ink-meta);
   margin: 0 0 0.5rem;
 }
 
@@ -431,23 +524,21 @@ a {
 }
 
 .placeholder-flag {
-  font-family: var(--sans);
-  font-size: 0.75rem;
+  font-size: var(--step--1);
   line-height: 1.45;
-  color: var(--ink-faint);
+  color: var(--ink-meta);
   margin: 0 0 0.6rem !important;
 }
 
 .catalogue-words {
   color: var(--ink-soft);
-  font-size: 1rem;
+  font-size: var(--step-0);
 }
 
 .identification {
-  font-family: var(--sans);
-  font-size: 0.75rem;
+  font-size: var(--step--1);
   line-height: 1.45;
-  color: var(--ink-faint);
+  color: var(--ink-meta);
   border-left: 2px solid var(--rule);
   padding-left: 0.75rem;
   margin: 1.2rem 0 0;
@@ -463,7 +554,7 @@ a {
   content: '';
   position: absolute;
   inset: -0.75rem -1rem 2rem;
-  border: 2px solid var(--flag);
+  border: 2px solid var(--brand);
   border-radius: 3px;
   pointer-events: none;
 }
@@ -471,13 +562,12 @@ a {
 .arrived-flag {
   display: inline-block;
   position: relative;
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: var(--step--1);
+  font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--flag);
-  background: var(--flag-bg);
+  color: var(--brand);
+  background: var(--brand-bg);
   padding: 0.3rem 0.6rem;
   margin: 0 0 0.6rem;
 }
@@ -485,7 +575,7 @@ a {
 /* ------------------------------------------------------------------ end of page */
 
 .group-ending {
-  font-size: 1.1875rem;
+  font-size: var(--step-1);
   line-height: 1.5;
   margin: 0 0 2.5rem;
 }
@@ -496,8 +586,7 @@ a {
   gap: 1.5rem;
   border-top: 1px solid var(--rule);
   padding-top: 1.5rem;
-  font-family: var(--sans);
-  font-size: 0.875rem;
+  font-size: var(--step-0);
 }
 
 .group-nav a {
@@ -515,8 +604,7 @@ a {
   align-items: center;
   gap: 0.4rem;
   margin: 0 0 1.75rem;
-  font-family: var(--sans);
-  font-size: 0.8125rem;
+  font-size: var(--step--1);
   cursor: pointer;
 }
 
@@ -534,7 +622,7 @@ a {
   font: inherit;
   color: var(--dark-ink);
   background: transparent;
-  border: 1px solid #2a2a2c;
+  border: 1px solid var(--dark-edge);
   border-radius: 3px;
   padding: 0.3rem 0.4rem;
 }
@@ -547,10 +635,9 @@ a {
 /* The stated fallback. §7: silent degradation reads as a broken app; a stated one reads as an
    honest one, and it also tells the Museum which languages to fund next. */
 .fallback-notice {
-  font-family: var(--sans);
-  font-size: 0.75rem;
+  font-size: var(--step--1);
   line-height: 1.45;
-  color: var(--ink-faint);
+  color: var(--ink-meta);
   border-left: 2px solid var(--rule);
   padding-left: 0.75rem;
   margin: 0 0 0.8rem;
@@ -613,7 +700,7 @@ a {
 }
 
 .tile-small {
-  font-size: 0.8125rem !important;
+  font-size: var(--step--1) !important;
 }
 
 .back-dark {
@@ -621,14 +708,13 @@ a {
 }
 
 .loading {
-  font-family: var(--sans);
-  font-size: 0.8125rem;
-  color: var(--ink-faint);
+  font-size: var(--step--1);
+  color: var(--ink-meta);
   padding: 2rem 0;
 }
 
 .loading-dark {
-  color: #6a6259;
+  color: var(--dark-ink-soft);
   padding: 2rem 1.25rem;
 }
 
@@ -636,8 +722,7 @@ a {
   display: flex;
   gap: 1.5rem;
   padding: 2.5rem 1.25rem 0;
-  font-family: var(--sans);
-  font-size: 0.875rem;
+  font-size: var(--step-0);
 }
 
 .home-secondary a {
@@ -648,24 +733,23 @@ a {
 .search-input {
   width: 100%;
   font: inherit;
-  font-size: 1.0625rem;
+  font-size: var(--step-0);
   padding: 0.7rem 0.85rem;
   margin: 0 0 1rem;
   color: var(--ink);
   background: transparent;
-  border: 1px solid var(--rule);
+  border: 1px solid var(--edge);
   border-radius: 3px;
 }
 
 .search-input:focus {
-  outline: 2px solid var(--flag);
+  outline: 2px solid var(--brand);
   outline-offset: -1px;
 }
 
 .search-count {
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  color: var(--ink-faint);
+  font-size: var(--step--1);
+  color: var(--ink-meta);
   margin: 0 0 1rem;
 }
 
@@ -687,16 +771,15 @@ a {
 
 .search-results strong {
   display: block;
-  font-weight: 500;
-  font-size: 1.0625rem;
+  font-weight: 400;
+  font-size: var(--step-0);
 }
 
 .search-latin,
 .search-where {
   display: block;
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  color: var(--ink-faint);
+  font-size: var(--step--1);
+  color: var(--ink-meta);
   margin-top: 0.15rem;
 }
 
@@ -705,12 +788,11 @@ a {
 }
 
 .layer-section h2 {
-  font-family: var(--sans);
-  font-size: 0.75rem;
+  font-size: var(--step--1);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-weight: 600;
-  color: var(--ink-faint);
+  font-weight: 700;
+  color: var(--ink-meta);
   margin: 0 0 0.6rem;
 }
 
@@ -725,12 +807,11 @@ a {
 }
 
 .layer-sources h2 {
-  font-family: var(--sans);
-  font-size: 0.75rem;
+  font-size: var(--step--1);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-weight: 600;
-  color: var(--ink-faint);
+  font-weight: 700;
+  color: var(--ink-meta);
   margin: 0 0 0.7rem;
 }
 
@@ -740,7 +821,7 @@ a {
 }
 
 .layer-sources li {
-  font-size: 0.875rem;
+  font-size: var(--step-0);
   margin-bottom: 0.5rem;
   color: var(--ink-soft);
 }
@@ -758,8 +839,7 @@ a {
   border-top: 1px solid var(--rule);
   padding-top: 1.5rem;
   margin: 0 0 2.5rem;
-  font-family: var(--sans);
-  font-size: 0.9375rem;
+  font-size: var(--step-0);
 }
 
 .continuations a {
@@ -769,7 +849,7 @@ a {
 
 .continuations a::after {
   content: ' →';
-  color: var(--ink-faint);
+  color: var(--ink-meta);
 }
 
 .stub-note {
@@ -777,8 +857,7 @@ a {
 }
 
 .stub-link {
-  font-family: var(--sans);
-  font-size: 0.875rem;
+  font-size: var(--step-0);
 }
 
 /* ------------------------------------------------------------------ audio guide (§13)
@@ -797,13 +876,12 @@ a {
 
 .listen {
   font: inherit;
-  font-family: var(--sans);
-  font-size: 0.9rem;
+  font-size: var(--step-0);
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.45rem 1rem;
-  border: 1px solid var(--rule);
+  border: 1px solid var(--edge);
   border-radius: 2rem;
   background: transparent;
   color: var(--ink);
@@ -816,7 +894,6 @@ a {
 }
 
 .listen:focus-visible {
-  outline: 2px solid var(--ink);
   outline-offset: 2px;
 }
 
@@ -827,16 +904,15 @@ a {
 }
 
 .listen-note {
-  font-family: var(--sans);
-  font-size: 0.8rem;
-  color: var(--ink-faint);
+  font-size: var(--step--1);
+  color: var(--ink-meta);
 }
 
 /* The word being spoken. A background tint rather than a colour change: recolouring the text
    alters its contrast against the page, and this has to stay readable for 137 minutes. No
    transition either — a fade cannot keep up with speech and just smears. */
 .spoken-word {
-  background: var(--flag-bg);
+  background: var(--mark-bg);
   color: inherit;
   border-radius: 0.15em;
   /* Negative margin cancels the padding, so a highlighted word never shifts its line. */
@@ -847,7 +923,7 @@ a {
 @media (prefers-reduced-motion: reduce) {
   .spoken-word {
     background: none;
-    box-shadow: inset 0 -0.5em 0 var(--flag-bg);
+    box-shadow: inset 0 -0.5em 0 var(--mark-bg);
   }
 }
 
@@ -858,7 +934,6 @@ a {
   background: var(--paper);
   border-top: 1px solid var(--rule);
   padding-bottom: env(safe-area-inset-bottom, 0);
-  font-family: var(--sans);
 }
 
 /* The bar covers the end of the page, so give the document somewhere to scroll to. */
@@ -895,14 +970,14 @@ body:has(.audio-bar) {
 }
 
 .audio-what strong {
-  font-size: 0.9rem;
+  font-size: var(--step-0);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .audio-what span {
-  font-size: 0.75rem;
+  font-size: var(--step--1);
   color: var(--ink-soft);
   white-space: nowrap;
   overflow: hidden;
@@ -918,7 +993,7 @@ body:has(.audio-bar) {
 
 .audio-controls button {
   font: inherit;
-  font-size: 1rem;
+  font-size: var(--step-0);
   min-width: 2.75rem;
   min-height: 2.75rem;
   display: grid;
@@ -940,19 +1015,18 @@ body:has(.audio-bar) {
 }
 
 .audio-controls button:focus-visible {
-  outline: 2px solid var(--ink);
   outline-offset: -2px;
 }
 
 .audio-play {
-  border: 1px solid var(--rule);
+  border: 1px solid var(--edge);
 }
 
 .audio-rate select {
   font: inherit;
-  font-size: 0.8rem;
+  font-size: var(--step--1);
   padding: 0.3rem 0.2rem;
-  border: 1px solid var(--rule);
+  border: 1px solid var(--edge);
   border-radius: 0.25rem;
   background: transparent;
   color: var(--ink);
@@ -960,7 +1034,7 @@ body:has(.audio-bar) {
 }
 
 .audio-time {
-  font-size: 0.75rem;
+  font-size: var(--step--1);
   color: var(--ink-soft);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
@@ -969,8 +1043,8 @@ body:has(.audio-bar) {
 .audio-failed {
   margin: 0;
   padding: 0 1rem 0.6rem;
-  font-size: 0.8rem;
-  color: var(--flag);
+  font-size: var(--step--1);
+  color: var(--brand);
 }
 
 .visually-hidden {
