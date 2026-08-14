@@ -1305,12 +1305,21 @@ a {
   min-height: 44px;
 }
 
-.listen:hover {
+.listen:hover:not(:disabled) {
   border-color: var(--ink);
 }
 
 .listen:focus-visible {
   outline-offset: 2px;
+}
+
+/* The collection page's tour control while the essays chunk is still in flight. It holds its place
+   so nothing below it jumps, and it is dimmed so it does not look pressable while it is not. A
+   disabled control is exempt from the contrast floor (WCAG 1.4.3 "inactive user interface
+   components"), which is what makes the opacity acceptable here and nowhere else in this file. */
+.listen:disabled {
+  opacity: 0.5;
+  cursor: default;
 }
 
 .listen.is-playing {

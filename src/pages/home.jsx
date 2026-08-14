@@ -14,15 +14,15 @@ const ON_DISPLAY = '1884.137.33'
 
 // ------------------------------------------------------------------ home
 
-// One of the two reading essays. It was a page of its own until the content moved onto the
-// collection page; what it keeps is its own heading, its sources and its own Listen control,
-// because each essay is a separate sitting rather than part of one continuous tour.
+// Everything the audio needs to know about one essay, resolved once. Shared by the essay's own
+// Listen control and by the collection page's, so that playing the whole page plays exactly what
+// each essay would have played on its own — the same files, the same order, the same highlighting.
+// Same arrangement as objectAudio() on the group page, and for the same reason: the tour is built
+// out of the parts rather than beside them, so the two can never drift.
 //
-// Heading levels shift with the move: on its own page the title was an h1, but here the collection
-// title holds that, so the essay is an h2 and its sections are h3. A page with two h1s reads to a
-// screen reader as two documents stapled together.
-function Essay({ slug, layer, meta, code, langName }) {
-  const [t, tr] = useT()
+// `english` is the gate. The narration exists in English only, and offering it beside translated
+// words would break the rule the pipeline is built on: that the spoken words ARE the printed words.
+function essayAudio(slug, layer, meta, tr) {
   const titleR = tr(`layerTitles.${slug}`, null, meta.title)
   const standfirstR = tr(`layers.${slug}.standfirst`, null, layer.standfirst)
   const parts = layer.segments.map((s, si) => ({
@@ -32,23 +32,35 @@ function Essay({ slug, layer, meta, code, langName }) {
     body: tr(`layers.${slug}.segments.${si}.text`, null, s.text),
   }))
 
-  const available =
+  const english =
     titleR.lang === 'en' &&
     standfirstR.lang === 'en' &&
     parts.every((p) => p.heading.lang === 'en' && p.body.lang === 'en')
 
-  const queue = {
-    key: `l:${slug}`,
-    title: titleR.text,
-    items: [
-      { id: `layers/${slug}/00-standfirst`, label: titleR.text, blocks: [titleR.text, standfirstR.text] },
-      ...parts.map((p) => ({
-        id: `layers/${slug}/${p.s.id}`,
-        label: p.heading.text,
-        blocks: blocksOf(p.heading.text, p.body.text),
-      })),
-    ],
-  }
+  const items = [
+    { id: `layers/${slug}/00-standfirst`, label: titleR.text, blocks: [titleR.text, standfirstR.text] },
+    ...parts.map((p) => ({
+      id: `layers/${slug}/${p.s.id}`,
+      label: p.heading.text,
+      blocks: blocksOf(p.heading.text, p.body.text),
+    })),
+  ]
+
+  return { titleR, standfirstR, parts, english, items }
+}
+
+// One of the two reading essays. It was a page of its own until the content moved onto the
+// collection page; what it keeps is its own heading, its sources and its own Listen control, for
+// anyone who wants just this essay rather than the whole page.
+//
+// Heading levels shift with the move: on its own page the title was an h1, but here the collection
+// title holds that, so the essay is an h2 and its sections are h3. A page with two h1s reads to a
+// screen reader as two documents stapled together.
+function Essay({ slug, layer, meta, code, langName }) {
+  const [t, tr] = useT()
+  const { titleR, standfirstR, parts, english: available, items } = essayAudio(slug, layer, meta, tr)
+
+  const queue = { key: `l:${slug}`, title: titleR.text, items }
 
   return (
     <section className="essay" id={slug}>
@@ -159,10 +171,31 @@ function Home({ go, route }) {
   // beside it points at, and the reason this app exists.
   const onDisplay = t('ui.collectionIntroOnDisplay')
   const onDisplayAt = intro.text.indexOf(onDisplay)
+
+  // The whole page as one sitting: the standfirst, then both essays in the order they are printed.
+  // It plays exactly what each essay's own control plays, because both are built from the same
+  // essayAudio() — the group pages work this way and this is the collection page's equivalent.
+  //
+  // Built from `layers`, so it cannot be complete until that chunk lands: a queue assembled before
+  // the essays arrive would be the intro alone, and a visitor who pressed Listen in that first
+  // moment would get a tour that stopped after one paragraph. So the control holds its place and
+  // sits disabled until the essays are here, rather than appearing late and shoving the tabs and
+  // the whole grid down the page. The essays are fetched on mount, so the wait is short and it is
+  // the same wait the reading column is already going through.
+  const essayAudios = layers
+    ? index.layers.map((meta) => (layers.layers[meta.slug] ? essayAudio(meta.slug, layers.layers[meta.slug], meta, tr) : null)).filter(Boolean)
+    : []
+  // English is decidable from the intro alone, before the chunk arrives — every language pack that
+  // translates the intro translates the essays too — so the button's presence never changes once
+  // the essays land, only whether it can be pressed.
+  const homeAvailable = intro.lang === 'en' && essayAudios.every((a) => a.english)
   const homeQueue = {
     key: 'home',
     title,
-    items: [{ id: 'home/00-intro', label: title, blocks: [title, intro.text] }],
+    items: [
+      { id: 'home/00-intro', label: title, blocks: [title, intro.text] },
+      ...essayAudios.flatMap((a) => a.items),
+    ],
   }
   return (
     <main className="home" id="main" tabIndex={-1}>
@@ -197,7 +230,12 @@ function Home({ go, route }) {
             </>
           )}
         </p>
-        <Listen queue={homeQueue} available={intro.lang === 'en'} />
+        <Listen
+          queue={homeQueue}
+          available={homeAvailable}
+          pending={!layers}
+          note={code !== 'en' ? t('ui.audioEnglishOnly') : null}
+        />
       </header>
       {/* Two wrappers, and they exist for the desktop layout: browsing on the left, reading on the
           right. `home-head` deliberately stays outside both, first in the DOM, because that is what
