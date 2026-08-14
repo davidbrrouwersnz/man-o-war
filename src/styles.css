@@ -1434,16 +1434,8 @@ svg.lucide {
   border: 1px solid var(--edge);
 }
 
-.audio-rate select {
-  font: inherit;
-  font-size: var(--step--1);
-  padding: 0.3rem 0.2rem;
-  border: 1px solid var(--edge);
-  border-radius: 0.25rem;
-  background: transparent;
-  color: var(--ink);
-  min-height: 44px;
-}
+/* The speed control is a shadcn Select now; its look comes from the component's own utilities,
+   which this file cannot outrank. Nothing left to say about it here. */
 
 .audio-time {
   font-size: var(--step--1);

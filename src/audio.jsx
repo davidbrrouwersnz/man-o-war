@@ -15,6 +15,7 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react'
 import { PauseIcon, PlayIcon, SkipBackIcon, SkipForwardIcon, XIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Slider } from '@/components/ui/slider'
 import { useT } from './lang.jsx'
 import { useA11y } from './a11y.jsx'
@@ -583,16 +584,32 @@ export function AudioBar() {
             <SkipForwardIcon aria-hidden="true" focusable="false" />
           </Button>
 
-          <label className="audio-rate">
-            <span className="visually-hidden">{t('ui.audioSpeed')}</span>
-            <select value={rate} onChange={(e) => a.setRate(Number(e.target.value))}>
-              {RATES.map((r) => (
-                <option key={r} value={r}>
-                  {r}×
-                </option>
-              ))}
-            </select>
-          </label>
+          {/* The last native control in the bar, and it sat beside five shadcn ones. Values are
+              strings because a Select compares them by identity and RATES are numbers; they go
+              back through Number() on the way out. A div rather than a label, for the reason the
+              language picker changed: a label may only wrap a form control, and the trigger is a
+              button. */}
+          <div className="audio-rate">
+            <span className="visually-hidden" id="audio-rate-label">
+              {t('ui.audioSpeed')}
+            </span>
+            <Select
+              value={String(rate)}
+              onValueChange={(v) => v && a.setRate(Number(v))}
+              items={RATES.map((r) => ({ value: String(r), label: `${r}×` }))}
+            >
+              <SelectTrigger className="audio-rate-trigger min-h-11" size="touch" aria-labelledby="audio-rate-label">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {RATES.map((r) => (
+                  <SelectItem key={r} value={String(r)}>
+                    {r}×
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
 
           <span className="audio-time">
             {fmt(time)} / {fmt(duration)}
