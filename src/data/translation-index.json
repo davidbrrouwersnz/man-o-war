@@ -365,11 +365,11 @@
         "reviewStatus": "unreviewed"
       },
       "panel:floating-colonies:panel": {
-        "hash": "6a5e1f7c9f767f00",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
-        "reviewStatus": "unreviewed",
-        "englishHash": "48af3ca294eac84f"
+        "hash": "4d5e90edddc23a54",
+        "englishHash": "4d5e90edddc23a54",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
       },
       "panel:floating-colonies:ending": {
         "hash": "496787d510271e99",
@@ -4918,11 +4918,11 @@
         "reviewStatus": "unreviewed"
       },
       "panel:floating-colonies:panel": {
-        "hash": "1204242b8b6c0f60",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
-        "reviewStatus": "unreviewed",
-        "englishHash": "48af3ca294eac84f"
+        "hash": "4d5e90edddc23a54",
+        "englishHash": "4d5e90edddc23a54",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
       },
       "panel:floating-colonies:ending": {
         "hash": "496787d510271e99",
@@ -9489,8 +9489,8 @@
         "reviewStatus": "unreviewed"
       },
       "panel:floating-colonies:panel": {
-        "hash": "275f666672772c9b",
-        "englishHash": "48af3ca294eac84f",
+        "hash": "4d5e90edddc23a54",
+        "englishHash": "4d5e90edddc23a54",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
@@ -14031,11 +14031,11 @@
         "reviewStatus": "unreviewed"
       },
       "panel:floating-colonies:panel": {
-        "hash": "ce16bc117d912686",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
-        "reviewStatus": "unreviewed",
-        "englishHash": "48af3ca294eac84f"
+        "hash": "4d5e90edddc23a54",
+        "englishHash": "4d5e90edddc23a54",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
       },
       "panel:floating-colonies:ending": {
         "hash": "496787d510271e99",
@@ -18619,11 +18619,11 @@
         "reviewStatus": "unreviewed"
       },
       "panel:floating-colonies:panel": {
-        "hash": "af3aca56d7bdfe19",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
-        "reviewStatus": "unreviewed",
-        "englishHash": "48af3ca294eac84f"
+        "hash": "4d5e90edddc23a54",
+        "englishHash": "4d5e90edddc23a54",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
       },
       "panel:floating-colonies:ending": {
         "hash": "496787d510271e99",
@@ -23196,11 +23196,11 @@
         "reviewStatus": "unreviewed"
       },
       "panel:floating-colonies:panel": {
-        "hash": "148eae860c5067ca",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
-        "reviewStatus": "unreviewed",
-        "englishHash": "48af3ca294eac84f"
+        "hash": "4d5e90edddc23a54",
+        "englishHash": "4d5e90edddc23a54",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
       },
       "panel:floating-colonies:ending": {
         "hash": "496787d510271e99",
@@ -27760,8 +27760,8 @@
         "reviewStatus": "unreviewed"
       },
       "panel:floating-colonies:panel": {
-        "hash": "81f94c4337e32381",
-        "englishHash": "48af3ca294eac84f",
+        "hash": "4d5e90edddc23a54",
+        "englishHash": "4d5e90edddc23a54",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
