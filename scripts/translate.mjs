@@ -77,10 +77,16 @@ const FOUNDRY = /\.services\.ai\.azure\.com|\.cognitiveservices\.azure\.com/.tes
 const WANT_LLM = FOUNDRY && DEPLOYMENT && !DEPLOYMENT.startsWith('<')
 const ENGINE = WANT_LLM ? `llm:${DEPLOYMENT}` : 'nmt'
 
-// v3 accepts 1000 array elements and 50,000 characters per request. Well under both, because a
-// smaller batch loses less on a retry and keeps one failure legible.
-const MAX_ELEMENTS = 80
-const MAX_CHARS = 9000
+// The two engines have different limits, and the LLM one is twenty times tighter: NMT accepts 1,000
+// array elements and 50,000 characters, generative AI accepts 50 and 5,000. Batching to the NMT
+// figures would work perfectly until the day the endpoint changed, then fail on the first request.
+// Both are set below the ceiling anyway, because a smaller batch loses less on a retry and keeps a
+// single failure legible.
+const MAX_ELEMENTS = WANT_LLM ? 40 : 80
+const MAX_CHARS = WANT_LLM ? 4500 : 9000
+
+// One block over the per-element ceiling cannot be batched around, only reported.
+const ELEMENT_CEILING = WANT_LLM ? 5000 : 50000
 
 async function callAzure(texts, to) {
   const url = WANT_LLM
@@ -260,6 +266,12 @@ for (const code of chosen) {
       const blocks = unit.text.split(/\n{2,}/)
       for (let i = 0; i < blocks.length; i++) {
         const { html, protectedHere } = protect(blocks[i], TERMS)
+        if (html.length > ELEMENT_CEILING) {
+          throw new Error(
+            `${unit.id} block ${i} is ${html.length} characters, over this engine's ${ELEMENT_CEILING} ceiling. ` +
+              `Split the paragraph in the English source — it is also too long to hear in one breath.`
+          )
+        }
         jobs.push({ unit, i, source: blocks[i], html, protectedHere })
       }
     }
@@ -328,5 +340,14 @@ if (!BACKFILL && rows.some((r) => r.gaps)) {
   console.log(`  ${rows.reduce((t, r) => t + r.gaps, 0)} gap(s) left alone. Fill one language deliberately:`)
   console.log(`      node scripts/translate.mjs --lang <code> --backfill`)
 }
-if (!DRY && totalChars) console.log(`  ${totalChars.toLocaleString()} characters billed (~$${((totalChars / 1e6) * 10).toFixed(2)} at $10/M)`)
+// NMT bills per source character; generative AI bills per input and output token against Azure
+// OpenAI pricing, which this has no way to know. Reporting dollars for the LLM path would be a
+// figure invented to look precise.
+if (!DRY && totalChars) {
+  console.log(
+    WANT_LLM
+      ? `  ${totalChars.toLocaleString()} characters sent (billed per token by the model deployment, not per character)`
+      : `  ${totalChars.toLocaleString()} characters billed (~$${((totalChars / 1e6) * 10).toFixed(2)} at $10/M)`
+  )
+}
 if (DRY) console.log('  Nothing was sent and nothing was written.')

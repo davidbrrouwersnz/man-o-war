@@ -122,7 +122,9 @@ export function binomials() {
 
 // pathToFileURL rather than string-building the URL: on Windows argv[1] is a drive path, which
 // yields file://C:/... against import.meta.url's file:///C:/... and the check silently never fires.
-if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+// Guarded, because argv[1] is undefined when this is imported from `node -e` and pathToFileURL
+// throws on undefined — which turned a report into a crash.
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const units = collect()
   const by = {}
   for (const u of units) by[u.kind] = (by[u.kind] ?? 0) + 1

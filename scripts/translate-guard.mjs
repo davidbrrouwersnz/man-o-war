@@ -193,7 +193,8 @@ export function assertProtected(terms, translated, id) {
 
 // ---------------------------------------------------------------- audit mode
 
-if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+// Guarded: argv[1] is undefined under `node -e`, and pathToFileURL throws on undefined.
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const units = collect()
   const { held, unflagged } = audit(units)
 
