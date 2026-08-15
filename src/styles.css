@@ -1430,10 +1430,6 @@ ol.grid-dense {
   cursor: default;
 }
 
-.audio-controls button:not(:disabled):hover {
-  background: var(--rule);
-}
-
 .audio-controls button:focus-visible {
   outline-offset: -2px;
 }
@@ -1634,6 +1630,7 @@ html:has(.audio-bar) {
     --control-ink-soft: var(--ink-soft);
     --control-edge: var(--edge);
     --control-ground: var(--paper);
+    --control-rule: var(--rule);
     --control-ring: var(--brand);
   }
 
