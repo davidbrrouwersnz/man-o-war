@@ -3551,6 +3551,48 @@
       "locale": "de-DE",
       "mode": "off",
       "base": "/audio/de"
+    },
+    "zh-Hant": {
+      "segments": {},
+      "voice": "zh-TW-HsiaoChenNeural",
+      "locale": "zh-TW",
+      "mode": "off",
+      "base": "/audio/zh-Hant"
+    },
+    "ja": {
+      "segments": {},
+      "voice": "ja-JP-NanamiNeural",
+      "locale": "ja-JP",
+      "mode": "off",
+      "base": "/audio/ja"
+    },
+    "ko": {
+      "segments": {},
+      "voice": "ko-KR-SunHiNeural",
+      "locale": "ko-KR",
+      "mode": "off",
+      "base": "/audio/ko"
+    },
+    "fr": {
+      "segments": {},
+      "voice": "fr-FR-DeniseNeural",
+      "locale": "fr-FR",
+      "mode": "off",
+      "base": "/audio/fr"
+    },
+    "es": {
+      "segments": {},
+      "voice": "es-ES-ElviraNeural",
+      "locale": "es-ES",
+      "mode": "off",
+      "base": "/audio/es"
+    },
+    "ar": {
+      "segments": {},
+      "voice": "ar-SA-ZariyahNeural",
+      "locale": "ar-SA",
+      "mode": "off",
+      "base": "/audio/ar"
     }
   },
   "note": "Written by scripts/audio.mjs, one section per language. `base` is the URL prefix the player fetches from — change it to move a language’s audio off the repo without touching the player."
