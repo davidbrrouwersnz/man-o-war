@@ -79,6 +79,13 @@ jobs:
           AZURE_TRANSLATOR_ENDPOINT: ${{ secrets.AZURE_TRANSLATOR_ENDPOINT }}
           AZURE_TRANSLATOR_REGION: ${{ secrets.AZURE_TRANSLATOR_REGION }}
           AZURE_TRANSLATOR_DEPLOYMENT: ${{ secrets.AZURE_TRANSLATOR_DEPLOYMENT }}
+          # Required, not optional. The Translator resource is regional, so a request without
+          # Ocp-Apim-Subscription-Region is rejected 401 even against the global host — and
+          # AZURE_TRANSLATOR_REGION is deliberately unset, so this is what it falls back to.
+          # Absent here, the step authenticated with a key and no region and failed on its first
+          # request. It worked locally the whole time because .env.local supplies the Speech region
+          # to everything.
+          AZURE_SPEECH_REGION: ${{ secrets.AZURE_SPEECH_REGION }}
         run: node scripts/translate.mjs --report changed.json
 
       - name: Which languages changed
