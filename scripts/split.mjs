@@ -35,26 +35,29 @@ const STORIES = { ...drafted.stories, ...museum.stories }
 const taxa = existsSync(new URL('../src/data/taxa.json', import.meta.url)) ? read('taxa.json') : { taxa: {} }
 const curated = read('elsewhere.json')
 
-// A link as it ships: the publisher by key, and only the words specific to this link.
-const link = (p, title, url, why, claim) => ({ p, title, url, why, claim })
+// A link as it ships: the publisher by key, the link's own id so the page can find its translated
+// `why`, and only the words specific to this link.
+const link = (l) => ({ id: l.id, p: l.publisher, title: l.title, url: l.url, why: l.why, claim: l.claim })
 
 // MarLIN is machine-resolved but reads as further reading rather than as a record, so it joins the
 // curated list rather than the taxon block. Its own common name is kept where MarLIN has one —
 // "Dustbin lid jellyfish" is the kind of thing worth arriving at.
+//
+// Its sentence is a UI string rather than text on the link. It is the same 180 characters on all 28
+// of them, so shipping it per link cost about 5KB across the group chunks to say one thing 28
+// times — and it would have cost 28 translations of one sentence in every language.
 function elsewhereFor(accession) {
   const hand = curated.objects[accession] ?? []
   const m = taxa.taxa[accession]?.marlin
-  const links = hand.map((l) => link(l.publisher, l.title, l.url, l.why, l.claim))
+  const links = hand.map(link)
   if (m) {
-    links.push(
-      link(
-        'marlin',
-        m.common ? `${m.common} (${m.name})` : m.name,
-        m.url,
-        'What this animal does, where it lives and how it breeds, written for a general reader by the people who survey the north-east Atlantic — the sea the Blaschkas modelled.',
-        'this-species'
-      )
-    )
+    links.push({
+      p: 'marlin',
+      title: m.common ? `${m.common} (${m.name})` : m.name,
+      url: m.url,
+      whyKey: 'ui.marlinWhy',
+      claim: 'this-species',
+    })
   }
   return links
 }
@@ -162,6 +165,7 @@ let chunkTotal = 0
 // invisible on the page: a link attributed to a publisher nobody described, a curated entry keyed
 // to an accession that no longer exists, a claim strength the interface has no words for. All three
 // render as something plausible and wrong, so they stop the build instead.
+const CURATED_IDS = new Set()
 {
   const bad = []
   const publishers = new Set(Object.keys(curated.publishers))
@@ -178,6 +182,12 @@ let chunkTotal = 0
       if (!publishers.has(l.publisher)) bad.push(`${where}: unknown publisher "${l.publisher}"`)
       if (!CLAIMS.has(l.claim)) bad.push(`${where}: unknown claim "${l.claim}"`)
       if (!/^https:\/\//.test(l.url)) bad.push(`${where}: not an https URL — ${l.url}`)
+      // The id is what a translation is keyed to. A missing one means that link can never be
+      // translated; a duplicated one is worse — two links would share one language's words, and
+      // the wrong sentence under a link is exactly the failure the `claim` field exists to prevent.
+      if (!l.id) bad.push(`${where}: link "${l.title}" has no id`)
+      else if (CURATED_IDS.has(l.id)) bad.push(`${where}: duplicate id "${l.id}"`)
+      else CURATED_IDS.add(l.id)
     }
   }
   for (const a of Object.keys(curated.objects)) if (!allAcc.has(a)) bad.push(`objects.${a}: not in the manifest`)
@@ -234,7 +244,7 @@ for (const g of groups.groups) {
 
   // No ending. The closing line is no longer rendered or narrated, so shipping it would be bytes
   // on a gallery connection that nobody reads. The text stays in src/data/stories.json.
-  const groupLinks = (curated.groups[g.slug] ?? []).map((l) => link(l.publisher, l.title, l.url, l.why, l.claim))
+  const groupLinks = (curated.groups[g.slug] ?? []).map(link)
   const chunk = { slug: g.slug, title: g.title, panel: panel?.panel ?? null, elsewhere: groupLinks, objects }
   const json = ship(chunk)
   writeFileSync(new URL(`${g.slug}.json`, dir), json)
@@ -311,7 +321,8 @@ function assertSegmentIds(file, translated, english) {
 
 const packs = []
 for (const file of readdirSync(langDir)) {
-  if (file === 'en.json' || file === 'layers' || file === 'stories') continue
+  // The per-tier pack directories are not language files. English is compiled into the bundle.
+  if (file === 'en.json' || file === 'layers' || file === 'stories' || file === 'elsewhere') continue
   const code = file.replace(/\.json$/, '')
   const pack = JSON.parse(readFileSync(new URL(file, langDir), 'utf8'))
   if (pack.__code !== code) throw new Error(`${file}: __code is "${pack.__code}"`)
@@ -355,15 +366,30 @@ for (const file of readdirSync(langDir)) {
     storiesDone = Object.keys(ts.stories ?? {}).length
   }
 
+  // Further reading annotations, keyed by the link's own id. Its own file for the same reason as
+  // the layers and the stories: a language gains this tier incrementally, and its coverage is
+  // countable on its own rather than hidden inside the interface percentage.
+  const elseFile = new URL(`elsewhere/${code}.json`, langDir)
+  let elseDone = 0
+  if (existsSync(elseFile)) {
+    const te = JSON.parse(readFileSync(elseFile, 'utf8'))
+    const stray = Object.keys(te.elsewhere ?? {}).filter((id) => !CURATED_IDS.has(id))
+    if (stray.length) throw new Error(`elsewhere/${code}.json: link ids not in src/data/elsewhere.json: ${stray.join(', ')}`)
+    pack.elsewhere = te.elsewhere
+    elseDone = Object.keys(te.elsewhere ?? {}).length
+  }
+
   const panelsDone = Object.keys(pack.panels ?? {}).length
   const json = ship(pack)
   writeFileSync(new URL(`lang-${code}.json`, dir), json)
-  packs.push({ code, missing: missing.length, panels: panelsDone, layers: layersDone, stories: storiesDone, kb: (gzipSync(json).length / 1024).toFixed(1) })
+  packs.push({ code, missing: missing.length, panels: panelsDone, layers: layersDone, stories: storiesDone, elsewhere: elseDone, kb: (gzipSync(json).length / 1024).toFixed(1) })
 }
 
 console.log('')
 for (const p of packs) {
-  console.log(`  ${p.code.padEnd(8)} ui ${String(enKeys.length - p.missing).padStart(2)}/${enKeys.length}  panels ${String(p.panels).padStart(2)}/11  layers ${p.layers}/${LAYER_COUNT}  stories ${String(p.stories).padStart(3)}/128  ${p.kb}KB gz${p.missing ? '  <- falls back to English' : ''}`)
+  console.log(
+    `  ${p.code.padEnd(8)} ui ${String(enKeys.length - p.missing).padStart(2)}/${enKeys.length}  panels ${String(p.panels).padStart(2)}/11  layers ${p.layers}/${LAYER_COUNT}  stories ${String(p.stories).padStart(3)}/128  further reading ${String(p.elsewhere).padStart(2)}/${CURATED_IDS.size}  ${p.kb}KB gz${p.missing ? '  <- falls back to English' : ''}`
+  )
 }
 
 index.languages = packs.map((p) => p.code)
@@ -414,7 +440,7 @@ const layersJson = ship({
   // Collection-level further reading rides with the essays rather than in the index, because it is
   // printed at the foot of the reading column and arrives when that column does. The index is
   // loaded on every route and this is needed on one.
-  elsewhere: curated.collection.map((l) => link(l.publisher, l.title, l.url, l.why, l.claim)),
+  elsewhere: curated.collection.map(link),
 })
 writeFileSync(new URL('layers.json', dir), layersJson)
 index.layers = LAYERS.order.map((slug) => ({ slug, title: LAYERS.layers[slug].title }))

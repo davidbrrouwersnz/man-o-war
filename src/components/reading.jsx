@@ -124,11 +124,20 @@ function ExternalLink({ link, publishers, variant }) {
   const redundant = (variant === 'group' && link.claim === 'this-group') || (variant === 'collection' && link.claim === 'this-collection')
   const claimR = redundant ? null : tr(`ui.claim.${link.claim}`)
 
-  // §7: lang and dir follow what is actually RENDERED. Everything the curated file supplies — the
-  // title of the article, the publisher's name, the sentence about why it is worth reading — is
-  // English and stays English: src/data/elsewhere.json is not in the translation pipeline. Left
-  // unmarked inside an Arabic page these inherit dir="rtl", and Unicode bidi then moves every
-  // sentence-final full stop to the LEFT of the sentence. It was doing exactly that.
+  // The sentence about why a source is worth reading is ours, so it translates. Resolved by the
+  // link's own id — array form, because several ids end in an accession and every accession
+  // contains dots that a dot-string path would shred (src/i18n.js).
+  //
+  // MarLIN's links carry a key instead: the same sentence sits on all 28 of them, so it lives in
+  // the interface pack and is translated once rather than 28 times per language.
+  const whyR = link.whyKey ? tr(link.whyKey) : link.why ? tr(['elsewhere', link.id, 'why'], null, link.why) : null
+
+  // §7: lang and dir follow what is actually RENDERED. The title of somebody else's article and the
+  // name of the institution that published it are NOT translated — a citation is quoted as printed,
+  // and translating it would tell a German reader that "Fragile Legacy" leads somewhere German. So
+  // they are English, permanently, and must say so: left unmarked inside an Arabic page they
+  // inherit dir="rtl", and Unicode bidi then moves every sentence-final full stop to the LEFT of
+  // the sentence. It was doing exactly that.
   //
   // The dir attribute on an inline element also isolates it, which is what keeps an English title
   // from reordering the Arabic around it.
@@ -149,9 +158,9 @@ function ExternalLink({ link, publishers, variant }) {
             and two dashes in one line made the title and the institution impossible to tell apart. */}
         {source && <span className="elsewhere-source"> · {source.name}</span>}
       </p>
-      {link.why && (
-        <p className="elsewhere-why" {...english}>
-          {link.why}
+      {whyR && (
+        <p className="elsewhere-why" {...langAttrs(whyR)}>
+          {whyR.text}
         </p>
       )}
       {/* Not a decorative badge. It is the sentence that stops the link from making a claim the

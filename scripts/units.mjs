@@ -31,6 +31,7 @@ const read = (p) => JSON.parse(readFileSync(new URL(`../src/data/${p}`, import.m
 export const PACK = 'pack' //     src/data/i18n/{code}.json
 export const LAYERS = 'layers' // src/data/i18n/layers/{code}.json
 export const STORIES = 'stories' //src/data/i18n/stories/{code}.json
+export const ELSEWHERE = 'elsewhere' // src/data/i18n/elsewhere/{code}.json
 
 const flat = (o, p = []) =>
   Object.entries(o).flatMap(([k, v]) => (v && typeof v === 'object' ? flat(v, [...p, k]) : [[[...p, k], v]]))
@@ -104,6 +105,36 @@ export function collect() {
       const extra = { accession, noAuto: !!seg.noAuto, noAutoWhy: seg.noAutoWhy }
       add(`story:${accession}:seg:${seg.id}:heading`, seg.heading, 'story', STORIES, [...segAt, 'heading'], extra)
       add(`story:${accession}:seg:${seg.id}:text`, seg.text, 'story', STORIES, [...segAt, 'text'], extra)
+    }
+  }
+
+  // ---------------------------------------------------------------- further reading (§6)
+  //
+  // ONLY the `why` — our own sentence about why a source is worth a visitor's time. Three fields
+  // sit beside it and each is deliberately left in English:
+  //
+  //   `title` is somebody else's article, named as they named it. A citation is not translated,
+  //   and translating it would tell a German reader that "Fragile Legacy" leads somewhere German.
+  //   It does not. src/data/layers.json's `sources` have always behaved this way.
+  //
+  //   the publisher's `name` is a proper noun — "Te Ara — the Encyclopedia of New Zealand" is what
+  //   that institution is called, in every language.
+  //
+  //   `claim` is not here because it is already a UI string (ui.claim.*) and is collected above
+  //   with the rest of the interface. It is the one part of a link that MUST translate, so it was
+  //   put where translation is cheapest and most visible rather than left as free text per link.
+  //
+  // Keyed on the link's own authored id, never its position — the same rule as story segments, and
+  // for the same reason: reordering the file must not pair one link's words with another's.
+  const elsewhere = read('elsewhere.json')
+  for (const [scope, list] of [
+    ['collection', elsewhere.collection],
+    ...Object.entries(elsewhere.groups),
+    ...Object.entries(elsewhere.objects),
+  ]) {
+    for (const l of list) {
+      if (!l.id) throw new Error(`elsewhere.json: a link in "${scope}" has no id — see the note in scripts/units.mjs`)
+      add(`elsewhere:${l.id}:why`, l.why, 'elsewhere', ELSEWHERE, ['elsewhere', l.id, 'why'])
     }
   }
 

@@ -2,9 +2,7 @@
  "note": "Hand-authored further reading: the links a script cannot derive. Machine-resolved records (WoRMS, GBIF, MarLIN) live in src/data/taxa.json and are merged with this at build time by scripts/split.mjs — nothing here duplicates them. NOT CURATOR-REVIEWED. Every link was opened and read before it was written down, and every URL is re-checked by `npm run taxa:verify`, but which source is worth a visitor's time is an editorial judgment and a curator should be able to strike any of them. `claim` is the load-bearing field and the reason this file is hand-authored at all: it records how close the source actually is to the object in the case, and the interface prints it. A source about a related animal photographed in New Zealand is worth linking and is NOT the animal in the glass, and §6 spends a page on exactly that distinction.",
  "reviewed": false,
  "retrieved": "2026-08-15",
-
  "claimsNote": "Three strengths of claim, and the UI must never round one up to the next. `this-species` means the source is about the species the model depicts, as currently accepted. `this-kind` means it is about a close relative or the same kind of animal — usually the New Zealand one, where the modelled animal is Mediterranean or North Atlantic and does not live here. `this-group` means it is about the group, not this animal: good orientation, no claim about the object.",
-
  "publishers": {
   "teara": {
    "name": "Te Ara — the Encyclopedia of New Zealand",
@@ -49,11 +47,10 @@
    "why": "The Museum that holds these 128 objects."
   }
  },
-
  "collectionNote": "Deliberately NOT listing Shaw et al. 2017 or Le Grice's Blaschka page here, though both are the best sources on this collection there are. Both are already printed on this same page, twice, as the sources under each of the two essays — and a page that names the same two documents three times reads as though it has nothing else to offer. This block is the other Blaschka world: what the same workshop sent elsewhere, and what the two men did afterwards.",
-
  "collection": [
   {
+   "id": "cornell-blaschka",
    "publisher": "cornell",
    "title": "The Cornell Collection of Blaschka Invertebrate Models",
    "url": "https://digital.library.cornell.edu/collections/blaschka",
@@ -61,6 +58,7 @@
    "claim": "this-collection"
   },
   {
+   "id": "cmog-fragile-legacy-marine-invertebrate-glass",
    "publisher": "cmog",
    "title": "Fragile Legacy: the marine invertebrate glass models of Leopold and Rudolf Blaschka",
    "url": "https://whatson.cmog.org/exhibitions-galleries/fragile-legacy-marine-invertebrate-glass-models-leopold-and-rudolf-blaschka",
@@ -68,6 +66,7 @@
    "claim": "this-collection"
   },
   {
+   "id": "hmnh-glass-flowers",
    "publisher": "hmnh",
    "title": "The Glass Flowers: the Ware Collection of Blaschka glass models of plants",
    "url": "https://www.hmnh.harvard.edu/glass-flowers",
@@ -75,10 +74,10 @@
    "claim": "this-collection"
   }
  ],
-
  "groups": {
   "jellyfish": [
    {
+    "id": "teara-corals-anemones-and-jellyfish-page-4",
     "publisher": "teara",
     "title": "Jellyfish",
     "url": "https://teara.govt.nz/en/corals-anemones-and-jellyfish/page-4",
@@ -88,6 +87,7 @@
   ],
   "floating-colonies": [
    {
+    "id": "teara-corals-anemones-and-jellyfish-page-3",
     "publisher": "teara",
     "title": "Hydroids and siphonophores",
     "url": "https://teara.govt.nz/en/corals-anemones-and-jellyfish/page-3",
@@ -97,6 +97,7 @@
   ],
   "see-through-swimmers": [
    {
+    "id": "teara-marine-animals-without-backbones-page-1",
     "publisher": "teara",
     "title": "Sponges and jellies",
     "url": "https://teara.govt.nz/en/marine-animals-without-backbones/page-1",
@@ -106,6 +107,7 @@
   ],
   "sea-squirts-and-salps": [
    {
+    "id": "teara-marine-animals-without-backbones-page-6",
     "publisher": "teara",
     "title": "Tunicates: sea squirts, salps and appendicularians",
     "url": "https://teara.govt.nz/en/marine-animals-without-backbones/page-6",
@@ -115,6 +117,7 @@
   ],
   "cephalopods": [
    {
+    "id": "teara-octopus-and-squid",
     "publisher": "teara",
     "title": "Octopus and squid",
     "url": "https://teara.govt.nz/en/octopus-and-squid",
@@ -124,6 +127,7 @@
   ],
   "sea-slugs": [
    {
+    "id": "teara-shellfish-page-3",
     "publisher": "teara",
     "title": "Sea slugs",
     "url": "https://teara.govt.nz/en/shellfish/page-3",
@@ -133,6 +137,7 @@
   ],
   "sea-anemones": [
    {
+    "id": "teara-corals-anemones-and-jellyfish-page-2",
     "publisher": "teara",
     "title": "True corals and sea anemones",
     "url": "https://teara.govt.nz/en/corals-anemones-and-jellyfish/page-2",
@@ -142,6 +147,7 @@
   ],
   "corals-and-sea-fans": [
    {
+    "id": "teara-corals-anemones-and-jellyfish-page-1",
     "publisher": "teara",
     "title": "Cnidaria — the nettle animals",
     "url": "https://teara.govt.nz/en/corals-anemones-and-jellyfish/page-1",
@@ -151,6 +157,7 @@
   ],
   "sea-cucumbers-and-stars": [
    {
+    "id": "teara-starfish-sea-urchins-and-other",
     "publisher": "teara",
     "title": "Starfish, sea urchins and other echinoderms",
     "url": "https://teara.govt.nz/en/starfish-sea-urchins-and-other-echinoderms",
@@ -160,13 +167,15 @@
   ],
   "worms": [
    {
+    "id": "teara-marine-animals-without-backbones-page-3",
     "publisher": "teara",
     "title": "Advanced worms",
     "url": "https://teara.govt.nz/en/marine-animals-without-backbones/page-3",
-    "why": "Thirteen major groups of worms and worm-like animals live in New Zealand seas. \"Worm\" is a body shape, not a family, and this is the article that takes it apart.",
+    "why": "Thirteen major groups of worms and worm-like animals live in New Zealand seas. The word names a body shape rather than a family, and this is the article that takes it apart.",
     "claim": "this-group"
    },
    {
+    "id": "teara-marine-animals-without-backbones-page-2",
     "publisher": "teara",
     "title": "Simple worms",
     "url": "https://teara.govt.nz/en/marine-animals-without-backbones/page-2",
@@ -176,6 +185,7 @@
   ],
   "never-went-to-sea": [
    {
+    "id": "teara-snails-and-slugs-page-1",
     "publisher": "teara",
     "title": "New Zealand land molluscs",
     "url": "https://teara.govt.nz/en/snails-and-slugs/page-1",
@@ -184,10 +194,10 @@
    }
   ]
  },
-
  "objects": {
   "1884.137.32": [
    {
+    "id": "teara-moon-jellyfish",
     "publisher": "teara",
     "title": "Moon jellyfish",
     "url": "https://teara.govt.nz/en/photograph/4738/moon-jellyfish",
@@ -197,6 +207,7 @@
   ],
   "1884.137.24": [
    {
+    "id": "teara-moon-jellyfish-1884.137.24",
     "publisher": "teara",
     "title": "Moon jellyfish",
     "url": "https://teara.govt.nz/en/photograph/4738/moon-jellyfish",
@@ -206,6 +217,7 @@
   ],
   "1884.137.33": [
    {
+    "id": "teara-washed-up-portuguese-men-of",
     "publisher": "teara",
     "title": "Washed-up Portuguese men-of-war",
     "url": "https://teara.govt.nz/en/photograph/4737/washed-up-portuguese-men-of-war",
@@ -213,6 +225,7 @@
     "claim": "this-kind"
    },
    {
+    "id": "teara-portuguese-man-of-war",
     "publisher": "teara",
     "title": "Portuguese man-of-war, from the 1966 Encyclopaedia",
     "url": "https://teara.govt.nz/en/1966/portuguese-man-of-war",
@@ -222,6 +235,7 @@
   ],
   "1884.137.98": [
    {
+    "id": "niwa-critter-week-mediterranean-fanworm-sabella",
     "publisher": "niwa",
     "title": "Critter of the Week: the Mediterranean fanworm, Sabella spallanzanii",
     "url": "https://niwa.co.nz/oceans/critter-week/critter-week-mediterranean-fanworm-sabella-spallanzanii",
@@ -231,6 +245,7 @@
   ],
   "1884.137.11": [
    {
+    "id": "teara-sea-hare",
     "publisher": "teara",
     "title": "Sea hare",
     "url": "https://teara.govt.nz/en/photograph/8020/sea-hare",
@@ -240,6 +255,7 @@
   ],
   "1884.137.94": [
    {
+    "id": "teara-sea-hare-1884.137.94",
     "publisher": "teara",
     "title": "Sea hare",
     "url": "https://teara.govt.nz/en/photograph/8020/sea-hare",
@@ -249,6 +265,7 @@
   ],
   "1884.137.52": [
    {
+    "id": "teara-comb-jelly",
     "publisher": "teara",
     "title": "Comb jelly",
     "url": "https://teara.govt.nz/en/photograph/5850/comb-jelly",
@@ -258,6 +275,7 @@
   ],
   "1884.137.48": [
    {
+    "id": "teara-spoon-worm",
     "publisher": "teara",
     "title": "Spoon worm",
     "url": "https://teara.govt.nz/en/photograph/5857/spoon-worm",
@@ -267,6 +285,7 @@
   ],
   "1884.137.15": [
    {
+    "id": "teara-tube-worm",
     "publisher": "teara",
     "title": "Tube worm",
     "url": "https://teara.govt.nz/en/photograph/5855/tube-worm",
@@ -276,6 +295,7 @@
   ],
   "1884.137.37": [
    {
+    "id": "teara-ribbon-worms",
     "publisher": "teara",
     "title": "Ribbon worms",
     "url": "https://teara.govt.nz/en/artwork/5854/ribbon-worms",
@@ -285,6 +305,7 @@
   ],
   "1884.137.49": [
    {
+    "id": "teara-ribbon-worms-1884.137.49",
     "publisher": "teara",
     "title": "Ribbon worms",
     "url": "https://teara.govt.nz/en/artwork/5854/ribbon-worms",
@@ -294,6 +315,7 @@
   ],
   "1884.137.20": [
    {
+    "id": "teara-bristle-worm",
     "publisher": "teara",
     "title": "Bristle-worm",
     "url": "https://teara.govt.nz/en/photograph/6887/bristle-worm",
@@ -303,6 +325,7 @@
   ],
   "1884.137.51": [
    {
+    "id": "teara-a-salp-chain",
     "publisher": "teara",
     "title": "A salp chain",
     "url": "https://teara.govt.nz/en/photograph/5356/a-salp-chain",
@@ -312,6 +335,7 @@
   ],
   "1884.137.47": [
    {
+    "id": "teara-a-salp-chain-1884.137.47",
     "publisher": "teara",
     "title": "A salp chain",
     "url": "https://teara.govt.nz/en/photograph/5356/a-salp-chain",
