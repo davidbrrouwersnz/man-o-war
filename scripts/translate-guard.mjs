@@ -237,7 +237,11 @@ const digitRuns = (s) => {
 const ROMAN = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 }
 const romanValues = (s) => {
   const out = []
-  for (const m of s.matchAll(/\b[IVXLCDM]{2,}\b/g)) {
+  // No trailing word boundary: French and Spanish write the ordinal suffix onto the numeral —
+  // "XVIIIe siècle", "XVIII.º" — and \b after the last M or I refuses to match through it. Only a
+  // following capital is excluded, so a run of Roman letters inside a longer uppercase word is not
+  // read as a number.
+  for (const m of s.matchAll(/\b[IVXLCDM]{2,}(?![A-Z])/g)) {
     const t = m[0]
     let total = 0
     for (let i = 0; i < t.length; i++) {
@@ -249,9 +253,21 @@ const romanValues = (s) => {
   return out
 }
 
+// Eastern Arabic-Indic digits are the same numbers written in another script.
+const ASCII_DIGITS = (s) => s.replace(/[٠-٩]/g, (d) => String('٠١٢٣٤٥٦٧٨٩'.indexOf(d)))
+
+// Small numbers are the ones languages SPELL, and that is not an error. Arabic renders "18th
+// century" as القرن الثامن عشر, and "2 centimetres" as سنتيمترين — the dual, where "two" lives in
+// the morphology and no digit appears at all. Both are correct, and both were being rejected.
+//
+// The check keeps its teeth where the risk actually is. A dropped year, measurement or count — 1883,
+// 28, 1,003 — is a content error, and those are written as digits in every language here. Below the
+// threshold the number is reported and the translation is kept; at or above it, the unit is refused.
+const SPELLED_BELOW = 21
+
 export function assertNumerals(english, translated, id) {
   const want = digitRuns(english)
-  const have = [...digitRuns(translated), ...romanValues(translated)]
+  const have = [...digitRuns(ASCII_DIGITS(translated)), ...romanValues(translated)]
   const pool = [...have]
   const missing = []
   for (const n of want) {
@@ -259,7 +275,10 @@ export function assertNumerals(english, translated, id) {
     if (at === -1) missing.push(n)
     else pool.splice(at, 1)
   }
-  if (missing.length) throw new Error(`${id}: numerals missing from the translation: ${missing.join(', ')}`)
+  if (!missing.length) return
+  const serious = missing.filter((n) => Number(n) >= SPELLED_BELOW)
+  if (serious.length) throw new Error(`${id}: numerals missing from the translation: ${serious.join(', ')}`)
+  return { spelledOut: missing }
 }
 
 // A protected name that came back changed means class="notranslate" was not honoured — which is

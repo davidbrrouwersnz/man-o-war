@@ -1861,9 +1861,11 @@
           "checkedOn": "2026-08-15"
         },
         "fr": {
-          "text": "vessie de mer",
+          "text": "galère portugaise",
           "status": "accepted",
-          "source": "GBIF candidate corroborated by a Wikidata alias (Physalia physalis)",
+          "source": "Editorial decision from the GBIF candidates (2264734 (Physalia physalis))",
+          "why": "The calque of the English name the visitor is reading, and one of the two names French actually uses. The auto-accepted \"vessie de mer\" matched a Wikidata alias but is an obscure alternative; \"physalie\" is the other standard form and would also have been defensible.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
           "checkedOn": "2026-08-15"
         },
         "es": {
