@@ -21,6 +21,13 @@ const drafted = read('stories-drafted.json')
 const OBJECTS = new Map(manifest.objects.map((o) => [o.accession, o]))
 const STORIES = { ...drafted.stories, ...museum.stories }
 
+// Build-time-only fields, stripped from everything written to src/data/chunks/. They instruct the
+// translation pipeline — §7's carve-outs, and the reason each one is held back — and a visitor on a
+// gallery connection should not pay for an argument addressed to a build script. A stringify
+// replacer rather than a strip at each call site, so a new emit path cannot forget it.
+const BUILD_ONLY = new Set(['noAuto', 'noAutoWhy'])
+const ship = (o) => JSON.stringify(o, (k, v) => (BUILD_ONLY.has(k) ? undefined : v))
+
 const WPM = 150
 const words = (s) => (s ? s.trim().split(/\s+/).length : 0)
 const storyWords = (s) => s.segments.reduce((t, x) => t + words(x.heading) + words(x.text), 0)
@@ -131,7 +138,7 @@ for (const g of groups.groups) {
   // No ending. The closing line is no longer rendered or narrated, so shipping it would be bytes
   // on a gallery connection that nobody reads. The text stays in src/data/stories.json.
   const chunk = { slug: g.slug, title: g.title, panel: panel?.panel ?? null, objects }
-  const json = JSON.stringify(chunk)
+  const json = ship(chunk)
   writeFileSync(new URL(`${g.slug}.json`, dir), json)
   chunkTotal += gzipSync(json).length
 
@@ -166,7 +173,7 @@ const all = {
 // Reading order, not accession order: sort=accession_no is lexicographic and puts .2 after .100.
 const order = new Map(groups.groups.flatMap((g, gi) => g.accessions.map((a, ai) => [a, gi * 1000 + ai])))
 all.objects.sort((x, y) => order.get(x.accession) - order.get(y.accession))
-const allJson = JSON.stringify(all)
+const allJson = ship(all)
 writeFileSync(new URL('all.json', dir), allJson)
 
 // One pack per language, loaded only when that language is active. English is compiled into the
@@ -251,7 +258,7 @@ for (const file of readdirSync(langDir)) {
   }
 
   const panelsDone = Object.keys(pack.panels ?? {}).length
-  const json = JSON.stringify(pack)
+  const json = ship(pack)
   writeFileSync(new URL(`lang-${code}.json`, dir), json)
   packs.push({ code, missing: missing.length, panels: panelsDone, layers: layersDone, stories: storiesDone, kb: (gzipSync(json).length / 1024).toFixed(1) })
 }
@@ -265,7 +272,7 @@ index.languages = packs.map((p) => p.code)
 
 // Layers 3–5, written once and reached from any group page (§6, §10).
 
-const layersJson = JSON.stringify(LAYERS)
+const layersJson = ship(LAYERS)
 writeFileSync(new URL('layers.json', dir), layersJson)
 index.layers = LAYERS.order.map((slug) => ({ slug, title: LAYERS.layers[slug].title }))
 
