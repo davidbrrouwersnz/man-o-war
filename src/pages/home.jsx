@@ -1,10 +1,10 @@
-// The collection page: eleven group tiles, every object as a second tab, and the two reading
-// essays below them.
+// The collection page: the eleven category tiles, then all 128 objects, then the two reading
+// essays beside them.
 
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { BY_CODE, dirOf } from '../i18n.js'
 import { langAttrs, useLang, useT } from '../lang.jsx'
-import { Spoken, blocksOf } from '../audio.jsx'
+import { Spoken, blocksOf, hasAudio } from '../audio.jsx'
 import { GROUPS, index, loadChunk } from '../collection.js'
 import { Listen, Translated } from '../components/reading.jsx'
 import { Tools } from '../components/tools.jsx'
@@ -25,28 +25,36 @@ const ON_DISPLAY = '1884.137.33'
 function essayAudio(slug, layer, meta, tr) {
   const titleR = tr(`layerTitles.${slug}`, null, meta.title)
   const standfirstR = tr(`layers.${slug}.standfirst`, null, layer.standfirst)
-  const parts = layer.segments.map((s, si) => ({
+  // Keyed on the segment's own id, never its position — see the note in group.jsx. Array form
+  // rather than a dot-string for the same reason it is used there: a path segment that carries an
+  // authored identifier should never be interpolated into something that will later be split on a
+  // dot, whatever that identifier happens to look like today.
+  const parts = layer.segments.map((s) => ({
     s,
-    si,
-    heading: tr(`layers.${slug}.segments.${si}.heading`, null, s.heading),
-    body: tr(`layers.${slug}.segments.${si}.text`, null, s.text),
+    heading: tr(['layers', slug, 'segments', s.id, 'heading'], null, s.heading),
+    body: tr(['layers', slug, 'segments', s.id, 'text'], null, s.text),
   }))
 
-  const english =
-    titleR.lang === 'en' &&
-    standfirstR.lang === 'en' &&
-    parts.every((p) => p.heading.lang === 'en' && p.body.lang === 'en')
-
+  // Per-item language, as on the group page: a block plays in the language it is printed in, so a
+  // partly-translated essay plays partly-translated narration rather than nothing at all.
   const items = [
-    { id: `layers/${slug}/00-standfirst`, label: titleR.text, blocks: [titleR.text, standfirstR.text] },
+    {
+      id: `layers/${slug}/00-standfirst`,
+      lang: titleR.lang === standfirstR.lang ? standfirstR.lang : 'en',
+      label: titleR.text,
+      blocks: [titleR.text, standfirstR.text],
+    },
     ...parts.map((p) => ({
       id: `layers/${slug}/${p.s.id}`,
+      lang: p.heading.lang === p.body.lang ? p.body.lang : 'en',
       label: p.heading.text,
       blocks: blocksOf(p.heading.text, p.body.text),
     })),
   ]
 
-  return { titleR, standfirstR, parts, english, items }
+  const available = items.every((i) => hasAudio(i.lang))
+
+  return { titleR, standfirstR, parts, available, items }
 }
 
 // One of the two reading essays. It was a page of its own until the content moved onto the
@@ -58,17 +66,22 @@ function essayAudio(slug, layer, meta, tr) {
 // screen reader as two documents stapled together.
 function Essay({ slug, layer, meta, code, langName }) {
   const [t, tr] = useT()
-  const { titleR, standfirstR, parts, english: available, items } = essayAudio(slug, layer, meta, tr)
+  const { titleR, standfirstR, parts, available, items } = essayAudio(slug, layer, meta, tr)
 
   const queue = { key: `l:${slug}`, title: titleR.text, items }
 
   return (
     <section className="essay" id={slug}>
-      <h2 className="essay-title" {...langAttrs(titleR)}>
-        <Spoken text={titleR.text} itemId={`layers/${slug}/00-standfirst`} block={0} />
-      </h2>
+      {/* The control sits beside the heading it plays, after it — not inside it. A button inside a
+          heading contributes its own label to the heading's accessible name, so this essay would
+          have been announced as "How it was made, Listen — How it was made". */}
+      <div className="heading-row">
+        <h2 className="essay-title" {...langAttrs(titleR)}>
+          <Spoken text={titleR.text} itemId={`layers/${slug}/00-standfirst`} block={0} />
+        </h2>
+        <Listen queue={queue} available={available} compact />
+      </div>
       <Translated className="group-panel" r={standfirstR} itemId={`layers/${slug}/00-standfirst`} block={1} />
-      <Listen queue={queue} available={available} note={code !== 'en' ? t('ui.audioEnglishOnly') : null} />
 
       {parts.map(({ s, heading, body }) => {
         const itemId = `layers/${slug}/${s.id}`
@@ -113,43 +126,39 @@ function Home({ go, route }) {
   const { code } = useLang()
   const langName = BY_CODE.get(code)?.endonym ?? 'English'
   const [layers, setLayers] = useState(null)
-  const [tab, setTab] = useState(route?.tab === 'all' ? 'all' : 'groups')
   const [all, setAll] = useState(null)
-  const tabsRef = useRef(null)
+  const allRef = useRef(null)
 
   useLayoutEffect(() => {
     document.title = `${t('ui.collectionTitle')} — Canterbury Museum`
     if (!route?.at) scrollTo(0, 0)
   }, [t, route?.at])
 
-  // 62KB of tiles for 128 objects, fetched only if that tab is opened. It is by far the largest
-  // chunk in the app and most visitors never ask for it.
+  // 62KB of tiles for 128 objects, and now nothing gates it behind a press. Fetched when the
+  // second grid comes within a couple of screens instead — the same treatment the object
+  // photographs get — so the front page still paints on the eleven category tiles alone and §2's
+  // visitor on a museum connection does not pay for 128 of them before seeing anything.
+  //
+  // An arrival on /all skips the wait: the chunk is what that URL is asking for.
   useEffect(() => {
-    if (tab === 'all' && !all) loadChunk('all')?.then(setAll)
-  }, [tab, all])
-
-  // The visible tab is in the URL so the view can be linked and shared, but with replaceState —
-  // flicking between two tabs is not navigation and should not fill up the back button.
-  useEffect(() => {
-    const href = tab === 'all' ? '/all' : '/'
-    if (location.pathname !== href) history.replaceState(null, '', href)
-  }, [tab])
-
-  // Arrow keys move between tabs, which is what a tablist is expected to do and what a keyboard
-  // user will try. Without it the only way across is Tab, Tab, and hope.
-  const onTabKey = (e) => {
-    const order = ['groups', 'all']
-    const i = order.indexOf(tab)
-    let next = null
-    if (e.key === 'ArrowRight') next = order[(i + 1) % order.length]
-    if (e.key === 'ArrowLeft') next = order[(i - 1 + order.length) % order.length]
-    if (e.key === 'Home') next = order[0]
-    if (e.key === 'End') next = order[order.length - 1]
-    if (!next) return
-    e.preventDefault()
-    setTab(next)
-    tabsRef.current?.querySelector(`#tab-${next}`)?.focus()
-  }
+    if (all) return
+    if (route?.at === 'all-objects') {
+      loadChunk('all')?.then(setAll)
+      return
+    }
+    const el = allRef.current
+    if (!el) return
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (!e.isIntersecting) return
+        io.disconnect()
+        loadChunk('all')?.then(setAll)
+      },
+      { rootMargin: '200% 0px' }
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [all, route?.at])
 
   // The essays are a chunk, fetched after the page is up rather than compiled into the bundle. The
   // front page is the one every visitor loads first and §2's visitor is on a museum connection —
@@ -158,12 +167,13 @@ function Home({ go, route }) {
     loadChunk('layers')?.then(setLayers)
   }, [])
 
-  // An arrival on an old /how-it-was-made link cannot scroll until the chunk it points at exists.
+  // An arrival on /all or on an old /how-it-was-made link cannot scroll until whichever chunk it
+  // points at has rendered, so this runs again as each one lands.
   useLayoutEffect(() => {
-    if (!route?.at || !layers) return
+    if (!route?.at) return
     const el = document.getElementById(route.at)
     if (el) scrollTo({ top: el.offsetTop - 8, behavior: 'instant' })
-  }, [route?.at, layers])
+  }, [route?.at, layers, all])
 
   const intro = tr('ui.collectionIntro')
   const title = t('ui.collectionTitle')
@@ -185,22 +195,32 @@ function Home({ go, route }) {
   const essayAudios = layers
     ? index.layers.map((meta) => (layers.layers[meta.slug] ? essayAudio(meta.slug, layers.layers[meta.slug], meta, tr) : null)).filter(Boolean)
     : []
-  // English is decidable from the intro alone, before the chunk arrives — every language pack that
-  // translates the intro translates the essays too — so the button's presence never changes once
-  // the essays land, only whether it can be pressed.
-  const homeAvailable = intro.lang === 'en' && essayAudios.every((a) => a.english)
+  // Decidable from the intro alone, before the chunk arrives — every language pack that translates
+  // the intro translates the essays too — so the button's presence never changes once the essays
+  // land, only whether it can be pressed.
+  const introLang = intro.lang
+  const homeAvailable = hasAudio(introLang) && essayAudios.every((a) => a.available)
   const homeQueue = {
     key: 'home',
     title,
     items: [
-      { id: 'home/00-intro', label: title, blocks: [title, intro.text] },
+      { id: 'home/00-intro', lang: introLang, label: title, blocks: [title, intro.text] },
       ...essayAudios.flatMap((a) => a.items),
     ],
   }
   return (
     <main className="home" id="main" tabIndex={-1}>
       <header className="home-head">
-        <Tools />
+        <Tools
+          listen={
+            <Listen
+              queue={homeQueue}
+              available={homeAvailable}
+              pending={!layers}
+              note={code !== 'en' ? t('ui.audioEnglishOnly') : null}
+            />
+          }
+        />
         <h1>
           <Spoken text={title} itemId="home/00-intro" block={0} />
         </h1>
@@ -230,12 +250,6 @@ function Home({ go, route }) {
             </>
           )}
         </p>
-        <Listen
-          queue={homeQueue}
-          available={homeAvailable}
-          pending={!layers}
-          note={code !== 'en' ? t('ui.audioEnglishOnly') : null}
-        />
       </header>
       {/* Two wrappers, and they exist for the desktop layout: browsing on the left, reading on the
           right. `home-head` deliberately stays outside both, first in the DOM, because that is what
@@ -246,77 +260,58 @@ function Home({ go, route }) {
             than the front door — it rescues browsing by eye and the completionist — and a tab does
             that job better than a page: it is visible from the front rather than found, and it
             costs nothing until it is opened. */}
-        <div className="tabs" role="tablist" aria-label={t('ui.collectionTitle')} ref={tabsRef} onKeyDown={onTabKey}>
-          <button
-            type="button"
-            role="tab"
-            id="tab-groups"
-            aria-selected={tab === 'groups'}
-            aria-controls="panel-groups"
-            tabIndex={tab === 'groups' ? 0 : -1}
-            className={tab === 'groups' ? 'is-current' : ''}
-            onClick={() => setTab('groups')}
-          >
-            {t('ui.byGroup')}
-          </button>
-          <button
-            type="button"
-            role="tab"
-            id="tab-all"
-            aria-selected={tab === 'all'}
-            aria-controls="panel-all"
-            tabIndex={tab === 'all' ? 0 : -1}
-            className={tab === 'all' ? 'is-current' : ''}
-            onClick={() => setTab('all')}
-          >
-            {t('ui.everyObject')}
-          </button>
-        </div>
+        {/* Both grids, one after the other, rather than two tabs over one slot. Each is a section
+            with its own heading, which is what makes them addressable — #all-objects is where /all
+            now lands — and what lets a screen reader list them. h2 because the collection title
+            above is the h1; the essays in the reading column are h2 as well. */}
+        <section className="browse" aria-labelledby="categories-title">
+          <h2 className="browse-title" id="categories-title">
+            {t('ui.categories')}
+          </h2>
+          <ol className="grid">
+            {GROUPS.map((g) => (
+              <li key={g.slug} className="tile">
+                <a href={`/g/${g.slug}`} onClick={go(`/g/${g.slug}`)}>
+                  <div className="tile-well">
+                    <img className="tile-blur" src={g.representative.placeholder} alt="" aria-hidden="true" />
+                    <img className="tile-img" src={g.representative.url} alt="" loading="lazy" decoding="async" />
+                  </div>
+                  <div className="tile-text">
+                    <h3 {...langAttrs(tr(`groups.${g.slug}`, null, g.title))}>{tr(`groups.${g.slug}`, null, g.title).text}</h3>
+                    <p>
+                      {g.size} {t('ui.models')}. {t('ui.aboutMinutes', { m: g.minutes })}
+                    </p>
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </section>
 
-        {tab === 'groups' ? (
-          <div role="tabpanel" id="panel-groups" aria-labelledby="tab-groups">
-            <ol className="grid">
-              {GROUPS.map((g) => (
-                <li key={g.slug} className="tile">
-                  <a href={`/g/${g.slug}`} onClick={go(`/g/${g.slug}`)}>
+        <section className="browse" id="all-objects" aria-labelledby="all-objects-title" ref={allRef}>
+          <h2 className="browse-title" id="all-objects-title">
+            {t('ui.allObjects')}
+          </h2>
+          {all ? (
+            <ol className="grid grid-dense">
+              {all.objects.map((o) => (
+                <li key={o.accession} className="tile">
+                  <a href={`/o/${o.accession}`} onClick={go(`/o/${o.accession}`)}>
                     <div className="tile-well">
-                      <img className="tile-blur" src={g.representative.placeholder} alt="" aria-hidden="true" />
-                      <img className="tile-img" src={g.representative.url} alt="" loading="lazy" decoding="async" />
+                      <img className="tile-blur" src={o.placeholder} alt="" aria-hidden="true" />
+                      <img className="tile-img" src={o.url} alt="" loading="lazy" decoding="async" />
                     </div>
                     <div className="tile-text">
-                      <h2 {...langAttrs(tr(`groups.${g.slug}`, null, g.title))}>{tr(`groups.${g.slug}`, null, g.title).text}</h2>
-                      <p>
-                        {g.size} {t('ui.models')}. {t('ui.aboutMinutes', { m: g.minutes })}
-                      </p>
+                      <h3 className="tile-small">{o.name}</h3>
                     </div>
                   </a>
                 </li>
               ))}
             </ol>
-          </div>
-        ) : (
-          <div role="tabpanel" id="panel-all" aria-labelledby="tab-all">
-            {all ? (
-              <ol className="grid grid-dense">
-                {all.objects.map((o) => (
-                  <li key={o.accession} className="tile">
-                    <a href={`/o/${o.accession}`} onClick={go(`/o/${o.accession}`)}>
-                      <div className="tile-well">
-                        <img className="tile-blur" src={o.placeholder} alt="" aria-hidden="true" />
-                        <img className="tile-img" src={o.url} alt="" loading="lazy" decoding="async" />
-                      </div>
-                      <div className="tile-text">
-                        <h2 className="tile-small">{o.name}</h2>
-                      </div>
-                    </a>
-                  </li>
-                ))}
-              </ol>
-            ) : (
-              <p className="loading loading-dark">{t('ui.loading')}</p>
-            )}
-          </div>
-        )}
+          ) : (
+            <p className="loading loading-dark">{t('ui.loading')}</p>
+          )}
+        </section>
       </div>
 
       {/* The background reading. On a phone it sits below the grid, because the collection is what

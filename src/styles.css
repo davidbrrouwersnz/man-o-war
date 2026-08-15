@@ -168,29 +168,10 @@ a {
   outline-color: var(--brand);
 }
 
-/* §15: "Chrome over media is light-on-dark regardless of theme. Care at the boundary."
-   This is that boundary, and it was wrong. `.listen` is coloured with --ink and --edge, which
-   follow the device — but the collection header is black whatever the device is doing. On a phone
-   in light mode the collection page's own Listen control was near-black text on black, at about
-   1.2:1. It looked fine in development only because the machine was in dark mode.
-
-   Scoped to .home-head rather than .home: the essays below the grid are a light slab and their
-   Listen controls are correct as they are. */
-.home-head .listen {
-  color: var(--dark-ink);
-  border-color: var(--dark-edge);
-}
-
-.home-head .listen:hover {
-  border-color: var(--dark-ink);
-}
-
-.home-head .listen.is-playing {
-  background: var(--dark-ink);
-  color: var(--dark);
-  border-color: var(--dark-ink);
-}
-
+/* §15: "Chrome over media is light-on-dark regardless of theme. Care at the boundary." The Listen
+   control's own share of that is handled by --control-* now, which flips with the ground it sits
+   on — the three .home-head .listen rules that used to live here said the same thing in the dark
+   palette and no longer paint. Its note is still plain text and still needs telling. */
 .home-head .listen-note {
   color: var(--dark-ink-soft);
 }
@@ -246,7 +227,7 @@ a {
   background: var(--paper);
   color: var(--ink);
   border: 1px solid var(--edge);
-  border-radius: 3px;
+  border-radius: var(--radius-lg);
   font-size: var(--step--1);
   text-decoration: none;
   transition: top 0.15s ease;
@@ -272,6 +253,9 @@ a {
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  /* Three controls share this row now. At 200% text on a phone the page's own Listen and the
+     language selector will not both fit, so they wrap rather than push the layout wider. */
+  flex-wrap: wrap;
 }
 
 /* On the collection page the tools stand alone above the title rather than sharing a row with a
@@ -290,46 +274,41 @@ a {
   margin: 0 0 0.25rem;
 }
 
-.tool-button {
-  display: inline-grid;
-  place-items: center;
-  /* WCAG 2.2 SC 2.5.8 puts the floor at 24px. A gallery is one-handed and moving, so 44.
-     In px, not rem, and that matters: every touch target in this file was 2.75rem, so at the
-     200% text setting they became 88px and pushed the layout viewport wider than the phone. A
-     touch target is sized by fingers, which do not grow when the type does. */
-  min-width: 44px;
-  min-height: 44px;
-  padding: 0;
-  border: 1px solid transparent;
-  border-radius: 3px;
-  background: transparent;
-  color: var(--ink-soft);
-  cursor: pointer;
-}
-
-.tool-button:hover {
-  color: var(--ink);
-  border-color: var(--edge);
-}
-
-.home-head .tool-button {
-  color: var(--dark-ink-soft);
-}
-
-.home-head .tool-button:hover {
-  color: var(--dark-ink);
-  border-color: var(--dark-edge);
-}
+/* .tool-button carries no styling of its own any more — it is a shadcn Button at icon-touch size
+   in the `bare` variant, which brings the 44px floor, the round shape and the colours. The class
+   remains as a hook for the scripts that press it. Its dark-header and desktop overrides went with
+   it: --control-* answers that now. */
 
 /* --------------------------------------------------- the display dialog */
 
-/* The icons carry a size attribute so they render before CSS arrives, but they should grow with
-   the text-size setting like everything else — an 18px glyph beside 32px type reads as a
-   rendering fault. The 44px minimum on the button is a floor, not a size, so it still holds. */
-.tool-button svg,
-.lang-globe {
+/* ------------------------------------------------------------------ icons
+
+   Every icon in the app is a lucide glyph, and lucide-react stamps `lucide` on each one — so one
+   rule sizes the lot, including any added later.
+
+   In em, not px, because §18 makes large text the primary vision provision: an 18px glyph beside
+   32px type reads as a rendering fault. The size attribute lucide writes is a pre-CSS fallback, not
+   the size. The 44px minimum on the buttons is a floor rather than a size, so it still holds.
+
+   display and vertical-align only reach the two inline cases, the back link and the prev/next pair;
+   the rest sit in flex or grid parents that ignore both. Tailwind's Preflight sets every svg to
+   `display: block`, which is right for a figure and wrong for a glyph inside a sentence: it put the
+   back arrow on a line of its own above the word. This layer comes after Preflight's, so it wins. */
+svg.lucide {
   width: 1.15em;
   height: 1.15em;
+  flex: none;
+  display: inline-block;
+  vertical-align: -0.2em;
+}
+
+/* The ← and → these replaced were mirrored for free: both are Bidi_Mirrored characters, so the
+   browser turned them round in an Arabic page. A drawing gets no such help and has to be asked.
+   Only the arrows that point along the reading — §7's "mirror the layout, do not mirror the media",
+   and a back arrow is layout. The transport's skip pair is deliberately not here; see AudioBar. */
+[dir='rtl'] .back svg,
+[dir='rtl'] .group-nav svg {
+  transform: scaleX(-1);
 }
 
 /* Native radios and checkboxes, in the brand rather than the operating system's blue. */
@@ -353,22 +332,34 @@ a {
   color: var(--ink-meta);
 }
 
+/* The four text sizes. shadcn's RadioGroup is `grid w-full` and sets no columns, so as generated
+   it stacked them one per line and full width: four rows for four short options.
+
+   A grid rather than a wrapping row, because the sample letter grows with each option and a
+   wrapped row came out ragged, the second line starting somewhere different from the first.
+
+   auto-fit rather than a fixed two, and the minimum in em rather than px, so the count follows the
+   text-size setting on its own: two columns up to 125%, one from 150% — where two would have the
+   chips overlapping and "100%" spilling out of its own box. Fixed at two, that is exactly what it
+   did. 8em rather than 9 keeps the pair for one step longer; both were measured. Set here because
+   shadcn's class does not name columns, so there is no utility to lose to. */
 .setting-choices {
-  display: flex;
-  flex-wrap: wrap;
+  grid-template-columns: repeat(auto-fit, minmax(8em, 1fr));
   gap: 0.5rem;
   margin-top: 0.6rem;
 }
 
-.setting-choices label,
-.setting-switch {
-  display: inline-flex;
+.setting-choices label {
+  display: flex;
   align-items: center;
   gap: 0.5rem;
   min-height: 44px;
   padding: 0.35rem 0.8rem;
   border: 1px solid var(--edge);
-  border-radius: 3px;
+  /* --radius-lg, the same token the selects and the dropdowns resolve through, rather than the 3px
+     this used before shadcn arrived. One number for every rectangular control; the pills and the
+     circles stay round because their shape says what they are. */
+  border-radius: var(--radius-lg);
   font-size: var(--step--1);
   cursor: pointer;
 }
@@ -379,9 +370,31 @@ a {
   border-color: var(--ink);
 }
 
-.setting-switch {
-  margin-top: 0.6rem;
+/* The two preferences. A row rather than a bordered chip: the name takes the space it needs and
+   wraps into it, and the switch stays on the outside edge where a thumb goes for it. Hairlines
+   between rather than a box around each — at 200% text the boxed version ran off the dialog,
+   because a border has to contain the label and the control on one line and the label is a
+   sentence. */
+.setting-rows {
+  margin-top: 1.75rem;
+  border-top: 1px solid var(--rule);
+}
+
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 44px;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--rule);
   font-size: var(--step-0);
+  cursor: pointer;
+}
+
+/* Without this the switch is squeezed by a long label before the label wraps. */
+.setting-row [data-slot='switch'] {
+  flex: none;
 }
 
 /* --------------------------------------------------- home */
@@ -493,43 +506,47 @@ a {
 /* Two ways into the same objects, on the dark home ground. Underline rather than a pill or a box:
    the tiles below are already a field of rectangles, and another one competes with them. */
 
-.tabs {
-  display: flex;
-  gap: 0.25rem;
-  padding: 0 1.25rem;
-  margin: 0 0 1.5rem;
-  border-bottom: 1px solid var(--dark-rule);
-}
+/* The tab bar is shadcn's Tabs now. Its look lives in the className on TabsList/TabsTrigger in
+   pages/home.jsx rather than here — Tailwind utilities sit in the last cascade layer, so rules in
+   this file cannot reach a shadcn component. Only the colours are still decided here, through
+   --control-* , which is what keeps the dark-ground decision documented and asserted.
 
-.tabs button {
-  font: inherit;
-  font-size: var(--step-0);
-  font-weight: 400;
+   What went with the old rules: a hand-written roving tabindex and an arrow/Home/End key handler,
+   about twenty lines, now the primitive's job. */
+
+/* The two grids on the collection page. They were tabs over one slot; now they are sections one
+   after the other, each with a heading that names it and anchors it — /all lands on #all-objects.
+
+   The heading is set as a signpost rather than as a title: this column is navigation, and a
+   display-sized heading over a field of photographs competes with them. Same treatment as the
+   legends in the settings dialog, which do the same job. */
+.browse-title {
+  margin: 0;
+  padding: 2.5rem var(--gutter, 1.25rem) 0.75rem;
+  font-size: var(--step--1);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   color: var(--dark-ink-soft);
-  background: none;
-  border: 0;
-  border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
-  padding: 0.7rem 0.9rem;
-  cursor: pointer;
-  /* A comfortable thumb target on a phone held one-handed in a gallery. */
-  min-height: 44px;
 }
 
-.tabs button:hover {
-  color: var(--dark-ink);
+/* The first one sits under the tab bar's old position, so it does not need the full run-up. */
+.browse:first-of-type .browse-title {
+  padding-top: 1.25rem;
 }
 
-.tabs button.is-current {
-  color: var(--dark-ink);
-  border-bottom-color: var(--dark-ink);
-}
+/* ------------------------------------------------------------------ the tile grids
 
-.tabs button:focus-visible {
-  outline-offset: -4px;
-}
+   `ol.grid`, not `.grid`. The class is the app's own name for the collection's tile grid, and it
+   is also the exact name of Tailwind's display utility — so every shadcn component carrying `grid`
+   was picking up the rules below. It cost the settings dialog's radio group 20px of padding on
+   each side, which pushed its chips 40px in from the heading above them and dropped it from two
+   columns to one, and it would have kept happening quietly to whatever component was adopted next.
 
-.grid {
+   Qualifying by element is the small fix: these grids are always <ol>, and a shadcn component
+   never is. The larger fix is to rename the class; worth doing, but not while several components
+   are in flight. */
+ol.grid {
   list-style: none;
   margin: 0;
   padding: 0 1.25rem;
@@ -539,14 +556,14 @@ a {
 }
 
 @media (min-width: 40rem) {
-  .grid {
+  ol.grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem 1.5rem;
   }
 }
 
 @media (min-width: 64rem) {
-  .grid {
+  ol.grid {
     grid-template-columns: repeat(3, 1fr);
     max-width: 76rem;
     margin: 0 auto;
@@ -585,7 +602,7 @@ a {
   padding: 0.75rem 0 0;
 }
 
-.tile-text h2 {
+.tile-text h3 {
   font-size: var(--step-0);
   line-height: 1.25;
   font-weight: 700;
@@ -1011,42 +1028,7 @@ a {
    route (§7 — it has to be reachable from a QR arrival) put near-white text on cream paper, which
    is the same mistake the Listen control had. Reading-surface colours are the default now and the
    dark header overrides them, rather than the other way round. */
-.lang-globe {
-  color: var(--ink-meta);
-  flex: none;
-}
-
-.lang-picker:hover .lang-globe,
-.lang-picker:focus-within .lang-globe {
-  color: var(--ink);
-}
-
-.lang-picker select {
-  font: inherit;
-  color: var(--ink);
-  background: transparent;
-  border: 1px solid var(--edge);
-  border-radius: 3px;
-  padding: 0.3rem 0.4rem;
-  /* The 44px floor is on the tool button beside it; matching it here keeps the row even. */
-  min-height: 44px;
-}
-
-.home-head .lang-globe {
-  color: var(--dark-ink-soft);
-}
-
-.home-head .lang-picker:hover .lang-globe,
-.home-head .lang-picker:focus-within .lang-globe {
-  color: var(--dark-ink);
-}
-
-.home-head .lang-picker select {
-  color: var(--dark-ink);
-  border-color: var(--dark-edge);
-}
-
-/* The option list is drawn by the operating system, not by this stylesheet, so it is pinned to a
+.home-head /* The option list is drawn by the operating system, not by this stylesheet, so it is pinned to a
    light pair rather than left to inherit a colour the popup will not use. */
 .lang-picker option {
   color: #111;
@@ -1057,6 +1039,44 @@ a {
    honest one, and it also tells the Museum which languages to fund next. */
 .fallback-notice {
   margin: 0 0 0.8rem;
+}
+
+/* §7's translation disclosure, at the foot of the language picker.
+
+   Quiet, per §7's own word, but not hidden — the whole point is that a visitor can find out who
+   checked the words in front of them. So it takes the popup's own foreground colour at reduced
+   size rather than a grey that would drop it under the 4.5:1 floor; §15 already had to fix control
+   borders at 1.75:1 and repeating that mistake on a sentence about trustworthiness would be a poor
+   joke. It sits below a hairline rule so it reads as a note about the list rather than an eighth
+   option nobody can press.
+
+   Wrapped rather than truncated: it is a full sentence in seven languages and German needs the
+   room.
+   Sticky, and that is the whole reason this works. Eight languages overflow the popup's available
+   height, so the list scrolls — and a note placed after it simply sat below the fold, visible only
+   to someone who scrolled to the bottom of a list they had already found what they wanted in. A
+   disclosure nobody reaches is not a disclosure. Pinned to the foot of the scroll container it is
+   present the moment the picker opens, whatever the list is doing behind it.
+
+   The negative inline margin cancels the popup's own 0.375rem padding so the rule reaches both
+   edges and reads as a division of the popup rather than a box drawn inside it.
+
+   The softening is on `color`, never on `opacity`. opacity fades the element's background along
+   with its text, and a sticky strip with a translucent background lets the options scroll visibly
+   through the sentence — which is both illegible and, on a line about whether the words can be
+   trusted, a particularly bad place to look broken. */
+.lang-notice {
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+  margin: 0.35rem -0.375rem -0.375rem;
+  padding: 0.5rem 0.75rem 0.55rem;
+  border-top: 1px solid color-mix(in oklab, currentColor 15%, transparent);
+  background: var(--popover, Canvas);
+  color: color-mix(in oklab, currentColor 80%, transparent);
+  font-size: var(--step--2, 0.78rem);
+  line-height: 1.35;
+  text-wrap: pretty;
 }
 
 /* §7: mirror the layout, do not mirror the media. The wells and their images keep LTR so a
@@ -1099,19 +1119,19 @@ a {
 
 /* ------------------------------------------------------------------ /all, search, layers */
 
-.grid-dense {
+ol.grid-dense {
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem 0.75rem;
 }
 
 @media (min-width: 40rem) {
-  .grid-dense {
+  ol.grid-dense {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
 @media (min-width: 64rem) {
-  .grid-dense {
+  ol.grid-dense {
     grid-template-columns: repeat(6, 1fr);
   }
 }
@@ -1129,24 +1149,24 @@ a {
    `container-name: browse` is declared ONLY inside the 80rem media query, so with no named
    container below the split there is nothing here to match and the stacked layout is untouched. */
 @container browse (min-width: 480px) {
-  .grid {
+  ol.grid {
     grid-template-columns: repeat(2, 1fr);
     max-width: none;
     margin: 0;
   }
 
-  .grid-dense {
+  ol.grid-dense {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
 /* A very wide window gives the browse column enough room for another tile. */
 @container browse (min-width: 928px) {
-  .grid {
+  ol.grid {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .grid-dense {
+  ol.grid-dense {
     grid-template-columns: repeat(6, 1fr);
   }
 }
@@ -1185,6 +1205,18 @@ a {
     max-width: var(--measure);
   }
 
+  /* The head is on cream at this width, so the control tokens go back to the reading palette. One
+     declaration covers every shadcn component in the header, because they all resolve their colours
+     through these. */
+  .home-head {
+    --control-ink: var(--ink);
+    --control-ink-soft: var(--ink-soft);
+    --control-edge: var(--edge);
+    --control-ground: var(--paper);
+    --control-rule: var(--rule);
+    --control-ring: var(--brand);
+  }
+
   .home-head .listen {
     color: var(--ink);
     border-color: var(--edge);
@@ -1204,30 +1236,7 @@ a {
     color: var(--ink-meta);
   }
 
-  .home-head .tool-button {
-    color: var(--ink-soft);
-  }
-
-  .home-head .tool-button:hover {
-    color: var(--ink);
-    border-color: var(--edge);
-  }
-
-  .home-head .lang-globe {
-    color: var(--ink-meta);
-  }
-
-  .home-head .lang-picker:hover .lang-globe,
-  .home-head .lang-picker:focus-within .lang-globe {
-    color: var(--ink);
-  }
-
-  .home-head .lang-picker select {
-    color: var(--ink);
-    border-color: var(--edge);
-  }
-
-  /* .home forces the ring to --dark-brand for the whole page. The reading column takes it back. */
+    .home-head   /* .home forces the ring to --dark-brand for the whole page. The reading column takes it back. */
   .home-head :focus-visible,
   .home-read :focus-visible {
     outline-color: var(--brand);
@@ -1290,43 +1299,46 @@ a {
   flex-wrap: wrap;
 }
 
-.listen {
-  font: inherit;
-  font-size: var(--step-0);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.45rem 1rem;
-  border: 1px solid var(--edge);
-  border-radius: 2rem;
-  background: transparent;
-  color: var(--ink);
-  cursor: pointer;
-  min-height: 44px;
+/* A heading and the control that plays it. The control is a sibling rather than a child: a button
+   inside a heading contributes its own label to that heading's accessible name, and an essay would
+   have been announced as "How it was made, Listen — How it was made".
+
+   align-items: start rather than centre, so that a name running to three lines keeps the control
+   against its first line — beside the heading, not floating halfway down it. The heading takes the
+   space and the control keeps its 44px. */
+.heading-row {
+  display: flex;
+  align-items: start;
+  gap: 0.75rem;
 }
 
-.listen:hover:not(:disabled) {
-  border-color: var(--ink);
+.heading-row > :first-child {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
-.listen:focus-visible {
-  outline-offset: 2px;
+.object-listen.is-compact {
+  margin: 0;
+  flex: none;
 }
 
-/* The collection page's tour control while the essays chunk is still in flight. It holds its place
-   so nothing below it jumps, and it is dimmed so it does not look pressable while it is not. A
-   disabled control is exempt from the contrast floor (WCAG 1.4.3 "inactive user interface
-   components"), which is what makes the opacity acceptable here and nowhere else in this file. */
-.listen:disabled {
-  opacity: 0.5;
-  cursor: default;
+/* The control that plays the whole page sits in the chrome row now, so it carries no margin of its
+   own — .tools spaces that row. */
+.tools .object-listen {
+  margin: 0;
 }
 
-.listen.is-playing {
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--ink);
-}
+/* Nothing about the Listen control is decided here any more. It is a shadcn Button in the app's
+   `quiet` variant — at `touch` when it carries its name, at `icon-touch` when it is the icon alone
+   beside a heading — and the class survives only as a hook for the scripts that press it.
+
+   These rules were not merely redundant, they were doing harm: `padding: 0.45rem 1rem` outlived
+   everything else in the block, because `icon-touch` sets no padding for it to lose to. It made a
+   44px round button 50px wide and not round, which is how it was found.
+
+     font, size, display, gap, padding, background, min-height  -> the variant
+     :hover border, :focus-visible offset, :disabled opacity    -> the variant and its base
+     .is-playing                                                -> data-playing on the variant   */
 
 .listen-note {
   font-size: var(--step--1);
@@ -1357,38 +1369,36 @@ a {
   inset: auto 0 0 0;
   z-index: 20;
   background: var(--paper);
-  border-top: 1px solid var(--rule);
+  /* No border-top. The scrubber is the line between the bar and the page now — see .audio-seek
+     below — and a hairline a few pixels above it would read as a mistake rather than a rule. */
   padding-bottom: env(safe-area-inset-bottom, 0);
 }
 
-/* The read-only 2px bar this replaces could not be operated at all. A native range gives keyboard
-   seeking for free, which SC 2.5.7 requires — a drag must never be the only way to move a
-   control. Styled to the same 2px line so the bar still reads as a hairline until touched. */
+/* The scrubber sits on the boundary and is the boundary: the bar's top edge is the track, unplayed
+   in --rule, which is the colour the hairline here used to be, and played in the brand red. So the
+   line that separates the player from the page also says how far through the guide you are, and
+   the thumb riding it is the playhead.
+
+   The thumb is 16px on a 4px track, so 6px of it stands above the bar and over the page. That is
+   the point — a knob on a line reads as something to grab, where a knob tucked inside the bar
+   reads as decoration. Nothing clips it: .audio-bar sets no overflow. */
 .audio-seek {
   display: block;
   padding: 0;
   margin: 0;
 }
 
-.audio-seek input {
-  display: block;
+/* Full width, and no padding: the 7px that used to sit above the track existed to keep the thumb
+   inside the bar, which is exactly what is no longer wanted. The 44px touch target is unaffected —
+   it comes from the thumb's ::after in components/ui/slider.jsx, because Tailwind utilities sit in
+   the last cascade layer and a rule in this file cannot reach the thumb. */
+.audio-seek [data-slot='slider'] {
   width: 100%;
-  height: 14px;
-  margin: -6px 0;
-  padding: 0;
-  background: transparent;
-  accent-color: var(--brand);
   cursor: pointer;
 }
 
-.audio-seek input:disabled {
-  cursor: default;
-  opacity: 0.5;
-}
-
-.audio-seek input:focus-visible {
-  outline: 2px solid var(--brand);
-  outline-offset: -2px;
+.audio-seek [data-slot='slider-track'] {
+  cursor: pointer;
 }
 
 .audio-row {
@@ -1401,10 +1411,18 @@ a {
   padding: 0.6rem 1rem;
 }
 
+/* One line: "The Blaschka collection · 1 of 14". It was two, the title above the position, which
+   gave the bar a second row to be tall for.
+
+   The title is the part that gives, because it is the part that can be long — nineteen words for
+   an object on a group page against five characters for the position. It takes the space that is
+   left and ellipses; the position never truncates, because a section counter with its end cut off
+   is worse than useless. */
 .audio-what {
   min-width: 0;
   display: flex;
-  flex-direction: column;
+  align-items: baseline;
+  gap: 0.4rem;
   line-height: 1.3;
 }
 
@@ -1413,14 +1431,24 @@ a {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  min-width: 0;
+}
+
+/* The separator hangs off the position, not the title. A pseudo-element either way — neither the
+   title nor the live region should carry punctuation that belongs to the layout — but on the title
+   it lived inside the overflow that does the truncating, so a long name ate the dot along with its
+   own last words and the separator appeared only when it was not needed. */
+.audio-what span::before {
+  content: '·';
+  padding-inline-end: 0.4rem;
+  color: var(--ink-meta);
 }
 
 .audio-what span {
   font-size: var(--step--1);
   color: var(--ink-soft);
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  flex: none;
 }
 
 .audio-controls {
@@ -1437,11 +1465,7 @@ a {
   min-height: 44px;
   display: grid;
   place-items: center;
-  border: 0;
   background: transparent;
-  color: var(--ink);
-  cursor: pointer;
-  border-radius: 50%;
 }
 
 .audio-controls button:disabled {
@@ -1449,28 +1473,12 @@ a {
   cursor: default;
 }
 
-.audio-controls button:not(:disabled):hover {
-  background: var(--rule);
-}
-
 .audio-controls button:focus-visible {
   outline-offset: -2px;
 }
 
-.audio-play {
-  border: 1px solid var(--edge);
-}
-
-.audio-rate select {
-  font: inherit;
-  font-size: var(--step--1);
-  padding: 0.3rem 0.2rem;
-  border: 1px solid var(--edge);
-  border-radius: 0.25rem;
-  background: transparent;
-  color: var(--ink);
-  min-height: 44px;
-}
+/* The speed control is a shadcn Select now; its look comes from the component's own utilities,
+   which this file cannot outrank. Nothing left to say about it here. */
 
 .audio-time {
   font-size: var(--step--1);
@@ -1514,11 +1522,6 @@ a {
 
   .audio-what {
     flex: 1 0 100%;
-  }
-
-  .audio-what strong,
-  .audio-what span {
-    white-space: normal;
   }
 }
 
@@ -1619,26 +1622,67 @@ html:has(.audio-bar) {
     /* light-dark() reads this. The meta tag in index.html declares the same pair. */
     color-scheme: light dark;
 
-    --background: light-dark(oklch(1 0 0), oklch(0.145 0 0));
-    --foreground: light-dark(oklch(0.145 0 0), oklch(0.985 0 0));
-    --card: light-dark(oklch(1 0 0), oklch(0.205 0 0));
-    --card-foreground: light-dark(oklch(0.145 0 0), oklch(0.985 0 0));
-    --popover: light-dark(oklch(1 0 0), oklch(0.205 0 0));
-    --popover-foreground: light-dark(oklch(0.145 0 0), oklch(0.985 0 0));
-    --primary: light-dark(oklch(0.205 0 0), oklch(0.922 0 0));
-    --primary-foreground: light-dark(oklch(0.985 0 0), oklch(0.205 0 0));
-    --secondary: light-dark(oklch(0.97 0 0), oklch(0.269 0 0));
-    --secondary-foreground: light-dark(oklch(0.205 0 0), oklch(0.985 0 0));
-    --muted: light-dark(oklch(0.97 0 0), oklch(0.269 0 0));
-    --muted-foreground: light-dark(oklch(0.556 0 0), oklch(0.708 0 0));
-    --accent: light-dark(oklch(0.97 0 0), oklch(0.269 0 0));
-    --accent-foreground: light-dark(oklch(0.205 0 0), oklch(0.985 0 0));
-    --destructive: light-dark(oklch(0.577 0.245 27.325), oklch(0.704 0.191 22.216));
-    --border: light-dark(oklch(0.922 0 0), oklch(1 0 0 / 15%));
-    --input: light-dark(oklch(0.922 0 0), oklch(1 0 0 / 15%));
-    --ring: light-dark(oklch(0.708 0 0), oklch(0.556 0 0));
+    /* Pointed at the museum palette rather than shadcn's neutral greys.
+
+       This is what makes shadcn components safe to use here. Every colour above the line in this
+       file is asserted by scripts/contrast.mjs, 34 pairs across four palettes, and that check
+       exists because §15's control-border bug has shipped twice. A component drawing itself in
+       oklch(0.708 0 0) is a colour no assertion covers; the same component drawing itself in
+       var(--edge) is one that cannot drift without the build failing.
+
+       Dark handling changes with it. These were light-dark() pairs; the app tokens already flip
+       under prefers-color-scheme, so the aliases inherit that and there is one place to look
+       instead of two. color-scheme stays, because form controls still read it. */
+    --background: var(--paper);
+    --foreground: var(--ink);
+    --card: var(--paper);
+    --card-foreground: var(--ink);
+    --popover: var(--paper);
+    --popover-foreground: var(--ink);
+    --primary: var(--ink);
+    --primary-foreground: var(--paper);
+    --secondary: var(--rule);
+    --secondary-foreground: var(--ink);
+    --muted: var(--rule);
+    --muted-foreground: var(--ink-meta);
+    --accent: var(--rule);
+    --accent-foreground: var(--ink);
+    --destructive: var(--brand);
+    /* --edge is the control-boundary token, floor 3:1, and never used for text. --rule is the
+       decorative hairline. shadcn uses --border for both jobs, so it takes the stricter one. */
+    --border: var(--edge);
+    --input: var(--edge);
+    --ring: var(--brand);
 
     --radius: 0.625rem;
+  }
+
+  /* Controls that sit on the permanently-dark collection header need the dark palette, and the
+     switch has to happen in a token rather than in a component — §15's "chrome over media is
+     light-on-dark regardless of theme, care at the boundary". A shadcn component styles itself with
+     Tailwind utilities, which live in the last cascade layer and so beat anything this file says
+     about them; the only lever left that still works from here is what those utilities resolve to.
+     Hence a control-scoped pair, flipped by context, consumed by the button variants. */
+  :root {
+    --control-ink: var(--ink);
+    --control-ink-soft: var(--ink-soft);
+    --control-edge: var(--edge);
+    --control-ground: var(--paper);
+    --control-rule: var(--rule);
+    --control-ring: var(--brand);
+  }
+
+  /* Both halves of the collection page that stay dark at every width. The head rejoins the reading
+     palette at desktop, further down; the browsing column never does, because the tile grid is a
+     dark field whatever the device is doing (§9). */
+  .home-head,
+  .home-browse {
+    --control-ink: var(--dark-ink);
+    --control-ink-soft: var(--dark-ink-soft);
+    --control-edge: var(--dark-edge);
+    --control-ground: var(--dark);
+    --control-rule: var(--dark-rule);
+    --control-ring: var(--dark-brand);
   }
 
   /* Kept so a manual theme toggle stays possible later (§15's "dimmed gallery mode" fallback).

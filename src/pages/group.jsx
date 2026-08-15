@@ -1,9 +1,10 @@
 // A group page: the panel, every object in the group inline, and an ending in words (§10).
 
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react'
 import { BY_CODE } from '../i18n.js'
 import { langAttrs, useLang, useT } from '../lang.jsx'
-import { Spoken, blocksOf } from '../audio.jsx'
+import { Spoken, blocksOf, hasAudio } from '../audio.jsx'
 import { BY_SLUG, GROUPS, loadChunk } from '../collection.js'
 import { Listen, Media, Translated } from '../components/reading.jsx'
 import { Tools } from '../components/tools.jsx'
@@ -41,19 +42,25 @@ function objectAudio(object, tr, t) {
   // repeat it word for word — so it is dropped rather than printed twice.
   const showCatalogue = headlineR.text !== object.title && headlineR.text !== catalogueR.text
 
-  const parts = (story?.segments ?? []).map((s, si) => ({
+  // Keyed on the segment's own id, never its position. A translated pack is a map of overrides onto
+  // the English, so a language that has three of an object's five segments gets those three and
+  // falls back for the rest — and re-ordering or inserting an English segment can never silently
+  // pair one language's heading with another's body.
+  const parts = (story?.segments ?? []).map((s) => ({
     s,
-    si,
-    heading: tr([...base, 'segments', si, 'heading'], null, s.heading),
-    body: tr([...base, 'segments', si, 'text'], null, s.text),
+    heading: tr([...base, 'segments', s.id, 'heading'], null, s.heading),
+    body: tr([...base, 'segments', s.id, 'text'], null, s.text),
   }))
 
-  const english =
-    headlineR.lang === 'en' && parts.every((p) => p.heading.lang === 'en' && p.body.lang === 'en')
-
+  // Each item is voiced in the language its own text resolved to, not the one the visitor picked.
+  // A German page whose third segment fell back to English plays the English file there, which is
+  // right: §13 requires the spoken words to be the printed words, and the printed words are English
+  // at that point. `available` then asks the only question that matters — is there narration for
+  // every language this page actually ended up rendering in?
   const items = [
     {
       id: `${object.accession}/00-title`,
+      lang: headlineR.lang,
       label: headlineR.text,
       blocks: showCatalogue ? [headlineR.text, catalogueR.text] : [headlineR.text],
     },
@@ -62,12 +69,17 @@ function objectAudio(object, tr, t) {
     // and is noise for everyone else. See the note in scripts/audio.mjs.
     ...parts.map((p) => ({
       id: `${object.accession}/${p.s.id}`,
+      // Heading and body are one file, so a segment is only voiced in the translation when both
+      // halves are translated — the same rule scripts/audio.mjs applies when deciding what to make.
+      lang: p.heading.lang === p.body.lang ? p.body.lang : 'en',
       label: p.heading.text,
       blocks: blocksOf(p.heading.text, p.body.text),
     })),
   ]
 
-  return { headlineR, catalogueR, showCatalogue, parts, english, items }
+  const available = items.every((i) => hasAudio(i.lang))
+
+  return { headlineR, catalogueR, showCatalogue, parts, available, items }
 }
 
 function ObjectSection({ object, arrived, registry }) {
@@ -85,7 +97,7 @@ function ObjectSection({ object, arrived, registry }) {
   const { story } = object
   const size = object.measurements[0]?.replace(/^Dimensions \(LxWxH\):\s*/i, '').trim()
 
-  const { headlineR, catalogueR, showCatalogue, parts, english, items } = objectAudio(object, tr, t)
+  const { headlineR, catalogueR, showCatalogue, parts, available, items } = objectAudio(object, tr, t)
   const rights = object.rights ? object.rights : t('ui.rightsUnstated')
   const metaLine = [object.accession, size, rights].filter(Boolean).join(' · ')
   const queue = { key: `o:${object.accession}`, title: headlineR.text, items }
@@ -98,14 +110,17 @@ function ObjectSection({ object, arrived, registry }) {
           phone needs: name, then the photograph, then the story. That order is load-bearing on the
           QR route, where the point is to see the name and the object within a few seconds. */}
       <div className="object-head">
+        <div className="heading-row">
         {/* §7: lang and dir follow what is actually rendered, on the element itself. An
             untranslated headline is English inside whatever page language is active; a translated
             one carries its own language. The binomial inside object.catalogueName is marked in CSS
             via .binomial where authored, so a screen reader does not read Latin with the
             surrounding phonetics. */}
-        <h2 className="object-name" {...langAttrs(headlineR)}>
-          <Spoken text={headlineR.text} itemId={`${object.accession}/00-title`} block={0} />
-        </h2>
+          <h2 className="object-name" {...langAttrs(headlineR)}>
+            <Spoken text={headlineR.text} itemId={`${object.accession}/00-title`} block={0} />
+          </h2>
+          <Listen queue={queue} available={available} compact />
+        </div>
         {showCatalogue && (
           <p className="object-catalogue" {...langAttrs(catalogueR)}>
             <Spoken text={catalogueR.text} itemId={`${object.accession}/00-title`} block={1} />
@@ -121,11 +136,9 @@ function ObjectSection({ object, arrived, registry }) {
       </figure>
 
       <div className="object-body">
-      <Listen queue={queue} available={english} note={code !== 'en' ? t('ui.audioEnglishOnly') : null} />
-
       {story ? (
         <div className="story">
-          {parts.map(({ s, si, heading, body }) => {
+          {parts.map(({ s, heading, body }) => {
             const itemId = `${object.accession}/${s.id}`
             const blocks = blocksOf(heading.text, body.text)
             return (
@@ -227,13 +240,15 @@ function GroupPage({ route, go }) {
   // Built from the objects themselves rather than from a separate list, so the tour can never
   // drift out of step with what is on the page.
   const objectAudios = (data?.objects ?? []).map((o) => objectAudio(o, tr, t))
-  const tourAvailable =
-    !!data && title.lang === 'en' && panelR.lang === 'en' && objectAudios.every((a) => a.english)
+  // The panel is one file carrying the group title and the panel text, so it is only voiced in the
+  // translation when both are translated.
+  const panelLang = title.lang === panelR.lang ? panelR.lang : 'en'
+  const tourAvailable = !!data && hasAudio(panelLang) && objectAudios.every((a) => a.available)
   const tourQueue = {
     key: `g:${group.slug}`,
     title: title.text,
     items: [
-      ...(data?.panel ? [{ id: `groups/${group.slug}/00-panel`, label: title.text, blocks: [title.text, panelR.text] }] : []),
+      ...(data?.panel ? [{ id: `groups/${group.slug}/00-panel`, lang: panelLang, label: title.text, blocks: [title.text, panelR.text] }] : []),
       ...objectAudios.flatMap((a) => a.items),
     ],
   }
@@ -242,9 +257,13 @@ function GroupPage({ route, go }) {
     <main className="reading" id="main" tabIndex={-1}>
       <div className="page-top">
         <a className="back" href="/" onClick={go('/')}>
-          ← {t('ui.backToCollection')}
+          <ArrowLeftIcon aria-hidden="true" focusable="false" /> {t('ui.backToCollection')}
         </a>
-        <Tools />
+        <Tools
+          listen={
+            <Listen queue={tourQueue} available={tourAvailable} note={code !== 'en' ? t('ui.audioEnglishOnly') : null} />
+          }
+        />
       </div>
       <h1 className="group-title" {...langAttrs(title)}>
         <Spoken text={title.text} itemId={`groups/${group.slug}/00-panel`} block={0} />
@@ -269,8 +288,6 @@ function GroupPage({ route, go }) {
               start the tour and stop caring about the interface — which is the point of an audio
               guide in a gallery. Individual objects keep their own control for anyone who wants
               just the thing in front of them. */}
-          <Listen queue={tourQueue} available={tourAvailable} note={code !== 'en' ? t('ui.audioEnglishOnly') : null} />
-
           {data.objects.map((o) => (
             <ObjectSection key={o.accession} object={o} arrived={o.accession === route.arrivedAt} registry={registry} />
           ))}
@@ -282,14 +299,14 @@ function GroupPage({ route, go }) {
       <nav className="group-nav">
         {prev ? (
           <a href={`/g/${prev.slug}`} onClick={go(`/g/${prev.slug}`)}>
-            ← {prev.title}
+            <ArrowLeftIcon aria-hidden="true" focusable="false" /> {prev.title}
           </a>
         ) : (
           <span />
         )}
         {next && (
           <a href={`/g/${next.slug}`} onClick={go(`/g/${next.slug}`)}>
-            {next.title} →
+            {next.title} <ArrowRightIcon aria-hidden="true" focusable="false" />
           </a>
         )}
       </nav>

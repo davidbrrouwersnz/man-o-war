@@ -1,6 +1,7 @@
 // The not-found page. Its own module since search was removed — it used to share a file with the
 // search page, and two other modules import it.
 
+import { ArrowLeftIcon } from 'lucide-react'
 import { useT } from '../lang.jsx'
 import { Tools } from '../components/tools.jsx'
 
@@ -10,7 +11,7 @@ function Missing({ route, go }) {
     <main className="reading" id="main" tabIndex={-1}>
       <div className="page-top">
         <a className="back" href="/" onClick={go('/')}>
-          ← {t('ui.backToCollection')}
+          <ArrowLeftIcon aria-hidden="true" focusable="false" /> {t('ui.backToCollection')}
         </a>
         <Tools />
       </div>

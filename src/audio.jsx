@@ -13,10 +13,27 @@
 //   - cues map one-to-one onto printed segments, generated at production time. We only read them.
 
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react'
+import { PauseIcon, PlayIcon, SkipBackIcon, SkipForwardIcon, XIcon } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Slider } from '@/components/ui/slider'
+import { index } from './collection.js'
 import { useT } from './lang.jsx'
 import { useA11y } from './a11y.jsx'
 
-const BASE = '/audio/en'
+// Where each language's narration is served from, written by scripts/split.mjs from the audio
+// index. Two things follow from it being data rather than a constant.
+//
+// A queue item carries the language its TEXT actually resolved to, not the language the visitor
+// selected — the same rule §7 applies to lang and dir. A German page with two segments still in
+// English plays two English files, which is correct: §13 requires the spoken words to be the
+// printed words, and at that point the printed words are English.
+//
+// And moving audio off the repo later is a change to `base` in a JSON file rather than to this
+// player. English alone is 44MB.
+const AUDIO = index.audio ?? {}
+export const hasAudio = (lang) => !!AUDIO[lang]
+const baseFor = (lang) => AUDIO[lang]?.base ?? `/audio/${lang}`
 export const RATES = [0.5, 0.75, 1, 1.25, 1.5, 2]
 
 // The printed blocks of one segment, built exactly the way scripts/audio.mjs builds them. If these
@@ -110,6 +127,35 @@ export function AudioProvider({ children }) {
   const follow = prefs.followWords
   const [t] = useT()
 
+  // How long the visitor keeps the scroll after taking it over.
+  //
+  // Modelled on a car's navigation map: pan away and it leaves you alone, then re-centres once you
+  // stop touching it or once the car moves, because what it is following has moved on. Both
+  // triggers, for the same reasons.
+  //
+  // 8s rather than the 4s first sketched. Measured, the narration crosses a paragraph every 6
+  // seconds, so a 4s timer expires inside an ordinary read-along pause — reading is
+  // indistinguishable from idling, and the resume would land while the visitor was most absorbed.
+  // 8s clears a paragraph with room to spare. One constant; retune here.
+  const IDLE_MS = 8000
+  // The "car has started moving" trigger: the guide has reached a new section, so whatever they
+  // scrolled off to look at is no longer the subject.
+  //
+  // 4s, not the 1.5s this started at. Sections here are 7 to 30 seconds, so a new one very often
+  // begins moments after a swipe: measured, it took the page back 1,530ms after the visitor moved
+  // it, which is the snatching this whole change exists to stop. Four seconds is long enough to
+  // have looked at the thing you scrolled to — and it lands where the original instinct did, so
+  // the rule reads as "4 seconds, if the guide has moved on; 8 if it has not".
+  const SECTION_SETTLE_MS = 4000
+  // A smooth scroll takes a few hundred ms, during which the mark is still measurably out of place.
+  // Without this the next cue reads that as a fresh miss and scrolls again, compounding.
+  const SCROLL_SETTLE_MS = 400
+
+  const takenOver = useRef(null)
+  const scrolledAt = useRef(0)
+  const atRef = useRef(0)
+  atRef.current = at
+
   const item = queue?.items[at] ?? null
 
   // Load the segment whenever the queue or position changes. `wanted` guards against a fast
@@ -121,12 +167,15 @@ export function AudioProvider({ children }) {
     setCues([])
     setCue(-1)
     setFailed(false)
-    audio.src = `${BASE}/${item.id}.mp3`
+    // The item's own language, not the session's: a block that fell back to English is played from
+    // the English narration, because that is what is printed at that point on the page.
+    const base = baseFor(item.lang ?? 'en')
+    audio.src = `${base}/${item.id}.mp3`
     audio.playbackRate = rate
     audio.preservesPitch = true
     if (playing) audio.play().catch(() => setFailed(true))
 
-    fetch(`${BASE}/${item.id}.vtt`)
+    fetch(`${base}/${item.id}.vtt`)
       .then((r) => (r.ok ? r.text() : Promise.reject(new Error(String(r.status)))))
       .then((text) => {
         if (wanted) setCues(alignCues(parseVtt(text), item.blocks))
@@ -197,6 +246,9 @@ export function AudioProvider({ children }) {
     (next, from = 0) => {
       const audio = el.current
       if (!audio) return
+      // Pressing Listen, or skipping, is a request to be taken to the words — so it ends any
+      // exploring rather than waiting out the timer.
+      takenOver.current = null
       if (queue?.key === next.key) {
         // Same thing already loaded: treat the press as play/pause.
         if (playing) {
@@ -232,6 +284,7 @@ export function AudioProvider({ children }) {
   const skip = useCallback(
     (delta) => {
       if (!queue) return
+      takenOver.current = null
       setAt((i) => Math.min(queue.items.length - 1, Math.max(0, i + delta)))
       setPlaying(true)
     },
@@ -260,25 +313,105 @@ export function AudioProvider({ children }) {
     setTime(seconds)
   }, [])
 
-  // Keep the spoken word on screen. Runs after the cue has rendered, so the <mark> exists.
+  // A swipe, a wheel turn or a scroll key means the visitor is driving now.
   //
-  // Only scrolls when the word has actually left the viewport — scrolling on every cue would
-  // twitch the page several times a second. The bottom margin clears the player, which is fixed
-  // over the end of the page.
+  // Deliberately not the `scroll` event. Our own smooth scrolling fires a stream of those, so a
+  // feature listening for them mistakes itself for the user, hands over control it was never
+  // asked for, and never takes it back. wheel, touch and the scroll keys are things only a person
+  // does. Anything inside the transport bar is excluded: dragging the seek slider or pressing skip
+  // is operating the guide, not exploring the page, and should not stop it following.
+  useEffect(() => {
+    const KEYS = new Set(['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' ', 'Spacebar'])
+    const inTransport = (e) => e.target instanceof Node && !!document.querySelector('.audio-bar')?.contains(e.target)
+    const took = (e) => {
+      if (inTransport(e)) return
+      takenOver.current = { time: performance.now(), section: atRef.current }
+    }
+    const onKey = (e) => {
+      if (KEYS.has(e.key)) took(e)
+    }
+    addEventListener('wheel', took, { passive: true })
+    addEventListener('touchstart', took, { passive: true })
+    addEventListener('touchmove', took, { passive: true })
+    addEventListener('keydown', onKey)
+    return () => {
+      removeEventListener('wheel', took)
+      removeEventListener('touchstart', took)
+      removeEventListener('touchmove', took)
+      removeEventListener('keydown', onKey)
+    }
+  }, [])
+
+  // Keep the spoken word on screen. Runs after the cue has rendered, so the <mark> exists.
   useEffect(() => {
     if (!follow || !playing) return
     const mark = document.querySelector('.spoken-word')
     if (!mark) return
-    const r = mark.getBoundingClientRect()
+
+    const now = performance.now()
+    if (now - scrolledAt.current < SCROLL_SETTLE_MS) return
+
+    // While the visitor has the scroll, leave it entirely alone.
+    const over = takenOver.current
+    let resuming = false
+    if (over) {
+      const idle = now - over.time
+      const sectionMoved = at !== over.section
+      if (idle < IDLE_MS && !(sectionMoved && idle > SECTION_SETTLE_MS)) return
+      takenOver.current = null
+      resuming = true
+    }
+
     const bar = document.querySelector('.audio-bar')?.getBoundingClientRect().height ?? 0
+    // The readable band: clear of the masthead above, clear of the transport bar below.
     const top = 72
     const bottom = innerHeight - bar - 24
-    if (r.top >= top && r.bottom <= bottom) return
+    const r = mark.getBoundingClientRect()
+
     // §18 asks for prefers-reduced-motion on every transition. A smooth scroll that repeats for
     // 137 minutes is exactly what that setting is for.
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches
-    mark.scrollIntoView({ block: 'center', behavior: reduced ? 'auto' : 'smooth' })
-  }, [cue, follow, playing])
+    const behavior = reduced ? 'auto' : 'smooth'
+
+    // Coming back from exploring is the one move that should be a placement rather than a nudge.
+    // The visitor has been away, the words are somewhere else entirely, and putting them where
+    // reading starts is the whole point — a third of the way down the band.
+    //
+    // Tried and rejected: doing the same at every section change, on the theory that a new object
+    // deserves a proper entrance. It made things worse, and measurably — over two minutes it took
+    // the median move from 110px to 438px and put four moves of the eight over half a screen. A
+    // new heading arriving low and then easing up is gentler than the page leaping to meet it.
+    if (resuming) {
+      scrolledAt.current = now
+      const back = r.top - (top + (bottom - top) * 0.35)
+      // Someone who wandered a long way gets taken back instantly rather than flown there. Smoothly
+      // animating thousands of pixels — 5,748 of them in one test — is a long blur that shows the
+      // visitor nothing and delays the words they are already hearing. Under a couple of screens it
+      // is a movement worth watching, because it tells them where they went.
+      scrollBy({ top: back, behavior: Math.abs(back) > innerHeight * 2 ? 'auto' : behavior })
+      return
+    }
+
+    // Only the floor is enforced, not the ceiling. Above is a fine place for the spoken word to be
+    // — there is a screenful of what comes next below it — and correcting upwards mostly fired at
+    // the top of a page, where the scroll is already at zero and the move does nothing: three
+    // futile scrolls in the first two minutes of a tour, before this.
+    if (r.bottom <= bottom) return
+
+    // The old rule scrolled the word to the dead centre of the screen however far it had drifted,
+    // so the correction bore no relation to the error: measured on a 390px phone, a median move of
+    // 331px and a worst of 594px — 39% and 70% of the screen — arriving about once every 14
+    // seconds. Rare and violent, which is what read as aggressive.
+    //
+    // Instead, move by the least that puts the word back inside the band with a few lines of room
+    // to spare. Three lines is the tuning: park it hard against the edge and the very next line
+    // triggers another scroll, giving a constant crawl; park it in the middle and we are back to
+    // leaping. Three lines is one small step every few lines, which reads as the page keeping up
+    // rather than snatching.
+    const line = parseFloat(getComputedStyle(mark.parentElement ?? mark).lineHeight) || 24
+    scrolledAt.current = now
+    scrollBy({ top: r.bottom - (bottom - line * 3), behavior })
+  }, [cue, at, follow, playing])
 
   // Lock screen, headphone buttons, car displays. A visitor walking a gallery with the phone in a
   // pocket is the case §13's "plays across navigation" is really about, and without this the only
@@ -404,22 +537,26 @@ export function AudioBar() {
 
   return (
     <div className="audio-bar" role="region" aria-label={t('ui.audioGuide')}>
-      {/* A real slider rather than the read-only bar this used to be. Native input[type=range]
-          because it arrives with role="slider", the arrow/Home/End keys and drag-free keyboard
-          operation already correct — SC 2.5.7 requires that a drag is never the only way. */}
-      <label className="audio-seek">
-        <span className="visually-hidden">{t('ui.audioPosition')}</span>
-        <input
-          type="range"
-          min="0"
+      {/* shadcn's Slider, not its Progress. Progress is a read-out — role="progressbar", no
+          keyboard, nothing to grab — and this control has to be seekable, so Progress would have
+          silently removed the ability to move through a 137-minute guide. Slider is the seekable
+          one, and it keeps what the native range gave us: role="slider", arrow/Home/End keys, and
+          therefore no drag-only interaction, which is what SC 2.5.7 requires. */}
+      <div className="audio-seek">
+        <span className="visually-hidden" id="audio-seek-label">
+          {t('ui.audioPosition')}
+        </span>
+        <Slider
+          aria-labelledby="audio-seek-label"
+          min={0}
           max={Number.isFinite(duration) && duration > 0 ? duration : 0}
-          step="0.5"
-          value={Math.min(time, duration || 0)}
-          onChange={(e) => a.seek(Number(e.target.value))}
-          aria-valuetext={t('ui.audioElapsed', { elapsed: spoken(time), total: spoken(duration) })}
+          step={0.5}
+          value={[Math.min(time, duration || 0)]}
+          onValueChange={(v) => a.seek(Array.isArray(v) ? v[0] : v)}
+          getAriaValueText={() => t('ui.audioElapsed', { elapsed: spoken(time), total: spoken(duration) })}
           disabled={!duration}
         />
-      </label>
+      </div>
 
       <div className="audio-row">
         <div className="audio-what">
@@ -436,44 +573,67 @@ export function AudioBar() {
         </div>
 
         <div className="audio-controls">
-          <button type="button" onClick={() => a.skip(-1)} disabled={at === 0} aria-label={t('ui.audioPrevious')}>
-            <span aria-hidden="true">⏮</span>
-          </button>
-          <button
-            type="button"
+          {/* Not mirrored under dir="rtl", unlike the back and prev/next arrows. These point along
+              the recording rather than along the reading, and a tape does not run the other way for
+              an Arabic listener. Matches the convention every other player follows. */}
+          <Button variant="bare" size="icon-touch" onClick={() => a.skip(-1)} disabled={at === 0} aria-label={t('ui.audioPrevious')}>
+            <SkipBackIcon aria-hidden="true" focusable="false" />
+          </Button>
+          <Button
+            variant="bare"
+            size="icon-touch"
             className="audio-play"
             onClick={a.toggle}
             aria-label={playing ? t('ui.audioPause') : t('ui.audioPlay')}
           >
-            <span aria-hidden="true">{playing ? '⏸' : '▶'}</span>
-          </button>
-          <button
-            type="button"
+            {playing
+              ? <PauseIcon aria-hidden="true" focusable="false" />
+              : <PlayIcon aria-hidden="true" focusable="false" />}
+          </Button>
+          <Button
+            variant="bare"
+            size="icon-touch"
             onClick={() => a.skip(1)}
             disabled={at + 1 >= queue.items.length}
             aria-label={t('ui.audioNext')}
           >
-            <span aria-hidden="true">⏭</span>
-          </button>
+            <SkipForwardIcon aria-hidden="true" focusable="false" />
+          </Button>
 
-          <label className="audio-rate">
-            <span className="visually-hidden">{t('ui.audioSpeed')}</span>
-            <select value={rate} onChange={(e) => a.setRate(Number(e.target.value))}>
-              {RATES.map((r) => (
-                <option key={r} value={r}>
-                  {r}×
-                </option>
-              ))}
-            </select>
-          </label>
+          {/* The last native control in the bar, and it sat beside five shadcn ones. Values are
+              strings because a Select compares them by identity and RATES are numbers; they go
+              back through Number() on the way out. A div rather than a label, for the reason the
+              language picker changed: a label may only wrap a form control, and the trigger is a
+              button. */}
+          <div className="audio-rate">
+            <span className="visually-hidden" id="audio-rate-label">
+              {t('ui.audioSpeed')}
+            </span>
+            <Select
+              value={String(rate)}
+              onValueChange={(v) => v && a.setRate(Number(v))}
+              items={RATES.map((r) => ({ value: String(r), label: `${r}×` }))}
+            >
+              <SelectTrigger className="audio-rate-trigger min-h-11" size="touch" aria-labelledby="audio-rate-label">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {RATES.map((r) => (
+                  <SelectItem key={r} value={String(r)}>
+                    {r}×
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
 
           <span className="audio-time">
             {fmt(time)} / {fmt(duration)}
           </span>
 
-          <button type="button" onClick={a.stop} aria-label={t('ui.audioStop')}>
-            <span aria-hidden="true">✕</span>
-          </button>
+          <Button variant="bare" size="icon-touch" onClick={a.stop} aria-label={t('ui.audioStop')}>
+            <XIcon aria-hidden="true" focusable="false" />
+          </Button>
         </div>
       </div>
 

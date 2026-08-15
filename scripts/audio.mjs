@@ -1,9 +1,16 @@
-// Generate the English audio tracks with Azure's en-NZ-MollyNeural, per BUILD-SPEC-v2.md §13.
+// Generate the narration with Azure Neural TTS, per BUILD-SPEC-v2.md §13.
 //
 //   AZURE_SPEECH_KEY=... AZURE_SPEECH_REGION=australiaeast node scripts/audio.mjs
 //   node scripts/audio.mjs --dry-run     build every SSML document and check it, call nothing
 //   node scripts/audio.mjs --probe       synthesise one short line to test phoneme support
 //   node scripts/audio.mjs --only 1884.137.33
+//   node scripts/audio.mjs --lang de     voice a language other than English
+//
+// A language only ever voices the words it actually has. A translated pack is a map of overrides
+// onto English, so where a language has no entry the page shows English — and §13's rule that the
+// spoken words ARE the printed words then means the English file is the correct one to play there.
+// Generating a German file containing English words to fill the gap would be precisely the
+// divergence the rule exists to prevent, so gaps are skipped rather than padded.
 //
 // The rules from §13 that this file exists to enforce, and how:
 //
@@ -39,14 +46,51 @@ const val = (f) => { const i = args.indexOf(f); return i === -1 ? null : args[i 
 const DRY = has('--dry-run')
 const PROBE = has('--probe')
 const ONLY = val('--only')
+const LANG = val('--lang') ?? 'en'
+// Keep files the index no longer lists. Used by the workflow: deleting audio is a decision a person
+// should make deliberately, not something a push quietly does on their behalf. The English index
+// still holds 24 retired identification and ending units, and an automated sweep would remove them
+// on the first run without anyone choosing to.
+const NO_SWEEP = has('--no-sweep')
 
-const VOICE = 'en-NZ-MollyNeural'
-const LOCALE = 'en-NZ'
+// Which voice speaks which language. Two things are easy to get wrong here and both are recorded
+// rather than assumed:
+//
+//   A language is not a locale. `zh-Hant` is a script, and Azure speaks locales — so it maps to
+//   zh-TW. NOT zh-HK: Traditional Chinese is the shared written form, but the Hong Kong voices
+//   speak Cantonese, a different spoken language. Picking it because the script matched would be
+//   the same error as reading Iranian Persian to an Afghan audience, which §7 exists to prevent.
+//
+//   Arabic has sixteen locales and the choice is argued in docs/audio-generation.md. Short version:
+//   the text is Modern Standard Arabic whichever voice reads it, so this is an accent rather than a
+//   language, and ar-SA reads MSA closest to the norm — Egyptian would render ج as /g/, which is
+//   instantly Egyptian. It is a recommendation pending an Arabic community reviewer, not a finding.
+//
+// Female throughout, following en-NZ-MollyNeural, and every one carries a News, Narration or
+// E-learning tailoring tag — voices tuned for formal read-aloud rather than conversation. Listed
+// from the service itself; `npm run audio -- --voices` reprints the current catalogue.
+const VOICES = {
+  en: { locale: 'en-NZ', voice: 'en-NZ-MollyNeural' },
+  de: { locale: 'de-DE', voice: 'de-DE-KatjaNeural' },
+  fr: { locale: 'fr-FR', voice: 'fr-FR-DeniseNeural' },
+  es: { locale: 'es-ES', voice: 'es-ES-ElviraNeural' },
+  ja: { locale: 'ja-JP', voice: 'ja-JP-NanamiNeural' },
+  ko: { locale: 'ko-KR', voice: 'ko-KR-SunHiNeural' },
+  'zh-Hant': { locale: 'zh-TW', voice: 'zh-TW-HsiaoChenNeural' },
+  ar: { locale: 'ar-SA', voice: 'ar-SA-ZariyahNeural' },
+}
+
+if (!VOICES[LANG]) {
+  console.error(`No voice configured for "${LANG}". Known: ${Object.keys(VOICES).join(', ')}`)
+  process.exit(1)
+}
+const { locale: LOCALE, voice: VOICE } = VOICES[LANG]
+
 // 48 kbit mono is the sweet spot for a speaking voice. §2's visitor is on a slow museum connection,
 // and the difference between this and 128 kbit is inaudible for speech but triples the download.
 const FORMAT = 'Audio24Khz48KBitRateMonoMp3'
 
-const OUT = new URL('../public/audio/en/', import.meta.url)
+const OUT = new URL(`../public/audio/${LANG}/`, import.meta.url)
 const INDEX = new URL('../src/data/audio-index.json', import.meta.url)
 
 // ---------------------------------------------------------------- content
@@ -55,10 +99,38 @@ const museum = read('stories.json')
 const drafted = read('stories-drafted.json')
 const layers = read('layers.json')
 const groups = read('groups.json')
-const pron = read('pronunciation.json')
 const MANIFEST = read('manifest.json').objects
 const EN = read('i18n/en.json')
+
+// The lexicon is per language, not global. src/data/pronunciation.json holds 161 IPA entries tuned
+// for en-NZ-MollyNeural; the same IPA through a German voice is not the same sound, and a binomial
+// inside German prose is a genuinely different pronunciation problem rather than the same one
+// again. So a language gets src/data/pronunciation/{code}.json if someone has written one, and an
+// empty lexicon if not — which is honest. Binomial pronunciation outside English is unsolved, and
+// leaving the map empty says so rather than shipping en-NZ vowels under a German voice.
+const readIfExists = (p) => {
+  const u = new URL(`../src/data/${p}`, import.meta.url)
+  return existsSync(u) ? JSON.parse(readFileSync(u, 'utf8')) : null
+}
+const pron = LANG === 'en' ? read('pronunciation.json') : readIfExists(`pronunciation/${LANG}.json`)
+
+// The words a given language actually has. A translated pack is a map of overrides onto English
+// (see scripts/split.mjs), so an absent entry is a gap and the page falls back to English there.
+// §13's rule is that the spoken words ARE the printed words, so a gap must NOT be voiced in this
+// language: the page shows English at that point and the English audio already exists to match it.
+// Voicing a German file containing English words would be the exact divergence the rule prevents.
+const PACK = LANG === 'en' ? null : readIfExists(`i18n/${LANG}.json`)
+const PACK_STORIES = LANG === 'en' ? null : readIfExists(`i18n/stories/${LANG}.json`)
+const PACK_LAYERS = LANG === 'en' ? null : readIfExists(`i18n/layers/${LANG}.json`)
+
 const STORIES = { ...drafted.stories, ...museum.stories }
+
+// Resolve one string in the target language, or null when this language has not got it. English
+// resolves to itself, so the English run is unchanged in behaviour.
+const say = (english, translated) => {
+  if (LANG === 'en') return english
+  return typeof translated === 'string' && translated.trim() ? translated : null
+}
 
 // One flat list of everything to voice. Each unit is exactly one printed segment, which is what
 // §13 means by a cue mapping one-to-one onto a segment.
@@ -74,17 +146,22 @@ function collect() {
     if (ONLY && accession !== ONLY) continue
     const story = STORIES[accession]
 
-    const headline = story?.headline ?? rec.name ?? rec.title
+    const tStory = PACK_STORIES?.stories?.[accession]
+    const headline = say(story?.headline ?? rec.name ?? rec.title, tStory?.headline)
     // §10 demotes the catalogue string beneath the plain-English name and drops it when it would
     // only repeat it. The audio has to make the same choice or it says the same words twice.
-    const showCatalogue = headline !== rec.title && headline !== rec.catalogueName
-    units.push({
-      kind: 'title',
-      id: `${accession}/00-title`,
-      track: 'interpretation',
-      heading: null,
-      text: showCatalogue ? `${headline}\n\n${rec.catalogueName}` : headline,
-    })
+    // The catalogue name is never translated (§6 — the catalogue speaks its own words), so it is
+    // the same string in every language.
+    if (headline) {
+      const showCatalogue = headline !== rec.title && headline !== rec.catalogueName
+      units.push({
+        kind: 'title',
+        id: `${accession}/00-title`,
+        track: 'interpretation',
+        heading: null,
+        text: showCatalogue ? `${headline}\n\n${rec.catalogueName}` : headline,
+      })
+    }
 
     // The accession/size/rights line is deliberately NOT voiced. It is printed on the page, so a
     // screen reader already reads it on request - narrating it again adds nothing for the visitor
@@ -97,16 +174,23 @@ function collect() {
       for (const seg of story.segments) {
         // §13's two-track model wanted a separate audio-description track. Only the interpretation
         // text exists, so that is what ships. See docs/audio-generation.md.
-        units.push({ kind: 'story', id: `${accession}/${seg.id}`, track: 'interpretation', heading: seg.heading, text: seg.text })
+        const t = tStory?.segments?.[seg.id]
+        const heading = say(seg.heading, t?.heading)
+        const text = say(seg.text, t?.text)
+        // Both halves or neither: a file whose heading is German and whose body is English would
+        // put two languages in one breath, and the read-along would highlight across the seam.
+        if (!text || (seg.heading && !heading)) continue
+        units.push({ kind: 'story', id: `${accession}/${seg.id}`, track: 'interpretation', heading, text })
       }
       // No identification unit. The note is no longer printed on the page, and §13's rule is that
       // the spoken words ARE the printed words — generating narration for text nobody can read is
       // exactly the divergence this pipeline exists to prevent. The 28 already-generated
       // 99-identification files under public/audio/en are now unused; they are left in place rather
       // than deleted, since nothing loads them and regenerating audio costs money.
-    } else {
+    } else if (LANG === 'en') {
       // Defensive: the harvest asserts every object has a story, so this path should never run.
-      // If it ever does, the page shows the catalogue's own words and so should the audio.
+      // If it ever does, the page shows the catalogue's own words and so should the audio. English
+      // only — the catalogue's description is not translated, so there is nothing to voice.
       units.push({ kind: 'catalogue', id: `${accession}/99-catalogue`, track: 'interpretation', heading: null, text: rec.description })
     }
   }
@@ -115,21 +199,27 @@ function collect() {
     // The front page. The eleven tiles are navigation rather than prose - "13 models. About 12
     // minutes." is a signpost, and reading signposts aloud is how an audio guide becomes a chore -
     // so what gets voiced is the writing at the top of the page.
-    units.push({
-      kind: 'home',
-      id: 'home/00-intro',
-      track: 'interpretation',
-      heading: null,
-      text: `${EN.ui.collectionTitle}\n\n${EN.ui.collectionIntro}`,
-    })
+    const title = say(EN.ui.collectionTitle, PACK?.ui?.collectionTitle)
+    const intro = say(EN.ui.collectionIntro, PACK?.ui?.collectionIntro)
+    if (title && intro) {
+      units.push({
+        kind: 'home',
+        id: 'home/00-intro',
+        track: 'interpretation',
+        heading: null,
+        text: `${title}\n\n${intro}`,
+      })
+    }
 
     for (const g of groups.groups) {
       const p = museum.panels[g.slug]
       if (!p) continue
       // The group's own title leads its panel, the way the page does. The "N models, about M
       // minutes" line under it is skipped for the same reason as the tiles.
-      if (p.panel) {
-        units.push({ kind: 'panel', id: `groups/${g.slug}/00-panel`, track: 'interpretation', heading: null, text: `${g.title}\n\n${p.panel}` })
+      const gTitle = say(g.title, PACK?.groups?.[g.slug])
+      const gPanel = say(p.panel, PACK?.panels?.[g.slug]?.panel)
+      if (gTitle && gPanel) {
+        units.push({ kind: 'panel', id: `groups/${g.slug}/00-panel`, track: 'interpretation', heading: null, text: `${gTitle}\n\n${gPanel}` })
       }
       // No ending unit. The closing line is no longer printed, and §13's rule is that the spoken
       // words ARE the printed words. The 20 already-generated 99-ending files under public/audio/en
@@ -142,9 +232,18 @@ function collect() {
     // are the deepest writing in the collection. Leaving them silent would mean the audio guide
     // stops exactly where the material gets good.
     for (const [slug, l] of Object.entries(layers.layers)) {
-      units.push({ kind: 'layer', id: `layers/${slug}/00-standfirst`, track: 'reading', heading: null, text: `${l.title}\n\n${l.standfirst}` })
+      const tl = PACK_LAYERS?.layers?.[slug]
+      const lTitle = say(l.title, PACK?.layerTitles?.[slug])
+      const lStand = say(l.standfirst, tl?.standfirst)
+      if (lTitle && lStand) {
+        units.push({ kind: 'layer', id: `layers/${slug}/00-standfirst`, track: 'reading', heading: null, text: `${lTitle}\n\n${lStand}` })
+      }
       for (const seg of l.segments) {
-        units.push({ kind: 'layer', id: `layers/${slug}/${seg.id}`, track: 'reading', heading: seg.heading, text: seg.text })
+        const t = tl?.segments?.[seg.id]
+        const heading = say(seg.heading, t?.heading)
+        const text = say(seg.text, t?.text)
+        if (!text || (seg.heading && !heading)) continue
+        units.push({ kind: 'layer', id: `layers/${slug}/${seg.id}`, track: 'reading', heading, text })
       }
     }
     // The sources list at the foot of a layer page is a set of links, not prose. Not voiced.
@@ -156,8 +255,10 @@ function collect() {
 // ---------------------------------------------------------------- SSML
 
 const LEX = new Map()
-for (const group of ['genera', 'epithets', 'terms', 'names']) {
-  for (const [word, entry] of Object.entries(pron[group])) LEX.set(word.toLowerCase(), entry)
+if (pron) {
+  for (const group of ['genera', 'epithets', 'terms', 'names']) {
+    for (const [word, entry] of Object.entries(pron[group] ?? {})) LEX.set(word.toLowerCase(), entry)
+  }
 }
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
@@ -344,12 +445,22 @@ async function main() {
 
   // Integrity first, for everything, before a single byte goes over the wire. If the corpus cannot
   // be voiced without changing it, that is a fact worth learning for free.
-  let mode = 'phoneme'
+  let mode = LEX.size ? 'phoneme' : 'off'
   for (const u of units) assertIntegrity(u, buildSsml(u, mode))
+  console.log(`${LANG} — ${VOICE}`)
   console.log(`✓ §13 integrity: ${units.length} segments, spoken text identical to printed text`)
 
-  const marked = units.reduce((n, u) => n + (buildSsml(u, mode).match(/<phoneme|<sub /g)?.length ?? 0), 0)
-  console.log(`  ${marked} pronunciation tags applied from ${LEX.size} lexicon entries`)
+  if (!units.length) {
+    console.log(`  Nothing to voice: no content exists in "${LANG}" yet.`)
+    return
+  }
+
+  if (LEX.size) {
+    const marked = units.reduce((n, u) => n + (buildSsml(u, mode).match(/<phoneme|<sub /g)?.length ?? 0), 0)
+    console.log(`  ${marked} pronunciation tags applied from ${LEX.size} lexicon entries`)
+  } else {
+    console.log(`  no pronunciation lexicon for ${LANG} — write src/data/pronunciation/${LANG}.json to add one`)
+  }
 
   if (DRY) {
     const sample = units.find((u) => buildSsml(u, mode).includes('<phoneme')) ?? units[0]
@@ -363,26 +474,73 @@ async function main() {
     process.exit(1)
   }
 
+  // A voice name that does not exist fails per request with a cancellation, which at 438 segments
+  // means finding out 438 times. The catalogue is authoritative and one call, so ask it first —
+  // Azure retires and renames voices, and a map written once in a comment rots quietly.
+  const list = await fetch(`https://${region}.tts.speech.microsoft.com/cognitiveservices/voices/list`, {
+    headers: { 'Ocp-Apim-Subscription-Key': key },
+  })
+  if (list.ok) {
+    const all = await list.json()
+    if (!all.some((v) => v.ShortName === VOICE)) {
+      const alternatives = all.filter((v) => v.Locale === LOCALE).map((v) => v.ShortName)
+      throw new Error(
+        `${VOICE} is not in this resource's voice catalogue.\n` +
+          (alternatives.length
+            ? `  Voices for ${LOCALE}: ${alternatives.join(', ')}`
+            : `  No voices at all for ${LOCALE}. Check the locale in VOICES.`)
+      )
+    }
+    console.log(`✓ ${VOICE} exists in ${region}`)
+  }
+
   // Azure documents an IPA phone set for en-GB/en-IE/en-AU but publishes none for en-NZ. Rather
   // than assume it inherits the British set, spend one tiny request finding out. An unrecognised
-  // phone is an HTTP 400, so a failure here is unambiguous.
-  const probe = `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="${LOCALE}"><voice name="${VOICE}"><phoneme alphabet="ipa" ph="faɪ.ˈseɪ.li.ə">Physalia</phoneme></voice></speak>`
-  try {
-    await synthesise(probe, key, region)
-    console.log(`✓ ${VOICE} accepts IPA phonemes — using <phoneme>`)
-  } catch (err) {
-    mode = 'alias'
-    console.log(`! ${VOICE} rejected the IPA probe (${err.message.slice(0, 120)})`)
-    console.log(`  falling back to <sub alias> using the plain respellings`)
-    for (const u of units) assertIntegrity(u, buildSsml(u, mode))
-    console.log(`✓ §13 integrity re-checked in alias mode`)
+  // phone is an HTTP 400, so a failure here is unambiguous. Skipped where there is no lexicon,
+  // since there is then nothing to fall back from.
+  if (mode === 'phoneme') {
+    const probe = `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="${LOCALE}"><voice name="${VOICE}"><phoneme alphabet="ipa" ph="faɪ.ˈseɪ.li.ə">Physalia</phoneme></voice></speak>`
+    try {
+      await synthesise(probe, key, region)
+      console.log(`✓ ${VOICE} accepts IPA phonemes — using <phoneme>`)
+    } catch (err) {
+      mode = 'alias'
+      console.log(`! ${VOICE} rejected the IPA probe (${err.message.slice(0, 120)})`)
+      console.log(`  falling back to <sub alias> using the plain respellings`)
+      for (const u of units) assertIntegrity(u, buildSsml(u, mode))
+      console.log(`✓ §13 integrity re-checked in alias mode`)
+    }
   }
 
   if (PROBE) return
 
-  const index = existsSync(INDEX) ? JSON.parse(readFileSync(INDEX, 'utf8')) : { voice: VOICE, mode, segments: {} }
-  index.voice = VOICE
-  index.mode = mode
+  // One index, a section per language. `base` is where the files are served from, and it exists so
+  // that moving audio out of the repo later is a value in this file rather than a change to the
+  // player: src/audio.jsx reads it instead of hardcoding a path. English alone is 44MB, and nine
+  // languages of it is not something git should be asked to carry indefinitely.
+  const index = existsSync(INDEX) ? JSON.parse(readFileSync(INDEX, 'utf8')) : {}
+
+  // Migrate the flat single-language shape — { voice, mode, segments } — into languages.en. Without
+  // this the 438 English hashes read as absent, every file is resynthesised for words that have not
+  // changed, and 44MB of byte-different audio churns the repo for nothing. Runs once; after that
+  // there is no top-level `segments` to find.
+  if (index.segments && !index.languages) {
+    index.languages = { en: { voice: index.voice, locale: 'en-NZ', mode: index.mode, base: '/audio/en', segments: index.segments } }
+    delete index.segments
+    delete index.voice
+    delete index.mode
+    console.log(`  migrated ${Object.keys(index.languages.en.segments).length} English entries into the per-language index`)
+  }
+
+  index.note =
+    'Written by scripts/audio.mjs, one section per language. `base` is the URL prefix the player fetches from — change it to move a language’s audio off the repo without touching the player.'
+  index.languages ??= {}
+  const section = (index.languages[LANG] ??= { segments: {} })
+  section.voice = VOICE
+  section.locale = LOCALE
+  section.mode = mode
+  section.base = section.base ?? `/audio/${LANG}`
+  section.segments ??= {}
 
   let made = 0
   let cached = 0
@@ -397,7 +555,7 @@ async function main() {
 
     // Re-synthesising unchanged text costs money and, more importantly, produces a different audio
     // file for identical words - which would churn the repo on every run.
-    if (index.segments[unit.id]?.hash === hash && existsSync(mp3)) {
+    if (section.segments[unit.id]?.hash === hash && existsSync(mp3)) {
       cached++
       bytes += statSync(mp3).size
       continue
@@ -408,7 +566,7 @@ async function main() {
     writeFileSync(mp3, audio)
     writeFileSync(vtt, buildVtt(unit, words, durationMs))
 
-    index.segments[unit.id] = { hash, durationMs, words: words.length, bytes: audio.length, track: unit.track, kind: unit.kind }
+    section.segments[unit.id] = { hash, durationMs, words: words.length, bytes: audio.length, track: unit.track, kind: unit.kind }
     made++
     bytes += audio.length
     process.stdout.write(`\r  ${made} synthesised, ${cached} cached — ${unit.id}`.padEnd(90))
@@ -417,11 +575,11 @@ async function main() {
   // Drop entries for segments that are no longer voiced, and delete their files. Without this,
   // removing something from collect() leaves its audio on disk and in the index forever - shipped,
   // deployed, and silently wrong the moment anyone trusts the index to say what exists.
-  if (!ONLY) {
+  if (!ONLY && !NO_SWEEP) {
     const live = new Set(units.map((u) => u.id))
-    for (const id of Object.keys(index.segments)) {
+    for (const id of Object.keys(section.segments)) {
       if (live.has(id)) continue
-      delete index.segments[id]
+      delete section.segments[id]
       for (const ext of ['mp3', 'vtt']) {
         const f = new URL(`${id}.${ext}`, OUT)
         if (existsSync(f)) rmSync(f)
@@ -432,9 +590,9 @@ async function main() {
 
   writeFileSync(INDEX, `${JSON.stringify(index, null, 2)}\n`)
 
-  const totalMs = Object.values(index.segments).reduce((t, s) => t + s.durationMs, 0)
+  const totalMs = Object.values(section.segments).reduce((t, s) => t + s.durationMs, 0)
   console.log(`\n✓ ${made} synthesised, ${cached} unchanged`)
-  console.log(`  ${(bytes / 1e6).toFixed(1)} MB, ${(totalMs / 60000).toFixed(0)} minutes across ${Object.keys(index.segments).length} files`)
+  console.log(`  ${(bytes / 1e6).toFixed(1)} MB, ${(totalMs / 60000).toFixed(0)} minutes across ${Object.keys(section.segments).length} files`)
 }
 
 main().catch((err) => { console.error(`\n${err.message}`); process.exit(1) })

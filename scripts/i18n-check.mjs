@@ -1,6 +1,13 @@
 // Prove §7's language rules actually hold in a browser, rather than asserting them in a document.
 //
-//   node scripts/i18n-check.mjs http://127.0.0.1:4182
+// Needs the built site being served, in another terminal:
+//
+//   npm run build && npm run preview -- --port 4182
+//   npm run i18n:check
+//
+// A real headless Chrome rather than the editor's preview pane, which is a permanently hidden tab:
+// rAF is throttled there and media never advances, so anything measured in it is measuring the
+// throttle. Here the page is visible and the checks are about what a visitor would actually get.
 
 import { spawn } from 'node:child_process'
 import { existsSync, mkdtempSync } from 'node:fs'
@@ -119,6 +126,44 @@ const { result: ov } = await send('Runtime.evaluate', {
 const o = JSON.parse(ov.value)
 check(o.lang === 'zh-Hant', 'stored choice beats the device language', o.lang)
 check(o.dir === 'ltr', 'dir returns to ltr for Chinese', o.dir)
+
+// §7's disclosure. "A museum trades on authority; this is the difference between being trusted and
+// being caught." It lived in the packs for months with nothing reading it, so it is checked in a
+// browser rather than trusted to stay wired — including that it speaks the reader's language, since
+// a disclosure a visitor cannot read discloses nothing.
+{
+  const open = `(async () => {
+    const trigger = document.querySelector('.lang-trigger')
+    if (!trigger) return JSON.stringify({ error: 'no language trigger' })
+    trigger.click()
+    await new Promise((r) => setTimeout(r, 400))
+    const note = document.querySelector('.lang-notice')
+    const list = document.querySelector('[role="listbox"]')
+    return JSON.stringify({
+      present: !!note,
+      text: note ? note.textContent.trim() : null,
+      // A note inside the listbox would be neither an option nor announced.
+      insideListbox: !!(note && list && list.contains(note)),
+      options: document.querySelectorAll('[role="option"]').length,
+    })
+  })()`
+
+  for (const [lang, expectLatin] of [['zh-Hant', false], ['en', null]]) {
+    await send('Runtime.evaluate', { expression: `localStorage.setItem('lang','${lang}')` })
+    await send('Page.navigate', { url: ORIGIN + '/' })
+    await new Promise((r) => setTimeout(r, 1600))
+    const { result } = await send('Runtime.evaluate', { expression: open, awaitPromise: true, returnByValue: true })
+    const d = JSON.parse(result.value)
+
+    if (lang === 'en') {
+      check(!d.present, 'English shows no translation notice', 'it is the source, not a translation')
+    } else {
+      check(d.present, 'a machine-translated language discloses it', d.text?.slice(0, 34))
+      check(!d.insideListbox, 'the notice sits outside the listbox', `${d.options} options`)
+      check(d.text && /[一-鿿]/.test(d.text) === !expectLatin, 'the notice is in the reader\'s language', d.text?.slice(0, 20))
+    }
+  }
+}
 
 console.log(failed ? `\n${failed} check(s) failed` : `\nall language checks pass`)
 chrome.kill()

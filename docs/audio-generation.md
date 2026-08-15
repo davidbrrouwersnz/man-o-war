@@ -89,6 +89,74 @@ That leaves three honest options, and it is a museum decision rather than a tech
   to stop exactly this kind of near-enough, and an Iranian voice reading to Afghan visitors is
   noticeable to them and invisible to us.
 
+## Which Arabic?
+
+"Arabic — yes, from everyone" hides a decision. Azure offers **16 Arabic locales and 32 voices**,
+from `ar-MA` to `ar-IQ`, and the language table above treats them as one box ticked. Listed from
+the service itself rather than the documentation, because the docs lag: every one is Neural, and
+nine carry a **News** tailoring tag, which marks a voice tuned for formal read-aloud — the register
+this whole guide is written in.
+
+### The reframe that settles most of it
+
+**The text is Modern Standard Arabic whichever voice reads it.** Azure Translator's `ar` target
+produces MSA, and every `ar-XX` voice reads the MSA it is given; the locale changes the accent, not
+the language. So this is categorically unlike the Dari problem above, where an Iranian Persian
+voice would be reading a *different variety* to an Afghan audience. Here nobody is excluded by the
+choice, and no reader gets someone else's language — MSA is nobody's mother dialect and everybody's
+formal standard, which is exactly why news is read in it.
+
+That is worth stating plainly, because it means the decision is smaller than it first appears. It
+is a question of which accent reads the standard, not of who gets served.
+
+### Who actually reads it here
+
+- **About 12,400 Arabic speakers at the 2018 census**, 20th of the top 25 languages, and among the
+  migrant groups that grew by more than 30% between 2006 and 2018. The 2023 census shows continued
+  growth.
+- **Iraq is the largest Arabic-speaking birthplace: 6,024 Iraq-born residents** at the 2023 census.
+  Egyptian descent 1,854; Lebanese descent 1,278.
+- **Syria is a named crisis allocation in the current refugee quota** — 100 Syrians resettled in
+  2024/25 — and 20% of the 2025–28 quota is allocated to the Middle East, at 1,500 places a year.
+
+So the Christchurch audience is predominantly **Mashriq — Iraqi and Levantine**, not Gulf and not
+North African. §7's resource inversion applies: these are resident and refugee communities, not
+tourists, and they are the people the equity case is about.
+
+### The phonology, which is the actual tiebreaker
+
+For the letter **ج**, MSA's norm is /dʒ/. Egyptian reads it **/g/** — the most marked departure and
+instantly identifiable as Egyptian. Levantine softens it to /ʒ/. Gulf and Saudi readings preserve
+the MSA /dʒ/.
+
+That cuts against the obvious pick. Egyptian is the most widely *understood* dialect, on the
+strength of a century of Egyptian film and television, and `ar-EG-SalmaNeural` is News and
+E-learning tailored. But "most widely understood" is an argument about *dialect* comprehension, and
+nothing here is in dialect. For reading a formal standard aloud, the least-marked reading wins, and
+Egyptian is the most marked of the candidates.
+
+### The recommendation, and what would overturn it
+
+**`ar-SA-ZariyahNeural`.** It reads MSA closest to the standard norm, it is News and E-learning
+tailored, and it is female, which keeps it consistent with `en-NZ-MollyNeural`.
+
+The strong alternative is **`ar-SY-AmanyNeural`** — Levantine, News-tailored, and the closest match
+to the communities NZ actually resettles. The case against is only that Levantine /ʒ/ is a
+departure from the MSA norm where the Saudi reading is not.
+
+**Not `ar-IQ`**, despite Iraq being the largest group by birthplace: neither Iraqi voice carries a
+News or E-learning tag, so both are tuned for conversational rather than read-aloud delivery, and
+Iraqi-accented MSA is not a broadcast norm anywhere.
+
+**This is a recommendation, not a finding, and it should not ship unreviewed.** Every argument above
+is about phonology and demography; none of it is about how the voice actually lands on an Iraqi or
+Syrian listener in Ōtautahi, and choosing a Saudi voice for those two communities has a dimension
+no amount of desk research settles — any locale names a country. §7 already asks for paid standing
+community reviewers, one per significant language community, reachable through Christchurch
+Resettlement Services and the Canterbury Refugee Resettlement and Resources Centre. **This is the
+first question to put to the Arabic one.** Generating 100 minutes of narration in the wrong voice
+is cheap to redo and expensive to leave.
+
 ## The track that does not exist yet
 
 §13 asks for two tracks. We have written one.

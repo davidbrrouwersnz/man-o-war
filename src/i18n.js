@@ -12,19 +12,30 @@
 //     an Arabic session is an LTR block carrying lang="en" inside an RTL page.
 
 // §7 tiers by verification burden rather than language count, and names its own examples: high
-// resource (zh, ja, ko, de, fr, es) against low resource (sm, to, prs, ti, so). Four of those five
+// resource (zh, ja, ko, de, fr, es) against low resource (sm, to, prs, ti, so). All five of those
 // low-resource languages have since been withdrawn - see the note on LANGUAGES below.
 //
 // te reo Maori is deliberately ABSENT and must stay absent from any automated set. §7 puts English,
 // te reo and NZSL outside this framework entirely - human, iwi-partnered, Deaf-led - and §6 already
 // answered the te reo question: no species names, the blank is content, and the ask goes to the
 // Museum rather than around it.
-// Samoan, Tongan, Tigrinya and Dari were shipped and have been withdrawn. Their translations are in
-// the history if they are ever wanted back. Worth recording why it matters rather than just that it
-// happened: those four, plus Somali, were exactly the languages §7 named as low resource, and they
-// are also the four with no synthetic voice in existence from any provider (see
-// docs/audio-generation.md). Dropping them leaves the shipped set as the languages that were always
-// going to be easy. Somali stays, so the low-resource tier is not empty - but it is now one deep.
+// Samoan, Tongan, Tigrinya and Dari were shipped and withdrawn; Somali followed when the
+// translation pipeline went in, because it is the one target Azure's LLM translation does not
+// cover. Their translations are all in the history if they are ever wanted back.
+//
+// Worth recording the shape of that rather than just the fact. Those five were exactly the
+// languages §7 named as low resource, and the four withdrawn first were the four with no synthetic
+// voice in existence from any provider (see docs/audio-generation.md). So every language §7 named
+// as low resource is now gone, and what remains is the set that was always going to be easy: six
+// high-resource languages, plus Arabic.
+//
+// Arabic is tagged 'low' here for who it serves at Canterbury, not for scarcity of data - it is
+// well supplied by every translation and speech provider. That makes it the wrong language to read
+// as evidence that the equity tier survived. It did not. §7's warning is that naive expansion
+// "delivers a markedly better experience to German tourists than to Christchurch's Samoan
+// community", and the shipped list is now exactly that outcome. It is a deliberate scoping call
+// for a prototype, not an oversight, and it should be stated as one wherever the languages are
+// pitched - a curator reading the list will draw a conclusion from it either way.
 export const LANGUAGES = [
   { code: 'en', name: 'English', endonym: 'English', dir: 'ltr', tier: 'source' },
   { code: 'zh-Hant', name: 'Chinese (Traditional)', endonym: '繁體中文', dir: 'ltr', tier: 'high' },
@@ -34,7 +45,6 @@ export const LANGUAGES = [
   { code: 'fr', name: 'French', endonym: 'Français', dir: 'ltr', tier: 'high' },
   { code: 'es', name: 'Spanish', endonym: 'Español', dir: 'ltr', tier: 'high' },
   { code: 'ar', name: 'Arabic', endonym: 'العربية', dir: 'rtl', tier: 'low' },
-  { code: 'so', name: 'Somali', endonym: 'Soomaali', dir: 'ltr', tier: 'low' },
 ]
 
 export const BY_CODE = new Map(LANGUAGES.map((l) => [l.code, l]))

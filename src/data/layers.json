@@ -77,6 +77,8 @@
         },
         {
           "id": "since",
+          "noAuto": true,
+          "noAutoWhy": "Reported speech from a named publication. §6 keeps quotations out of any automated translation pipeline: a machine-refined quote is a fabricated statement attributed to a real source, and the Opium War Museum precedent is a real politician's words round-tripped through another language and presented as authentic. The Press's October 1883 line is close paraphrase of a real published sentence, so it travels the same road. Translate this one by hand, with the translator credited, or leave it to fall back to English.",
           "heading": "What happened after",
           "text": "The models went on show in the Technological Room, presented as industrial art applied to science rather than as zoology. A Christchurch newspaper, the Press, told its readers in October 1883 that the Portuguese man o' war appeared in its true colours and resembled nature so closely as to be deceptive.\n\nThat framing did not last. Within two years the models were being shown alongside preserved specimens, and by 1895 the Technological Room had been taken apart and the models placed among the zoological displays, filed by what they depicted rather than by how they were made.\n\nToday one of them is on display. The rest are in storage."
         }

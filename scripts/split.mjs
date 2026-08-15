@@ -21,9 +21,52 @@ const drafted = read('stories-drafted.json')
 const OBJECTS = new Map(manifest.objects.map((o) => [o.accession, o]))
 const STORIES = { ...drafted.stories, ...museum.stories }
 
+// Build-time-only fields, stripped from everything written to src/data/chunks/. They instruct the
+// translation pipeline — §7's carve-outs, and the reason each one is held back — and a visitor on a
+// gallery connection should not pay for an argument addressed to a build script. A stringify
+// replacer rather than a strip at each call site, so a new emit path cannot forget it.
+const BUILD_ONLY = new Set(['noAuto', 'noAutoWhy'])
+const ship = (o) => JSON.stringify(o, (k, v) => (BUILD_ONLY.has(k) ? undefined : v))
+
 const WPM = 150
 const words = (s) => (s ? s.trim().split(/\s+/).length : 0)
 const storyWords = (s) => s.segments.reduce((t, x) => t + words(x.heading) + words(x.text), 0)
+
+// ------------------------------------------------------------------ how long a group takes
+//
+// "8 models. About 7 minutes." used to be a word count divided by 150wpm — a guess about a
+// recording that did not exist yet. It exists now: scripts/audio.mjs synthesises one file per
+// printed block and records each measured length in src/data/audio-index.json. So the number on the
+// tile is the sum of the files a visitor would actually hear, and because this script runs on
+// prebuild, predev and prepreview, it follows the audio on its own. Regenerate a segment, rewrite a
+// story, add an object — the next build restates the cost without anyone remembering to.
+//
+// The old estimate was also drifting: it still counted each group's closing line, which stopped
+// being printed or spoken several commits ago.
+const AUDIO = new URL('../src/data/audio-index.json', import.meta.url)
+const audioIndex = existsSync(AUDIO) ? JSON.parse(readFileSync(AUDIO, 'utf8')) : null
+// One section per language since scripts/audio.mjs learned --lang; `?? audioIndex.segments` reads
+// the older flat shape so a checkout that has not run the generator since still builds.
+const audioLangs = audioIndex?.languages ?? (audioIndex?.segments ? { en: audioIndex } : {})
+// The tile's "about N minutes" is measured from the ENGLISH narration whatever language the tile is
+// written in. That is not an oversight: English is the only language voiced end to end, and the
+// cost of a group is roughly the same in any language. Where another language is fully voiced its
+// own durations would be better, and this is the line to change.
+const durations = audioLangs.en?.segments ?? null
+
+// The exact queue a group's Listen control builds, in order: the panel, then each object's title
+// and its story segments. Spelled out rather than pattern-matched on the audio index, because that
+// index still holds units the app retired — 10 group endings, 14 identification notes — and a
+// prefix match would quietly bill visitors for audio no page can play.
+const tourSegments = (slug, panel, objects) => [
+  ...(panel ? [`groups/${slug}/00-panel`] : []),
+  ...objects.flatMap((o) => [
+    `${o.accession}/00-title`,
+    ...(o.story?.segments ?? []).map((s) => `${o.accession}/${s.id}`),
+  ]),
+]
+
+const fellBack = []
 
 const dir = new URL('../src/data/chunks/', import.meta.url)
 rmSync(dir, { recursive: true, force: true })
@@ -85,13 +128,25 @@ for (const g of groups.groups) {
     }
   })
 
-  // §10 wants the cost computed at build time from word counts, never asserted. This is where.
-  const total = words(panel?.panel) + words(panel?.ending) + objects.reduce((t, o) => t + (o.story ? storyWords(o.story) : 0), 0)
+  // §10 wants the cost computed at build time, never asserted. This is where.
+  //
+  // Measured from the narration where the narration exists, and only where ALL of it exists: a
+  // half-generated group would otherwise report the few files it has and read as a short visit.
+  // Where it does not, this falls back to the old 150wpm estimate and says so, so a checkout with
+  // no audio still builds and nobody has to wonder which number they are looking at.
+  const ids = tourSegments(g.slug, panel?.panel, objects)
+  const missing = durations ? ids.filter((id) => !durations[id]) : ids
+  const heardMs = durations ? ids.reduce((t, id) => t + (durations[id]?.durationMs ?? 0), 0) : 0
+
+  const total = words(panel?.panel) + objects.reduce((t, o) => t + (o.story ? storyWords(o.story) : 0), 0)
+  const measured = missing.length === 0
+  const minutes = Math.max(1, Math.round(measured ? heardMs / 60000 : total / WPM))
+  if (!measured) fellBack.push(`${g.slug} (${durations ? `${missing.length}/${ids.length} segments missing` : 'no audio index'})`)
 
   // No ending. The closing line is no longer rendered or narrated, so shipping it would be bytes
   // on a gallery connection that nobody reads. The text stays in src/data/stories.json.
   const chunk = { slug: g.slug, title: g.title, panel: panel?.panel ?? null, objects }
-  const json = JSON.stringify(chunk)
+  const json = ship(chunk)
   writeFileSync(new URL(`${g.slug}.json`, dir), json)
   chunkTotal += gzipSync(json).length
 
@@ -101,13 +156,14 @@ for (const g of groups.groups) {
     title: g.title,
     order: g.order,
     size: g.accessions.length,
-    minutes: Math.max(1, Math.round(total / WPM)),
+    minutes,
     words: total,
     representative: { url: rep.image.large.url, placeholder: rep.placeholder },
   })
   for (const a of g.accessions) index.groupOf[a] = g.slug
 
-  console.log(`  ${g.slug.padEnd(24)} ${String(objects.length).padStart(2)} objects  ${(gzipSync(json).length / 1024).toFixed(0)}KB gz  ${index.groups.at(-1).minutes} min`)
+  const exact = measured ? `${(heardMs / 60000).toFixed(1)} min of audio` : `${total} words, estimated`
+  console.log(`  ${g.slug.padEnd(24)} ${String(objects.length).padStart(2)} objects  ${(gzipSync(json).length / 1024).toFixed(0)}KB gz  ${String(minutes).padStart(2)} min  (${exact})`)
 }
 
 // /all — the full 128-tile grid. §9 keeps it as a secondary route, not the front door, so it is a
@@ -125,7 +181,7 @@ const all = {
 // Reading order, not accession order: sort=accession_no is lexicographic and puts .2 after .100.
 const order = new Map(groups.groups.flatMap((g, gi) => g.accessions.map((a, ai) => [a, gi * 1000 + ai])))
 all.objects.sort((x, y) => order.get(x.accession) - order.get(y.accession))
-const allJson = JSON.stringify(all)
+const allJson = ship(all)
 writeFileSync(new URL('all.json', dir), allJson)
 
 // One pack per language, loaded only when that language is active. English is compiled into the
@@ -139,6 +195,29 @@ const LAYER_COUNT = LAYERS.order.length
 const enKeys = flat(en.ui).map((k) => `ui.${k}`)
 
 const allAccessions = new Set(manifest.objects.map((o) => o.accession))
+
+// Translated segments are keyed by the English segment's id, never by position: a pack is a map of
+// overrides onto the English source, not a parallel array. That is what lets a language hold three
+// of an object's five segments and fall back for the other two, and it is what stops an inserted or
+// re-ordered English segment pairing one language's heading with another's body.
+//
+// An id absent from the English source is a typo, or a segment since renamed or deleted. Either way
+// it renders as English and looks like a translation gap rather than a bug, so it throws here. A
+// missing id is the opposite — expected, and the whole point of §7's fallback.
+function assertSegmentIds(file, translated, english) {
+  const bad = []
+  for (const [key, entry] of Object.entries(translated ?? {})) {
+    const source = english[key]
+    if (!source) continue // the accession/slug checks either side of this own that failure
+    if (Array.isArray(entry?.segments)) {
+      bad.push(`${key}: segments is still an array, keyed by position`)
+      continue
+    }
+    const ids = new Set((source.segments ?? []).map((s) => s.id))
+    for (const id of Object.keys(entry?.segments ?? {})) if (!ids.has(id)) bad.push(`${key}: "${id}"`)
+  }
+  if (bad.length) throw new Error(`${file}: segment ids not in the English source:\n    ${bad.join('\n    ')}`)
+}
 
 const packs = []
 for (const file of readdirSync(langDir)) {
@@ -159,6 +238,7 @@ for (const file of readdirSync(langDir)) {
   let layersDone = 0
   if (existsSync(layerFile)) {
     const tl = JSON.parse(readFileSync(layerFile, 'utf8'))
+    assertSegmentIds(`layers/${code}.json`, tl.layers, LAYERS.layers)
     pack.layers = tl.layers
     layersDone = Object.keys(tl.layers ?? {}).length
   }
@@ -172,6 +252,7 @@ for (const file of readdirSync(langDir)) {
     const ts = JSON.parse(readFileSync(storyFile, 'utf8'))
     const stray = Object.keys(ts.stories ?? {}).filter((a) => !allAccessions.has(a))
     if (stray.length) throw new Error(`stories/${code}.json: accessions not in the manifest: ${stray.join(', ')}`)
+    assertSegmentIds(`stories/${code}.json`, ts.stories, STORIES)
     // Same strip as the English chunk above: the identification note is no longer rendered in any
     // language, and German is the heaviest pack in the app at ~37KB gzipped. Translated text nobody
     // can read is the worst kind of payload — it costs the visitor and teaches nothing.
@@ -185,7 +266,7 @@ for (const file of readdirSync(langDir)) {
   }
 
   const panelsDone = Object.keys(pack.panels ?? {}).length
-  const json = JSON.stringify(pack)
+  const json = ship(pack)
   writeFileSync(new URL(`lang-${code}.json`, dir), json)
   packs.push({ code, missing: missing.length, panels: panelsDone, layers: layersDone, stories: storiesDone, kb: (gzipSync(json).length / 1024).toFixed(1) })
 }
@@ -197,9 +278,48 @@ for (const p of packs) {
 
 index.languages = packs.map((p) => p.code)
 
+// Which languages have narration, and where each one's files are served from. The player reads
+// `base` rather than hardcoding /audio/en, so moving a language's audio out of the repo and onto
+// blob storage is a value in src/data/audio-index.json — English alone is 44MB and git should not
+// be asked to carry nine of those indefinitely.
+index.audio = Object.fromEntries(
+  Object.entries(audioLangs)
+    .filter(([, a]) => Object.keys(a.segments ?? {}).length)
+    .map(([code, a]) => [code, { base: a.base ?? `/audio/${code}`, segments: Object.keys(a.segments).length }])
+)
+
+// §7's disclosure, computed rather than declared.
+//
+// "A quiet line in the language picker where content is machine-translated and human-reviewed. A
+// museum trades on authority; this is the difference between being trusted and being caught."
+//
+// Every pack has carried a `reviewed: false` flag since the first translation landed, and no code
+// has ever read it — so the app has been shipping machine translation with no disclosure at all,
+// which is the exact failure §7 names. A hand-set boolean was never going to survive anyway: it is
+// one value for a whole language, set by whoever remembered, and it stays false forever or goes
+// true all at once.
+//
+// scripts/translate.mjs records reviewStatus per unit and resets it to unreviewed whenever a unit
+// is retranslated, so the honest number is countable. Reviewing one object's story moves it, and
+// changing one English sentence moves it back.
+const LEDGER = new URL('../src/data/translation-index.json', import.meta.url)
+const ledger = existsSync(LEDGER) ? JSON.parse(readFileSync(LEDGER, 'utf8')).languages ?? {} : {}
+index.review = {}
+for (const p of packs) {
+  const entries = Object.values(ledger[p.code] ?? {})
+  const reviewed = entries.filter((e) => e.reviewStatus === 'reviewed').length
+  index.review[p.code] = {
+    total: entries.length,
+    reviewed,
+    // The engine is disclosed alongside, because "machine translated" is a different claim
+    // depending on what did the translating, and §7 wants provenance to survive to 2032.
+    engines: [...new Set(entries.map((e) => e.engine).filter(Boolean))].sort(),
+  }
+}
+
 // Layers 3–5, written once and reached from any group page (§6, §10).
 
-const layersJson = JSON.stringify(LAYERS)
+const layersJson = ship(LAYERS)
 writeFileSync(new URL('layers.json', dir), layersJson)
 index.layers = LAYERS.order.map((slug) => ({ slug, title: LAYERS.layers[slug].title }))
 
@@ -216,3 +336,15 @@ console.log(`was: ${(before / 1024).toFixed(0)}KB gz of data in the main bundle,
 
 // index, all, layers — search.json was the fourth until search was removed.
 if (readdirSync(dir).length !== groups.groups.length + 3 + index.languages.length) throw new Error('chunk count mismatch')
+
+// Loud rather than silent. A tile reading "About 3 minutes." when the narration is really eleven is
+// worse than an ugly build log — a visitor deciding whether they have time for a group is the whole
+// reason §10 asks for the number.
+if (fellBack.length) {
+  console.log(`\n⚠ run time estimated from word counts, not measured, for ${fellBack.length} of ${groups.groups.length} groups:`)
+  for (const line of fellBack) console.log(`    ${line}`)
+  console.log('  run `npm run audio` to generate the missing narration, and these become measured.')
+} else {
+  const totalMin = index.groups.reduce((t, g) => t + g.minutes, 0)
+  console.log(`\nrun times measured from the narration — ${totalMin} minutes across ${groups.groups.length} groups`)
+}

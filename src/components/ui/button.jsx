@@ -1,3 +1,4 @@
+import { forwardRef } from "react"
 import { Button as ButtonPrimitive } from "@base-ui/react/button"
 import { cva } from "class-variance-authority";
 
@@ -18,6 +19,28 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         link: "text-primary underline-offset-4 hover:underline",
+        /* ---------------------------------------------------------------- this app's own
+           The three variants below are the museum's controls. They exist as variants rather than as
+           rules in styles.css because a shadcn component styles itself with Tailwind utilities,
+           which sit in the last cascade layer — anything styles.css says about them loses.
+
+           Their colours come from --control-ink / --control-edge / --control-ground, which flip to
+           the dark palette inside the collection header and back again at desktop. That keeps the
+           §15 boundary decision in CSS, where it is documented and where scripts/contrast.mjs can
+           still reach the values, instead of hard-coding a light-on-dark choice into a component
+           that has no idea what it is sitting on.
+
+           The focus ring is put back to the app's outline. shadcn's base sets outline-none and
+           draws a box-shadow ring instead, which would have left these four controls with a focus
+           style no other focusable thing in the app uses — and links are most of what is focusable
+           here. --control-ring flips with the rest on the dark header.
+
+           `data-playing` rather than aria-pressed: the playing state is already carried to a screen
+           reader by the label, which switches between "Listen — <name>" and "Stop listening", and
+           adding a pressed state on top would announce it twice. */
+        quiet:
+          "border-[var(--control-edge)] bg-transparent text-[var(--control-ink)] hover:border-[var(--control-ink)] data-[playing=true]:bg-[var(--control-ink)] data-[playing=true]:text-[var(--control-ground)] focus-visible:ring-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--control-ring)]",
+        bare: "border-transparent bg-transparent text-[var(--control-ink)] hover:bg-[var(--control-rule)] focus-visible:ring-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--control-ring)]",
       },
       size: {
         default:
@@ -31,6 +54,18 @@ const buttonVariants = cva(
         "icon-sm":
           "size-7 rounded-[min(var(--radius-md),12px)] in-data-[slot=button-group]:rounded-lg",
         "icon-lg": "size-9",
+        /* 44px, the floor WCAG 2.5.8 sets and §18 repeats. Every size shadcn ships is under it —
+           the default is h-8, which is 32 — so a control built from those would have failed the
+           target-size check the moment it was adopted. In rem, so it grows with the text-size
+           setting like the rest of the app. Not a fixed height: min-, so a wrapped label still
+           fits. */
+        /* rounded-lg, not rounded-full. The pill came out of the stylesheet this replaced, where
+           .listen was border-radius: 2rem, and was carried across without being asked about. It is
+           a labelled button sitting among labelled controls, and it is on the same radius token as
+           all of them now. `icon-touch` below stays round: an icon-only control with no label is a
+           different thing, and a circle is what says so. */
+        touch: "min-h-11 gap-2 rounded-lg px-4 py-2 text-[length:var(--step-0)] [&_svg:not([class*='size-'])]:size-[1.15em]",
+        "icon-touch": "min-h-11 min-w-11 rounded-full [&_svg:not([class*='size-'])]:size-[1.15em]",
       },
     },
     defaultVariants: {
@@ -40,18 +75,27 @@ const buttonVariants = cva(
   }
 )
 
-function Button({
+/* forwardRef, which the generated component does not do. shadcn writes for React 19, where a ref is
+   an ordinary prop; this app is on React 18, where a plain function component silently drops one.
+
+   That mattered as soon as a Base UI part rendered a Button. `<TooltipTrigger render={<Button/>}>`
+   hands the button a ref, and Base UI needs it to know which element the tooltip is anchored to and
+   to attach the hover interaction. Without it the tooltip opened on keyboard focus — those handlers
+   arrive as ordinary props — and never on hover. No warning and no error, just half a control.
+   Anything else rendered through a Base UI `render` prop would have had the same hole. */
+const Button = forwardRef(function Button({
   className,
   variant = "default",
   size = "default",
   ...props
-}) {
+}, ref) {
   return (
     <ButtonPrimitive
+      ref={ref}
       data-slot="button"
       className={cn(buttonVariants({ variant, size, className }))}
       {...props} />
   );
-}
+})
 
 export { Button, buttonVariants }

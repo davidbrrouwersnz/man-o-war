@@ -94,7 +94,8 @@ for (const file of packs) {
   const storyFile = new URL(`stories/${code}.json`, langDir)
   if (existsSync(storyFile)) {
     const ts = JSON.parse(readFileSync(storyFile, 'utf8'))
-    for (const s of Object.values(ts.stories ?? {})) for (const seg of s.segments) sc += chars(segText(seg))
+    // Translated segments are keyed by the English segment id, not positional — see scripts/split.mjs.
+    for (const s of Object.values(ts.stories ?? {})) for (const seg of Object.values(s.segments ?? {})) sc += chars(segText(seg))
   }
 
   let pc = 0
@@ -104,7 +105,7 @@ for (const file of packs) {
   const layerFile = new URL(`layers/${code}.json`, langDir)
   if (existsSync(layerFile)) {
     const tl = JSON.parse(readFileSync(layerFile, 'utf8'))
-    for (const l of Object.values(tl.layers ?? {})) for (const seg of l.segments) lc += chars(segText(seg))
+    for (const l of Object.values(tl.layers ?? {})) for (const seg of Object.values(l.segments ?? {})) lc += chars(segText(seg))
   }
 
   const total = sc + pc + lc
@@ -114,7 +115,9 @@ for (const file of packs) {
 }
 
 console.log(`\n  ALL LANGUAGES INCLUDING ENGLISH: ${grandTotal.toLocaleString()} characters`)
-const IF_COMPLETE = (storyChars + panelChars + layerChars) * 13
+// Counted from LANGUAGES rather than a literal. It was hardcoded to 13 when thirteen shipped, and
+// went on printing thirteen languages' worth of characters after five were withdrawn.
+const IF_COMPLETE = (storyChars + panelChars + layerChars) * LANGUAGES.length
 console.log(`  If every language were fully translated: ~${IF_COMPLETE.toLocaleString()} characters`)
 
 // ---------------------------------------------------------------- voice coverage
@@ -141,6 +144,9 @@ const VOICES = {
   to: { azure: 'no', polly: 'no', google: 'no', eleven: 'no' },
   prs: { azure: 'approx (fa-IR)', polly: 'no', google: 'no', eleven: 'approx (fa)' },
   ti: { azure: 'no', polly: 'no', google: 'no', eleven: 'no' },
+  // Withdrawn from LANGUAGES, kept here because the evaluation is the record of why: Somali is the
+  // one shipped target Azure's LLM translation never covered, and its only voice anywhere was on
+  // ElevenLabs' newest model.
   so: { azure: 'no', polly: 'no', google: 'no', eleven: 'yes (v3)' },
 }
 
@@ -163,12 +169,15 @@ console.log(`  §7 low-resource languages with no voice: ${unvoiced.length} of $
 // Neural tier, Azure and Polly both $16 per million characters (August 2026).
 const PER_MILLION = 16
 const money = (c) => `$${((c / 1e6) * PER_MILLION).toFixed(2)}`
+// Padded rather than spaced by hand, because the language count is interpolated now and a second
+// digit would walk the whole column sideways.
+const cost = (label, c) => console.log(`  ${label.padEnd(42)}${money(c)}`)
 console.log(`\nSYNTHESIS COST at $${PER_MILLION}/million characters`)
-console.log(`  English, layers 1-2, one track:            ${money(L12_CHARS)}`)
-console.log(`  English, layers 1-2, both tracks:          ${money(L12_CHARS * 2)}`)
-console.log(`  Everything translated, 13 langs, 1 track:  ${money(IF_COMPLETE)}`)
-console.log(`  Everything translated, 13 langs, 2 tracks: ${money(IF_COMPLETE * 2)}`)
-console.log(`  Re-synthesising the lot ten times over:    ${money(IF_COMPLETE * 2 * 10)}`)
+cost('English, layers 1-2, one track:', L12_CHARS)
+cost('English, layers 1-2, both tracks:', L12_CHARS * 2)
+cost(`Everything translated, ${LANGUAGES.length} langs, 1 track:`, IF_COMPLETE)
+cost(`Everything translated, ${LANGUAGES.length} langs, 2 tracks:`, IF_COMPLETE * 2)
+cost('Re-synthesising the lot ten times over:', IF_COMPLETE * 2 * 10)
 
 // ---------------------------------------------------------------- file count
 
@@ -176,4 +185,4 @@ const segCount = Object.values(STORIES).reduce((t, s) => t + s.segments.length, 
 console.log(`\nFILE COUNT (one audio file per segment, per §13's cue-per-segment rule)`)
 console.log(`  English, layers 1-2:        ${segCount} story segments + ${panelFiles} panel/ending = ${segCount + panelFiles} files`)
 console.log(`  ...times two tracks (description + interpretation): ${(segCount + panelFiles) * 2} files`)
-console.log(`  ...times 13 languages:      ${(segCount + panelFiles) * 2 * 13} files`)
+console.log(`  ...times ${LANGUAGES.length} languages:       ${(segCount + panelFiles) * 2 * LANGUAGES.length} files`)

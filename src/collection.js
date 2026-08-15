@@ -18,4 +18,10 @@ const GROUPS = index.groups
 const BY_SLUG = new Map(GROUPS.map((g) => [g.slug, g]))
 const SUPPORTED = LANGUAGES.filter((l) => l.code === 'en' || index.languages.includes(l.code))
 
-export { index, CHUNKS, loadChunk, GROUPS, BY_SLUG, SUPPORTED }
+// §7's disclosure data, counted from the translation ledger at build time by scripts/split.mjs:
+// { total, reviewed, engines } per language. English is absent because it is the source, not a
+// translation of anything. Empty object rather than undefined on a checkout whose ledger has not
+// been written, so the picker degrades to saying nothing rather than to throwing.
+const REVIEW = index.review ?? {}
+
+export { index, CHUNKS, loadChunk, GROUPS, BY_SLUG, SUPPORTED, REVIEW }

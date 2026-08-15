@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import { detect, dirOf, remember } from './i18n.js'
 import { Lang, useT } from './lang.jsx'
 import { AudioBar, AudioProvider } from './audio.jsx'
+import { TooltipProvider } from '@/components/ui/tooltip'
 import { A11yProvider } from './a11y.jsx'
 import englishPack from './data/i18n/en.json'
 import { SUPPORTED, loadChunk } from './collection.js'
@@ -50,6 +51,7 @@ export default function App() {
   return (
     <Lang.Provider value={{ code, pack, setCode }}>
       <A11yProvider>
+        <TooltipProvider delay={400}>
         {/* §13: the narration plays across navigation, so the player sits above the router. Moving
             it inside a page would unmount and silence it every time someone opened another object. */}
         <AudioProvider>
@@ -57,6 +59,7 @@ export default function App() {
           <Routes />
           <AudioBar />
         </AudioProvider>
+        </TooltipProvider>
       </A11yProvider>
     </Lang.Provider>
   )
