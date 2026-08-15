@@ -47,6 +47,11 @@ const DRY = has('--dry-run')
 const PROBE = has('--probe')
 const ONLY = val('--only')
 const LANG = val('--lang') ?? 'en'
+// Keep files the index no longer lists. Used by the workflow: deleting audio is a decision a person
+// should make deliberately, not something a push quietly does on their behalf. The English index
+// still holds 24 retired identification and ending units, and an automated sweep would remove them
+// on the first run without anyone choosing to.
+const NO_SWEEP = has('--no-sweep')
 
 // Which voice speaks which language. Two things are easy to get wrong here and both are recorded
 // rather than assumed:
@@ -570,7 +575,7 @@ async function main() {
   // Drop entries for segments that are no longer voiced, and delete their files. Without this,
   // removing something from collect() leaves its audio on disk and in the index forever - shipped,
   // deployed, and silently wrong the moment anyone trusts the index to say what exists.
-  if (!ONLY) {
+  if (!ONLY && !NO_SWEEP) {
     const live = new Set(units.map((u) => u.id))
     for (const id of Object.keys(section.segments)) {
       if (live.has(id)) continue

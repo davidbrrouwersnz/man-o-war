@@ -34,6 +34,12 @@ const value = (f) => {
 }
 const LANG = value('--lang')
 const TERMS_ONLY = argv.includes('--terms')
+// A report written by scripts/translate.mjs --report. Narrows the sweep to the units that run
+// actually touched, which is what makes this affordable on every push rather than once a quarter.
+const IDS = value('--ids')
+// Exit non-zero when anything drifted. Off by default so a person can look at the list without the
+// shell shouting; on in CI, where the point is to stop the commit.
+const STRICT = argv.includes('--strict')
 
 if (!LANG) {
   console.error('Which language? e.g. --lang de')
@@ -88,13 +94,30 @@ const glossed = new Set(
     .map(([term]) => term.toLowerCase())
 )
 
+const wanted = IDS ? new Set(JSON.parse(readFileSync(IDS, 'utf8')).languages?.[LANG] ?? []) : null
+const units = collect()
+  .filter((u) => !carveOut(u))
+  .filter((u) => !wanted || wanted.has(u.id))
+
 let sources
 if (TERMS_ONLY) {
-  sources = Object.keys(glossary).map((term) => ({ id: `term:${term}`, text: term }))
+  // With --ids, check only the terms the changed text actually uses. That keeps the gate
+  // proportionate: a glossary is built as the words come up, rather than every commit being held
+  // hostage until all of it is decided. Without --ids it checks the lot, which is the sweep you
+  // run deliberately.
+  const haystack = wanted ? units.map((u) => u.text.toLowerCase()).join('\n') : null
+  sources = Object.keys(glossary)
+    .filter((term) => !haystack || haystack.includes(term.toLowerCase()))
+    .map((term) => ({ id: `term:${term}`, text: term }))
 } else {
-  sources = collect()
-    .filter((u) => !carveOut(u))
-    .map((u) => ({ id: u.id, text: u.text }))
+  sources = units.map((u) => ({ id: u.id, text: u.text }))
+}
+
+if (!sources.length) {
+  // exit() rather than exitCode here: this must stop, not fall through into translating an empty
+  // list. One short line is already flushed, so there is nothing queued to lose.
+  console.log(`Nothing to check for ${LANG}.`)
+  process.exit(0)
 }
 
 console.log(`${sources.length} strings, ${LANG}\n`)
@@ -131,3 +154,15 @@ const covered = drifted.filter((r) => r.covered)
 if (covered.length) console.log(`\n${covered.length} drifted but already have a glossary entry — the entry is doing its job.`)
 
 console.log(`\nA pass is not a clean bill of health: "comb jelly" round-trips as "Kammgelee" and is still wrong.`)
+
+// In CI this is a gate rather than a report. Only UNCOVERED drift stops the run: a term that
+// drifted and already has a glossary entry is the entry doing its job, and failing on it would
+// train everyone to ignore the check.
+if (STRICT && uncovered.length) {
+  console.error(`\n${uncovered.length} string(s) drifted with no glossary entry for ${LANG}.`)
+  console.error(`Add entries with: npm run glossary:seed, then choose a candidate in src/data/glossary.json`)
+  // exitCode rather than exit(): process.exit() tears the loop down with writes still queued, and
+  // on Windows that aborts with a libuv assertion instead of printing the reason it failed. A gate
+  // that crashes rather than explaining itself is worse than no gate.
+  process.exitCode = 1
+}

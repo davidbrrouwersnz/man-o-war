@@ -1,0 +1,158 @@
+# Change the English, and the translations and the narration derived from it follow.
+#
+# This is the first workflow in the repository. Everything it runs is a script that also runs on a
+# laptop — `npm run translate`, `npm run audio` — so the automation is a schedule and a set of
+# guards rather than a second implementation that can drift from the first.
+#
+# TWO THINGS STOP IT TRIGGERING ITSELF, and both are needed.
+#
+#   The paths below list ONLY English sources. The job writes to src/data/i18n/** (never en.json),
+#   public/audio/**, and the two ledgers — none of which appear here.
+#
+#   Pushes made with the default GITHUB_TOKEN do not start further workflow runs. That is GitHub's
+#   own recursion guard, and it backs the path filter up rather than replacing it.
+#
+# WHY IT COMMITS TO MAIN RATHER THAN OPENING A PULL REQUEST. That is a deliberate choice by the
+# repository owner, taken knowing the trade. What makes it survivable is that the machine output is
+# never presented as reviewed: scripts/translate.mjs resets reviewStatus to unreviewed on every unit
+# it touches, and the language picker discloses that to the reader in their own language. The
+# checks below exist because a commit that lands unreviewed had better be one nothing obvious is
+# wrong with.
+
+name: Translate and voice
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/data/stories.json'
+      - 'src/data/stories-drafted.json'
+      - 'src/data/layers.json'
+      - 'src/data/groups.json'
+      - 'src/data/names.json'
+      - 'src/data/i18n/en.json'
+      - 'src/data/glossary.json'
+  workflow_dispatch:
+    inputs:
+      skip_audio:
+        description: 'Translate only, leave the narration alone'
+        type: boolean
+        default: false
+
+# One at a time. Two runs translating the same units would race on the ledger and on the pack
+# files, and the loser would overwrite the winner. Not cancel-in-progress: a half-finished run has
+# already spent money and written files, and abandoning it there is worse than queueing.
+concurrency:
+  group: translate
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      # §7's carve-outs, before anything is sent. Quotations, anything touching taonga or mana
+      # whenua, anything with legal effect. This exits non-zero on an unflagged one, which is the
+      # point: a carve-out that silently drops out of a run looks exactly like a language nobody has
+      # translated yet.
+      - name: Check the §7 carve-outs
+        run: npm run translate:audit
+
+      # What would change, before spending anything. Useful in the log even when the run proceeds.
+      - name: Show what changed
+        run: npm run translate:check
+
+      - name: Translate
+        env:
+          AZURE_TRANSLATOR_KEY: ${{ secrets.AZURE_TRANSLATOR_KEY }}
+          AZURE_TRANSLATOR_ENDPOINT: ${{ secrets.AZURE_TRANSLATOR_ENDPOINT }}
+          AZURE_TRANSLATOR_REGION: ${{ secrets.AZURE_TRANSLATOR_REGION }}
+          AZURE_TRANSLATOR_DEPLOYMENT: ${{ secrets.AZURE_TRANSLATOR_DEPLOYMENT }}
+        run: node scripts/translate.mjs --report changed.json
+
+      - name: Which languages changed
+        id: changed
+        run: |
+          node -e "
+            const r = require('./changed.json');
+            const langs = Object.keys(r.languages ?? {});
+            console.log('changed units: ' + r.count + ' across ' + (langs.join(', ') || 'nothing'));
+            require('fs').appendFileSync(process.env.GITHUB_OUTPUT, 'langs=' + langs.join(' ') + '\n');
+            require('fs').appendFileSync(process.env.GITHUB_OUTPUT, 'count=' + r.count + '\n');
+          "
+
+      # The gate. Translate out, translate back, compare — over exactly the units this run touched.
+      # It caught "Ribbon worm" becoming "Bandwurm" and back as "Tapeworm", which is a different
+      # phylum stated confidently under a museum's name. Only drift with NO glossary entry fails:
+      # a term that drifts and is already glossed is the glossary doing its job, and failing on that
+      # would teach everyone to ignore the check.
+      #
+      # A pass is not a clean bill of health — "comb jelly" round-trips cleanly and is still wrong.
+      # This catches the obvious, and §7's community reviewers catch what it cannot.
+      - name: Check for meaning drift
+        if: steps.changed.outputs.count != '0'
+        env:
+          AZURE_TRANSLATOR_KEY: ${{ secrets.AZURE_TRANSLATOR_KEY }}
+          AZURE_TRANSLATOR_REGION: ${{ secrets.AZURE_TRANSLATOR_REGION }}
+        run: |
+          for lang in ${{ steps.changed.outputs.langs }}; do
+            # Names first, and this is the sharp instrument: a term is one or two words, so any
+            # change on the way back is real. Narrowed by --ids to the terms the changed text
+            # actually uses, which keeps the gate proportionate — the glossary gets built as words
+            # come up rather than every commit waiting on all of it being decided.
+            node scripts/translate-drift.mjs --lang "$lang" --terms --ids changed.json --strict
+            # Then the prose, on a looser threshold, because long text drifts a little by nature.
+            node scripts/translate-drift.mjs --lang "$lang" --ids changed.json --strict
+          done
+
+      # --no-sweep, so a push never deletes audio. The English index still lists 24 retired units
+      # whose files are on disk, and removing them is a decision for a person at a keyboard.
+      #
+      # English is voiced too, and first: the trigger for this whole workflow is the English
+      # changing, which makes the English narration stale before any translation is.
+      - name: Voice what changed
+        if: inputs.skip_audio != true
+        env:
+          AZURE_SPEECH_KEY: ${{ secrets.AZURE_SPEECH_KEY }}
+          AZURE_SPEECH_REGION: ${{ secrets.AZURE_SPEECH_REGION }}
+        run: |
+          node scripts/audio.mjs --lang en --no-sweep
+          for lang in ${{ steps.changed.outputs.langs }}; do
+            node scripts/audio.mjs --lang "$lang" --no-sweep
+          done
+
+      # The build asserts things this workflow could otherwise break: every translated segment id
+      # exists in the English source, no pack carries a key English does not, all 128 objects still
+      # have a story. Cheaper to find here than on the deployed site.
+      - name: Build
+        run: npm run build
+
+      - name: Commit
+        run: |
+          git config user.name 'blaschka-bot'
+          git config user.email 'noreply@users.noreply.github.com'
+          # en.json is excluded explicitly, not by convention. It is a TRIGGER path, so a commit
+          # containing it is the one thing that could defeat the path filter and start this
+          # workflow again. Nothing here writes it — English is the source, never a target — and
+          # this makes that structural rather than a property of the current code.
+          git add src/data/i18n ':(exclude)src/data/i18n/en.json' \
+                  src/data/translation-index.json src/data/audio-index.json public/audio
+          if git diff --staged --quiet; then
+            echo 'Nothing changed.'
+            exit 0
+          fi
+          git commit -m "Follow the English into $(git diff --staged --name-only | wc -l) file(s)" \
+                     -m 'Machine translation and synthesis, unreviewed. Every unit touched has its reviewStatus reset in src/data/translation-index.json, and the language picker says so to the reader.' \
+                     -m 'Generated by .github/workflows/translate.yml'
+          git push

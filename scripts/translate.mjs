@@ -56,6 +56,9 @@ const PROBE = has('--probe')
 const BACKFILL = has('--backfill')
 const ONLY = value('--only')
 const ONE_LANG = value('--lang')
+// Where to write the list of units this run actually touched. The workflow passes one so the drift
+// sweep can check exactly what changed rather than re-checking the whole corpus every push.
+const REPORT = value('--report')
 
 // Bumped by hand when the wire format changes in a way that should invalidate every translation —
 // a different DNT mechanism, a different block split. Same role as PIPELINE in scripts/audio.mjs.
@@ -215,6 +218,7 @@ console.log(`${units.length} units, ${held} held back by §7 carve-outs, ${scope
 
 const TERMS = protectedTerms()
 const GLOSSARY = loadGlossary()
+const touchedByLang = {}
 let totalSeeded = 0
 let totalStale = 0
 let totalFilled = 0
@@ -328,6 +332,7 @@ for (const code of chosen) {
   }
 
   rows.push({ code, seeded: seeded.length, stale: stale.length, gaps: gaps.length, orphans })
+  if (todo.length) touchedByLang[code] = todo.map((u) => u.id)
 }
 
 console.log(`  ${'lang'.padEnd(9)} ${'seeded'.padStart(7)} ${'changed'.padStart(8)} ${'gaps'.padStart(6)} ${'orphans'.padStart(8)}`)
@@ -337,6 +342,15 @@ for (const r of rows) {
 
 if (!DRY) {
   writeFileSync(LEDGER_URL, JSON.stringify(ledger, null, 2) + '\n')
+}
+
+// Always written when asked for, even when empty — a workflow needs to be able to tell "nothing
+// changed" from "the step did not run", and an absent file cannot say which.
+if (REPORT) {
+  writeFileSync(
+    REPORT,
+    JSON.stringify({ engine: ENGINE, languages: touchedByLang, count: Object.values(touchedByLang).flat().length }, null, 2) + '\n'
+  )
 }
 
 console.log('')
