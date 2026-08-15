@@ -138,7 +138,12 @@ export function protect(text, opts = {}) {
   if (glossary && lang) {
     for (const [term, entry] of Object.entries(glossary)) {
       const target = entry?.langs?.[lang]
-      if (target?.status === 'accepted' && target.text) candidates.push({ term, say: target.text })
+      if (target?.status !== 'accepted' || !target.text) continue
+      candidates.push({ term, say: target.text })
+      // The short form carries the same agreed translation. Prose introduces a name in full and
+      // then uses it short, so protecting only the full form protects only the first mention —
+      // which is how "A man o' war" became "Un barco de guerra" three sentences later.
+      for (const alias of entry.alsoWritten ?? []) candidates.push({ term: alias, say: target.text })
     }
   }
   for (const term of terms) candidates.push({ term, say: null })
@@ -225,9 +230,28 @@ const digitRuns = (s) => {
   return t.match(/\d+/g) ?? []
 }
 
+// Spanish, French and Italian write centuries in Roman numerals: "an 18th-century warship" becomes
+// "del siglo XVIII". The 18 is present, spelled the way the language spells it, and a check that
+// counts digits reports it missing. Only ever adds numbers to the pool, so it can excuse a correct
+// translation but never hide a dropped one.
+const ROMAN = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 }
+const romanValues = (s) => {
+  const out = []
+  for (const m of s.matchAll(/\b[IVXLCDM]{2,}\b/g)) {
+    const t = m[0]
+    let total = 0
+    for (let i = 0; i < t.length; i++) {
+      const v = ROMAN[t[i]]
+      total += v < ROMAN[t[i + 1]] ? -v : v
+    }
+    out.push(String(total))
+  }
+  return out
+}
+
 export function assertNumerals(english, translated, id) {
   const want = digitRuns(english)
-  const have = digitRuns(translated)
+  const have = [...digitRuns(translated), ...romanValues(translated)]
   const pool = [...have]
   const missing = []
   for (const n of want) {
@@ -248,8 +272,12 @@ export function assertProtected(terms, translated, id) {
 // A glossed term whose agreed translation is absent means the dictionary was ignored — and the
 // engine's own guess is sitting there instead, which is the failure this whole mechanism exists to
 // stop. Loud, because a museum name that is quietly wrong in seven languages is the expensive kind.
+// Case-insensitively: a glossary holds "gusano albañil" and a sentence beginning with it gets
+// "Gusano albañil", which is the same name correctly capitalised. Comparing exactly rejected a
+// perfectly good translation and left the object with no Spanish headline at all.
 export function assertGlossed(expected, translated, id) {
-  const lost = expected.filter((t) => !translated.includes(t))
+  const hay = translated.toLowerCase()
+  const lost = expected.filter((t) => !hay.includes(t.toLowerCase()))
   if (lost.length) {
     throw new Error(
       `${id}: the glossary translation was not used: ${lost.join(', ')}\n` +

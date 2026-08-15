@@ -497,7 +497,10 @@
         ]
       },
       "authority": "GBIF 2259158 (Caryophyllia smithii)",
-      "checkedOn": "2026-08-15"
+      "checkedOn": "2026-08-15",
+      "alsoWritten": [
+        "cup coral"
+      ]
     },
     "Dorid nudibranch": {
       "why": "vernacular name",
@@ -1448,7 +1451,10 @@
       "langs": {},
       "candidates": {},
       "authority": "GBIF: no exact match for Tealia crassicornis variety purpurea",
-      "checkedOn": "2026-08-15"
+      "checkedOn": "2026-08-15",
+      "alsoWritten": [
+        "red anemone"
+      ]
     },
     "Oaten pipes hydroid": {
       "why": "vernacular name",
@@ -1729,7 +1735,10 @@
         ]
       },
       "authority": "GBIF 2264734 (Physalia physalis)",
-      "checkedOn": "2026-08-15"
+      "checkedOn": "2026-08-15",
+      "alsoWritten": [
+        "man o' war"
+      ]
     },
     "Priapulid worm": {
       "why": "vernacular name",

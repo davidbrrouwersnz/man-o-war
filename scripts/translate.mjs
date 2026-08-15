@@ -127,11 +127,14 @@ async function callAzure(texts, to) {
   }
   if (REGION) headers['Ocp-Apim-Subscription-Region'] = REGION
 
+  // Patient, because a backfill is a long run against a rate limit rather than a handful of
+  // requests. Five attempts topping out at sixteen seconds is fine for a sync and gives up in the
+  // middle of a thousand units; the free tier throttles hard enough to need minutes, not seconds.
   for (let attempt = 0; ; attempt++) {
     const res = await fetch(url, { method: 'POST', headers, body })
     if (res.status === 429 || res.status >= 500) {
-      if (attempt >= 5) throw new Error(`Azure returned ${res.status} after ${attempt} retries`)
-      const wait = 2 ** attempt * 1000
+      if (attempt >= 9) throw new Error(`Azure returned ${res.status} after ${attempt} retries`)
+      const wait = Math.min(2 ** attempt * 1000, 60000)
       console.log(`    ${res.status} — waiting ${wait / 1000}s`)
       await new Promise((r) => setTimeout(r, wait))
       continue
@@ -230,6 +233,8 @@ console.log(`${units.length} units, ${held} held back by §7 carve-outs, ${scope
 const TERMS = protectedTerms()
 const GLOSSARY = loadGlossary()
 const touchedByLang = {}
+let stoppedEarly = false
+const rejected = []
 let totalSeeded = 0
 let totalStale = 0
 let totalFilled = 0
@@ -297,35 +302,63 @@ for (const code of chosen) {
       }
     }
 
+    // Translation already paid for is never thrown away. A backfill is a thousand units against a
+    // rate limit, and the first version built every result in memory and wrote at the end — so a
+    // 429 nine hundred units in discarded all nine hundred, and the retry bought them again. On
+    // failure this now applies whatever finished, saves, and reports where it stopped. The run is
+    // incremental by design, so picking up again translates only what is still missing.
     const results = new Map()
-    for (let at = 0; at < jobs.length; ) {
-      const batch = []
-      let chars = 0
-      while (at < jobs.length && batch.length < MAX_ELEMENTS && chars + jobs[at].html.length <= MAX_CHARS) {
-        chars += jobs[at].html.length
-        batch.push(jobs[at])
-        at++
+    let interrupted = null
+    try {
+      for (let at = 0; at < jobs.length; ) {
+        const batch = []
+        let chars = 0
+        while (at < jobs.length && batch.length < MAX_ELEMENTS && chars + jobs[at].html.length <= MAX_CHARS) {
+          chars += jobs[at].html.length
+          batch.push(jobs[at])
+          at++
+        }
+        if (!batch.length) batch.push(jobs[at++]) // one oversized block on its own
+        process.stdout.write(`  ${code}  ${Math.min(at, jobs.length)}/${jobs.length} blocks\r`)
+        const out = await callAzure(batch.map((j) => j.html), code)
+        out.forEach((text, k) => results.set(batch[k], unprotect(text)))
+        totalChars += chars
       }
-      if (!batch.length) batch.push(jobs[at++]) // one oversized block on its own
-      process.stdout.write(`  ${code}  ${Math.min(at, jobs.length)}/${jobs.length} blocks\r`)
-      const out = await callAzure(batch.map((j) => j.html), code)
-      out.forEach((text, k) => results.set(batch[k], unprotect(text)))
-      totalChars += chars
+    } catch (err) {
+      interrupted = err
     }
 
     for (const unit of todo) {
       const parts = jobs.filter((j) => j.unit === unit).sort((a, b) => a.i - b.i)
+      // A unit is applied only when every one of its blocks came back. A half-translated segment
+      // would join English and Spanish across a paragraph break and read as corruption.
+      if (!parts.every((p) => results.has(p))) continue
       const text = parts.map((p) => results.get(p)).join('\n\n')
-      assertStructure(unit.text, text, `${code} ${unit.id}`)
-      assertNumerals(unit.text, text, `${code} ${unit.id}`)
-      assertProtected([...new Set(parts.flatMap((p) => p.protectedHere))], text, `${code} ${unit.id}`)
-      assertGlossed([...new Set(parts.flatMap((p) => p.glossedHere ?? []))], text, `${code} ${unit.id}`)
+      // A unit that fails a check is REJECTED, not fatal. Aborting the run on the first bad
+      // translation means one stubborn headline out of six hundred and fifty throws away the other
+      // six hundred and forty-nine, all of them paid for. The failing unit is simply not written —
+      // it stays a gap, the page keeps falling back to English, and the run says so at the end.
+      try {
+        assertStructure(unit.text, text, `${code} ${unit.id}`)
+        assertNumerals(unit.text, text, `${code} ${unit.id}`)
+        assertProtected([...new Set(parts.flatMap((p) => p.protectedHere))], text, `${code} ${unit.id}`)
+        assertGlossed([...new Set(parts.flatMap((p) => p.glossedHere ?? []))], text, `${code} ${unit.id}`)
+      } catch (err) {
+        rejected.push({ id: unit.id, code, why: err.message.split('\n')[0], got: text })
+        continue
+      }
       setAt(files[unit.file], unit.path, text)
       touched.add(unit.file)
       entries[unit.id] = { hash: hashOf(unit.text), engine: ENGINE, translatedAt: today(), reviewStatus: 'unreviewed' }
       if (gaps.includes(unit)) totalFilled++
     }
     process.stdout.write(' '.repeat(40) + '\r')
+    if (interrupted) {
+      const done = todo.filter((u) => jobs.filter((j) => j.unit === u).every((p) => results.has(p))).length
+      console.log(`  ${code}: stopped after ${done} of ${todo.length} units — ${interrupted.message}`)
+      console.log(`  Everything translated so far is saved. Run the same command again to continue.`)
+      stoppedEarly = true
+    }
   }
 
   // Units the English no longer has. Same sweep as scripts/audio.mjs, and for the same reason: a
@@ -382,4 +415,18 @@ if (!DRY && totalChars) {
       : `  ${totalChars.toLocaleString()} characters billed (~$${((totalChars / 1e6) * 10).toFixed(2)} at $10/M)`
   )
 }
-if (DRY) console.log('  Nothing was sent and nothing was written.')
+if (DRY) console.log(`  Nothing was sent and nothing was written.`)
+if (rejected.length) {
+  console.log(`
+  ${rejected.length} unit(s) failed a check and were NOT written. Those stay gaps and fall back to English:`)
+  for (const r of rejected.slice(0, 12)) {
+    console.log(`    ${r.code} ${r.id}`)
+    console.log(`      ${r.why}`)
+    // \s, not s. Written through sed once without the backslash, this collapsed every letter s in
+    // the sample and made correct Spanish look like corrupted Spanish — in the one place whose job
+    // is to show you what went wrong.
+    console.log(`      got: ${r.got.replace(/\s+/g, ' ').slice(0, 100)}`)
+  }
+  if (rejected.length > 12) console.log(`    … and ${rejected.length - 12} more`)
+}
+if (stoppedEarly || rejected.length) process.exitCode = 1
