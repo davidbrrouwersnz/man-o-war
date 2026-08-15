@@ -3255,10 +3255,10 @@
           "kind": "panel"
         },
         "groups/floating-colonies/00-panel": {
-          "hash": "54928f5a6948f131",
-          "durationMs": 22021,
-          "words": 59,
-          "bytes": 132480,
+          "hash": "f2ad83525bf52f01",
+          "durationMs": 20442,
+          "words": 52,
+          "bytes": 122976,
           "track": "interpretation",
           "kind": "panel"
         },

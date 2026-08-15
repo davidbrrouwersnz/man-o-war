@@ -587,6 +587,12 @@
       "authority": "GBIF 6479905 (Leptoplana polycyclia)",
       "checkedOn": "2026-08-15"
     },
+    "Floating colonies": {
+      "why": "group title",
+      "accessions": [],
+      "langs": {},
+      "candidates": {}
+    },
     "Freshwater flatworm": {
       "why": "vernacular name",
       "accessions": [
@@ -1960,12 +1966,6 @@
       },
       "authority": "GBIF 5200757 (Botryllus schlosseri)",
       "checkedOn": "2026-08-15"
-    },
-    "The man o' war and other floating colonies": {
-      "why": "group title",
-      "accessions": [],
-      "langs": {},
-      "candidates": {}
     },
     "Tree coral": {
       "why": "vernacular name",
