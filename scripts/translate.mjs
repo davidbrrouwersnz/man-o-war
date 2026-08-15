@@ -69,10 +69,21 @@ const today = () => new Date().toISOString().slice(0, 10)
 
 // ---------------------------------------------------------------- engine
 
-const KEY = process.env.AZURE_TRANSLATOR_KEY
-const REGION = process.env.AZURE_TRANSLATOR_REGION ?? process.env.AZURE_SPEECH_REGION
-const RAW_ENDPOINT = (process.env.AZURE_TRANSLATOR_ENDPOINT ?? 'https://api.cognitive.microsofttranslator.com').replace(/\/+$/, '')
-const DEPLOYMENT = process.env.AZURE_TRANSLATOR_DEPLOYMENT
+// An unset GitHub secret arrives as an EMPTY STRING, not as undefined, so `??` never falls back and
+// every default here quietly evaluates to "". That fails only in CI, which is the worst place to
+// find it: locally the variable is genuinely absent and everything works.
+const env = (...names) => {
+  for (const n of names) {
+    const v = process.env[n]
+    if (typeof v === 'string' && v.trim()) return v.trim()
+  }
+  return null
+}
+
+const KEY = env('AZURE_TRANSLATOR_KEY')
+const REGION = env('AZURE_TRANSLATOR_REGION', 'AZURE_SPEECH_REGION')
+const RAW_ENDPOINT = (env('AZURE_TRANSLATOR_ENDPOINT') ?? 'https://api.cognitive.microsofttranslator.com').replace(/\/+$/, '')
+const DEPLOYMENT = env('AZURE_TRANSLATOR_DEPLOYMENT')
 
 // LLM translation runs only on an Azure AI Foundry resource, and needs a model deployment in it.
 // The classic global Translator host serves NMT and answers 404 to the newer API, so the engine is

@@ -46,8 +46,18 @@ if (!LANG) {
   process.exit(1)
 }
 
-const KEY = process.env.AZURE_TRANSLATOR_KEY
-const REGION = process.env.AZURE_TRANSLATOR_REGION ?? process.env.AZURE_SPEECH_REGION
+// Empty string rather than undefined is what an unset GitHub secret looks like — see the note in
+// scripts/translate.mjs. `??` does not fall back across it.
+const env = (...names) => {
+  for (const n of names) {
+    const v = process.env[n]
+    if (typeof v === 'string' && v.trim()) return v.trim()
+  }
+  return null
+}
+
+const KEY = env('AZURE_TRANSLATOR_KEY')
+const REGION = env('AZURE_TRANSLATOR_REGION', 'AZURE_SPEECH_REGION')
 if (!KEY || KEY.startsWith('<')) {
   console.error('AZURE_TRANSLATOR_KEY is not set.')
   process.exit(1)

@@ -105,6 +105,9 @@ jobs:
         env:
           AZURE_TRANSLATOR_KEY: ${{ secrets.AZURE_TRANSLATOR_KEY }}
           AZURE_TRANSLATOR_REGION: ${{ secrets.AZURE_TRANSLATOR_REGION }}
+          # Present so the region can fall back to it, exactly as the translate step does. Without
+          # it the drift check has no region at all and would differ from the run it is checking.
+          AZURE_SPEECH_REGION: ${{ secrets.AZURE_SPEECH_REGION }}
         run: |
           for lang in ${{ steps.changed.outputs.langs }}; do
             # Names first, and this is the sharp instrument: a term is one or two words, so any
