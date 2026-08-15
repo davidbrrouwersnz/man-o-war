@@ -67,31 +67,30 @@ export default function DisplayPanel({ open, onOpenChange }) {
           </RadioGroup>
         </fieldset>
 
-        <fieldset className="setting">
-          <legend>{t('ui.contrast')}</legend>
-          {/* Switch rather than Checkbox: these are two on/off preferences that take effect the
-              moment they are set, not choices submitted later, and a screen reader announcing
-              "switch, on" says that where "checkbox, checked" does not. Still wrapped in the
-              label — a button is a labelable element, so the whole 44px chip stays the target. */}
-          <label className="setting-switch">
-            <Switch
-              checked={prefs.highContrast}
-              onCheckedChange={(v) => set({ highContrast: v })}
-            />
-            {t('ui.highContrast')}
-          </label>
-        </fieldset>
+        {/* Two preferences, two rows: name on the left, switch on the right, a hairline between.
+            They were a bordered chip each inside a fieldset of their own — three boxes and two
+            headings for two switches — and at 200% text the chip ran off the side of the dialog,
+            because it had to hold the label, the control and its own border on one line. A row lets
+            the words wrap into the space left over and keeps the switch where a thumb expects it.
 
-        {/* §13's cues map one-to-one onto the printed segments, which is only worth anything if
-            the highlighted word is on screen. A preference rather than a player button: it
-            persists, and it keeps the bar to five controls. */}
-        <fieldset className="setting">
-          <legend>{t('ui.reading')}</legend>
-          <label className="setting-switch">
-            <Switch checked={prefs.followWords} onCheckedChange={(v) => set({ followWords: v })} />
-            {t('ui.followWords')}
+            No fieldset either. A fieldset groups related controls, and each of these was alone in
+            one, which announces a group to leave that was never a group. Text size keeps its own,
+            because four radios genuinely are one. */}
+        <div className="setting-rows">
+          <label className="setting-row">
+            <span>{t('ui.highContrast')}</span>
+            <Switch checked={prefs.highContrast} onCheckedChange={(v) => set({ highContrast: v })} />
           </label>
-        </fieldset>
+
+          {/* §13's cues map one-to-one onto the printed segments, which is only worth anything if
+              the highlighted word is on screen. A preference rather than a player button: it
+              persists, and it keeps the bar to five controls. */}
+          <label className="setting-row">
+            <span>{t('ui.followWords')}</span>
+            <Switch checked={prefs.followWords} onCheckedChange={(v) => set({ followWords: v })} />
+          </label>
+        </div>
+
       </DialogContent>
     </Dialog>
   )
