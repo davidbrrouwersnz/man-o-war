@@ -141,6 +141,9 @@ const VOICES = {
   to: { azure: 'no', polly: 'no', google: 'no', eleven: 'no' },
   prs: { azure: 'approx (fa-IR)', polly: 'no', google: 'no', eleven: 'approx (fa)' },
   ti: { azure: 'no', polly: 'no', google: 'no', eleven: 'no' },
+  // Withdrawn from LANGUAGES, kept here because the evaluation is the record of why: Somali is the
+  // one shipped target Azure's LLM translation never covered, and its only voice anywhere was on
+  // ElevenLabs' newest model.
   so: { azure: 'no', polly: 'no', google: 'no', eleven: 'yes (v3)' },
 }
 

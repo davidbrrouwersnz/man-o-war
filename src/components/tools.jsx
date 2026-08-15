@@ -14,8 +14,8 @@ import { SUPPORTED } from '../collection.js'
 // so this is fetched on the first press of the button and never before.
 const DisplayPanel = lazy(() => import('../display-settings.jsx'))
 
-// §7's visible fallback — a Somali speaker who gets an English story with no explanation
-// reasonably concludes the app has no Somali in it — is rendered inline by Essay and
+// §7's visible fallback — an Arabic speaker who gets an English story with no explanation
+// reasonably concludes the app has no Arabic in it — is rendered inline by Essay and
 // ObjectSection. A `Fallback` wrapper component used to sit here as well, unused: its markup had
 // been copied into both call sites rather than being called.
 

@@ -173,11 +173,12 @@ looking at *is* the English.
 - **The audio description track.** The one real gap. §13 wanted form, scale, colour and mount
   described for a visitor who cannot see the photograph — "a clear glass bell about the width of a
   saucer" rather than `200 x 90 x 90mm`. It is the only part of §13's audio model still missing.
-- **English only.** The other eight languages have no narration. Samoan, Tongan, Tigrinya and Dari
+- **English only.** The other seven languages have no narration. Samoan, Tongan, Tigrinya and Dari
   have since been withdrawn from the app entirely — they were four of the five §7 called low
-  resource, and the four with no synthetic voice in existence from any provider. Somali remains and
-  is still unvoiced. See `docs/audio-generation.md`; it is a human-recording question, not a
-  technical one.
+  resource, and the four with no synthetic voice in existence from any provider. Somali has since
+  gone too, as the one target Azure's LLM translation does not cover, so every language §7 named as
+  low resource is now out. See `docs/audio-generation.md`; for those languages it was always a
+  human-recording question, not a technical one.
 - The player's own labels ("Listen", "Stop listening") are English-only. They are only ever shown
   beside English text, so nothing is currently mismatched, but they are not translated.
 - Ask the Museum how the family says **Blaschka**.
