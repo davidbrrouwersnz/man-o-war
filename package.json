@@ -22,7 +22,10 @@
     "translate:audit": "node scripts/translate-guard.mjs",
     "pronunciation": "node scripts/pronunciation-review.mjs",
     "pronunciation:qa": "node scripts/pronunciation-qa.mjs",
-    "audio:smoke": "node scripts/audio-smoke.mjs"
+    "audio:smoke": "node scripts/audio-smoke.mjs",
+    "glossary": "node scripts/glossary.mjs",
+    "glossary:seed": "node scripts/glossary.mjs --seed",
+    "translate:drift": "node --env-file-if-exists=.env.local scripts/translate-drift.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

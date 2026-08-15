@@ -114,25 +114,79 @@ export function protectedTerms() {
 
 const escape = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 
-// Azure's documented mechanism: class="notranslate" with textType=html. The span is a wrapper for
-// the wire only — it never reaches disk, because scripts/audio.mjs asserts that SSML stripped back
-// to text matches the printed text character for character, and stray markup breaks that.
-export function protect(text, terms = protectedTerms()) {
-  let out = text
-  const seen = []
-  for (const term of terms) {
-    const re = new RegExp(`\\b${escape(term)}\\b`, 'g')
-    if (!re.test(out)) continue
-    seen.push(term)
-    out = out.replace(re, `<span class="notranslate">${term}</span>`)
+// Two kinds of protection, applied in ONE pass so they cannot nest inside each other.
+//
+//   KEEP IT       class="notranslate" — a Latin binomial is the same in every language
+//   SAY IT THUS   <mstrans:dictionary translation="…"> — a vernacular name has a right answer in
+//                 the target language, and it is not whatever the engine guesses
+//
+// The second exists because of a measured failure: NMT rendered "Portuguese man o' war" as
+// "portugiesisches Kriegsschiff" — a warship. Marking it notranslate would have been wrong too; a
+// German reader wants "Portugiesische Galeere", not an English phrase. The only correct move is to
+// supply the answer, which is what a glossary is.
+//
+// One pass, longest first, no overlaps: a second sweep over already-tagged text matches inside its
+// own markup and produces nested tags that neither Azure nor unprotect() can make sense of.
+export function protect(text, opts = {}) {
+  const terms = Array.isArray(opts) ? opts : (opts.terms ?? protectedTerms())
+  const glossary = Array.isArray(opts) ? null : opts.glossary
+  const lang = Array.isArray(opts) ? null : opts.lang
+
+  // Glossary first in the candidate list so a term with a known translation wins over merely being
+  // held back — "sea slug" should become "Nacktkiemer", not stay English.
+  const candidates = []
+  if (glossary && lang) {
+    for (const [term, entry] of Object.entries(glossary)) {
+      const target = entry?.langs?.[lang]
+      if (target?.status === 'accepted' && target.text) candidates.push({ term, say: target.text })
+    }
   }
-  return { html: out, protectedHere: seen }
+  for (const term of terms) candidates.push({ term, say: null })
+  candidates.sort((a, b) => b.term.length - a.term.length)
+
+  // Collect non-overlapping matches across the whole string before rewriting any of it.
+  const hits = []
+  const taken = new Array(text.length).fill(false)
+  for (const { term, say } of candidates) {
+    const re = new RegExp(`(?<![\\p{L}\\p{N}])${escape(term)}(?![\\p{L}\\p{N}])`, 'giu')
+    for (const m of text.matchAll(re)) {
+      const start = m.index
+      const end = start + m[0].length
+      let free = true
+      for (let i = start; i < end; i++) if (taken[i]) { free = false; break }
+      if (!free) continue
+      for (let i = start; i < end; i++) taken[i] = true
+      hits.push({ start, end, matched: m[0], term, say })
+    }
+  }
+  hits.sort((a, b) => a.start - b.start)
+
+  let out = ''
+  let at = 0
+  const kept = []
+  const said = []
+  for (const h of hits) {
+    out += text.slice(at, h.start)
+    if (h.say) {
+      out += `<mstrans:dictionary translation="${h.say.replace(/"/g, '&quot;')}">${h.matched}</mstrans:dictionary>`
+      said.push(h.say)
+    } else {
+      out += `<span class="notranslate">${h.matched}</span>`
+      kept.push(h.matched)
+    }
+    at = h.end
+  }
+  out += text.slice(at)
+
+  return { html: out, protectedHere: kept, glossedHere: said }
 }
 
 export function unprotect(html) {
   return html
     .replace(/<span class="notranslate">/gi, '')
     .replace(/<\/span>/gi, '')
+    .replace(/<mstrans:dictionary[^>]*>/gi, '')
+    .replace(/<\/mstrans:dictionary>/gi, '')
     .replace(/&amp;/g, '&')
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
@@ -189,6 +243,19 @@ export function assertNumerals(english, translated, id) {
 export function assertProtected(terms, translated, id) {
   const lost = terms.filter((t) => !translated.includes(t))
   if (lost.length) throw new Error(`${id}: protected names did not survive translation: ${lost.join(', ')}`)
+}
+
+// A glossed term whose agreed translation is absent means the dictionary was ignored — and the
+// engine's own guess is sitting there instead, which is the failure this whole mechanism exists to
+// stop. Loud, because a museum name that is quietly wrong in seven languages is the expensive kind.
+export function assertGlossed(expected, translated, id) {
+  const lost = expected.filter((t) => !translated.includes(t))
+  if (lost.length) {
+    throw new Error(
+      `${id}: the glossary translation was not used: ${lost.join(', ')}\n` +
+        `  The engine substituted its own wording for a term with an agreed answer.`
+    )
+  }
 }
 
 // ---------------------------------------------------------------- audit mode

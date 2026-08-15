@@ -31,8 +31,10 @@ import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { LANGUAGES } from '../src/i18n.js'
 import { collect, PACK, LAYERS, STORIES } from './units.mjs'
+import { loadGlossary } from './glossary.mjs'
 import {
   assertAudited,
+  assertGlossed,
   assertNumerals,
   assertProtected,
   assertStructure,
@@ -212,6 +214,7 @@ console.log(`${DRY ? 'DRY RUN — ' : ''}engine ${ENGINE}${WANT_LLM ? '' : RAW_E
 console.log(`${units.length} units, ${held} held back by §7 carve-outs, ${scoped.length} in scope\n`)
 
 const TERMS = protectedTerms()
+const GLOSSARY = loadGlossary()
 let totalSeeded = 0
 let totalStale = 0
 let totalFilled = 0
@@ -265,14 +268,17 @@ for (const code of chosen) {
     for (const unit of todo) {
       const blocks = unit.text.split(/\n{2,}/)
       for (let i = 0; i < blocks.length; i++) {
-        const { html, protectedHere } = protect(blocks[i], TERMS)
+        // Names with an agreed answer are supplied to the engine rather than left to it. The
+        // glossary is per language, so the same block is wrapped differently for German than for
+        // Japanese — which is why this sits inside the per-language loop rather than above it.
+        const { html, protectedHere, glossedHere } = protect(blocks[i], { terms: TERMS, glossary: GLOSSARY, lang: code })
         if (html.length > ELEMENT_CEILING) {
           throw new Error(
             `${unit.id} block ${i} is ${html.length} characters, over this engine's ${ELEMENT_CEILING} ceiling. ` +
               `Split the paragraph in the English source — it is also too long to hear in one breath.`
           )
         }
-        jobs.push({ unit, i, source: blocks[i], html, protectedHere })
+        jobs.push({ unit, i, source: blocks[i], html, protectedHere, glossedHere })
       }
     }
 
@@ -298,6 +304,7 @@ for (const code of chosen) {
       assertStructure(unit.text, text, `${code} ${unit.id}`)
       assertNumerals(unit.text, text, `${code} ${unit.id}`)
       assertProtected([...new Set(parts.flatMap((p) => p.protectedHere))], text, `${code} ${unit.id}`)
+      assertGlossed([...new Set(parts.flatMap((p) => p.glossedHere ?? []))], text, `${code} ${unit.id}`)
       setAt(files[unit.file], unit.path, text)
       touched.add(unit.file)
       entries[unit.id] = { hash: hashOf(unit.text), engine: ENGINE, translatedAt: today(), reviewStatus: 'unreviewed' }

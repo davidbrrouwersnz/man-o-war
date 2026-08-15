@@ -1,0 +1,2116 @@
+{
+  "note": "Terms whose translation is a fact rather than a guess. Seeded from GBIF vernacular names by scripts/glossary.mjs, which accepts a name only on an EXACT taxonomic match with exactly one candidate in that language — everything else is left under `candidates` for a person to choose. Applied by scripts/translate.mjs as an Azure dynamic dictionary, and asserted on the way back: if the agreed word is missing from the translation the run fails.",
+  "terms": {
+    "A fragment from an unknown model": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.92"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF: no exact match for Glass studded spike from unknown model",
+      "checkedOn": "2026-08-15"
+    },
+    "Barrel jellyfish": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.68"
+      ],
+      "langs": {},
+      "candidates": {
+        "es": [
+          "Acalefo azul",
+          "Aguamala",
+          "Aguamar",
+          "Medusa blanca",
+          "Medusa de Barril"
+        ],
+        "de": [
+          "Gelbe Lungenqualle",
+          "Lungenqualle"
+        ],
+        "fr": [
+          "Méduse chou-fleur",
+          "Poumon de mer",
+          "Rhizostome de Méditerranée"
+        ]
+      },
+      "authority": "GBIF 5185453 (Rhizostoma pulmo)",
+      "checkedOn": "2026-08-15"
+    },
+    "Beadlet anemone": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.5"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF: no exact match for Actinia mesembrianthemum",
+      "checkedOn": "2026-08-15"
+    },
+    "Black slug": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.45",
+        "1884.137.50"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF: no exact match for Arion empiricorum variety ater",
+      "checkedOn": "2026-08-15"
+    },
+    "Blue button": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.59"
+      ],
+      "langs": {
+        "es": {
+          "text": "Medusas botón",
+          "status": "accepted",
+          "source": "GBIF 2265786 (Porpita)",
+          "checkedOn": "2026-08-15"
+        },
+        "ja": {
+          "text": "ギンカクラゲ属",
+          "status": "accepted",
+          "source": "GBIF 2265786 (Porpita)",
+          "checkedOn": "2026-08-15"
+        },
+        "ko": {
+          "text": "푸른우산관해파리속",
+          "status": "accepted",
+          "source": "GBIF 2265786 (Porpita)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "es": [
+          "Medusas botón"
+        ],
+        "ja": [
+          "ギンカクラゲ属"
+        ],
+        "ko": [
+          "푸른우산관해파리속"
+        ]
+      },
+      "authority": "GBIF 2265786 (Porpita)",
+      "checkedOn": "2026-08-15"
+    },
+    "Bristle worm": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.90",
+        "1884.137.91"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF 5198375 (Eunice norvegica)",
+      "checkedOn": "2026-08-15"
+    },
+    "Brittle star": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.25"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF: no exact match for Amphiura filiformis, stage of development",
+      "checkedOn": "2026-08-15"
+    },
+    "Burrowing anemone": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.28",
+        "1884.137.96"
+      ],
+      "langs": {},
+      "candidates": {
+        "de": [
+          "Speer-Anemone",
+          "Speeranemone"
+        ]
+      },
+      "authority": "GBIF 2256424 (Peachia hastata)",
+      "checkedOn": "2026-08-15"
+    },
+    "Bushy-backed sea slug": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.7"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF: no exact match for Dendronotus arborescens variety carneus",
+      "checkedOn": "2026-08-15"
+    },
+    "By-the-wind sailor": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.54",
+        "1884.137.111"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF: no exact match for Vellela spirans",
+      "checkedOn": "2026-08-15"
+    },
+    "Cock-eyed squid": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.39"
+      ],
+      "langs": {
+        "de": {
+          "text": "Segelkalmar",
+          "status": "accepted",
+          "source": "GBIF 2290656 (Histioteuthis bonnellii)",
+          "checkedOn": "2026-08-15"
+        },
+        "ja": {
+          "text": "モスソクラゲイカ",
+          "status": "accepted",
+          "source": "GBIF 2290656 (Histioteuthis bonnellii)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "de": [
+          "Segelkalmar"
+        ],
+        "ja": [
+          "モスソクラゲイカ"
+        ]
+      },
+      "authority": "GBIF 2290656 (Histioteuthis bonnellii)",
+      "checkedOn": "2026-08-15"
+    },
+    "Comb jellies and sea butterflies": {
+      "why": "group title",
+      "accessions": [],
+      "langs": {},
+      "candidates": {}
+    },
+    "Comb jelly": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.52"
+      ],
+      "langs": {},
+      "candidates": {
+        "de": [
+          "Mittelmeer-Gurkenqualle",
+          "Mittelmeer-Melonenqualle"
+        ]
+      },
+      "authority": "GBIF 5233152 (Beroe ovata)",
+      "checkedOn": "2026-08-15"
+    },
+    "Common cuttlefish": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.38"
+      ],
+      "langs": {},
+      "candidates": {
+        "es": [
+          "Aluda",
+          "Choco",
+          "Jibia",
+          "Jibión",
+          "Luda",
+          "Rellena",
+          "Rellena / Relleno",
+          "Relleno",
+          "Sepia común",
+          "Sipionet",
+          "coca",
+          "sipia",
+          "Coca",
+          "Sipia"
+        ],
+        "fr": [
+          "Casseron",
+          "Chakod",
+          "Chibia",
+          "Chubei",
+          "Seiche",
+          "Seiche commune",
+          "Supia",
+          "margade",
+          "seche",
+          "seiche commune",
+          "seiche commune, casseron",
+          "Margade"
+        ],
+        "de": [
+          "Gemeine Sepia",
+          "Gemeine Sepie",
+          "Gemeine Tintenschnecke",
+          "Gemeiner Tintenfisch",
+          "Gemeiner Tintenfish",
+          "Gewöhnlicher Tintenfisch",
+          "Sepia",
+          "Sepie",
+          "Sepietintenfisch",
+          "gewöhnliche Tintenfisch"
+        ],
+        "ja": [
+          "Mongo-ika",
+          "Yoroppa kouika",
+          "ko-ika",
+          "ma-ika",
+          "ヨーロッパコウイカ",
+          "Mongo-Ika",
+          "Yoroppa Kouika"
+        ],
+        "ar": [
+          "Sabbidije",
+          "Seiba",
+          "Seppio",
+          "Shoubia",
+          "Sibia",
+          "Sobbeit",
+          "Soubia",
+          "Sipia",
+          "Soupia"
+        ]
+      },
+      "authority": "GBIF 2290849 (Sepia officinalis)",
+      "checkedOn": "2026-08-15"
+    },
+    "Compass jellyfish": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.104"
+      ],
+      "langs": {
+        "de": {
+          "text": "Kompassqualle",
+          "status": "accepted",
+          "source": "GBIF 5185425 (Chrysaora hysoscella)",
+          "checkedOn": "2026-08-15"
+        },
+        "es": {
+          "text": "Medusa Compás",
+          "status": "accepted",
+          "source": "GBIF 5185425 (Chrysaora hysoscella)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "de": [
+          "Kompassqualle"
+        ],
+        "es": [
+          "Medusa Compás"
+        ],
+        "fr": [
+          "Méduse rayonnée",
+          "acalèphe rayonnée",
+          "chrysaore"
+        ]
+      },
+      "authority": "GBIF 5185425 (Chrysaora hysoscella)",
+      "checkedOn": "2026-08-15"
+    },
+    "Corals": {
+      "why": "group title",
+      "accessions": [],
+      "langs": {},
+      "candidates": {}
+    },
+    "Crystal jelly": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.43"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF 2267496 (Aequorea cyanea)",
+      "checkedOn": "2026-08-15"
+    },
+    "Daisy anemone": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.122"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF: no exact match for Sagartia bellis variety tyriensis",
+      "checkedOn": "2026-08-15"
+    },
+    "Dead man's fingers": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.57"
+      ],
+      "langs": {},
+      "candidates": {
+        "de": [
+          "Bastardschwamm",
+          "Meerhand",
+          "Nordische Korkkoralle",
+          "Tote Mannshand",
+          "Tote Meerhand",
+          "tote Manneshand"
+        ],
+        "fr": [
+          "alcyon commum",
+          "alcyon jaune",
+          "corail digité"
+        ]
+      },
+      "authority": "GBIF 5185175 (Alcyonium digitatum)",
+      "checkedOn": "2026-08-15"
+    },
+    "Deeplet anemone": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.74"
+      ],
+      "langs": {},
+      "candidates": {
+        "de": [
+          "Braune Seedahlie",
+          "Dickhörnige Seerose",
+          "Seedahile",
+          "Seedahlie",
+          "dickhörnige Seerose"
+        ],
+        "fr": [
+          "anémone dahlia",
+          "dahlia de mer"
+        ]
+      },
+      "authority": "GBIF 2256780 (Urticina felina)",
+      "checkedOn": "2026-08-15"
+    },
+    "Devonshire cup coral": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.106"
+      ],
+      "langs": {},
+      "candidates": {
+        "de": [
+          "Becherkoralle",
+          "Kreiselkoralle",
+          "Ovale Nelkenkoralle"
+        ]
+      },
+      "authority": "GBIF 2259158 (Caryophyllia smithii)",
+      "checkedOn": "2026-08-15"
+    },
+    "Dorid nudibranch": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.93"
+      ],
+      "langs": {
+        "fr": {
+          "text": "Dendrodoris noire",
+          "status": "accepted",
+          "source": "GBIF 4359827 (Dendrodoris nigra)",
+          "checkedOn": "2026-08-15"
+        },
+        "ja": {
+          "text": "ホンクロシタナシウミウシ",
+          "status": "accepted",
+          "source": "GBIF 4359827 (Dendrodoris nigra)",
+          "checkedOn": "2026-08-15"
+        },
+        "zh-Hant": {
+          "text": "黑枝鰓海蛞蝓",
+          "status": "accepted",
+          "source": "GBIF 4359827 (Dendrodoris nigra)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "fr": [
+          "Dendrodoris noire"
+        ],
+        "ja": [
+          "ホンクロシタナシウミウシ"
+        ],
+        "zh-Hant": [
+          "黑枝鰓海蛞蝓"
+        ]
+      },
+      "authority": "GBIF 4359827 (Dendrodoris nigra)",
+      "checkedOn": "2026-08-15"
+    },
+    "Dwarf bobtail squid": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.67"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF: no exact match for Sepiola rondeleti",
+      "checkedOn": "2026-08-15"
+    },
+    "Eastern emerald elysia": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.76"
+      ],
+      "langs": {
+        "es": {
+          "text": "Babosa esmeralda",
+          "status": "accepted",
+          "source": "GBIF 5192082 (Elysia chlorotica)",
+          "checkedOn": "2026-08-15"
+        },
+        "de": {
+          "text": "Smaragd-Samtschnecke",
+          "status": "accepted",
+          "source": "GBIF 5192082 (Elysia chlorotica)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "es": [
+          "Babosa esmeralda"
+        ],
+        "de": [
+          "Smaragd-Samtschnecke"
+        ]
+      },
+      "authority": "GBIF 5192082 (Elysia chlorotica)",
+      "checkedOn": "2026-08-15"
+    },
+    "European squid": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.6"
+      ],
+      "langs": {
+        "ja": {
+          "text": "ヨーロッパヤリイカ",
+          "status": "accepted",
+          "source": "GBIF 2290374 (Loligo vulgaris)",
+          "checkedOn": "2026-08-15"
+        },
+        "zh-Hant": {
+          "text": "欧洲乌贼",
+          "status": "accepted",
+          "source": "GBIF 2290374 (Loligo vulgaris)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "es": [
+          "Calamar Común",
+          "Calamar Europeo",
+          "calamar"
+        ],
+        "fr": [
+          "Encornet",
+          "calmar",
+          "calmar commun",
+          "encornet",
+          "encornet grandes oreilles"
+        ],
+        "de": [
+          "Gemeiner Kalmar",
+          "Kalmar",
+          "Roter Gemeiner",
+          "gemeiner Kalmar",
+          "gewöhnlicher Kalmar"
+        ],
+        "ja": [
+          "ヨーロッパヤリイカ"
+        ],
+        "zh-Hant": [
+          "欧洲乌贼"
+        ]
+      },
+      "authority": "GBIF 2290374 (Loligo vulgaris)",
+      "checkedOn": "2026-08-15"
+    },
+    "Fan worm": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.98"
+      ],
+      "langs": {
+        "es": {
+          "text": "plumero de mar",
+          "status": "accepted",
+          "source": "GBIF 2328603 (Sabella spallanzanii)",
+          "checkedOn": "2026-08-15"
+        },
+        "fr": {
+          "text": "spirographe",
+          "status": "accepted",
+          "source": "GBIF 2328603 (Sabella spallanzanii)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "de": [
+          "Großer Fächerwurm",
+          "Schrauben Sabelle",
+          "Schraubensabelle"
+        ],
+        "es": [
+          "plumero de mar"
+        ],
+        "fr": [
+          "spirographe"
+        ]
+      },
+      "authority": "GBIF 2328603 (Sabella spallanzanii)",
+      "checkedOn": "2026-08-15"
+    },
+    "Feather star": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.13"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF: no exact match for Comatula hamata",
+      "checkedOn": "2026-08-15"
+    },
+    "Flatworm": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.97",
+        "1884.137.112"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF 6479905 (Leptoplana polycyclia)",
+      "checkedOn": "2026-08-15"
+    },
+    "Freshwater flatworm": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.128"
+      ],
+      "langs": {
+        "ja": {
+          "text": "ヒメヒラウズムシ",
+          "status": "accepted",
+          "source": "GBIF 2503317 (Bothrioplana semperi)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "ja": [
+          "ヒメヒラウズムシ"
+        ]
+      },
+      "authority": "GBIF 2503317 (Bothrioplana semperi)",
+      "checkedOn": "2026-08-15"
+    },
+    "Freshwater leeches": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.35"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF: no exact match for Clepsine marginata",
+      "checkedOn": "2026-08-15"
+    },
+    "Gem anemone": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.123"
+      ],
+      "langs": {
+        "fr": {
+          "text": "Anémone gemme",
+          "status": "accepted",
+          "source": "GBIF 4283460 (Bunodactis verrucosa)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "fr": [
+          "Anémone gemme"
+        ],
+        "de": [
+          "Edelsteinrose",
+          "Warzenrose"
+        ]
+      },
+      "authority": "GBIF 4283460 (Bunodactis verrucosa)",
+      "checkedOn": "2026-08-15"
+    },
+    "Glassy nautilus": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.14"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF 6490136 (Carinaria lamarckii)",
+      "checkedOn": "2026-08-15"
+    },
+    "Great ramshorn snail": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.83"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF: no exact match for Planorbis corneus",
+      "checkedOn": "2026-08-15"
+    },
+    "Greater argonaut": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.10"
+      ],
+      "langs": {
+        "fr": {
+          "text": "argonaute voilier",
+          "status": "accepted",
+          "source": "GBIF 5189614 (Argonauta argo)",
+          "checkedOn": "2026-08-15"
+        },
+        "ko": {
+          "text": "조개낙지",
+          "status": "accepted",
+          "source": "GBIF 5189614 (Argonauta argo)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "es": [
+          "Gran argonauta del Pacífico",
+          "argonauta"
+        ],
+        "de": [
+          "Großes Papierboot",
+          "Papierboot"
+        ],
+        "fr": [
+          "argonaute voilier"
+        ],
+        "ar": [
+          "عنقريط كبير",
+          "نوتي الورقة"
+        ],
+        "ja": [
+          "アオイガイ",
+          "カイダコ",
+          "葵貝",
+          "貝蛸"
+        ],
+        "zh-Hant": [
+          "太平洋船蛸",
+          "扁船蛸",
+          "船蛸"
+        ],
+        "ko": [
+          "조개낙지"
+        ]
+      },
+      "authority": "GBIF 5189614 (Argonauta argo)",
+      "checkedOn": "2026-08-15"
+    },
+    "Green spoon worm": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.48"
+      ],
+      "langs": {},
+      "candidates": {
+        "fr": [
+          "Bonellie verte, Ver hérissé",
+          "bonellie verte"
+        ],
+        "de": [
+          "Grüne Bonellia",
+          "Grüner Igelwurm",
+          "grüne Bonelli"
+        ]
+      },
+      "authority": "GBIF 5234395 (Bonellia viridis)",
+      "checkedOn": "2026-08-15"
+    },
+    "Grey field slug": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.77"
+      ],
+      "langs": {
+        "fr": {
+          "text": "Loche blanche",
+          "status": "accepted",
+          "source": "GBIF 5781288 (Deroceras agreste)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "de": [
+          "Einfarbige Ackerschnecke",
+          "Graue Ackerschnecke",
+          "Sumpfschnegel"
+        ],
+        "fr": [
+          "Loche blanche"
+        ]
+      },
+      "authority": "GBIF 5781288 (Deroceras agreste)",
+      "checkedOn": "2026-08-15"
+    },
+    "Hooked squid": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.17"
+      ],
+      "langs": {
+        "de": {
+          "text": "Engelskalmar",
+          "status": "accepted",
+          "source": "GBIF 9681862 (Ancistroteuthis lichtensteinii)",
+          "checkedOn": "2026-08-15"
+        },
+        "ja": {
+          "text": "ホソツメイカ",
+          "status": "accepted",
+          "source": "GBIF 9681862 (Ancistroteuthis lichtensteinii)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "de": [
+          "Engelskalmar"
+        ],
+        "ja": [
+          "ホソツメイカ"
+        ]
+      },
+      "authority": "GBIF 9681862 (Ancistroteuthis lichtensteinii)",
+      "checkedOn": "2026-08-15"
+    },
+    "Hula-skirt siphonophore": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.61",
+        "1884.137.40"
+      ],
+      "langs": {
+        "fr": {
+          "text": "Physophore-vahiné",
+          "status": "accepted",
+          "source": "GBIF 5185492 (Physophora hydrostatica)",
+          "checkedOn": "2026-08-15"
+        },
+        "ja": {
+          "text": "バレンクラゲ",
+          "status": "accepted",
+          "source": "GBIF 5185492 (Physophora hydrostatica)",
+          "checkedOn": "2026-08-15"
+        },
+        "zh-Hant": {
+          "text": "氣囊水母",
+          "status": "accepted",
+          "source": "GBIF 5185492 (Physophora hydrostatica)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "fr": [
+          "Physophore-vahiné"
+        ],
+        "ja": [
+          "バレンクラゲ"
+        ],
+        "zh-Hant": [
+          "氣囊水母"
+        ]
+      },
+      "authority": "GBIF 5185492 (Physophora hydrostatica)",
+      "checkedOn": "2026-08-15"
+    },
+    "Hydroid": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.107"
+      ],
+      "langs": {},
+      "candidates": {
+        "ja": [
+          "ヘンゲコップガヤ",
+          "ヤワラクラゲ"
+        ]
+      },
+      "authority": "GBIF 2267857 (Laodicea undulata)",
+      "checkedOn": "2026-08-15"
+    },
+    "Hydrozoan medusa": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.41",
+        "1884.137.42",
+        "1884.137.108"
+      ],
+      "langs": {
+        "fr": {
+          "text": "Geryonia à trompe",
+          "status": "accepted",
+          "source": "GBIF 5186387 (Geryonia proboscidalis)",
+          "checkedOn": "2026-08-15"
+        },
+        "ja": {
+          "text": "オオカラカサクラゲ",
+          "status": "accepted",
+          "source": "GBIF 5186387 (Geryonia proboscidalis)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "fr": [
+          "Geryonia à trompe"
+        ],
+        "de": [
+          "Rüsselmeduse",
+          "Rüsselqualle"
+        ],
+        "ja": [
+          "オオカラカサクラゲ"
+        ]
+      },
+      "authority": "GBIF 5186387 (Geryonia proboscidalis)",
+      "checkedOn": "2026-08-15"
+    },
+    "Jellyfish": {
+      "why": "group title",
+      "accessions": [],
+      "langs": {},
+      "candidates": {}
+    },
+    "Jewel anemone": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.34"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF 7572994 (Actinodactylus clavigerum)",
+      "checkedOn": "2026-08-15"
+    },
+    "Leopard slug": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.1"
+      ],
+      "langs": {
+        "fr": {
+          "text": "Limace léopard",
+          "status": "accepted",
+          "source": "GBIF 2295438 (Limax maximus)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "de": [
+          "Große Egelschnecke",
+          "Großer Schnegel",
+          "Tigerschnegel"
+        ],
+        "fr": [
+          "Limace léopard"
+        ]
+      },
+      "authority": "GBIF 2295438 (Limax maximus)",
+      "checkedOn": "2026-08-15"
+    },
+    "Light-bulb sea squirt": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.119"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF: no exact match for Clavellina lepadiformis",
+      "checkedOn": "2026-08-15"
+    },
+    "Lugworm": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.9"
+      ],
+      "langs": {},
+      "candidates": {
+        "fr": [
+          "Arénicole des pêcheurs, Ver de vase, Tétine, Bocard, Bouzou, Ver d’eau, Ver à l'oeil, Chique, Buzin",
+          "arénicole"
+        ],
+        "de": [
+          "Köderwurm",
+          "Pierwurm",
+          "Prielwurm",
+          "Sand-Pierwurm",
+          "Sandpier",
+          "Sandpierwurm",
+          "Wattwurm"
+        ]
+      },
+      "authority": "GBIF 5197443 (Arenicola marina)",
+      "checkedOn": "2026-08-15"
+    },
+    "Many-ribbed jellyfish": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.44"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF 5711633 (Rhacostoma atlanticum)",
+      "checkedOn": "2026-08-15"
+    },
+    "Melibe nudibranch": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.8"
+      ],
+      "langs": {
+        "de": {
+          "text": "Grüne Melibe",
+          "status": "accepted",
+          "source": "GBIF 4360148 (Melibe viridis)",
+          "checkedOn": "2026-08-15"
+        },
+        "ja": {
+          "text": "ムカデメリベ",
+          "status": "accepted",
+          "source": "GBIF 4360148 (Melibe viridis)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "de": [
+          "Grüne Melibe"
+        ],
+        "ja": [
+          "ムカデメリベ"
+        ]
+      },
+      "authority": "GBIF 4360148 (Melibe viridis)",
+      "checkedOn": "2026-08-15"
+    },
+    "Moon jelly": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.24"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF: no exact match for Aurelia aurita, stages of development",
+      "checkedOn": "2026-08-15"
+    },
+    "Moon jellyfish": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.32"
+      ],
+      "langs": {
+        "de": {
+          "text": "Ohrenqualle",
+          "status": "accepted",
+          "source": "GBIF 2264442 (Aurelia aurita)",
+          "checkedOn": "2026-08-15"
+        },
+        "ja": {
+          "text": "ミズクラゲ",
+          "status": "accepted",
+          "source": "GBIF 2264442 (Aurelia aurita)",
+          "checkedOn": "2026-08-15"
+        },
+        "ko": {
+          "text": "보름달물해파리",
+          "status": "accepted",
+          "source": "GBIF 2264442 (Aurelia aurita)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "es": [
+          "Medusa boca de bandera",
+          "medusa común",
+          "medusa luna",
+          "medusa platillo",
+          "medusa sombrilla"
+        ],
+        "fr": [
+          "Méduse commune, Aurélie, Méduse lune",
+          "aurélie",
+          "méduse bleue",
+          "méduse commune",
+          "méduse lune"
+        ],
+        "de": [
+          "Ohrenqualle"
+        ],
+        "ja": [
+          "ミズクラゲ"
+        ],
+        "zh-Hant": [
+          "海月水母",
+          "海月水母 (月亮水母)"
+        ],
+        "ko": [
+          "보름달물해파리"
+        ]
+      },
+      "authority": "GBIF 2264442 (Aurelia aurita)",
+      "checkedOn": "2026-08-15"
+    },
+    "Never went to sea": {
+      "why": "group title",
+      "accessions": [],
+      "langs": {},
+      "candidates": {}
+    },
+    "Night-light jellyfish": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.105"
+      ],
+      "langs": {
+        "ja": {
+          "text": "オキクラゲ",
+          "status": "accepted",
+          "source": "GBIF 2264423 (Pelagia noctiluca)",
+          "checkedOn": "2026-08-15"
+        },
+        "ko": {
+          "text": "야광원양해파리",
+          "status": "accepted",
+          "source": "GBIF 2264423 (Pelagia noctiluca)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "es": [
+          "Aguaviva",
+          "Medusa boca de bandera",
+          "acalefo luminiscente",
+          "clavel",
+          "medusa luminescente"
+        ],
+        "de": [
+          "Feuerqualle",
+          "Leuchtqualle"
+        ],
+        "fr": [
+          "Pélagie",
+          "méduse pélagique",
+          "piqueur-mauve"
+        ],
+        "ja": [
+          "オキクラゲ"
+        ],
+        "ko": [
+          "야광원양해파리"
+        ]
+      },
+      "authority": "GBIF 2264423 (Pelagia noctiluca)",
+      "checkedOn": "2026-08-15"
+    },
+    "Northern red anemone": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.27"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF: no exact match for Tealia crassicornis variety purpurea",
+      "checkedOn": "2026-08-15"
+    },
+    "Oaten pipes hydroid": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.63",
+        "1884.137.126"
+      ],
+      "langs": {
+        "fr": {
+          "text": "Grande tubulaire",
+          "status": "accepted",
+          "source": "GBIF 5185603 (Tubularia indivisa)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "fr": [
+          "Grande tubulaire"
+        ],
+        "de": [
+          "Hochstämmiger Röhrenpolyp",
+          "ungeteilter Röhrenpolyp"
+        ]
+      },
+      "authority": "GBIF 5185603 (Tubularia indivisa)",
+      "checkedOn": "2026-08-15"
+    },
+    "Orange cup coral": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.73"
+      ],
+      "langs": {},
+      "candidates": {
+        "es": [
+          "Coral naranja",
+          "coral estrellado"
+        ],
+        "de": [
+          "Kelchkoralle",
+          "Sternkoralle"
+        ],
+        "fr": [
+          "Madrépore orange",
+          "corail étoilé"
+        ],
+        "ar": [
+          "شبه المرجان البرتقالي",
+          "مرجان النجمة"
+        ]
+      },
+      "authority": "GBIF 5184544 (Astroides calycularis)",
+      "checkedOn": "2026-08-15"
+    },
+    "Organ pipe coral": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.31"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF: no exact match for Tubipora hemiprichii",
+      "checkedOn": "2026-08-15"
+    },
+    "Paddle worm": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.18"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF: no exact match for Phyllodoce parettii",
+      "checkedOn": "2026-08-15"
+    },
+    "Paper nautilus": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.16"
+      ],
+      "langs": {
+        "fr": {
+          "text": "argonaute voilier",
+          "status": "accepted",
+          "source": "GBIF 5189614 (Argonauta argo)",
+          "checkedOn": "2026-08-15"
+        },
+        "ko": {
+          "text": "조개낙지",
+          "status": "accepted",
+          "source": "GBIF 5189614 (Argonauta argo)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "es": [
+          "Gran argonauta del Pacífico",
+          "argonauta"
+        ],
+        "de": [
+          "Großes Papierboot",
+          "Papierboot"
+        ],
+        "fr": [
+          "argonaute voilier"
+        ],
+        "ar": [
+          "عنقريط كبير",
+          "نوتي الورقة"
+        ],
+        "ja": [
+          "アオイガイ",
+          "カイダコ",
+          "葵貝",
+          "貝蛸"
+        ],
+        "zh-Hant": [
+          "太平洋船蛸",
+          "扁船蛸",
+          "船蛸"
+        ],
+        "ko": [
+          "조개낙지"
+        ]
+      },
+      "authority": "GBIF 5189614 (Argonauta argo)",
+      "checkedOn": "2026-08-15"
+    },
+    "Pink sea fan": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.81"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF 9283558 (Gorgonia verrucosa)",
+      "checkedOn": "2026-08-15"
+    },
+    "Plumose anemone": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.29"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF 8037736 (Metridium senile)",
+      "checkedOn": "2026-08-15"
+    },
+    "Portuguese man o' war": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.33"
+      ],
+      "langs": {
+        "ja": {
+          "text": "カツオノエボシ",
+          "status": "accepted",
+          "source": "GBIF 2264734 (Physalia physalis)",
+          "checkedOn": "2026-08-15"
+        },
+        "zh-Hant": {
+          "text": "僧帽水母",
+          "status": "accepted",
+          "source": "GBIF 2264734 (Physalia physalis)",
+          "checkedOn": "2026-08-15"
+        },
+        "ko": {
+          "text": "작은부레관해파리",
+          "status": "accepted",
+          "source": "GBIF 2264734 (Physalia physalis)",
+          "checkedOn": "2026-08-15"
+        },
+        "de": {
+          "text": "Portugiesische Galeere",
+          "status": "accepted",
+          "source": "GBIF 2264734 (Physalia physalis), corroborated by the existing German pack",
+          "checkedOn": "2026-08-15",
+          "note": "Chosen from three GBIF candidates. Blasenqualle and Seeblase both name the float rather than the animal. This is the term NMT got wrong (portugiesisches Kriegsschiff, a warship), so it is the worked example for the whole glossary."
+        }
+      },
+      "candidates": {
+        "de": [
+          "Blasenqualle",
+          "Portugiesische Galeere",
+          "Seeblase"
+        ],
+        "fr": [
+          "Galère portugaise, Physalie, Vessie de mer",
+          "Physalie",
+          "galère portugaise",
+          "vessie de mer"
+        ],
+        "es": [
+          "botella azul",
+          "carabela portuguesa"
+        ],
+        "ja": [
+          "カツオノエボシ"
+        ],
+        "zh-Hant": [
+          "僧帽水母"
+        ],
+        "ko": [
+          "작은부레관해파리"
+        ]
+      },
+      "authority": "GBIF 2264734 (Physalia physalis)",
+      "checkedOn": "2026-08-15"
+    },
+    "Priapulid worm": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.125"
+      ],
+      "langs": {
+        "ja": {
+          "text": "エラヒキムシ",
+          "status": "accepted",
+          "source": "GBIF 2501343 (Priapulus caudatus)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "de": [
+          "Geschwänzter Keulenwurm",
+          "Geschwänzter Priapswurm"
+        ],
+        "ja": [
+          "エラヒキムシ"
+        ]
+      },
+      "authority": "GBIF 2501343 (Priapulus caudatus)",
+      "checkedOn": "2026-08-15"
+    },
+    "Pyrosome": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.66"
+      ],
+      "langs": {
+        "de": {
+          "text": "Feuerwalze",
+          "status": "accepted",
+          "source": "GBIF 5232532 (Pyrosoma atlanticum)",
+          "checkedOn": "2026-08-15"
+        },
+        "es": {
+          "text": "Pirosoma",
+          "status": "accepted",
+          "source": "GBIF 5232532 (Pyrosoma atlanticum)",
+          "checkedOn": "2026-08-15"
+        },
+        "ja": {
+          "text": "ヒカリボヤ",
+          "status": "accepted",
+          "source": "GBIF 5232532 (Pyrosoma atlanticum)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "de": [
+          "Feuerwalze"
+        ],
+        "es": [
+          "Pirosoma"
+        ],
+        "fr": [
+          "Pyrosome",
+          "Pyrosome atlantique"
+        ],
+        "ja": [
+          "ヒカリボヤ"
+        ]
+      },
+      "authority": "GBIF 5232532 (Pyrosoma atlanticum)",
+      "checkedOn": "2026-08-15"
+    },
+    "Ragworm": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.20"
+      ],
+      "langs": {
+        "de": {
+          "text": "Seeringelwurm",
+          "status": "accepted",
+          "source": "GBIF 2316069 (Perinereis cultrifera)",
+          "checkedOn": "2026-08-15"
+        },
+        "ja": {
+          "text": "クマドリゴカイ",
+          "status": "accepted",
+          "source": "GBIF 2316069 (Perinereis cultrifera)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "de": [
+          "Seeringelwurm"
+        ],
+        "ja": [
+          "クマドリゴカイ"
+        ]
+      },
+      "authority": "GBIF 2316069 (Perinereis cultrifera)",
+      "checkedOn": "2026-08-15"
+    },
+    "Red coral": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.21"
+      ],
+      "langs": {
+        "es": {
+          "text": "coral rojo",
+          "status": "accepted",
+          "source": "GBIF 5185014 (Corallium rubrum)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "fr": [
+          "Corail rouge",
+          "Corail rouge de Méditerranée",
+          "corail rouge"
+        ],
+        "de": [
+          "Edelkoralle",
+          "Rote Edelkoralle"
+        ],
+        "es": [
+          "coral rojo"
+        ]
+      },
+      "authority": "GBIF 5185014 (Corallium rubrum)",
+      "checkedOn": "2026-08-15"
+    },
+    "Ribbon worm": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.37",
+        "1884.137.49"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF 2507775 (Cerebratulus macrorrhochmus)",
+      "checkedOn": "2026-08-15"
+    },
+    "Roman snail": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.86",
+        "1884.137.69"
+      ],
+      "langs": {},
+      "candidates": {
+        "fr": [
+          "Escargot de Bourgogne",
+          "escargot de bourgogne"
+        ],
+        "de": [
+          "Schwäbische Auster",
+          "Weinbergschnecke"
+        ]
+      },
+      "authority": "GBIF 2294287 (Helix pomatia)",
+      "checkedOn": "2026-08-15"
+    },
+    "Salp": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.47"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF 2498510 (Cyclosalpa pinnata)",
+      "checkedOn": "2026-08-15"
+    },
+    "Salp colony": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.51"
+      ],
+      "langs": {
+        "fr": {
+          "text": "Salpe démocratique",
+          "status": "accepted",
+          "source": "GBIF 5232491 (Thalia democratica)",
+          "checkedOn": "2026-08-15"
+        },
+        "ja": {
+          "text": "ホンヒメサルパ",
+          "status": "accepted",
+          "source": "GBIF 5232491 (Thalia democratica)",
+          "checkedOn": "2026-08-15"
+        },
+        "zh-Hant": {
+          "text": "雙尾薩利亞",
+          "status": "accepted",
+          "source": "GBIF 5232491 (Thalia democratica)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "fr": [
+          "Salpe démocratique"
+        ],
+        "ja": [
+          "ホンヒメサルパ"
+        ],
+        "zh-Hant": [
+          "雙尾薩利亞"
+        ]
+      },
+      "authority": "GBIF 5232491 (Thalia democratica)",
+      "checkedOn": "2026-08-15"
+    },
+    "Sand mason worm": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.22",
+        "1884.137.110"
+      ],
+      "langs": {
+        "es": {
+          "text": "gusano albañil",
+          "status": "accepted",
+          "source": "GBIF 2325106 (Lanice conchilega)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "de": [
+          "Bäumchenröhrenwurm",
+          "Muschelsammlerin",
+          "Sandröhrenwurm"
+        ],
+        "es": [
+          "gusano albañil"
+        ],
+        "fr": [
+          "lanice",
+          "macaroni"
+        ]
+      },
+      "authority": "GBIF 2325106 (Lanice conchilega)",
+      "checkedOn": "2026-08-15"
+    },
+    "Sandy creeplet": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.70"
+      ],
+      "langs": {
+        "fr": {
+          "text": "anémone encroûtante brune",
+          "status": "accepted",
+          "source": "GBIF 2258081 (Epizoanthus couchii)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "fr": [
+          "anémone encroûtante brune"
+        ]
+      },
+      "authority": "GBIF 2258081 (Epizoanthus couchii)",
+      "checkedOn": "2026-08-15"
+    },
+    "Sea anemones": {
+      "why": "group title",
+      "accessions": [],
+      "langs": {},
+      "candidates": {}
+    },
+    "Sea angel": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.78",
+        "1884.137.100",
+        "1884.137.103"
+      ],
+      "langs": {
+        "fr": {
+          "text": "Ange des mers",
+          "status": "accepted",
+          "source": "GBIF 5193700 (Clione limacina)",
+          "checkedOn": "2026-08-15"
+        },
+        "es": {
+          "text": "Ángel del mar",
+          "status": "accepted",
+          "source": "GBIF 5193700 (Clione limacina)",
+          "checkedOn": "2026-08-15"
+        },
+        "ja": {
+          "text": "ダイオウハダカカメガイ",
+          "status": "accepted",
+          "source": "GBIF 5193700 (Clione limacina)",
+          "checkedOn": "2026-08-15"
+        },
+        "zh-Hant": {
+          "text": "流冰天使",
+          "status": "accepted",
+          "source": "GBIF 5193700 (Clione limacina)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "fr": [
+          "Ange des mers"
+        ],
+        "de": [
+          "Meeresengel",
+          "Nackter Seeschmetterling"
+        ],
+        "es": [
+          "Ángel del mar"
+        ],
+        "ja": [
+          "ダイオウハダカカメガイ"
+        ],
+        "zh-Hant": [
+          "流冰天使"
+        ]
+      },
+      "authority": "GBIF 5193700 (Clione limacina)",
+      "checkedOn": "2026-08-15"
+    },
+    "Sea butterfly": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.95",
+        "1884.137.99"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF: no exact match for Tiedemannia neapolitana",
+      "checkedOn": "2026-08-15"
+    },
+    "Sea cucumber": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.75",
+        "1884.137.2",
+        "1884.137.82",
+        "1884.137.84",
+        "1884.137.3",
+        "1884.137.23"
+      ],
+      "langs": {
+        "fr": {
+          "text": "holothurie tubuleuse",
+          "status": "accepted",
+          "source": "GBIF 2279156 (Holothuria tubulosa)",
+          "checkedOn": "2026-08-15"
+        },
+        "de": {
+          "text": "röhren Seegurke",
+          "status": "accepted",
+          "source": "GBIF 2279156 (Holothuria tubulosa)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "es": [
+          "carajo de mar",
+          "cohombro de mar pardo"
+        ],
+        "fr": [
+          "holothurie tubuleuse"
+        ],
+        "de": [
+          "röhren Seegurke"
+        ]
+      },
+      "authority": "GBIF 2279156 (Holothuria tubulosa)",
+      "checkedOn": "2026-08-15"
+    },
+    "Sea cucumbers": {
+      "why": "group title",
+      "accessions": [],
+      "langs": {},
+      "candidates": {}
+    },
+    "Sea fur": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.109"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF: no exact match for Obelia dichotoma male polyps and medusa",
+      "checkedOn": "2026-08-15"
+    },
+    "Sea gooseberry": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.53"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF: no exact match for Pleurobranchia pileus",
+      "checkedOn": "2026-08-15"
+    },
+    "Sea hare": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.11",
+        "1884.137.94"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF 6520961 (Aplysia inca)",
+      "checkedOn": "2026-08-15"
+    },
+    "Sea pansy": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.118"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF 10699503 (Renilla violacea)",
+      "checkedOn": "2026-08-15"
+    },
+    "Sea peach": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.4"
+      ],
+      "langs": {
+        "fr": {
+          "text": "Pêche de mer",
+          "status": "accepted",
+          "source": "GBIF 2331871 (Halocynthia pyriformis)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "fr": [
+          "Pêche de mer"
+        ]
+      },
+      "authority": "GBIF 2331871 (Halocynthia pyriformis)",
+      "checkedOn": "2026-08-15"
+    },
+    "Sea pen": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.121"
+      ],
+      "langs": {
+        "de": {
+          "text": "Dunkelrote Seefeder",
+          "status": "accepted",
+          "source": "GBIF 2258707 (Pennatula rubra)",
+          "checkedOn": "2026-08-15"
+        },
+        "fr": {
+          "text": "Pennatule rouge",
+          "status": "accepted",
+          "source": "GBIF 2258707 (Pennatula rubra)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "de": [
+          "Dunkelrote Seefeder"
+        ],
+        "fr": [
+          "Pennatule rouge"
+        ]
+      },
+      "authority": "GBIF 2258707 (Pennatula rubra)",
+      "checkedOn": "2026-08-15"
+    },
+    "Sea slugs": {
+      "why": "group title",
+      "accessions": [],
+      "langs": {},
+      "candidates": {}
+    },
+    "Sea squirts": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.58"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF: no exact match for Phallusia pustulosa",
+      "checkedOn": "2026-08-15"
+    },
+    "Sea squirts and salps": {
+      "why": "group title",
+      "accessions": [],
+      "langs": {},
+      "candidates": {}
+    },
+    "Snakelocks anemone": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.56"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF: no exact match for Anthea cereus variety maxima",
+      "checkedOn": "2026-08-15"
+    },
+    "Soft coral": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.71"
+      ],
+      "langs": {
+        "ja": {
+          "text": "チヂミウミアザミ",
+          "status": "accepted",
+          "source": "GBIF 5185285 (Sympodium caeruleum)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "ja": [
+          "チヂミウミアザミ"
+        ]
+      },
+      "authority": "GBIF 5185285 (Sympodium caeruleum)",
+      "checkedOn": "2026-08-15"
+    },
+    "Soft coral polyp": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.136"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF: no exact match for soft coral polyp",
+      "checkedOn": "2026-08-15"
+    },
+    "Squid": {
+      "why": "group title",
+      "accessions": [],
+      "langs": {},
+      "candidates": {}
+    },
+    "Stalked jellyfish": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.72"
+      ],
+      "langs": {
+        "fr": {
+          "text": "Lucernaire campanulée",
+          "status": "accepted",
+          "source": "GBIF 8889428 (Calvadosia campanulata)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "fr": [
+          "Lucernaire campanulée"
+        ]
+      },
+      "authority": "GBIF 8889428 (Calvadosia campanulata)",
+      "checkedOn": "2026-08-15"
+    },
+    "Stalked sea squirt": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.85"
+      ],
+      "langs": {
+        "fr": {
+          "text": "Patate de mer",
+          "status": "accepted",
+          "source": "GBIF 5200636 (Boltenia ovifera)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "fr": [
+          "Patate de mer"
+        ]
+      },
+      "authority": "GBIF 5200636 (Boltenia ovifera)",
+      "checkedOn": "2026-08-15"
+    },
+    "Star ascidian": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.129"
+      ],
+      "langs": {
+        "es": {
+          "text": "Tunicado dorado",
+          "status": "accepted",
+          "source": "GBIF 5200757 (Botryllus schlosseri)",
+          "checkedOn": "2026-08-15"
+        },
+        "ja": {
+          "text": "ウスイタボヤ",
+          "status": "accepted",
+          "source": "GBIF 5200757 (Botryllus schlosseri)",
+          "checkedOn": "2026-08-15"
+        },
+        "ko": {
+          "text": "스크로세르판멍게",
+          "status": "accepted",
+          "source": "GBIF 5200757 (Botryllus schlosseri)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "fr": [
+          "Botrylle étoilé",
+          "botrylle étoilé"
+        ],
+        "de": [
+          "Stern-Seescheide",
+          "Sternseescheide"
+        ],
+        "es": [
+          "Tunicado dorado"
+        ],
+        "ja": [
+          "ウスイタボヤ"
+        ],
+        "ko": [
+          "스크로세르판멍게"
+        ]
+      },
+      "authority": "GBIF 5200757 (Botryllus schlosseri)",
+      "checkedOn": "2026-08-15"
+    },
+    "The man o' war and other floating colonies": {
+      "why": "group title",
+      "accessions": [],
+      "langs": {},
+      "candidates": {}
+    },
+    "Tree coral": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.120"
+      ],
+      "langs": {
+        "es": {
+          "text": "Coral naranja",
+          "status": "accepted",
+          "source": "GBIF 2259688 (Dendrophyllia ramea)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "es": [
+          "Coral naranja"
+        ],
+        "de": [
+          "Orange Baumkoralle",
+          "Orangene Astkoralle"
+        ]
+      },
+      "authority": "GBIF 2259688 (Dendrophyllia ramea)",
+      "checkedOn": "2026-08-15"
+    },
+    "Tree slug": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.19"
+      ],
+      "langs": {
+        "fr": {
+          "text": "Limace des bois",
+          "status": "accepted",
+          "source": "GBIF 5781247 (Lehmannia marginata)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "de": [
+          "Baum-Egelschnecke",
+          "Baumschnegel"
+        ],
+        "fr": [
+          "Limace des bois"
+        ]
+      },
+      "authority": "GBIF 5781247 (Lehmannia marginata)",
+      "checkedOn": "2026-08-15"
+    },
+    "Tube anemone": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.64"
+      ],
+      "langs": {
+        "es": {
+          "text": "anémona tubo",
+          "status": "accepted",
+          "source": "GBIF 5841862 (Cerianthus membranaceus)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "fr": [
+          "Grand Cérianthe",
+          "Grande cérianthe",
+          "cérianthe de Méditerranée"
+        ],
+        "de": [
+          "Mittel-meer Zylinderrose",
+          "Mittelmeer-Zylinderrose",
+          "Zylinderrose"
+        ],
+        "es": [
+          "anémona tubo"
+        ]
+      },
+      "authority": "GBIF 5841862 (Cerianthus membranaceus)",
+      "checkedOn": "2026-08-15"
+    },
+    "Tube worms": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.15"
+      ],
+      "langs": {},
+      "candidates": {},
+      "authority": "GBIF 5200099 (Serpula contortuplicata)",
+      "checkedOn": "2026-08-15"
+    },
+    "Venus's girdle": {
+      "why": "vernacular name",
+      "accessions": [
+        "1884.137.127"
+      ],
+      "langs": {
+        "de": {
+          "text": "Venusgürtel",
+          "status": "accepted",
+          "source": "GBIF 2501198 (Cestum veneris)",
+          "checkedOn": "2026-08-15"
+        },
+        "fr": {
+          "text": "ceinture de Vénus",
+          "status": "accepted",
+          "source": "GBIF 2501198 (Cestum veneris)",
+          "checkedOn": "2026-08-15"
+        },
+        "es": {
+          "text": "cinturón de Venus",
+          "status": "accepted",
+          "source": "GBIF 2501198 (Cestum veneris)",
+          "checkedOn": "2026-08-15"
+        },
+        "ja": {
+          "text": "オビクラゲ",
+          "status": "accepted",
+          "source": "GBIF 2501198 (Cestum veneris)",
+          "checkedOn": "2026-08-15"
+        }
+      },
+      "candidates": {
+        "de": [
+          "Venusgürtel"
+        ],
+        "fr": [
+          "ceinture de Vénus"
+        ],
+        "es": [
+          "cinturón de Venus"
+        ],
+        "ja": [
+          "オビクラゲ"
+        ]
+      },
+      "authority": "GBIF 2501198 (Cestum veneris)",
+      "checkedOn": "2026-08-15"
+    },
+    "Worms of the seabed": {
+      "why": "group title",
+      "accessions": [],
+      "langs": {},
+      "candidates": {}
+    }
+  }
+}
