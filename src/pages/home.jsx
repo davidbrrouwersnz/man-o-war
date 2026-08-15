@@ -4,7 +4,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { BY_CODE, dirOf } from '../i18n.js'
 import { langAttrs, useLang, useT } from '../lang.jsx'
-import { Spoken, blocksOf } from '../audio.jsx'
+import { Spoken, blocksOf, hasAudio } from '../audio.jsx'
 import { GROUPS, index, loadChunk } from '../collection.js'
 import { Listen, Translated } from '../components/reading.jsx'
 import { Tools } from '../components/tools.jsx'
@@ -35,21 +35,26 @@ function essayAudio(slug, layer, meta, tr) {
     body: tr(['layers', slug, 'segments', s.id, 'text'], null, s.text),
   }))
 
-  const english =
-    titleR.lang === 'en' &&
-    standfirstR.lang === 'en' &&
-    parts.every((p) => p.heading.lang === 'en' && p.body.lang === 'en')
-
+  // Per-item language, as on the group page: a block plays in the language it is printed in, so a
+  // partly-translated essay plays partly-translated narration rather than nothing at all.
   const items = [
-    { id: `layers/${slug}/00-standfirst`, label: titleR.text, blocks: [titleR.text, standfirstR.text] },
+    {
+      id: `layers/${slug}/00-standfirst`,
+      lang: titleR.lang === standfirstR.lang ? standfirstR.lang : 'en',
+      label: titleR.text,
+      blocks: [titleR.text, standfirstR.text],
+    },
     ...parts.map((p) => ({
       id: `layers/${slug}/${p.s.id}`,
+      lang: p.heading.lang === p.body.lang ? p.body.lang : 'en',
       label: p.heading.text,
       blocks: blocksOf(p.heading.text, p.body.text),
     })),
   ]
 
-  return { titleR, standfirstR, parts, english, items }
+  const available = items.every((i) => hasAudio(i.lang))
+
+  return { titleR, standfirstR, parts, available, items }
 }
 
 // One of the two reading essays. It was a page of its own until the content moved onto the
@@ -61,7 +66,7 @@ function essayAudio(slug, layer, meta, tr) {
 // screen reader as two documents stapled together.
 function Essay({ slug, layer, meta, code, langName }) {
   const [t, tr] = useT()
-  const { titleR, standfirstR, parts, english: available, items } = essayAudio(slug, layer, meta, tr)
+  const { titleR, standfirstR, parts, available, items } = essayAudio(slug, layer, meta, tr)
 
   const queue = { key: `l:${slug}`, title: titleR.text, items }
 
@@ -190,15 +195,16 @@ function Home({ go, route }) {
   const essayAudios = layers
     ? index.layers.map((meta) => (layers.layers[meta.slug] ? essayAudio(meta.slug, layers.layers[meta.slug], meta, tr) : null)).filter(Boolean)
     : []
-  // English is decidable from the intro alone, before the chunk arrives — every language pack that
-  // translates the intro translates the essays too — so the button's presence never changes once
-  // the essays land, only whether it can be pressed.
-  const homeAvailable = intro.lang === 'en' && essayAudios.every((a) => a.english)
+  // Decidable from the intro alone, before the chunk arrives — every language pack that translates
+  // the intro translates the essays too — so the button's presence never changes once the essays
+  // land, only whether it can be pressed.
+  const introLang = intro.lang
+  const homeAvailable = hasAudio(introLang) && essayAudios.every((a) => a.available)
   const homeQueue = {
     key: 'home',
     title,
     items: [
-      { id: 'home/00-intro', label: title, blocks: [title, intro.text] },
+      { id: 'home/00-intro', lang: introLang, label: title, blocks: [title, intro.text] },
       ...essayAudios.flatMap((a) => a.items),
     ],
   }

@@ -4,7 +4,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react'
 import { BY_CODE } from '../i18n.js'
 import { langAttrs, useLang, useT } from '../lang.jsx'
-import { Spoken, blocksOf } from '../audio.jsx'
+import { Spoken, blocksOf, hasAudio } from '../audio.jsx'
 import { BY_SLUG, GROUPS, loadChunk } from '../collection.js'
 import { Listen, Media, Translated } from '../components/reading.jsx'
 import { Tools } from '../components/tools.jsx'
@@ -52,12 +52,15 @@ function objectAudio(object, tr, t) {
     body: tr([...base, 'segments', s.id, 'text'], null, s.text),
   }))
 
-  const english =
-    headlineR.lang === 'en' && parts.every((p) => p.heading.lang === 'en' && p.body.lang === 'en')
-
+  // Each item is voiced in the language its own text resolved to, not the one the visitor picked.
+  // A German page whose third segment fell back to English plays the English file there, which is
+  // right: §13 requires the spoken words to be the printed words, and the printed words are English
+  // at that point. `available` then asks the only question that matters — is there narration for
+  // every language this page actually ended up rendering in?
   const items = [
     {
       id: `${object.accession}/00-title`,
+      lang: headlineR.lang,
       label: headlineR.text,
       blocks: showCatalogue ? [headlineR.text, catalogueR.text] : [headlineR.text],
     },
@@ -66,12 +69,17 @@ function objectAudio(object, tr, t) {
     // and is noise for everyone else. See the note in scripts/audio.mjs.
     ...parts.map((p) => ({
       id: `${object.accession}/${p.s.id}`,
+      // Heading and body are one file, so a segment is only voiced in the translation when both
+      // halves are translated — the same rule scripts/audio.mjs applies when deciding what to make.
+      lang: p.heading.lang === p.body.lang ? p.body.lang : 'en',
       label: p.heading.text,
       blocks: blocksOf(p.heading.text, p.body.text),
     })),
   ]
 
-  return { headlineR, catalogueR, showCatalogue, parts, english, items }
+  const available = items.every((i) => hasAudio(i.lang))
+
+  return { headlineR, catalogueR, showCatalogue, parts, available, items }
 }
 
 function ObjectSection({ object, arrived, registry }) {
@@ -89,7 +97,7 @@ function ObjectSection({ object, arrived, registry }) {
   const { story } = object
   const size = object.measurements[0]?.replace(/^Dimensions \(LxWxH\):\s*/i, '').trim()
 
-  const { headlineR, catalogueR, showCatalogue, parts, english, items } = objectAudio(object, tr, t)
+  const { headlineR, catalogueR, showCatalogue, parts, available, items } = objectAudio(object, tr, t)
   const rights = object.rights ? object.rights : t('ui.rightsUnstated')
   const metaLine = [object.accession, size, rights].filter(Boolean).join(' · ')
   const queue = { key: `o:${object.accession}`, title: headlineR.text, items }
@@ -111,7 +119,7 @@ function ObjectSection({ object, arrived, registry }) {
           <h2 className="object-name" {...langAttrs(headlineR)}>
             <Spoken text={headlineR.text} itemId={`${object.accession}/00-title`} block={0} />
           </h2>
-          <Listen queue={queue} available={english} compact />
+          <Listen queue={queue} available={available} compact />
         </div>
         {showCatalogue && (
           <p className="object-catalogue" {...langAttrs(catalogueR)}>
@@ -232,13 +240,15 @@ function GroupPage({ route, go }) {
   // Built from the objects themselves rather than from a separate list, so the tour can never
   // drift out of step with what is on the page.
   const objectAudios = (data?.objects ?? []).map((o) => objectAudio(o, tr, t))
-  const tourAvailable =
-    !!data && title.lang === 'en' && panelR.lang === 'en' && objectAudios.every((a) => a.english)
+  // The panel is one file carrying the group title and the panel text, so it is only voiced in the
+  // translation when both are translated.
+  const panelLang = title.lang === panelR.lang ? panelR.lang : 'en'
+  const tourAvailable = !!data && hasAudio(panelLang) && objectAudios.every((a) => a.available)
   const tourQueue = {
     key: `g:${group.slug}`,
     title: title.text,
     items: [
-      ...(data?.panel ? [{ id: `groups/${group.slug}/00-panel`, label: title.text, blocks: [title.text, panelR.text] }] : []),
+      ...(data?.panel ? [{ id: `groups/${group.slug}/00-panel`, lang: panelLang, label: title.text, blocks: [title.text, panelR.text] }] : []),
       ...objectAudios.flatMap((a) => a.items),
     ],
   }

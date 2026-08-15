@@ -44,7 +44,15 @@ const storyWords = (s) => s.segments.reduce((t, x) => t + words(x.heading) + wor
 // The old estimate was also drifting: it still counted each group's closing line, which stopped
 // being printed or spoken several commits ago.
 const AUDIO = new URL('../src/data/audio-index.json', import.meta.url)
-const durations = existsSync(AUDIO) ? JSON.parse(readFileSync(AUDIO, 'utf8')).segments : null
+const audioIndex = existsSync(AUDIO) ? JSON.parse(readFileSync(AUDIO, 'utf8')) : null
+// One section per language since scripts/audio.mjs learned --lang; `?? audioIndex.segments` reads
+// the older flat shape so a checkout that has not run the generator since still builds.
+const audioLangs = audioIndex?.languages ?? (audioIndex?.segments ? { en: audioIndex } : {})
+// The tile's "about N minutes" is measured from the ENGLISH narration whatever language the tile is
+// written in. That is not an oversight: English is the only language voiced end to end, and the
+// cost of a group is roughly the same in any language. Where another language is fully voiced its
+// own durations would be better, and this is the line to change.
+const durations = audioLangs.en?.segments ?? null
 
 // The exact queue a group's Listen control builds, in order: the panel, then each object's title
 // and its story segments. Spelled out rather than pattern-matched on the audio index, because that
@@ -269,6 +277,16 @@ for (const p of packs) {
 }
 
 index.languages = packs.map((p) => p.code)
+
+// Which languages have narration, and where each one's files are served from. The player reads
+// `base` rather than hardcoding /audio/en, so moving a language's audio out of the repo and onto
+// blob storage is a value in src/data/audio-index.json — English alone is 44MB and git should not
+// be asked to carry nine of those indefinitely.
+index.audio = Object.fromEntries(
+  Object.entries(audioLangs)
+    .filter(([, a]) => Object.keys(a.segments ?? {}).length)
+    .map(([code, a]) => [code, { base: a.base ?? `/audio/${code}`, segments: Object.keys(a.segments).length }])
+)
 
 // §7's disclosure, computed rather than declared.
 //

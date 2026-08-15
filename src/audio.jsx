@@ -17,10 +17,23 @@ import { PauseIcon, PlayIcon, SkipBackIcon, SkipForwardIcon, XIcon } from 'lucid
 import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Slider } from '@/components/ui/slider'
+import { index } from './collection.js'
 import { useT } from './lang.jsx'
 import { useA11y } from './a11y.jsx'
 
-const BASE = '/audio/en'
+// Where each language's narration is served from, written by scripts/split.mjs from the audio
+// index. Two things follow from it being data rather than a constant.
+//
+// A queue item carries the language its TEXT actually resolved to, not the language the visitor
+// selected — the same rule §7 applies to lang and dir. A German page with two segments still in
+// English plays two English files, which is correct: §13 requires the spoken words to be the
+// printed words, and at that point the printed words are English.
+//
+// And moving audio off the repo later is a change to `base` in a JSON file rather than to this
+// player. English alone is 44MB.
+const AUDIO = index.audio ?? {}
+export const hasAudio = (lang) => !!AUDIO[lang]
+const baseFor = (lang) => AUDIO[lang]?.base ?? `/audio/${lang}`
 export const RATES = [0.5, 0.75, 1, 1.25, 1.5, 2]
 
 // The printed blocks of one segment, built exactly the way scripts/audio.mjs builds them. If these
@@ -154,12 +167,15 @@ export function AudioProvider({ children }) {
     setCues([])
     setCue(-1)
     setFailed(false)
-    audio.src = `${BASE}/${item.id}.mp3`
+    // The item's own language, not the session's: a block that fell back to English is played from
+    // the English narration, because that is what is printed at that point on the page.
+    const base = baseFor(item.lang ?? 'en')
+    audio.src = `${base}/${item.id}.mp3`
     audio.playbackRate = rate
     audio.preservesPitch = true
     if (playing) audio.play().catch(() => setFailed(true))
 
-    fetch(`${BASE}/${item.id}.vtt`)
+    fetch(`${base}/${item.id}.vtt`)
       .then((r) => (r.ok ? r.text() : Promise.reject(new Error(String(r.status)))))
       .then((text) => {
         if (wanted) setCues(alignCues(parseVtt(text), item.blocks))
