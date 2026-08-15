@@ -1331,31 +1331,32 @@ ol.grid-dense {
   inset: auto 0 0 0;
   z-index: 20;
   background: var(--paper);
-  border-top: 1px solid var(--rule);
+  /* No border-top. The scrubber is the line between the bar and the page now — see .audio-seek
+     below — and a hairline a few pixels above it would read as a mistake rather than a rule. */
   padding-bottom: env(safe-area-inset-bottom, 0);
 }
 
-/* The read-only 2px bar this replaces could not be operated at all. A native range gives keyboard
-   seeking for free, which SC 2.5.7 requires — a drag must never be the only way to move a
-   control. Styled to the same 2px line so the bar still reads as a hairline until touched. */
+/* The scrubber sits on the boundary and is the boundary: the bar's top edge is the track, unplayed
+   in --rule, which is the colour the hairline here used to be, and played in the brand red. So the
+   line that separates the player from the page also says how far through the guide you are, and
+   the thumb riding it is the playhead.
+
+   The thumb is 16px on a 4px track, so 6px of it stands above the bar and over the page. That is
+   the point — a knob on a line reads as something to grab, where a knob tucked inside the bar
+   reads as decoration. Nothing clips it: .audio-bar sets no overflow. */
 .audio-seek {
   display: block;
   padding: 0;
   margin: 0;
 }
 
-/* The scrubber is shadcn's Slider now, so what is left here is the two things its utilities do not
-   cover: the full width of the bar, and a hit area that clears the 44px floor.
-
-   The 44px touch target had to be fixed in components/ui/slider.jsx rather than here: Tailwind
-   utilities sit in the last cascade layer, so a rule in this file cannot reach the thumb. */
+/* Full width, and no padding: the 7px that used to sit above the track existed to keep the thumb
+   inside the bar, which is exactly what is no longer wanted. The 44px touch target is unaffected —
+   it comes from the thumb's ::after in components/ui/slider.jsx, because Tailwind utilities sit in
+   the last cascade layer and a rule in this file cannot reach the thumb. */
 .audio-seek [data-slot='slider'] {
   width: 100%;
   cursor: pointer;
-  /* Room for the thumb. The track is 4px and sits flush with the top edge of the transport bar, so
-     a 16px thumb centred on it hung 6px out over the page above. Padding on the root rather than a
-     margin on the thumb, because the thumb is styled by utilities this file cannot outrank. */
-  padding-block: 7px;
 }
 
 .audio-seek [data-slot='slider-track'] {
