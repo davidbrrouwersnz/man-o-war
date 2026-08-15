@@ -797,6 +797,46 @@ they depict live in New Zealand waters — the man o' war is the bluebottle here
 have te reo names and mātauranga Māori attached to it**, and that content does sit inside the
 carve-out. Treat it as an opportunity requiring partnership, not a translation task (§22).
 
+### The engine — and the one paid upgrade worth making (Q12)
+
+§7 said generation is effectively free and verification is the cost. That is still true, and it
+hid a second question: **free from which engine.** The eight-language build runs on Azure's neural
+machine translation, because LLM translation requires an Azure AI Foundry resource and the free
+tier does not reach one.
+
+**The whole backfill into seven languages cost about four dollars.** At that price the engine is
+not a budget decision, and the difference between the two is not subtle. Measured on this
+collection's own text:
+
+| English | NMT produced | should be |
+|---|---|---|
+| It is a float | **`C'est une flotte`** — a fleet of ships | `un flotteur` |
+| a living man o' war | **`un hombre de guerra`** — a man of war, a person | `una carabela portuguesa` |
+| the true jellyfish | **`la vraie médusse`** — an invented misspelling | `méduse` |
+| Portuguese man o' war | **`portugiesisches Kriegsschiff`** — a warship | `Portugiesische Galeere` |
+| Ribbon worm | **`Bandwurm`** — a tapeworm, a different phylum | `Schnurwurm` |
+| You can count them | `Tu peux les compter`, after `Regardez` | one register, not two |
+
+The float and the man o' war are not stylistic complaints. They are wrong about the animal, in the
+sentences whose job is to explain it — and the last row breaks the writing standard in §6, which
+rests on a single consistent voice.
+
+**A glossary fixes names and nothing else.** `src/data/glossary.json` supplies the agreed
+vernacular name from GBIF and Wikidata, and the run fails if it does not come back; that is what
+turns `Kriegsschiff` into `Portugiesische Galeere`. It cannot reach a float, a register, or an
+invented spelling, because those are prose. §7 already says why no automated check will: error
+detection is excellent and judgment of quality is close to blind, and that limitation is precisely
+where museum interpretation lives.
+
+**So the honest position for the pitch.** The pipeline is real, the guards work, and the
+translations are complete in eight languages — and their prose is the weakest thing in the product.
+That is a solved problem with a price tag rather than an open research question, which makes it the
+cheapest quality improvement available and the first thing to spend money on.
+
+Two things do not change whichever engine runs: §7's paid community reviewers are still required,
+because neither engine can tell you the writing is good; and the disclosure stays, because
+unreviewed is unreviewed however it was produced.
+
 ---
 
 ## 8. Routing
@@ -1477,6 +1517,7 @@ Genuinely undecided. Do not build either way until they are resolved.
 |---|---|---|
 | **Q2c** | **Does a curator check the grouping before it ships?** The rollup is a hand-authored judgment the data does not contain, and it will be read as the Museum's own taxonomy. A short review is a cheap ask and a good thing to raise in the pitch. Not a blocker — ship the grouping, mark it as ours. | Museum, eventually |
 | **Q7b** | **Will the Museum take the te reo question to Ōhākī o Ngā Tīpuna?** One email (§6). Everything in the spec ships while waiting, and ships unchanged if the answer is no. Only the Museum can open this door. | Museum → its Māori advisory committee |
+| **Q12** | **Does the translation run on neural machine translation or on a language model?** It runs on NMT today because LLM translation needs an Azure AI Foundry resource, which the free tier does not reach. The pipeline is already engine-agnostic — it picks the engine from what the endpoint can serve and records which one produced each unit — so this is an endpoint and a deployment name, not a rebuild. **The measured case for changing it is in §7, "The engine".** | Whoever holds the Azure subscription |
 
 ### Answered
 
