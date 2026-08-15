@@ -81,6 +81,22 @@ async function translate(texts, from, to) {
   return out
 }
 
+// Number is not meaning. Japanese does not mark plural, so "Floating colonies" comes back as
+// "floating colony" — a two-word term scoring 50%, which failed the gate on the first real change
+// it ever saw. The translation was right; the round trip simply could not carry a distinction the
+// target language does not make. Korean and Chinese behave the same way.
+//
+// So terms are compared in the singular. Crude English rules, deliberately: this is a comparison
+// key rather than a lemmatiser, and it only has to stop number from reading as drift. It does not
+// soften a real error — "Ribbon worm" against "Tapeworm" still shares no word at all.
+const singular = (w) => {
+  if (/[^aeiou]ies$/.test(w)) return w.slice(0, -3) + 'y'
+  if (/(ss|us|is)$/.test(w)) return w
+  if (/(ch|sh|s|x|z)es$/.test(w)) return w.slice(0, -2)
+  if (/[^s]s$/.test(w)) return w.slice(0, -1)
+  return w
+}
+
 // Compared on words rather than characters, so punctuation and casing do not raise a false alarm.
 const normalise = (s) =>
   s
@@ -89,6 +105,7 @@ const normalise = (s) =>
     .replace(/[^\p{L}\p{N}' ]/gu, ' ')
     .split(/\s+/)
     .filter(Boolean)
+    .map(singular)
 
 const similarity = (a, b) => {
   const A = normalise(a)
