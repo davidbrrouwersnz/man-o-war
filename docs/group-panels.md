@@ -23,7 +23,7 @@ jellyfish of all, which turns out to be neither famous for the right reason nor 
 
 ---
 
-## 2 · The man o' war and other floating colonies — 8
+## 2 · Floating colonies — 8
 
 **Panel.** A Portuguese man o' war is not one animal. It is hundreds, fused into a single drifting
 colony — some members sting, some digest, some reproduce — and not one of them could survive

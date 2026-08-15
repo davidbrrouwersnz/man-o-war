@@ -351,7 +351,7 @@ eleven. Seven was compressing the collection by about a third.
 | | Page | Objects |
 |---|---|---|
 | 1 | **Jellyfish, large and small** | 13 |
-| 2 | **The man o' war and other floating colonies** | 8 |
+| 2 | **Floating colonies** | 8 |
 | 3 | **Comb jellies and sea butterflies — the see-through swimmers** | 9 |
 | 4 | **Sea squirts and salps** | 10 |
 | 5 | **Squid, cuttlefish and the paper nautilus** | 7 |
@@ -905,8 +905,7 @@ Eleven of these. Each carries its objects inline, in order, and **ends**.
 ┌─────────────────────────────┐
 │ ← Collection                │
 │                             │
-│ The man o' war and other    │   group title — /g/floating-colonies
-│   floating colonies         │
+│ Floating colonies           │   group title — /g/floating-colonies
 │ 8 models. About 9 minutes.  │   stated cost, computed at 150 wpm
 │                             │
 │ [~50 words of group panel]  │   drafted — docs/group-panels.md
