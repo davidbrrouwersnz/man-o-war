@@ -39,7 +39,7 @@ const buttonVariants = cva(
            adding a pressed state on top would announce it twice. */
         quiet:
           "border-[var(--control-edge)] bg-transparent text-[var(--control-ink)] hover:border-[var(--control-ink)] data-[playing=true]:bg-[var(--control-ink)] data-[playing=true]:text-[var(--control-ground)] focus-visible:ring-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--control-ring)]",
-        bare: "border-transparent bg-transparent text-[var(--control-ink)] hover:bg-muted focus-visible:ring-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--control-ring)]",
+        bare: "border-transparent bg-transparent text-[var(--control-ink)] hover:bg-[var(--control-rule)] focus-visible:ring-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--control-ring)]",
       },
       size: {
         default:

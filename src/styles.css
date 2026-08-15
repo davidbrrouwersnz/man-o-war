@@ -290,36 +290,10 @@ a {
   margin: 0 0 0.25rem;
 }
 
-.tool-button {
-  display: inline-grid;
-  place-items: center;
-  /* WCAG 2.2 SC 2.5.8 puts the floor at 24px. A gallery is one-handed and moving, so 44.
-     In px, not rem, and that matters: every touch target in this file was 2.75rem, so at the
-     200% text setting they became 88px and pushed the layout viewport wider than the phone. A
-     touch target is sized by fingers, which do not grow when the type does. */
-  min-width: 44px;
-  min-height: 44px;
-  padding: 0;
-  border: 1px solid transparent;
-  border-radius: 3px;
-  background: transparent;
-  color: var(--ink-soft);
-  cursor: pointer;
-}
-
-.tool-button:hover {
-  color: var(--ink);
-  border-color: var(--edge);
-}
-
-.home-head .tool-button {
-  color: var(--dark-ink-soft);
-}
-
-.home-head .tool-button:hover {
-  color: var(--dark-ink);
-  border-color: var(--dark-edge);
-}
+/* .tool-button carries no styling of its own any more — it is a shadcn Button at icon-touch size
+   in the `bare` variant, which brings the 44px floor, the round shape and the colours. The class
+   remains as a hook for the scripts that press it. Its dark-header and desktop overrides went with
+   it: --control-* answers that now. */
 
 /* --------------------------------------------------- the display dialog */
 
@@ -1209,6 +1183,7 @@ ol.grid-dense {
     --control-ink-soft: var(--ink-soft);
     --control-edge: var(--edge);
     --control-ground: var(--paper);
+    --control-rule: var(--rule);
     --control-ring: var(--brand);
   }
 
@@ -1229,15 +1204,6 @@ ol.grid-dense {
 
   .home-head .listen-note {
     color: var(--ink-meta);
-  }
-
-  .home-head .tool-button {
-    color: var(--ink-soft);
-  }
-
-  .home-head .tool-button:hover {
-    color: var(--ink);
-    border-color: var(--edge);
   }
 
     .home-head .lang-picker select {
@@ -1472,10 +1438,6 @@ ol.grid-dense {
   outline-offset: -2px;
 }
 
-.audio-play {
-  border: 1px solid var(--edge);
-}
-
 /* The speed control is a shadcn Select now; its look comes from the component's own utilities,
    which this file cannot outrank. Nothing left to say about it here. */
 
@@ -1684,6 +1646,7 @@ html:has(.audio-bar) {
     --control-ink-soft: var(--dark-ink-soft);
     --control-edge: var(--dark-edge);
     --control-ground: var(--dark);
+    --control-rule: var(--dark-rule);
     --control-ring: var(--dark-brand);
   }
 

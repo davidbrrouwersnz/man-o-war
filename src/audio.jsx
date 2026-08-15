@@ -564,7 +564,7 @@ export function AudioBar() {
             <SkipBackIcon aria-hidden="true" focusable="false" />
           </Button>
           <Button
-            variant="quiet"
+            variant="bare"
             size="icon-touch"
             className="audio-play"
             onClick={a.toggle}

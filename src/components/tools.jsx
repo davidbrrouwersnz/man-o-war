@@ -82,7 +82,7 @@ function DisplaySettings() {
   return (
     <>
       <Button
-        variant="quiet"
+        variant="bare"
         size="icon-touch"
         className="tool-button"
         aria-label={t('ui.display')}
