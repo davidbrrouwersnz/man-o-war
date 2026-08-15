@@ -5,8 +5,8 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { BY_CODE, dirOf } from '../i18n.js'
 import { langAttrs, useLang, useT } from '../lang.jsx'
 import { Spoken, blocksOf, hasAudio } from '../audio.jsx'
-import { GROUPS, index, loadChunk } from '../collection.js'
-import { Listen, Translated } from '../components/reading.jsx'
+import { GROUPS, PUBLISHERS, index, loadChunk } from '../collection.js'
+import { Elsewhere, Listen, Translated } from '../components/reading.jsx'
 import { Tools } from '../components/tools.jsx'
 
 // 1884.137.33, the Portuguese man o' war. One object of the 128 is on display; this is it.
@@ -327,6 +327,12 @@ function Home({ go, route }) {
               if (!l) return null
               return <Essay key={meta.slug} slug={meta.slug} layer={l} meta={meta} code={code} langName={langName} />
             })}
+
+            {/* §6's external sources at the widest scale: not this animal or this group, but this
+                collection — the other Blaschka collections, the scholarship on these objects, and
+                what the two men did after they stopped making sea creatures. It sits after both
+                essays because that is where a reader who has finished them is. */}
+            <Elsewhere links={layers.elsewhere} publishers={PUBLISHERS} variant="collection" />
           </div>
         )}
       </div>

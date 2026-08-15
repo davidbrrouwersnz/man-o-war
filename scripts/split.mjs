@@ -21,6 +21,64 @@ const drafted = read('stories-drafted.json')
 const OBJECTS = new Map(manifest.objects.map((o) => [o.accession, o]))
 const STORIES = { ...drafted.stories, ...museum.stories }
 
+// ------------------------------------------------------------------ further reading (§6)
+//
+// Two files meet here and they are kept apart on purpose. src/data/taxa.json is machine-resolved
+// and regenerable — a re-run of scripts/taxa.mjs overwrites it wholesale. src/data/elsewhere.json
+// is hand-authored editorial judgment and nothing overwrites it. Merging happens at build time so
+// that a page can render both as one list without the app knowing which is which.
+//
+// The prose that describes a PUBLISHER is shipped once, in the index, rather than on every link:
+// "the national encyclopedia, written for a general reader" is the same sentence on all fourteen
+// Te Ara links, and 128 objects' worth of repeated boilerplate is exactly the kind of payload §2's
+// visitor on a gallery connection should not be asked to pay for.
+const taxa = existsSync(new URL('../src/data/taxa.json', import.meta.url)) ? read('taxa.json') : { taxa: {} }
+const curated = read('elsewhere.json')
+
+// A link as it ships: the publisher by key, and only the words specific to this link.
+const link = (p, title, url, why, claim) => ({ p, title, url, why, claim })
+
+// MarLIN is machine-resolved but reads as further reading rather than as a record, so it joins the
+// curated list rather than the taxon block. Its own common name is kept where MarLIN has one —
+// "Dustbin lid jellyfish" is the kind of thing worth arriving at.
+function elsewhereFor(accession) {
+  const hand = curated.objects[accession] ?? []
+  const m = taxa.taxa[accession]?.marlin
+  const links = hand.map((l) => link(l.publisher, l.title, l.url, l.why, l.claim))
+  if (m) {
+    links.push(
+      link(
+        'marlin',
+        m.common ? `${m.common} (${m.name})` : m.name,
+        m.url,
+        'What this animal does, where it lives and how it breeds, written for a general reader by the people who survey the north-east Atlantic — the sea the Blaschkas modelled.',
+        'this-species'
+      )
+    )
+  }
+  return links
+}
+
+// The catalogue record's own taxonomy, reduced to what the page prints. §6: "Never silently replace
+// a catalogue name with a modern one. Show both." So `catalogue` is always the name on the record
+// and `current` is only present when those differ.
+//
+// `why` carries the refusal where there is one, and it is shipped rather than dropped: an object
+// whose name resolves nowhere is telling a visitor something true about a 140-year-old catalogue,
+// and §6's third state exists precisely so the UI does not render an empty link instead.
+function taxonFor(accession) {
+  const t = taxa.taxa[accession]
+  if (!t) return null
+  if (!t.resolved) return { resolved: false, why: t.why, retrieved: t.retrieved }
+  return {
+    resolved: true,
+    retrieved: t.retrieved,
+    catalogue: { name: t.worms.name, authority: t.worms.authority ?? null, status: t.worms.status, url: t.worms.url },
+    current: t.current ? { name: t.current.name, authority: t.current.authority ?? null, url: t.current.url } : null,
+    gbif: t.gbif ? { url: t.gbif.url, occurrences: t.gbif.occurrences, occurrencesNZ: t.gbif.occurrencesNZ } : null,
+  }
+}
+
 // Build-time-only fields, stripped from everything written to src/data/chunks/. They instruct the
 // translation pipeline — §7's carve-outs, and the reason each one is held back — and a visitor on a
 // gallery connection should not pay for an argument addressed to a build script. A stringify
@@ -100,6 +158,33 @@ let chunkTotal = 0
   }
 }
 
+// §6's external sources, asserted rather than trusted. Each of these has a failure mode that is
+// invisible on the page: a link attributed to a publisher nobody described, a curated entry keyed
+// to an accession that no longer exists, a claim strength the interface has no words for. All three
+// render as something plausible and wrong, so they stop the build instead.
+{
+  const bad = []
+  const publishers = new Set(Object.keys(curated.publishers))
+  const CLAIMS = new Set(['this-species', 'this-kind', 'this-group', 'this-collection'])
+  const allAcc = new Set(manifest.objects.map((o) => o.accession))
+  const slugs = new Set(groups.groups.map((g) => g.slug))
+
+  for (const [where, list] of [
+    ['collection', curated.collection],
+    ...Object.entries(curated.groups).map(([k, v]) => [`groups.${k}`, v]),
+    ...Object.entries(curated.objects).map(([k, v]) => [`objects.${k}`, v]),
+  ]) {
+    for (const l of list) {
+      if (!publishers.has(l.publisher)) bad.push(`${where}: unknown publisher "${l.publisher}"`)
+      if (!CLAIMS.has(l.claim)) bad.push(`${where}: unknown claim "${l.claim}"`)
+      if (!/^https:\/\//.test(l.url)) bad.push(`${where}: not an https URL — ${l.url}`)
+    }
+  }
+  for (const a of Object.keys(curated.objects)) if (!allAcc.has(a)) bad.push(`objects.${a}: not in the manifest`)
+  for (const s of Object.keys(curated.groups)) if (!slugs.has(s)) bad.push(`groups.${s}: not a group`)
+  if (bad.length) throw new Error(`§6 external sources — src/data/elsewhere.json:\n    ${bad.join('\n    ')}`)
+}
+
 for (const g of groups.groups) {
   const panel = museum.panels[g.slug]
 
@@ -125,6 +210,10 @@ for (const g of groups.groups) {
       placeholder: o.placeholder,
       image: { xlarge: o.image.xlarge, large: o.image.large },
       story,
+      // Omitted rather than empty where there is nothing to link: an empty array renders as a
+      // heading with no list under it, which reads as a section that failed to load.
+      elsewhere: elsewhereFor(accession).length ? elsewhereFor(accession) : undefined,
+      taxon: taxonFor(accession) ?? undefined,
     }
   })
 
@@ -145,7 +234,8 @@ for (const g of groups.groups) {
 
   // No ending. The closing line is no longer rendered or narrated, so shipping it would be bytes
   // on a gallery connection that nobody reads. The text stays in src/data/stories.json.
-  const chunk = { slug: g.slug, title: g.title, panel: panel?.panel ?? null, objects }
+  const groupLinks = (curated.groups[g.slug] ?? []).map((l) => link(l.publisher, l.title, l.url, l.why, l.claim))
+  const chunk = { slug: g.slug, title: g.title, panel: panel?.panel ?? null, elsewhere: groupLinks, objects }
   const json = ship(chunk)
   writeFileSync(new URL(`${g.slug}.json`, dir), json)
   chunkTotal += gzipSync(json).length
@@ -319,9 +409,26 @@ for (const p of packs) {
 
 // Layers 3–5, written once and reached from any group page (§6, §10).
 
-const layersJson = ship(LAYERS)
+const layersJson = ship({
+  ...LAYERS,
+  // Collection-level further reading rides with the essays rather than in the index, because it is
+  // printed at the foot of the reading column and arrives when that column does. The index is
+  // loaded on every route and this is needed on one.
+  elsewhere: curated.collection.map((l) => link(l.publisher, l.title, l.url, l.why, l.claim)),
+})
 writeFileSync(new URL('layers.json', dir), layersJson)
 index.layers = LAYERS.order.map((slug) => ({ slug, title: LAYERS.layers[slug].title }))
+
+// Who each source is, said once. Every link anywhere in the app names a key in here, and the
+// assertion above is what stops a link naming a publisher that was never described — which would
+// render as an attribution line with a blank where the institution should be.
+//
+// The name and the institution behind it ship; the paragraph in elsewhere.json explaining why that
+// institution is worth trusting does NOT. It is written for whoever reviews this file, and the
+// index is loaded on every route in the app — including the ones with no links on them at all.
+index.publishers = Object.fromEntries(
+  Object.entries(curated.publishers).map(([key, p]) => [key, { name: p.name, publisher: p.publisher }])
+)
 
 const indexJson = JSON.stringify(index)
 writeFileSync(new URL('index.json', dir), indexJson)

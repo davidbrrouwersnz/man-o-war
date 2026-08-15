@@ -24,4 +24,10 @@ const SUPPORTED = LANGUAGES.filter((l) => l.code === 'en' || index.languages.inc
 // been written, so the picker degrades to saying nothing rather than to throwing.
 const REVIEW = index.review ?? {}
 
-export { index, CHUNKS, loadChunk, GROUPS, BY_SLUG, SUPPORTED, REVIEW }
+// Who publishes each external source, by the key its links carry (§6). Written once in
+// src/data/elsewhere.json and shipped once here rather than repeated on every link — Te Ara alone
+// is named on fourteen of them. Empty object rather than undefined so a link whose publisher key
+// was removed renders without its attribution instead of throwing on a page that is otherwise fine.
+const PUBLISHERS = index.publishers ?? {}
+
+export { index, CHUNKS, loadChunk, GROUPS, BY_SLUG, SUPPORTED, REVIEW, PUBLISHERS }

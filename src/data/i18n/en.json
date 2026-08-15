@@ -46,6 +46,20 @@
     "reading": "Reading",
     "followWords": "Scroll to follow the words as they are read",
     "notFoundAccession": "{accession} is not an accession number in this collection.",
-    "collectionIntroOnDisplay": "One is on display"
+    "collectionIntroOnDisplay": "One is on display",
+    "elsewhere": "Read more elsewhere",
+    "claim": {
+      "this-species": "The same species.",
+      "this-kind": "A related animal, not the species in the glass.",
+      "this-group": "The group, not this object.",
+      "this-collection": "This collection, and the people who made it."
+    },
+    "record": "The record",
+    "recordCatalogue": "the name on the catalogue record",
+    "recordCurrent": "the name accepted today",
+    "recordSightings": "{n} sightings recorded worldwide",
+    "recordSightingsNZ": "{n} of them in New Zealand",
+    "recordChecked": "Checked against WoRMS and GBIF on {date}.",
+    "recordUnresolved": "The catalogue name does not resolve to one current species, so there is nothing here to link to. That is a real answer about a 140-year-old catalogue, not a gap."
   }
 }
