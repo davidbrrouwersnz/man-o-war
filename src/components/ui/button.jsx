@@ -58,7 +58,12 @@ const buttonVariants = cva(
            target-size check the moment it was adopted. In rem, so it grows with the text-size
            setting like the rest of the app. Not a fixed height: min-, so a wrapped label still
            fits. */
-        touch: "min-h-11 gap-2 rounded-full px-4 py-2 text-[length:var(--step-0)] [&_svg:not([class*='size-'])]:size-[1.15em]",
+        /* rounded-lg, not rounded-full. The pill came out of the stylesheet this replaced, where
+           .listen was border-radius: 2rem, and was carried across without being asked about. It is
+           a labelled button sitting among labelled controls, and it is on the same radius token as
+           all of them now. `icon-touch` below stays round: an icon-only control with no label is a
+           different thing, and a circle is what says so. */
+        touch: "min-h-11 gap-2 rounded-lg px-4 py-2 text-[length:var(--step-0)] [&_svg:not([class*='size-'])]:size-[1.15em]",
         "icon-touch": "min-h-11 min-w-11 rounded-full [&_svg:not([class*='size-'])]:size-[1.15em]",
       },
     },
