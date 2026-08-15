@@ -530,6 +530,27 @@ svg.lucide {
    What went with the old rules: a hand-written roving tabindex and an arrow/Home/End key handler,
    about twenty lines, now the primitive's job. */
 
+/* The two grids on the collection page. They were tabs over one slot; now they are sections one
+   after the other, each with a heading that names it and anchors it — /all lands on #all-objects.
+
+   The heading is set as a signpost rather than as a title: this column is navigation, and a
+   display-sized heading over a field of photographs competes with them. Same treatment as the
+   legends in the settings dialog, which do the same job. */
+.browse-title {
+  margin: 0;
+  padding: 2.5rem var(--gutter, 1.25rem) 0.75rem;
+  font-size: var(--step--1);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--dark-ink-soft);
+}
+
+/* The first one sits under the tab bar's old position, so it does not need the full run-up. */
+.browse:first-of-type .browse-title {
+  padding-top: 1.25rem;
+}
+
 /* ------------------------------------------------------------------ the tile grids
 
    `ol.grid`, not `.grid`. The class is the app's own name for the collection's tile grid, and it
@@ -597,7 +618,7 @@ ol.grid {
   padding: 0.75rem 0 0;
 }
 
-.tile-text h2 {
+.tile-text h3 {
   font-size: var(--step-0);
   line-height: 1.25;
   font-weight: 700;

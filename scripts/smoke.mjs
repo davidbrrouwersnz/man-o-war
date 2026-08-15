@@ -100,9 +100,13 @@ for (const [path, selector, expectText] of ROUTES) {
   if (errors.length) console.log(`        console: ${errors.slice(0, 2).join(' | ')}`)
 }
 
-// ------------------------------------------------------------------ the collection page tabs
+// ------------------------------------------------------------------ the collection page grids
 //
-// A route test only proves the markup arrived. These press the thing.
+// A route test only proves the markup arrived. These drive the page.
+//
+// The two grids were tabs over one slot and are now sections one after the other. What still
+// matters is what mattered then: both are reachable, the 128-tile chunk is not paid for by someone
+// who never scrolls to it, and the /all path that predates all of this still lands somewhere real.
 
 const evaluate = async (expression, userGesture = false) => {
   const { result } = await send('Runtime.evaluate', { expression, returnByValue: true, userGesture })
@@ -119,49 +123,36 @@ const tab = (name, ok, detail = '') => {
 
 console.log('')
 await send('Page.navigate', { url: `${ORIGIN}/` })
-await wait(1500)
+await wait(1800)
 
 const start = JSON.parse(
   await evaluate(`JSON.stringify({
+    headings: [...document.querySelectorAll('.browse-title')].map((h) => h.textContent.trim()),
+    tiles: document.querySelectorAll('.grid:not(.grid-dense) .tile').length,
+    dense: document.querySelectorAll('.grid-dense .tile').length,
+    anchor: !!document.getElementById('all-objects'),
     tabs: document.querySelectorAll('[role=tab]').length,
-    selected: (document.querySelector('[role=tab][aria-selected=true]')||{}).id || '',
-    tiles: document.querySelectorAll('#panel-groups .tile').length,
-    dense: document.querySelectorAll('.grid-dense').length,
+    scroll: Math.round(scrollY),
   })`)
 )
-tab('collection page has two tabs', start.tabs === 2, `${start.tabs} found`)
-tab('opens on the groups tab', start.selected === 'tab-groups', start.selected)
-tab('shows the eleven group tiles', start.tiles === 11, `${start.tiles} tiles`)
-tab('has not loaded the 128-object grid yet', start.dense === 0)
+tab('both grids are on the one page', start.headings.length === 2, start.headings.join(' / '))
+tab('named Categories and All objects', start.headings[0] === 'Categories' && start.headings[1] === 'All objects')
+tab('no tabs left', start.tabs === 0, `${start.tabs} found`)
+tab('shows the eleven category tiles', start.tiles === 11, `${start.tiles} tiles`)
+tab('the all-objects section is addressable', start.anchor)
+tab('has not paid for the 128-object grid at the top of the page', start.dense === 0, `${start.dense} tiles`)
 
-await evaluate(`document.getElementById('tab-all').click(); true`, true)
-await wait(1800)
-const opened = JSON.parse(
+// Scrolling to it is what fetches it — the same treatment the object photographs get.
+await evaluate(`document.getElementById('all-objects').scrollIntoView(); true`, true)
+await wait(2500)
+const scrolled = JSON.parse(
   await evaluate(`JSON.stringify({
-    selected: (document.querySelector('[role=tab][aria-selected=true]')||{}).id || '',
-    tiles: document.querySelectorAll('#panel-all .tile').length,
-    path: location.pathname,
-    groupsGone: document.querySelectorAll('#panel-groups').length === 0,
+    dense: document.querySelectorAll('.grid-dense .tile').length,
+    tiles: document.querySelectorAll('.grid:not(.grid-dense) .tile').length,
   })`)
 )
-tab('switching selects the other tab', opened.selected === 'tab-all', opened.selected)
-tab('shows all 128 objects', opened.tiles === 128, `${opened.tiles} tiles`)
-tab('only one panel is rendered', opened.groupsGone)
-tab('the URL follows the tab', opened.path === '/all', opened.path)
-
-// Arrow keys are what a keyboard user will actually try on a tablist.
-await evaluate(`document.getElementById('tab-all').dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowLeft',bubbles:true})); true`, true)
-await wait(600)
-const arrowed = JSON.parse(
-  await evaluate(`JSON.stringify({
-    selected: (document.querySelector('[role=tab][aria-selected=true]')||{}).id || '',
-    focused: (document.activeElement||{}).id || '',
-    path: location.pathname,
-  })`)
-)
-tab('arrow key moves between tabs', arrowed.selected === 'tab-groups', arrowed.selected)
-tab('arrow key moves focus with it', arrowed.focused === 'tab-groups', arrowed.focused)
-tab('the URL follows back', arrowed.path === '/', arrowed.path)
+tab('scrolling to it loads all 128 objects', scrolled.dense === 128, `${scrolled.dense} tiles`)
+tab('and the category grid is still there', scrolled.tiles === 11, `${scrolled.tiles} tiles`)
 
 // The language select shows a globe instead of the word "Language". The word has to survive in the
 // accessibility tree — an unnamed select is announced as "combo box", and this is the one control a
@@ -181,18 +172,20 @@ const globe = JSON.parse(
 tab('globe icon is present', globe.svg)
 tab('globe is decorative, the word is hidden text', globe.decorative && globe.hidden)
 
-// An old link to /all must open the tab, not a page.
+// An old link to /all must land on the collection page, at that section.
 await send('Page.navigate', { url: `${ORIGIN}/all` })
-await wait(1800)
+await wait(2500)
 const deep = JSON.parse(
   await evaluate(`JSON.stringify({
-    selected: (document.querySelector('[role=tab][aria-selected=true]')||{}).id || '',
-    tiles: document.querySelectorAll('#panel-all .tile').length,
+    dense: document.querySelectorAll('.grid-dense .tile').length,
     h1: (document.querySelector('h1')||{}).textContent || '',
+    heading: document.getElementById('all-objects-title')?.textContent.trim() || '',
+    scrolledTo: Math.round(scrollY) > 200,
   })`)
 )
-tab('/all opens the tab on the collection page', deep.selected === 'tab-all' && deep.tiles === 128, `${deep.tiles} tiles`)
-tab('...and it is the collection page, not a page of its own', deep.h1.includes('Blaschka'), deep.h1)
+tab('/all still lands on the collection page', deep.h1.includes('Blaschka'), deep.h1)
+tab('...at the all-objects section', deep.scrolledTo && deep.heading === 'All objects', `scrollY moved: ${deep.scrolledTo}`)
+tab('...with all 128 loaded without waiting to be scrolled', deep.dense === 128, `${deep.dense} tiles`)
 
 console.log(
   failed ? `\n${failed} check(s) failed` : `\nall ${ROUTES.length} routes render, all ${tabChecks} tab checks pass`

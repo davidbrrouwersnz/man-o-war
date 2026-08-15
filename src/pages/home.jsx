@@ -1,12 +1,11 @@
-// The collection page: eleven group tiles, every object as a second tab, and the two reading
-// essays below them.
+// The collection page: the eleven category tiles, then all 128 objects, then the two reading
+// essays beside them.
 
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { BY_CODE, dirOf } from '../i18n.js'
 import { langAttrs, useLang, useT } from '../lang.jsx'
 import { Spoken, blocksOf } from '../audio.jsx'
 import { GROUPS, index, loadChunk } from '../collection.js'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Listen, Translated } from '../components/reading.jsx'
 import { Tools } from '../components/tools.jsx'
 
@@ -114,26 +113,39 @@ function Home({ go, route }) {
   const { code } = useLang()
   const langName = BY_CODE.get(code)?.endonym ?? 'English'
   const [layers, setLayers] = useState(null)
-  const [tab, setTab] = useState(route?.tab === 'all' ? 'all' : 'groups')
   const [all, setAll] = useState(null)
+  const allRef = useRef(null)
 
   useLayoutEffect(() => {
     document.title = `${t('ui.collectionTitle')} — Canterbury Museum`
     if (!route?.at) scrollTo(0, 0)
   }, [t, route?.at])
 
-  // 62KB of tiles for 128 objects, fetched only if that tab is opened. It is by far the largest
-  // chunk in the app and most visitors never ask for it.
+  // 62KB of tiles for 128 objects, and now nothing gates it behind a press. Fetched when the
+  // second grid comes within a couple of screens instead — the same treatment the object
+  // photographs get — so the front page still paints on the eleven category tiles alone and §2's
+  // visitor on a museum connection does not pay for 128 of them before seeing anything.
+  //
+  // An arrival on /all skips the wait: the chunk is what that URL is asking for.
   useEffect(() => {
-    if (tab === 'all' && !all) loadChunk('all')?.then(setAll)
-  }, [tab, all])
-
-  // The visible tab is in the URL so the view can be linked and shared, but with replaceState —
-  // flicking between two tabs is not navigation and should not fill up the back button.
-  useEffect(() => {
-    const href = tab === 'all' ? '/all' : '/'
-    if (location.pathname !== href) history.replaceState(null, '', href)
-  }, [tab])
+    if (all) return
+    if (route?.at === 'all-objects') {
+      loadChunk('all')?.then(setAll)
+      return
+    }
+    const el = allRef.current
+    if (!el) return
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (!e.isIntersecting) return
+        io.disconnect()
+        loadChunk('all')?.then(setAll)
+      },
+      { rootMargin: '200% 0px' }
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [all, route?.at])
 
   // The essays are a chunk, fetched after the page is up rather than compiled into the bundle. The
   // front page is the one every visitor loads first and §2's visitor is on a museum connection —
@@ -142,12 +154,13 @@ function Home({ go, route }) {
     loadChunk('layers')?.then(setLayers)
   }, [])
 
-  // An arrival on an old /how-it-was-made link cannot scroll until the chunk it points at exists.
+  // An arrival on /all or on an old /how-it-was-made link cannot scroll until whichever chunk it
+  // points at has rendered, so this runs again as each one lands.
   useLayoutEffect(() => {
-    if (!route?.at || !layers) return
+    if (!route?.at) return
     const el = document.getElementById(route.at)
     if (el) scrollTo({ top: el.offsetTop - 8, behavior: 'instant' })
-  }, [route?.at, layers])
+  }, [route?.at, layers, all])
 
   const intro = tr('ui.collectionIntro')
   const title = t('ui.collectionTitle')
@@ -230,63 +243,58 @@ function Home({ go, route }) {
             than the front door — it rescues browsing by eye and the completionist — and a tab does
             that job better than a page: it is visible from the front rather than found, and it
             costs nothing until it is opened. */}
-        {/* shadcn's Tabs. The ids are kept: the smoke test addresses them by name, and the
-            twenty-odd lines of roving tabindex and arrow/Home/End handling that used to sit in this
-            file are the primitive's job now. Inactive panels are not rendered, which is what keeps
-            the 62KB of 128 tiles from being fetched until someone opens that tab. */}
-        <Tabs value={tab} onValueChange={setTab} className="gap-0">
-          <TabsList variant="line" activateOnFocus aria-label={t('ui.collectionTitle')} className="tabs h-auto w-full justify-start gap-1 rounded-none border-b border-[var(--dark-rule)] bg-transparent py-0 px-5 mb-6">
-            <TabsTrigger value="groups" id="tab-groups" className="h-auto min-h-11 flex-none rounded-none border-0 px-3.5 py-2.5 font-normal text-[length:var(--step-0)] text-[var(--control-ink-soft)] hover:text-[var(--control-ink)] data-active:bg-transparent data-active:text-[var(--control-ink)] after:bg-[var(--control-ink)] group-data-horizontal/tabs:after:bottom-[-1px] focus-visible:ring-0 focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[color:var(--control-ring)]">
-              {t('ui.byGroup')}
-            </TabsTrigger>
-            <TabsTrigger value="all" id="tab-all" className="h-auto min-h-11 flex-none rounded-none border-0 px-3.5 py-2.5 font-normal text-[length:var(--step-0)] text-[var(--control-ink-soft)] hover:text-[var(--control-ink)] data-active:bg-transparent data-active:text-[var(--control-ink)] after:bg-[var(--control-ink)] group-data-horizontal/tabs:after:bottom-[-1px] focus-visible:ring-0 focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[color:var(--control-ring)]">
-              {t('ui.everyObject')}
-            </TabsTrigger>
-          </TabsList>
+        {/* Both grids, one after the other, rather than two tabs over one slot. Each is a section
+            with its own heading, which is what makes them addressable — #all-objects is where /all
+            now lands — and what lets a screen reader list them. h2 because the collection title
+            above is the h1; the essays in the reading column are h2 as well. */}
+        <section className="browse" aria-labelledby="categories-title">
+          <h2 className="browse-title" id="categories-title">
+            {t('ui.categories')}
+          </h2>
+          <ol className="grid">
+            {GROUPS.map((g) => (
+              <li key={g.slug} className="tile">
+                <a href={`/g/${g.slug}`} onClick={go(`/g/${g.slug}`)}>
+                  <div className="tile-well">
+                    <img className="tile-blur" src={g.representative.placeholder} alt="" aria-hidden="true" />
+                    <img className="tile-img" src={g.representative.url} alt="" loading="lazy" decoding="async" />
+                  </div>
+                  <div className="tile-text">
+                    <h3 {...langAttrs(tr(`groups.${g.slug}`, null, g.title))}>{tr(`groups.${g.slug}`, null, g.title).text}</h3>
+                    <p>
+                      {g.size} {t('ui.models')}. {t('ui.aboutMinutes', { m: g.minutes })}
+                    </p>
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </section>
 
-          <TabsContent value="groups" id="panel-groups">
-            <ol className="grid">
-              {GROUPS.map((g) => (
-                <li key={g.slug} className="tile">
-                  <a href={`/g/${g.slug}`} onClick={go(`/g/${g.slug}`)}>
+        <section className="browse" id="all-objects" aria-labelledby="all-objects-title" ref={allRef}>
+          <h2 className="browse-title" id="all-objects-title">
+            {t('ui.allObjects')}
+          </h2>
+          {all ? (
+            <ol className="grid grid-dense">
+              {all.objects.map((o) => (
+                <li key={o.accession} className="tile">
+                  <a href={`/o/${o.accession}`} onClick={go(`/o/${o.accession}`)}>
                     <div className="tile-well">
-                      <img className="tile-blur" src={g.representative.placeholder} alt="" aria-hidden="true" />
-                      <img className="tile-img" src={g.representative.url} alt="" loading="lazy" decoding="async" />
+                      <img className="tile-blur" src={o.placeholder} alt="" aria-hidden="true" />
+                      <img className="tile-img" src={o.url} alt="" loading="lazy" decoding="async" />
                     </div>
                     <div className="tile-text">
-                      <h2 {...langAttrs(tr(`groups.${g.slug}`, null, g.title))}>{tr(`groups.${g.slug}`, null, g.title).text}</h2>
-                      <p>
-                        {g.size} {t('ui.models')}. {t('ui.aboutMinutes', { m: g.minutes })}
-                      </p>
+                      <h3 className="tile-small">{o.name}</h3>
                     </div>
                   </a>
                 </li>
               ))}
             </ol>
-          </TabsContent>
-
-          <TabsContent value="all" id="panel-all">
-            {all ? (
-              <ol className="grid grid-dense">
-                {all.objects.map((o) => (
-                  <li key={o.accession} className="tile">
-                    <a href={`/o/${o.accession}`} onClick={go(`/o/${o.accession}`)}>
-                      <div className="tile-well">
-                        <img className="tile-blur" src={o.placeholder} alt="" aria-hidden="true" />
-                        <img className="tile-img" src={o.url} alt="" loading="lazy" decoding="async" />
-                      </div>
-                      <div className="tile-text">
-                        <h2 className="tile-small">{o.name}</h2>
-                      </div>
-                    </a>
-                  </li>
-                ))}
-              </ol>
-            ) : (
-              <p className="loading loading-dark">{t('ui.loading')}</p>
-            )}
-          </TabsContent>
-        </Tabs>
+          ) : (
+            <p className="loading loading-dark">{t('ui.loading')}</p>
+          )}
+        </section>
       </div>
 
       {/* The background reading. On a phone it sits below the grid, because the collection is what
