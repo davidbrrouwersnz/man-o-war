@@ -7237,12 +7237,6 @@
         "translatedAt": null,
         "reviewStatus": "unreviewed"
       },
-      "group:cephalopods": {
-        "hash": "868048f314e231a9",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
-        "reviewStatus": "unreviewed"
-      },
       "group:sea-slugs": {
         "hash": "95f63d6e28681356",
         "engine": "unknown-legacy",
@@ -7549,12 +7543,6 @@
         "translatedAt": null,
         "reviewStatus": "unreviewed"
       },
-      "story:1884.137.24:headline": {
-        "hash": "350af645d6e4a56d",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
       "story:1884.137.24:seg:look:heading": {
         "hash": "48cead3c38d31785",
         "engine": "nmt",
@@ -7569,12 +7557,6 @@
       },
       "story:1884.137.24:seg:the-life-cycle:heading": {
         "hash": "5f0e156dbb91bc3e",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
-      "story:1884.137.24:seg:the-life-cycle:text": {
-        "hash": "d74cf866d85ea50f",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
@@ -8509,12 +8491,6 @@
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
-      "story:1884.137.6:headline": {
-        "hash": "3f414e64349b849f",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
       "story:1884.137.6:seg:look:heading": {
         "hash": "4a630f5763e32641",
         "engine": "nmt",
@@ -8535,12 +8511,6 @@
       },
       "story:1884.137.6:seg:the-strike:text": {
         "hash": "0ddad2ef32b1b755",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
-      "story:1884.137.38:headline": {
-        "hash": "32bfe8750998e8b0",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
@@ -8655,12 +8625,6 @@
       },
       "story:1884.137.67:seg:the-light-organ:text": {
         "hash": "5e2b38325d092359",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
-      "story:1884.137.16:headline": {
-        "hash": "718634d672f8409a",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
@@ -10039,12 +10003,6 @@
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
-      "story:1884.137.75:headline": {
-        "hash": "37292e795920004f",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
       "story:1884.137.75:seg:look:heading": {
         "hash": "4a630f5763e32641",
         "engine": "nmt",
@@ -10059,18 +10017,6 @@
       },
       "story:1884.137.75:seg:five:heading": {
         "hash": "6baae33907d2f8db",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
-      "story:1884.137.75:seg:five:text": {
-        "hash": "21ad62f268387055",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
-      "story:1884.137.2:headline": {
-        "hash": "37292e795920004f",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
@@ -10099,12 +10045,6 @@
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
-      "story:1884.137.82:headline": {
-        "hash": "37292e795920004f",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
       "story:1884.137.82:seg:look:heading": {
         "hash": "4a630f5763e32641",
         "engine": "nmt",
@@ -10129,12 +10069,6 @@
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
-      "story:1884.137.84:headline": {
-        "hash": "37292e795920004f",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
       "story:1884.137.84:seg:look:heading": {
         "hash": "4a630f5763e32641",
         "engine": "nmt",
@@ -10149,18 +10083,6 @@
       },
       "story:1884.137.84:seg:the-stripes:heading": {
         "hash": "8191ae4c61b1c2fc",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
-      "story:1884.137.84:seg:the-stripes:text": {
-        "hash": "aaf4223808da930d",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
-      "story:1884.137.3:headline": {
-        "hash": "37292e795920004f",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
@@ -10185,12 +10107,6 @@
       },
       "story:1884.137.3:seg:no-feet:text": {
         "hash": "4de437da2d936d03",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
-      "story:1884.137.23:headline": {
-        "hash": "37292e795920004f",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
@@ -11047,20 +10963,8 @@
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
-      "story:1884.137.32:headline": {
-        "hash": "f7631183540358ce",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
       "story:1884.137.32:seg:look:heading": {
         "hash": "4a630f5763e32641",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
-      "story:1884.137.32:seg:look:text": {
-        "hash": "9eb252622f2389e0",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
@@ -11079,18 +10983,6 @@
       },
       "story:1884.137.32:seg:blooms:heading": {
         "hash": "cd042f8c2be428b0",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
-      "story:1884.137.32:seg:blooms:text": {
-        "hash": "21f0a8cd91fe390d",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
-      "story:1884.137.68:headline": {
-        "hash": "a70fa0b0188baa9c",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
@@ -11125,12 +11017,6 @@
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
-      "story:1884.137.68:seg:where:text": {
-        "hash": "16ed97c3acf00fde",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
       "story:1884.137.104:headline": {
         "hash": "728c285577b73cab",
         "engine": "nmt",
@@ -11161,12 +11047,6 @@
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
-      "story:1884.137.105:headline": {
-        "hash": "bf59c299c7bf3824",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
       "story:1884.137.105:seg:look:heading": {
         "hash": "39f5d66bca34e89c",
         "engine": "nmt",
@@ -11181,12 +11061,6 @@
       },
       "story:1884.137.105:seg:two-names:heading": {
         "hash": "d2d31bfb912be253",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
-      "story:1884.137.105:seg:two-names:text": {
-        "hash": "839c96b818c04343",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
@@ -11289,12 +11163,6 @@
       },
       "story:1884.137.100:seg:the-hunt:text": {
         "hash": "dd44478ca642eb97",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
-      "story:1884.137.10:headline": {
-        "hash": "a622c6f8acf42b7d",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
@@ -11445,6 +11313,138 @@
       },
       "story:1884.137.33:seg:not-one-animal:text": {
         "hash": "c3ff2805e79b0748",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "group:cephalopods": {
+        "hash": "868048f314e231a9",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "story:1884.137.24:headline": {
+        "hash": "350af645d6e4a56d",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "story:1884.137.24:seg:the-life-cycle:text": {
+        "hash": "d74cf866d85ea50f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "story:1884.137.6:headline": {
+        "hash": "3f414e64349b849f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "story:1884.137.38:headline": {
+        "hash": "32bfe8750998e8b0",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "story:1884.137.16:headline": {
+        "hash": "718634d672f8409a",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "story:1884.137.75:headline": {
+        "hash": "37292e795920004f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "story:1884.137.75:seg:five:text": {
+        "hash": "21ad62f268387055",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "story:1884.137.2:headline": {
+        "hash": "37292e795920004f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "story:1884.137.82:headline": {
+        "hash": "37292e795920004f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "story:1884.137.84:headline": {
+        "hash": "37292e795920004f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "story:1884.137.84:seg:the-stripes:text": {
+        "hash": "aaf4223808da930d",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "story:1884.137.3:headline": {
+        "hash": "37292e795920004f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "story:1884.137.23:headline": {
+        "hash": "37292e795920004f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "story:1884.137.32:headline": {
+        "hash": "f7631183540358ce",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "story:1884.137.32:seg:look:text": {
+        "hash": "9eb252622f2389e0",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "story:1884.137.32:seg:blooms:text": {
+        "hash": "21f0a8cd91fe390d",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "story:1884.137.68:headline": {
+        "hash": "a70fa0b0188baa9c",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "story:1884.137.105:headline": {
+        "hash": "bf59c299c7bf3824",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "story:1884.137.105:seg:two-names:text": {
+        "hash": "839c96b818c04343",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "story:1884.137.10:headline": {
+        "hash": "a622c6f8acf42b7d",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "story:1884.137.68:seg:where:text": {
+        "hash": "16ed97c3acf00fde",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"

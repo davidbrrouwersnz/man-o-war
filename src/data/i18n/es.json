@@ -53,13 +53,13 @@
     "floating-colonies": "Colonias flotantes",
     "see-through-swimmers": "Ctenóforos y mariposas de mar — los nadadores transparentes",
     "sea-squirts-and-salps": "Ascidias y salpas",
-    "cephalopods": "Calamares, sepias y el argonauta",
     "sea-slugs": "Babosas de mar",
     "sea-anemones": "Anémonas de mar",
     "corals-and-sea-fans": "Corales, gorgonias e hidrozoos — animales que crecen como plantas",
     "sea-cucumbers-and-stars": "Pepinos de mar, lirios de mar y ofiuras",
     "worms": "Gusanos del fondo marino",
-    "never-went-to-sea": "Nunca fueron al mar"
+    "never-went-to-sea": "Nunca fueron al mar",
+    "cephalopods": "Calamar, sepias y la návala de argonauta"
   },
   "layerTitles": {
     "how-it-was-made": "Cómo se hizo",

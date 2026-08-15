@@ -3,7 +3,6 @@
   "reviewed": false,
   "stories": {
     "1884.137.24": {
-      "headline": "Medusas lunares, etapas de desarrollo",
       "segments": {
         "look": {
           "heading": "Catorce modelos, un animal",
@@ -11,9 +10,10 @@
         },
         "the-life-cycle": {
           "heading": "Por qué hacen falta catorce",
-          "text": "Una medusa lunar no crece como crece un animal con columna vertebral. Cambia de forma por completo, más de una vez.\n\nComienza como una larva nadadora. La larva se asienta sobre algo sólido y se convierte en un pequeño pólipo de tallo, fijo en su lugar. El pólipo se divide a lo largo de su longitud en una pila de discos. Uno a uno, los discos se desprenden y nadan lejos, y cada uno es una medusa joven. Solo entonces comienza a formarse la campana familiar.\n\nPor eso una sola especie necesita catorce modelos para explicarlo."
+          "text": "Una medusa luna no crece como crece un animal con columna vertebral. Cambia de forma por completo, más de una vez.\n\nComienza como una larva nadadora. La larva se asienta sobre algo sólido y se convierte en un pequeño pólipo de tallo, fijo en su lugar. El pólipo se divide a lo largo de su longitud en una pila de discos. Uno a uno, los discos se desprenden y nadan lejos, y cada uno es una medusa joven. Solo entonces comienza a formarse la campana familiar.\n\nPor eso una sola especie necesita catorce modelos para explicarlo."
         }
-      }
+      },
+      "headline": "Medusa luna, etapas de desarrollo"
     },
     "1884.137.41": {
       "headline": "Medusa hidrozoo, hembra",
@@ -419,7 +419,6 @@
       }
     },
     "1884.137.6": {
-      "headline": "Calamar europeo, hembra",
       "segments": {
         "look": {
           "heading": "Mira bien",
@@ -429,10 +428,10 @@
           "heading": "Los dos largos",
           "text": "Los ocho brazos sujetan y manipulan. Los dos tentáculos largos hacen algo completamente distinto.\n\nSe mantienen enrollados y ocultos hasta el momento del golpe, luego se lanzan a toda su extensión para atrapar la presa y arrastrarla de vuelta al alcance de los brazos. Toda la acción dura una fracción de segundo.\n\nLos calamares ven bien, se mueven rápido y cambian de color al instante. Casi todo en ellos gira en torno a la caza en aguas abiertas."
         }
-      }
+      },
+      "headline": "Calamar común, hembra"
     },
     "1884.137.38": {
-      "headline": "Sepia común",
       "segments": {
         "look": {
           "heading": "Mira bien",
@@ -442,7 +441,8 @@
           "heading": "Una pantalla para la piel",
           "text": "Una sepia puede cambiar el color y la textura de su piel en menos de un segundo, usando millones de pequeños sacos pigmentarios que el músculo abre y cierra.\n\nHace esto para ocultar y también para comunicarse. Un macho que corteja puede tener un patrón en el lado que mira hacia una hembra y otro diferente en el lado que mira hacia un rival.\n\nLo más extraño es que las sepias parecen daltónicas y coinciden con colores que no pueden ver."
         }
-      }
+      },
+      "headline": "sepia común"
     },
     "1884.137.17": {
       "headline": "Calamar ganchudo",
@@ -484,7 +484,6 @@
       }
     },
     "1884.137.16": {
-      "headline": "Náutilo de papel, machos",
       "segments": {
         "look": {
           "heading": "Dos machos",
@@ -494,7 +493,8 @@
           "heading": "El que apenas está presente",
           "text": "La argonauta hembra es el animal que todos conocen, con su caparazón blanco. El macho es una fracción de su tamaño y no tiene caparazón alguno.\n\nEse brazo hinchado es su objetivo. Está cargado de esperma y se desprende. Él lo deja con la hembra y no se queda.\n\nCuando se encontraron los primeros brazos separados dentro de hembras, se describieron como gusanos parásitos. Tardaron años en darse cuenta de que ellos eran los machos desaparecidos."
         }
-      }
+      },
+      "headline": "Argonauta, machos"
     },
     "1884.137.7": {
       "headline": "Babosa marina de lomo esponjoso",
@@ -1082,7 +1082,6 @@
       }
     },
     "1884.137.75": {
-      "headline": "Pepino de mar",
       "segments": {
         "look": {
           "heading": "Mira bien",
@@ -1090,12 +1089,12 @@
         },
         "five": {
           "heading": "Cuenta en cinco",
-          "text": "Un pepino de mar no se parece a nada más en esta página, y está construido con el mismo diseño que una estrella de mar.\n\nEl plan es cinco. Toma una estrella de mar, ponla en la punta de un brazo, estirárala en una salchicha y la tumbas de lado, y las cinco líneas de pies tubulares recorren el cuerpo en lugar de extenderse por los brazos.\n\nLos tentáculos alrededor de la boca también son pies tubulares, agrandados. Este los utiliza para aplastar sedimentos y digerir lo que vive en ellos."
+          "text": "Un cohombro de mar pardo a nada más en esta página, y está construido con el mismo diseño que una estrella de mar.\n\nEl plan es cinco. Toma una estrella de mar, ponla en la punta de un brazo, estirárala en una salchicha y la tumbas de lado, y las cinco líneas de pies tubulares recorren el cuerpo en lugar de extenderse por los brazos.\n\nLos tentáculos alrededor de la boca también son pies tubulares, agrandados. Este los utiliza para aplastar sedimentos y digerir lo que vive en ellos."
         }
-      }
+      },
+      "headline": "cohombro de mar pardo"
     },
     "1884.137.2": {
-      "headline": "Pepino de mar",
       "segments": {
         "look": {
           "heading": "Mira bien",
@@ -1105,10 +1104,10 @@
           "heading": "Pies corriendo por el agua",
           "text": "Esos pies pequeños no son musculosos como una pierna. Cada uno es un tubo lleno de agua de mar, y el animal lo extiende bombeando agua y lo atrae hacia atrás apretándolo.\n\nTodo el sistema funciona con presión de agua a través de una red de canales internos. Es lento, poderoso y ningún otro grupo de animales lo usa.\n\nEsta especie mantiene los pies en filas definidas y su cuerpo se curva de modo que ambos extremos se sientan hacia arriba mientras el centro permanece hacia abajo."
         }
-      }
+      },
+      "headline": "cohombro de mar pardo"
     },
     "1884.137.82": {
-      "headline": "Pepino de mar",
       "segments": {
         "look": {
           "heading": "Mira bien",
@@ -1118,10 +1117,10 @@
           "heading": "Alimentándose de la corriente",
           "text": "No todos los pepinos de mar se alimentan de sedimentos. Este tipo de agua entierra la mayor parte de su cuerpo y solo mantiene los tentáculos en el agua en movimiento.\n\nLos tentáculos son pegajosos y ramificados. Pequeñas partículas flotantes caen sobre ellas, y una a una el animal se mete un tentáculo en la boca y lo limpia.\n\nEs un proceso lento y metódico, y continúa de forma continua mientras la corriente funciona."
         }
-      }
+      },
+      "headline": "cohombro de mar pardo"
     },
     "1884.137.84": {
-      "headline": "Pepino de mar",
       "segments": {
         "look": {
           "heading": "Mira bien",
@@ -1129,12 +1128,12 @@
         },
         "the-stripes": {
           "heading": "Rayas con propósito",
-          "text": "Las franjas marcan por dónde pasan las filas de pies tubulares. En un pepino de mar, esas hileras son las cinco líneas del plan corporal subyacente, y el color a menudo las acompaña.\n\nNormalmente se giran tres filas hacia abajo contra el suelo y llevan los pies que se usan para agarrar. Dos están volteados hacia arriba y sus pies están reducidos.\n\nAsí que un animal que parece tener una parte superior y una parte inferior en realidad tiene cinco lados, tres de los cuales han sido usados como suela."
+          "text": "Las franjas marcan por dónde pasan las filas de pies tubulares. En un cohombro de mar pardo esas hileras son las cinco líneas del plano corporal subyacente, y el color suele seguirlas.\n\nNormalmente se giran tres filas hacia abajo contra el suelo y llevan los pies que se usan para agarrar. Dos están volteados hacia arriba y sus pies están reducidos.\n\nAsí que un animal que parece tener una parte superior y una parte inferior en realidad tiene cinco lados, tres de los cuales han sido usados como suela."
         }
-      }
+      },
+      "headline": "cohombro de mar pardo"
     },
     "1884.137.3": {
-      "headline": "Pepino de mar",
       "segments": {
         "look": {
           "heading": "Mira bien",
@@ -1144,10 +1143,10 @@
           "heading": "Los que dejaron de hacer pies",
           "text": "Este grupo ha perdido por completo los pies tubulares. Se entierra y se mueve empujando ondas de músculo por el cuerpo, como hace una lombriz.\n\nNo necesita agarre y no ha conservado ninguno.\n\nLo que sí conserva son anclas: ganchos microscópicos clavados en la piel, que se enganchan en el sedimento y evitan que el animal se deslice hacia atrás. Si manipulas uno, se pega ligeramente a la piel, y eso es lo que estás notando."
         }
-      }
+      },
+      "headline": "cohombro de mar pardo"
     },
     "1884.137.23": {
-      "headline": "Pepino de mar",
       "segments": {
         "look": {
           "heading": "Mira bien",
@@ -1157,7 +1156,8 @@
           "heading": "Se rompe a propósito",
           "text": "Animales de este tipo son notoriamente difíciles de recolectar enteros. Al manipularlos, se rompen en pedazos.\n\nEso no es debilidad; Es una defensa. Un depredador recibe un fragmento y el resto del animal está en otro lugar. Con el tiempo, las piezas que faltan vuelven a crecer.\n\nTambién explica por qué merecía la pena comprar un modelo de cristal. Un ejemplar que llega en un tarro con cinco longitudes no relacionadas no enseña a nadie cómo es el animal."
         }
-      }
+      },
+      "headline": "cohombro de mar pardo"
     },
     "1884.137.13": {
       "headline": "Estrella pluma",
@@ -1528,11 +1528,10 @@
       "headline": "carabela portuguesa"
     },
     "1884.137.32": {
-      "headline": "Medusa lunar",
       "segments": {
         "look": {
           "heading": "Mira bien",
-          "text": "Una campana de cristal poco profunda, bordeada de finos tentáculos alrededor del borde. Debajo de él cuelgan cuatro brazos más largos con bordes con volantes.\n\nCerca de la parte superior de la campana hay cuatro formas de media luna, destacadas aquí en rojo y rosa. Esos son los órganos reproductores. En una medusa lunar son casi la única parte coloreada. El resto del animal es blanco, o no tiene color alguno."
+          "text": "Una campana de cristal poco profunda, bordeada de finos tentáculos alrededor del borde. Debajo de él cuelgan cuatro brazos más largos con bordes con volantes.\n\nCerca de la parte superior de la campana hay cuatro formas de media luna, destacadas aquí en rojo y rosa. Esos son los órganos reproductores. En una medusa luna son casi la única parte coloreada. El resto del animal es blanco, o no tiene color alguno."
         },
         "how-it-eats": {
           "heading": "Cómo come",
@@ -1540,12 +1539,12 @@
         },
         "blooms": {
           "heading": "Florecimientos y retroceso",
-          "text": "Las medusas lunares a veces se agrupan en enormes cantidades en un solo tramo de mar. Estas reuniones se llaman flores y parecen ocurrir con más frecuencia. Parte de la razón es que los animales que comen medusas lunares, entre ellos tortugas y tiburones, están en problemas ellos mismos.\n\nHay una cosa más. Una medusa lunar puede retroceder a través de su propio ciclo de vida y volver a una etapa que ya había superado."
+          "text": "Las medusas luna a veces se reúnen en enormes cantidades en un solo tramo de mar. Estas reuniones se llaman flores y parecen ocurrir con más frecuencia. Parte de la razón es que los animales que comen medusa luna, entre ellos tortugas y tiburones, están ellos mismos en problemas.\n\nHay una cosa más. Una medusa luna puede retroceder a través de su propio ciclo vital y volver a una etapa que ya había superado."
         }
-      }
+      },
+      "headline": "medusa luna"
     },
     "1884.137.68": {
-      "headline": "Medusa barril",
       "segments": {
         "look": {
           "heading": "Mira bien",
@@ -1557,9 +1556,10 @@
         },
         "where": {
           "heading": "Donde se reúnen",
-          "text": "Las medusas barril son comunes en el Atlántico oriental y el Mediterráneo. En los meses más cálidos se agrupan cerca de la costa y a menudo acaban arrastrados por las playas.\n\nSon la comida favorita de la tortuga laúd."
+          "text": "Las medusas de barril son comunes en el Atlántico oriental y el Mediterráneo. En los meses más cálidos se agrupan cerca de la costa y a menudo acaban arrastrados por las playas.\n\nSon la comida favorita de la tortuga laúd."
         }
-      }
+      },
+      "headline": "medusa de barril"
     },
     "1884.137.104": {
       "headline": "Medusa Compás",
@@ -1575,7 +1575,6 @@
       }
     },
     "1884.137.105": {
-      "headline": "Medusas nocturnas",
       "segments": {
         "look": {
           "heading": "Un color que el cristal no muestra",
@@ -1583,9 +1582,10 @@
         },
         "two-names": {
           "heading": "Dos nombres, un hábito",
-          "text": "Este animal se llama aguijón malva, y también se le llama medusa nocturna.\n\nEl segundo nombre es el más interesante. Brilla en la oscuridad. La palabra para crear tu propia luz es bioluminiscencia, y esta medusa lo hace."
+          "text": "Este animal se llama aguijón malva, y también se le llama medusa luminiscente.\n\nEl segundo nombre es el más interesante. Brilla en la oscuridad. La palabra para crear tu propia luz es bioluminiscencia, y esta medusa lo hace."
         }
-      }
+      },
+      "headline": "medusa luminiscente"
     },
     "1884.137.44": {
       "headline": "Medusa de muchas costillas",
@@ -1631,7 +1631,6 @@
       }
     },
     "1884.137.10": {
-      "headline": "Argonauta mayor",
       "segments": {
         "look": {
           "heading": "La carcasa no es un hogar",
@@ -1645,7 +1644,8 @@
           "heading": "Montar medusas",
           "text": "Un argonauta coge una medusa y se queda con ella. La medusa se convierte en tres cosas a la vez. Es una cobertura para evitar que persiga al pulpo. Es una forma de moverse. Y es comida, porque el argonauta come las medusas poco a poco, y también come lo que la medusa ha pescado."
         }
-      }
+      },
+      "headline": "argonauta"
     },
     "1884.137.8": {
       "headline": "Nudibranquio de Melibe",

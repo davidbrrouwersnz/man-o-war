@@ -275,9 +275,26 @@ export function assertProtected(terms, translated, id) {
 // Case-insensitively: a glossary holds "gusano albañil" and a sentence beginning with it gets
 // "Gusano albañil", which is the same name correctly capitalised. Comparing exactly rejected a
 // perfectly good translation and left the object with no Spanish headline at all.
+// A glossary holds one form of a name; prose inflects it. "medusa de barril" is stored singular and
+// the sentence reads "Las medusas de barril son comunes" — the agreed name, correctly pluralised.
+// So each word may carry an ordinary plural ending, and the whole thing is matched case-insensitively
+// for the sentence-initial capital.
+//
+// This loosens presence, never correctness: it still cannot match a DIFFERENT word. "barco de
+// guerra" does not satisfy "medusa de barril" under any inflection.
+const inflected = (term) => {
+  const esc = (w) => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  const body = term
+    .trim()
+    .split(/\s+/)
+    .map((w) => `${esc(w)}(?:s|es|n|en|e)?`)
+    .join('\\s+')
+  return new RegExp(body, 'iu')
+}
+
 export function assertGlossed(expected, translated, id) {
   const hay = translated.toLowerCase()
-  const lost = expected.filter((t) => !hay.includes(t.toLowerCase()))
+  const lost = expected.filter((t) => !hay.includes(t.toLowerCase()) && !inflected(t).test(translated))
   if (lost.length) {
     throw new Error(
       `${id}: the glossary translation was not used: ${lost.join(', ')}\n` +

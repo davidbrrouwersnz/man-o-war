@@ -40,6 +40,22 @@
           "status": "accepted",
           "source": "Wikidata only (Rhizostoma pulmo)",
           "checkedOn": "2026-08-15"
+        },
+        "fr": {
+          "text": "méduse chou-fleur",
+          "status": "accepted",
+          "source": "Editorial decision from the GBIF candidates (5185453 (Rhizostoma pulmo))",
+          "why": "The current standard French name. \"Poumon de mer\" is older usage and \"Rhizostome de Méditerranée\" is a scientific descriptor rather than a name.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
+          "checkedOn": "2026-08-15"
+        },
+        "es": {
+          "text": "medusa de barril",
+          "status": "accepted",
+          "source": "Editorial decision from the GBIF candidates (5185453 (Rhizostoma pulmo))",
+          "why": "Carries the same sense as the English the visitor is reading. The alternatives — aguamala, aguamar, acalefo azul — are general Spanish words for a stinging jellyfish, not this species.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
+          "checkedOn": "2026-08-15"
         }
       },
       "candidates": {
@@ -229,7 +245,16 @@
       "accessions": [
         "1884.137.52"
       ],
-      "langs": {},
+      "langs": {
+        "de": {
+          "text": "Mittelmeer-Melonenqualle",
+          "status": "accepted",
+          "source": "Editorial decision from the GBIF candidates (5233152 (Beroe ovata))",
+          "why": "Beroe ovata is the melon comb jelly; Melonenqualle is the established German. Gurkenqualle names a different shape.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
+          "checkedOn": "2026-08-15"
+        }
+      },
       "candidates": {
         "de": [
           "Mittelmeer-Gurkenqualle",
@@ -273,6 +298,14 @@
           "text": "خذاق",
           "status": "accepted",
           "source": "Wikidata, over 9 GBIF candidate(s) (Sepia officinalis)",
+          "checkedOn": "2026-08-15"
+        },
+        "es": {
+          "text": "sepia común",
+          "status": "accepted",
+          "source": "Editorial decision from the GBIF candidates (2290849 (Sepia officinalis))",
+          "why": "The neutral standard register, and the direct equivalent of the English. Choco, jibia, jibión, coca and the rest are regional; GBIF also lists duplicates and a typo among them.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
           "checkedOn": "2026-08-15"
         }
       },
@@ -367,6 +400,14 @@
           "status": "accepted",
           "source": "Wikidata only (Chrysaora hysoscella)",
           "checkedOn": "2026-08-15"
+        },
+        "fr": {
+          "text": "méduse rayonnée",
+          "status": "accepted",
+          "source": "Editorial decision from the GBIF candidates (5185425 (Chrysaora hysoscella))",
+          "why": "Standard French, and the same idea as the English: both names describe the radiating markings on the bell.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
+          "checkedOn": "2026-08-15"
         }
       },
       "candidates": {
@@ -421,6 +462,14 @@
           "text": "Tote Meerhand",
           "status": "accepted",
           "source": "GBIF and Wikidata agree (Alcyonium digitatum)",
+          "checkedOn": "2026-08-15"
+        },
+        "fr": {
+          "text": "alcyon jaune",
+          "status": "accepted",
+          "source": "Editorial decision from the GBIF candidates (5185175 (Alcyonium digitatum))",
+          "why": "The standard French name. \"alcyon commum\" is a misspelling of commun, and \"corail digité\" translates the species epithet rather than naming the animal.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
           "checkedOn": "2026-08-15"
         }
       },
@@ -488,7 +537,16 @@
       "accessions": [
         "1884.137.106"
       ],
-      "langs": {},
+      "langs": {
+        "de": {
+          "text": "Becherkoralle",
+          "status": "accepted",
+          "source": "Editorial decision from the GBIF candidates (2259158 (Caryophyllia smithii))",
+          "why": "The direct German equivalent of cup coral. Kreiselkoralle and Ovale Nelkenkoralle name other forms.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
+          "checkedOn": "2026-08-15"
+        }
+      },
       "candidates": {
         "de": [
           "Becherkoralle",
@@ -633,6 +691,22 @@
           "text": "ذو الأذرع العشر",
           "status": "accepted",
           "source": "Wikidata only (Loligo vulgaris)",
+          "checkedOn": "2026-08-15"
+        },
+        "fr": {
+          "text": "calmar commun",
+          "status": "accepted",
+          "source": "Editorial decision from the GBIF candidates (2290374 (Loligo vulgaris))",
+          "why": "Standard for Loligo vulgaris. Encornet is a market and kitchen word, and \"encornet grandes oreilles\" is a different species.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
+          "checkedOn": "2026-08-15"
+        },
+        "es": {
+          "text": "calamar común",
+          "status": "accepted",
+          "source": "Editorial decision from the GBIF candidates (2290374 (Loligo vulgaris))",
+          "why": "Standard for Loligo vulgaris. \"Calamar Europeo\" is a back-translation of the English label rather than a Spanish name.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
           "checkedOn": "2026-08-15"
         }
       },
@@ -789,6 +863,14 @@
           "status": "accepted",
           "source": "GBIF 4283460 (Bunodactis verrucosa)",
           "checkedOn": "2026-08-15"
+        },
+        "de": {
+          "text": "Warzenrose",
+          "status": "accepted",
+          "source": "Editorial decision from the GBIF candidates (4283460 (Bunodactis verrucosa))",
+          "why": "The established German name, matching the species epithet verrucosa. Edelsteinrose is a literal rendering of the English that is not in general use.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
+          "checkedOn": "2026-08-15"
         }
       },
       "candidates": {
@@ -857,6 +939,22 @@
           "text": "عنقريط أكبر",
           "status": "accepted",
           "source": "Wikidata, over 2 GBIF candidate(s) (Argonauta argo)",
+          "checkedOn": "2026-08-15"
+        },
+        "de": {
+          "text": "Großes Papierboot",
+          "status": "accepted",
+          "source": "Editorial decision from the GBIF candidates (5189614 (Argonauta argo))",
+          "why": "Keeps the distinction the English makes between the greater argonaut and the paper nautilus, which share a species here.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
+          "checkedOn": "2026-08-15"
+        },
+        "es": {
+          "text": "argonauta",
+          "status": "accepted",
+          "source": "Editorial decision from the GBIF candidates (5189614 (Argonauta argo))",
+          "why": "The unqualified form. \"Gran argonauta del Pacífico\" places the animal in the wrong ocean for this collection, which is Atlantic and Mediterranean.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
           "checkedOn": "2026-08-15"
         }
       },
@@ -1065,7 +1163,16 @@
       "accessions": [
         "1884.137.107"
       ],
-      "langs": {},
+      "langs": {
+        "ja": {
+          "text": "ヘンゲコップガヤ",
+          "status": "accepted",
+          "source": "Editorial decision from the GBIF candidates (2267857 (Laodicea undulata))",
+          "why": "The name of the hydroid — the colonial polyp stage, which is what the object shows. ヤワラクラゲ names the free-swimming medusa of the same species.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
+          "checkedOn": "2026-08-15"
+        }
+      },
       "candidates": {
         "ja": [
           "ヘンゲコップガヤ",
@@ -1093,6 +1200,14 @@
           "text": "オオカラカサクラゲ",
           "status": "accepted",
           "source": "GBIF 5186387 (Geryonia proboscidalis)",
+          "checkedOn": "2026-08-15"
+        },
+        "de": {
+          "text": "Rüsselqualle",
+          "status": "accepted",
+          "source": "Editorial decision from the GBIF candidates (5186387 (Geryonia proboscidalis))",
+          "why": "Qualle is the ordinary German word a visitor reads; Meduse is a technical loan.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
           "checkedOn": "2026-08-15"
         }
       },
@@ -1339,6 +1454,14 @@
           "status": "accepted",
           "source": "Wikidata only (Aurelia aurita)",
           "checkedOn": "2026-08-15"
+        },
+        "es": {
+          "text": "medusa luna",
+          "status": "accepted",
+          "source": "Editorial decision from the GBIF candidates (2264442 (Aurelia aurita))",
+          "why": "The same image as the English name, and widely used. \"medusa común\" says nothing distinguishing and \"Medusa boca de bandera\" is a local name.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
+          "checkedOn": "2026-08-15"
         }
       },
       "candidates": {
@@ -1414,6 +1537,22 @@
           "status": "accepted",
           "source": "Wikidata only (Pelagia noctiluca)",
           "checkedOn": "2026-08-15"
+        },
+        "fr": {
+          "text": "pélagie",
+          "status": "accepted",
+          "source": "Editorial decision from the GBIF candidates (2264423 (Pelagia noctiluca))",
+          "why": "The established French name for Pelagia noctiluca. \"piqueur-mauve\" is a bathers’ nickname.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
+          "checkedOn": "2026-08-15"
+        },
+        "es": {
+          "text": "medusa luminiscente",
+          "status": "accepted",
+          "source": "Editorial decision from the GBIF candidates (2264423 (Pelagia noctiluca))",
+          "why": "The spelling of the GBIF candidate corrected: Spanish is luminiscente, not luminescente. Chosen over the archaic \"acalefo\" and over \"clavel\", a local nickname.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
+          "checkedOn": "2026-08-15"
         }
       },
       "candidates": {
@@ -1468,6 +1607,14 @@
           "status": "accepted",
           "source": "GBIF 5185603 (Tubularia indivisa)",
           "checkedOn": "2026-08-15"
+        },
+        "de": {
+          "text": "Ungeteilter Röhrenpolyp",
+          "status": "accepted",
+          "source": "Editorial decision from the GBIF candidates (5185603 (Tubularia indivisa))",
+          "why": "Matches the species epithet indivisa, and is the established German. Capitalisation normalised.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
+          "checkedOn": "2026-08-15"
         }
       },
       "candidates": {
@@ -1504,6 +1651,14 @@
           "text": "شبه المرجان البرتقالي",
           "status": "accepted",
           "source": "GBIF and Wikidata agree (Astroides calycularis)",
+          "checkedOn": "2026-08-15"
+        },
+        "fr": {
+          "text": "madrépore orange",
+          "status": "accepted",
+          "source": "Editorial decision from the GBIF candidates (5184544 (Astroides calycularis))",
+          "why": "Keeps the colour the English name carries. \"corail étoilé\" describes a different feature.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
           "checkedOn": "2026-08-15"
         }
       },
@@ -1582,6 +1737,22 @@
           "text": "عنقريط أكبر",
           "status": "accepted",
           "source": "Wikidata, over 2 GBIF candidate(s) (Argonauta argo)",
+          "checkedOn": "2026-08-15"
+        },
+        "de": {
+          "text": "Papierboot",
+          "status": "accepted",
+          "source": "Editorial decision from the GBIF candidates (5189614 (Argonauta argo))",
+          "why": "The direct equivalent of paper nautilus, unqualified — leaving Großes Papierboot to carry greater argonaut, as the English distinguishes them.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
+          "checkedOn": "2026-08-15"
+        },
+        "es": {
+          "text": "argonauta",
+          "status": "accepted",
+          "source": "Editorial decision from the GBIF candidates (5189614 (Argonauta argo))",
+          "why": "As for greater argonaut: the unqualified form, since the qualified one names the wrong ocean.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
           "checkedOn": "2026-08-15"
         }
       },
@@ -1793,6 +1964,14 @@
           "text": "ヒカリボヤ",
           "status": "accepted",
           "source": "GBIF 5232532 (Pyrosoma atlanticum)",
+          "checkedOn": "2026-08-15"
+        },
+        "fr": {
+          "text": "pyrosome",
+          "status": "accepted",
+          "source": "Editorial decision from the GBIF candidates (5232532 (Pyrosoma atlanticum))",
+          "why": "The English term is unqualified, so the French is too. \"Pyrosome atlantique\" narrows to one species where the term is used generally.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
           "checkedOn": "2026-08-15"
         }
       },
@@ -2045,6 +2224,14 @@
           "status": "accepted",
           "source": "GBIF and Wikidata agree (Lanice conchilega)",
           "checkedOn": "2026-08-15"
+        },
+        "fr": {
+          "text": "lanice",
+          "status": "accepted",
+          "source": "Editorial decision from the GBIF candidates (2325106 (Lanice conchilega))",
+          "why": "The standard French name. \"macaroni\" is a bait-diggers’ nickname.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
+          "checkedOn": "2026-08-15"
         }
       },
       "candidates": {
@@ -2128,6 +2315,14 @@
           "status": "accepted",
           "source": "Wikidata only (Clione limacina)",
           "checkedOn": "2026-08-15"
+        },
+        "de": {
+          "text": "Meeresengel",
+          "status": "accepted",
+          "source": "Editorial decision from the GBIF candidates (5193700 (Clione limacina))",
+          "why": "The same image as the English. \"Nackter Seeschmetterling\" names the group rather than this animal.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
+          "checkedOn": "2026-08-15"
         }
       },
       "candidates": {
@@ -2185,6 +2380,14 @@
           "text": "Röhrenseegurke",
           "status": "accepted",
           "source": "Wikidata, over 1 GBIF candidate(s) (Holothuria tubulosa)",
+          "checkedOn": "2026-08-15"
+        },
+        "es": {
+          "text": "cohombro de mar pardo",
+          "status": "accepted",
+          "source": "Editorial decision from the GBIF candidates (2279156 (Holothuria tubulosa))",
+          "why": "The other GBIF candidate, \"carajo de mar\", is a vulgarity. It would have been printed under the Museum’s name for being first in a list.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
           "checkedOn": "2026-08-15"
         }
       },
@@ -2483,6 +2686,14 @@
           "status": "accepted",
           "source": "GBIF 2259688 (Dendrophyllia ramea)",
           "checkedOn": "2026-08-15"
+        },
+        "de": {
+          "text": "Orange Baumkoralle",
+          "status": "accepted",
+          "source": "Editorial decision from the GBIF candidates (2259688 (Dendrophyllia ramea))",
+          "why": "Baumkoralle is the tree in the English name; Astkoralle is a branch.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
+          "checkedOn": "2026-08-15"
         }
       },
       "candidates": {
@@ -2550,6 +2761,22 @@
           "text": "شقيقة أسـطوانية غشائية",
           "status": "accepted",
           "source": "Wikidata only (Cerianthus membranaceus)",
+          "checkedOn": "2026-08-15"
+        },
+        "de": {
+          "text": "Zylinderrose",
+          "status": "accepted",
+          "source": "Editorial decision from the GBIF candidates (5841862 (Cerianthus membranaceus))",
+          "why": "The unqualified form, matching the unqualified English. \"Mittel-meer Zylinderrose\" carries a typo and the Mittelmeer form narrows to one species.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
+          "checkedOn": "2026-08-15"
+        },
+        "fr": {
+          "text": "grand cérianthe",
+          "status": "accepted",
+          "source": "Editorial decision from the GBIF candidates (5841862 (Cerianthus membranaceus))",
+          "why": "Cérianthe is masculine, so grand rather than grande; capitalisation normalised. The Mediterranean form narrows to one species.",
+          "basis": "Chosen against a stated rule, not by a native speaker. Reviewable: the candidates it was chosen from are kept beside it.",
           "checkedOn": "2026-08-15"
         }
       },
