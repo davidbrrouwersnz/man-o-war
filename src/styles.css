@@ -246,7 +246,7 @@ a {
   background: var(--paper);
   color: var(--ink);
   border: 1px solid var(--edge);
-  border-radius: 3px;
+  border-radius: var(--radius-lg);
   font-size: var(--step--1);
   text-decoration: none;
   transition: top 0.15s ease;
@@ -372,7 +372,10 @@ svg.lucide {
   min-height: 44px;
   padding: 0.35rem 0.8rem;
   border: 1px solid var(--edge);
-  border-radius: 3px;
+  /* --radius-lg, the same token the selects and the dropdowns resolve through, rather than the 3px
+     this used before shadcn arrived. One number for every rectangular control; the pills and the
+     circles stay round because their shape says what they are. */
+  border-radius: var(--radius-lg);
   font-size: var(--step--1);
   cursor: pointer;
 }
@@ -1020,23 +1023,7 @@ ol.grid {
    route (§7 — it has to be reachable from a QR arrival) put near-white text on cream paper, which
    is the same mistake the Listen control had. Reading-surface colours are the default now and the
    dark header overrides them, rather than the other way round. */
-.lang-picker select {
-  font: inherit;
-  color: var(--ink);
-  background: transparent;
-  border: 1px solid var(--edge);
-  border-radius: 3px;
-  padding: 0.3rem 0.4rem;
-  /* The 44px floor is on the tool button beside it; matching it here keeps the row even. */
-  min-height: 44px;
-}
-
-.home-head .lang-picker select {
-  color: var(--dark-ink);
-  border-color: var(--dark-edge);
-}
-
-/* The option list is drawn by the operating system, not by this stylesheet, so it is pinned to a
+.home-head /* The option list is drawn by the operating system, not by this stylesheet, so it is pinned to a
    light pair rather than left to inherit a colour the popup will not use. */
 .lang-picker option {
   color: #111;
@@ -1206,12 +1193,7 @@ ol.grid-dense {
     color: var(--ink-meta);
   }
 
-    .home-head .lang-picker select {
-    color: var(--ink);
-    border-color: var(--edge);
-  }
-
-  /* .home forces the ring to --dark-brand for the whole page. The reading column takes it back. */
+    .home-head   /* .home forces the ring to --dark-brand for the whole page. The reading column takes it back. */
   .home-head :focus-visible,
   .home-read :focus-visible {
     outline-color: var(--brand);
@@ -1281,11 +1263,7 @@ ol.grid-dense {
   align-items: center;
   gap: 0.5rem;
   padding: 0.45rem 1rem;
-  border: 1px solid var(--edge);
-  border-radius: 2rem;
   background: transparent;
-  color: var(--ink);
-  cursor: pointer;
   min-height: 44px;
 }
 
@@ -1418,11 +1396,7 @@ ol.grid-dense {
   min-height: 44px;
   display: grid;
   place-items: center;
-  border: 0;
   background: transparent;
-  color: var(--ink);
-  cursor: pointer;
-  border-radius: 50%;
 }
 
 .audio-controls button:disabled {
