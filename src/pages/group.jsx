@@ -42,11 +42,14 @@ function objectAudio(object, tr, t) {
   // repeat it word for word — so it is dropped rather than printed twice.
   const showCatalogue = headlineR.text !== object.title && headlineR.text !== catalogueR.text
 
-  const parts = (story?.segments ?? []).map((s, si) => ({
+  // Keyed on the segment's own id, never its position. A translated pack is a map of overrides onto
+  // the English, so a language that has three of an object's five segments gets those three and
+  // falls back for the rest — and re-ordering or inserting an English segment can never silently
+  // pair one language's heading with another's body.
+  const parts = (story?.segments ?? []).map((s) => ({
     s,
-    si,
-    heading: tr([...base, 'segments', si, 'heading'], null, s.heading),
-    body: tr([...base, 'segments', si, 'text'], null, s.text),
+    heading: tr([...base, 'segments', s.id, 'heading'], null, s.heading),
+    body: tr([...base, 'segments', s.id, 'text'], null, s.text),
   }))
 
   const english =
@@ -127,7 +130,7 @@ function ObjectSection({ object, arrived, registry }) {
       <div className="object-body">
       {story ? (
         <div className="story">
-          {parts.map(({ s, si, heading, body }) => {
+          {parts.map(({ s, heading, body }) => {
             const itemId = `${object.accession}/${s.id}`
             const blocks = blocksOf(heading.text, body.text)
             return (

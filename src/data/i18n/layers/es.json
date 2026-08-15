@@ -4,57 +4,57 @@
   "layers": {
     "how-it-was-made": {
       "standfirst": "Por qué toda una colección de museo está hecha de vidrio, y cómo lo lograron dos hombres en Dresde.",
-      "segments": [
-        {
+      "segments": {
+        "the-problem": {
           "heading": "El problema que resolvió el vidrio",
           "text": "Un museo de la década de 1880 podía conservar casi cualquier cosa. A un ave se la podía disecar. A un escarabajo, clavarlo con un alfiler. Un pez podía ir a un frasco de alcohol y seguir siendo reconocible un siglo después.\n\nUna medusa, no. Ponga un animal marino de cuerpo blando en líquido conservante y perderá su color en días, y su forma poco después. Lo que queda en el frasco es algo pálido y colapsado que no le enseña nada a nadie.\n\nAsí que toda una sección del reino animal faltaba en los museos, y faltaba en todas partes, justo en el momento en que la biología marina se volvía apasionante. Ese vacío es lo que llenaron los Blaschka."
         },
-        {
+        "the-method": {
           "heading": "Trabajado en frío, no en caliente",
           "text": "Leopold y Rudolf Blaschka trabajaban sobre todo a bajas temperaturas, ablandando varilla y tubo al fuego y dándoles forma con herramientas de mano en lugar de soplarlos en caliente.\n\nTrabajar en frío es más lento, y por eso sobrevive el detalle. Les permitía estirar el vidrio en hilos, doblarlo y construir una forma pieza a pieza en lugar de en un solo soplido.\n\nConstruían en capas, y algunas de esas capas son más finas que una cáscara de huevo. Así es como un modelo puede ser transparente y aun así mostrar los órganos por dentro, lo único que ningún otro material podía lograr."
         },
-        {
+        "colour": {
           "heading": "Tres maneras de añadir color",
           "text": "No existe una única técnica Blaschka para el color. Usaban al menos tres, elegidas según el trabajo.\n\nAlgunos modelos están pintados. Otros están esmaltados, con el color cocido en la superficie. Y otros emplean el propio vidrio coloreado, de modo que el color queda dentro del material y no puede desgastarse.\n\nEn muchos objetos, el color está detrás del vidrio transparente y no encima. Por eso estos modelos todavía se ven como en 1883, y por eso manipularlos les ha costado tan poco."
         },
-        {
+        "mixed-media": {
           "heading": "Cuando el vidrio no era la respuesta",
           "text": "Los Blaschka no eran sentimentales con su material. Donde algo real hiciera mejor el trabajo, usaban algo real.\n\nLa concha de un caracol se conserva perfectamente sola. Es dura, no se pudre, y modelarla habría sido esfuerzo gastado en la única parte que no necesitaba ayuda. Así que, en el caracol de Borgoña de esta colección, el cuerpo es de vidrio y la concha es una concha de verdad.\n\nEn un gusano que vive en un tubo fueron más lejos y cubrieron el modelo de arena, porque el animal construye su tubo con arena y ninguna imitación en vidrio habría resultado igual de verdadera."
         },
-        {
+        "accuracy": {
           "heading": "De dónde venía la precisión",
           "text": "Los modelos son precisos porque los Blaschka no trabajaban de imaginación. Trabajaban a partir de los dibujos técnicos de los principales biólogos, y a partir de animales vivos.\n\nAnton Dohrn, que dirigía la estación marina de Nápoles, enviaba invertebrados vivos a Dresde. Ese es el vínculo que hace posible todo el proyecto: una ciudad sin mar, un tanque de animales mediterráneos vivos, y dos personas capaces de mirar uno y rehacerlo en vidrio.\n\nPara 1878 ofrecían 630 modelos distintos. El catálogo acabó superando los 700."
         }
-      ]
+      }
     },
     "how-it-got-here": {
       "standfirst": "Un pedido hecho en Dresde en 1882, y lo que ocurrió tras su llegada.",
-      "segments": [
-        {
+      "segments": {
+        "the-gap": {
           "heading": "Lo que un museo quería en 1880",
           "text": "Un museo de esta época debía ser enciclopédico. La idea era que un visitante que viera una gama suficientemente amplia de cosas podía sacar sus propias conclusiones sobre el mundo natural, así que el objetivo era la cobertura.\n\nEl director fundador del Canterbury Museum, Julius von Haast, trabajaba exactamente según ese modelo. Coleccionaba material local y extranjero, y creía que lo extranjero y lo raro elevarían el prestigio y la utilidad del museo.\n\nA juzgar por cuánta gente entraba por sus puertas, Christchurch estaba de acuerdo con él."
         },
-        {
+        "haast": {
           "heading": "El hombre que los encargó",
           "text": "Haast no era un zoólogo formado. Sin embargo, estaba extremadamente bien conectado y bien informado. Se carteaba con Charles Darwin, con el botánico Joseph Hooker, y con Ernst Haeckel, cuyas ideas sobre la evolución estaban transformando la disciplina.\n\nSus cartas muestran a alguien que seguía de cerca los detalles zoológicos más finos.\n\nAsí que cuando se propuso llenar el vacío donde deberían haber estado los animales de cuerpo blando, sabía qué estaba comprando y por qué importaba."
         },
-        {
+        "otago-first": {
           "heading": "Otago llegó primero",
           "text": "La idea no comenzó en Christchurch. Frederick Wollaston Hutton, entonces conservador del Otago University Museum, ya había encargado modelos Blaschka, y estaban expuestos cuando ese museo abrió en 1877.\n\nLa compra de Canterbury fue motivada por aquella.\n\nLa primera idea de Haast fue simplemente duplicar el pedido de Hutton. Leopold Blaschka lo disuadió, por una razón sencilla: no recordaba qué había pedido Hutton."
         },
-        {
+        "the-order": {
           "heading": "1879, 1882, 1883",
           "text": "La idea se planteó por primera vez en 1879. El pedido no se hizo hasta 1882. Los modelos no llegaron hasta octubre de 1883.\n\nLo que Haast finalmente pidió era mayor que el de Otago y sustancialmente distinto en lo que abarcaba.\n\nY hay un vacío en el registro que no se puede cerrar: la lista de lo que pidió ya no existe. Lo que conserva el museo es el envío, no el pedido."
         },
-        {
+        "the-gifts": {
           "heading": "Cuatro de ellos eran gratis",
           "text": "En una carta posterior, Leopold mencionó que había sustituido algunos modelos, y había añadido gusanos y corales sin cargo. Eran piezas nuevas, que aparecerían en el siguiente catálogo de los Blaschka.\n\nCuatro objetos de esta colección son esos añadidos gratuitos. Tres son cabezas agrandadas de gusanos marinos. El cuarto es un único pólipo de coral blando.\n\nEran muestras: un fabricante enviando a un cliente su nueva gama."
         },
-        {
+        "since": {
           "heading": "Lo que ocurrió después",
           "text": "Los modelos se exhibieron en la Sala Tecnológica, presentados como arte industrial aplicado a la ciencia y no como zoología. Un periódico de Christchurch, el Press, informó a sus lectores en octubre de 1883 de que la carabela portuguesa aparecía en sus colores verdaderos y se parecía a la naturaleza hasta resultar engañosa.\n\nEsa presentación no duró. En dos años, los modelos se exhibían junto a especímenes conservados, y para 1895 la Sala Tecnológica había sido desmantelada y los modelos colocados entre las exposiciones zoológicas, clasificados por lo que representaban y no por cómo se hicieron.\n\nHoy uno de ellos está expuesto. El resto está en depósito."
         }
-      ]
+      }
     }
   }
 }

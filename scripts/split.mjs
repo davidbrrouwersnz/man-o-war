@@ -181,6 +181,29 @@ const enKeys = flat(en.ui).map((k) => `ui.${k}`)
 
 const allAccessions = new Set(manifest.objects.map((o) => o.accession))
 
+// Translated segments are keyed by the English segment's id, never by position: a pack is a map of
+// overrides onto the English source, not a parallel array. That is what lets a language hold three
+// of an object's five segments and fall back for the other two, and it is what stops an inserted or
+// re-ordered English segment pairing one language's heading with another's body.
+//
+// An id absent from the English source is a typo, or a segment since renamed or deleted. Either way
+// it renders as English and looks like a translation gap rather than a bug, so it throws here. A
+// missing id is the opposite — expected, and the whole point of §7's fallback.
+function assertSegmentIds(file, translated, english) {
+  const bad = []
+  for (const [key, entry] of Object.entries(translated ?? {})) {
+    const source = english[key]
+    if (!source) continue // the accession/slug checks either side of this own that failure
+    if (Array.isArray(entry?.segments)) {
+      bad.push(`${key}: segments is still an array, keyed by position`)
+      continue
+    }
+    const ids = new Set((source.segments ?? []).map((s) => s.id))
+    for (const id of Object.keys(entry?.segments ?? {})) if (!ids.has(id)) bad.push(`${key}: "${id}"`)
+  }
+  if (bad.length) throw new Error(`${file}: segment ids not in the English source:\n    ${bad.join('\n    ')}`)
+}
+
 const packs = []
 for (const file of readdirSync(langDir)) {
   if (file === 'en.json' || file === 'layers' || file === 'stories') continue
@@ -200,6 +223,7 @@ for (const file of readdirSync(langDir)) {
   let layersDone = 0
   if (existsSync(layerFile)) {
     const tl = JSON.parse(readFileSync(layerFile, 'utf8'))
+    assertSegmentIds(`layers/${code}.json`, tl.layers, LAYERS.layers)
     pack.layers = tl.layers
     layersDone = Object.keys(tl.layers ?? {}).length
   }
@@ -213,6 +237,7 @@ for (const file of readdirSync(langDir)) {
     const ts = JSON.parse(readFileSync(storyFile, 'utf8'))
     const stray = Object.keys(ts.stories ?? {}).filter((a) => !allAccessions.has(a))
     if (stray.length) throw new Error(`stories/${code}.json: accessions not in the manifest: ${stray.join(', ')}`)
+    assertSegmentIds(`stories/${code}.json`, ts.stories, STORIES)
     // Same strip as the English chunk above: the identification note is no longer rendered in any
     // language, and German is the heaviest pack in the app at ~37KB gzipped. Translated text nobody
     // can read is the worst kind of payload — it costs the visitor and teaches nothing.

@@ -25,11 +25,14 @@ const ON_DISPLAY = '1884.137.33'
 function essayAudio(slug, layer, meta, tr) {
   const titleR = tr(`layerTitles.${slug}`, null, meta.title)
   const standfirstR = tr(`layers.${slug}.standfirst`, null, layer.standfirst)
-  const parts = layer.segments.map((s, si) => ({
+  // Keyed on the segment's own id, never its position — see the note in group.jsx. Array form
+  // rather than a dot-string for the same reason it is used there: a path segment that carries an
+  // authored identifier should never be interpolated into something that will later be split on a
+  // dot, whatever that identifier happens to look like today.
+  const parts = layer.segments.map((s) => ({
     s,
-    si,
-    heading: tr(`layers.${slug}.segments.${si}.heading`, null, s.heading),
-    body: tr(`layers.${slug}.segments.${si}.text`, null, s.text),
+    heading: tr(['layers', slug, 'segments', s.id, 'heading'], null, s.heading),
+    body: tr(['layers', slug, 'segments', s.id, 'text'], null, s.text),
   }))
 
   const english =
