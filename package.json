@@ -25,7 +25,8 @@
     "audio:smoke": "node scripts/audio-smoke.mjs",
     "glossary": "node scripts/glossary.mjs",
     "glossary:seed": "node scripts/glossary.mjs --seed",
-    "translate:drift": "node --env-file-if-exists=.env.local scripts/translate-drift.mjs"
+    "translate:drift": "node --env-file-if-exists=.env.local scripts/translate-drift.mjs",
+    "glossary:audit": "node scripts/glossary.mjs --audit"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

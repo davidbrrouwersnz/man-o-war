@@ -33,7 +33,7 @@
       }
     },
     "1884.137.68": {
-      "headline": "Mülltonnendeckel-Qualle",
+      "headline": "Lungenqualle",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",
@@ -45,7 +45,7 @@
         },
         "where": {
           "heading": "Wo sie sich sammeln",
-          "text": "Mülltonnendeckel-Quallen sind im östlichen Atlantik und im Mittelmeer verbreitet. In den wärmeren Monaten schwärmen sie nahe der Küste zusammen und landen oft an Stränden.\n\nSie sind die bevorzugte Mahlzeit der Lederschildkröte."
+          "text": "Lungenquallen sind im östlichen Atlantik und im Mittelmeer weit verbreitet. In den wärmeren Monaten schwärmen sie zusammen nahe der Küste und werden oft an Stränden gespült.\n\nSie sind die Lieblingsnahrung der Lederschildkröte."
         }
       }
     },
@@ -76,7 +76,7 @@
       }
     },
     "1884.137.41": {
-      "headline": "Hydrozoen-Meduse, Weibchen",
+      "headline": "Rüsselqualle, weiblich",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",
@@ -89,7 +89,7 @@
       }
     },
     "1884.137.42": {
-      "headline": "Hydrozoen-Meduse, Männchen",
+      "headline": "Rüsselqualle, männlich",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",
@@ -102,7 +102,7 @@
       }
     },
     "1884.137.108": {
-      "headline": "Hydrozoen-Meduse, drei Wachstumsstadien",
+      "headline": "Rüsselqualle, drei Wachstumsstadien",
       "segments": {
         "look": {
           "heading": "Drei Modelle, eine Abfolge",
@@ -295,7 +295,7 @@
       }
     },
     "1884.137.52": {
-      "headline": "Rippenqualle",
+      "headline": "Mittelmeer-Melonenqualle",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",
@@ -329,7 +329,7 @@
         },
         "the-ribbon": {
           "heading": "Die Form ist der Punkt",
-          "text": "Das ist eine Rippenqualle, die abgeflacht und seitlich zu einem Band ausgezogen wurde. Ein großes Exemplar kann über einen Meter lang und nur wenige Zentimeter hoch sein.\n\nEs schwimmt, indem es die ganze Länge des Bandes wellenförmig bewegt, und dabei fast unsichtbar bleibt.\n\nDer Name ist alt und blieb haften. Er bezog sich auf einen Gürtel einer Göttin, was zeigt, was Naturforscher des neunzehnten Jahrhunderts dachten, als sie zum ersten Mal eine im Wasser sahen."
+          "text": "Das ist ein Mittelmeer-Melonenqualle, das plattgedrückt und seitlich ausgezogen wurde, bis es eine Band ist. Ein großer kann mehr als einen Meter lang und nur wenige Zentimeter tief sein.\n\nEr schwimmt, indem er die gesamte Länge des Bandes kräuselt, und dabei ist er fast unsichtbar.\n\nDer Name ist alt und ist geblieben. Sie wurde nach einem Gürtel benannt, den eine Göttin trug, was zeigt, was Naturforscher des 19. Jahrhunderts dachten, als sie einen zum ersten Mal im Wasser sahen."
         }
       }
     },
@@ -529,7 +529,7 @@
       }
     },
     "1884.137.129": {
-      "headline": "Sternascidie",
+      "headline": "Stern-Seescheide",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",
@@ -555,7 +555,7 @@
       }
     },
     "1884.137.38": {
-      "headline": "Gemeine Sepia",
+      "headline": "Gewöhnlicher Tintenfisch",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",
@@ -568,7 +568,7 @@
       }
     },
     "1884.137.17": {
-      "headline": "Hakenkalmar",
+      "headline": "Engelskalmar",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",
@@ -576,12 +576,12 @@
         },
         "the-hooks": {
           "heading": "Haken statt Saugnäpfe",
-          "text": "Die meisten Tintenfische halten ihre Beute mit Ringen von Saugnäpfen. Diese Gruppe hat einige davon gegen Haken eingetauscht, gekrümmt und hart, entlang der Arme angeordnet.\n\nEin Hakentintenfisch muss keine Saugkraft an einem sich wehrenden Fisch aufrechterhalten. Er muss sich nur schließen.\n\nDie Haken überdauern das Tier und tauchen in Walmägen auf, was einer der Hauptwege ist, wie man erfährt, was in der Tiefsee lebt."
+          "text": "Die meisten Tintenfische halten das, was sie fangen, mit Ringen von Saugern. Diese Gruppe hat einige dieser Pickel gegen Haken eingetauscht, die an den Armen gebogen und hart gesetzt sind.\n\nEin Engelskalmar muss bei einem kämpfenden Fisch keinen Sog aufrechterhalten. Es muss nur schließen.\n\nDie Haken überleben, nachdem das Tier verschwunden ist, und sie landen in den Mägen von Walen, was eine der Hauptgründe ist, wie man lernt, was im tiefen Ozean lebt."
         }
       }
     },
     "1884.137.39": {
-      "headline": "Schielaugen-Kalmar",
+      "headline": "Segelkalmar",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",
@@ -607,7 +607,7 @@
       }
     },
     "1884.137.10": {
-      "headline": "Gemeiner Papierboot-Krake",
+      "headline": "Großes Papierboot",
       "segments": {
         "look": {
           "heading": "Das Gehäuse ist kein Zuhause",
@@ -650,7 +650,7 @@
       }
     },
     "1884.137.8": {
-      "headline": "Melibe-Nacktschnecke",
+      "headline": "Grüne Melibe",
       "identification": "Die Museumsseite gibt Melibe viridis an. Der Sammlungsdatensatz nennt Melibe fimbriata.",
       "segments": {
         "look": {
@@ -796,7 +796,7 @@
       }
     },
     "1884.137.76": {
-      "headline": "Östliche Smaragd-Elysia",
+      "headline": "Smaragd-Samtschnecke",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",
@@ -862,7 +862,7 @@
       }
     },
     "1884.137.28": {
-      "headline": "Grabende Anemone",
+      "headline": "Speer-Anemone",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",
@@ -875,7 +875,7 @@
       }
     },
     "1884.137.29": {
-      "headline": "Straußenfeder-Anemone",
+      "headline": "Seenelke",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",
@@ -966,7 +966,7 @@
       }
     },
     "1884.137.74": {
-      "headline": "Tiefsee-Anemone",
+      "headline": "Dickhörnige Seerose",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",
@@ -979,7 +979,7 @@
       }
     },
     "1884.137.96": {
-      "headline": "Grabende Anemone",
+      "headline": "Speer-Anemone",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",
@@ -1018,7 +1018,7 @@
       }
     },
     "1884.137.123": {
-      "headline": "Edelstein-Anemone",
+      "headline": "Warzenrose",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",
@@ -1044,7 +1044,7 @@
       }
     },
     "1884.137.64": {
-      "headline": "Röhrenanemone",
+      "headline": "Zylinderrose",
       "identification": "Keine echte Seeanemone, obwohl sie wie eine wirkt. Sie steht wegen ihres Aussehens auf dieser Seite, ein Kurator könnte sie versetzen.",
       "segments": {
         "look": {
@@ -1072,7 +1072,7 @@
       }
     },
     "1884.137.21": {
-      "headline": "Rote Koralle",
+      "headline": "Edelkoralle",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",
@@ -1080,7 +1080,7 @@
         },
         "the-jewel": {
           "heading": "Die Koralle, die Geld war",
-          "text": "Das ist die Rote Koralle des Mittelmeers, seit Jahrtausenden gefischt, geschnitzt und gehandelt.\n\nDer harte Ast ist ein Skelett. Lebend ist er von einer dünnen, lebenden Schicht mit kleinen weißen Polypen bedeckt, jeder ein eigenes Tier mit acht gefiederten Tentakeln.\n\nSie wächst außerordentlich langsam — Millimeter pro Jahr —, und vor Jahrhunderten abgeerntete Bestände haben sich bis heute nicht erholt."
+          "text": "Dies ist die Edelkoralle des Mittelmeers, und sie wird seit Tausenden von Jahren gefischt, geschnitzt und gehandelt.\n\nDer harte Ast ist ein Skelett. Im Leben ist sie von einer dünnen lebenden Schicht bedeckt, die kleine weiße Polypen trägt, von denen jeder ein eigenes Tier mit acht federartigen Tentakeln ist.\n\nSie wächst extrem langsam – nur wenige Millimeter pro Jahr – und Beete, die vor Jahrhunderten geerntet wurden, sind bis heute nicht zurückgekehrt."
         }
       }
     },
@@ -1098,7 +1098,7 @@
       }
     },
     "1884.137.57": {
-      "headline": "Totenfinger",
+      "headline": "Tote Meerhand",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",
@@ -1119,7 +1119,7 @@
         },
         "eight": {
           "heading": "Bis acht zählen",
-          "text": "Ein Detail unterscheidet diese ganze Gruppe von Anemonen und Riffkorallen: Die Polypen haben acht Tentakel, und jeder Tentakel ist an den Rändern gefiedert.\n\nHat man das einmal erkannt, ist die Gruppe leicht zu erkennen, sie umfasst Rote Koralle, Seefächer, Seefedern und dieses hier.\n\nAcht gefiederte Tentakel ergeben ein feines Netz, und diese Tiere fressen sehr kleine Partikel statt Beute, die sie überwältigen müssten."
+          "text": "Es gibt ein Detail, das diese ganze Gruppe von den Anemonen und den Riffkorallen unterscheidet: Die Polypen haben acht Tentakel, und jeder Tentakel ist an seinen Rändern befiedert.\n\nSobald man zählen kann, ist die Gruppe leicht zu erkennen und umfasst Edelkoralle, Seefächer, Seefedern und das hier.\n\nAcht gefiederte Tentakel bilden ein feines Netz, und diese Tiere ernähren sich von sehr kleinen Partikeln statt von Beute, die sie überwältigen müssen."
         }
       }
     },
@@ -1150,7 +1150,7 @@
       }
     },
     "1884.137.121": {
-      "headline": "Seefeder",
+      "headline": "Dunkelrote Seefeder",
       "segments": {
         "look": {
           "heading": "Zwei Teile",
@@ -1158,12 +1158,12 @@
         },
         "the-quill": {
           "heading": "Wie eine Feder gepflanzt",
-          "text": "Eine Seefeder ist eine Kolonie, gebaut um einen einzigen riesigen primären Polypen. Dieser Polyp bildet den zentralen Stamm, und jedes andere Individuum wächst aus ihm hervor.\n\nDie Basis wird ins weiche Sediment getrieben und zur Verankerung aufgeblasen. Der Rest steht in die Strömung wie eine aufrecht im Meeresboden steckende Feder, woher der Name kommt.\n\nViele können sich entleeren und vollständig ins Sediment zurückziehen, und viele erzeugen bei Störung Licht."
+          "text": "Eine Dunkelrote Seefeder ist eine Kolonie, die um einen riesigen primären Polypen herum aufgebaut ist. Dieser Polyp bildet den zentralen Stamm, und alle anderen Individuen wachsen daran.\n\nDie Basis wird in weiches Sediment getrieben und zum Verankern aufgeblasen. Der Rest steht wie eine aufrecht im Meeresboden stehende Feder in der Strömung, woher auch der Name stammt.\n\nViele können entleeren und vollständig ins Sediment zurückziehen, und viele erzeugen Licht, wenn sie gestört werden."
         }
       }
     },
     "1884.137.73": {
-      "headline": "Orangene Becherkoralle",
+      "headline": "Sternkoralle",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",
@@ -1189,7 +1189,7 @@
       }
     },
     "1884.137.120": {
-      "headline": "Baumkoralle",
+      "headline": "Orange Baumkoralle",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",
@@ -1202,7 +1202,7 @@
       }
     },
     "1884.137.63": {
-      "headline": "Haferstroh-Hydroid",
+      "headline": "Ungeteilter Röhrenpolyp",
       "segments": {
         "look": {
           "heading": "Zwei Teile",
@@ -1215,7 +1215,7 @@
       }
     },
     "1884.137.126": {
-      "headline": "Haferstroh-Hydroid, Männchen",
+      "headline": "Ungeteilter Röhrenpolyp, männlich",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",
@@ -1269,7 +1269,7 @@
       }
     },
     "1884.137.75": {
-      "headline": "Seegurke",
+      "headline": "Röhrenseegurke",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",
@@ -1277,12 +1277,12 @@
         },
         "five": {
           "heading": "In Fünfern zählen",
-          "text": "Eine Seegurke sieht anders aus als alles sonst auf dieser Seite, und sie ist nach demselben Plan gebaut wie ein Seestern.\n\nDer Plan ist fünfteilig. Nimm einen Seestern, stell ihn auf eine Armspitze, zieh ihn zu einer Wurst und leg ihn auf die Seite, und die fünf Reihen von Röhrenfüßen laufen der Länge nach den Körper entlang statt entlang von Armen.\n\nDie Tentakel um den Mund sind ebenfalls Röhrenfüße, vergrößert. Diese hier schaufeln damit Sediment hinein und verdauen, was darin lebt."
+          "text": "Eine Röhrenseegurke sieht auf dieser Seite aus wie nichts anderes und ist nach demselben Plan wie ein Seestern gebaut.\n\nDer Plan ist fünffach. Nimm einen Seestern, stell ihn auf eine Armspitze, spanne ihn zu einer Wurst und lege ihn auf die Seite, und die fünf Reihen von Röhrenfüßen verlaufen entlang des Körpers statt entlang der Arme.\n\nDie Tentakel um den Mund sind ebenfalls Röhrenfüße, vergrößert. Dieses nutzt sie, um Sediment einzuschaufeln und das, was darin lebt, zu verdauen."
         }
       }
     },
     "1884.137.2": {
-      "headline": "Seegurke",
+      "headline": "Röhrenseegurke",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",
@@ -1295,7 +1295,7 @@
       }
     },
     "1884.137.82": {
-      "headline": "Seegurke",
+      "headline": "Röhrenseegurke",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",
@@ -1308,7 +1308,7 @@
       }
     },
     "1884.137.84": {
-      "headline": "Seegurke",
+      "headline": "Röhrenseegurke",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",
@@ -1316,12 +1316,12 @@
         },
         "the-stripes": {
           "heading": "Streifen mit Zweck",
-          "text": "Die Streifen markieren, wo die Reihen der Röhrenfüße verlaufen. Bei einer Seegurke sind diese Reihen die fünf Linien des zugrundeliegenden Bauplans, und Farbe folgt ihnen oft.\n\nDrei Reihen sind meist nach unten zum Boden gerichtet und tragen die Füße zum Greifen. Zwei sind nach oben gerichtet und ihre Füße reduziert.\n\nEin Tier, das eine Ober- und Unterseite zu haben scheint, hat also tatsächlich fünf Seiten, von denen drei als Sohle Dienst tun."
+          "text": "Die Streifen markieren, wo die Reihen von Rohrfüßen verlaufen. Bei einer Röhrenseegurke sind diese Reihen die fünf Linien des zugrunde liegenden Körperbaus, und oft folgt ihnen die Farbe.\n\nDrei Reihen sind in der Regel nach unten auf dem Boden und tragen die Füße, die zum Greifen verwendet werden. Zwei sind hochgedreht und ihre Füße sind reduziert.\n\nEin Tier, das offenbar einen oberen und einen unteren Teil hat, hat tatsächlich fünf Seiten, von denen drei als Sohle eingesetzt wurden."
         }
       }
     },
     "1884.137.3": {
-      "headline": "Seegurke",
+      "headline": "Röhrenseegurke",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",
@@ -1334,7 +1334,7 @@
       }
     },
     "1884.137.23": {
-      "headline": "Seegurke",
+      "headline": "Röhrenseegurke",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",
@@ -1386,7 +1386,7 @@
       }
     },
     "1884.137.20": {
-      "headline": "Vielborster",
+      "headline": "Seeringelwurm",
       "segments": {
         "look": {
           "heading": "Zwei Teile",
@@ -1438,7 +1438,7 @@
       }
     },
     "1884.137.48": {
-      "headline": "Grüner Löffelwurm",
+      "headline": "Grüner Igelwurm",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",
@@ -1465,7 +1465,7 @@
       }
     },
     "1884.137.22": {
-      "headline": "Sandmaurer-Wurm",
+      "headline": "Bäumchenröhrenwurm",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",
@@ -1478,7 +1478,7 @@
       }
     },
     "1884.137.110": {
-      "headline": "Sandmaurer-Wurm, Entwicklungsstadien",
+      "headline": "Bäumchenröhrenwurm, Entwicklungsstadien",
       "identification": "Das ist das Objekt, das die eigene Sammlungsabfrage des Museums nicht zurückgeben kann, weil sein Sammlungsfeld leer ist.",
       "segments": {
         "look": {
@@ -1492,7 +1492,7 @@
       }
     },
     "1884.137.98": {
-      "headline": "Fächerwurm",
+      "headline": "Schraubensabelle",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",
@@ -1557,7 +1557,7 @@
       }
     },
     "1884.137.125": {
-      "headline": "Priapswurm",
+      "headline": "Geschwänzter Priapswurm",
       "segments": {
         "look": {
           "heading": "Genau hinschauen",

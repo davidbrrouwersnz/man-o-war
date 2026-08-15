@@ -86,9 +86,10 @@ photographs, because only media near the viewport loads.
 **Built.** The harvest, with assertions that fail the build if the data shifts — including a
 non-empty story on all 128 (§20). All eleven group pages. `/` — the eleven group tiles, with every
 object as a second tab. `/o/{accession}` for all 128, resolving to the group page and scrolling to
-the object. Search across the collection. The two reading essays. Nine languages with RTL. A
-552-file audio guide with word-level read-along, a scrubber and lock-screen controls. Lazy media, a
-dark grid, and a reading area that follows `prefers-color-scheme`.
+the object. The two reading essays. Eight languages with RTL, complete: every interface string,
+every group panel, both essays and all 128 object stories in each. A 438-file audio guide with
+word-level read-along, a scrubber and lock-screen controls. Lazy media, a dark grid, and a reading
+area that follows `prefers-color-scheme`.
 
 **A desktop layout.** §10's media-beside-text, at 64rem and above. It roughly halves every group
 page: sea anemones runs 22.8 screen-heights in one column and 14.5 in two.
@@ -102,6 +103,48 @@ seen-set, and deep zoom — §12 defers that last one until the Museum can expor
 **All 128 stories are written**, 95 words median. The depth cliff the prototype was built to test —
 one long entry beside 127 placeholders — no longer exists, and `scripts/split.mjs` now fails the
 build if a story is ever emptied.
+
+---
+
+## The translation and narration pipeline
+
+Change an English story and push it, and the translations and the narration derived from it update
+themselves — touching only what changed. `.github/workflows/translate.yml` is triggered by the
+English sources alone, so the job's own output can never re-trigger it.
+
+It is incremental for a reason that is not the money. Retranslating every word into every language
+costs about six dollars. What it destroys is human review: §7 makes verification the cost that
+scales with languages, and `src/data/translation-index.json` records a `reviewStatus` per unit that
+resets only when that unit's English actually changes. Changing one sentence retranslates one
+sentence and leaves the other 750 units' review standing.
+
+Three guards run before anything is written. §7's carve-outs refuse to send quotations or anything
+touching taonga or mana whenua. Names with a right answer are supplied to the engine from
+`src/data/glossary.json` rather than left to it, and the run fails if the agreed name does not come
+back. And a back-translation sweep flags meaning that did not survive the round trip — it is how
+"Ribbon worm" was caught coming back as "Tapeworm", a different phylum stated confidently.
+
+### The engine, and what the free tier costs
+
+This runs on Azure's **neural machine translation**, and it is the weakest part of the system.
+
+Azure also offers **LLM translation**, which needs an Azure AI Foundry resource with a model
+deployed in it; the classic Translator resource answers 404 to the API version it requires. The
+scripts already choose the engine from what the endpoint can actually reach and record which one
+produced each unit, so moving is an endpoint and a deployment name in `.env.local`.
+
+**It is worth more than everything else in this pipeline put together.** NMT rendered "It is a
+float" into French as *C'est une flotte* — a fleet of ships — in the sentence explaining the
+animal's anatomy. It called a living man o' war *un hombre de guerra*, a man of war. It wrote
+*la vraie médusse*, a misspelling it invented. It used *vous* and *tu* in the same object, against
+a writing standard (§6) built on a consistent voice. The glossary catches names; nothing here
+catches prose, and §7 says as much: automated checks find errors well and are close to blind to
+whether the writing is any good.
+
+The fair comparison is not this against a careful human — it is this against Azure's LLM mode,
+which is the same class of model that drafted the English. **The whole backfill into seven
+languages cost about four dollars. The paid tier that would have made it good costs less than the
+difference is worth.** Recorded as **Q12** in `BUILD-SPEC-v2.md` §22.
 
 ---
 
@@ -138,6 +181,18 @@ Stated in full, as the original brief asked.
   tools from the Museum's photographs and the written narrative. **None of them appear in v2** — the
   3D model was cut on the reasoning above, and audio is now derived from the written text rather than
   authored separately.
+- **Every non-English word is machine translation, and none of it has been reviewed by a person.**
+  Azure neural machine translation, except the German, which predates the pipeline and was drafted
+  by a language model. The language picker tells the reader this in their own language, and
+  `src/data/translation-index.json` records the engine and date for every unit, so the claim is
+  auditable rather than a promise. §7 asks for a paid standing reviewer per language community; that
+  has not happened, and until it does the disclosure is the honest part of the offer rather than a
+  formality.
+- **The names are looked up, not translated.** Vernacular names come from GBIF and Wikidata, and the
+  translator is given the answer rather than allowed to guess — because it guessed *portugiesisches
+  Kriegsschiff*, a warship, for the animal this app is named after. Where the two authorities
+  disagreed the choice is an editorial one, recorded with its reasoning and the candidates it was
+  chosen from, in `src/data/glossary.json`.
 - **The photographs are not generated and never will be.** They are the Museum's own documentary
   record. No upscaling, AI or otherwise: it is the one asset here that is evidence rather than
   interpretation, and a super-resolution model invents glass nobody photographed.

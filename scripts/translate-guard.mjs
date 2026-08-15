@@ -138,7 +138,12 @@ export function protect(text, opts = {}) {
   if (glossary && lang) {
     for (const [term, entry] of Object.entries(glossary)) {
       const target = entry?.langs?.[lang]
-      if (target?.status === 'accepted' && target.text) candidates.push({ term, say: target.text })
+      if (target?.status !== 'accepted' || !target.text) continue
+      candidates.push({ term, say: target.text })
+      // The short form carries the same agreed translation. Prose introduces a name in full and
+      // then uses it short, so protecting only the full form protects only the first mention —
+      // which is how "A man o' war" became "Un barco de guerra" three sentences later.
+      for (const alias of entry.alsoWritten ?? []) candidates.push({ term: alias, say: target.text })
     }
   }
   for (const term of terms) candidates.push({ term, say: null })
@@ -225,9 +230,44 @@ const digitRuns = (s) => {
   return t.match(/\d+/g) ?? []
 }
 
+// Spanish, French and Italian write centuries in Roman numerals: "an 18th-century warship" becomes
+// "del siglo XVIII". The 18 is present, spelled the way the language spells it, and a check that
+// counts digits reports it missing. Only ever adds numbers to the pool, so it can excuse a correct
+// translation but never hide a dropped one.
+const ROMAN = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 }
+const romanValues = (s) => {
+  const out = []
+  // No trailing word boundary: French and Spanish write the ordinal suffix onto the numeral —
+  // "XVIIIe siècle", "XVIII.º" — and \b after the last M or I refuses to match through it. Only a
+  // following capital is excluded, so a run of Roman letters inside a longer uppercase word is not
+  // read as a number.
+  for (const m of s.matchAll(/\b[IVXLCDM]{2,}(?![A-Z])/g)) {
+    const t = m[0]
+    let total = 0
+    for (let i = 0; i < t.length; i++) {
+      const v = ROMAN[t[i]]
+      total += v < ROMAN[t[i + 1]] ? -v : v
+    }
+    out.push(String(total))
+  }
+  return out
+}
+
+// Eastern Arabic-Indic digits are the same numbers written in another script.
+const ASCII_DIGITS = (s) => s.replace(/[٠-٩]/g, (d) => String('٠١٢٣٤٥٦٧٨٩'.indexOf(d)))
+
+// Small numbers are the ones languages SPELL, and that is not an error. Arabic renders "18th
+// century" as القرن الثامن عشر, and "2 centimetres" as سنتيمترين — the dual, where "two" lives in
+// the morphology and no digit appears at all. Both are correct, and both were being rejected.
+//
+// The check keeps its teeth where the risk actually is. A dropped year, measurement or count — 1883,
+// 28, 1,003 — is a content error, and those are written as digits in every language here. Below the
+// threshold the number is reported and the translation is kept; at or above it, the unit is refused.
+const SPELLED_BELOW = 21
+
 export function assertNumerals(english, translated, id) {
   const want = digitRuns(english)
-  const have = digitRuns(translated)
+  const have = [...digitRuns(ASCII_DIGITS(translated)), ...romanValues(translated)]
   const pool = [...have]
   const missing = []
   for (const n of want) {
@@ -235,7 +275,10 @@ export function assertNumerals(english, translated, id) {
     if (at === -1) missing.push(n)
     else pool.splice(at, 1)
   }
-  if (missing.length) throw new Error(`${id}: numerals missing from the translation: ${missing.join(', ')}`)
+  if (!missing.length) return
+  const serious = missing.filter((n) => Number(n) >= SPELLED_BELOW)
+  if (serious.length) throw new Error(`${id}: numerals missing from the translation: ${serious.join(', ')}`)
+  return { spelledOut: missing }
 }
 
 // A protected name that came back changed means class="notranslate" was not honoured — which is
@@ -248,8 +291,29 @@ export function assertProtected(terms, translated, id) {
 // A glossed term whose agreed translation is absent means the dictionary was ignored — and the
 // engine's own guess is sitting there instead, which is the failure this whole mechanism exists to
 // stop. Loud, because a museum name that is quietly wrong in seven languages is the expensive kind.
+// Case-insensitively: a glossary holds "gusano albañil" and a sentence beginning with it gets
+// "Gusano albañil", which is the same name correctly capitalised. Comparing exactly rejected a
+// perfectly good translation and left the object with no Spanish headline at all.
+// A glossary holds one form of a name; prose inflects it. "medusa de barril" is stored singular and
+// the sentence reads "Las medusas de barril son comunes" — the agreed name, correctly pluralised.
+// So each word may carry an ordinary plural ending, and the whole thing is matched case-insensitively
+// for the sentence-initial capital.
+//
+// This loosens presence, never correctness: it still cannot match a DIFFERENT word. "barco de
+// guerra" does not satisfy "medusa de barril" under any inflection.
+const inflected = (term) => {
+  const esc = (w) => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  const body = term
+    .trim()
+    .split(/\s+/)
+    .map((w) => `${esc(w)}(?:s|es|n|en|e)?`)
+    .join('\\s+')
+  return new RegExp(body, 'iu')
+}
+
 export function assertGlossed(expected, translated, id) {
-  const lost = expected.filter((t) => !translated.includes(t))
+  const hay = translated.toLowerCase()
+  const lost = expected.filter((t) => !hay.includes(t.toLowerCase()) && !inflected(t).test(translated))
   if (lost.length) {
     throw new Error(
       `${id}: the glossary translation was not used: ${lost.join(', ')}\n` +

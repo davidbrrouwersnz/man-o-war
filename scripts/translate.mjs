@@ -63,7 +63,56 @@ const REPORT = value('--report')
 // Bumped by hand when the wire format changes in a way that should invalidate every translation —
 // a different DNT mechanism, a different block split. Same role as PIPELINE in scripts/audio.mjs.
 const PIPELINE = 1
-const hashOf = (s) => createHash('sha256').update(`v${PIPELINE}\n${s}`).digest('hex').slice(0, 16)
+
+// THE HASH COVERS THE GLOSSARY, not just the English, and it has to.
+//
+// Hashing the source alone answers "has the English changed?" — but a unit's translation also
+// depends on the names it was given. Decide that the French for a man o' war is "galère portugaise"
+// after that sentence was already translated, and nothing notices: the English is untouched, the
+// hash matches, and the improvement never reaches the text. An audit found 62 of 389 units not
+// carrying the name that had been agreed for them.
+//
+// So the fingerprint is the agreed names that actually APPLY to this unit in this language —
+// nothing if the unit mentions none, which is most of them. A unit is invalidated by a glossary
+// change only when it uses the term that changed.
+const escapeTerm = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+const appliedTerms = (text, lang) => {
+  const applied = []
+  for (const [term, entry] of Object.entries(GLOSSARY)) {
+    const target = entry?.langs?.[lang]
+    if (target?.status !== 'accepted' || !target.text) continue
+    const forms = [term, ...(entry.alsoWritten ?? [])]
+    if (forms.some((f) => new RegExp(`(?<![\\p{L}\\p{N}])${escapeTerm(f)}(?![\\p{L}\\p{N}])`, 'iu').test(text))) {
+      applied.push(`${term}=${target.text}`)
+    }
+  }
+  return applied.sort()
+}
+
+// The fingerprint is appended only when there IS one. Adding an empty line unconditionally changes
+// the hash of every unit in the collection, including the great majority that mention no agreed
+// name — 5,257 of them, all reported as changed English that had not changed at all.
+const hashOf = (s, lang) => {
+  const fingerprint = lang ? appliedTerms(s, lang).join('|') : ''
+  return createHash('sha256')
+    .update(`v${PIPELINE}\n${s}${fingerprint ? `\n${fingerprint}` : ''}`)
+    .digest('hex')
+    .slice(0, 16)
+}
+
+// Does the text already say what the glossary now agrees it should? Inflection- and case-tolerant,
+// via the same check the translator applies to fresh output — so "Las medusas de barril" satisfies
+// an entry stored as "medusa de barril".
+const glossarySatisfied = (unit, lang, translated) => {
+  const expected = appliedTerms(unit.text, lang).map((p) => p.slice(p.indexOf('=') + 1))
+  if (!expected.length) return false
+  try {
+    assertGlossed(expected, translated, unit.id)
+    return true
+  } catch {
+    return false
+  }
+}
 
 const today = () => new Date().toISOString().slice(0, 10)
 
@@ -127,11 +176,14 @@ async function callAzure(texts, to) {
   }
   if (REGION) headers['Ocp-Apim-Subscription-Region'] = REGION
 
+  // Patient, because a backfill is a long run against a rate limit rather than a handful of
+  // requests. Five attempts topping out at sixteen seconds is fine for a sync and gives up in the
+  // middle of a thousand units; the free tier throttles hard enough to need minutes, not seconds.
   for (let attempt = 0; ; attempt++) {
     const res = await fetch(url, { method: 'POST', headers, body })
     if (res.status === 429 || res.status >= 500) {
-      if (attempt >= 5) throw new Error(`Azure returned ${res.status} after ${attempt} retries`)
-      const wait = 2 ** attempt * 1000
+      if (attempt >= 9) throw new Error(`Azure returned ${res.status} after ${attempt} retries`)
+      const wait = Math.min(2 ** attempt * 1000, 60000)
       console.log(`    ${res.status} — waiting ${wait / 1000}s`)
       await new Promise((r) => setTimeout(r, wait))
       continue
@@ -230,6 +282,8 @@ console.log(`${units.length} units, ${held} held back by §7 carve-outs, ${scope
 const TERMS = protectedTerms()
 const GLOSSARY = loadGlossary()
 const touchedByLang = {}
+let stoppedEarly = false
+const rejected = []
 let totalSeeded = 0
 let totalStale = 0
 let totalFilled = 0
@@ -250,10 +304,11 @@ for (const code of chosen) {
 
   const seeded = []
   const stale = []
+  const reconciled = []
   const gaps = []
 
   for (const unit of scoped) {
-    const hash = hashOf(unit.text)
+    const hash = hashOf(unit.text, code)
     const existing = getAt(files[unit.file], unit.path)
     const entry = entries[unit.id]
     const present = typeof existing === 'string' && existing.trim()
@@ -269,7 +324,23 @@ for (const code of chosen) {
       seeded.push(unit)
       continue
     }
-    if (entry.hash !== hash) stale.push(unit)
+    if (entry.hash === hash) continue
+
+    // The hash moved — but did the ENGLISH move, or only the glossary? A unit that mentions no
+    // agreed name hashes identically either way, so anything reaching here uses one.
+    //
+    // Where the English is untouched, the stored translation may already carry the agreed name:
+    // the engine sometimes reaches it unaided, and a term decided afterwards then only confirms
+    // what is there. Retranslating that spends money to swap correct text for different correct
+    // text and resets a review status for nothing. Record the new hash; leave the words alone.
+    const englishOnly = hashOf(unit.text, null)
+    const priorEnglish = entry.englishHash ?? entry.hash // entries predating the fingerprint stored exactly this
+    if (priorEnglish === englishOnly && glossarySatisfied(unit, code, existing)) {
+      entries[unit.id] = { ...entry, hash, englishHash: englishOnly }
+      reconciled.push(unit)
+      continue
+    }
+    stale.push(unit)
   }
 
   const todo = [...stale, ...(BACKFILL ? gaps : [])]
@@ -297,35 +368,63 @@ for (const code of chosen) {
       }
     }
 
+    // Translation already paid for is never thrown away. A backfill is a thousand units against a
+    // rate limit, and the first version built every result in memory and wrote at the end — so a
+    // 429 nine hundred units in discarded all nine hundred, and the retry bought them again. On
+    // failure this now applies whatever finished, saves, and reports where it stopped. The run is
+    // incremental by design, so picking up again translates only what is still missing.
     const results = new Map()
-    for (let at = 0; at < jobs.length; ) {
-      const batch = []
-      let chars = 0
-      while (at < jobs.length && batch.length < MAX_ELEMENTS && chars + jobs[at].html.length <= MAX_CHARS) {
-        chars += jobs[at].html.length
-        batch.push(jobs[at])
-        at++
+    let interrupted = null
+    try {
+      for (let at = 0; at < jobs.length; ) {
+        const batch = []
+        let chars = 0
+        while (at < jobs.length && batch.length < MAX_ELEMENTS && chars + jobs[at].html.length <= MAX_CHARS) {
+          chars += jobs[at].html.length
+          batch.push(jobs[at])
+          at++
+        }
+        if (!batch.length) batch.push(jobs[at++]) // one oversized block on its own
+        process.stdout.write(`  ${code}  ${Math.min(at, jobs.length)}/${jobs.length} blocks\r`)
+        const out = await callAzure(batch.map((j) => j.html), code)
+        out.forEach((text, k) => results.set(batch[k], unprotect(text)))
+        totalChars += chars
       }
-      if (!batch.length) batch.push(jobs[at++]) // one oversized block on its own
-      process.stdout.write(`  ${code}  ${Math.min(at, jobs.length)}/${jobs.length} blocks\r`)
-      const out = await callAzure(batch.map((j) => j.html), code)
-      out.forEach((text, k) => results.set(batch[k], unprotect(text)))
-      totalChars += chars
+    } catch (err) {
+      interrupted = err
     }
 
     for (const unit of todo) {
       const parts = jobs.filter((j) => j.unit === unit).sort((a, b) => a.i - b.i)
+      // A unit is applied only when every one of its blocks came back. A half-translated segment
+      // would join English and Spanish across a paragraph break and read as corruption.
+      if (!parts.every((p) => results.has(p))) continue
       const text = parts.map((p) => results.get(p)).join('\n\n')
-      assertStructure(unit.text, text, `${code} ${unit.id}`)
-      assertNumerals(unit.text, text, `${code} ${unit.id}`)
-      assertProtected([...new Set(parts.flatMap((p) => p.protectedHere))], text, `${code} ${unit.id}`)
-      assertGlossed([...new Set(parts.flatMap((p) => p.glossedHere ?? []))], text, `${code} ${unit.id}`)
+      // A unit that fails a check is REJECTED, not fatal. Aborting the run on the first bad
+      // translation means one stubborn headline out of six hundred and fifty throws away the other
+      // six hundred and forty-nine, all of them paid for. The failing unit is simply not written —
+      // it stays a gap, the page keeps falling back to English, and the run says so at the end.
+      try {
+        assertStructure(unit.text, text, `${code} ${unit.id}`)
+        assertNumerals(unit.text, text, `${code} ${unit.id}`)
+        assertProtected([...new Set(parts.flatMap((p) => p.protectedHere))], text, `${code} ${unit.id}`)
+        assertGlossed([...new Set(parts.flatMap((p) => p.glossedHere ?? []))], text, `${code} ${unit.id}`)
+      } catch (err) {
+        rejected.push({ id: unit.id, code, why: err.message.split('\n')[0], got: text })
+        continue
+      }
       setAt(files[unit.file], unit.path, text)
       touched.add(unit.file)
-      entries[unit.id] = { hash: hashOf(unit.text), engine: ENGINE, translatedAt: today(), reviewStatus: 'unreviewed' }
+      entries[unit.id] = { hash: hashOf(unit.text, code), englishHash: hashOf(unit.text, null), engine: ENGINE, translatedAt: today(), reviewStatus: 'unreviewed' }
       if (gaps.includes(unit)) totalFilled++
     }
     process.stdout.write(' '.repeat(40) + '\r')
+    if (interrupted) {
+      const done = todo.filter((u) => jobs.filter((j) => j.unit === u).every((p) => results.has(p))).length
+      console.log(`  ${code}: stopped after ${done} of ${todo.length} units — ${interrupted.message}`)
+      console.log(`  Everything translated so far is saved. Run the same command again to continue.`)
+      stoppedEarly = true
+    }
   }
 
   // Units the English no longer has. Same sweep as scripts/audio.mjs, and for the same reason: a
@@ -342,13 +441,13 @@ for (const code of chosen) {
     }
   }
 
-  rows.push({ code, seeded: seeded.length, stale: stale.length, gaps: gaps.length, orphans })
+  rows.push({ code, seeded: seeded.length, reconciled: reconciled.length, stale: stale.length, gaps: gaps.length, orphans })
   if (todo.length) touchedByLang[code] = todo.map((u) => u.id)
 }
 
-console.log(`  ${'lang'.padEnd(9)} ${'seeded'.padStart(7)} ${'changed'.padStart(8)} ${'gaps'.padStart(6)} ${'orphans'.padStart(8)}`)
+console.log(`  ${'lang'.padEnd(9)} ${'seeded'.padStart(7)} ${'agreed'.padStart(7)} ${'changed'.padStart(8)} ${'gaps'.padStart(6)} ${'orphans'.padStart(8)}`)
 for (const r of rows) {
-  console.log(`  ${r.code.padEnd(9)} ${String(r.seeded).padStart(7)} ${String(r.stale).padStart(8)} ${String(r.gaps).padStart(6)} ${String(r.orphans).padStart(8)}`)
+  console.log(`  ${r.code.padEnd(9)} ${String(r.seeded).padStart(7)} ${String(r.reconciled).padStart(7)} ${String(r.stale).padStart(8)} ${String(r.gaps).padStart(6)} ${String(r.orphans).padStart(8)}`)
 }
 
 if (!DRY) {
@@ -382,4 +481,18 @@ if (!DRY && totalChars) {
       : `  ${totalChars.toLocaleString()} characters billed (~$${((totalChars / 1e6) * 10).toFixed(2)} at $10/M)`
   )
 }
-if (DRY) console.log('  Nothing was sent and nothing was written.')
+if (DRY) console.log(`  Nothing was sent and nothing was written.`)
+if (rejected.length) {
+  console.log(`
+  ${rejected.length} unit(s) failed a check and were NOT written. Those stay gaps and fall back to English:`)
+  for (const r of rejected.slice(0, 12)) {
+    console.log(`    ${r.code} ${r.id}`)
+    console.log(`      ${r.why}`)
+    // \s, not s. Written through sed once without the backslash, this collapsed every letter s in
+    // the sample and made correct Spanish look like corrupted Spanish — in the one place whose job
+    // is to show you what went wrong.
+    console.log(`      got: ${r.got.replace(/\s+/g, ' ').slice(0, 100)}`)
+  }
+  if (rejected.length > 12) console.log(`    … and ${rejected.length - 12} more`)
+}
+if (stoppedEarly || rejected.length) process.exitCode = 1
