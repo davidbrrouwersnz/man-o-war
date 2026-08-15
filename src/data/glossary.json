@@ -1,5 +1,5 @@
 {
-  "note": "Terms whose translation is a fact rather than a guess. Seeded from GBIF vernacular names by scripts/glossary.mjs, which accepts a name only on an EXACT taxonomic match with exactly one candidate in that language — everything else is left under `candidates` for a person to choose. Applied by scripts/translate.mjs as an Azure dynamic dictionary, and asserted on the way back: if the agreed word is missing from the translation the run fails.",
+  "note": "Terms whose translation is a fact rather than a guess. Seeded from GBIF vernacular names and cross-checked against Wikidata by scripts/glossary.mjs. A name is accepted when both authorities agree, or when only one of them has an opinion — recorded either way in `source`, so a reviewer can see how settled each entry is. Where the two disagree the name stays under `candidates` for a person to choose. Applied by scripts/translate.mjs as a dynamic dictionary and asserted on the way back.",
   "terms": {
     "A fragment from an unknown model": {
       "why": "vernacular name",
@@ -16,7 +16,32 @@
       "accessions": [
         "1884.137.68"
       ],
-      "langs": {},
+      "langs": {
+        "de": {
+          "text": "Lungenqualle",
+          "status": "accepted",
+          "source": "GBIF and Wikidata agree (Rhizostoma pulmo)",
+          "checkedOn": "2026-08-15"
+        },
+        "ja": {
+          "text": "コクカイビゼンクラゲ",
+          "status": "accepted",
+          "source": "Wikidata only (Rhizostoma pulmo)",
+          "checkedOn": "2026-08-15"
+        },
+        "zh-Hant": {
+          "text": "桶水母",
+          "status": "accepted",
+          "source": "Wikidata only (Rhizostoma pulmo)",
+          "checkedOn": "2026-08-15"
+        },
+        "ar": {
+          "text": "جذفم زخرفي",
+          "status": "accepted",
+          "source": "Wikidata only (Rhizostoma pulmo)",
+          "checkedOn": "2026-08-15"
+        }
+      },
       "candidates": {
         "es": [
           "Acalefo azul",
@@ -125,7 +150,14 @@
         "1884.137.28",
         "1884.137.96"
       ],
-      "langs": {},
+      "langs": {
+        "de": {
+          "text": "Speer-Anemone",
+          "status": "accepted",
+          "source": "GBIF, spelling variants of one name (Peachia hastata)",
+          "checkedOn": "2026-08-15"
+        }
+      },
       "candidates": {
         "de": [
           "Speer-Anemone",
@@ -212,7 +244,38 @@
       "accessions": [
         "1884.137.38"
       ],
-      "langs": {},
+      "langs": {
+        "de": {
+          "text": "Gewöhnlicher Tintenfisch",
+          "status": "accepted",
+          "source": "GBIF and Wikidata agree (Sepia officinalis)",
+          "checkedOn": "2026-08-15"
+        },
+        "fr": {
+          "text": "Seiche commune",
+          "status": "accepted",
+          "source": "GBIF and Wikidata agree (Sepia officinalis)",
+          "checkedOn": "2026-08-15"
+        },
+        "ja": {
+          "text": "ヨーロッパコウイカ",
+          "status": "accepted",
+          "source": "GBIF and Wikidata agree (Sepia officinalis)",
+          "checkedOn": "2026-08-15"
+        },
+        "ko": {
+          "text": "갑오징어",
+          "status": "accepted",
+          "source": "Wikidata only (Sepia officinalis)",
+          "checkedOn": "2026-08-15"
+        },
+        "ar": {
+          "text": "خذاق",
+          "status": "accepted",
+          "source": "Wikidata, over 9 GBIF candidate(s) (Sepia officinalis)",
+          "checkedOn": "2026-08-15"
+        }
+      },
       "candidates": {
         "es": [
           "Aluda",
@@ -266,6 +329,7 @@
           "Yoroppa Kouika"
         ],
         "ar": [
+          "خذاق",
           "Sabbidije",
           "Seiba",
           "Seppio",
@@ -289,13 +353,19 @@
         "de": {
           "text": "Kompassqualle",
           "status": "accepted",
-          "source": "GBIF 5185425 (Chrysaora hysoscella)",
+          "source": "GBIF and Wikidata agree (Chrysaora hysoscella)",
           "checkedOn": "2026-08-15"
         },
         "es": {
           "text": "Medusa Compás",
           "status": "accepted",
           "source": "GBIF 5185425 (Chrysaora hysoscella)",
+          "checkedOn": "2026-08-15"
+        },
+        "ja": {
+          "text": "コンパスジェリー",
+          "status": "accepted",
+          "source": "Wikidata only (Chrysaora hysoscella)",
           "checkedOn": "2026-08-15"
         }
       },
@@ -346,7 +416,14 @@
       "accessions": [
         "1884.137.57"
       ],
-      "langs": {},
+      "langs": {
+        "de": {
+          "text": "Tote Meerhand",
+          "status": "accepted",
+          "source": "GBIF and Wikidata agree (Alcyonium digitatum)",
+          "checkedOn": "2026-08-15"
+        }
+      },
       "candidates": {
         "de": [
           "Bastardschwamm",
@@ -370,7 +447,26 @@
       "accessions": [
         "1884.137.74"
       ],
-      "langs": {},
+      "langs": {
+        "de": {
+          "text": "Dickhörnige Seerose",
+          "status": "accepted",
+          "source": "GBIF and Wikidata agree (Urticina felina)",
+          "checkedOn": "2026-08-15"
+        },
+        "fr": {
+          "text": "anémone dahlia",
+          "status": "accepted",
+          "source": "GBIF candidate corroborated by a Wikidata alias (Urticina felina)",
+          "checkedOn": "2026-08-15"
+        },
+        "zh-Hant": {
+          "text": "猫枭海葵",
+          "status": "accepted",
+          "source": "Wikidata only (Urticina felina)",
+          "checkedOn": "2026-08-15"
+        }
+      },
       "candidates": {
         "de": [
           "Braune Seedahlie",
@@ -424,7 +520,7 @@
         "zh-Hant": {
           "text": "黑枝鰓海蛞蝓",
           "status": "accepted",
-          "source": "GBIF 4359827 (Dendrodoris nigra)",
+          "source": "GBIF and Wikidata agree (Dendrodoris nigra)",
           "checkedOn": "2026-08-15"
         }
       },
@@ -469,6 +565,30 @@
           "status": "accepted",
           "source": "GBIF 5192082 (Elysia chlorotica)",
           "checkedOn": "2026-08-15"
+        },
+        "ja": {
+          "text": "エリシア・クロロティカ",
+          "status": "accepted",
+          "source": "Wikidata only (Elysia chlorotica)",
+          "checkedOn": "2026-08-15"
+        },
+        "ko": {
+          "text": "엘리시아 클로로티카",
+          "status": "accepted",
+          "source": "Wikidata only (Elysia chlorotica)",
+          "checkedOn": "2026-08-15"
+        },
+        "zh-Hant": {
+          "text": "綠葉海蛞蝓",
+          "status": "accepted",
+          "source": "Wikidata only (Elysia chlorotica)",
+          "checkedOn": "2026-08-15"
+        },
+        "ar": {
+          "text": "بزاق بحر أخضر",
+          "status": "accepted",
+          "source": "Wikidata only (Elysia chlorotica)",
+          "checkedOn": "2026-08-15"
         }
       },
       "candidates": {
@@ -491,13 +611,25 @@
         "ja": {
           "text": "ヨーロッパヤリイカ",
           "status": "accepted",
-          "source": "GBIF 2290374 (Loligo vulgaris)",
+          "source": "GBIF and Wikidata agree (Loligo vulgaris)",
           "checkedOn": "2026-08-15"
         },
         "zh-Hant": {
-          "text": "欧洲乌贼",
+          "text": "歐洲烏賊",
           "status": "accepted",
-          "source": "GBIF 2290374 (Loligo vulgaris)",
+          "source": "Wikidata, over 1 GBIF candidate(s) (Loligo vulgaris)",
+          "checkedOn": "2026-08-15"
+        },
+        "de": {
+          "text": "Gemeiner Kalmar",
+          "status": "accepted",
+          "source": "GBIF and Wikidata agree (Loligo vulgaris)",
+          "checkedOn": "2026-08-15"
+        },
+        "ar": {
+          "text": "ذو الأذرع العشر",
+          "status": "accepted",
+          "source": "Wikidata only (Loligo vulgaris)",
           "checkedOn": "2026-08-15"
         }
       },
@@ -525,6 +657,7 @@
           "ヨーロッパヤリイカ"
         ],
         "zh-Hant": [
+          "歐洲烏賊",
           "欧洲乌贼"
         ]
       },
@@ -546,7 +679,25 @@
         "fr": {
           "text": "spirographe",
           "status": "accepted",
-          "source": "GBIF 2328603 (Sabella spallanzanii)",
+          "source": "GBIF and Wikipedia article title agree (Sabella spallanzanii)",
+          "checkedOn": "2026-08-15"
+        },
+        "de": {
+          "text": "Schraubensabelle",
+          "status": "accepted",
+          "source": "GBIF and Wikidata agree (Sabella spallanzanii)",
+          "checkedOn": "2026-08-15"
+        },
+        "zh-Hant": {
+          "text": "纓鰓蟲",
+          "status": "accepted",
+          "source": "Wikidata only (Sabella spallanzanii)",
+          "checkedOn": "2026-08-15"
+        },
+        "ar": {
+          "text": "دودة المروحة الطاووسية",
+          "status": "accepted",
+          "source": "Wikidata only (Sabella spallanzanii)",
           "checkedOn": "2026-08-15"
         }
       },
@@ -684,7 +835,25 @@
         "ko": {
           "text": "조개낙지",
           "status": "accepted",
-          "source": "GBIF 5189614 (Argonauta argo)",
+          "source": "GBIF and Wikidata agree (Argonauta argo)",
+          "checkedOn": "2026-08-15"
+        },
+        "ja": {
+          "text": "アオイガイ",
+          "status": "accepted",
+          "source": "GBIF and Wikidata agree (Argonauta argo)",
+          "checkedOn": "2026-08-15"
+        },
+        "zh-Hant": {
+          "text": "船蛸",
+          "status": "accepted",
+          "source": "GBIF and Wikidata agree (Argonauta argo)",
+          "checkedOn": "2026-08-15"
+        },
+        "ar": {
+          "text": "عنقريط أكبر",
+          "status": "accepted",
+          "source": "Wikidata, over 2 GBIF candidate(s) (Argonauta argo)",
           "checkedOn": "2026-08-15"
         }
       },
@@ -701,6 +870,7 @@
           "argonaute voilier"
         ],
         "ar": [
+          "عنقريط أكبر",
           "عنقريط كبير",
           "نوتي الورقة"
         ],
@@ -727,7 +897,26 @@
       "accessions": [
         "1884.137.48"
       ],
-      "langs": {},
+      "langs": {
+        "de": {
+          "text": "Grüner Igelwurm",
+          "status": "accepted",
+          "source": "GBIF and Wikidata agree (Bonellia viridis)",
+          "checkedOn": "2026-08-15"
+        },
+        "fr": {
+          "text": "bonellie verte",
+          "status": "accepted",
+          "source": "GBIF and Wikidata agree (Bonellia viridis)",
+          "checkedOn": "2026-08-15"
+        },
+        "ja": {
+          "text": "ボネリムシ",
+          "status": "accepted",
+          "source": "Wikidata only (Bonellia viridis)",
+          "checkedOn": "2026-08-15"
+        }
+      },
       "candidates": {
         "fr": [
           "Bonellie verte, Ver hérissé",
@@ -752,6 +941,24 @@
           "text": "Loche blanche",
           "status": "accepted",
           "source": "GBIF 5781288 (Deroceras agreste)",
+          "checkedOn": "2026-08-15"
+        },
+        "de": {
+          "text": "Graue Ackerschnecke",
+          "status": "accepted",
+          "source": "GBIF and Wikidata agree (Deroceras agreste)",
+          "checkedOn": "2026-08-15"
+        },
+        "ko": {
+          "text": "초원뾰족민달팽이",
+          "status": "accepted",
+          "source": "Wikidata only (Deroceras agreste)",
+          "checkedOn": "2026-08-15"
+        },
+        "zh-Hant": {
+          "text": "野蛞蝓",
+          "status": "accepted",
+          "source": "Wikidata only (Deroceras agreste)",
           "checkedOn": "2026-08-15"
         }
       },
@@ -785,6 +992,18 @@
           "status": "accepted",
           "source": "GBIF 9681862 (Ancistroteuthis lichtensteinii)",
           "checkedOn": "2026-08-15"
+        },
+        "fr": {
+          "text": "Cornet archange",
+          "status": "accepted",
+          "source": "Wikidata only (Ancistroteuthis lichtensteinii)",
+          "checkedOn": "2026-08-15"
+        },
+        "zh-Hant": {
+          "text": "鉤魷",
+          "status": "accepted",
+          "source": "Wikidata only (Ancistroteuthis lichtensteinii)",
+          "checkedOn": "2026-08-15"
         }
       },
       "candidates": {
@@ -814,13 +1033,13 @@
         "ja": {
           "text": "バレンクラゲ",
           "status": "accepted",
-          "source": "GBIF 5185492 (Physophora hydrostatica)",
+          "source": "GBIF and Wikidata agree (Physophora hydrostatica)",
           "checkedOn": "2026-08-15"
         },
         "zh-Hant": {
           "text": "氣囊水母",
           "status": "accepted",
-          "source": "GBIF 5185492 (Physophora hydrostatica)",
+          "source": "GBIF and Wikidata agree (Physophora hydrostatica)",
           "checkedOn": "2026-08-15"
         }
       },
@@ -916,6 +1135,36 @@
           "status": "accepted",
           "source": "GBIF 2295438 (Limax maximus)",
           "checkedOn": "2026-08-15"
+        },
+        "de": {
+          "text": "Tigerschnegel",
+          "status": "accepted",
+          "source": "GBIF and Wikidata agree (Limax maximus)",
+          "checkedOn": "2026-08-15"
+        },
+        "ja": {
+          "text": "マダラコウラナメクジ",
+          "status": "accepted",
+          "source": "Wikidata only (Limax maximus)",
+          "checkedOn": "2026-08-15"
+        },
+        "ko": {
+          "text": "범무늬뾰족민달팽이",
+          "status": "accepted",
+          "source": "Wikidata only (Limax maximus)",
+          "checkedOn": "2026-08-15"
+        },
+        "zh-Hant": {
+          "text": "大蛞蝓",
+          "status": "accepted",
+          "source": "Wikidata only (Limax maximus)",
+          "checkedOn": "2026-08-15"
+        },
+        "ar": {
+          "text": "بزاق الحدائق المنقط",
+          "status": "accepted",
+          "source": "Wikidata only (Limax maximus)",
+          "checkedOn": "2026-08-15"
         }
       },
       "candidates": {
@@ -946,7 +1195,32 @@
       "accessions": [
         "1884.137.9"
       ],
-      "langs": {},
+      "langs": {
+        "de": {
+          "text": "Wattwurm",
+          "status": "accepted",
+          "source": "GBIF and Wikidata agree (Arenicola marina)",
+          "checkedOn": "2026-08-15"
+        },
+        "fr": {
+          "text": "arénicole",
+          "status": "accepted",
+          "source": "GBIF candidate corroborated by a Wikidata alias (Arenicola marina)",
+          "checkedOn": "2026-08-15"
+        },
+        "zh-Hant": {
+          "text": "沙蠋",
+          "status": "accepted",
+          "source": "Wikidata only (Arenicola marina)",
+          "checkedOn": "2026-08-15"
+        },
+        "ar": {
+          "text": "رملية",
+          "status": "accepted",
+          "source": "Wikidata only (Arenicola marina)",
+          "checkedOn": "2026-08-15"
+        }
+      },
       "candidates": {
         "fr": [
           "Arénicole des pêcheurs, Ver de vase, Tétine, Bocard, Bouzou, Ver d’eau, Ver à l'oeil, Chique, Buzin",
@@ -990,7 +1264,13 @@
         "ja": {
           "text": "ムカデメリベ",
           "status": "accepted",
-          "source": "GBIF 4360148 (Melibe viridis)",
+          "source": "GBIF and Wikidata agree (Melibe viridis)",
+          "checkedOn": "2026-08-15"
+        },
+        "ko": {
+          "text": "초록잎갯민숭이",
+          "status": "accepted",
+          "source": "Wikidata only (Melibe viridis)",
           "checkedOn": "2026-08-15"
         }
       },
@@ -1024,19 +1304,37 @@
         "de": {
           "text": "Ohrenqualle",
           "status": "accepted",
-          "source": "GBIF 2264442 (Aurelia aurita)",
+          "source": "GBIF and Wikidata agree (Aurelia aurita)",
           "checkedOn": "2026-08-15"
         },
         "ja": {
           "text": "ミズクラゲ",
           "status": "accepted",
-          "source": "GBIF 2264442 (Aurelia aurita)",
+          "source": "GBIF and Wikidata agree (Aurelia aurita)",
           "checkedOn": "2026-08-15"
         },
         "ko": {
           "text": "보름달물해파리",
           "status": "accepted",
-          "source": "GBIF 2264442 (Aurelia aurita)",
+          "source": "GBIF and Wikidata agree (Aurelia aurita)",
+          "checkedOn": "2026-08-15"
+        },
+        "fr": {
+          "text": "méduse commune",
+          "status": "accepted",
+          "source": "GBIF candidate corroborated by a Wikidata alias (Aurelia aurita)",
+          "checkedOn": "2026-08-15"
+        },
+        "zh-Hant": {
+          "text": "海月水母",
+          "status": "accepted",
+          "source": "GBIF and Wikidata agree (Aurelia aurita)",
+          "checkedOn": "2026-08-15"
+        },
+        "ar": {
+          "text": "هلام البحر العادي",
+          "status": "accepted",
+          "source": "Wikidata only (Aurelia aurita)",
           "checkedOn": "2026-08-15"
         }
       },
@@ -1087,13 +1385,31 @@
         "ja": {
           "text": "オキクラゲ",
           "status": "accepted",
-          "source": "GBIF 2264423 (Pelagia noctiluca)",
+          "source": "GBIF and Wikidata agree (Pelagia noctiluca)",
           "checkedOn": "2026-08-15"
         },
         "ko": {
           "text": "야광원양해파리",
           "status": "accepted",
-          "source": "GBIF 2264423 (Pelagia noctiluca)",
+          "source": "GBIF and Wikidata agree (Pelagia noctiluca)",
+          "checkedOn": "2026-08-15"
+        },
+        "de": {
+          "text": "Leuchtqualle",
+          "status": "accepted",
+          "source": "GBIF and Wikidata agree (Pelagia noctiluca)",
+          "checkedOn": "2026-08-15"
+        },
+        "zh-Hant": {
+          "text": "夜光游水母",
+          "status": "accepted",
+          "source": "Wikidata only (Pelagia noctiluca)",
+          "checkedOn": "2026-08-15"
+        },
+        "ar": {
+          "text": "بيلاجيا نوكتيلوكا",
+          "status": "accepted",
+          "source": "Wikidata only (Pelagia noctiluca)",
           "checkedOn": "2026-08-15"
         }
       },
@@ -1165,7 +1481,26 @@
       "accessions": [
         "1884.137.73"
       ],
-      "langs": {},
+      "langs": {
+        "de": {
+          "text": "Sternkoralle",
+          "status": "accepted",
+          "source": "GBIF and Wikidata agree (Astroides calycularis)",
+          "checkedOn": "2026-08-15"
+        },
+        "es": {
+          "text": "Coral naranja",
+          "status": "accepted",
+          "source": "GBIF candidate corroborated by a Wikidata alias (Astroides calycularis)",
+          "checkedOn": "2026-08-15"
+        },
+        "ar": {
+          "text": "شبه المرجان البرتقالي",
+          "status": "accepted",
+          "source": "GBIF and Wikidata agree (Astroides calycularis)",
+          "checkedOn": "2026-08-15"
+        }
+      },
       "candidates": {
         "es": [
           "Coral naranja",
@@ -1222,7 +1557,25 @@
         "ko": {
           "text": "조개낙지",
           "status": "accepted",
-          "source": "GBIF 5189614 (Argonauta argo)",
+          "source": "GBIF and Wikidata agree (Argonauta argo)",
+          "checkedOn": "2026-08-15"
+        },
+        "ja": {
+          "text": "アオイガイ",
+          "status": "accepted",
+          "source": "GBIF and Wikidata agree (Argonauta argo)",
+          "checkedOn": "2026-08-15"
+        },
+        "zh-Hant": {
+          "text": "船蛸",
+          "status": "accepted",
+          "source": "GBIF and Wikidata agree (Argonauta argo)",
+          "checkedOn": "2026-08-15"
+        },
+        "ar": {
+          "text": "عنقريط أكبر",
+          "status": "accepted",
+          "source": "Wikidata, over 2 GBIF candidate(s) (Argonauta argo)",
           "checkedOn": "2026-08-15"
         }
       },
@@ -1239,6 +1592,7 @@
           "argonaute voilier"
         ],
         "ar": [
+          "عنقريط أكبر",
           "عنقريط كبير",
           "نوتي الورقة"
         ],
@@ -1275,7 +1629,26 @@
       "accessions": [
         "1884.137.29"
       ],
-      "langs": {},
+      "langs": {
+        "de": {
+          "text": "Seenelke",
+          "status": "accepted",
+          "source": "Wikidata only (Metridium senile)",
+          "checkedOn": "2026-08-15"
+        },
+        "ja": {
+          "text": "ヒダベリイソギンチャク",
+          "status": "accepted",
+          "source": "Wikidata only (Metridium senile)",
+          "checkedOn": "2026-08-15"
+        },
+        "ko": {
+          "text": "섬유세닐말미잘",
+          "status": "accepted",
+          "source": "Wikidata only (Metridium senile)",
+          "checkedOn": "2026-08-15"
+        }
+      },
       "candidates": {},
       "authority": "GBIF 8037736 (Metridium senile)",
       "checkedOn": "2026-08-15"
@@ -1289,27 +1662,44 @@
         "ja": {
           "text": "カツオノエボシ",
           "status": "accepted",
-          "source": "GBIF 2264734 (Physalia physalis)",
+          "source": "GBIF and Wikidata agree (Physalia physalis)",
           "checkedOn": "2026-08-15"
         },
         "zh-Hant": {
           "text": "僧帽水母",
           "status": "accepted",
-          "source": "GBIF 2264734 (Physalia physalis)",
+          "source": "GBIF and Wikidata agree (Physalia physalis)",
           "checkedOn": "2026-08-15"
         },
         "ko": {
           "text": "작은부레관해파리",
           "status": "accepted",
-          "source": "GBIF 2264734 (Physalia physalis)",
+          "source": "GBIF and Wikidata agree (Physalia physalis)",
           "checkedOn": "2026-08-15"
         },
         "de": {
           "text": "Portugiesische Galeere",
           "status": "accepted",
-          "source": "GBIF 2264734 (Physalia physalis), corroborated by the existing German pack",
-          "checkedOn": "2026-08-15",
-          "note": "Chosen from three GBIF candidates. Blasenqualle and Seeblase both name the float rather than the animal. This is the term NMT got wrong (portugiesisches Kriegsschiff, a warship), so it is the worked example for the whole glossary."
+          "source": "GBIF and Wikidata agree (Physalia physalis)",
+          "checkedOn": "2026-08-15"
+        },
+        "fr": {
+          "text": "vessie de mer",
+          "status": "accepted",
+          "source": "GBIF candidate corroborated by a Wikidata alias (Physalia physalis)",
+          "checkedOn": "2026-08-15"
+        },
+        "es": {
+          "text": "carabela portuguesa",
+          "status": "accepted",
+          "source": "GBIF candidate corroborated by a Wikidata alias (Physalia physalis)",
+          "checkedOn": "2026-08-15"
+        },
+        "ar": {
+          "text": "بارجة برتغالية",
+          "status": "accepted",
+          "source": "Wikidata only (Physalia physalis)",
+          "checkedOn": "2026-08-15"
         }
       },
       "candidates": {
@@ -1351,6 +1741,12 @@
           "text": "エラヒキムシ",
           "status": "accepted",
           "source": "GBIF 2501343 (Priapulus caudatus)",
+          "checkedOn": "2026-08-15"
+        },
+        "de": {
+          "text": "Geschwänzter Priapswurm",
+          "status": "accepted",
+          "source": "GBIF and Wikidata agree (Priapulus caudatus)",
           "checkedOn": "2026-08-15"
         }
       },
@@ -1426,6 +1822,12 @@
           "status": "accepted",
           "source": "GBIF 2316069 (Perinereis cultrifera)",
           "checkedOn": "2026-08-15"
+        },
+        "zh-Hant": {
+          "text": "獨齒圍沙蠶",
+          "status": "accepted",
+          "source": "Wikidata only (Perinereis cultrifera)",
+          "checkedOn": "2026-08-15"
         }
       },
       "candidates": {
@@ -1449,6 +1851,36 @@
           "text": "coral rojo",
           "status": "accepted",
           "source": "GBIF 5185014 (Corallium rubrum)",
+          "checkedOn": "2026-08-15"
+        },
+        "de": {
+          "text": "Edelkoralle",
+          "status": "accepted",
+          "source": "GBIF and Wikidata agree (Corallium rubrum)",
+          "checkedOn": "2026-08-15"
+        },
+        "fr": {
+          "text": "Corail rouge",
+          "status": "accepted",
+          "source": "GBIF and Wikidata agree (Corallium rubrum)",
+          "checkedOn": "2026-08-15"
+        },
+        "ja": {
+          "text": "宝石サンゴ",
+          "status": "accepted",
+          "source": "Wikidata only (Corallium rubrum)",
+          "checkedOn": "2026-08-15"
+        },
+        "zh-Hant": {
+          "text": "紅珊瑚",
+          "status": "accepted",
+          "source": "Wikidata only (Corallium rubrum)",
+          "checkedOn": "2026-08-15"
+        },
+        "ar": {
+          "text": "مرجان",
+          "status": "accepted",
+          "source": "Wikidata only (Corallium rubrum)",
           "checkedOn": "2026-08-15"
         }
       },
@@ -1486,7 +1918,44 @@
         "1884.137.86",
         "1884.137.69"
       ],
-      "langs": {},
+      "langs": {
+        "de": {
+          "text": "Weinbergschnecke",
+          "status": "accepted",
+          "source": "GBIF and Wikidata agree (Helix pomatia)",
+          "checkedOn": "2026-08-15"
+        },
+        "fr": {
+          "text": "Escargot de Bourgogne",
+          "status": "accepted",
+          "source": "GBIF, spelling variants of one name (Helix pomatia)",
+          "checkedOn": "2026-08-15"
+        },
+        "ja": {
+          "text": "リンゴマイマイ",
+          "status": "accepted",
+          "source": "Wikidata only (Helix pomatia)",
+          "checkedOn": "2026-08-15"
+        },
+        "ko": {
+          "text": "에스카르고큰달팽이",
+          "status": "accepted",
+          "source": "Wikidata only (Helix pomatia)",
+          "checkedOn": "2026-08-15"
+        },
+        "zh-Hant": {
+          "text": "羅馬蝸牛",
+          "status": "accepted",
+          "source": "Wikidata only (Helix pomatia)",
+          "checkedOn": "2026-08-15"
+        },
+        "ar": {
+          "text": "حلزون كرمي",
+          "status": "accepted",
+          "source": "Wikidata only (Helix pomatia)",
+          "checkedOn": "2026-08-15"
+        }
+      },
       "candidates": {
         "fr": [
           "Escargot de Bourgogne",
@@ -1531,7 +2000,7 @@
         "zh-Hant": {
           "text": "雙尾薩利亞",
           "status": "accepted",
-          "source": "GBIF 5232491 (Thalia democratica)",
+          "source": "GBIF and Wikidata agree (Thalia democratica)",
           "checkedOn": "2026-08-15"
         }
       },
@@ -1560,6 +2029,12 @@
           "text": "gusano albañil",
           "status": "accepted",
           "source": "GBIF 2325106 (Lanice conchilega)",
+          "checkedOn": "2026-08-15"
+        },
+        "de": {
+          "text": "Bäumchenröhrenwurm",
+          "status": "accepted",
+          "source": "GBIF and Wikidata agree (Lanice conchilega)",
           "checkedOn": "2026-08-15"
         }
       },
@@ -1616,9 +2091,9 @@
       ],
       "langs": {
         "fr": {
-          "text": "Ange des mers",
+          "text": "Papillon de mer",
           "status": "accepted",
-          "source": "GBIF 5193700 (Clione limacina)",
+          "source": "Wikidata, over 1 GBIF candidate(s) (Clione limacina)",
           "checkedOn": "2026-08-15"
         },
         "es": {
@@ -1630,18 +2105,25 @@
         "ja": {
           "text": "ダイオウハダカカメガイ",
           "status": "accepted",
-          "source": "GBIF 5193700 (Clione limacina)",
+          "source": "GBIF and Wikidata agree (Clione limacina)",
           "checkedOn": "2026-08-15"
         },
         "zh-Hant": {
-          "text": "流冰天使",
+          "text": "裸海蝶",
           "status": "accepted",
-          "source": "GBIF 5193700 (Clione limacina)",
+          "source": "Wikidata, over 1 GBIF candidate(s) (Clione limacina)",
+          "checkedOn": "2026-08-15"
+        },
+        "ko": {
+          "text": "무각거북고둥",
+          "status": "accepted",
+          "source": "Wikidata only (Clione limacina)",
           "checkedOn": "2026-08-15"
         }
       },
       "candidates": {
         "fr": [
+          "Papillon de mer",
           "Ange des mers"
         ],
         "de": [
@@ -1655,6 +2137,7 @@
           "ダイオウハダカカメガイ"
         ],
         "zh-Hant": [
+          "裸海蝶",
           "流冰天使"
         ]
       },
@@ -1690,9 +2173,9 @@
           "checkedOn": "2026-08-15"
         },
         "de": {
-          "text": "röhren Seegurke",
+          "text": "Röhrenseegurke",
           "status": "accepted",
-          "source": "GBIF 2279156 (Holothuria tubulosa)",
+          "source": "Wikidata, over 1 GBIF candidate(s) (Holothuria tubulosa)",
           "checkedOn": "2026-08-15"
         }
       },
@@ -1705,6 +2188,7 @@
           "holothurie tubuleuse"
         ],
         "de": [
+          "Röhrenseegurke",
           "röhren Seegurke"
         ]
       },
@@ -1943,6 +2427,18 @@
           "status": "accepted",
           "source": "GBIF 5200757 (Botryllus schlosseri)",
           "checkedOn": "2026-08-15"
+        },
+        "de": {
+          "text": "Stern-Seescheide",
+          "status": "accepted",
+          "source": "GBIF, spelling variants of one name (Botryllus schlosseri)",
+          "checkedOn": "2026-08-15"
+        },
+        "fr": {
+          "text": "Botrylle étoilé",
+          "status": "accepted",
+          "source": "GBIF, spelling variants of one name (Botryllus schlosseri)",
+          "checkedOn": "2026-08-15"
         }
       },
       "candidates": {
@@ -2003,6 +2499,18 @@
           "status": "accepted",
           "source": "GBIF 5781247 (Lehmannia marginata)",
           "checkedOn": "2026-08-15"
+        },
+        "de": {
+          "text": "Baumschnegel",
+          "status": "accepted",
+          "source": "GBIF and Wikidata agree (Lehmannia marginata)",
+          "checkedOn": "2026-08-15"
+        },
+        "ko": {
+          "text": "두줄민달팽이",
+          "status": "accepted",
+          "source": "Wikidata only (Lehmannia marginata)",
+          "checkedOn": "2026-08-15"
         }
       },
       "candidates": {
@@ -2027,6 +2535,12 @@
           "text": "anémona tubo",
           "status": "accepted",
           "source": "GBIF 5841862 (Cerianthus membranaceus)",
+          "checkedOn": "2026-08-15"
+        },
+        "ar": {
+          "text": "شقيقة أسـطوانية غشائية",
+          "status": "accepted",
+          "source": "Wikidata only (Cerianthus membranaceus)",
           "checkedOn": "2026-08-15"
         }
       },
@@ -2085,7 +2599,7 @@
         "ja": {
           "text": "オビクラゲ",
           "status": "accepted",
-          "source": "GBIF 2501198 (Cestum veneris)",
+          "source": "GBIF and Wikidata agree (Cestum veneris)",
           "checkedOn": "2026-08-15"
         }
       },
