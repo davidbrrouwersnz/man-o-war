@@ -1,3 +1,4 @@
+import { forwardRef } from "react"
 import { Button as ButtonPrimitive } from "@base-ui/react/button"
 import { cva } from "class-variance-authority";
 
@@ -74,18 +75,27 @@ const buttonVariants = cva(
   }
 )
 
-function Button({
+/* forwardRef, which the generated component does not do. shadcn writes for React 19, where a ref is
+   an ordinary prop; this app is on React 18, where a plain function component silently drops one.
+
+   That mattered as soon as a Base UI part rendered a Button. `<TooltipTrigger render={<Button/>}>`
+   hands the button a ref, and Base UI needs it to know which element the tooltip is anchored to and
+   to attach the hover interaction. Without it the tooltip opened on keyboard focus — those handlers
+   arrive as ordinary props — and never on hover. No warning and no error, just half a control.
+   Anything else rendered through a Base UI `render` prop would have had the same hole. */
+const Button = forwardRef(function Button({
   className,
   variant = "default",
   size = "default",
   ...props
-}) {
+}, ref) {
   return (
     <ButtonPrimitive
+      ref={ref}
       data-slot="button"
       className={cn(buttonVariants({ variant, size, className }))}
       {...props} />
   );
-}
+})
 
 export { Button, buttonVariants }
