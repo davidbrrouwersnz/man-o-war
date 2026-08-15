@@ -59,9 +59,15 @@ function SelectTrigger({
   );
 }
 
+// `footer` is a slot for content that belongs to the popup but is not one of its options — §7's
+// translation disclosure, in the language picker. It renders as a sibling of the list rather than
+// inside it, which is what keeps it valid: children are already wrapped in Select.List, so the list
+// carries role="listbox" and the popup around it is role="presentation". A paragraph inside the
+// listbox would be neither an option nor announced; outside it, it is ordinary content in a popup.
 function SelectContent({
   className,
   children,
+  footer = null,
   side = "bottom",
   sideOffset = 4,
   align = "center",
@@ -88,6 +94,7 @@ function SelectContent({
           {...props}>
           <SelectScrollUpButton />
           <SelectPrimitive.List>{children}</SelectPrimitive.List>
+          {footer}
           <SelectScrollDownButton />
         </SelectPrimitive.Popup>
       </SelectPrimitive.Positioner>

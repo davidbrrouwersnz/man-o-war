@@ -270,6 +270,35 @@ for (const p of packs) {
 
 index.languages = packs.map((p) => p.code)
 
+// §7's disclosure, computed rather than declared.
+//
+// "A quiet line in the language picker where content is machine-translated and human-reviewed. A
+// museum trades on authority; this is the difference between being trusted and being caught."
+//
+// Every pack has carried a `reviewed: false` flag since the first translation landed, and no code
+// has ever read it — so the app has been shipping machine translation with no disclosure at all,
+// which is the exact failure §7 names. A hand-set boolean was never going to survive anyway: it is
+// one value for a whole language, set by whoever remembered, and it stays false forever or goes
+// true all at once.
+//
+// scripts/translate.mjs records reviewStatus per unit and resets it to unreviewed whenever a unit
+// is retranslated, so the honest number is countable. Reviewing one object's story moves it, and
+// changing one English sentence moves it back.
+const LEDGER = new URL('../src/data/translation-index.json', import.meta.url)
+const ledger = existsSync(LEDGER) ? JSON.parse(readFileSync(LEDGER, 'utf8')).languages ?? {} : {}
+index.review = {}
+for (const p of packs) {
+  const entries = Object.values(ledger[p.code] ?? {})
+  const reviewed = entries.filter((e) => e.reviewStatus === 'reviewed').length
+  index.review[p.code] = {
+    total: entries.length,
+    reviewed,
+    // The engine is disclosed alongside, because "machine translated" is a different claim
+    // depending on what did the translating, and §7 wants provenance to survive to 2032.
+    engines: [...new Set(entries.map((e) => e.engine).filter(Boolean))].sort(),
+  }
+}
+
 // Layers 3–5, written once and reached from any group page (§6, §10).
 
 const layersJson = ship(LAYERS)
