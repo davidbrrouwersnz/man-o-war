@@ -109,9 +109,15 @@ function DisplaySettings() {
 // in the gallery lands on /o/{accession}, which is a group page — so the one control §7 is built
 // around was unreachable from the one route §11 is built around, unless they first went "back" to
 // a collection page they had never seen. Both tools now travel together and appear on every route.
-function Tools() {
+// `listen` is the control that plays the whole page. It is passed in rather than built here
+// because only the page knows what its own guide contains — the collection page's is the
+// standfirst and both essays, a group page's is the panel and every object on it — but it belongs
+// in this row, beside the language selector, because those three are the page's chrome and the
+// rest of the Listen controls on the page belong to particular things on it.
+function Tools({ listen = null }) {
   return (
     <div className="tools">
+      {listen}
       <LanguagePicker />
       <DisplaySettings />
     </div>

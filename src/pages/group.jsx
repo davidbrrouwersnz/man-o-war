@@ -99,14 +99,17 @@ function ObjectSection({ object, arrived, registry }) {
           phone needs: name, then the photograph, then the story. That order is load-bearing on the
           QR route, where the point is to see the name and the object within a few seconds. */}
       <div className="object-head">
+        <div className="heading-row">
         {/* §7: lang and dir follow what is actually rendered, on the element itself. An
             untranslated headline is English inside whatever page language is active; a translated
             one carries its own language. The binomial inside object.catalogueName is marked in CSS
             via .binomial where authored, so a screen reader does not read Latin with the
             surrounding phonetics. */}
-        <h2 className="object-name" {...langAttrs(headlineR)}>
-          <Spoken text={headlineR.text} itemId={`${object.accession}/00-title`} block={0} />
-        </h2>
+          <h2 className="object-name" {...langAttrs(headlineR)}>
+            <Spoken text={headlineR.text} itemId={`${object.accession}/00-title`} block={0} />
+          </h2>
+          <Listen queue={queue} available={english} compact />
+        </div>
         {showCatalogue && (
           <p className="object-catalogue" {...langAttrs(catalogueR)}>
             <Spoken text={catalogueR.text} itemId={`${object.accession}/00-title`} block={1} />
@@ -122,8 +125,6 @@ function ObjectSection({ object, arrived, registry }) {
       </figure>
 
       <div className="object-body">
-      <Listen queue={queue} available={english} note={code !== 'en' ? t('ui.audioEnglishOnly') : null} />
-
       {story ? (
         <div className="story">
           {parts.map(({ s, si, heading, body }) => {
@@ -245,7 +246,11 @@ function GroupPage({ route, go }) {
         <a className="back" href="/" onClick={go('/')}>
           <ArrowLeftIcon aria-hidden="true" focusable="false" /> {t('ui.backToCollection')}
         </a>
-        <Tools />
+        <Tools
+          listen={
+            <Listen queue={tourQueue} available={tourAvailable} note={code !== 'en' ? t('ui.audioEnglishOnly') : null} />
+          }
+        />
       </div>
       <h1 className="group-title" {...langAttrs(title)}>
         <Spoken text={title.text} itemId={`groups/${group.slug}/00-panel`} block={0} />
@@ -270,8 +275,6 @@ function GroupPage({ route, go }) {
               start the tour and stop caring about the interface — which is the point of an audio
               guide in a gallery. Individual objects keep their own control for anyone who wants
               just the thing in front of them. */}
-          <Listen queue={tourQueue} available={tourAvailable} note={code !== 'en' ? t('ui.audioEnglishOnly') : null} />
-
           {data.objects.map((o) => (
             <ObjectSection key={o.accession} object={o} arrived={o.accession === route.arrivedAt} registry={registry} />
           ))}

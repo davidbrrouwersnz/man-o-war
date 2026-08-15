@@ -168,29 +168,10 @@ a {
   outline-color: var(--brand);
 }
 
-/* §15: "Chrome over media is light-on-dark regardless of theme. Care at the boundary."
-   This is that boundary, and it was wrong. `.listen` is coloured with --ink and --edge, which
-   follow the device — but the collection header is black whatever the device is doing. On a phone
-   in light mode the collection page's own Listen control was near-black text on black, at about
-   1.2:1. It looked fine in development only because the machine was in dark mode.
-
-   Scoped to .home-head rather than .home: the essays below the grid are a light slab and their
-   Listen controls are correct as they are. */
-.home-head .listen {
-  color: var(--dark-ink);
-  border-color: var(--dark-edge);
-}
-
-.home-head .listen:hover {
-  border-color: var(--dark-ink);
-}
-
-.home-head .listen.is-playing {
-  background: var(--dark-ink);
-  color: var(--dark);
-  border-color: var(--dark-ink);
-}
-
+/* §15: "Chrome over media is light-on-dark regardless of theme. Care at the boundary." The Listen
+   control's own share of that is handled by --control-* now, which flips with the ground it sits
+   on — the three .home-head .listen rules that used to live here said the same thing in the dark
+   palette and no longer paint. Its note is still plain text and still needs telling. */
 .home-head .listen-note {
   color: var(--dark-ink-soft);
 }
@@ -272,6 +253,9 @@ a {
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  /* Three controls share this row now. At 200% text on a phone the page's own Listen and the
+     language selector will not both fit, so they wrap rather than push the layout wider. */
+  flex-wrap: wrap;
 }
 
 /* On the collection page the tools stand alone above the title rather than sharing a row with a
@@ -1277,39 +1261,46 @@ ol.grid-dense {
   flex-wrap: wrap;
 }
 
-.listen {
-  font: inherit;
-  font-size: var(--step-0);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.45rem 1rem;
-  background: transparent;
-  min-height: 44px;
+/* A heading and the control that plays it. The control is a sibling rather than a child: a button
+   inside a heading contributes its own label to that heading's accessible name, and an essay would
+   have been announced as "How it was made, Listen — How it was made".
+
+   align-items: start rather than centre, so that a name running to three lines keeps the control
+   against its first line — beside the heading, not floating halfway down it. The heading takes the
+   space and the control keeps its 44px. */
+.heading-row {
+  display: flex;
+  align-items: start;
+  gap: 0.75rem;
 }
 
-.listen:hover:not(:disabled) {
-  border-color: var(--ink);
+.heading-row > :first-child {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
-.listen:focus-visible {
-  outline-offset: 2px;
+.object-listen.is-compact {
+  margin: 0;
+  flex: none;
 }
 
-/* The collection page's tour control while the essays chunk is still in flight. It holds its place
-   so nothing below it jumps, and it is dimmed so it does not look pressable while it is not. A
-   disabled control is exempt from the contrast floor (WCAG 1.4.3 "inactive user interface
-   components"), which is what makes the opacity acceptable here and nowhere else in this file. */
-.listen:disabled {
-  opacity: 0.5;
-  cursor: default;
+/* The control that plays the whole page sits in the chrome row now, so it carries no margin of its
+   own — .tools spaces that row. */
+.tools .object-listen {
+  margin: 0;
 }
 
-.listen.is-playing {
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--ink);
-}
+/* Nothing about the Listen control is decided here any more. It is a shadcn Button in the app's
+   `quiet` variant — at `touch` when it carries its name, at `icon-touch` when it is the icon alone
+   beside a heading — and the class survives only as a hook for the scripts that press it.
+
+   These rules were not merely redundant, they were doing harm: `padding: 0.45rem 1rem` outlived
+   everything else in the block, because `icon-touch` sets no padding for it to lose to. It made a
+   44px round button 50px wide and not round, which is how it was found.
+
+     font, size, display, gap, padding, background, min-height  -> the variant
+     :hover border, :focus-visible offset, :disabled opacity    -> the variant and its base
+     .is-playing                                                -> data-playing on the variant   */
 
 .listen-note {
   font-size: var(--step--1);

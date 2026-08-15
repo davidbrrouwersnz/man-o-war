@@ -64,11 +64,16 @@ function Essay({ slug, layer, meta, code, langName }) {
 
   return (
     <section className="essay" id={slug}>
-      <h2 className="essay-title" {...langAttrs(titleR)}>
-        <Spoken text={titleR.text} itemId={`layers/${slug}/00-standfirst`} block={0} />
-      </h2>
+      {/* The control sits beside the heading it plays, after it — not inside it. A button inside a
+          heading contributes its own label to the heading's accessible name, so this essay would
+          have been announced as "How it was made, Listen — How it was made". */}
+      <div className="heading-row">
+        <h2 className="essay-title" {...langAttrs(titleR)}>
+          <Spoken text={titleR.text} itemId={`layers/${slug}/00-standfirst`} block={0} />
+        </h2>
+        <Listen queue={queue} available={available} compact />
+      </div>
       <Translated className="group-panel" r={standfirstR} itemId={`layers/${slug}/00-standfirst`} block={1} />
-      <Listen queue={queue} available={available} note={code !== 'en' ? t('ui.audioEnglishOnly') : null} />
 
       {parts.map(({ s, heading, body }) => {
         const itemId = `layers/${slug}/${s.id}`
@@ -197,7 +202,16 @@ function Home({ go, route }) {
   return (
     <main className="home" id="main" tabIndex={-1}>
       <header className="home-head">
-        <Tools />
+        <Tools
+          listen={
+            <Listen
+              queue={homeQueue}
+              available={homeAvailable}
+              pending={!layers}
+              note={code !== 'en' ? t('ui.audioEnglishOnly') : null}
+            />
+          }
+        />
         <h1>
           <Spoken text={title} itemId="home/00-intro" block={0} />
         </h1>
@@ -227,12 +241,6 @@ function Home({ go, route }) {
             </>
           )}
         </p>
-        <Listen
-          queue={homeQueue}
-          available={homeAvailable}
-          pending={!layers}
-          note={code !== 'en' ? t('ui.audioEnglishOnly') : null}
-        />
       </header>
       {/* Two wrappers, and they exist for the desktop layout: browsing on the left, reading on the
           right. `home-head` deliberately stays outside both, first in the DOM, because that is what

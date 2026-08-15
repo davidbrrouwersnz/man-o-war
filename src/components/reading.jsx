@@ -33,21 +33,21 @@ const firstWords = (text, max = 42) => {
 // page paints shoves everything below it down — measured at 0.03 CLS on a phone when the collection
 // page's tour control waited for the essays chunk. Sub-second in practice, and a disabled control
 // is exempt from the contrast floor (WCAG 1.4.3), which is what lets it dim.
-function Listen({ queue, available, note, pending = false }) {
+function Listen({ queue, available, note, pending = false, compact = false }) {
   const [t] = useT()
   const audio = useAudio()
   if (!available) return null
   const isThis = !pending && audio?.queue?.key === queue.key
   const playing = isThis && audio.playing
   return (
-    <p className="object-listen">
+    <p className={`object-listen${compact ? ' is-compact' : ''}`}>
       {/* shadcn's Button, in the app's own `quiet` variant at the `touch` size — see
           components/ui/button.jsx for why the museum's controls are variants there rather than
           rules in styles.css. The `listen` class is kept only as a hook for the few rules CSS still
           owns and for the scripts that measure this control. */}
       <Button
         variant="quiet"
-        size="touch"
+        size={compact ? 'icon-touch' : 'touch'}
         className="listen"
         data-playing={playing ? 'true' : 'false'}
         onClick={() => audio.start(queue)}
@@ -57,9 +57,15 @@ function Listen({ queue, available, note, pending = false }) {
         {playing
           ? <PauseIcon aria-hidden="true" focusable="false" />
           : <PlayIcon aria-hidden="true" focusable="false" />}
-        {playing ? t('ui.listenStop') : t('ui.listen')}
+        {/* The compact form is the icon alone. The name is not lost — it is on the button's
+            aria-label either way, and that label is the more useful of the two, because it says
+            what will play rather than just "Listen". */}
+        {!compact && (playing ? t('ui.listenStop') : t('ui.listen'))}
       </Button>
-      {note && <span className="listen-note">{note}</span>}
+      {/* No note beside a compact control: it is a sentence, and it cannot share a line with a
+          44px circle tucked against a heading. Nothing is lost — the same fallback is already
+          stated inline in the body of any passage that fell back to English. */}
+      {note && !compact && <span className="listen-note">{note}</span>}
     </p>
   )
 }
