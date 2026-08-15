@@ -180,7 +180,7 @@
         },
         "not-one-animal": {
           "heading": "Una colonia, no una medusa",
-          "text": "Esto parece una medusa muy pequeña y no lo es. El disco central es un flotador, y todo lo que rodea el borde es un individuo separado, todos unidos.\n\nDeriva en la superficie de los mares cálidos y no tiene control sobre hacia dónde va. Llega a las playas de Nueva Zelanda con el buque de guerra y el marinero que viaja por el viento, los tres arrastrados por el mismo tiempo.\n\nEl azul es real, y es el mismo azul que los demás."
+          "text": "Esto parece una medusa muy pequeña y no lo es. El disco central es un flotador, y todo lo que rodea el borde es un individuo separado, todos unidos.\n\nDeriva en la superficie de los mares cálidos y no tiene control sobre hacia dónde va. Llega a las playas de Nueva Zelanda con el carabela portuguesa y el marinero que hace el viento, los tres arrastrados por el mismo tiempo.\n\nEl azul es real, y es el mismo azul que los demás."
         }
       }
     },
@@ -1514,7 +1514,7 @@
       "segments": {
         "float-and-sail": {
           "heading": "Un flotador y una vela",
-          "text": "Mira la sección superior. En un hombre de guerra vivo, esa parte hace dos trabajos a la vez. Es un flotador, y es una vela. Viajan con las corrientes y el viento.\n\nTodo barco de guerra es zurdo o diestro, dependiendo de hacia dónde se curve esa vela.\n\nLos tentáculos de abajo pueden alcanzar diez metros. Capturan pequeños crustáceos y peces."
+          "text": "Mira la sección superior. En una carabela portuguesa viva esa parte hace dos trabajos a la vez. Es un flotador, y es una vela. Viajan con las corrientes y el viento.\n\nTodo carabela portuguesa es zurdo o diestro, dependiendo de hacia dónde se curve esa vela.\n\nLos tentáculos de abajo pueden alcanzar diez metros. Capturan pequeños crustáceos y peces."
         },
         "look": {
           "heading": "Mira bien",
@@ -1596,7 +1596,7 @@
         },
         "the-yellow": {
           "heading": "El amarillo pálido es real",
-          "text": "El amarillo suave de este modelo no es una decisión tomada por el vidriero para el efecto. Coincide con la descripción científica escrita del animal, y el color proviene de sus órganos reproductores. La fuerza depende de si el animal es macho o hembra.\n\nEste tiene varios nombres. La medusa de muchas costillas es una de ellas. La gelatina de cristal y la gelatina de agua son otros. Al igual que el hombre de guerra, es pariente de la verdadera medusa más que uno de ellos."
+          "text": "El amarillo suave de este modelo no es una decisión tomada por el vidriero para el efecto. Coincide con la descripción científica escrita del animal, y el color proviene de sus órganos reproductores. La fuerza depende de si el animal es macho o hembra.\n\nEste tiene varios nombres. La medusa de muchas costillas es una de ellas. La gelatina de cristal y la gelatina de agua son otros. Al igual que la carabela portuguesa, es pariente de la verdadera medusa y no una de ellas."
         }
       }
     },

@@ -41,6 +41,7 @@ const read = (p) => JSON.parse(readFileSync(dataUrl(p), 'utf8'))
 const GLOSSARY = dataUrl('glossary.json')
 const SEED = process.argv.includes('--seed')
 const RESOLVE = process.argv.includes('--resolve')
+const AUDIT = process.argv.includes('--audit')
 
 // GBIF publishes vernacular names under ISO 639-3; the app speaks BCP 47.
 const ISO3 = { de: 'deu', fr: 'fra', es: 'spa', ja: 'jpn', ko: 'kor', 'zh-Hant': 'zho', ar: 'ara' }
@@ -446,8 +447,67 @@ function report() {
   }
 }
 
+// Is the glossary actually REACHING the text? Deciding a name and applying it are different things,
+// and for a while they had come apart: 62 of 389 units did not carry the name agreed for them,
+// because scripts/translate.mjs hashed only the English and a glossary change invalidated nothing.
+// This is the check that measures the gap rather than assuming it is closed.
+//
+// A miss is not automatically a fault. Two of the ones that remain are the §7 carve-out, which the
+// pipeline is forbidden to rewrite, and its translations predate the guard.
+async function audit() {
+  const { collect, PACK, LAYERS, STORIES } = await import('./units.mjs')
+  const terms = loadGlossary()
+  const units = collect()
+  const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  const at = (o, p) => p.reduce((v, k) => (v == null ? undefined : v[k]), o)
+  const file = (kind, code) =>
+    kind === PACK ? `i18n/${code}.json` : kind === LAYERS ? `i18n/layers/${code}.json` : `i18n/stories/${code}.json`
+
+  let total = 0
+  let missed = 0
+  console.log('Does the stored translation carry the agreed name?\n')
+  for (const code of LANGS) {
+    const packs = {}
+    for (const kind of [PACK, LAYERS, STORIES]) {
+      try {
+        packs[kind] = JSON.parse(readFileSync(dataUrl(file(kind, code)), 'utf8'))
+      } catch {
+        packs[kind] = {}
+      }
+    }
+    let checked = 0
+    const misses = []
+    for (const u of units) {
+      for (const [term, e] of Object.entries(terms)) {
+        const target = e.langs?.[code]
+        if (target?.status !== 'accepted' || !target.text) continue
+        const forms = [term, ...(e.alsoWritten ?? [])]
+        if (!forms.some((f) => new RegExp(`(?<![\\p{L}\\p{N}])${esc(f)}(?![\\p{L}\\p{N}])`, 'iu').test(u.text))) continue
+        const got = at(packs[u.file], u.path)
+        if (typeof got !== 'string' || !got.trim()) break
+        checked++
+        const body = target.text.trim().split(/\s+/).map((w) => `${esc(w)}(?:s|es|n|en|e)?`).join('\\s+')
+        if (!got.toLowerCase().includes(target.text.toLowerCase()) && !new RegExp(body, 'iu').test(got)) {
+          misses.push(`${u.id} — "${target.text}"`)
+        }
+        break
+      }
+    }
+    total += checked
+    missed += misses.length
+    console.log(`  ${code.padEnd(9)} ${String(misses.length).padStart(3)} of ${String(checked).padStart(3)}`)
+    for (const m of misses.slice(0, 4)) console.log(`      ${m}`)
+  }
+  console.log(`\n  ${missed} of ${total} across all languages`)
+  if (missed) console.log(`  Close the gap with: npm run translate`)
+}
+
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   if (SEED) await seed()
   if (RESOLVE) await resolve()
+  if (AUDIT) {
+    await audit()
+    process.exit(0)
+  }
   report()
 }

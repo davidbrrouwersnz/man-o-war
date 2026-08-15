@@ -298,10 +298,11 @@
         "reviewStatus": "unreviewed"
       },
       "group:cephalopods": {
-        "hash": "868048f314e231a9",
+        "hash": "1da6bcd10c8deb99",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "868048f314e231a9"
       },
       "group:sea-slugs": {
         "hash": "95f63d6e28681356",
@@ -364,10 +365,11 @@
         "reviewStatus": "unreviewed"
       },
       "panel:floating-colonies:panel": {
-        "hash": "48af3ca294eac84f",
+        "hash": "6a5e1f7c9f767f00",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "48af3ca294eac84f"
       },
       "panel:floating-colonies:ending": {
         "hash": "496787d510271e99",
@@ -472,10 +474,11 @@
         "reviewStatus": "unreviewed"
       },
       "panel:never-went-to-sea:panel": {
-        "hash": "a7edf0bedb77f0c5",
+        "hash": "0743ce0285823004",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "a7edf0bedb77f0c5"
       },
       "layer:how-it-was-made:standfirst": {
         "hash": "b88e7070ea464cfa",
@@ -526,10 +529,11 @@
         "reviewStatus": "unreviewed"
       },
       "layer:how-it-was-made:seg:mixed-media:text": {
-        "hash": "c234491d2a8add74",
+        "hash": "fe3e36cc7fe2d4d1",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "c234491d2a8add74"
       },
       "layer:how-it-was-made:seg:accuracy:heading": {
         "hash": "f755a21fe76ae293",
@@ -610,10 +614,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.24:headline": {
-        "hash": "350af645d6e4a56d",
+        "hash": "325845d5ca5e9baa",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "350af645d6e4a56d"
       },
       "story:1884.137.24:seg:look:heading": {
         "hash": "48cead3c38d31785",
@@ -634,10 +639,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.24:seg:the-life-cycle:text": {
-        "hash": "d74cf866d85ea50f",
+        "hash": "2754dffb10ef8c50",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "d74cf866d85ea50f"
       },
       "story:1884.137.41:headline": {
         "hash": "4d8a27b7e26228a6",
@@ -850,10 +856,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.40:headline": {
-        "hash": "8af97ee1556034ad",
+        "hash": "3c7e6352d2232ae4",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "8af97ee1556034ad"
       },
       "story:1884.137.40:seg:look:heading": {
         "hash": "fa2a5ae9b436c083",
@@ -1024,10 +1031,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.59:seg:not-one-animal:text": {
-        "hash": "79da25903979e94e",
+        "hash": "5282cf72b89e015e",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "79da25903979e94e"
       },
       "story:1884.137.52:headline": {
         "hash": "32a3f8ba9d32ca7c",
@@ -1120,10 +1128,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.78:headline": {
-        "hash": "566039a97dbf3d13",
+        "hash": "b965498e429bcddc",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "566039a97dbf3d13"
       },
       "story:1884.137.78:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -1210,10 +1219,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.103:headline": {
-        "hash": "a9f06bd12f78f594",
+        "hash": "f6d8611cc00db451",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "a9f06bd12f78f594"
       },
       "story:1884.137.103:seg:look:heading": {
         "hash": "b6318af8327a1826",
@@ -1300,10 +1310,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.51:headline": {
-        "hash": "865342521b98ad7a",
+        "hash": "86a137bf7fbce597",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "865342521b98ad7a"
       },
       "story:1884.137.51:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -1570,10 +1581,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.6:headline": {
-        "hash": "3f414e64349b849f",
+        "hash": "9f54de0b4948a825",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "3f414e64349b849f"
       },
       "story:1884.137.6:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -1630,10 +1642,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.17:headline": {
-        "hash": "f490617554daea8c",
+        "hash": "cf79953e8f9b89ad",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "f490617554daea8c"
       },
       "story:1884.137.17:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -1654,10 +1667,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.17:seg:the-hooks:text": {
-        "hash": "dd102750b3be69b0",
+        "hash": "db3f2c93fc3c07a7",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "dd102750b3be69b0"
       },
       "story:1884.137.39:headline": {
         "hash": "896ae1f975d6a9ca",
@@ -1720,10 +1734,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.16:headline": {
-        "hash": "718634d672f8409a",
+        "hash": "3c1741c70a1df85a",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "718634d672f8409a"
       },
       "story:1884.137.16:seg:look:heading": {
         "hash": "66fb25554fe773f1",
@@ -2050,10 +2065,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.76:headline": {
-        "hash": "20cc05e19b24c985",
+        "hash": "cbffb11b4c24243f",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "20cc05e19b24c985"
       },
       "story:1884.137.76:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -2440,10 +2456,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.74:headline": {
-        "hash": "3155745b4868ea71",
+        "hash": "72697c9ec44ebf75",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "3155745b4868ea71"
       },
       "story:1884.137.74:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -2650,10 +2667,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.21:headline": {
-        "hash": "14b5a1aa682ba340",
+        "hash": "841fdee952d2d46b",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "14b5a1aa682ba340"
       },
       "story:1884.137.21:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -2674,10 +2692,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.21:seg:the-jewel:text": {
-        "hash": "25217e53e7c07d57",
+        "hash": "2ef40a4949e8b8e1",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "25217e53e7c07d57"
       },
       "story:1884.137.31:headline": {
         "hash": "431c70320e5e268c",
@@ -2764,10 +2783,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.71:seg:eight:text": {
-        "hash": "dbfe593e7fe661cb",
+        "hash": "67d0a154e23707ff",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "dbfe593e7fe661cb"
       },
       "story:1884.137.81:headline": {
         "hash": "ffc1f41f36ef20ff",
@@ -3340,10 +3360,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.9:headline": {
-        "hash": "ae5095c057bf3b15",
+        "hash": "8d80087ff511b27c",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "ae5095c057bf3b15"
       },
       "story:1884.137.9:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -3364,16 +3385,18 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.9:seg:the-cast:text": {
-        "hash": "1de367224fc85fb0",
+        "hash": "9b76b2cab2669820",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "1de367224fc85fb0"
       },
       "story:1884.137.20:headline": {
-        "hash": "93c2949c25980c62",
+        "hash": "7eecc922d19deff7",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "93c2949c25980c62"
       },
       "story:1884.137.20:seg:look:heading": {
         "hash": "632f912b3e87f33f",
@@ -3610,10 +3633,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.98:headline": {
-        "hash": "f8ef836a996eead1",
+        "hash": "c4322f435f4c7dc2",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "f8ef836a996eead1"
       },
       "story:1884.137.98:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -3790,10 +3814,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.1:headline": {
-        "hash": "6b44cc80857befc0",
+        "hash": "bb0585365f054491",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "6b44cc80857befc0"
       },
       "story:1884.137.1:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -3850,10 +3875,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.77:headline": {
-        "hash": "d39556440804d073",
+        "hash": "83c0e72105613556",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "d39556440804d073"
       },
       "story:1884.137.77:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -3940,10 +3966,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.86:headline": {
-        "hash": "ebca7c637d9632bc",
+        "hash": "afda989d54046ada",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "ebca7c637d9632bc"
       },
       "story:1884.137.86:seg:look:heading": {
         "hash": "d0ccd498b76b3514",
@@ -3970,10 +3997,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.69:headline": {
-        "hash": "eb5f9382aa99d0cc",
+        "hash": "07dd5ee5e67df45f",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "eb5f9382aa99d0cc"
       },
       "story:1884.137.69:seg:look:heading": {
         "hash": "632f912b3e87f33f",
@@ -4090,10 +4118,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.33:headline": {
-        "hash": "5ce6eb367db1b5c2",
+        "hash": "34ad80713aa08098",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "5ce6eb367db1b5c2"
       },
       "story:1884.137.33:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -4102,10 +4131,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.33:seg:look:text": {
-        "hash": "6d14292526e19fbc",
+        "hash": "fd7d576f0199f1d3",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "6d14292526e19fbc"
       },
       "story:1884.137.33:seg:not-one-animal:heading": {
         "hash": "99fb07484cd8d8ff",
@@ -4114,10 +4144,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.33:seg:not-one-animal:text": {
-        "hash": "c3ff2805e79b0748",
+        "hash": "aa319aef9d2b9232",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "c3ff2805e79b0748"
       },
       "story:1884.137.33:seg:float-and-sail:heading": {
         "hash": "11bb385b47fa50aa",
@@ -4126,16 +4157,18 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.33:seg:float-and-sail:text": {
-        "hash": "d9b404595630a4f6",
+        "hash": "f534674a8c98bf47",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "d9b404595630a4f6"
       },
       "story:1884.137.32:headline": {
-        "hash": "f7631183540358ce",
+        "hash": "876f03e07519a4e3",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "f7631183540358ce"
       },
       "story:1884.137.32:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -4144,10 +4177,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.32:seg:look:text": {
-        "hash": "9eb252622f2389e0",
+        "hash": "d10d851a334c6c73",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "9eb252622f2389e0"
       },
       "story:1884.137.32:seg:how-it-eats:heading": {
         "hash": "1f5320fc28c809c5",
@@ -4168,16 +4202,18 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.32:seg:blooms:text": {
-        "hash": "21f0a8cd91fe390d",
+        "hash": "973fc240c38447b7",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "21f0a8cd91fe390d"
       },
       "story:1884.137.68:headline": {
-        "hash": "a70fa0b0188baa9c",
+        "hash": "a3037a282977e10b",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "a70fa0b0188baa9c"
       },
       "story:1884.137.68:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -4210,10 +4246,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.68:seg:where:text": {
-        "hash": "16ed97c3acf00fde",
+        "hash": "85c2efe61bca73c7",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "16ed97c3acf00fde"
       },
       "story:1884.137.104:headline": {
         "hash": "728c285577b73cab",
@@ -4246,10 +4283,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.105:headline": {
-        "hash": "bf59c299c7bf3824",
+        "hash": "c5d03716085fd596",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "bf59c299c7bf3824"
       },
       "story:1884.137.105:seg:look:heading": {
         "hash": "39f5d66bca34e89c",
@@ -4270,10 +4308,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.105:seg:two-names:text": {
-        "hash": "839c96b818c04343",
+        "hash": "a5e1f00b25f2425b",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "839c96b818c04343"
       },
       "story:1884.137.44:headline": {
         "hash": "0421fdb6ee20b21a",
@@ -4300,16 +4339,18 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.44:seg:the-yellow:text": {
-        "hash": "af59fc7423e9bf29",
+        "hash": "2afeb4356f2f9ced",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "af59fc7423e9bf29"
       },
       "story:1884.137.61:headline": {
-        "hash": "0b02e2b13b161668",
+        "hash": "f3fb5ca47b568c3f",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "0b02e2b13b161668"
       },
       "story:1884.137.61:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -4348,10 +4389,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.100:headline": {
-        "hash": "566039a97dbf3d13",
+        "hash": "b965498e429bcddc",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "566039a97dbf3d13"
       },
       "story:1884.137.100:seg:look:heading": {
         "hash": "11ff39e9ad0ea590",
@@ -4360,10 +4402,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.100:seg:look:text": {
-        "hash": "bbe5a7ef593e4dc1",
+        "hash": "bacd01680907acc7",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "bbe5a7ef593e4dc1"
       },
       "story:1884.137.100:seg:the-hunt:heading": {
         "hash": "a78d3032a10adddf",
@@ -4378,10 +4421,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.10:headline": {
-        "hash": "a622c6f8acf42b7d",
+        "hash": "0174b8ff4b27d6f5",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "a622c6f8acf42b7d"
       },
       "story:1884.137.10:seg:look:heading": {
         "hash": "2d7b43dba5be9f60",
@@ -4480,10 +4524,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.93:headline": {
-        "hash": "41043d8d763f404a",
+        "hash": "e4e232386102316e",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "41043d8d763f404a"
       },
       "story:1884.137.93:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -4806,10 +4851,11 @@
         "reviewStatus": "unreviewed"
       },
       "group:cephalopods": {
-        "hash": "868048f314e231a9",
+        "hash": "79edff580db97c06",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "868048f314e231a9"
       },
       "group:sea-slugs": {
         "hash": "95f63d6e28681356",
@@ -4872,10 +4918,11 @@
         "reviewStatus": "unreviewed"
       },
       "panel:floating-colonies:panel": {
-        "hash": "48af3ca294eac84f",
+        "hash": "1204242b8b6c0f60",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "48af3ca294eac84f"
       },
       "panel:floating-colonies:ending": {
         "hash": "496787d510271e99",
@@ -4980,9 +5027,10 @@
         "reviewStatus": "unreviewed"
       },
       "panel:never-went-to-sea:panel": {
-        "hash": "a7edf0bedb77f0c5",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "cc7722728ebb6ed9",
+        "englishHash": "a7edf0bedb77f0c5",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "layer:how-it-was-made:standfirst": {
@@ -5034,9 +5082,10 @@
         "reviewStatus": "unreviewed"
       },
       "layer:how-it-was-made:seg:mixed-media:text": {
-        "hash": "c234491d2a8add74",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "37b593422625ae52",
+        "englishHash": "c234491d2a8add74",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "layer:how-it-was-made:seg:accuracy:heading": {
@@ -5112,16 +5161,18 @@
         "reviewStatus": "unreviewed"
       },
       "layer:how-it-got-here:seg:the-gifts:text": {
-        "hash": "6043a653ff7c8fdd",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
-        "reviewStatus": "unreviewed"
-      },
-      "story:1884.137.24:headline": {
-        "hash": "350af645d6e4a56d",
+        "hash": "b0821c6babd23e36",
+        "englishHash": "6043a653ff7c8fdd",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
+      },
+      "story:1884.137.24:headline": {
+        "hash": "6822d4bf918f8da5",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed",
+        "englishHash": "350af645d6e4a56d"
       },
       "story:1884.137.24:seg:look:heading": {
         "hash": "48cead3c38d31785",
@@ -5142,16 +5193,18 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.24:seg:the-life-cycle:text": {
-        "hash": "d74cf866d85ea50f",
+        "hash": "d0d2bbc001823baa",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "d74cf866d85ea50f"
       },
       "story:1884.137.41:headline": {
-        "hash": "4d8a27b7e26228a6",
+        "hash": "e2183180b7fc7e69",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "4d8a27b7e26228a6"
       },
       "story:1884.137.41:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -5178,10 +5231,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.42:headline": {
-        "hash": "8ff00a9b0b9a072a",
+        "hash": "82ee61a0bb5883c2",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "8ff00a9b0b9a072a"
       },
       "story:1884.137.42:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -5208,10 +5262,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.108:headline": {
-        "hash": "d679659859dcedd8",
+        "hash": "a6de284057452141",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "d679659859dcedd8"
       },
       "story:1884.137.108:seg:look:heading": {
         "hash": "6b4c76a1309cbd3d",
@@ -5268,10 +5323,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.107:headline": {
-        "hash": "1ed9480afdf8d0b5",
+        "hash": "bbda5b004ee86cdf",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "1ed9480afdf8d0b5"
       },
       "story:1884.137.107:seg:look:heading": {
         "hash": "2af3686d642a7192",
@@ -5358,10 +5414,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.40:headline": {
-        "hash": "8af97ee1556034ad",
+        "hash": "0b17b517d07dfab1",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "8af97ee1556034ad"
       },
       "story:1884.137.40:seg:look:heading": {
         "hash": "fa2a5ae9b436c083",
@@ -5508,10 +5565,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.59:headline": {
-        "hash": "6b442b22a25cd91c",
+        "hash": "1dd7f842dfe2a42d",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "6b442b22a25cd91c"
       },
       "story:1884.137.59:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -5532,10 +5590,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.59:seg:not-one-animal:text": {
-        "hash": "79da25903979e94e",
+        "hash": "a2be19f1786a7c50",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "79da25903979e94e"
       },
       "story:1884.137.52:headline": {
         "hash": "32a3f8ba9d32ca7c",
@@ -5598,10 +5657,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.127:headline": {
-        "hash": "028a06b39b120f64",
+        "hash": "f8eebce58090ceae",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "028a06b39b120f64"
       },
       "story:1884.137.127:seg:look:heading": {
         "hash": "56070dbe3fa31084",
@@ -5628,10 +5688,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.78:headline": {
-        "hash": "566039a97dbf3d13",
+        "hash": "8a84d334f552550e",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "566039a97dbf3d13"
       },
       "story:1884.137.78:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -5718,10 +5779,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.103:headline": {
-        "hash": "a9f06bd12f78f594",
+        "hash": "1d0f94e92a0e4bf7",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "a9f06bd12f78f594"
       },
       "story:1884.137.103:seg:look:heading": {
         "hash": "b6318af8327a1826",
@@ -5808,10 +5870,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.51:headline": {
-        "hash": "865342521b98ad7a",
+        "hash": "d4f921f6aa44c5b4",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "865342521b98ad7a"
       },
       "story:1884.137.51:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -5838,10 +5901,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.66:headline": {
-        "hash": "b31bf8bd490070d3",
+        "hash": "4c1cf5ef76a3e5be",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "b31bf8bd490070d3"
       },
       "story:1884.137.66:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -6048,10 +6112,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.129:headline": {
-        "hash": "2438d984624e88cd",
+        "hash": "dff9aab408af74b6",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "2438d984624e88cd"
       },
       "story:1884.137.129:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -6078,10 +6143,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.6:headline": {
-        "hash": "3f414e64349b849f",
+        "hash": "60d78f9764f66f69",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "3f414e64349b849f"
       },
       "story:1884.137.6:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -6108,10 +6174,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.38:headline": {
-        "hash": "32bfe8750998e8b0",
+        "hash": "47eda4fc3a44c0f8",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "32bfe8750998e8b0"
       },
       "story:1884.137.38:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -6138,10 +6205,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.17:headline": {
-        "hash": "f490617554daea8c",
+        "hash": "38e958b15a2e7286",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "f490617554daea8c"
       },
       "story:1884.137.17:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -6162,16 +6230,18 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.17:seg:the-hooks:text": {
-        "hash": "dd102750b3be69b0",
+        "hash": "447b3c46ef53557a",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "dd102750b3be69b0"
       },
       "story:1884.137.39:headline": {
-        "hash": "896ae1f975d6a9ca",
+        "hash": "58e301bec419ba06",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "896ae1f975d6a9ca"
       },
       "story:1884.137.39:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -6228,10 +6298,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.16:headline": {
-        "hash": "718634d672f8409a",
+        "hash": "4d9f858ed719ecba",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "718634d672f8409a"
       },
       "story:1884.137.16:seg:look:heading": {
         "hash": "66fb25554fe773f1",
@@ -6558,10 +6629,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.76:headline": {
-        "hash": "20cc05e19b24c985",
+        "hash": "8525fdd47b484591",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "20cc05e19b24c985"
       },
       "story:1884.137.76:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -6738,10 +6810,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.29:headline": {
-        "hash": "c045f9632dc842c8",
+        "hash": "955b8bad6650649a",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "c045f9632dc842c8"
       },
       "story:1884.137.29:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -7158,10 +7231,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.21:headline": {
-        "hash": "14b5a1aa682ba340",
+        "hash": "c99cfb0076d1fa36",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "14b5a1aa682ba340"
       },
       "story:1884.137.21:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -7182,10 +7256,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.21:seg:the-jewel:text": {
-        "hash": "25217e53e7c07d57",
+        "hash": "fb6d75b05d4b93c6",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "25217e53e7c07d57"
       },
       "story:1884.137.31:headline": {
         "hash": "431c70320e5e268c",
@@ -7248,10 +7323,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.71:headline": {
-        "hash": "995c4f9f0de9b829",
+        "hash": "74c63543c1e957e9",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "995c4f9f0de9b829"
       },
       "story:1884.137.71:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -7272,10 +7348,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.71:seg:eight:text": {
-        "hash": "dbfe593e7fe661cb",
+        "hash": "b7dde65cb4747b1c",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "dbfe593e7fe661cb"
       },
       "story:1884.137.81:headline": {
         "hash": "ffc1f41f36ef20ff",
@@ -7458,10 +7535,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.63:headline": {
-        "hash": "ef945dbf9f38f910",
+        "hash": "10f1e1f0e4112a31",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "ef945dbf9f38f910"
       },
       "story:1884.137.63:seg:look:heading": {
         "hash": "632f912b3e87f33f",
@@ -7488,10 +7566,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.126:headline": {
-        "hash": "4deeb7a7b21e30f1",
+        "hash": "2a6ead54c2e2e9b2",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "4deeb7a7b21e30f1"
       },
       "story:1884.137.126:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -7548,7 +7627,8 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.136:headline": {
-        "hash": "c1d2419bb89caa53",
+        "hash": "a62451da9fbb0b83",
+        "englishHash": "c1d2419bb89caa53",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
@@ -7572,10 +7652,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.136:seg:eight-again:text": {
-        "hash": "59455722e667c15d",
+        "hash": "46d8f3a11a401779",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "59455722e667c15d"
       },
       "story:1884.137.92:headline": {
         "hash": "c8b1bc7ab2196bbd",
@@ -7878,10 +7959,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.20:headline": {
-        "hash": "93c2949c25980c62",
+        "hash": "a60883a1990d6f2b",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "93c2949c25980c62"
       },
       "story:1884.137.20:seg:look:heading": {
         "hash": "632f912b3e87f33f",
@@ -7998,10 +8080,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.48:headline": {
-        "hash": "b735e6dcae733104",
+        "hash": "37db340e91544d42",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "b735e6dcae733104"
       },
       "story:1884.137.48:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -8268,10 +8351,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.125:headline": {
-        "hash": "d932e8c204e354e6",
+        "hash": "3d0714934deee708",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "d932e8c204e354e6"
       },
       "story:1884.137.125:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -8298,10 +8382,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.1:headline": {
-        "hash": "6b44cc80857befc0",
+        "hash": "cda0e352c5ba86c9",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "6b44cc80857befc0"
       },
       "story:1884.137.1:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -8448,10 +8533,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.86:headline": {
-        "hash": "ebca7c637d9632bc",
+        "hash": "ba4f7741d806f6c5",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "ebca7c637d9632bc"
       },
       "story:1884.137.86:seg:look:heading": {
         "hash": "d0ccd498b76b3514",
@@ -8478,10 +8564,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.69:headline": {
-        "hash": "eb5f9382aa99d0cc",
+        "hash": "849dbe9c27b54bb6",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "eb5f9382aa99d0cc"
       },
       "story:1884.137.69:seg:look:heading": {
         "hash": "632f912b3e87f33f",
@@ -8568,10 +8655,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.128:headline": {
-        "hash": "b5b70db59852c68e",
+        "hash": "73930fbea5d03715",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "b5b70db59852c68e"
       },
       "story:1884.137.128:seg:look:heading": {
         "hash": "ef67fe268c96e730",
@@ -8598,10 +8686,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.33:headline": {
-        "hash": "5ce6eb367db1b5c2",
+        "hash": "21e74563a7e2e00f",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "5ce6eb367db1b5c2"
       },
       "story:1884.137.33:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -8610,10 +8699,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.33:seg:look:text": {
-        "hash": "6d14292526e19fbc",
+        "hash": "adf94afdcc679541",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "6d14292526e19fbc"
       },
       "story:1884.137.33:seg:not-one-animal:heading": {
         "hash": "99fb07484cd8d8ff",
@@ -8622,10 +8712,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.33:seg:not-one-animal:text": {
-        "hash": "c3ff2805e79b0748",
+        "hash": "5d0d8f5d8cbb9e9c",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "c3ff2805e79b0748"
       },
       "story:1884.137.33:seg:float-and-sail:heading": {
         "hash": "11bb385b47fa50aa",
@@ -8634,16 +8725,18 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.33:seg:float-and-sail:text": {
-        "hash": "d9b404595630a4f6",
+        "hash": "701086cf472d0f97",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "d9b404595630a4f6"
       },
       "story:1884.137.32:headline": {
-        "hash": "f7631183540358ce",
+        "hash": "bc872850c1b9e582",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "f7631183540358ce"
       },
       "story:1884.137.32:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -8652,10 +8745,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.32:seg:look:text": {
-        "hash": "9eb252622f2389e0",
+        "hash": "4cbcf003f19ad1f3",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "9eb252622f2389e0"
       },
       "story:1884.137.32:seg:how-it-eats:heading": {
         "hash": "1f5320fc28c809c5",
@@ -8676,16 +8770,18 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.32:seg:blooms:text": {
-        "hash": "21f0a8cd91fe390d",
+        "hash": "1ee1fe9468356c4c",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "21f0a8cd91fe390d"
       },
       "story:1884.137.68:headline": {
-        "hash": "a70fa0b0188baa9c",
+        "hash": "3369650a1ac224e5",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "a70fa0b0188baa9c"
       },
       "story:1884.137.68:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -8718,16 +8814,18 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.68:seg:where:text": {
-        "hash": "16ed97c3acf00fde",
+        "hash": "67e022f510cc666d",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "16ed97c3acf00fde"
       },
       "story:1884.137.104:headline": {
-        "hash": "728c285577b73cab",
+        "hash": "560cbccde88c8b27",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "728c285577b73cab"
       },
       "story:1884.137.104:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -8748,16 +8846,18 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.104:seg:two-kinds-of-arm:text": {
-        "hash": "bf142d5fc6503846",
+        "hash": "3a257cc29b32b4f5",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "bf142d5fc6503846"
       },
       "story:1884.137.105:headline": {
-        "hash": "bf59c299c7bf3824",
+        "hash": "1eadfc64c35c0d6c",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "bf59c299c7bf3824"
       },
       "story:1884.137.105:seg:look:heading": {
         "hash": "39f5d66bca34e89c",
@@ -8778,10 +8878,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.105:seg:two-names:text": {
-        "hash": "839c96b818c04343",
+        "hash": "adc813c6b3534849",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "839c96b818c04343"
       },
       "story:1884.137.44:headline": {
         "hash": "0421fdb6ee20b21a",
@@ -8808,16 +8909,18 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.44:seg:the-yellow:text": {
-        "hash": "af59fc7423e9bf29",
+        "hash": "2e136747e34647ea",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "af59fc7423e9bf29"
       },
       "story:1884.137.61:headline": {
-        "hash": "0b02e2b13b161668",
+        "hash": "3815a347af8976dc",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "0b02e2b13b161668"
       },
       "story:1884.137.61:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -8856,10 +8959,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.100:headline": {
-        "hash": "566039a97dbf3d13",
+        "hash": "8a84d334f552550e",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "566039a97dbf3d13"
       },
       "story:1884.137.100:seg:look:heading": {
         "hash": "11ff39e9ad0ea590",
@@ -8868,10 +8972,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.100:seg:look:text": {
-        "hash": "bbe5a7ef593e4dc1",
+        "hash": "47611afe10f1f7d7",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "bbe5a7ef593e4dc1"
       },
       "story:1884.137.100:seg:the-hunt:heading": {
         "hash": "a78d3032a10adddf",
@@ -8886,10 +8991,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.10:headline": {
-        "hash": "a622c6f8acf42b7d",
+        "hash": "4ec9f146506ac5f3",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "a622c6f8acf42b7d"
       },
       "story:1884.137.10:seg:look:heading": {
         "hash": "2d7b43dba5be9f60",
@@ -8928,10 +9034,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.8:headline": {
-        "hash": "af8d6ddb5f4d3ad2",
+        "hash": "92fdca744d15ddc4",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "af8d6ddb5f4d3ad2"
       },
       "story:1884.137.8:seg:look:heading": {
         "hash": "5fe03bbd136e1a20",
@@ -8988,10 +9095,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.93:headline": {
-        "hash": "41043d8d763f404a",
+        "hash": "6cbbd8a015d09e28",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "41043d8d763f404a"
       },
       "story:1884.137.93:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -9314,10 +9422,11 @@
         "reviewStatus": "unreviewed"
       },
       "group:cephalopods": {
-        "hash": "868048f314e231a9",
+        "hash": "6610fd05fa2e6236",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "868048f314e231a9"
       },
       "group:sea-slugs": {
         "hash": "95f63d6e28681356",
@@ -9380,9 +9489,10 @@
         "reviewStatus": "unreviewed"
       },
       "panel:floating-colonies:panel": {
-        "hash": "48af3ca294eac84f",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "275f666672772c9b",
+        "englishHash": "48af3ca294eac84f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "panel:floating-colonies:ending": {
@@ -9488,9 +9598,10 @@
         "reviewStatus": "unreviewed"
       },
       "panel:never-went-to-sea:panel": {
-        "hash": "a7edf0bedb77f0c5",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "c54fb3dcbfa0081f",
+        "englishHash": "a7edf0bedb77f0c5",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "layer:how-it-was-made:standfirst": {
@@ -9542,9 +9653,10 @@
         "reviewStatus": "unreviewed"
       },
       "layer:how-it-was-made:seg:mixed-media:text": {
-        "hash": "c234491d2a8add74",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "eeebdfce2fc5cb98",
+        "englishHash": "c234491d2a8add74",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "layer:how-it-was-made:seg:accuracy:heading": {
@@ -9626,10 +9738,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.24:headline": {
-        "hash": "350af645d6e4a56d",
+        "hash": "8c7ff3faf8818691",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "350af645d6e4a56d"
       },
       "story:1884.137.24:seg:look:heading": {
         "hash": "48cead3c38d31785",
@@ -9650,10 +9763,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.24:seg:the-life-cycle:text": {
-        "hash": "d74cf866d85ea50f",
+        "hash": "e46f2856c5de8fbe",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "d74cf866d85ea50f"
       },
       "story:1884.137.41:headline": {
         "hash": "4d8a27b7e26228a6",
@@ -10016,10 +10130,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.59:headline": {
-        "hash": "6b442b22a25cd91c",
+        "hash": "f99a3bc82a4ff9ed",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "6b442b22a25cd91c"
       },
       "story:1884.137.59:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -10040,10 +10155,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.59:seg:not-one-animal:text": {
-        "hash": "79da25903979e94e",
+        "hash": "1757f116433e35ab",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "79da25903979e94e"
       },
       "story:1884.137.52:headline": {
         "hash": "32a3f8ba9d32ca7c",
@@ -10136,10 +10252,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.78:headline": {
-        "hash": "566039a97dbf3d13",
+        "hash": "3fdaa2b7ced55c0e",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "566039a97dbf3d13"
       },
       "story:1884.137.78:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -10226,10 +10343,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.103:headline": {
-        "hash": "a9f06bd12f78f594",
+        "hash": "b265efb3463e1c75",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "a9f06bd12f78f594"
       },
       "story:1884.137.103:seg:look:heading": {
         "hash": "b6318af8327a1826",
@@ -10556,10 +10674,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.129:headline": {
-        "hash": "2438d984624e88cd",
+        "hash": "639e34636d189566",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "2438d984624e88cd"
       },
       "story:1884.137.129:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -10616,10 +10735,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.38:headline": {
-        "hash": "32bfe8750998e8b0",
+        "hash": "68a6c53ee4d998e5",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "32bfe8750998e8b0"
       },
       "story:1884.137.38:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -10736,10 +10856,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.16:headline": {
-        "hash": "718634d672f8409a",
+        "hash": "6bb3f435ffb6bad7",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "718634d672f8409a"
       },
       "story:1884.137.16:seg:look:heading": {
         "hash": "66fb25554fe773f1",
@@ -11066,10 +11187,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.76:headline": {
-        "hash": "20cc05e19b24c985",
+        "hash": "2aed528faa1c7d08",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "20cc05e19b24c985"
       },
       "story:1884.137.76:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -11246,10 +11368,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.29:headline": {
-        "hash": "c045f9632dc842c8",
+        "hash": "66659971b960b7ef",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "c045f9632dc842c8"
       },
       "story:1884.137.29:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -12806,10 +12929,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.1:headline": {
-        "hash": "6b44cc80857befc0",
+        "hash": "5f32586d7a90ce58",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "6b44cc80857befc0"
       },
       "story:1884.137.1:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -12836,10 +12960,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.19:headline": {
-        "hash": "fb1fd86fed4adac0",
+        "hash": "18cd8bafeee8fe35",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "fb1fd86fed4adac0"
       },
       "story:1884.137.19:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -12866,10 +12991,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.77:headline": {
-        "hash": "d39556440804d073",
+        "hash": "5bf8364549d975e4",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "d39556440804d073"
       },
       "story:1884.137.77:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -12956,10 +13082,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.86:headline": {
-        "hash": "ebca7c637d9632bc",
+        "hash": "448eec2167bbdd36",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "ebca7c637d9632bc"
       },
       "story:1884.137.86:seg:look:heading": {
         "hash": "d0ccd498b76b3514",
@@ -12986,10 +13113,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.69:headline": {
-        "hash": "eb5f9382aa99d0cc",
+        "hash": "0d82bf4faa762f9c",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "eb5f9382aa99d0cc"
       },
       "story:1884.137.69:seg:look:heading": {
         "hash": "632f912b3e87f33f",
@@ -13106,10 +13234,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.33:headline": {
-        "hash": "5ce6eb367db1b5c2",
+        "hash": "af70f1dc2af44275",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "5ce6eb367db1b5c2"
       },
       "story:1884.137.33:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -13118,10 +13247,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.33:seg:look:text": {
-        "hash": "6d14292526e19fbc",
+        "hash": "0900d22eea2e4cc8",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "6d14292526e19fbc"
       },
       "story:1884.137.33:seg:not-one-animal:heading": {
         "hash": "99fb07484cd8d8ff",
@@ -13130,10 +13260,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.33:seg:not-one-animal:text": {
-        "hash": "c3ff2805e79b0748",
+        "hash": "3642e12f4b1755c7",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "c3ff2805e79b0748"
       },
       "story:1884.137.33:seg:float-and-sail:heading": {
         "hash": "11bb385b47fa50aa",
@@ -13142,16 +13273,18 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.33:seg:float-and-sail:text": {
-        "hash": "d9b404595630a4f6",
+        "hash": "e8ff21ad4b1af4d5",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "d9b404595630a4f6"
       },
       "story:1884.137.32:headline": {
-        "hash": "f7631183540358ce",
+        "hash": "5d2db0fd03e6b388",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "f7631183540358ce"
       },
       "story:1884.137.32:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -13160,10 +13293,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.32:seg:look:text": {
-        "hash": "9eb252622f2389e0",
+        "hash": "367e30ab3d452982",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "9eb252622f2389e0"
       },
       "story:1884.137.32:seg:how-it-eats:heading": {
         "hash": "1f5320fc28c809c5",
@@ -13184,10 +13318,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.32:seg:blooms:text": {
-        "hash": "21f0a8cd91fe390d",
+        "hash": "1e631d29282f3830",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "21f0a8cd91fe390d"
       },
       "story:1884.137.68:headline": {
         "hash": "a70fa0b0188baa9c",
@@ -13262,10 +13397,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.105:headline": {
-        "hash": "bf59c299c7bf3824",
+        "hash": "13d15c948b4843d2",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "bf59c299c7bf3824"
       },
       "story:1884.137.105:seg:look:heading": {
         "hash": "39f5d66bca34e89c",
@@ -13286,10 +13422,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.105:seg:two-names:text": {
-        "hash": "839c96b818c04343",
+        "hash": "704b99d70f2f1a2d",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "839c96b818c04343"
       },
       "story:1884.137.44:headline": {
         "hash": "0421fdb6ee20b21a",
@@ -13316,10 +13453,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.44:seg:the-yellow:text": {
-        "hash": "af59fc7423e9bf29",
+        "hash": "9b5084c4a92ad125",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "af59fc7423e9bf29"
       },
       "story:1884.137.61:headline": {
         "hash": "0b02e2b13b161668",
@@ -13364,10 +13502,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.100:headline": {
-        "hash": "566039a97dbf3d13",
+        "hash": "3fdaa2b7ced55c0e",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "566039a97dbf3d13"
       },
       "story:1884.137.100:seg:look:heading": {
         "hash": "11ff39e9ad0ea590",
@@ -13376,10 +13515,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.100:seg:look:text": {
-        "hash": "bbe5a7ef593e4dc1",
+        "hash": "96e2c6c75d39fdb2",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "bbe5a7ef593e4dc1"
       },
       "story:1884.137.100:seg:the-hunt:heading": {
         "hash": "a78d3032a10adddf",
@@ -13394,10 +13534,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.10:headline": {
-        "hash": "a622c6f8acf42b7d",
+        "hash": "911428202a7bc3cf",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "a622c6f8acf42b7d"
       },
       "story:1884.137.10:seg:look:heading": {
         "hash": "2d7b43dba5be9f60",
@@ -13436,10 +13577,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.8:headline": {
-        "hash": "af8d6ddb5f4d3ad2",
+        "hash": "faf8aaa8c681c55d",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "af8d6ddb5f4d3ad2"
       },
       "story:1884.137.8:seg:look:heading": {
         "hash": "5fe03bbd136e1a20",
@@ -13822,10 +13964,11 @@
         "reviewStatus": "unreviewed"
       },
       "group:cephalopods": {
-        "hash": "868048f314e231a9",
+        "hash": "f3996a9abee5e12d",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "868048f314e231a9"
       },
       "group:sea-slugs": {
         "hash": "95f63d6e28681356",
@@ -13888,10 +14031,11 @@
         "reviewStatus": "unreviewed"
       },
       "panel:floating-colonies:panel": {
-        "hash": "48af3ca294eac84f",
+        "hash": "ce16bc117d912686",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "48af3ca294eac84f"
       },
       "panel:floating-colonies:ending": {
         "hash": "496787d510271e99",
@@ -13996,10 +14140,11 @@
         "reviewStatus": "unreviewed"
       },
       "panel:never-went-to-sea:panel": {
-        "hash": "a7edf0bedb77f0c5",
+        "hash": "a7fab6e20b223a99",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "a7edf0bedb77f0c5"
       },
       "layer:how-it-was-made:standfirst": {
         "hash": "b88e7070ea464cfa",
@@ -14050,10 +14195,11 @@
         "reviewStatus": "unreviewed"
       },
       "layer:how-it-was-made:seg:mixed-media:text": {
-        "hash": "c234491d2a8add74",
+        "hash": "c5e0f7e87d60540c",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "c234491d2a8add74"
       },
       "layer:how-it-was-made:seg:accuracy:heading": {
         "hash": "f755a21fe76ae293",
@@ -14134,10 +14280,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.24:headline": {
-        "hash": "350af645d6e4a56d",
+        "hash": "501efda79434f6ef",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "350af645d6e4a56d"
       },
       "story:1884.137.24:seg:look:heading": {
         "hash": "48cead3c38d31785",
@@ -14158,15 +14305,17 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.24:seg:the-life-cycle:text": {
-        "hash": "d74cf866d85ea50f",
+        "hash": "276e43de8f703307",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "d74cf866d85ea50f"
       },
       "story:1884.137.41:headline": {
-        "hash": "4d8a27b7e26228a6",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "4fa270a27dcfd5b1",
+        "englishHash": "4d8a27b7e26228a6",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.41:seg:look:heading": {
@@ -14194,9 +14343,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.42:headline": {
-        "hash": "8ff00a9b0b9a072a",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "ef1d278eec78e1a7",
+        "englishHash": "8ff00a9b0b9a072a",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.42:seg:look:heading": {
@@ -14224,9 +14374,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.108:headline": {
-        "hash": "d679659859dcedd8",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "b46244fe38d3bbf8",
+        "englishHash": "d679659859dcedd8",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.108:seg:look:heading": {
@@ -14548,15 +14699,17 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.59:seg:not-one-animal:text": {
-        "hash": "79da25903979e94e",
+        "hash": "31fffccf18fd7ed4",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "79da25903979e94e"
       },
       "story:1884.137.52:headline": {
-        "hash": "32a3f8ba9d32ca7c",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "91ceb44e4b151cd5",
+        "englishHash": "32a3f8ba9d32ca7c",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.52:seg:look:heading": {
@@ -14614,10 +14767,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.127:headline": {
-        "hash": "028a06b39b120f64",
+        "hash": "75f7f558f552392e",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "028a06b39b120f64"
       },
       "story:1884.137.127:seg:look:heading": {
         "hash": "56070dbe3fa31084",
@@ -14638,16 +14792,18 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.127:seg:the-ribbon:text": {
-        "hash": "009bba0ac83f3bb1",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "7b8e980973b45320",
+        "englishHash": "009bba0ac83f3bb1",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.78:headline": {
-        "hash": "566039a97dbf3d13",
+        "hash": "fa52adbdb4d35901",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "566039a97dbf3d13"
       },
       "story:1884.137.78:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -14734,10 +14890,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.103:headline": {
-        "hash": "a9f06bd12f78f594",
+        "hash": "9136167df66186f9",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "a9f06bd12f78f594"
       },
       "story:1884.137.103:seg:look:heading": {
         "hash": "b6318af8327a1826",
@@ -14854,10 +15011,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.66:headline": {
-        "hash": "b31bf8bd490070d3",
+        "hash": "5f5ea1553e319a5e",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "b31bf8bd490070d3"
       },
       "story:1884.137.66:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -15064,9 +15222,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.129:headline": {
-        "hash": "2438d984624e88cd",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "0101413fa5f1de9d",
+        "englishHash": "2438d984624e88cd",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.129:seg:look:heading": {
@@ -15094,10 +15253,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.6:headline": {
-        "hash": "3f414e64349b849f",
+        "hash": "9782536518f49eee",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "3f414e64349b849f"
       },
       "story:1884.137.6:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -15124,9 +15284,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.38:headline": {
-        "hash": "32bfe8750998e8b0",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "dfb7d12c587af344",
+        "englishHash": "32bfe8750998e8b0",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.38:seg:look:heading": {
@@ -15154,9 +15315,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.17:headline": {
-        "hash": "f490617554daea8c",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "3ea7bd95845b5ea3",
+        "englishHash": "f490617554daea8c",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.17:seg:look:heading": {
@@ -15178,15 +15340,17 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.17:seg:the-hooks:text": {
-        "hash": "dd102750b3be69b0",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "17d3407b18273c5b",
+        "englishHash": "dd102750b3be69b0",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.39:headline": {
-        "hash": "896ae1f975d6a9ca",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "5edf9c64fe5b064f",
+        "englishHash": "896ae1f975d6a9ca",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.39:seg:look:heading": {
@@ -15244,10 +15408,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.16:headline": {
-        "hash": "718634d672f8409a",
+        "hash": "bd8a4223e3c5e1f0",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "718634d672f8409a"
       },
       "story:1884.137.16:seg:look:heading": {
         "hash": "66fb25554fe773f1",
@@ -15574,9 +15739,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.76:headline": {
-        "hash": "20cc05e19b24c985",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "b11e0f637a78ed44",
+        "englishHash": "20cc05e19b24c985",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.76:seg:look:heading": {
@@ -15724,9 +15890,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.28:headline": {
-        "hash": "67606c6afadb1430",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "da843d189f55aefc",
+        "englishHash": "67606c6afadb1430",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.28:seg:look:heading": {
@@ -15754,9 +15921,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.29:headline": {
-        "hash": "c045f9632dc842c8",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "2dbd0a0c174bf5d2",
+        "englishHash": "c045f9632dc842c8",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.29:seg:look:heading": {
@@ -15964,9 +16132,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.74:headline": {
-        "hash": "3155745b4868ea71",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "910df7b44e5cabac",
+        "englishHash": "3155745b4868ea71",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.74:seg:look:heading": {
@@ -15994,9 +16163,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.96:headline": {
-        "hash": "67606c6afadb1430",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "da843d189f55aefc",
+        "englishHash": "67606c6afadb1430",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.96:seg:look:heading": {
@@ -16084,9 +16254,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.123:headline": {
-        "hash": "6496514fdf309779",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "5d3af3015af517b1",
+        "englishHash": "6496514fdf309779",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.123:seg:look:heading": {
@@ -16144,9 +16315,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.64:headline": {
-        "hash": "2f5133889f45eb27",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "67037679469e89f9",
+        "englishHash": "2f5133889f45eb27",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.64:seg:look:heading": {
@@ -16174,9 +16346,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.21:headline": {
-        "hash": "14b5a1aa682ba340",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "37cda21b9b09b5c3",
+        "englishHash": "14b5a1aa682ba340",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.21:seg:look:heading": {
@@ -16198,9 +16371,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.21:seg:the-jewel:text": {
-        "hash": "25217e53e7c07d57",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "50f7a581daecdfc3",
+        "englishHash": "25217e53e7c07d57",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.31:headline": {
@@ -16234,9 +16408,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.57:headline": {
-        "hash": "c84e03d923c11c71",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "475e9ffe0e93317c",
+        "englishHash": "c84e03d923c11c71",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.57:seg:look:heading": {
@@ -16288,9 +16463,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.71:seg:eight:text": {
-        "hash": "dbfe593e7fe661cb",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "0aac8f0625d25996",
+        "englishHash": "dbfe593e7fe661cb",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.81:headline": {
@@ -16354,9 +16530,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.121:headline": {
-        "hash": "47a964c8a09d3aa7",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "5948a3c4b3f9d723",
+        "englishHash": "47a964c8a09d3aa7",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.121:seg:look:heading": {
@@ -16378,15 +16555,17 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.121:seg:the-quill:text": {
-        "hash": "98448402ead3c566",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "b069d95ba0cdeee2",
+        "englishHash": "98448402ead3c566",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.73:headline": {
-        "hash": "ee045245fd96ffa6",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "42ca83065f0b2f41",
+        "englishHash": "ee045245fd96ffa6",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.73:seg:look:heading": {
@@ -16414,10 +16593,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.106:headline": {
-        "hash": "845178f54728eab5",
+        "hash": "f4a2ed55f2fdc586",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "845178f54728eab5"
       },
       "story:1884.137.106:seg:look:heading": {
         "hash": "ef67fe268c96e730",
@@ -16444,9 +16624,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.120:headline": {
-        "hash": "9c5765ae7e477e44",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "b8ee166e2164e4d3",
+        "englishHash": "9c5765ae7e477e44",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.120:seg:look:heading": {
@@ -16474,9 +16655,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.63:headline": {
-        "hash": "ef945dbf9f38f910",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "9be48c7c2ef1e36c",
+        "englishHash": "ef945dbf9f38f910",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.63:seg:look:heading": {
@@ -16504,9 +16686,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.126:headline": {
-        "hash": "4deeb7a7b21e30f1",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "61e44442ab37b7da",
+        "englishHash": "4deeb7a7b21e30f1",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.126:seg:look:heading": {
@@ -16624,9 +16807,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.75:headline": {
-        "hash": "37292e795920004f",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "2c8089854ea98815",
+        "englishHash": "37292e795920004f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.75:seg:look:heading": {
@@ -16648,15 +16832,17 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.75:seg:five:text": {
-        "hash": "21ad62f268387055",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "5a78df0cdcac8dc6",
+        "englishHash": "21ad62f268387055",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.2:headline": {
-        "hash": "37292e795920004f",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "2c8089854ea98815",
+        "englishHash": "37292e795920004f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.2:seg:look:heading": {
@@ -16684,9 +16870,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.82:headline": {
-        "hash": "37292e795920004f",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "2c8089854ea98815",
+        "englishHash": "37292e795920004f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.82:seg:look:heading": {
@@ -16714,9 +16901,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.84:headline": {
-        "hash": "37292e795920004f",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "2c8089854ea98815",
+        "englishHash": "37292e795920004f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.84:seg:look:heading": {
@@ -16738,15 +16926,17 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.84:seg:the-stripes:text": {
-        "hash": "aaf4223808da930d",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "8e02bf60e8930676",
+        "englishHash": "aaf4223808da930d",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.3:headline": {
-        "hash": "37292e795920004f",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "2c8089854ea98815",
+        "englishHash": "37292e795920004f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.3:seg:look:heading": {
@@ -16774,9 +16964,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.23:headline": {
-        "hash": "37292e795920004f",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "2c8089854ea98815",
+        "englishHash": "37292e795920004f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.23:seg:look:heading": {
@@ -16864,10 +17055,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.9:headline": {
-        "hash": "ae5095c057bf3b15",
+        "hash": "71fddbb466e2e9a3",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "ae5095c057bf3b15"
       },
       "story:1884.137.9:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -16888,15 +17080,17 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.9:seg:the-cast:text": {
-        "hash": "1de367224fc85fb0",
+        "hash": "11601f98e2ea16b1",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "1de367224fc85fb0"
       },
       "story:1884.137.20:headline": {
-        "hash": "93c2949c25980c62",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "9681dfe8d773275d",
+        "englishHash": "93c2949c25980c62",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.20:seg:look:heading": {
@@ -17014,9 +17208,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.48:headline": {
-        "hash": "b735e6dcae733104",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "2b34728a350266ec",
+        "englishHash": "b735e6dcae733104",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.48:seg:look:heading": {
@@ -17074,9 +17269,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.22:headline": {
-        "hash": "63d91debeb586bd2",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "f830a67f5d8bf396",
+        "englishHash": "63d91debeb586bd2",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.22:seg:look:heading": {
@@ -17104,9 +17300,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.110:headline": {
-        "hash": "60525f5d91f702d2",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "e2e77eb65767c7da",
+        "englishHash": "60525f5d91f702d2",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.110:seg:look:heading": {
@@ -17134,9 +17331,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.98:headline": {
-        "hash": "f8ef836a996eead1",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "0a908610ae13d3a9",
+        "englishHash": "f8ef836a996eead1",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.98:seg:look:heading": {
@@ -17284,9 +17482,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.125:headline": {
-        "hash": "d932e8c204e354e6",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "e86befa186fe1b1a",
+        "englishHash": "d932e8c204e354e6",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.125:seg:look:heading": {
@@ -17314,10 +17513,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.1:headline": {
-        "hash": "6b44cc80857befc0",
+        "hash": "993ffe44be91d31b",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "6b44cc80857befc0"
       },
       "story:1884.137.1:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -17344,10 +17544,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.19:headline": {
-        "hash": "fb1fd86fed4adac0",
+        "hash": "67fb3f9c8159e507",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "fb1fd86fed4adac0"
       },
       "story:1884.137.19:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -17374,10 +17575,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.77:headline": {
-        "hash": "d39556440804d073",
+        "hash": "324af0560bd9acbf",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "d39556440804d073"
       },
       "story:1884.137.77:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -17464,10 +17666,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.86:headline": {
-        "hash": "ebca7c637d9632bc",
+        "hash": "24e7dbe362e36a2f",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "ebca7c637d9632bc"
       },
       "story:1884.137.86:seg:look:heading": {
         "hash": "d0ccd498b76b3514",
@@ -17494,10 +17697,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.69:headline": {
-        "hash": "eb5f9382aa99d0cc",
+        "hash": "29f5cf9ad380a5c4",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "eb5f9382aa99d0cc"
       },
       "story:1884.137.69:seg:look:heading": {
         "hash": "632f912b3e87f33f",
@@ -17614,10 +17818,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.33:headline": {
-        "hash": "5ce6eb367db1b5c2",
+        "hash": "c4ba9ce13aa6ef60",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "5ce6eb367db1b5c2"
       },
       "story:1884.137.33:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -17626,10 +17831,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.33:seg:look:text": {
-        "hash": "6d14292526e19fbc",
+        "hash": "e3f0871750443f32",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "6d14292526e19fbc"
       },
       "story:1884.137.33:seg:not-one-animal:heading": {
         "hash": "99fb07484cd8d8ff",
@@ -17638,10 +17844,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.33:seg:not-one-animal:text": {
-        "hash": "c3ff2805e79b0748",
+        "hash": "dce048c33cc5ea59",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "c3ff2805e79b0748"
       },
       "story:1884.137.33:seg:float-and-sail:heading": {
         "hash": "11bb385b47fa50aa",
@@ -17650,16 +17857,18 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.33:seg:float-and-sail:text": {
-        "hash": "d9b404595630a4f6",
+        "hash": "d80fe432d959318f",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "d9b404595630a4f6"
       },
       "story:1884.137.32:headline": {
-        "hash": "f7631183540358ce",
+        "hash": "7c7d9397e47a4845",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "f7631183540358ce"
       },
       "story:1884.137.32:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -17668,10 +17877,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.32:seg:look:text": {
-        "hash": "9eb252622f2389e0",
+        "hash": "68c6d9afd70fda9d",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "9eb252622f2389e0"
       },
       "story:1884.137.32:seg:how-it-eats:heading": {
         "hash": "1f5320fc28c809c5",
@@ -17692,15 +17902,17 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.32:seg:blooms:text": {
-        "hash": "21f0a8cd91fe390d",
+        "hash": "f29a0d29ae026a77",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "21f0a8cd91fe390d"
       },
       "story:1884.137.68:headline": {
-        "hash": "a70fa0b0188baa9c",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "52f6eccd52afb353",
+        "englishHash": "a70fa0b0188baa9c",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.68:seg:look:heading": {
@@ -17734,16 +17946,18 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.68:seg:where:text": {
-        "hash": "16ed97c3acf00fde",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "ca6e52d11d837c7b",
+        "englishHash": "16ed97c3acf00fde",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.104:headline": {
-        "hash": "728c285577b73cab",
+        "hash": "d28b51779884ff54",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "728c285577b73cab"
       },
       "story:1884.137.104:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -17764,16 +17978,18 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.104:seg:two-kinds-of-arm:text": {
-        "hash": "bf142d5fc6503846",
+        "hash": "3a642dabbf65216d",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "bf142d5fc6503846"
       },
       "story:1884.137.105:headline": {
-        "hash": "bf59c299c7bf3824",
+        "hash": "3373d73d219d86fc",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "bf59c299c7bf3824"
       },
       "story:1884.137.105:seg:look:heading": {
         "hash": "39f5d66bca34e89c",
@@ -17794,10 +18010,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.105:seg:two-names:text": {
-        "hash": "839c96b818c04343",
+        "hash": "41cdb893195cca99",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "839c96b818c04343"
       },
       "story:1884.137.44:headline": {
         "hash": "0421fdb6ee20b21a",
@@ -17824,10 +18041,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.44:seg:the-yellow:text": {
-        "hash": "af59fc7423e9bf29",
+        "hash": "c73d6b62eb60bfff",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "af59fc7423e9bf29"
       },
       "story:1884.137.61:headline": {
         "hash": "0b02e2b13b161668",
@@ -17872,10 +18090,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.100:headline": {
-        "hash": "566039a97dbf3d13",
+        "hash": "fa52adbdb4d35901",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "566039a97dbf3d13"
       },
       "story:1884.137.100:seg:look:heading": {
         "hash": "11ff39e9ad0ea590",
@@ -17884,10 +18103,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.100:seg:look:text": {
-        "hash": "bbe5a7ef593e4dc1",
+        "hash": "2974753d475f7a1d",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "bbe5a7ef593e4dc1"
       },
       "story:1884.137.100:seg:the-hunt:heading": {
         "hash": "a78d3032a10adddf",
@@ -17902,9 +18122,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.10:headline": {
-        "hash": "a622c6f8acf42b7d",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "1f6434f681edbdee",
+        "englishHash": "a622c6f8acf42b7d",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.10:seg:look:heading": {
@@ -17944,9 +18165,10 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.8:headline": {
-        "hash": "af8d6ddb5f4d3ad2",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "54e7318e1c6f3f59",
+        "englishHash": "af8d6ddb5f4d3ad2",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.8:seg:look:heading": {
@@ -18330,9 +18552,10 @@
         "reviewStatus": "unreviewed"
       },
       "group:cephalopods": {
-        "hash": "868048f314e231a9",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "935bf7ce484f3c6d",
+        "englishHash": "868048f314e231a9",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "group:sea-slugs": {
@@ -18396,10 +18619,11 @@
         "reviewStatus": "unreviewed"
       },
       "panel:floating-colonies:panel": {
-        "hash": "48af3ca294eac84f",
+        "hash": "af3aca56d7bdfe19",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "48af3ca294eac84f"
       },
       "panel:floating-colonies:ending": {
         "hash": "496787d510271e99",
@@ -18504,10 +18728,11 @@
         "reviewStatus": "unreviewed"
       },
       "panel:never-went-to-sea:panel": {
-        "hash": "a7edf0bedb77f0c5",
+        "hash": "431d2788d5ef9a52",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "a7edf0bedb77f0c5"
       },
       "layer:how-it-was-made:standfirst": {
         "hash": "b88e7070ea464cfa",
@@ -18558,10 +18783,11 @@
         "reviewStatus": "unreviewed"
       },
       "layer:how-it-was-made:seg:mixed-media:text": {
-        "hash": "c234491d2a8add74",
+        "hash": "aaa48d8bd7c28c12",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "c234491d2a8add74"
       },
       "layer:how-it-was-made:seg:accuracy:heading": {
         "hash": "f755a21fe76ae293",
@@ -18642,10 +18868,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.24:headline": {
-        "hash": "350af645d6e4a56d",
+        "hash": "fa96e1cd2ae2711d",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "350af645d6e4a56d"
       },
       "story:1884.137.24:seg:look:heading": {
         "hash": "48cead3c38d31785",
@@ -18666,16 +18893,18 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.24:seg:the-life-cycle:text": {
-        "hash": "d74cf866d85ea50f",
+        "hash": "19feca6a76da25f6",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "d74cf866d85ea50f"
       },
       "story:1884.137.41:headline": {
-        "hash": "4d8a27b7e26228a6",
+        "hash": "1fc4e0c0c5b9f1cd",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "4d8a27b7e26228a6"
       },
       "story:1884.137.41:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -18702,10 +18931,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.42:headline": {
-        "hash": "8ff00a9b0b9a072a",
+        "hash": "fb5fdbf3f1a666ea",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "8ff00a9b0b9a072a"
       },
       "story:1884.137.42:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -18732,10 +18962,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.108:headline": {
-        "hash": "d679659859dcedd8",
+        "hash": "1b4e3c6e45edd1bc",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "d679659859dcedd8"
       },
       "story:1884.137.108:seg:look:heading": {
         "hash": "6b4c76a1309cbd3d",
@@ -18852,10 +19083,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.72:headline": {
-        "hash": "8049113a27f6ba1c",
+        "hash": "2e238cd2f7a06ab5",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "8049113a27f6ba1c"
       },
       "story:1884.137.72:seg:look:heading": {
         "hash": "72787678240b9e22",
@@ -18882,10 +19114,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.40:headline": {
-        "hash": "8af97ee1556034ad",
+        "hash": "f57d7e1e356cc93d",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "8af97ee1556034ad"
       },
       "story:1884.137.40:seg:look:heading": {
         "hash": "fa2a5ae9b436c083",
@@ -19092,10 +19325,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.127:headline": {
-        "hash": "028a06b39b120f64",
+        "hash": "8941396ac29c037f",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "028a06b39b120f64"
       },
       "story:1884.137.127:seg:look:heading": {
         "hash": "56070dbe3fa31084",
@@ -19122,10 +19356,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.78:headline": {
-        "hash": "566039a97dbf3d13",
+        "hash": "9ca3b88dd19ef058",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "566039a97dbf3d13"
       },
       "story:1884.137.78:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -19212,10 +19447,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.103:headline": {
-        "hash": "a9f06bd12f78f594",
+        "hash": "fbebe66fef4cd3c8",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "a9f06bd12f78f594"
       },
       "story:1884.137.103:seg:look:heading": {
         "hash": "b6318af8327a1826",
@@ -19302,10 +19538,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.51:headline": {
-        "hash": "865342521b98ad7a",
+        "hash": "48e8f856d103ff3b",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "865342521b98ad7a"
       },
       "story:1884.137.51:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -19332,10 +19569,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.66:headline": {
-        "hash": "b31bf8bd490070d3",
+        "hash": "9311f1bc51315e66",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "b31bf8bd490070d3"
       },
       "story:1884.137.66:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -19422,10 +19660,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.4:headline": {
-        "hash": "0b13fba38796f102",
+        "hash": "1819ba44576e1063",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "0b13fba38796f102"
       },
       "story:1884.137.4:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -19452,10 +19691,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.85:headline": {
-        "hash": "72e47344c1d821ce",
+        "hash": "7a9ffe50c60a5c8a",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "72e47344c1d821ce"
       },
       "story:1884.137.85:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -19542,10 +19782,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.129:headline": {
-        "hash": "2438d984624e88cd",
+        "hash": "91e35e8a120f2068",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "2438d984624e88cd"
       },
       "story:1884.137.129:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -19572,10 +19813,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.6:headline": {
-        "hash": "3f414e64349b849f",
+        "hash": "9dd49fc3258dd523",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "3f414e64349b849f"
       },
       "story:1884.137.6:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -19602,10 +19844,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.38:headline": {
-        "hash": "32bfe8750998e8b0",
+        "hash": "e32028b1249a697c",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "32bfe8750998e8b0"
       },
       "story:1884.137.38:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -19632,10 +19875,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.17:headline": {
-        "hash": "f490617554daea8c",
+        "hash": "bcf47312141f7e77",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "f490617554daea8c"
       },
       "story:1884.137.17:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -19656,10 +19900,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.17:seg:the-hooks:text": {
-        "hash": "dd102750b3be69b0",
+        "hash": "5c3be876b7e78bca",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "dd102750b3be69b0"
       },
       "story:1884.137.39:headline": {
         "hash": "896ae1f975d6a9ca",
@@ -19722,10 +19967,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.16:headline": {
-        "hash": "718634d672f8409a",
+        "hash": "10a8d78d7e329cbf",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "718634d672f8409a"
       },
       "story:1884.137.16:seg:look:heading": {
         "hash": "66fb25554fe773f1",
@@ -20442,10 +20688,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.74:headline": {
-        "hash": "3155745b4868ea71",
+        "hash": "16f1d2a4762527f6",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "3155745b4868ea71"
       },
       "story:1884.137.74:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -20562,10 +20809,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.123:headline": {
-        "hash": "6496514fdf309779",
+        "hash": "621bdd041c194bc9",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "6496514fdf309779"
       },
       "story:1884.137.123:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -20622,10 +20870,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.64:headline": {
-        "hash": "2f5133889f45eb27",
+        "hash": "ecdd7f29876fe7ca",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "2f5133889f45eb27"
       },
       "story:1884.137.64:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -20652,10 +20901,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.21:headline": {
-        "hash": "14b5a1aa682ba340",
+        "hash": "41a0257b8b375bbd",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "14b5a1aa682ba340"
       },
       "story:1884.137.21:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -20676,10 +20926,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.21:seg:the-jewel:text": {
-        "hash": "25217e53e7c07d57",
+        "hash": "6be75f6a454f6710",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "25217e53e7c07d57"
       },
       "story:1884.137.31:headline": {
         "hash": "431c70320e5e268c",
@@ -20712,10 +20963,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.57:headline": {
-        "hash": "c84e03d923c11c71",
+        "hash": "e51282dbb12596d4",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "c84e03d923c11c71"
       },
       "story:1884.137.57:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -20766,10 +21018,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.71:seg:eight:text": {
-        "hash": "dbfe593e7fe661cb",
+        "hash": "0d14401c46bb1bcb",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "dbfe593e7fe661cb"
       },
       "story:1884.137.81:headline": {
         "hash": "ffc1f41f36ef20ff",
@@ -20832,10 +21085,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.121:headline": {
-        "hash": "47a964c8a09d3aa7",
+        "hash": "d650205563a6d3ef",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "47a964c8a09d3aa7"
       },
       "story:1884.137.121:seg:look:heading": {
         "hash": "632f912b3e87f33f",
@@ -20856,16 +21110,18 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.121:seg:the-quill:text": {
-        "hash": "98448402ead3c566",
+        "hash": "79e4f37e3ba54427",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "98448402ead3c566"
       },
       "story:1884.137.73:headline": {
-        "hash": "ee045245fd96ffa6",
+        "hash": "e33d4da092298738",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "ee045245fd96ffa6"
       },
       "story:1884.137.73:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -20952,10 +21208,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.63:headline": {
-        "hash": "ef945dbf9f38f910",
+        "hash": "668878c0563e582b",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "ef945dbf9f38f910"
       },
       "story:1884.137.63:seg:look:heading": {
         "hash": "632f912b3e87f33f",
@@ -20982,10 +21239,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.126:headline": {
-        "hash": "4deeb7a7b21e30f1",
+        "hash": "f3e070d482fd3ff6",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "4deeb7a7b21e30f1"
       },
       "story:1884.137.126:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -21102,10 +21360,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.75:headline": {
-        "hash": "37292e795920004f",
+        "hash": "1988cbca719112f2",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "37292e795920004f"
       },
       "story:1884.137.75:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -21126,16 +21385,18 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.75:seg:five:text": {
-        "hash": "21ad62f268387055",
+        "hash": "2bc8b64c96ae27ba",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "21ad62f268387055"
       },
       "story:1884.137.2:headline": {
-        "hash": "37292e795920004f",
+        "hash": "1988cbca719112f2",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "37292e795920004f"
       },
       "story:1884.137.2:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -21162,10 +21423,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.82:headline": {
-        "hash": "37292e795920004f",
+        "hash": "1988cbca719112f2",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "37292e795920004f"
       },
       "story:1884.137.82:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -21192,10 +21454,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.84:headline": {
-        "hash": "37292e795920004f",
+        "hash": "1988cbca719112f2",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "37292e795920004f"
       },
       "story:1884.137.84:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -21216,16 +21479,18 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.84:seg:the-stripes:text": {
-        "hash": "aaf4223808da930d",
+        "hash": "62c94c419e967d37",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "aaf4223808da930d"
       },
       "story:1884.137.3:headline": {
-        "hash": "37292e795920004f",
+        "hash": "1988cbca719112f2",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "37292e795920004f"
       },
       "story:1884.137.3:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -21252,10 +21517,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.23:headline": {
-        "hash": "37292e795920004f",
+        "hash": "1988cbca719112f2",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "37292e795920004f"
       },
       "story:1884.137.23:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -21342,10 +21608,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.9:headline": {
-        "hash": "ae5095c057bf3b15",
+        "hash": "dce1f9f5c43e517f",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "ae5095c057bf3b15"
       },
       "story:1884.137.9:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -21366,10 +21633,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.9:seg:the-cast:text": {
-        "hash": "1de367224fc85fb0",
+        "hash": "6bf9a510923a9b61",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "1de367224fc85fb0"
       },
       "story:1884.137.20:headline": {
         "hash": "93c2949c25980c62",
@@ -21492,10 +21760,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.48:headline": {
-        "hash": "b735e6dcae733104",
+        "hash": "32210f98acc60235",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "b735e6dcae733104"
       },
       "story:1884.137.48:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -21552,10 +21821,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.22:headline": {
-        "hash": "63d91debeb586bd2",
+        "hash": "5f563990ff4a15b9",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "63d91debeb586bd2"
       },
       "story:1884.137.22:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -21582,10 +21852,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.110:headline": {
-        "hash": "60525f5d91f702d2",
+        "hash": "c6f76a28a0dfb99e",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "60525f5d91f702d2"
       },
       "story:1884.137.110:seg:look:heading": {
         "hash": "47144e2260978810",
@@ -21612,10 +21883,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.98:headline": {
-        "hash": "f8ef836a996eead1",
+        "hash": "33127a632370df2e",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "f8ef836a996eead1"
       },
       "story:1884.137.98:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -21792,10 +22064,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.1:headline": {
-        "hash": "6b44cc80857befc0",
+        "hash": "472a0bf5328ad2de",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "6b44cc80857befc0"
       },
       "story:1884.137.1:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -21822,10 +22095,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.19:headline": {
-        "hash": "fb1fd86fed4adac0",
+        "hash": "f11c279f85b07a9b",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "fb1fd86fed4adac0"
       },
       "story:1884.137.19:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -21852,10 +22126,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.77:headline": {
-        "hash": "d39556440804d073",
+        "hash": "5f54465ed2bcbc14",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "d39556440804d073"
       },
       "story:1884.137.77:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -21942,10 +22217,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.86:headline": {
-        "hash": "ebca7c637d9632bc",
+        "hash": "6ac8cf2727418227",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "ebca7c637d9632bc"
       },
       "story:1884.137.86:seg:look:heading": {
         "hash": "d0ccd498b76b3514",
@@ -21972,10 +22248,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.69:headline": {
-        "hash": "eb5f9382aa99d0cc",
+        "hash": "e0537a38077e46aa",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "eb5f9382aa99d0cc"
       },
       "story:1884.137.69:seg:look:heading": {
         "hash": "632f912b3e87f33f",
@@ -22092,10 +22369,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.32:headline": {
-        "hash": "f7631183540358ce",
+        "hash": "4762fa6d4188c1b0",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "f7631183540358ce"
       },
       "story:1884.137.32:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -22104,10 +22382,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.32:seg:look:text": {
-        "hash": "9eb252622f2389e0",
+        "hash": "8015f714e76717d1",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "9eb252622f2389e0"
       },
       "story:1884.137.32:seg:how-it-eats:heading": {
         "hash": "1f5320fc28c809c5",
@@ -22128,16 +22407,18 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.32:seg:blooms:text": {
-        "hash": "21f0a8cd91fe390d",
+        "hash": "32078b7c81108f98",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "21f0a8cd91fe390d"
       },
       "story:1884.137.68:headline": {
-        "hash": "a70fa0b0188baa9c",
+        "hash": "fb0a54bd333ad11b",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "a70fa0b0188baa9c"
       },
       "story:1884.137.68:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -22170,16 +22451,18 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.68:seg:where:text": {
-        "hash": "16ed97c3acf00fde",
+        "hash": "b999710308b78797",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "16ed97c3acf00fde"
       },
       "story:1884.137.104:headline": {
-        "hash": "728c285577b73cab",
+        "hash": "c822ce563b1fb54d",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "728c285577b73cab"
       },
       "story:1884.137.104:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -22200,16 +22483,18 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.104:seg:two-kinds-of-arm:text": {
-        "hash": "bf142d5fc6503846",
+        "hash": "0fafc5415daa6a3e",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "bf142d5fc6503846"
       },
       "story:1884.137.105:headline": {
-        "hash": "bf59c299c7bf3824",
+        "hash": "c7952b968eed27e9",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "bf59c299c7bf3824"
       },
       "story:1884.137.105:seg:look:heading": {
         "hash": "39f5d66bca34e89c",
@@ -22230,10 +22515,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.105:seg:two-names:text": {
-        "hash": "839c96b818c04343",
+        "hash": "0c1c159ad8cfd31d",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "839c96b818c04343"
       },
       "story:1884.137.44:headline": {
         "hash": "0421fdb6ee20b21a",
@@ -22260,16 +22546,18 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.44:seg:the-yellow:text": {
-        "hash": "af59fc7423e9bf29",
+        "hash": "b9ccc106be5d736b",
+        "englishHash": "af59fc7423e9bf29",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.61:headline": {
-        "hash": "0b02e2b13b161668",
+        "hash": "705b29ac37c569c7",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "0b02e2b13b161668"
       },
       "story:1884.137.61:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -22308,10 +22596,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.100:headline": {
-        "hash": "566039a97dbf3d13",
+        "hash": "9ca3b88dd19ef058",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "566039a97dbf3d13"
       },
       "story:1884.137.100:seg:look:heading": {
         "hash": "11ff39e9ad0ea590",
@@ -22320,10 +22609,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.100:seg:look:text": {
-        "hash": "bbe5a7ef593e4dc1",
+        "hash": "5c180c411b66bcf8",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "bbe5a7ef593e4dc1"
       },
       "story:1884.137.100:seg:the-hunt:heading": {
         "hash": "a78d3032a10adddf",
@@ -22338,10 +22628,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.10:headline": {
-        "hash": "a622c6f8acf42b7d",
+        "hash": "b6212694c1d1f0f3",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "a622c6f8acf42b7d"
       },
       "story:1884.137.10:seg:look:heading": {
         "hash": "2d7b43dba5be9f60",
@@ -22410,10 +22701,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.70:headline": {
-        "hash": "349a8441fd26be9b",
+        "hash": "fa709acb74cf0cab",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "349a8441fd26be9b"
       },
       "story:1884.137.70:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -22440,10 +22732,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.93:headline": {
-        "hash": "41043d8d763f404a",
+        "hash": "f19ac87c3a29b0d7",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "41043d8d763f404a"
       },
       "story:1884.137.93:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -22494,16 +22787,18 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.59:seg:not-one-animal:text": {
-        "hash": "79da25903979e94e",
+        "hash": "bea943ef13dcf398",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "79da25903979e94e"
       },
       "story:1884.137.33:headline": {
-        "hash": "5ce6eb367db1b5c2",
+        "hash": "8a4332601ec104a3",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "5ce6eb367db1b5c2"
       },
       "story:1884.137.33:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -22512,10 +22807,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.33:seg:look:text": {
-        "hash": "6d14292526e19fbc",
+        "hash": "4a729f7636f0a4d5",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "6d14292526e19fbc"
       },
       "story:1884.137.33:seg:not-one-animal:heading": {
         "hash": "99fb07484cd8d8ff",
@@ -22524,10 +22820,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.33:seg:not-one-animal:text": {
-        "hash": "c3ff2805e79b0748",
+        "hash": "fc0fcca5a12fba36",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "c3ff2805e79b0748"
       },
       "story:1884.137.33:seg:float-and-sail:heading": {
         "hash": "11bb385b47fa50aa",
@@ -22536,10 +22833,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.33:seg:float-and-sail:text": {
-        "hash": "d9b404595630a4f6",
+        "hash": "f6c04d0e8c3d3f05",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "d9b404595630a4f6"
       }
     },
     "es": {
@@ -22898,10 +23196,11 @@
         "reviewStatus": "unreviewed"
       },
       "panel:floating-colonies:panel": {
-        "hash": "48af3ca294eac84f",
+        "hash": "148eae860c5067ca",
         "engine": "unknown-legacy",
         "translatedAt": null,
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "48af3ca294eac84f"
       },
       "panel:floating-colonies:ending": {
         "hash": "496787d510271e99",
@@ -23522,10 +23821,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.59:headline": {
-        "hash": "6b442b22a25cd91c",
+        "hash": "1b783e7b584bf0f8",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "6b442b22a25cd91c"
       },
       "story:1884.137.59:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -23546,7 +23846,8 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.59:seg:not-one-animal:text": {
-        "hash": "79da25903979e94e",
+        "hash": "6226fdc3ab6a97ca",
+        "englishHash": "79da25903979e94e",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
@@ -23612,10 +23913,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.127:headline": {
-        "hash": "028a06b39b120f64",
+        "hash": "382598173d2ccc02",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "028a06b39b120f64"
       },
       "story:1884.137.127:seg:look:heading": {
         "hash": "56070dbe3fa31084",
@@ -23642,10 +23944,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.78:headline": {
-        "hash": "566039a97dbf3d13",
+        "hash": "37a8d3ebd22bafc7",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "566039a97dbf3d13"
       },
       "story:1884.137.78:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -23732,10 +24035,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.103:headline": {
-        "hash": "a9f06bd12f78f594",
+        "hash": "94347791567a6ae4",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "a9f06bd12f78f594"
       },
       "story:1884.137.103:seg:look:heading": {
         "hash": "b6318af8327a1826",
@@ -23852,10 +24156,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.66:headline": {
-        "hash": "b31bf8bd490070d3",
+        "hash": "b7b84199e3ebe55a",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "b31bf8bd490070d3"
       },
       "story:1884.137.66:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -24062,10 +24367,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.129:headline": {
-        "hash": "2438d984624e88cd",
+        "hash": "5a79eca22257498f",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "2438d984624e88cd"
       },
       "story:1884.137.129:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -24554,10 +24860,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.76:headline": {
-        "hash": "20cc05e19b24c985",
+        "hash": "820368e3ad186125",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "20cc05e19b24c985"
       },
       "story:1884.137.76:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -25124,10 +25431,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.64:headline": {
-        "hash": "2f5133889f45eb27",
+        "hash": "27321a625e4d3c17",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "2f5133889f45eb27"
       },
       "story:1884.137.64:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -25154,10 +25462,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.21:headline": {
-        "hash": "14b5a1aa682ba340",
+        "hash": "12f771edf38b8f3b",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "14b5a1aa682ba340"
       },
       "story:1884.137.21:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -25178,10 +25487,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.21:seg:the-jewel:text": {
-        "hash": "25217e53e7c07d57",
+        "hash": "f3700ef0466c2b00",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "25217e53e7c07d57"
       },
       "story:1884.137.31:headline": {
         "hash": "431c70320e5e268c",
@@ -25268,10 +25578,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.71:seg:eight:text": {
-        "hash": "dbfe593e7fe661cb",
+        "hash": "270e328fe890c846",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "dbfe593e7fe661cb"
       },
       "story:1884.137.81:headline": {
         "hash": "ffc1f41f36ef20ff",
@@ -25364,10 +25675,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.73:headline": {
-        "hash": "ee045245fd96ffa6",
+        "hash": "4be667fcae0c0065",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "ee045245fd96ffa6"
       },
       "story:1884.137.73:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -25424,10 +25736,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.120:headline": {
-        "hash": "9c5765ae7e477e44",
+        "hash": "786176d91b614cc5",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "9c5765ae7e477e44"
       },
       "story:1884.137.120:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -26006,10 +26319,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.22:headline": {
-        "hash": "63d91debeb586bd2",
+        "hash": "e609f19bcd686157",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "63d91debeb586bd2"
       },
       "story:1884.137.22:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -26060,10 +26374,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.98:headline": {
-        "hash": "f8ef836a996eead1",
+        "hash": "39f63d010e3b802b",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "f8ef836a996eead1"
       },
       "story:1884.137.98:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -26558,7 +26873,8 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.33:seg:float-and-sail:text": {
-        "hash": "d9b404595630a4f6",
+        "hash": "f50f4e0fdb1fc6c5",
+        "englishHash": "d9b404595630a4f6",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
@@ -26618,10 +26934,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.104:headline": {
-        "hash": "728c285577b73cab",
+        "hash": "e4a12f768434e0e6",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "728c285577b73cab"
       },
       "story:1884.137.104:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -26642,10 +26959,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.104:seg:two-kinds-of-arm:text": {
-        "hash": "bf142d5fc6503846",
+        "hash": "7a20efe7fd8989ed",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "bf142d5fc6503846"
       },
       "story:1884.137.105:seg:look:heading": {
         "hash": "39f5d66bca34e89c",
@@ -26690,7 +27008,8 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.44:seg:the-yellow:text": {
-        "hash": "af59fc7423e9bf29",
+        "hash": "f849d568186f3fd8",
+        "englishHash": "af59fc7423e9bf29",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
@@ -26738,10 +27057,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.100:headline": {
-        "hash": "566039a97dbf3d13",
+        "hash": "37a8d3ebd22bafc7",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "566039a97dbf3d13"
       },
       "story:1884.137.100:seg:look:heading": {
         "hash": "11ff39e9ad0ea590",
@@ -26750,10 +27070,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.100:seg:look:text": {
-        "hash": "bbe5a7ef593e4dc1",
+        "hash": "b0f619d8e98514c9",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "bbe5a7ef593e4dc1"
       },
       "story:1884.137.100:seg:the-hunt:heading": {
         "hash": "a78d3032a10adddf",
@@ -26894,160 +27215,186 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.110:headline": {
-        "hash": "60525f5d91f702d2",
+        "hash": "be6f4982ab6b7b98",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "60525f5d91f702d2"
       },
       "story:1884.137.33:headline": {
-        "hash": "5ce6eb367db1b5c2",
+        "hash": "698e9a8a988a0589",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "5ce6eb367db1b5c2"
       },
       "story:1884.137.33:seg:look:text": {
-        "hash": "6d14292526e19fbc",
+        "hash": "139a4133b1afbc7e",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "6d14292526e19fbc"
       },
       "story:1884.137.33:seg:not-one-animal:text": {
-        "hash": "c3ff2805e79b0748",
+        "hash": "3f5ac189e75edfe5",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "c3ff2805e79b0748"
       },
       "group:cephalopods": {
-        "hash": "868048f314e231a9",
+        "hash": "bdfcdd03f020c4a6",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "868048f314e231a9"
       },
       "story:1884.137.24:headline": {
-        "hash": "350af645d6e4a56d",
+        "hash": "09e26d0c2f923776",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "350af645d6e4a56d"
       },
       "story:1884.137.24:seg:the-life-cycle:text": {
-        "hash": "d74cf866d85ea50f",
+        "hash": "847b6c0bd5c5a29b",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "d74cf866d85ea50f"
       },
       "story:1884.137.6:headline": {
-        "hash": "3f414e64349b849f",
+        "hash": "ed4974f743b8e4d2",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "3f414e64349b849f"
       },
       "story:1884.137.38:headline": {
-        "hash": "32bfe8750998e8b0",
+        "hash": "5e021732adaee254",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "32bfe8750998e8b0"
       },
       "story:1884.137.16:headline": {
-        "hash": "718634d672f8409a",
+        "hash": "e0f6ff93f1688f1e",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "718634d672f8409a"
       },
       "story:1884.137.75:headline": {
-        "hash": "37292e795920004f",
+        "hash": "b97c81b5c608ace0",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "37292e795920004f"
       },
       "story:1884.137.75:seg:five:text": {
-        "hash": "21ad62f268387055",
+        "hash": "70adf627357e2e6d",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "21ad62f268387055"
       },
       "story:1884.137.2:headline": {
-        "hash": "37292e795920004f",
+        "hash": "b97c81b5c608ace0",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "37292e795920004f"
       },
       "story:1884.137.82:headline": {
-        "hash": "37292e795920004f",
+        "hash": "b97c81b5c608ace0",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "37292e795920004f"
       },
       "story:1884.137.84:headline": {
-        "hash": "37292e795920004f",
+        "hash": "b97c81b5c608ace0",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "37292e795920004f"
       },
       "story:1884.137.84:seg:the-stripes:text": {
-        "hash": "aaf4223808da930d",
+        "hash": "801dfec700bf92c0",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "aaf4223808da930d"
       },
       "story:1884.137.3:headline": {
-        "hash": "37292e795920004f",
+        "hash": "b97c81b5c608ace0",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "37292e795920004f"
       },
       "story:1884.137.23:headline": {
-        "hash": "37292e795920004f",
+        "hash": "b97c81b5c608ace0",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "37292e795920004f"
       },
       "story:1884.137.32:headline": {
-        "hash": "f7631183540358ce",
+        "hash": "a5daf464dba08c99",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "f7631183540358ce"
       },
       "story:1884.137.32:seg:look:text": {
-        "hash": "9eb252622f2389e0",
+        "hash": "63ef5d5d41afc8f9",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "9eb252622f2389e0"
       },
       "story:1884.137.32:seg:blooms:text": {
-        "hash": "21f0a8cd91fe390d",
+        "hash": "d27f02a1c716094d",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "21f0a8cd91fe390d"
       },
       "story:1884.137.68:headline": {
-        "hash": "a70fa0b0188baa9c",
+        "hash": "93316939e941abaf",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "a70fa0b0188baa9c"
       },
       "story:1884.137.68:seg:where:text": {
-        "hash": "16ed97c3acf00fde",
+        "hash": "ab8ed28daa247599",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "16ed97c3acf00fde"
       },
       "story:1884.137.105:headline": {
-        "hash": "bf59c299c7bf3824",
+        "hash": "8bd406efb0adddac",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "bf59c299c7bf3824"
       },
       "story:1884.137.105:seg:two-names:text": {
-        "hash": "839c96b818c04343",
+        "hash": "70437b496137adb7",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "839c96b818c04343"
       },
       "story:1884.137.10:headline": {
-        "hash": "a622c6f8acf42b7d",
+        "hash": "1fa3330bc1650675",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "a622c6f8acf42b7d"
       }
     },
     "ar": {
@@ -27346,9 +27693,10 @@
         "reviewStatus": "unreviewed"
       },
       "group:cephalopods": {
-        "hash": "868048f314e231a9",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "3648897821f47305",
+        "englishHash": "868048f314e231a9",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "group:sea-slugs": {
@@ -27412,9 +27760,10 @@
         "reviewStatus": "unreviewed"
       },
       "panel:floating-colonies:panel": {
-        "hash": "48af3ca294eac84f",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "81f94c4337e32381",
+        "englishHash": "48af3ca294eac84f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "panel:floating-colonies:ending": {
@@ -27520,9 +27869,10 @@
         "reviewStatus": "unreviewed"
       },
       "panel:never-went-to-sea:panel": {
-        "hash": "a7edf0bedb77f0c5",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "edd4dc62da0ff495",
+        "englishHash": "a7edf0bedb77f0c5",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "layer:how-it-was-made:standfirst": {
@@ -27574,9 +27924,10 @@
         "reviewStatus": "unreviewed"
       },
       "layer:how-it-was-made:seg:mixed-media:text": {
-        "hash": "c234491d2a8add74",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
+        "hash": "55e27a5b1934c5d5",
+        "englishHash": "c234491d2a8add74",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
       "layer:how-it-was-made:seg:accuracy:heading": {
@@ -27658,10 +28009,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.24:headline": {
-        "hash": "350af645d6e4a56d",
+        "hash": "f49425f0be8b2b9c",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "350af645d6e4a56d"
       },
       "story:1884.137.24:seg:look:heading": {
         "hash": "48cead3c38d31785",
@@ -27682,10 +28034,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.24:seg:the-life-cycle:text": {
-        "hash": "d74cf866d85ea50f",
+        "hash": "48c4be9dac975fee",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "d74cf866d85ea50f"
       },
       "story:1884.137.41:headline": {
         "hash": "4d8a27b7e26228a6",
@@ -28072,10 +28425,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.59:seg:not-one-animal:text": {
-        "hash": "79da25903979e94e",
+        "hash": "79c0f14f25e4e380",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "79da25903979e94e"
       },
       "story:1884.137.52:headline": {
         "hash": "32a3f8ba9d32ca7c",
@@ -28618,10 +28972,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.6:headline": {
-        "hash": "3f414e64349b849f",
+        "hash": "f1feeb14a95d3b0c",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "3f414e64349b849f"
       },
       "story:1884.137.6:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -28648,10 +29003,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.38:headline": {
-        "hash": "32bfe8750998e8b0",
+        "hash": "e8800f148fe6d761",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "32bfe8750998e8b0"
       },
       "story:1884.137.38:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -28768,10 +29124,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.16:headline": {
-        "hash": "718634d672f8409a",
+        "hash": "9d5f9684c45872e2",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "718634d672f8409a"
       },
       "story:1884.137.16:seg:look:heading": {
         "hash": "66fb25554fe773f1",
@@ -29098,10 +29455,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.76:headline": {
-        "hash": "20cc05e19b24c985",
+        "hash": "d99bd0f29ec8ff04",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "20cc05e19b24c985"
       },
       "story:1884.137.76:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -29668,10 +30026,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.64:headline": {
-        "hash": "2f5133889f45eb27",
+        "hash": "b5587608aaecca9a",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "2f5133889f45eb27"
       },
       "story:1884.137.64:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -29698,10 +30057,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.21:headline": {
-        "hash": "14b5a1aa682ba340",
+        "hash": "0a23ba97389e5344",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "14b5a1aa682ba340"
       },
       "story:1884.137.21:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -29722,10 +30082,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.21:seg:the-jewel:text": {
-        "hash": "25217e53e7c07d57",
+        "hash": "158ddbda0bef2a6a",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "25217e53e7c07d57"
       },
       "story:1884.137.31:headline": {
         "hash": "431c70320e5e268c",
@@ -29812,10 +30173,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.71:seg:eight:text": {
-        "hash": "dbfe593e7fe661cb",
+        "hash": "cd5558bb0fbf7c60",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "dbfe593e7fe661cb"
       },
       "story:1884.137.81:headline": {
         "hash": "ffc1f41f36ef20ff",
@@ -29908,10 +30270,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.73:headline": {
-        "hash": "ee045245fd96ffa6",
+        "hash": "349a05298e6f5130",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "ee045245fd96ffa6"
       },
       "story:1884.137.73:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -30388,10 +30751,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.9:headline": {
-        "hash": "ae5095c057bf3b15",
+        "hash": "87377fedacce921a",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "ae5095c057bf3b15"
       },
       "story:1884.137.9:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -30412,10 +30776,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.9:seg:the-cast:text": {
-        "hash": "1de367224fc85fb0",
+        "hash": "dd61af1a36f32b9e",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "1de367224fc85fb0"
       },
       "story:1884.137.20:headline": {
         "hash": "93c2949c25980c62",
@@ -30658,10 +31023,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.98:headline": {
-        "hash": "f8ef836a996eead1",
+        "hash": "cf22aadc7f9819c0",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "f8ef836a996eead1"
       },
       "story:1884.137.98:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -30838,10 +31204,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.1:headline": {
-        "hash": "6b44cc80857befc0",
+        "hash": "99ab22d4c09b36c7",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "6b44cc80857befc0"
       },
       "story:1884.137.1:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -30988,10 +31355,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.86:headline": {
-        "hash": "ebca7c637d9632bc",
+        "hash": "a73e1c63e314adc5",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "ebca7c637d9632bc"
       },
       "story:1884.137.86:seg:look:heading": {
         "hash": "d0ccd498b76b3514",
@@ -31018,10 +31386,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.69:headline": {
-        "hash": "eb5f9382aa99d0cc",
+        "hash": "fef9877318048dc9",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "eb5f9382aa99d0cc"
       },
       "story:1884.137.69:seg:look:heading": {
         "hash": "632f912b3e87f33f",
@@ -31138,10 +31507,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.33:headline": {
-        "hash": "5ce6eb367db1b5c2",
+        "hash": "aab8c3e512ebfd3c",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "5ce6eb367db1b5c2"
       },
       "story:1884.137.33:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -31156,10 +31526,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.33:seg:not-one-animal:text": {
-        "hash": "c3ff2805e79b0748",
+        "hash": "5ec4d01be7f8cc82",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "c3ff2805e79b0748"
       },
       "story:1884.137.33:seg:float-and-sail:heading": {
         "hash": "11bb385b47fa50aa",
@@ -31168,16 +31539,18 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.33:seg:float-and-sail:text": {
-        "hash": "d9b404595630a4f6",
+        "hash": "e48ff0b788be6525",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "d9b404595630a4f6"
       },
       "story:1884.137.32:headline": {
-        "hash": "f7631183540358ce",
+        "hash": "8d3dc10e49e044e7",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "f7631183540358ce"
       },
       "story:1884.137.32:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -31186,10 +31559,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.32:seg:look:text": {
-        "hash": "9eb252622f2389e0",
+        "hash": "e1b861d844282d49",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "9eb252622f2389e0"
       },
       "story:1884.137.32:seg:how-it-eats:heading": {
         "hash": "1f5320fc28c809c5",
@@ -31210,16 +31584,18 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.32:seg:blooms:text": {
-        "hash": "21f0a8cd91fe390d",
+        "hash": "611030650b260393",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "21f0a8cd91fe390d"
       },
       "story:1884.137.68:headline": {
-        "hash": "a70fa0b0188baa9c",
+        "hash": "87a2b8d3a7b8870c",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "a70fa0b0188baa9c"
       },
       "story:1884.137.68:seg:look:heading": {
         "hash": "4a630f5763e32641",
@@ -31252,10 +31628,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.68:seg:where:text": {
-        "hash": "16ed97c3acf00fde",
+        "hash": "7c3d1afbc47d1fef",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "16ed97c3acf00fde"
       },
       "story:1884.137.104:headline": {
         "hash": "728c285577b73cab",
@@ -31288,10 +31665,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.105:headline": {
-        "hash": "bf59c299c7bf3824",
+        "hash": "fa89f2ef55a6abf7",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "bf59c299c7bf3824"
       },
       "story:1884.137.105:seg:look:heading": {
         "hash": "39f5d66bca34e89c",
@@ -31312,10 +31690,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.105:seg:two-names:text": {
-        "hash": "839c96b818c04343",
+        "hash": "78d7e23a707295ff",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "839c96b818c04343"
       },
       "story:1884.137.44:headline": {
         "hash": "0421fdb6ee20b21a",
@@ -31342,10 +31721,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.44:seg:the-yellow:text": {
-        "hash": "af59fc7423e9bf29",
+        "hash": "5e5b65b2c637895e",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "af59fc7423e9bf29"
       },
       "story:1884.137.61:headline": {
         "hash": "0b02e2b13b161668",
@@ -31420,10 +31800,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.10:headline": {
-        "hash": "a622c6f8acf42b7d",
+        "hash": "07bc8bb75049ffe4",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "a622c6f8acf42b7d"
       },
       "story:1884.137.10:seg:look:heading": {
         "hash": "2d7b43dba5be9f60",
@@ -31546,10 +31927,11 @@
         "reviewStatus": "unreviewed"
       },
       "story:1884.137.33:seg:look:text": {
-        "hash": "6d14292526e19fbc",
+        "hash": "326e3ec97375a1f4",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
+        "reviewStatus": "unreviewed",
+        "englishHash": "6d14292526e19fbc"
       },
       "story:1884.137.10:seg:male-and-female:text": {
         "hash": "dccdbed9177d574f",

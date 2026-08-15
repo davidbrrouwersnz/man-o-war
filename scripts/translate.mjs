@@ -63,7 +63,56 @@ const REPORT = value('--report')
 // Bumped by hand when the wire format changes in a way that should invalidate every translation —
 // a different DNT mechanism, a different block split. Same role as PIPELINE in scripts/audio.mjs.
 const PIPELINE = 1
-const hashOf = (s) => createHash('sha256').update(`v${PIPELINE}\n${s}`).digest('hex').slice(0, 16)
+
+// THE HASH COVERS THE GLOSSARY, not just the English, and it has to.
+//
+// Hashing the source alone answers "has the English changed?" — but a unit's translation also
+// depends on the names it was given. Decide that the French for a man o' war is "galère portugaise"
+// after that sentence was already translated, and nothing notices: the English is untouched, the
+// hash matches, and the improvement never reaches the text. An audit found 62 of 389 units not
+// carrying the name that had been agreed for them.
+//
+// So the fingerprint is the agreed names that actually APPLY to this unit in this language —
+// nothing if the unit mentions none, which is most of them. A unit is invalidated by a glossary
+// change only when it uses the term that changed.
+const escapeTerm = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+const appliedTerms = (text, lang) => {
+  const applied = []
+  for (const [term, entry] of Object.entries(GLOSSARY)) {
+    const target = entry?.langs?.[lang]
+    if (target?.status !== 'accepted' || !target.text) continue
+    const forms = [term, ...(entry.alsoWritten ?? [])]
+    if (forms.some((f) => new RegExp(`(?<![\\p{L}\\p{N}])${escapeTerm(f)}(?![\\p{L}\\p{N}])`, 'iu').test(text))) {
+      applied.push(`${term}=${target.text}`)
+    }
+  }
+  return applied.sort()
+}
+
+// The fingerprint is appended only when there IS one. Adding an empty line unconditionally changes
+// the hash of every unit in the collection, including the great majority that mention no agreed
+// name — 5,257 of them, all reported as changed English that had not changed at all.
+const hashOf = (s, lang) => {
+  const fingerprint = lang ? appliedTerms(s, lang).join('|') : ''
+  return createHash('sha256')
+    .update(`v${PIPELINE}\n${s}${fingerprint ? `\n${fingerprint}` : ''}`)
+    .digest('hex')
+    .slice(0, 16)
+}
+
+// Does the text already say what the glossary now agrees it should? Inflection- and case-tolerant,
+// via the same check the translator applies to fresh output — so "Las medusas de barril" satisfies
+// an entry stored as "medusa de barril".
+const glossarySatisfied = (unit, lang, translated) => {
+  const expected = appliedTerms(unit.text, lang).map((p) => p.slice(p.indexOf('=') + 1))
+  if (!expected.length) return false
+  try {
+    assertGlossed(expected, translated, unit.id)
+    return true
+  } catch {
+    return false
+  }
+}
 
 const today = () => new Date().toISOString().slice(0, 10)
 
@@ -255,10 +304,11 @@ for (const code of chosen) {
 
   const seeded = []
   const stale = []
+  const reconciled = []
   const gaps = []
 
   for (const unit of scoped) {
-    const hash = hashOf(unit.text)
+    const hash = hashOf(unit.text, code)
     const existing = getAt(files[unit.file], unit.path)
     const entry = entries[unit.id]
     const present = typeof existing === 'string' && existing.trim()
@@ -274,7 +324,23 @@ for (const code of chosen) {
       seeded.push(unit)
       continue
     }
-    if (entry.hash !== hash) stale.push(unit)
+    if (entry.hash === hash) continue
+
+    // The hash moved — but did the ENGLISH move, or only the glossary? A unit that mentions no
+    // agreed name hashes identically either way, so anything reaching here uses one.
+    //
+    // Where the English is untouched, the stored translation may already carry the agreed name:
+    // the engine sometimes reaches it unaided, and a term decided afterwards then only confirms
+    // what is there. Retranslating that spends money to swap correct text for different correct
+    // text and resets a review status for nothing. Record the new hash; leave the words alone.
+    const englishOnly = hashOf(unit.text, null)
+    const priorEnglish = entry.englishHash ?? entry.hash // entries predating the fingerprint stored exactly this
+    if (priorEnglish === englishOnly && glossarySatisfied(unit, code, existing)) {
+      entries[unit.id] = { ...entry, hash, englishHash: englishOnly }
+      reconciled.push(unit)
+      continue
+    }
+    stale.push(unit)
   }
 
   const todo = [...stale, ...(BACKFILL ? gaps : [])]
@@ -349,7 +415,7 @@ for (const code of chosen) {
       }
       setAt(files[unit.file], unit.path, text)
       touched.add(unit.file)
-      entries[unit.id] = { hash: hashOf(unit.text), engine: ENGINE, translatedAt: today(), reviewStatus: 'unreviewed' }
+      entries[unit.id] = { hash: hashOf(unit.text, code), englishHash: hashOf(unit.text, null), engine: ENGINE, translatedAt: today(), reviewStatus: 'unreviewed' }
       if (gaps.includes(unit)) totalFilled++
     }
     process.stdout.write(' '.repeat(40) + '\r')
@@ -375,13 +441,13 @@ for (const code of chosen) {
     }
   }
 
-  rows.push({ code, seeded: seeded.length, stale: stale.length, gaps: gaps.length, orphans })
+  rows.push({ code, seeded: seeded.length, reconciled: reconciled.length, stale: stale.length, gaps: gaps.length, orphans })
   if (todo.length) touchedByLang[code] = todo.map((u) => u.id)
 }
 
-console.log(`  ${'lang'.padEnd(9)} ${'seeded'.padStart(7)} ${'changed'.padStart(8)} ${'gaps'.padStart(6)} ${'orphans'.padStart(8)}`)
+console.log(`  ${'lang'.padEnd(9)} ${'seeded'.padStart(7)} ${'agreed'.padStart(7)} ${'changed'.padStart(8)} ${'gaps'.padStart(6)} ${'orphans'.padStart(8)}`)
 for (const r of rows) {
-  console.log(`  ${r.code.padEnd(9)} ${String(r.seeded).padStart(7)} ${String(r.stale).padStart(8)} ${String(r.gaps).padStart(6)} ${String(r.orphans).padStart(8)}`)
+  console.log(`  ${r.code.padEnd(9)} ${String(r.seeded).padStart(7)} ${String(r.reconciled).padStart(7)} ${String(r.stale).padStart(8)} ${String(r.gaps).padStart(6)} ${String(r.orphans).padStart(8)}`)
 }
 
 if (!DRY) {
