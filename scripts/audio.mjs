@@ -52,6 +52,15 @@ const LANG = val('--lang') ?? 'en'
 // still holds 24 retired identification and ending units, and an automated sweep would remove them
 // on the first run without anyone choosing to.
 const NO_SWEEP = has('--no-sweep')
+// Regenerate narration that exists and has gone stale; never create narration that does not.
+// Used by the workflow for translated languages. Without it, a one-word change to an English title
+// notices that German has 128 translated stories and synthesises all 414 of its files — 44MB into
+// the repository as a side effect of a rename nobody connected to audio. It is the line the
+// translator already draws between sync and backfill: keeping something current is a consequence
+// of a change, deciding to produce it in the first place is a decision with a bill attached.
+// Checked per SEGMENT rather than per language, because a language with four files is still a
+// language that has not been voiced.
+const NO_NEW = has('--no-new')
 
 // Which voice speaks which language. Two things are easy to get wrong here and both are recorded
 // rather than assumed:
@@ -544,6 +553,7 @@ async function main() {
 
   let made = 0
   let cached = 0
+  let skipped = 0
   let bytes = 0
 
   for (const unit of units) {
@@ -558,6 +568,13 @@ async function main() {
     if (section.segments[unit.id]?.hash === hash && existsSync(mp3)) {
       cached++
       bytes += statSync(mp3).size
+      continue
+    }
+
+    // Under --no-new, a segment with no file yet is a gap rather than a job. Counted so the run
+    // says how much narration this language is missing instead of silently doing less than asked.
+    if (NO_NEW && !section.segments[unit.id]) {
+      skipped++
       continue
     }
 
@@ -592,6 +609,10 @@ async function main() {
 
   const totalMs = Object.values(section.segments).reduce((t, s) => t + s.durationMs, 0)
   console.log(`\n✓ ${made} synthesised, ${cached} unchanged`)
+  if (skipped) {
+    console.log(`  ${skipped} segment(s) have no narration yet and --no-new left them alone.`)
+    console.log(`  Voice them deliberately: node scripts/audio.mjs --lang ${LANG}`)
+  }
   console.log(`  ${(bytes / 1e6).toFixed(1)} MB, ${(totalMs / 60000).toFixed(0)} minutes across ${Object.keys(section.segments).length} files`)
 }
 

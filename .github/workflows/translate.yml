@@ -119,11 +119,25 @@ jobs:
             node scripts/translate-drift.mjs --lang "$lang" --ids changed.json --strict
           done
 
+      # KEEPS NARRATION CURRENT; NEVER STARTS NEW NARRATION. --no-new regenerates a segment whose
+      # audio exists and has gone stale, and leaves a segment with no audio alone. Without it, a
+      # one-word change to an English title notices that German has 128 translated stories and
+      # synthesises all 414 of its files — 44MB into the repository as a side effect of a rename
+      # nobody connected to audio.
+      #
+      # Per SEGMENT, not per language: German already has four files, so any language-level "has it
+      # been voiced?" test would answer yes and generate the other 410 anyway.
+      #
+      # This is the line the translator already draws between sync and backfill, for the same
+      # reason: keeping something current is a consequence of the change, and deciding to produce it
+      # in the first place is a decision with a size and a bill attached. Voicing a language for the
+      # first time is `node scripts/audio.mjs --lang de`, run deliberately.
+      #
       # --no-sweep, so a push never deletes audio. The English index still lists 24 retired units
       # whose files are on disk, and removing them is a decision for a person at a keyboard.
       #
-      # English is voiced too, and first: the trigger for this whole workflow is the English
-      # changing, which makes the English narration stale before any translation is.
+      # English is voiced unconditionally, and first: the trigger for this whole workflow is the
+      # English changing, which makes the English narration stale before any translation is.
       - name: Voice what changed
         if: inputs.skip_audio != true
         env:
@@ -132,7 +146,7 @@ jobs:
         run: |
           node scripts/audio.mjs --lang en --no-sweep
           for lang in ${{ steps.changed.outputs.langs }}; do
-            node scripts/audio.mjs --lang "$lang" --no-sweep
+            node scripts/audio.mjs --lang "$lang" --no-sweep --no-new
           done
 
       # The build asserts things this workflow could otherwise break: every translated segment id
