@@ -1372,10 +1372,18 @@ ol.grid-dense {
   padding: 0.6rem 1rem;
 }
 
+/* One line: "The Blaschka collection · 1 of 14". It was two, the title above the position, which
+   gave the bar a second row to be tall for.
+
+   The title is the part that gives, because it is the part that can be long — nineteen words for
+   an object on a group page against five characters for the position. It takes the space that is
+   left and ellipses; the position never truncates, because a section counter with its end cut off
+   is worse than useless. */
 .audio-what {
   min-width: 0;
   display: flex;
-  flex-direction: column;
+  align-items: baseline;
+  gap: 0.4rem;
   line-height: 1.3;
 }
 
@@ -1384,14 +1392,24 @@ ol.grid-dense {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  min-width: 0;
+}
+
+/* The separator hangs off the position, not the title. A pseudo-element either way — neither the
+   title nor the live region should carry punctuation that belongs to the layout — but on the title
+   it lived inside the overflow that does the truncating, so a long name ate the dot along with its
+   own last words and the separator appeared only when it was not needed. */
+.audio-what span::before {
+  content: '·';
+  padding-inline-end: 0.4rem;
+  color: var(--ink-meta);
 }
 
 .audio-what span {
   font-size: var(--step--1);
   color: var(--ink-soft);
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  flex: none;
 }
 
 .audio-controls {
@@ -1465,11 +1483,6 @@ ol.grid-dense {
 
   .audio-what {
     flex: 1 0 100%;
-  }
-
-  .audio-what strong,
-  .audio-what span {
-    white-space: normal;
   }
 }
 
