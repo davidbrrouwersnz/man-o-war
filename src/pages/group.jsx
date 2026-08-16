@@ -139,7 +139,6 @@ function ObjectSection({ object, arrived, registry, priority = arrived, media = 
 
   return (
     <article className={`object${arrived ? ' is-arrived' : ''}`} ref={ref} id={`obj-${object.accession}`}>
-      {arrived && <p className="arrived-flag">{t('ui.scanned')}</p>}
       {/* Three wrappers, and they exist for the desktop layout in §10 — media holding position
           while its text scrolls beside it. Grid areas do the moving, so the DOM keeps the order a
           phone needs: name, then the photograph, then the story. That order is load-bearing on the

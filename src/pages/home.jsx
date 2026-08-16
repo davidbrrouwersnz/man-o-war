@@ -349,9 +349,10 @@ function Home({ go, route }) {
             translations, narration, further reading and catalogue record it has inside Floating
             colonies, because it is the same component reading the same data.
 
-            `arrived` is false: nothing was scanned to get here. The flag belongs to the QR route,
-            which still lands on the group page. `media` is false: the photograph itself is in its
-            own section of the browsing column now, not here — see .browse-object below.
+            `arrived` is false: nothing was scanned to get here. The highlighted border it would add
+            belongs to the QR route, which still lands on the group page. `media` is false: the
+            photograph itself is in its own section of the browsing column now, not here — see
+            .browse-object below.
             `elsewhereCollapsed` is false: the group page collapses an object's further reading
             because there can be nineteen of them on one page; this page has exactly one, same as
             the collection's own further-reading block a few screens down, so it gets the same open
