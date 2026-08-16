@@ -143,6 +143,12 @@ function ExternalLink({ link, publishers, variant }) {
   // from reordering the Arabic around it.
   const english = { lang: 'en', dir: 'ltr' }
 
+  const anchor = (
+    <a href={link.url} target="_blank" rel="noreferrer noopener" className="elsewhere-link">
+      {link.title}
+    </a>
+  )
+
   return (
     <li className="elsewhere-item">
       {/* Title and publisher are ONE English phrase and share one block, rather than two inline
@@ -150,27 +156,47 @@ function ExternalLink({ link, publishers, variant }) {
           inside an Arabic page the RTL flow then laid the two boxes out right to left and printed
           the institution BEFORE the title of its own article. */}
       <p className="elsewhere-title" {...english}>
-        <a href={link.url} target="_blank" rel="noreferrer noopener" className="elsewhere-link">
-          {link.title}
-        </a>
+        {/* The why and the claim used to be printed under the link, always. Moved into a tooltip on
+            request; no `aria-hidden` on the content, unlike the Listen button's tooltip, because
+            this text is not said anywhere else on the page — hiding it from the accessibility tree
+            too would delete it rather than relocate it.
+
+            Measured rather than assumed: this version of Base UI's Tooltip does NOT wire
+            aria-describedby or role="tooltip" on its own, so a screen reader tabbing to the link is
+            not told this text exists — verified with a real Tab key press, not element.focus(),
+            since Chromium only opens the tooltip on genuine :focus-visible focus. A sighted keyboard
+            user does see it open on Tab; a sighted mouse user sees it on hover; a touch user has
+            neither gesture available.
+
+            That is a real cost, not a footnote: §6 put the claim in the flow on purpose — "not a
+            decorative badge" — specifically so a visitor never has to find it, and §11 is built
+            around exactly the visitor a hover-only disclosure fails, someone standing in a gallery
+            reading this on a phone. Flagged to the user rather than solved unasked; the fix most
+            likely to hold — a separate always-visible affordance a tap can open without triggering
+            the link's own navigation — is a bigger change than "put it in a tooltip." */}
+        {whyR || claimR ? (
+          <Tooltip>
+            <TooltipTrigger render={anchor} />
+            <TooltipContent
+              className="elsewhere-tooltip flex-col items-start gap-1 max-w-sm py-2 text-[length:var(--step--1)] text-start text-pretty"
+              side="bottom"
+            >
+              {whyR && <span {...langAttrs(whyR)}>{whyR.text}</span>}
+              {claimR && (
+                <span {...langAttrs(claimR)} className="elsewhere-tooltip-claim">
+                  {claimR.text}
+                </span>
+              )}
+            </TooltipContent>
+          </Tooltip>
+        ) : (
+          anchor
+        )}
         {/* A middle dot rather than a dash: several publisher names carry a dash of their own — "Te
             Ara — the Encyclopedia of New Zealand", "MarLIN — the Marine Life Information Network" —
             and two dashes in one line made the title and the institution impossible to tell apart. */}
         {source && <span className="elsewhere-source"> · {source.name}</span>}
       </p>
-      {whyR && (
-        <p className="elsewhere-why" {...langAttrs(whyR)}>
-          {whyR.text}
-        </p>
-      )}
-      {/* Not a decorative badge. It is the sentence that stops the link from making a claim the
-          research does not support, so it is text, in the flow, and — unlike the link itself — it
-          is a UI string and therefore translatable. It carries whichever language it resolved to. */}
-      {claimR && (
-        <p className="elsewhere-claim" {...langAttrs(claimR)}>
-          {claimR.text}
-        </p>
-      )}
     </li>
   )
 }

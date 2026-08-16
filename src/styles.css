@@ -1517,18 +1517,23 @@ ol.grid-dense {
   color: var(--ink-meta);
 }
 
-.elsewhere-why {
-  margin: 0.3rem 0 0;
-  line-height: 1.5;
+/* The why and the claim, in the tooltip on .elsewhere-link — see the note in reading.jsx on what
+   moving them off the page costs. shadcn's TooltipContent is built for a one-line label — inline-
+   flex, centred, 20rem cap, 12px — all Tailwind utilities already on the element, in the utilities
+   layer, so a rule here cannot beat any of them; the overrides that matter (flex-col, items-start,
+   max-w-sm, the step--1 font size) are Tailwind classes on TooltipContent itself in reading.jsx,
+   same reason .browse-tablist's neighbours in this file take that route. Line-height is the one
+   property nothing in that class string already sets, so it is the one left to state here. */
+.elsewhere-tooltip {
+  line-height: 1.4;
 }
 
-/* The claim. It is the sentence that keeps a link from asserting more than the research supports,
-   so it is set apart from the description above it rather than run together with it — but it is
-   still text in the flow, never a badge. */
-.elsewhere-claim {
-  margin: 0.3rem 0 0;
-  color: var(--ink-meta);
+/* The claim, inside the tooltip. It was set apart from the why above it by margin and colour when
+   both were printed on the page; italic now carries that same "this is a qualifier" distinction
+   against the tooltip's own inverted (light-on-dark) ground, where --ink-meta does not apply. */
+.elsewhere-tooltip-claim {
   font-style: italic;
+  opacity: 0.85;
 }
 
 /* No rule of its own. The record sits inside further reading — under the same "Read more
