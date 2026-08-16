@@ -566,6 +566,27 @@ svg.lucide {
   padding-top: 1.25rem;
 }
 
+/* The man o' war's photograph, at the top of the browsing column — the same figure ObjectSection
+   renders inline on the group page (see ObjectMedia in group.jsx), placed here instead of beside
+   its story. Same gutter and width cap as the grids below it, so the column reads as one piece. */
+.browse-object-media {
+  padding: 0 1.25rem;
+}
+
+@media (min-width: 64rem) {
+  .browse-object-media {
+    max-width: 76rem;
+    margin: 0 auto;
+  }
+}
+
+/* .object-meta's default colour is tuned for the reading column's paper ground (--ink-meta). This
+   section sits on the browsing column's dark ground instead, so its caption takes the same soft
+   token the grid captions below it use. */
+.browse-object .object-meta {
+  color: var(--dark-ink-soft);
+}
+
 /* ------------------------------------------------------------------ the tile grids
 
    `ol.grid`, not `.grid`. The class is the app's own name for the collection's tile grid, and it

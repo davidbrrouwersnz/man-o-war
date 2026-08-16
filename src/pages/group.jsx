@@ -82,6 +82,22 @@ function objectAudio(object, tr, t) {
   return { headlineR, catalogueR, showCatalogue, parts, available, items }
 }
 
+// The photograph and its credit line, on their own. Split out of ObjectSection so the collection
+// page can place the man o' war's picture in its own section of the browsing column while its name
+// and story stay in the reading column — the same figure and caption either way, computed once.
+function ObjectMedia({ object, priority }) {
+  const [t] = useT()
+  const size = object.measurements[0]?.replace(/^Dimensions \(LxWxH\):\s*/i, '').trim()
+  const rights = object.rights ? object.rights : t('ui.rightsUnstated')
+  const metaLine = [object.accession, size, rights].filter(Boolean).join(' · ')
+  return (
+    <figure className="object-media">
+      <Media object={object} priority={priority} />
+      <figcaption className="object-meta">{metaLine}</figcaption>
+    </figure>
+  )
+}
+
 // One object, rendered whole: name, photograph, story, further reading and the catalogue record.
 //
 // Exported because the collection page renders the object on display with it. That is the point of
@@ -96,7 +112,9 @@ function objectAudio(object, tr, t) {
 // code to see is the LCP element on that route and everything else stays lazy. The collection page
 // overrides it — nothing was scanned there, but the object is the first photograph on the page and
 // is above the fold on a phone, so it is that page's LCP element instead.
-function ObjectSection({ object, arrived, registry, priority = arrived }) {
+// `media` is false when the caller is placing the photograph elsewhere itself (the collection page,
+// in its own section of the browsing column) — everything else about the object still renders here.
+function ObjectSection({ object, arrived, registry, priority = arrived, media = true }) {
   const ref = useRef(null)
   const [t, tr] = useT()
   const { code } = useLang()
@@ -110,11 +128,8 @@ function ObjectSection({ object, arrived, registry, priority = arrived }) {
   }, [object.accession, registry])
 
   const { story } = object
-  const size = object.measurements[0]?.replace(/^Dimensions \(LxWxH\):\s*/i, '').trim()
 
   const { headlineR, catalogueR, showCatalogue, parts, available, items } = objectAudio(object, tr, t)
-  const rights = object.rights ? object.rights : t('ui.rightsUnstated')
-  const metaLine = [object.accession, size, rights].filter(Boolean).join(' · ')
   const queue = { key: `o:${object.accession}`, title: headlineR.text, items }
 
   return (
@@ -143,12 +158,9 @@ function ObjectSection({ object, arrived, registry, priority = arrived }) {
         )}
       </div>
 
-      {/* A photograph and the line that credits it are a figure and its caption. It was a div and
-          a loose <p>, which said nothing about the relationship to anything reading the markup. */}
-      <figure className="object-media">
-        <Media object={object} priority={priority} />
-        <figcaption className="object-meta">{metaLine}</figcaption>
-      </figure>
+      {/* A photograph and the line that credits it are a figure and its caption — see ObjectMedia
+          above. Omitted when the caller is rendering it elsewhere. */}
+      {media && <ObjectMedia object={object} priority={priority} />}
 
       <div className="object-body">
       {story ? (
@@ -337,4 +349,4 @@ function GroupPage({ route, go }) {
   )
 }
 
-export { GroupPage, ObjectSection, objectAudio }
+export { GroupPage, ObjectSection, ObjectMedia, objectAudio }

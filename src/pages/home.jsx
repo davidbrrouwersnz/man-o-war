@@ -28,7 +28,7 @@ import { langAttrs, useLang, useT } from '../lang.jsx'
 import { Spoken, blocksOf, hasAudio } from '../audio.jsx'
 import { GROUPS, PUBLISHERS, index, loadChunk } from '../collection.js'
 import { Elsewhere, Listen, Translated } from '../components/reading.jsx'
-import { ObjectSection, objectAudio } from './group.jsx'
+import { ObjectSection, ObjectMedia, objectAudio } from './group.jsx'
 import { Tools } from '../components/tools.jsx'
 
 // 1884.137.33, the Portuguese man o' war. Written down once, by scripts/split.mjs, and shipped in
@@ -349,10 +349,11 @@ function Home({ go, route }) {
             colonies, because it is the same component reading the same data.
 
             `arrived` is false: nothing was scanned to get here. The flag belongs to the QR route,
-            which still lands on the group page. */}
+            which still lands on the group page. `media` is false: the photograph itself is in its
+            own section of the browsing column now, not here — see .browse-object below. */}
         {display && (
           <div className="home-object">
-            <ObjectSection object={display.object} arrived={false} priority />
+            <ObjectSection object={display.object} arrived={false} priority media={false} />
           </div>
         )}
 
@@ -377,6 +378,21 @@ function Home({ go, route }) {
       </div>
 
       <div className="home-browse">
+        {/* The man o' war's photograph, on its own at the top of the browsing column — the first
+            thing this column shows, above the categories it lets a visitor browse by eye. Its name
+            and story stay in the reading column opposite; this is the same picture, not a second
+            one, rendered by the group page's own ObjectMedia. */}
+        {display && (
+          <section className="browse browse-object" aria-labelledby="on-display-title">
+            <h2 className="browse-title" id="on-display-title">
+              {t('ui.onDisplay')}
+            </h2>
+            <div className="browse-object-media">
+              <ObjectMedia object={display.object} priority />
+            </div>
+          </section>
+        )}
+
         {/* Two ways into the same 128 objects. §9 kept the full grid as a secondary route rather
             than the front door — it rescues browsing by eye and the completionist — and a tab does
             that job better than a page: it is visible from the front rather than found, and it
