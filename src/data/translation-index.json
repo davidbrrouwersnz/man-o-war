@@ -63,12 +63,6 @@
         "translatedAt": null,
         "reviewStatus": "unreviewed"
       },
-      "ui:sources": {
-        "hash": "110b1686d628d31b",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
-        "reviewStatus": "unreviewed"
-      },
       "ui:language": {
         "hash": "68429cdfdad75f0c",
         "engine": "unknown-legacy",
@@ -263,12 +257,6 @@
       },
       "ui:notFoundAccession": {
         "hash": "0ccf38c5ccbfe0bf",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
-        "reviewStatus": "unreviewed"
-      },
-      "ui:collectionIntroOnDisplay": {
-        "hash": "c0a107842077f970",
         "engine": "unknown-legacy",
         "translatedAt": null,
         "reviewStatus": "unreviewed"
@@ -4559,10 +4547,10 @@
         "reviewStatus": "unreviewed"
       },
       "ui:elsewhere": {
-        "hash": "9d3104fe84733f6d",
-        "englishHash": "9d3104fe84733f6d",
+        "hash": "0f3b60e90b048132",
+        "englishHash": "42eccad5046772bc",
         "engine": "nmt",
-        "translatedAt": "2026-08-15",
+        "translatedAt": "2026-08-16",
         "reviewStatus": "unreviewed"
       },
       "ui:marlinWhy": {
@@ -4838,23 +4826,9 @@
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
-      "ui:record": {
-        "hash": "ce8e196e298002c8",
-        "englishHash": "ce8e196e298002c8",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
       "ui:recordCatalogue": {
         "hash": "2e93c199fbf98458",
         "englishHash": "2e93c199fbf98458",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
-      "ui:recordChecked": {
-        "hash": "2fb9c1b3d4ebd38d",
-        "englishHash": "2fb9c1b3d4ebd38d",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
@@ -4917,12 +4891,6 @@
       },
       "ui:noStory": {
         "hash": "8d6605dff42b6051",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
-        "reviewStatus": "unreviewed"
-      },
-      "ui:sources": {
-        "hash": "110b1686d628d31b",
         "engine": "unknown-legacy",
         "translatedAt": null,
         "reviewStatus": "unreviewed"
@@ -5121,12 +5089,6 @@
       },
       "ui:notFoundAccession": {
         "hash": "0ccf38c5ccbfe0bf",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
-        "reviewStatus": "unreviewed"
-      },
-      "ui:collectionIntroOnDisplay": {
-        "hash": "c0a107842077f970",
         "engine": "unknown-legacy",
         "translatedAt": null,
         "reviewStatus": "unreviewed"
@@ -9435,10 +9397,10 @@
         "reviewStatus": "unreviewed"
       },
       "ui:elsewhere": {
-        "hash": "9d3104fe84733f6d",
-        "englishHash": "9d3104fe84733f6d",
+        "hash": "ad9f3051c209c27a",
+        "englishHash": "42eccad5046772bc",
         "engine": "nmt",
-        "translatedAt": "2026-08-15",
+        "translatedAt": "2026-08-16",
         "reviewStatus": "unreviewed"
       },
       "ui:marlinWhy": {
@@ -9714,23 +9676,9 @@
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
-      "ui:record": {
-        "hash": "ce8e196e298002c8",
-        "englishHash": "ce8e196e298002c8",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
       "ui:recordCatalogue": {
         "hash": "2e93c199fbf98458",
         "englishHash": "2e93c199fbf98458",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
-      "ui:recordChecked": {
-        "hash": "2fb9c1b3d4ebd38d",
-        "englishHash": "2fb9c1b3d4ebd38d",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
@@ -9793,12 +9741,6 @@
       },
       "ui:noStory": {
         "hash": "8d6605dff42b6051",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
-        "reviewStatus": "unreviewed"
-      },
-      "ui:sources": {
-        "hash": "110b1686d628d31b",
         "engine": "unknown-legacy",
         "translatedAt": null,
         "reviewStatus": "unreviewed"
@@ -9997,12 +9939,6 @@
       },
       "ui:notFoundAccession": {
         "hash": "0ccf38c5ccbfe0bf",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
-        "reviewStatus": "unreviewed"
-      },
-      "ui:collectionIntroOnDisplay": {
-        "hash": "c0a107842077f970",
         "engine": "unknown-legacy",
         "translatedAt": null,
         "reviewStatus": "unreviewed"
@@ -14282,10 +14218,10 @@
         "reviewStatus": "unreviewed"
       },
       "ui:elsewhere": {
-        "hash": "9d3104fe84733f6d",
-        "englishHash": "9d3104fe84733f6d",
+        "hash": "aa7406e09a0bffc9",
+        "englishHash": "42eccad5046772bc",
         "engine": "nmt",
-        "translatedAt": "2026-08-15",
+        "translatedAt": "2026-08-16",
         "reviewStatus": "unreviewed"
       },
       "ui:marlinWhy": {
@@ -14561,23 +14497,9 @@
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
-      "ui:record": {
-        "hash": "ce8e196e298002c8",
-        "englishHash": "ce8e196e298002c8",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
       "ui:recordCatalogue": {
         "hash": "2e93c199fbf98458",
         "englishHash": "2e93c199fbf98458",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
-      "ui:recordChecked": {
-        "hash": "2fb9c1b3d4ebd38d",
-        "englishHash": "2fb9c1b3d4ebd38d",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
@@ -14640,12 +14562,6 @@
       },
       "ui:noStory": {
         "hash": "8d6605dff42b6051",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
-        "reviewStatus": "unreviewed"
-      },
-      "ui:sources": {
-        "hash": "110b1686d628d31b",
         "engine": "unknown-legacy",
         "translatedAt": null,
         "reviewStatus": "unreviewed"
@@ -14844,12 +14760,6 @@
       },
       "ui:notFoundAccession": {
         "hash": "0ccf38c5ccbfe0bf",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
-        "reviewStatus": "unreviewed"
-      },
-      "ui:collectionIntroOnDisplay": {
-        "hash": "c0a107842077f970",
         "engine": "unknown-legacy",
         "translatedAt": null,
         "reviewStatus": "unreviewed"
@@ -19175,10 +19085,10 @@
         "reviewStatus": "unreviewed"
       },
       "ui:elsewhere": {
-        "hash": "9d3104fe84733f6d",
-        "englishHash": "9d3104fe84733f6d",
+        "hash": "a8e91530628257a0",
+        "englishHash": "42eccad5046772bc",
         "engine": "nmt",
-        "translatedAt": "2026-08-15",
+        "translatedAt": "2026-08-16",
         "reviewStatus": "unreviewed"
       },
       "ui:marlinWhy": {
@@ -19454,23 +19364,9 @@
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
-      "ui:record": {
-        "hash": "ce8e196e298002c8",
-        "englishHash": "ce8e196e298002c8",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
       "ui:recordCatalogue": {
         "hash": "2e93c199fbf98458",
         "englishHash": "2e93c199fbf98458",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
-      "ui:recordChecked": {
-        "hash": "2fb9c1b3d4ebd38d",
-        "englishHash": "2fb9c1b3d4ebd38d",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
@@ -19533,12 +19429,6 @@
       },
       "ui:noStory": {
         "hash": "8d6605dff42b6051",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
-        "reviewStatus": "unreviewed"
-      },
-      "ui:sources": {
-        "hash": "110b1686d628d31b",
         "engine": "unknown-legacy",
         "translatedAt": null,
         "reviewStatus": "unreviewed"
@@ -19737,12 +19627,6 @@
       },
       "ui:notFoundAccession": {
         "hash": "0ccf38c5ccbfe0bf",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
-        "reviewStatus": "unreviewed"
-      },
-      "ui:collectionIntroOnDisplay": {
-        "hash": "c0a107842077f970",
         "engine": "unknown-legacy",
         "translatedAt": null,
         "reviewStatus": "unreviewed"
@@ -24064,10 +23948,10 @@
         "englishHash": "d9b404595630a4f6"
       },
       "ui:elsewhere": {
-        "hash": "9d3104fe84733f6d",
-        "englishHash": "9d3104fe84733f6d",
+        "hash": "b386639d71686f39",
+        "englishHash": "42eccad5046772bc",
         "engine": "nmt",
-        "translatedAt": "2026-08-15",
+        "translatedAt": "2026-08-16",
         "reviewStatus": "unreviewed"
       },
       "ui:marlinWhy": {
@@ -24343,23 +24227,9 @@
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
-      "ui:record": {
-        "hash": "ce8e196e298002c8",
-        "englishHash": "ce8e196e298002c8",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
       "ui:recordCatalogue": {
         "hash": "2e93c199fbf98458",
         "englishHash": "2e93c199fbf98458",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
-      "ui:recordChecked": {
-        "hash": "2fb9c1b3d4ebd38d",
-        "englishHash": "2fb9c1b3d4ebd38d",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
@@ -24422,12 +24292,6 @@
       },
       "ui:noStory": {
         "hash": "8d6605dff42b6051",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
-        "reviewStatus": "unreviewed"
-      },
-      "ui:sources": {
-        "hash": "110b1686d628d31b",
         "engine": "unknown-legacy",
         "translatedAt": null,
         "reviewStatus": "unreviewed"
@@ -24626,12 +24490,6 @@
       },
       "ui:notFoundAccession": {
         "hash": "0ccf38c5ccbfe0bf",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
-        "reviewStatus": "unreviewed"
-      },
-      "ui:collectionIntroOnDisplay": {
-        "hash": "c0a107842077f970",
         "engine": "unknown-legacy",
         "translatedAt": null,
         "reviewStatus": "unreviewed"
@@ -28926,10 +28784,10 @@
         "englishHash": "a622c6f8acf42b7d"
       },
       "ui:elsewhere": {
-        "hash": "9d3104fe84733f6d",
-        "englishHash": "9d3104fe84733f6d",
+        "hash": "df54ccf02c3bb097",
+        "englishHash": "42eccad5046772bc",
         "engine": "nmt",
-        "translatedAt": "2026-08-15",
+        "translatedAt": "2026-08-16",
         "reviewStatus": "unreviewed"
       },
       "ui:marlinWhy": {
@@ -29205,23 +29063,9 @@
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
-      "ui:record": {
-        "hash": "ce8e196e298002c8",
-        "englishHash": "ce8e196e298002c8",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
       "ui:recordCatalogue": {
         "hash": "2e93c199fbf98458",
         "englishHash": "2e93c199fbf98458",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
-      "ui:recordChecked": {
-        "hash": "2fb9c1b3d4ebd38d",
-        "englishHash": "2fb9c1b3d4ebd38d",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
@@ -29284,12 +29128,6 @@
       },
       "ui:noStory": {
         "hash": "8d6605dff42b6051",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
-        "reviewStatus": "unreviewed"
-      },
-      "ui:sources": {
-        "hash": "110b1686d628d31b",
         "engine": "unknown-legacy",
         "translatedAt": null,
         "reviewStatus": "unreviewed"
@@ -29488,12 +29326,6 @@
       },
       "ui:notFoundAccession": {
         "hash": "0ccf38c5ccbfe0bf",
-        "engine": "unknown-legacy",
-        "translatedAt": null,
-        "reviewStatus": "unreviewed"
-      },
-      "ui:collectionIntroOnDisplay": {
-        "hash": "c0a107842077f970",
         "engine": "unknown-legacy",
         "translatedAt": null,
         "reviewStatus": "unreviewed"
@@ -33774,10 +33606,10 @@
         "reviewStatus": "unreviewed"
       },
       "ui:elsewhere": {
-        "hash": "9d3104fe84733f6d",
-        "englishHash": "9d3104fe84733f6d",
+        "hash": "fe2a89c51e0272a6",
+        "englishHash": "42eccad5046772bc",
         "engine": "nmt",
-        "translatedAt": "2026-08-15",
+        "translatedAt": "2026-08-16",
         "reviewStatus": "unreviewed"
       },
       "ui:marlinWhy": {
@@ -34053,23 +33885,9 @@
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
       },
-      "ui:record": {
-        "hash": "ce8e196e298002c8",
-        "englishHash": "ce8e196e298002c8",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
       "ui:recordCatalogue": {
         "hash": "2e93c199fbf98458",
         "englishHash": "2e93c199fbf98458",
-        "engine": "nmt",
-        "translatedAt": "2026-08-15",
-        "reviewStatus": "unreviewed"
-      },
-      "ui:recordChecked": {
-        "hash": "2fb9c1b3d4ebd38d",
-        "englishHash": "2fb9c1b3d4ebd38d",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
