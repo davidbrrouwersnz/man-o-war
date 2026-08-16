@@ -1350,6 +1350,21 @@ ol.grid-dense {
   max-width: var(--measure);
 }
 
+/* The rest of the reading column, capped the same way as the standfirst above — one selector for
+   all of it, since .home-read is .home-head's own sibling and every paragraph on this page sits
+   inside one or the other: the object's catalogue line and story, its further reading and record,
+   both essays' standfirsts and body text, the sources, and the collection's own further reading.
+
+   Needed for the same reason .home-head p needed it: .home-col drops its max-width entirely at
+   80rem (deliberately — see the note there), so a paragraph would otherwise run the full width of
+   whatever the two-column split leaves the reading side, which grows past a comfortable line on
+   anything wider than a laptop. `ch`, not the font-size-independent --measure-rem .home-col uses:
+   here there is exactly one paragraph per element and it should track ITS OWN size, the same
+   reasoning --measure-rem's own comment gives for why .home-head p was never moved onto it. */
+.home-read p {
+  max-width: var(--measure);
+}
+
 /* The head is on cream, so the control tokens go back to the reading palette. One declaration
    covers every shadcn component in the header, because they all resolve their colours through
    these. */
