@@ -2863,6 +2863,63 @@
       "accessions": [],
       "langs": {},
       "candidates": {}
+    },
+    "Further reading": {
+      "why": "ui heading",
+      "accessions": [],
+      "langs": {
+        "de": {
+          "text": "Weiterführende Literatur",
+          "status": "accepted",
+          "source": "Editorial decision",
+          "why": "The standard German further-reading heading.",
+          "checkedOn": "2026-08-16"
+        },
+        "fr": {
+          "text": "Pour aller plus loin",
+          "status": "accepted",
+          "source": "Editorial decision",
+          "why": "The heading French museums and publishers use over a further-reading list.",
+          "checkedOn": "2026-08-16"
+        },
+        "es": {
+          "text": "Para saber más",
+          "status": "accepted",
+          "source": "Editorial decision",
+          "why": "The heading Spanish museums use over a further-reading list.",
+          "checkedOn": "2026-08-16"
+        },
+        "ja": {
+          "text": "参考文献",
+          "status": "accepted",
+          "source": "Editorial decision",
+          "why": "The standard Japanese heading for a references / further-reading section.",
+          "checkedOn": "2026-08-16"
+        },
+        "ko": {
+          "text": "참고 문헌",
+          "status": "accepted",
+          "source": "Editorial decision",
+          "why": "The standard Korean heading for a references / further-reading section.",
+          "checkedOn": "2026-08-16"
+        },
+        "zh-Hant": {
+          "text": "延伸閱讀",
+          "status": "accepted",
+          "source": "Editorial decision",
+          "why": "The standard Traditional Chinese further-reading heading.",
+          "checkedOn": "2026-08-16"
+        },
+        "ar": {
+          "text": "قراءات إضافية",
+          "status": "accepted",
+          "source": "Editorial decision",
+          "why": "The conventional Arabic further-reading heading.",
+          "checkedOn": "2026-08-16"
+        }
+      },
+      "candidates": {},
+      "authority": "Editorial decision — a UI heading, not a species name; each entry is the conventional further-reading heading in that language."
     }
   }
 }
