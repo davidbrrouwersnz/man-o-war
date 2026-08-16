@@ -22,19 +22,15 @@
 // the gallery and the wrong one for a visitor who came to browse, and at desktop it stops being a
 // trade at all — the reading is one column and the grid is the other, both visible at once.
 
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import { BY_CODE, dirOf } from '../i18n.js'
 import { langAttrs, useLang, useT } from '../lang.jsx'
 import { Spoken, blocksOf, hasAudio } from '../audio.jsx'
 import { GROUPS, PUBLISHERS, index, loadChunk } from '../collection.js'
-import { Elsewhere, Listen, Translated } from '../components/reading.jsx'
-import { ObjectSection, objectAudio } from './group.jsx'
+import { ExternalLink, Listen, Translated } from '../components/reading.jsx'
+import { ObjectSection, ObjectMedia, objectAudio } from './group.jsx'
 import { Tools } from '../components/tools.jsx'
-
-// 1884.137.33, the Portuguese man o' war. Written down once, by scripts/split.mjs, and shipped in
-// the index — it used to be a constant here as well as there. The fallback keeps a checkout whose
-// chunks predate that field rendering the page rather than throwing on it.
-const ON_DISPLAY = index.onDisplay?.accession ?? '1884.137.33'
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '../components/ui/tabs.jsx'
 
 // ------------------------------------------------------------------ home
 
@@ -95,7 +91,7 @@ function Essay({ slug, layer, meta, code, langName }) {
   const queue = { key: `l:${slug}`, title: titleR.text, items }
 
   return (
-    <section className="essay" id={slug}>
+    <section className="essay home-col" id={slug}>
       {/* The control sits beside the heading it plays, after it — not inside it. A button inside a
           heading contributes its own label to the heading's accessible name, so this essay would
           have been announced as "How it was made, Listen — How it was made". */}
@@ -133,17 +129,23 @@ function Essay({ slug, layer, meta, code, langName }) {
   )
 }
 
-// The sources for the reading, once, after both essays.
+// The essays' citations and the collection's own further reading — Cornell's collection, the
+// Corning exhibition, Harvard's glass flowers — merged into one list under one heading, once, after
+// both essays. They used to be two sections: "Sources" for the citations, then "Read more
+// elsewhere" (the shared Elsewhere component, variant="collection") for everything else, right
+// below it — one line of prose each, under two headings, with nothing on the page saying why a
+// citation could not sit in the same list as an external link.
 //
-// They used to be printed under each essay, which meant Shaw et al. 2017 — a thirty-word
-// bibliographic citation — appeared twice within a few screens, because both essays draw on it.
-// That was defensible while the essays were separate pages. On one continuous read it is just the
-// same citation twice, and it was the largest piece of duplicated text on the page.
+// Not built on Elsewhere itself: a citation has no publisher, no claim, no "why it's worth reading"
+// — it is a URL and a line of already-formatted text, quoted as printed (§7) — so it renders as its
+// own kind of paragraph rather than being forced through ExternalLink's shape. The collection's own
+// further-reading links still go through ExternalLink below it, so they keep its tooltip and the
+// shared .elsewhere-link underline; both kinds land on the same <p>-per-link shape.
 //
-// Deduplicated on URL and kept in the order the essays declare them, so nothing is dropped: every
-// source either essay cites is still cited, once, and still under the word §7 already translates.
-function ReadingSources({ layers }) {
-  const [t, tr] = useT()
+// Citations are deduplicated on URL and kept in the order the essays declare them, so nothing is
+// dropped: every source either essay cites is still cited, once.
+function FurtherReading({ layers }) {
+  const [, tr] = useT()
   const seen = new Set()
   const sources = []
   for (const meta of index.layers) {
@@ -153,23 +155,25 @@ function ReadingSources({ layers }) {
       sources.push(s)
     }
   }
-  if (!sources.length) return null
-  const heading = tr('ui.sources')
+  const links = layers.elsewhere ?? []
+  if (!sources.length && !links.length) return null
+  const heading = tr('ui.elsewhere')
   return (
-    <div className="layer-sources">
-      <h3 {...langAttrs(heading)}>{heading.text}</h3>
-      <ul>
-        {sources.map((s) => (
-          <li key={s.url}>
-            {/* A citation is quoted as printed, so it stays in the language it was published in —
-                the same rule the further-reading titles below follow. */}
-            <a href={s.url} target="_blank" rel="noreferrer" lang="en" dir="ltr">
-              {s.text}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <section className="elsewhere is-collection home-col">
+      <h3 className="elsewhere-head" {...langAttrs(heading)}>
+        {heading.text}
+      </h3>
+      {sources.map((s) => (
+        <p key={s.url} className="elsewhere-title record-line" lang="en" dir="ltr">
+          <a href={s.url} target="_blank" rel="noreferrer" className="elsewhere-link">
+            {s.text}
+          </a>
+        </p>
+      ))}
+      {links.map((l) => (
+        <ExternalLink key={l.url} link={l} publishers={PUBLISHERS} variant="collection" />
+      ))}
+    </section>
   )
 }
 
@@ -180,7 +184,9 @@ function Home({ go, route }) {
   const [layers, setLayers] = useState(null)
   const [all, setAll] = useState(null)
   const [display, setDisplay] = useState(null)
-  const allRef = useRef(null)
+  // Which of the two grids is showing. Categories by default; an arrival on /all opens straight
+  // onto the other one, which is what that URL is asking for.
+  const [tab, setTab] = useState(() => (route?.at === 'all-objects' ? 'all' : 'categories'))
 
   // The document title follows whatever language is active, so it has no dependency list at all —
   // it is one assignment and it is correct on every render.
@@ -199,31 +205,21 @@ function Home({ go, route }) {
     if (!route?.at) scrollTo(0, 0)
   }, [route?.at])
 
-  // 62KB of tiles for 128 objects, and now nothing gates it behind a press. Fetched when the
-  // second grid comes within a couple of screens instead — the same treatment the object
-  // photographs get — so the front page still paints on the eleven category tiles alone and §2's
-  // visitor on a museum connection does not pay for 128 of them before seeing anything.
-  //
-  // An arrival on /all skips the wait: the chunk is what that URL is asking for.
+  // 62KB of tiles for 128 objects, and now nothing gates it behind a press except the tab itself:
+  // fetched the moment that tab is open, whether that is a click or an arrival on /all — the same
+  // treatment the object photographs get, so the front page still paints on the eleven category
+  // tiles alone and §2's visitor on a museum connection does not pay for 128 of them unopened.
   useEffect(() => {
-    if (all) return
-    if (route?.at === 'all-objects') {
-      loadChunk('all')?.then(setAll)
-      return
-    }
-    const el = allRef.current
-    if (!el) return
-    const io = new IntersectionObserver(
-      ([e]) => {
-        if (!e.isIntersecting) return
-        io.disconnect()
-        loadChunk('all')?.then(setAll)
-      },
-      { rootMargin: '200% 0px' }
-    )
-    io.observe(el)
-    return () => io.disconnect()
-  }, [all, route?.at])
+    if (tab !== 'all' || all) return
+    loadChunk('all')?.then(setAll)
+  }, [tab, all])
+
+  // Back/forward can land route.at on 'all-objects' without remounting Home — both '/' and '/all'
+  // are the same view — so the tab the URL asks for has to be re-applied on every arrival, not just
+  // read once into the initial state above.
+  useEffect(() => {
+    if (route?.at === 'all-objects') setTab('all')
+  }, [route?.at])
 
   // The essays are a chunk, fetched after the page is up rather than compiled into the bundle. The
   // front page is the one every visitor loads first and §2's visitor is on a museum connection —
@@ -249,10 +245,6 @@ function Home({ go, route }) {
 
   const intro = tr('ui.collectionIntro')
   const title = t('ui.collectionTitle')
-  // The one object of the 128 that is out of storage and in the gallery — the thing the QR code
-  // beside it points at, and the reason this app exists.
-  const onDisplay = t('ui.collectionIntroOnDisplay')
-  const onDisplayAt = intro.text.indexOf(onDisplay)
 
   // The whole page as one sitting: the standfirst, then both essays in the order they are printed.
   // It plays exactly what each essay's own control plays, because both are built from the same
@@ -290,7 +282,7 @@ function Home({ go, route }) {
   }
   return (
     <main className="home" id="main" tabIndex={-1}>
-      <header className="home-head">
+      <header className="home-head home-col">
         <Tools
           listen={
             <Listen
@@ -304,35 +296,11 @@ function Home({ go, route }) {
         <h1>
           <Spoken text={title} itemId="home/00-intro" block={0} />
         </h1>
-        {/* "One is on display" is the one sentence on this page that points at a real object, so it
-            links to it. The phrase is a per-language key rather than a match on English, and it is
-            looked up as a substring of the intro the visitor is actually reading — if a translation
-            ever stops containing it, the paragraph renders unlinked instead of breaking.
-
-            It is an in-page anchor now, not a route. The object it names is the next thing on this
-            page, and sending a reader to another page to see something printed two screens below
-            them is the navigation this arrangement exists to remove.
-
-            Split into three runs so the link can sit inside the sentence; each run carries its own
-            offset into the block, which is what keeps the read-along highlight landing on the right
-            word (see Spoken in audio.jsx). */}
+        {/* "One is on display" used to link to the object below it, as an in-page anchor. Removed
+            on request; the sentence is plain text now, in one run rather than three, since nothing
+            inside it needs its own offset any more. */}
         <p lang={intro.lang} dir={dirOf(intro.lang)}>
-          {onDisplayAt < 0 ? (
-            <Spoken text={intro.text} itemId="home/00-intro" block={1} />
-          ) : (
-            <>
-              <Spoken text={intro.text.slice(0, onDisplayAt)} itemId="home/00-intro" block={1} />
-              <a className="intro-link" href={`#obj-${ON_DISPLAY}`}>
-                <Spoken text={onDisplay} itemId="home/00-intro" block={1} offset={onDisplayAt} />
-              </a>
-              <Spoken
-                text={intro.text.slice(onDisplayAt + onDisplay.length)}
-                itemId="home/00-intro"
-                block={1}
-                offset={onDisplayAt + onDisplay.length}
-              />
-            </>
-          )}
+          <Spoken text={intro.text} itemId="home/00-intro" block={1} />
         </p>
       </header>
       {/* THE READING COLUMN COMES FIRST IN THE DOM, and that is the change. It used to sit after
@@ -348,11 +316,17 @@ function Home({ go, route }) {
             translations, narration, further reading and catalogue record it has inside Floating
             colonies, because it is the same component reading the same data.
 
-            `arrived` is false: nothing was scanned to get here. The flag belongs to the QR route,
-            which still lands on the group page. */}
+            `arrived` is false: nothing was scanned to get here. The highlighted border it would add
+            belongs to the QR route, which still lands on the group page. `media` is false: the
+            photograph itself is in its own section of the browsing column now, not here — see
+            .browse-object below.
+            `elsewhereCollapsed` is false: the group page collapses an object's further reading
+            because there can be nineteen of them on one page; this page has exactly one, same as
+            the collection's own further-reading block a few screens down, so it gets the same open
+            treatment rather than the many-objects rule — see the note on ObjectSection. */}
         {display && (
-          <div className="home-object">
-            <ObjectSection object={display.object} arrived={false} priority />
+          <div className="home-object home-col">
+            <ObjectSection object={display.object} arrived={false} priority media={false} elsewhereCollapsed={false} />
           </div>
         )}
 
@@ -364,75 +338,104 @@ function Home({ go, route }) {
               return <Essay key={meta.slug} slug={meta.slug} layer={l} meta={meta} code={code} langName={langName} />
             })}
 
-            {/* What the reading is built on, once, rather than once per essay. */}
-            <ReadingSources layers={layers} />
-
-            {/* §6's external sources at the widest scale: not this animal or this group, but this
-                collection — the other Blaschka collections, the scholarship on these objects, and
-                what the two men did after they stopped making sea creatures. It sits after both
-                essays because that is where a reader who has finished them is. */}
-            <Elsewhere links={layers.elsewhere} publishers={PUBLISHERS} variant="collection" />
+            {/* What the reading is built on, and §6's external sources at the widest scale — not
+                this animal or this group, but this collection: the other Blaschka collections, the
+                scholarship on these objects, and what the two men did after they stopped making sea
+                creatures. One list now, after both essays, because that is where a reader who has
+                finished them is. */}
+            <FurtherReading layers={layers} />
           </div>
         )}
       </div>
 
       <div className="home-browse">
+        {/* The man o' war's photograph, on its own at the top of the browsing column — the first
+            thing this column shows, above the categories it lets a visitor browse by eye. Its name
+            and story stay in the reading column opposite; this is the same picture, not a second
+            one, rendered by the group page's own ObjectMedia. */}
+        {display && (
+          <section className="browse browse-object" aria-labelledby="on-display-title">
+            <h2 className="browse-title" id="on-display-title">
+              {t('ui.onDisplay')}
+            </h2>
+            <div className="browse-object-media">
+              <ObjectMedia object={display.object} priority />
+            </div>
+          </section>
+        )}
+
         {/* Two ways into the same 128 objects. §9 kept the full grid as a secondary route rather
             than the front door — it rescues browsing by eye and the completionist — and a tab does
-            that job better than a page: it is visible from the front rather than found, and it
-            costs nothing until it is opened. */}
-        {/* Both grids, one after the other, rather than two tabs over one slot. Each is a section
-            with its own heading, which is what makes them addressable — #all-objects is where /all
-            now lands — and what lets a screen reader list them. h2 because the collection title
-            above is the h1; the essays in the reading column are h2 as well. */}
-        <section className="browse" aria-labelledby="categories-title">
-          <h2 className="browse-title" id="categories-title">
-            {t('ui.categories')}
-          </h2>
-          <ol className="grid">
-            {GROUPS.map((g) => (
-              <li key={g.slug} className="tile">
-                <a href={`/g/${g.slug}`} onClick={go(`/g/${g.slug}`)}>
-                  <div className="tile-well">
-                    <img className="tile-blur" src={g.representative.placeholder} alt="" aria-hidden="true" />
-                    <img className="tile-img" src={g.representative.url} alt="" loading="lazy" decoding="async" />
-                  </div>
-                  <div className="tile-text">
-                    <h3 {...langAttrs(tr(`groups.${g.slug}`, null, g.title))}>{tr(`groups.${g.slug}`, null, g.title).text}</h3>
-                    <p>
-                      {g.size} {t('ui.models')}. {t('ui.aboutMinutes', { m: g.minutes })}
-                    </p>
-                  </div>
-                </a>
-              </li>
-            ))}
-          </ol>
-        </section>
+            that job better than a page: it is visible from the front rather than found, costs
+            nothing until it is opened, and does not put 128 more tiles between a visitor and the
+            eleven they are actually choosing between.
 
-        <section className="browse" id="all-objects" aria-labelledby="all-objects-title" ref={allRef}>
-          <h2 className="browse-title" id="all-objects-title">
-            {t('ui.allObjects')}
-          </h2>
-          {all ? (
-            <ol className="grid grid-dense">
-              {all.objects.map((o) => (
-                <li key={o.accession} className="tile">
-                  <a href={`/o/${o.accession}`} onClick={go(`/o/${o.accession}`)}>
+            id="all-objects" sits on the whole control rather than on either panel, because that is
+            the one part of it that exists whichever tab is open — #all-objects is where /all lands,
+            and that arrival also drives `tab` to 'all' above. */}
+        <Tabs className="browse-tabs" id="all-objects" value={tab} onValueChange={setTab}>
+          {/* The padding that used to sit on .browse-title lives on this plain wrapper instead of
+              on TabsList itself — TabsList already carries its own Tailwind utilities for size and
+              layout, in the same cascade layer as anything styles.css could set on it, so a rule
+              written here would lose to those rather than add to them. */}
+          <div className="browse-tablist">
+            <TabsList
+              variant="line"
+              className="h-11 w-full justify-start gap-6 group-data-horizontal/tabs:h-11"
+              aria-label={t('ui.browse')}
+            >
+              <TabsTrigger value="categories" className="h-[calc(100%-1px)] flex-none px-1 text-[length:var(--step-0)]">
+                {t('ui.categories')}
+              </TabsTrigger>
+              <TabsTrigger value="all" className="h-[calc(100%-1px)] flex-none px-1 text-[length:var(--step-0)]">
+                {t('ui.allObjects')}
+              </TabsTrigger>
+            </TabsList>
+          </div>
+
+          <TabsContent value="categories" className="browse-panel">
+            <ol className="grid">
+              {GROUPS.map((g) => (
+                <li key={g.slug} className="tile">
+                  <a href={`/g/${g.slug}`} onClick={go(`/g/${g.slug}`)}>
                     <div className="tile-well">
-                      <img className="tile-blur" src={o.placeholder} alt="" aria-hidden="true" />
-                      <img className="tile-img" src={o.url} alt="" loading="lazy" decoding="async" />
+                      <img className="tile-blur" src={g.representative.placeholder} alt="" aria-hidden="true" />
+                      <img className="tile-img" src={g.representative.url} alt="" loading="lazy" decoding="async" />
                     </div>
                     <div className="tile-text">
-                      <h3 className="tile-small">{o.name}</h3>
+                      <h3 {...langAttrs(tr(`groups.${g.slug}`, null, g.title))}>{tr(`groups.${g.slug}`, null, g.title).text}</h3>
+                      <p>
+                        {g.size} {t('ui.models')}. {t('ui.aboutMinutes', { m: g.minutes })}
+                      </p>
                     </div>
                   </a>
                 </li>
               ))}
             </ol>
-          ) : (
-            <p className="loading loading-dark">{t('ui.loading')}</p>
-          )}
-        </section>
+          </TabsContent>
+
+          <TabsContent value="all" className="browse-panel">
+            {all ? (
+              <ol className="grid grid-dense">
+                {all.objects.map((o) => (
+                  <li key={o.accession} className="tile">
+                    <a href={`/o/${o.accession}`} onClick={go(`/o/${o.accession}`)}>
+                      <div className="tile-well">
+                        <img className="tile-blur" src={o.placeholder} alt="" aria-hidden="true" />
+                        <img className="tile-img" src={o.url} alt="" loading="lazy" decoding="async" />
+                      </div>
+                      <div className="tile-text">
+                        <h3 className="tile-small">{o.name}</h3>
+                      </div>
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            ) : (
+              <p className="loading loading-dark">{t('ui.loading')}</p>
+            )}
+          </TabsContent>
+        </Tabs>
       </div>
     </main>
   )

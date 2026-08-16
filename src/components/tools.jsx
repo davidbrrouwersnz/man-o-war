@@ -2,7 +2,7 @@
 // button (§18).
 
 import { Suspense, lazy, useState } from 'react'
-import { ContrastIcon, GlobeIcon } from 'lucide-react'
+import { GlobeIcon, SettingsIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { useLang, useT } from '../lang.jsx'
@@ -121,9 +121,11 @@ function DisplaySettings() {
           setOpen(true)
         }}
       >
-        {/* The half-filled circle is the conventional contrast glyph, and it is what this panel is
-            mostly for. */}
-        <ContrastIcon size={18} aria-hidden="true" focusable="false" />
+        {/* A gear reads as "settings" at a glance; the half-filled contrast circle it replaced named
+            only one of the panel's two controls (text size, then contrast) and was easy to mistake
+            for a dark-mode toggle, which this app does not have — §15 already ties dark and light to
+            the device, not to a switch. */}
+        <SettingsIcon size={18} aria-hidden="true" focusable="false" />
       </Button>
       {wanted && (
         <Suspense fallback={null}>
