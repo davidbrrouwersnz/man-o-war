@@ -32,6 +32,12 @@ on:
       - 'src/data/names.json'
       - 'src/data/i18n/en.json'
       - 'src/data/glossary.json'
+      # The further-reading annotations (§6). An English source like the others: scripts/units.mjs
+      # collects the `why` on every curated link, so editing one here has to reach seven languages
+      # the same way editing a story does. Missing from this list it would simply never retranslate,
+      # and the English would sit under a translated page looking like a language gap rather than a
+      # workflow that was never told about a new file.
+      - 'src/data/elsewhere.json'
   workflow_dispatch:
     inputs:
       skip_audio:
