@@ -3,7 +3,7 @@
   "reviewed": false,
   "layers": {
     "how-it-was-made": {
-      "standfirst": "Pourquoi toute une collection de musée est faite de verre, et comment deux hommes à Dresde s'y sont pris.",
+      "standfirst": "Pourquoi toute une collection muséale est faite de verre, et comment le Blaschkas l’a fait.",
       "segments": {
         "the-problem": {
           "heading": "Le problème que le verre a résolu",
@@ -11,7 +11,7 @@
         },
         "the-method": {
           "heading": "Travaillé à froid, non à chaud",
-          "text": "Leopold et Rudolf Blaschka travaillaient surtout à basse température, ramollissant tige et tube à la flamme et les façonnant à l'outil plutôt qu'en soufflant à chaud.\n\nTravailler à froid est plus lent, et c'est ce qui explique que le détail survive. Cela leur permettait d'étirer le verre en filaments, de le courber, et de construire une forme pièce par pièce plutôt qu'en un seul souffle.\n\nIls travaillaient en couches, et certaines de ces couches sont plus fines qu'une coquille d'œuf. C'est ainsi qu'un modèle peut être transparent tout en montrant les organes à l'intérieur — la seule chose qu'aucun autre matériau ne pouvait faire."
+          "text": "Le Blaschkas fonctionnait principalement à basse température, ramollissant la tige et le tube sur une flamme et les façonnant avec des outils manuels plutôt que de les souffler à chaud.\n\nTravailler à la fraîcheur est plus lent, et c’est la raison pour laquelle le détail subsiste. Cela leur permettait de tirer le verre en fils, de le plier et de construire une forme morceau par morceau plutôt qu’en un seul souffle.\n\nIls ont intégré des couches, et certaines de ces couches sont plus fines qu’une coquille d’œuf. C’est ainsi qu’un modèle peut être transparent tout en montrant des organes à l’intérieur, ce qui est la seule chose qu’aucun autre matériau ne pouvait faire."
         },
         "colour": {
           "heading": "Trois façons d'ajouter la couleur",
@@ -32,11 +32,11 @@
       "segments": {
         "the-gap": {
           "heading": "Ce qu'un musée voulait en 1880",
-          "text": "Un musée de cette époque se devait d'être encyclopédique. L'idée était qu'un visiteur ayant vu un éventail assez large de choses pouvait tirer ses propres conclusions sur le monde naturel ; le but était donc la couverture la plus large possible.\n\nLe directeur fondateur du Canterbury Museum, Julius von Haast, travaillait exactement selon ce modèle. Il collectionnait du matériel local et étranger, convaincu que l'étranger et le rare rehausseraient le prestige et l'utilité du musée.\n\nÀ en juger par le nombre de visiteurs, Christchurch lui donnait raison."
+          "text": "Un musée de cette période devait être encyclopédique. Un visiteur qui voyait une gamme suffisamment large d’éléments pouvait tirer ses propres conclusions sur le monde naturel, donc l’objectif était la couverture.\n\nLe directeur fondateur du Canterbury Museum, Julius von Haast, a travaillé précisément selon ce modèle. Il collectionnait du matériel local et étranger, et il pensait que l’étranger et le rare augmenteraient la réputation du musée et son utilité.\n\nMesuré par le nombre de personnes qui franchissaient les portes, Christchurch était d’accord avec lui."
         },
         "haast": {
           "heading": "L'homme qui les a commandés",
-          "text": "Haast n'était pas zoologiste de formation. Il était cependant extrêmement bien connecté et bien informé. Il correspondait avec Charles Darwin, avec le botaniste Joseph Hooker, et avec Ernst Haeckel, dont les idées sur l'évolution transformaient la discipline.\n\nSes lettres montrent quelqu'un qui suivait de près les détails zoologiques les plus fins.\n\nAussi, lorsqu'il entreprit de combler le vide où auraient dû se trouver les animaux à corps mou, il savait ce qu'il achetait et pourquoi cela comptait."
+          "text": "Haast n’était pas zoologiste de formation. Il correspondait avec Charles Darwin, avec le botaniste Joseph Hooker, et avec Ernst Haeckel, dont les idées sur l’évolution remodelaient le sujet.\n\nSes lettres montrent quelqu’un suivant de près les détails zoologiques fins.\n\nAlors, quand il s’est lancé pour combler le vide où auraient dû se trouver les animaux à corps mou, il savait ce qu’il achetait et pourquoi cela comptait."
         },
         "otago-first": {
           "heading": "Otago est arrivé le premier",
@@ -52,7 +52,7 @@
         },
         "since": {
           "heading": "Ce qui s'est passé ensuite",
-          "text": "Les modèles furent exposés dans la Salle Technologique, présentés comme un art industriel appliqué à la science plutôt que comme de la zoologie. Un journal de Christchurch, le Press, annonça à ses lecteurs en octobre 1883 que la galère portugaise apparaissait dans ses couleurs véritables et ressemblait à la nature au point d'y être trompeuse.\n\nCette présentation ne dura pas. En deux ans, les modèles furent exposés aux côtés de spécimens conservés, et en 1895 la Salle Technologique avait été démantelée, les modèles placés parmi les collections zoologiques, classés selon ce qu'ils représentaient plutôt que selon leur fabrication.\n\nAujourd'hui, l'un d'eux est exposé. Les autres sont en réserve."
+          "text": "Les modèles furent exposés dans la Salle Technologique, présentés comme un art industriel appliqué à la science plutôt que comme de la zoologie. Un journal de Christchurch, le Press, annonça à ses lecteurs en octobre 1883 que la galère portugaise apparaissait dans ses couleurs véritables et ressemblait à la nature au point d'y être trompeuse.\n\nCette présentation ne dura pas. En deux ans, les modèles furent exposés aux côtés de spécimens conservés, et en 1895 la Salle Technologique avait été démantelée, les modèles placés parmi les collections zoologiques, classés selon ce qu'ils représentaient plutôt que selon leur fabrication."
         }
       }
     }

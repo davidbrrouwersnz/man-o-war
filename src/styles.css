@@ -951,7 +951,7 @@ ol.grid {
    a page with two h1s reads to a screen reader as two documents stapled together. */
 .story h3,
 .essay .layer-section h3,
-.essay .layer-sources h3 {
+.layer-sources h3 {
   font-size: var(--step--1);
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -1318,10 +1318,15 @@ ol.grid-dense {
   margin: 0 0 0.9rem;
 }
 
+/* One list for the whole reading now, so it sits in the reading column rather than inside an essay
+   and needs that column's measure and gutters of its own. */
 .layer-sources {
   border-top: 1px solid var(--rule);
   padding-top: 1.5rem;
-  margin-top: 2.5rem;
+  margin: 2.5rem auto 0;
+  max-width: var(--measure);
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
 /* ------------------------------------------------------------------ further reading (§6)

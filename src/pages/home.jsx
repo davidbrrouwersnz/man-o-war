@@ -129,19 +129,47 @@ function Essay({ slug, layer, meta, code, langName }) {
         )
       })}
 
-      <div className="layer-sources">
-        <h3>{t('ui.sources')}</h3>
-        <ul>
-          {layer.sources.map((s) => (
-            <li key={s.url}>
-              <a href={s.url} target="_blank" rel="noreferrer">
-                {s.text}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
     </section>
+  )
+}
+
+// The sources for the reading, once, after both essays.
+//
+// They used to be printed under each essay, which meant Shaw et al. 2017 — a thirty-word
+// bibliographic citation — appeared twice within a few screens, because both essays draw on it.
+// That was defensible while the essays were separate pages. On one continuous read it is just the
+// same citation twice, and it was the largest piece of duplicated text on the page.
+//
+// Deduplicated on URL and kept in the order the essays declare them, so nothing is dropped: every
+// source either essay cites is still cited, once, and still under the word §7 already translates.
+function ReadingSources({ layers }) {
+  const [t, tr] = useT()
+  const seen = new Set()
+  const sources = []
+  for (const meta of index.layers) {
+    for (const s of layers.layers[meta.slug]?.sources ?? []) {
+      if (seen.has(s.url)) continue
+      seen.add(s.url)
+      sources.push(s)
+    }
+  }
+  if (!sources.length) return null
+  const heading = tr('ui.sources')
+  return (
+    <div className="layer-sources">
+      <h3 {...langAttrs(heading)}>{heading.text}</h3>
+      <ul>
+        {sources.map((s) => (
+          <li key={s.url}>
+            {/* A citation is quoted as printed, so it stays in the language it was published in —
+                the same rule the further-reading titles below follow. */}
+            <a href={s.url} target="_blank" rel="noreferrer" lang="en" dir="ltr">
+              {s.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
 
@@ -335,6 +363,9 @@ function Home({ go, route }) {
               if (!l) return null
               return <Essay key={meta.slug} slug={meta.slug} layer={l} meta={meta} code={code} langName={langName} />
             })}
+
+            {/* What the reading is built on, once, rather than once per essay. */}
+            <ReadingSources layers={layers} />
 
             {/* §6's external sources at the widest scale: not this animal or this group, but this
                 collection — the other Blaschka collections, the scholarship on these objects, and
