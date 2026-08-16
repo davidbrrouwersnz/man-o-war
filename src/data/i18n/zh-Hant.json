@@ -12,7 +12,6 @@
     "scanned": "你掃描的這件藏品",
     "rightsUnstated": "坎特伯雷博物館",
     "noStory": "尚未撰寫解說。以下為藏品登錄記錄本身的描述。",
-    "sources": "資料來源",
     "language": "語言",
     "loading": "載入中…",
     "notFound": "找不到頁面",
@@ -46,7 +45,6 @@
     "reading": "閱讀",
     "followWords": "隨朗讀捲動跟隨文字",
     "notFoundAccession": "{accession} 不是本館藏的登錄編號。",
-    "collectionIntroOnDisplay": "其中一件正在展出",
     "elsewhere": "更多內容請見其他地方",
     "marlinWhy": "這種動物的行為、棲息地及繁殖方式，由調查東北大西洋的人們撰寫，這些內容是 Blaschkas 塑造的海洋。",
     "claim": {
@@ -59,9 +57,7 @@
     "recordSightings": "{n} 全球目擊紀錄",
     "recordSightingsNZ": "{n} 在紐西蘭",
     "recordUnresolved": "目錄名稱未解析為單一現存物種，因此此處無可連結。這是關於一本已有140年歷史的目錄的真實答案，而非空白。",
-    "record": "目錄條目",
-    "recordCatalogue": "目錄條目中的名稱",
-    "recordChecked": "最後一次與 WoRMS 和 GBIF 比對時： {date}"
+    "recordCatalogue": "目錄條目中的名稱"
   },
   "groups": {
     "jellyfish": "水母，大與小",

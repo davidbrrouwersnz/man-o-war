@@ -72,23 +72,25 @@
   --dark-rule: #2a2a2c; /*  decorative only */
   --dark-brand: #ee3424; /*  5.15:1 */
 
-  /* In ch, not rem. A measure is a character count — 62ch is ~550px at the default size, which is
-     what this was before — and ch tracks the font size, so the line stays about 62 characters at
-     every text-size setting. In rem it would have doubled to 1088px at 200%, which on a wide
-     screen is a very long line for a reader who asked for larger type. */
-  --measure: 62ch;
-
-  /* The same ~550px, in rem: 34.5rem is 62ch measured in this font stack at the base 16px size
-     (551.7px, or 34.4814rem — rounded a third of a pixel doesn't read). --measure tracks the font
-     size ON PURPOSE, for the one paragraph it caps directly (.home-head p) — a bigger standfirst
-     earns a proportionally wider line. .home-col wants the opposite: several DIFFERENT elements —
-     the object, each essay, the collection's further reading at step--1 — sharing one column width,
-     and `ch` resolves against whichever element's own font-size happens to carry it, so the same
-     --measure produced a NARROWER box wherever a smaller font sat under it: 408px instead of 512px
+  /* 34.5rem is 62ch measured in this sans stack at the base 16px size (551.7px — rounded a third
+     of a pixel doesn't read). rem rather than ch: several DIFFERENT elements share one column
+     width, and `ch` resolves against whichever element's own font-size happens to carry it, so a
+     ch cap produced a NARROWER box wherever a smaller font sat under it — 408px instead of 512px
      on a 900px viewport, for the further-reading block alone. rem answers to the root font size
      only, which is what §18's text-size control already multiplies, so this still grows at 200%
-     without also drifting by whichever text happens to fill the box today. */
+     without also drifting by whichever text happens to fill the box today. (A ch-based --measure
+     used to sit beside this; it is retired — every text cap now goes through --measure-text
+     below, and this narrower token survives only as .home-col's stacked-width column cap.) */
   --measure-rem: 34.5rem;
+
+  /* One physical width for every text block on the collection page's reading surfaces — headings,
+     standfirst, catalogue line, prose, record lines — where --measure's own-font-size behaviour
+     gave each block a different cap (the serif body 609px, the standfirst 731px, a step--1 record
+     line 448px) and headings none at all, so an eyebrow could run wider than the paragraph under
+     it. 38rem is 62ch of the SERIF body at the base 16px (608.9px) — the body paragraph keeps
+     exactly the line it had, and everything else falls in line with it. rem, not ch, for
+     --measure-rem's reason: one shared width that answers only to the root size. */
+  --measure-text: 38rem;
 
   /* One 1.2 modular scale from a 16px base. §15 asks for the Museum's 16px/24px, which is
      --step-0 at line-height 1.5, exactly.
@@ -291,13 +293,14 @@ a {
   margin: 0 0 1.5rem;
 }
 
+/* Two rows now, not one (on request): the back link on its own line, then the tools — Listen,
+   language, display settings — on theirs. Sharing a row squeezed both at 200% text, and the tools
+   read better as the page's own control strip than as the back link's right-hand neighbours. */
 .page-top {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  /* Wraps rather than overflows at 200% text, where the back link alone is most of the width. */
-  flex-wrap: wrap;
-  gap: 0.5rem 1rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
   margin: 0 0 0.25rem;
 }
 
@@ -433,19 +436,17 @@ svg.lucide {
   padding: 0 0 4rem;
 }
 
-/* The reading — the standfirst, the object on display, and both essays — is one light region at
-   every width now, and the dark begins where the browsing does.
+/* The reading surfaces — the standfirst, the object's story, and both essays — are cream; the
+   media and the browsing stay dark. On a phone the five sections alternate (head, photograph,
+   story, tiles, essays), so the ground itself narrates the page: dark means look or choose, cream
+   means read. On desktop the same rules produce the two columns — every cream section lands on the
+   right, every dark one on the left.
 
-   It is not a new idea: this is what the desktop layout has always done, where head and read are
-   the cream column and browse is the dark one. Below 80rem the head sat on black only because
-   before this page carried the object there was nothing under it but tiles. Now the four things a
-   visitor reads run consecutively, so they share a ground, and the one colour boundary on the page
-   falls exactly where reading ends and browsing begins.
-
-   §15 survives intact: the grid is a dark field whatever the device is doing, because 79 of the 128
-   photographs are objects on black; the reading area follows the device. */
+   §15 survives intact: the grid and the photograph are a dark field whatever the device is doing,
+   because 79 of the 128 photographs are objects on black; the reading area follows the device. */
 .home-head,
-.home-read {
+.home-object,
+.home-essays {
   background: var(--paper);
   color: var(--ink);
 }
@@ -483,15 +484,19 @@ svg.lucide {
   padding-bottom: 2rem;
 }
 
-/* The object on display, in the reading column. */
+/* The object on display. On a phone this cream slab follows the dark photograph section, so it
+   opens with real air rather than the 1rem it needed when it sat directly under the standfirst. */
 .home-object {
-  padding-top: 1rem;
+  padding-top: 2rem;
 }
 
-/* Its own bottom rule is the separator before "How it was made", which is why the first essay does
-   not draw one — .essay + .essay only fires between essays. */
+/* On this page the story slab is followed by the dark browsing section, and the ground change is
+   the separator — a hairline right where cream meets black read as a rendering artefact, not a
+   division. The object keeps its rule on group pages, where the next thing is another object on
+   the same ground. */
 .home-object .object {
   margin-bottom: 0;
+  border-bottom: none;
 }
 
 /* ------------------------------------------------- the collection page at desktop
@@ -511,52 +516,60 @@ svg.lucide {
    the grid is dark whatever the device is doing, the reading area follows the device — except that
    the boundary between them is now vertical. */
 @media (min-width: 80rem) {
+  /* One grid row, two wrapper columns (rendered only at this width — see useWide in home.jsx).
+     Each wrapper is ordinary block flow inside, so the two sides are fully independent: the tile
+     column's height cannot open a gap in the reading column, which is exactly what every shared-
+     row grid arrangement of the five flat sections did (~100px of blank cream above the first
+     essay's rule, measured twice). */
   .home {
     display: grid;
     grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-    grid-template-areas:
-      'browse head'
-      'browse read';
-    /* Flexible second row, for the reason the object page needed one: with two auto rows, a browse
-       column taller than head + read has its excess split between them, which opens a gap under
-       the title. The slack belongs to the reading row. */
-    grid-template-rows: auto 1fr;
     column-gap: clamp(2rem, 4vw, 4rem);
-    row-gap: 0;
     padding: 0;
   }
 
+  /* The reading wrapper is first in the DOM (title before tiles, for focus and announce order)
+     but renders as the right-hand column. Its own ground, so the cream runs the full height of
+     the page however short the essays are. */
+  .home-right {
+    grid-column: 2;
+    grid-row: 1;
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  .home-left {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
   .home-head {
-    grid-area: head;
     /* The head sits on the reading ground now, not the dark one. Its text colours and its controls
        are further down this file, after the dark rules they have to beat. Horizontal padding and
        the max-width switch are .home-col's job, above. */
-    background: var(--paper);
-    color: var(--ink);
     padding-top: 3.5rem;
     padding-bottom: 1.5rem;
   }
 
+  /* Matches the head's top padding so the photograph section and the collection title start on
+     the same line — the pairing the tab bar used to hold when it was the column's first item. */
+  .browse-object {
+    padding-top: 3.5rem;
+  }
+
+  /* The story continues the cream field the head began, so the mobile run-up (2rem, tuned for
+     arriving from a dark section) shrinks back to the 1rem this column has always used. */
+  .home-object {
+    padding-top: 1rem;
+  }
+
   .home-browse {
-    grid-area: browse;
     /* Named here and nowhere else, so the tile-count container queries further down cannot reach
        the stacked layout below this breakpoint. */
     container-type: inline-size;
     container-name: browse;
-    /* Matches the head's top padding so the tab bar and the collection title start on the same
-       line. Without it the grid began at the very top edge while the reading column sat 56px down,
-       and the two halves read as unrelated. */
-    padding-top: 3.5rem;
   }
 
-  /* Stretched so the cream runs to the bottom of the page rather than stopping where the essays
-     end. With row-gap 0 the head and this form one continuous field. */
-  .home-read {
-    grid-area: read;
-    align-self: stretch;
-    background: var(--paper);
-    color: var(--ink);
-  }
 }
 
 .home-head h1 {
@@ -614,33 +627,24 @@ svg.lucide {
   padding: 2.5rem var(--gutter, 1.25rem) 0.75rem;
 }
 
-/* The first one sits under the tab bar's old position, so it does not need the full run-up. Only
-   .browse-object ever qualifies — the tab control itself does not carry the .browse class, so this
-   cannot fire on it by accident. */
-.browse:first-of-type .browse-title {
-  padding-top: 1.25rem;
-}
-
 .browse-panel {
   padding-top: 0.5rem;
 }
 
-/* The heading above the man o' war's photograph. Set as a signpost rather than as a title: this
-   column is navigation, and a display-sized heading over a field of photographs competes with
-   them. Same treatment as the legends in the settings dialog, which do the same job.
-
-   Deliberately not the tab labels' own size just below it — those are body-sized text on a
-   44px-tall control (§18's WCAG 2.5.8 touch-target floor, same reasoning as the `touch` button
-   size), where this eyebrow-small caps treatment would have made the target read as decoration
-   rather than something to press. */
+/* The heading above the man o' war's photograph. Set in the tab labels' own text — --step-0 at
+   medium weight, soft ink on the dark ground — so the two dark sections open with the same voice:
+   "On display" over the photograph reads as the same kind of signpost as "Categories" over the
+   tiles. It used to be the caps eyebrow; that dress now belongs to apparatus on the reading
+   surfaces only ("Read more elsewhere"), and caps here claimed a hierarchy the tab labels then
+   contradicted. */
 .browse-title {
   margin: 0;
   padding: 2.5rem var(--gutter, 1.25rem) 0.75rem;
-  font-size: var(--step--1);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--dark-ink-soft);
+  font-size: var(--step-0);
+  font-weight: 500;
+  /* The SELECTED tab's ink, on request — soft ink matched the unselected state, which made the
+     one label that is always "current" read as the one that is not. */
+  color: var(--dark-ink);
 }
 
 /* The man o' war's photograph, at the top of the browsing column — the same figure ObjectSection
@@ -745,26 +749,48 @@ ol.grid {
   color: var(--dark-ink-soft);
 }
 
-/* The two reading essays, on the collection page below the grid. Light ground on the dark home
-   page: the grid is dark because 79 of the 128 primary images are objects on black, and long-form
-   reading does not belong on that. The switch also does the work a page break used to — you can
-   see at a glance that the browsing has ended and the reading has begun. */
+/* The two reading essays. Light ground on the dark home page: the grid is dark because 79 of the
+   128 primary images are objects on black, and long-form reading does not belong on that. The
+   switch also does the work a page break used to — you can see at a glance that the browsing has
+   ended and the reading has begun.
 
+   Padding, not margin: a margin here exposes the page's dark ground, which on desktop would cut a
+   black band through the middle of the continuous cream reading column. (Background and colour
+   come from the shared reading-surfaces rule near .home-head.) */
 .home-essays {
-  background: var(--paper);
-  color: var(--ink);
-  margin: 4rem 0 0;
-  padding: 1rem 0 0.5rem;
+  padding: 2rem 0 0.5rem;
+}
+
+/* The slab padding above gives the essays air after the dark section on a phone. In the desktop
+   columns the essays continue the cream reading flow, where it would just inflate the story→essay
+   break past the 2.5rem every other ruled break gets. (This override must FOLLOW the base rule —
+   a media query adds no specificity, so order decides.) */
+@media (min-width: 80rem) {
+  .home-essays {
+    padding-top: 0;
+  }
 }
 
 .essay {
-  padding-top: 2.5rem;
+  padding-top: 0;
   padding-bottom: 2.5rem;
   scroll-margin-top: 0.5rem;
 }
 
-.essay + .essay {
-  border-top: 1px solid var(--rule);
+/* Every essay opens with the divider — the first one included, on request: without it "How it was
+   made" hung in an unexplained gap after the story. A pseudo-element rather than a border-top on
+   the section: the section is full-bleed (its gutter is padding), so a border spanned the padding
+   box edge to edge while the object's rule sat inset at the text edge — two different hairline
+   geometries on one page. As a block at the top of the content box the line starts where the text
+   starts and stops at the text measure, and every ruled break shares one recipe: 2.5rem of air,
+   1px of --rule, 2.5rem of air. (.elsewhere.is-collection draws the same one.) */
+.essay::before {
+  content: '';
+  display: block;
+  height: 1px;
+  background: var(--rule);
+  max-width: var(--measure-text);
+  margin-bottom: 2.5rem;
 }
 
 .essay-title {
@@ -777,12 +803,17 @@ ol.grid {
 
 /* ------------------------------------------------------------------ group page */
 
-/* A breakout grid rather than one centred column. Prose stays at --measure; an object can step out
-   to the full width when there is width to step into. Before this, `.reading` was max-width 34rem
-   at every viewport — a 1440px screen showed a 544px column and 900px of nothing. */
+/* A breakout grid rather than one centred column. Prose stays at the shared reading measure; an
+   object can step out to the full width when there is width to step into. Before this, `.reading`
+   was max-width 34rem at every viewport — a 1440px screen showed a 544px column and 900px of
+   nothing.
+
+   --measure-text, not --measure: the ch-based token resolves against THIS element's sans 16px and
+   capped the content track at ~552px while the collection page reads at 608px — two line lengths
+   for the same prose in one app. One rem-stable token everywhere (see its definition). */
 .reading {
   --gutter: 1.25rem;
-  --content: min(var(--measure), 100%);
+  --content: min(var(--measure-text), 100%);
 
   display: grid;
   grid-template-columns:
@@ -850,11 +881,12 @@ ol.grid {
 
 /* No rule under the standfirst any more, on request — the padding that gave that line room to
    breathe on both sides is gone with it rather than left doubling the margin below into a blank
-   ~5rem gap with nothing to explain it. One margin instead of two contributors to it. */
+   ~5rem gap with nothing to explain it. 1.5rem, matching .object-catalogue: one spacing for a
+   lead line, wherever it appears (see the paragraph-scale note there). */
 .group-panel {
   font-size: var(--step-1);
   line-height: 1.5;
-  margin: 0 0 2.5rem;
+  margin: 0 0 1.5rem;
 }
 
 /* ------------------------------------------------------------------ object */
@@ -865,6 +897,7 @@ ol.grid {
   border-bottom: 1px solid var(--rule);
   scroll-margin-top: 0.5rem;
 }
+
 
 .object-media {
   margin: 0;
@@ -938,11 +971,15 @@ ol.grid {
   }
 }
 
+/* The essay title's own recipe (--step-3 / 1.12 / -0.02em / 400), on request: "Portuguese man o'
+   war" and "How it was made" are the same rank of heading on the collection page, and dressing the
+   object a step smaller made the optional essays read as the main event. Group pages inherit the
+   same size — an object's name is the wayfinding unit a visitor scrolls a 19-object page by. */
 .object-name {
-  font-size: var(--step-2);
-  line-height: 1.2;
+  font-size: var(--step-3);
+  line-height: 1.12;
   font-weight: 400;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   margin: 0 0 0.2rem;
 }
 
@@ -956,7 +993,11 @@ ol.grid {
 .object-catalogue {
   font-size: var(--step-1);
   line-height: 1.5;
-  margin: 0 0 1.25rem;
+  /* 1.5rem, matching .group-panel — the two lead lines (catalogue string under an object's name,
+     standfirst under an essay's title) used to fall 1.25rem and 2.5rem to the text below them,
+     two spacings for the same role. The page's paragraph scale is three values on purpose:
+     0.9rem between prose paragraphs, 1.5rem under a lead line, 0.35rem between list lines. */
+  margin: 0 0 1.5rem;
 }
 
 /* Every well is the same width; the height follows the photograph.
@@ -1038,30 +1079,27 @@ ol.grid {
   margin: 0.6rem 0 1.4rem;
 }
 
+/* No margin of its own — and none on .layer-section either. With the printed section headings
+   gone these wrappers are audio-chapter boundaries, not visual ones, and any extra gap at the
+   seam read as inconsistent paragraph spacing: 14px between most paragraphs, 32px wherever a
+   heading used to be, with nothing on the page explaining the difference. The paragraphs' own
+   0.9rem carries the whole rhythm; the prose reads as one passage, which is what it now is. */
 .story section {
-  margin: 0 0 1.5rem;
+  margin: 0;
 }
 
-/* The small uppercase heading above a passage of reading, and the same shape one scale up: a
-   further-reading section's own heading, open (.elsewhere-head, also what the essay citations sit
-   under now — see the note in home.jsx) or as a disclosure's summary (.elsewhere-summary, object
-   pages only). One rule, four places now rather than a slightly different copy at each — it was six
-   before the catalogue record and the essay citations stopped keeping their own separate headings.
-   (.browse-title is the same recipe again on the browsing column's dark ground instead of the
-   reading column's paper one, so it keeps its own rule rather than a colour exception grafted onto
-   this one.)
-
-   The essays' own headings are h3 rather than h2 because the collection title holds the h1 there;
-   a page with two h1s reads to a screen reader as two documents stapled together. */
-.story h3,
-.essay .layer-section h3,
-.elsewhere-head,
-.elsewhere-summary {
-  font-size: var(--step--1);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 700;
-  color: var(--ink-meta);
+/* The further-reading heading (also what the essay citations sit under — see the note in
+   home.jsx). The caps eyebrow retired here last: once the section headings lost theirs, one small
+   uppercase block was no longer a system, just a shout. */
+.elsewhere-head {
+  /* The body's own dress — serif, body size, full ink — one step bolder, on request. The heading
+     reads as part of the prose it introduces rather than as chrome over it; the semibold is the
+     whole signal. (Georgia has no true 600; browsers render the nearest bold face, which is the
+     intended look.) */
+  font-family: var(--font-serif);
+  font-size: var(--step-0);
+  font-weight: 600;
+  color: var(--ink);
   margin: 0 0 0.5rem;
 }
 
@@ -1103,27 +1141,22 @@ ol.grid {
   font-size: var(--step-0);
 }
 
-/* ------------------------------------------------------------------ the QR arrival */
+/* ------------------------------------------------------------------ the QR arrival
 
-.is-arrived {
-  position: relative;
-}
-
-.is-arrived::before {
-  content: '';
-  position: absolute;
-  inset: -0.75rem -1rem 2rem;
-  border: 2px solid var(--brand);
-  border-radius: 3px;
-  pointer-events: none;
-}
+   No visual marker any more (on request — the brand border read as an error state). The class
+   stays on the article: arriving at /o/{accession} still scrolls the object to the top of the
+   screen, which is its own answer to "did I get the right thing", and the hook remains for any
+   future treatment. */
 
 .group-nav {
   display: flex;
   justify-content: space-between;
   gap: 1.5rem;
-  border-top: 1px solid var(--rule);
-  padding-top: 1.5rem;
+  /* Full-bleed within the page grid (on request): previous sits against the page's left edge and
+     next against its right, so the page-turn reads as the whole spread turning, not a control
+     inside the text column. No rule and no margin of its own — the last object's divider closes
+     the content, and its 2.5rem margin below that rule is the whole of the gap to these buttons. */
+  grid-column: full;
   font-size: var(--step-0);
 }
 
@@ -1229,24 +1262,6 @@ ol.grid {
   padding-right: 0.75rem;
 }
 
-/* The disclosure marker is a rotated corner, so it points into the text rather than away from it
-   only if the rotation flips with the writing direction. Arabic is the one shipped RTL language
-   and this block would otherwise point off the wrong edge of the summary.
-
-   Matched on the SUMMARY's own dir, not on an RTL ancestor. §7 puts dir on the element according
-   to what it actually renders, so an untranslated English label inside an Arabic page is an LTR
-   element with an RTL parent — and a descendant selector flipped its marker backwards while the
-   words beside it ran the other way. */
-[dir='rtl'].elsewhere-summary::before {
-  border-right: 0;
-  border-left: 1.5px solid currentColor;
-  transform: rotate(45deg);
-}
-
-[open] > [dir='rtl'].elsewhere-summary::before {
-  transform: rotate(-45deg);
-}
-
 /* A binomial inside non-Latin text must be marked, or a screen reader speaks it with the wrong
    phonetics — §7 names this explicitly, because every object here carries one. */
 .binomial {
@@ -1339,25 +1354,28 @@ ol.grid-dense {
 /* The standfirst. This one has to be here rather than beside the other .home-head rules above:
    `.home-head p { color: var(--dark-ink-soft) }` comes later in the file, a media query adds no
    specificity, and the later rule wins — which rendered the collection's opening sentence at
-   2.65:1 on cream. */
+   2.65:1 on cream. Full ink, not the soft tone, on request — it is the page's opening sentence,
+   not secondary prose. */
 .home-head p {
-  color: var(--ink-soft);
-  max-width: var(--measure);
+  color: var(--ink);
 }
 
-/* The rest of the reading column, capped the same way as the standfirst above — one selector for
-   all of it, since .home-read is .home-head's own sibling and every paragraph on this page sits
-   inside one or the other: the object's catalogue line and story, its further reading and record,
-   both essays' standfirsts and body text, the sources, and the collection's own further reading.
-
-   Needed for the same reason .home-head p needed it: .home-col drops its max-width entirely at
-   80rem (deliberately — see the note there), so a paragraph would otherwise run the full width of
-   whatever the two-column split leaves the reading side, which grows past a comfortable line on
-   anything wider than a laptop. `ch`, not the font-size-independent --measure-rem .home-col uses:
-   here there is exactly one paragraph per element and it should track ITS OWN size, the same
-   reasoning --measure-rem's own comment gives for why .home-head p was never moved onto it. */
-.home-read p {
-  max-width: var(--measure);
+/* ONE width for every text block on the reading surfaces — headings included. .home-col drops its
+   max-width entirely at 80rem (deliberately — see the note there), and the per-paragraph 62ch cap
+   that stood in for it resolved against each element's OWN font size: the serif body got 609px,
+   the standfirst 731px, a step--1 record line 448px, and h1/h2/h3 nothing at all — so a heading
+   could run wider than the paragraph beneath it, four ragged right edges on one page. One
+   rem-stable token gives them all the body paragraph's line — see --measure-text where it is
+   defined. */
+.home-head h1,
+.home-head p,
+.home-object h2,
+.home-object h3,
+.home-object p,
+.home-essays h2,
+.home-essays h3,
+.home-essays p {
+  max-width: var(--measure-text);
 }
 
 /* The head is on cream, so the control tokens go back to the reading palette. One declaration
@@ -1393,16 +1411,9 @@ ol.grid-dense {
 
 /* .home forces the ring to --dark-brand for the whole page. The reading takes it back. */
 .home-head :focus-visible,
-.home-read :focus-visible {
+.home-object :focus-visible,
+.home-essays :focus-visible {
   outline-color: var(--brand);
-}
-
-/* The essays were a full-bleed light slab announcing that browsing had ended and reading had begun.
-   The reading region does that now, so the slab loses its own ground and its separating margin. */
-.home-essays {
-  background: none;
-  margin: 0;
-  padding: 0 0 1rem;
 }
 
 @media (min-width: 80rem) {
@@ -1412,8 +1423,10 @@ ol.grid-dense {
   }
 }
 
+/* No margin — see .story section: the seam where a heading used to be is not a visual boundary
+   any more, and the paragraphs' own spacing carries the rhythm. */
 .layer-section {
-  margin: 0 0 2rem;
+  margin: 0;
 }
 
 .layer-section p {
@@ -1424,13 +1437,9 @@ ol.grid-dense {
 
    Three placements, one look: quiet, typographic, and clearly not part of the guide's own voice.
    It sits below the writing everywhere it appears, set in meta colour, so nothing here competes
-   with the story above it.
-
-   The object form is a closed <details>. §10 measures a group page at 11.7 screen-heights already
-   and 38.4 for a nineteen-object one; an open block on every object would add most of a screen
-   apiece to the page the spec says is the scaling problem. Native disclosure rather than a
-   scripted one — it is keyboard-operable, it is in the accessibility tree as expanded/collapsed
-   without help, and it survives with JavaScript broken. */
+   with the story above it. Always open, and only rendered where links exist — the closed
+   <details> the object form used to be is gone with the empty sections it was hiding (see the
+   note on Elsewhere in reading.jsx). */
 
 .elsewhere {
   margin: 1.5rem 0 0;
@@ -1440,63 +1449,28 @@ ol.grid-dense {
 
 /* The collection-level block is a sibling of the essays rather than a child of one, so it does not
    inherit .essay's measure or its side padding on its own — given .home-col in the markup (see
-   home.jsx), the reading column keeps its one left edge all the way down to here. */
+   home.jsx), the reading column keeps its one left edge all the way down to here. Its rule is the
+   shared divider recipe (see .essay + .essay::before): inset to the text edge, capped at the text
+   measure, the same 2.5rem of air on both sides — the essay above it supplies the air above. */
 .elsewhere.is-collection {
-  border-top: 1px solid var(--rule);
-  padding-top: 1.5rem;
-  padding-bottom: 2.5rem;
-  margin-top: 2.5rem;
-}
-
-/* No rule of its own on a group page. This block always follows the last object, and .object
-   already draws a border-bottom with 2.5rem of margin under it — a second hairline 5rem below the
-   first, with nothing between them, read as a section that had failed to load its contents. */
-.elsewhere.is-group {
   margin-top: 0;
+  padding-bottom: 2.5rem;
 }
 
-/* Text styling for both is the shared eyebrow rule near .story h3, above. The disclosure's own hit
-   target follows here: 44px tall so it can be hit on a phone held one-handed in a gallery — the
-   same floor the Listen control is built to. Its own margin:0 below means .elsewhere-summary never
-   actually rendered the shared rule's margin regardless — a summary sits inline against the
-   disclosure triangle, not above a paragraph — so nothing changes for it here. */
-.elsewhere-summary {
-  cursor: pointer;
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  min-height: 44px;
-  margin: 0;
-}
-
-/* Safari still paints its own triangle through ::-webkit-details-marker even with list-style
-   none, and it lands outside the flex row rather than in it. */
-.elsewhere-summary::-webkit-details-marker {
-  display: none;
-}
-
-/* A marker this file owns, so it can sit on the baseline of the label and turn with the
-   disclosure. Rotated rather than swapped, so there is one glyph and no reflow. */
-.elsewhere-summary::before {
+.elsewhere.is-collection::before {
   content: '';
-  width: 0.4rem;
-  height: 0.4rem;
-  border-right: 1.5px solid currentColor;
-  border-bottom: 1.5px solid currentColor;
-  transform: rotate(-45deg);
-  transition: transform 150ms ease;
-  flex: none;
+  display: block;
+  height: 1px;
+  background: var(--rule);
+  max-width: var(--measure-text);
+  margin-bottom: 2.5rem;
 }
 
-[open] > .elsewhere-summary::before {
-  transform: rotate(45deg);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .elsewhere-summary::before {
-    transition: none;
-  }
+/* The group's own further reading sits with the intro now — after the panel, before the first
+   object — so it carries the orientation block's rhythm: the panel's 1.5rem above (its own base
+   margin) and a clear 2.5rem before the first object below. */
+.elsewhere.is-group {
+  margin-bottom: 2.5rem;
 }
 
 /* The link itself is .elsewhere-link's shared rule, near the top of this file. .elsewhere-title
@@ -1577,8 +1551,12 @@ ol.grid-dense {
   gap: 0.75rem;
 }
 
+/* The title takes only its own width, so the control sits right beside the words it plays —
+   "How it was made ▷" — rather than pushed to the far edge of the column with a field of nothing
+   between them (flex-grow: 1 was doing that). It still shrinks (min-width: 0) so a long object
+   name wraps rather than shoving the 44px control off the row. */
 .heading-row > :first-child {
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   min-width: 0;
 }
 
@@ -1781,12 +1759,22 @@ ol.grid-dense {
 
   .audio-row {
     flex-wrap: wrap;
-    justify-content: flex-end;
+    /* Centred, not flex-end: with the label line centred above, right-hung controls made the
+       whole bar read as right-aligned. Both lines centre now. */
+    justify-content: center;
     padding: 0.4rem 0.6rem 0.5rem;
   }
 
+  /* Full-width on its own line here, so when a long chapter label runs to two lines the block is
+     centred (on request) — a left-ragged two-line label over right-aligned controls read as a
+     misalignment, where a centred one reads as a title. justify-content centres the title/label
+     pair as flex items; text-align centres the label's own second line when it wraps internally. */
   .audio-what {
     flex: 1 0 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    row-gap: 0.15rem;
   }
 }
 

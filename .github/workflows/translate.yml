@@ -158,7 +158,14 @@ jobs:
           AZURE_SPEECH_REGION: ${{ secrets.AZURE_SPEECH_REGION }}
         run: |
           node scripts/audio.mjs --lang en --no-sweep
-          for lang in ${{ steps.changed.outputs.langs }}; do
+          # Every language with audio on disk, not only the ones this run translated: a change to
+          # the narration rules (what gets spoken) makes existing files stale without a single
+          # translation changing, and a language skipped here would keep speaking words the page
+          # no longer prints. --no-new still guarantees this only refreshes files that exist —
+          # voicing a language for the first time stays a deliberate keyboard decision.
+          for dir in public/audio/*/; do
+            lang=$(basename "$dir")
+            [ "$lang" = en ] && continue
             node scripts/audio.mjs --lang "$lang" --no-sweep --no-new
           done
 

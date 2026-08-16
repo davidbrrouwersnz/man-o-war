@@ -12,7 +12,6 @@
     "scanned": "L'objet que vous avez scanné",
     "rightsUnstated": "Canterbury Museum",
     "noStory": "Aucun texte rédigé pour l'instant. Ci-dessous, la description de la notice d'inventaire elle-même.",
-    "sources": "Sources",
     "language": "Langue",
     "loading": "Chargement…",
     "notFound": "Introuvable",
@@ -46,7 +45,6 @@
     "reading": "Suivi du texte",
     "followWords": "Faire défiler pour suivre les mots au fil de la lecture",
     "notFoundAccession": "{accession} n’est pas un numéro d’inventaire de cette collection.",
-    "collectionIntroOnDisplay": "Un seul est exposé",
     "elsewhere": "Lire la suite ailleurs",
     "marlinWhy": "Ce que fait cet animal, où il vit et comment il se reproduit, écrit pour un lecteur général par les personnes qui explorent l’Atlantique nord-est — la mer que le Blaschkas modélisée.",
     "claim": {
@@ -59,9 +57,7 @@
     "recordSightings": "{n} observations enregistrées dans le monde entier",
     "recordSightingsNZ": "{n} d’entre eux en Nouvelle-Zélande",
     "recordUnresolved": "Le nom du catalogue ne se résout pas à une seule espèce actuelle, il n’y a donc rien ici à lien. C’est une vraie réponse à un catalogue vieux de 140 ans, pas un trou.",
-    "record": "L’entrée du catalogue",
-    "recordCatalogue": "Le nom dans l’entrée du catalogue",
-    "recordChecked": "Dernière vérification par rapport à WoRMS et GBIF : {date}"
+    "recordCatalogue": "Le nom dans l’entrée du catalogue"
   },
   "groups": {
     "jellyfish": "Méduses, grandes et petites",

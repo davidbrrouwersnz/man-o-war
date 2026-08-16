@@ -12,7 +12,6 @@
     "scanned": "스캔한 소장품",
     "rightsUnstated": "캔터베리 박물관",
     "noStory": "아직 글이 쓰이지 않았습니다. 아래는 소장 기록 자체의 설명입니다.",
-    "sources": "출처",
     "language": "언어",
     "loading": "불러오는 중…",
     "notFound": "찾을 수 없음",
@@ -46,7 +45,6 @@
     "reading": "읽기",
     "followWords": "읽는 위치에 맞춰 스크롤하기",
     "notFoundAccession": "{accession}은(는) 이 컬렉션의 소장 번호가 아닙니다.",
-    "collectionIntroOnDisplay": "전시 중인 것은 한 점뿐",
     "elsewhere": "더 읽기 필요하다면 다른 곳에서 읽어보세요",
     "marlinWhy": "이 동물이 무엇을 하는지, 어디서 살며, 어떻게 번식하는지에 관한 책은 북동 대서양을 조사하는 사람들이 일반 독자를 위해 쓴 책입니다 — Blaschkas 가 모델링한 바다입니다.",
     "claim": {
@@ -59,9 +57,7 @@
     "recordSightings": "{n} 전 세계적으로 기록된 목격 사례",
     "recordSightingsNZ": "뉴질랜드에 있는 {n}",
     "recordUnresolved": "카탈로그 이름은 현재 하나의 종으로 해결되지 않아 연결할 만한 것이 없습니다. 140년 된 카탈로그에 대한 진짜 답변이지, 공백이 아닙니다.",
-    "record": "카탈로그 항목",
-    "recordCatalogue": "카탈로그 항목에 나오는 이름",
-    "recordChecked": "WoRMS와 GBIF와 비교한 마지막 기록: {date}"
+    "recordCatalogue": "카탈로그 항목에 나오는 이름"
   },
   "groups": {
     "jellyfish": "해파리, 큰 것과 작은 것",

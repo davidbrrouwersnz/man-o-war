@@ -69,11 +69,12 @@ function objectAudio(object, tr, t) {
     // and is noise for everyone else. See the note in scripts/audio.mjs.
     ...parts.map((p) => ({
       id: `${object.accession}/${p.s.id}`,
-      // Heading and body are one file, so a segment is only voiced in the translation when both
-      // halves are translated — the same rule scripts/audio.mjs applies when deciding what to make.
-      lang: p.heading.lang === p.body.lang ? p.body.lang : 'en',
+      // The heading is no longer printed or spoken — it survives only as this item's label, the
+      // chapter name in the audio bar. The narration is the body alone, so the item's language is
+      // the body's resolved language.
+      lang: p.body.lang,
       label: p.heading.text,
-      blocks: blocksOf(p.heading.text, p.body.text),
+      blocks: blocksOf(null, p.body.text),
     })),
   ]
 
@@ -85,11 +86,27 @@ function objectAudio(object, tr, t) {
 // The photograph and its credit line, on their own. Split out of ObjectSection so the collection
 // page can place the man o' war's picture in its own section of the browsing column while its name
 // and story stay in the reading column — the same figure and caption either way, computed once.
-function ObjectMedia({ object, priority }) {
-  const [t] = useT()
-  const size = object.measurements[0]?.replace(/^Dimensions \(LxWxH\):\s*/i, '').trim()
+// `named` prepends the object's plain-English headline to the caption. Off by default: on a group
+// page the photograph sits directly under the object's own h2, and repeating the name one line
+// apart reads as a stutter. The collection page turns it on — there the photograph is a section of
+// its own, columns away from the story that names it.
+function ObjectMedia({ object, priority, named = false }) {
+  const [t, tr] = useT()
+  // The record reads "Dimensions (LxWxH): whole: 70 x 60 x 280mm" — field prefix, then a part
+  // label, then the numbers. The caption wants only the numbers: everything after the last colon,
+  // with the separators set properly. All 128 records follow this shape (three field-prefix
+  // variants, three part-label families), so slicing at the last colon is data-driven, not tuned
+  // to one object.
+  const size = object.measurements[0]
+    ?.slice(object.measurements[0].lastIndexOf(':') + 1)
+    .trim()
+    .replace(/(\d)\s*x\s*(?=\d)/gi, '$1 × ')
+    .replace(/(\d)\s*mm\b/i, '$1 mm')
   const rights = object.rights ? object.rights : t('ui.rightsUnstated')
-  const metaLine = [object.accession, size, rights].filter(Boolean).join(' · ')
+  const headline = named
+    ? tr(['stories', object.accession, 'headline'], null, object.story?.headline ?? object.name)
+    : null
+  const metaLine = [headline?.text, object.accession, size, rights].filter(Boolean).join(' · ')
   return (
     <figure className="object-media">
       <Media object={object} priority={priority} />
@@ -114,12 +131,9 @@ function ObjectMedia({ object, priority }) {
 // is above the fold on a phone, so it is that page's LCP element instead.
 // `media` is false when the caller is placing the photograph elsewhere itself (the collection page,
 // in its own section of the browsing column) — everything else about the object still renders here.
-// `elsewhereCollapsed` defaults to true, which is the group page's rule: many objects on one page,
-// so each one's further reading starts closed (see the note on Elsewhere in reading.jsx). The
-// collection page's on-display object is the one place there is exactly one object on the whole
-// page, same as the group and collection further-reading blocks that are already open by default —
-// so it passes false and gets the same open treatment they get, instead of the many-objects rule.
-function ObjectSection({ object, arrived, registry, priority = arrived, media = true, elsewhereCollapsed = true }) {
+// Further reading is always open now and renders only where links exist — see Elsewhere in
+// reading.jsx — so the old per-caller collapsed flag is gone.
+function ObjectSection({ object, arrived, registry, priority = arrived, media = true }) {
   const ref = useRef(null)
   const [t, tr] = useT()
   const { code } = useLang()
@@ -169,21 +183,22 @@ function ObjectSection({ object, arrived, registry, priority = arrived, media = 
       <div className="object-body">
       {story ? (
         <div className="story">
-          {parts.map(({ s, heading, body }) => {
+          {/* No printed section headings. They used to be h3 eyebrows here; removed on request so
+              a story reads as continuous guide prose under the object's name. The heading text
+              lives on as the audio bar's chapter label (see objectAudio) — it is no longer printed
+              OR spoken, which is what keeps §13's word-for-word rule intact. */}
+          {parts.map(({ s, body }) => {
             const itemId = `${object.accession}/${s.id}`
-            const blocks = blocksOf(heading.text, body.text)
+            const blocks = blocksOf(null, body.text)
             return (
               <section key={s.id}>
-                <h3 {...langAttrs(heading)}>
-                  <Spoken text={heading.text} itemId={itemId} block={0} />
-                </h3>
                 <div {...langAttrs(body)}>
                   {body.fellBack && code !== 'en' && (
                     <p className="fallback-notice">{t('ui.fallbackNotice', { language: langName })}</p>
                   )}
                   {body.text.split('\n\n').map((p, i) => (
-                    // block 0 is the heading, so the paragraphs start at 1 - the same order
-                    // scripts/audio.mjs used when it generated the cues.
+                    // The paragraphs are the blocks now — the same order scripts/audio.mjs uses
+                    // when it generates the cues.
                     <p key={i}>
                       <Spoken text={p} itemId={itemId} block={blocks.indexOf(p.trim())} />
                     </p>
@@ -204,7 +219,7 @@ function ObjectSection({ object, arrived, registry, priority = arrived, media = 
       {/* §6's external sources, at the object scale: where to read about this animal, and the
           taxonomic record behind the name at the top of this section. Not narrated — §13 requires
           the spoken words to be the printed words, and none of this is in the audio index. */}
-      <Elsewhere links={object.elsewhere} taxon={object.taxon} publishers={PUBLISHERS} variant="object" collapsed={elsewhereCollapsed} />
+      <Elsewhere links={object.elsewhere} taxon={object.taxon} publishers={PUBLISHERS} variant="object" />
       </div>
     </article>
   )
@@ -318,18 +333,20 @@ function GroupPage({ route, go }) {
             />
           )}
 
-          {/* The whole page as one sitting: the panel, then every object in order, then the
-              closing line. It plays exactly what each object's own control plays, so a visitor can
-              start the tour and stop caring about the interface — which is the point of an audio
-              guide in a gallery. Individual objects keep their own control for anyone who wants
-              just the thing in front of them. */}
+          {/* The group's own further reading, with the intro rather than at the page's foot — it
+              used to sit after the last object, where a reader who had scrolled eight objects met
+              it as an orphan with no group context left on screen. Here it reads as part of the
+              orientation: what this page is, and where else to read about it. */}
+          <Elsewhere links={data.elsewhere} publishers={PUBLISHERS} variant="group" />
+
+          {/* The whole page as one sitting: the panel, then every object in order. It plays
+              exactly what each object's own control plays, so a visitor can start the tour and
+              stop caring about the interface — which is the point of an audio guide in a gallery.
+              Individual objects keep their own control for anyone who wants just the thing in
+              front of them. */}
           {data.objects.map((o) => (
             <ObjectSection key={o.accession} object={o} arrived={o.accession === route.arrivedAt} registry={registry} />
           ))}
-
-          {/* The group's own further reading, after every object and before the page turns. Open
-              rather than behind a disclosure: there is one of these per page, not one per object. */}
-          <Elsewhere links={data.elsewhere} publishers={PUBLISHERS} variant="group" />
         </>
       ) : (
         <p className="loading">Loading the objects…</p>

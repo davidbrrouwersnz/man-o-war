@@ -184,12 +184,14 @@ function collect() {
         // §13's two-track model wanted a separate audio-description track. Only the interpretation
         // text exists, so that is what ships. See docs/audio-generation.md.
         const t = tStory?.segments?.[seg.id]
-        const heading = say(seg.heading, t?.heading)
+        // The heading is not narrated any more — it is not printed, and §13's rule is that the
+        // spoken words ARE the printed words. It survives as the audio bar's chapter label, which
+        // the app reads from the pack rather than from these files. The narration is the body
+        // alone, so a segment is voiced whenever its body is; the old "both halves or neither"
+        // gate guarded a heading/body language seam that no longer exists.
         const text = say(seg.text, t?.text)
-        // Both halves or neither: a file whose heading is German and whose body is English would
-        // put two languages in one breath, and the read-along would highlight across the seam.
-        if (!text || (seg.heading && !heading)) continue
-        units.push({ kind: 'story', id: `${accession}/${seg.id}`, track: 'interpretation', heading, text })
+        if (!text) continue
+        units.push({ kind: 'story', id: `${accession}/${seg.id}`, track: 'interpretation', heading: null, text })
       }
       // No identification unit. The note is no longer printed on the page, and §13's rule is that
       // the spoken words ARE the printed words — generating narration for text nobody can read is
@@ -249,10 +251,11 @@ function collect() {
       }
       for (const seg of l.segments) {
         const t = tl?.segments?.[seg.id]
-        const heading = say(seg.heading, t?.heading)
+        // As with story segments: the heading is neither printed nor narrated now, so the body
+        // alone decides whether a translated segment is voiced.
         const text = say(seg.text, t?.text)
-        if (!text || (seg.heading && !heading)) continue
-        units.push({ kind: 'layer', id: `layers/${slug}/${seg.id}`, track: 'reading', heading, text })
+        if (!text) continue
+        units.push({ kind: 'layer', id: `layers/${slug}/${seg.id}`, track: 'reading', heading: null, text })
       }
     }
     // The sources list at the foot of a layer page is a set of links, not prose. Not voiced.
