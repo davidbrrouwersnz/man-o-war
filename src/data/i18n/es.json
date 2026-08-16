@@ -12,7 +12,6 @@
     "scanned": "El objeto que ha escaneado",
     "rightsUnstated": "Canterbury Museum",
     "noStory": "Todavía no hay texto escrito. Debajo está la descripción del propio registro de inventario.",
-    "sources": "Fuentes",
     "language": "Idioma",
     "loading": "Cargando…",
     "notFound": "No encontrado",
@@ -46,7 +45,6 @@
     "reading": "Lectura",
     "followWords": "Desplazar para seguir las palabras a medida que se leen",
     "notFoundAccession": "{accession} no es un número de inventario de esta colección.",
-    "collectionIntroOnDisplay": "Uno está expuesto",
     "elsewhere": "Lee más en otro lugar",
     "marlinWhy": "Qué hace este animal, dónde vive y cómo se reproduce, escrito para un lector general por las personas que exploran el Atlántico noreste — el mar que Blaschkas modelado.",
     "claim": {
@@ -59,9 +57,7 @@
     "recordSightings": "{n} avistamientos registrados en todo el mundo",
     "recordSightingsNZ": "{n} de ellos en Nueva Zelanda",
     "recordUnresolved": "El nombre del catálogo no se resuelve a una sola especie actual, así que no hay nada aquí a lo que enlazar. Esa es una respuesta real sobre un catálogo de 140 años, no un vacío.",
-    "record": "La entrada del catálogo",
-    "recordCatalogue": "El nombre en la entrada del catálogo",
-    "recordChecked": "La última verificación con WoRMS y GBIF: {date}"
+    "recordCatalogue": "El nombre en la entrada del catálogo"
   },
   "groups": {
     "jellyfish": "Medusas, grandes y pequeñas",

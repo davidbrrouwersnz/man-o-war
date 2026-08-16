@@ -12,7 +12,6 @@
     "scanned": "読み取った作品",
     "rightsUnstated": "カンタベリー博物館",
     "noStory": "解説はまだ書かれていません。以下は収蔵記録そのものの記述です。",
-    "sources": "出典",
     "language": "言語",
     "loading": "読み込み中…",
     "notFound": "見つかりません",
@@ -46,7 +45,6 @@
     "reading": "読み上げ",
     "followWords": "読み上げに合わせてスクロールする",
     "notFoundAccession": "{accession} はこのコレクションの登録番号ではありません。",
-    "collectionIntroOnDisplay": "展示されているのは1点だけ",
     "elsewhere": "詳細は他所で読む",
     "marlinWhy": "この動物が何をし、どこで生活し、どのように繁殖するかを、北東大西洋を調査する人々によって一般読者向けに書かれたもので、 Blaschkas がモデル化した海です。",
     "claim": {
@@ -59,9 +57,7 @@
     "recordSightings": "{n} 世界中で記録された目撃情報",
     "recordSightingsNZ": "ニュージーランドでは{n}",
     "recordUnresolved": "カタログ名は現在の種に限定されていないため、ここにリンクできるものはありません。それは140年前のカタログについての本当の答えであり、空白ではありません。",
-    "record": "カタログの項目",
-    "recordCatalogue": "カタログの項目に記載されている名前",
-    "recordChecked": "最後にWoRMSとGBIFで確認した時: {date}"
+    "recordCatalogue": "カタログの項目に記載されている名前"
   },
   "groups": {
     "jellyfish": "クラゲ、大小さまざま",

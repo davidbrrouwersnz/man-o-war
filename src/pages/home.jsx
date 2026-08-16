@@ -66,9 +66,12 @@ function essayAudio(slug, layer, meta, tr) {
     },
     ...parts.map((p) => ({
       id: `layers/${slug}/${p.s.id}`,
-      lang: p.heading.lang === p.body.lang ? p.body.lang : 'en',
+      // The heading is no longer printed or spoken — it survives only as this item's label, the
+      // chapter name in the audio bar. The narration is the body alone, so the item's language is
+      // the body's resolved language.
+      lang: p.body.lang,
       label: p.heading.text,
-      blocks: blocksOf(p.heading.text, p.body.text),
+      blocks: blocksOf(null, p.body.text),
     })),
   ]
 
@@ -82,8 +85,8 @@ function essayAudio(slug, layer, meta, tr) {
 // anyone who wants just this essay rather than the whole page.
 //
 // Heading levels shift with the move: on its own page the title was an h1, but here the collection
-// title holds that, so the essay is an h2 and its sections are h3. A page with two h1s reads to a
-// screen reader as two documents stapled together.
+// title holds that, so the essay is an h2. A page with two h1s reads to a screen reader as two
+// documents stapled together. Its sections carry no printed headings — see the note inside.
 function Essay({ slug, layer, meta, code, langName }) {
   const [t, tr] = useT()
   const { titleR, standfirstR, parts, available, items } = essayAudio(slug, layer, meta, tr)
@@ -103,14 +106,15 @@ function Essay({ slug, layer, meta, code, langName }) {
       </div>
       <Translated className="group-panel" r={standfirstR} itemId={`layers/${slug}/00-standfirst`} block={1} />
 
-      {parts.map(({ s, heading, body }) => {
+      {/* No printed section headings. They used to be h3 eyebrows here; removed on request so the
+          essay reads as continuous prose under its title. The heading text lives on as the audio
+          bar's chapter label (see essayAudio) — it is no longer printed OR spoken, which is what
+          keeps §13's word-for-word rule intact. */}
+      {parts.map(({ s, body }) => {
         const itemId = `layers/${slug}/${s.id}`
-        const blocks = blocksOf(heading.text, body.text)
+        const blocks = blocksOf(null, body.text)
         return (
           <section key={s.id} className="layer-section">
-            <h3 {...langAttrs(heading)}>
-              <Spoken text={heading.text} itemId={itemId} block={0} />
-            </h3>
             <div {...langAttrs(body)}>
               {body.fellBack && code !== 'en' && (
                 <p className="fallback-notice">{t('ui.fallbackNotice', { language: langName })}</p>
@@ -177,8 +181,28 @@ function FurtherReading({ layers }) {
   )
 }
 
+// Which of the page's two arrangements to render. CSS grid could not produce the desktop columns
+// from the phone's flat DOM order: grid rows are shared between columns, so the tile column —
+// far taller than the essays — inflated whichever auto row the story also spanned, opening ~100px
+// of blank cream between the story's last line and the first essay's rule (measured; a fifth
+// flexible row resolved to 0px and fixed nothing, because fr tracks in a content-sized grid get
+// no free space). Two wrapper columns in the DOM is the only layout where the two sides flow
+// independently — so the wide arrangement renders them, and this hook decides which tree is on
+// screen. Section content is built once either way; only the wrappers differ.
+function useWide() {
+  const [wide, setWide] = useState(() => matchMedia('(min-width: 80rem)').matches)
+  useEffect(() => {
+    const mq = matchMedia('(min-width: 80rem)')
+    const on = () => setWide(mq.matches)
+    mq.addEventListener('change', on)
+    return () => mq.removeEventListener('change', on)
+  }, [])
+  return wide
+}
+
 function Home({ go, route }) {
   const [t, tr] = useT()
+  const wide = useWide()
   const { code } = useLang()
   const langName = BY_CODE.get(code)?.endonym ?? 'English'
   const [layers, setLayers] = useState(null)
@@ -280,19 +304,22 @@ function Home({ go, route }) {
       ...essayAudios.flatMap((a) => a.items),
     ],
   }
-  return (
-    <main className="home" id="main" tabIndex={-1}>
-      <header className="home-head home-col">
-        <Tools
-          listen={
-            <Listen
-              queue={homeQueue}
-              available={homeAvailable}
-              pending={!layers || !display}
-              note={code !== 'en' ? t('ui.audioEnglishOnly') : null}
-            />
-          }
+  const toolsRow = (
+    <Tools
+      listen={
+        <Listen
+          queue={homeQueue}
+          available={homeAvailable}
+          pending={!layers || !display}
+          note={code !== 'en' ? t('ui.audioEnglishOnly') : null}
         />
+      }
+    />
+  )
+
+  const head = (
+    <header className="home-head home-col">
+      {toolsRow}
         <h1>
           <Spoken text={title} itemId="home/00-intro" block={0} />
         </h1>
@@ -302,67 +329,45 @@ function Home({ go, route }) {
         <p lang={intro.lang} dir={dirOf(intro.lang)}>
           <Spoken text={intro.text} itemId="home/00-intro" block={1} />
         </p>
-      </header>
-      {/* THE READING COLUMN COMES FIRST IN THE DOM, and that is the change. It used to sit after
-          the grids, which on a phone put 139 tiles between the collection's own standfirst and the
-          only object a visitor can actually look at.
+    </header>
+  )
 
-          The desktop layout is unaffected: both wrappers are placed by named grid areas, so which
-          one is written first here decides the phone order and nothing else. `home-head` stays
-          outside both, first, because the desktop grid moves it into the right-hand column with
-          the reading. Same technique as the object page. */}
-      <div className="home-read">
-        {/* The object on display, rendered by the group page's own ObjectSection — the same words,
-            translations, narration, further reading and catalogue record it has inside Floating
-            colonies, because it is the same component reading the same data.
-
-            `arrived` is false: nothing was scanned to get here. The highlighted border it would add
-            belongs to the QR route, which still lands on the group page. `media` is false: the
-            photograph itself is in its own section of the browsing column now, not here — see
-            .browse-object below.
-            `elsewhereCollapsed` is false: the group page collapses an object's further reading
-            because there can be nineteen of them on one page; this page has exactly one, same as
-            the collection's own further-reading block a few screens down, so it gets the same open
-            treatment rather than the many-objects rule — see the note on ObjectSection. */}
-        {display && (
-          <div className="home-object home-col">
-            <ObjectSection object={display.object} arrived={false} priority media={false} elsewhereCollapsed={false} />
-          </div>
-        )}
-
-        {layers && (
-          <div className="home-essays">
-            {index.layers.map((meta) => {
-              const l = layers.layers[meta.slug]
-              if (!l) return null
-              return <Essay key={meta.slug} slug={meta.slug} layer={l} meta={meta} code={code} langName={langName} />
-            })}
-
-            {/* What the reading is built on, and §6's external sources at the widest scale — not
-                this animal or this group, but this collection: the other Blaschka collections, the
-                scholarship on these objects, and what the two men did after they stopped making sea
-                creatures. One list now, after both essays, because that is where a reader who has
-                finished them is. */}
-            <FurtherReading layers={layers} />
-          </div>
-        )}
+  // The photograph: the same figure ObjectSection renders inline on a group page, rendered by the
+  // group page's own ObjectMedia. On a phone it sits directly under the standfirst — the story
+  // that follows says "look at the top section", so the thing to look at comes before the words
+  // about it. On desktop it is the top of the dark left column.
+  const photo = display && (
+    <section className="browse browse-object" aria-labelledby="on-display-title">
+      <h2 className="browse-title" id="on-display-title">
+        {t('ui.onDisplay')}
+      </h2>
+      <div className="browse-object-media">
+        <ObjectMedia object={display.object} priority named />
       </div>
+    </section>
+  )
 
-      <div className="home-browse">
-        {/* The man o' war's photograph, on its own at the top of the browsing column — the first
-            thing this column shows, above the categories it lets a visitor browse by eye. Its name
-            and story stay in the reading column opposite; this is the same picture, not a second
-            one, rendered by the group page's own ObjectMedia. */}
-        {display && (
-          <section className="browse browse-object" aria-labelledby="on-display-title">
-            <h2 className="browse-title" id="on-display-title">
-              {t('ui.onDisplay')}
-            </h2>
-            <div className="browse-object-media">
-              <ObjectMedia object={display.object} priority />
-            </div>
-          </section>
-        )}
+  // The object on display, rendered by the group page's own ObjectSection — the same words,
+  // translations, narration, further reading and catalogue record it has inside Floating
+  // colonies, because it is the same component reading the same data.
+  //
+  // `arrived` is false: nothing was scanned to get here. The highlighted border it would add
+  // belongs to the QR route, which still lands on the group page. `media` is false: the
+  // photograph is the .browse-object section, not here. Further reading renders open wherever it
+  // has links — see Elsewhere in reading.jsx.
+  const story = display && (
+    <div className="home-object home-col">
+      <ObjectSection object={display.object} arrived={false} priority media={false} />
+    </div>
+  )
+
+  const browse = (
+    <div className="home-browse">
+        {/* Headings below this point are the 139 tile names. Without a heading of its own this
+            whole region would nest under the object's h2 in a screen reader's outline, as if the
+            collection were a chapter of the man o' war. Visually the tab bar already does this
+            job, so the heading is for the outline only. */}
+        <h2 className="visually-hidden">{t('ui.browse')}</h2>
 
         {/* Two ways into the same 128 objects. §9 kept the full grid as a secondary route rather
             than the front door — it rescues browsing by eye and the completionist — and a tab does
@@ -436,7 +441,57 @@ function Home({ go, route }) {
             )}
           </TabsContent>
         </Tabs>
-      </div>
+    </div>
+  )
+
+  // The essays come last on a phone: a visitor who has met the object and the collection can
+  // keep reading; one who came to browse never had to scroll past them. On desktop they continue
+  // the reading column, below the story.
+  const essays = layers && (
+    <div className="home-essays">
+          {index.layers.map((meta) => {
+            const l = layers.layers[meta.slug]
+            if (!l) return null
+            return <Essay key={meta.slug} slug={meta.slug} layer={l} meta={meta} code={code} langName={langName} />
+          })}
+
+          {/* What the reading is built on, and §6's external sources at the widest scale — not
+              this animal or this group, but this collection: the other Blaschka collections, the
+              scholarship on these objects, and what the two men did after they stopped making sea
+              creatures. One list now, after both essays, because that is where a reader who has
+              finished them is. */}
+          <FurtherReading layers={layers} />
+    </div>
+  )
+
+  return (
+    <main className="home" id="main" tabIndex={-1}>
+      {/* Two arrangements of the same five sections — see the note on useWide for why CSS alone
+          could not do this. The phone gets the flat order the page is designed around: head,
+          photograph, story, tiles, essays. Wide screens get two wrapper columns that flow
+          independently — reading first in the DOM, so a screen reader or keyboard meets the title
+          before the tiles, matching how the page reads. */}
+      {wide ? (
+        <>
+          <div className="home-right">
+            {head}
+            {story}
+            {essays}
+          </div>
+          <div className="home-left">
+            {photo}
+            {browse}
+          </div>
+        </>
+      ) : (
+        <>
+          {head}
+          {photo}
+          {story}
+          {browse}
+          {essays}
+        </>
+      )}
     </main>
   )
 }

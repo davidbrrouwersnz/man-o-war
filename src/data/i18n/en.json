@@ -14,7 +14,6 @@
     "scanned": "The object you scanned",
     "rightsUnstated": "Canterbury Museum",
     "noStory": "No story written yet. Below is the catalogue record's own description.",
-    "sources": "Sources",
     "language": "Language",
     "loading": "Loading…",
     "notFound": "Not found",
@@ -48,8 +47,7 @@
     "reading": "Reading",
     "followWords": "Scroll to follow the words as they are read",
     "notFoundAccession": "{accession} is not an accession number in this collection.",
-    "collectionIntroOnDisplay": "One is on display",
-    "elsewhere": "Read more elsewhere",
+    "elsewhere": "Further reading",
     "marlinWhy": "What this animal does, where it lives and how it breeds, written for a general reader by the people who survey the north-east Atlantic — the sea the Blaschkas modelled.",
     "claim": {
       "this-species": "The same species.",
@@ -57,12 +55,10 @@
       "this-group": "The group, not this object.",
       "this-collection": "This collection, and the people who made it."
     },
-    "record": "The catalogue entry",
     "recordCatalogue": "the name in the catalogue entry",
     "recordCurrent": "the name accepted today",
     "recordSightings": "{n} sightings recorded worldwide",
     "recordSightingsNZ": "{n} of them in New Zealand",
-    "recordChecked": "Last checked against WoRMS and GBIF: {date}",
     "recordUnresolved": "The catalogue name does not resolve to one current species, so there is nothing here to link to. That is a real answer about a 140-year-old catalogue, not a gap."
   }
 }

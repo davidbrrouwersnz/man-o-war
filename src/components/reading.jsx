@@ -292,68 +292,38 @@ function Record({ taxon }) {
   )
 }
 
-// One block, several placements, and one heading over all of it now. The external links and the
-// catalogue record used to print under two: "Read more elsewhere", then "The catalogue entry"
-// wherever Record was not the only thing in the block. Consolidated on request — the record's own
-// heading only ever repeated words the outer one had already said a few lines up, and splitting one
-// further-reading list in two by KIND (an article, a taxonomic identifier) needed a reason nothing
-// else on the page gave it. `Record` takes no heading prop any more; see the note there.
+// One block, several placements, one heading, always open — and it renders only where there are
+// external links. Ninety of the 128 objects have no further reading anyone could verify: the name
+// resolves to a taxonomic record and no more, and a "Further reading" section with no reading in
+// it promised an article and delivered an identifier. Those objects now show nothing here (on
+// request), which also retires the "The catalogue entry" fallback heading that used to label them.
 //
-// On a group page's own objects it is a disclosure, closed by default. That is a deliberate
-// exception to this app's own rule that nothing worth reading sits behind a tap — §6 puts the
-// story inline precisely because "every tap between a visitor and the writing is where most of
-// them stop". Further reading is not that: it is the thing you do afterwards, and §10's measured
-// problem is that a group page is already 11.7 screen-heights and a nineteen-object page would be
-// 38.4. An open block on every object would add most of a screen-height per object to the one page
-// the spec already says is too long.
+// The closed <details> this used to be on group pages is gone with it (also on request): the
+// links are always shown. The page-length argument for the disclosure — an open block per object
+// on an 11.7-screen page — mostly evaporates with the 90 empty sections; the cost lands only on
+// the objects that genuinely have links.
 //
-// On a group and on the collection it is open, because there is one of it per page — and that is
-// the actual reason the group page's own objects collapse, not something inherent to an object's
-// further reading as a category. The collection page's on-display object is also exactly one
-// object, so it takes `collapsed={false}` from ObjectSection and gets the open treatment instead;
-// see the note there.
-function Elsewhere({ links = [], taxon = null, publishers, variant = 'group', collapsed = variant === 'object', className = '' }) {
+// Where links exist, the record's own lines (also <p>) follow them under the same heading — a
+// flat run of paragraphs, no boundary in the markup, because either is a valid place for a reader
+// to stop. `Record` takes no heading prop; see the note there.
+function Elsewhere({ links = [], taxon = null, publishers, variant = 'group', className = '' }) {
   const [, tr] = useT()
-  if (!links.length && !taxon) return null
+  if (!links.length) return null
 
   // The heading is a UI string like any other, so it carries the language it actually resolved to.
-  // Until a pack has these keys it resolves to English, and an English heading left unmarked in an
+  // Until a pack has the key it resolves to English, and an English heading left unmarked in an
   // Arabic page is right-aligned against text it does not belong to.
-  const headingR = tr(links.length ? 'ui.elsewhere' : 'ui.record')
-
-  // A flat run of paragraphs now, not a list wrapping a nested block: every link is its own <p>
-  // (ExternalLink), and the record's own lines (also <p>) just follow on, both under whichever
-  // heading is above — either is a valid place for a reader to stop, so nothing in the markup marks
-  // a boundary between them beyond that.
-  const body = (
-    <>
-      {links.map((l) => (
-        <ExternalLink key={l.url} link={l} publishers={publishers} variant={variant} />
-      ))}
-      <Record taxon={taxon} />
-    </>
-  )
-
-  if (collapsed) {
-    // Ninety of the 128 objects have no further reading anyone could verify — the name resolves to
-    // a record and no more. Labelling those "Read more elsewhere" promises an article and opens on
-    // a taxonomic entry, so the summary says which of the two this actually is.
-    return (
-      <details className={`elsewhere is-${variant} ${className}`.trim()}>
-        <summary className="elsewhere-summary" {...langAttrs(headingR)}>
-          {headingR.text}
-        </summary>
-        {body}
-      </details>
-    )
-  }
+  const headingR = tr('ui.elsewhere')
 
   return (
     <section className={`elsewhere is-${variant} ${className}`.trim()}>
       <h3 className="elsewhere-head" {...langAttrs(headingR)}>
         {headingR.text}
       </h3>
-      {body}
+      {links.map((l) => (
+        <ExternalLink key={l.url} link={l} publishers={publishers} variant={variant} />
+      ))}
+      <Record taxon={taxon} />
     </section>
   )
 }
