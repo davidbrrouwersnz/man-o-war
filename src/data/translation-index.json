@@ -4553,6 +4553,307 @@
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
+      },
+      "ui:elsewhere": {
+        "hash": "9d3104fe84733f6d",
+        "englishHash": "9d3104fe84733f6d",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:marlinWhy": {
+        "hash": "e53dac55367d5f19",
+        "englishHash": "e53dac55367d5f19",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:claim.this-species": {
+        "hash": "84bf90d0e4b9dd1e",
+        "englishHash": "84bf90d0e4b9dd1e",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:claim.this-kind": {
+        "hash": "dbbc4394dcbf0bd6",
+        "englishHash": "dbbc4394dcbf0bd6",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:claim.this-group": {
+        "hash": "424c8de7df9632fb",
+        "englishHash": "424c8de7df9632fb",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:claim.this-collection": {
+        "hash": "7af7b95e14d55adc",
+        "englishHash": "7af7b95e14d55adc",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordCurrent": {
+        "hash": "a9b59df888510611",
+        "englishHash": "a9b59df888510611",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordSightings": {
+        "hash": "933878e9132d156f",
+        "englishHash": "933878e9132d156f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordSightingsNZ": {
+        "hash": "69706dcd39068cb0",
+        "englishHash": "69706dcd39068cb0",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordUnresolved": {
+        "hash": "20ad2d030552a383",
+        "englishHash": "20ad2d030552a383",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:cornell-blaschka:why": {
+        "hash": "1d6b3cc76fe399dc",
+        "englishHash": "1d6b3cc76fe399dc",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:cmog-fragile-legacy-marine-invertebrate-glass:why": {
+        "hash": "1e333c23cf820b41",
+        "englishHash": "1e333c23cf820b41",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:hmnh-glass-flowers:why": {
+        "hash": "72f498396ca84a54",
+        "englishHash": "72f498396ca84a54",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-corals-anemones-and-jellyfish-page-4:why": {
+        "hash": "bac5c3b15a5bdcb5",
+        "englishHash": "bac5c3b15a5bdcb5",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-corals-anemones-and-jellyfish-page-3:why": {
+        "hash": "6d43b9fe6a75f2d6",
+        "englishHash": "6d43b9fe6a75f2d6",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-marine-animals-without-backbones-page-1:why": {
+        "hash": "cd57ac81959942dd",
+        "englishHash": "cd57ac81959942dd",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-marine-animals-without-backbones-page-6:why": {
+        "hash": "9f15e23209c7630e",
+        "englishHash": "9f15e23209c7630e",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-octopus-and-squid:why": {
+        "hash": "5385cd905382a98b",
+        "englishHash": "5385cd905382a98b",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-shellfish-page-3:why": {
+        "hash": "6540759ac8ad31a0",
+        "englishHash": "6540759ac8ad31a0",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-corals-anemones-and-jellyfish-page-2:why": {
+        "hash": "84601ab2ff382690",
+        "englishHash": "84601ab2ff382690",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-corals-anemones-and-jellyfish-page-1:why": {
+        "hash": "7fe01cc3784fa2d4",
+        "englishHash": "5a5e57831141106e",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-starfish-sea-urchins-and-other:why": {
+        "hash": "146b2f7e3e14c53f",
+        "englishHash": "146b2f7e3e14c53f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-marine-animals-without-backbones-page-3:why": {
+        "hash": "2f327d6433eb8790",
+        "englishHash": "2f327d6433eb8790",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-marine-animals-without-backbones-page-2:why": {
+        "hash": "566a2a86eaceb26b",
+        "englishHash": "566a2a86eaceb26b",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-snails-and-slugs-page-1:why": {
+        "hash": "37e2eff445fb0453",
+        "englishHash": "37e2eff445fb0453",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-moon-jellyfish:why": {
+        "hash": "48eb5be6e543bc2c",
+        "englishHash": "48eb5be6e543bc2c",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-moon-jellyfish-1884.137.24:why": {
+        "hash": "f9f59e23d6d2970f",
+        "englishHash": "f9f59e23d6d2970f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-washed-up-portuguese-men-of:why": {
+        "hash": "a0140dcf6ad84d32",
+        "englishHash": "a0140dcf6ad84d32",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-portuguese-man-of-war:why": {
+        "hash": "3c7ffadb449d88a5",
+        "englishHash": "3c7ffadb449d88a5",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:niwa-critter-week-mediterranean-fanworm-sabella:why": {
+        "hash": "e3165a1330ddedf4",
+        "englishHash": "e3165a1330ddedf4",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-sea-hare:why": {
+        "hash": "964e862c46c56e53",
+        "englishHash": "964e862c46c56e53",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-sea-hare-1884.137.94:why": {
+        "hash": "20bd2ce6bcf01ee1",
+        "englishHash": "20bd2ce6bcf01ee1",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-comb-jelly:why": {
+        "hash": "c96eb6e1416d1e47",
+        "englishHash": "c96eb6e1416d1e47",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-spoon-worm:why": {
+        "hash": "e21c85486b2b969f",
+        "englishHash": "e21c85486b2b969f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-tube-worm:why": {
+        "hash": "b1d657bf2c7d2609",
+        "englishHash": "b1d657bf2c7d2609",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-ribbon-worms:why": {
+        "hash": "d41adbb2eedc0305",
+        "englishHash": "d41adbb2eedc0305",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-ribbon-worms-1884.137.49:why": {
+        "hash": "a216d578e6a1e123",
+        "englishHash": "a216d578e6a1e123",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-bristle-worm:why": {
+        "hash": "ceb504f759467162",
+        "englishHash": "ceb504f759467162",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-a-salp-chain:why": {
+        "hash": "85fc72ab290acc68",
+        "englishHash": "85fc72ab290acc68",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-a-salp-chain-1884.137.47:why": {
+        "hash": "b6442c3799ad033a",
+        "englishHash": "b6442c3799ad033a",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:record": {
+        "hash": "ce8e196e298002c8",
+        "englishHash": "ce8e196e298002c8",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordCatalogue": {
+        "hash": "2e93c199fbf98458",
+        "englishHash": "2e93c199fbf98458",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordChecked": {
+        "hash": "2fb9c1b3d4ebd38d",
+        "englishHash": "2fb9c1b3d4ebd38d",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
       }
     },
     "ja": {
@@ -9124,6 +9425,307 @@
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
+      },
+      "ui:elsewhere": {
+        "hash": "9d3104fe84733f6d",
+        "englishHash": "9d3104fe84733f6d",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:marlinWhy": {
+        "hash": "e53dac55367d5f19",
+        "englishHash": "e53dac55367d5f19",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:claim.this-species": {
+        "hash": "84bf90d0e4b9dd1e",
+        "englishHash": "84bf90d0e4b9dd1e",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:claim.this-kind": {
+        "hash": "dbbc4394dcbf0bd6",
+        "englishHash": "dbbc4394dcbf0bd6",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:claim.this-group": {
+        "hash": "424c8de7df9632fb",
+        "englishHash": "424c8de7df9632fb",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:claim.this-collection": {
+        "hash": "7af7b95e14d55adc",
+        "englishHash": "7af7b95e14d55adc",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordCurrent": {
+        "hash": "a9b59df888510611",
+        "englishHash": "a9b59df888510611",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordSightings": {
+        "hash": "933878e9132d156f",
+        "englishHash": "933878e9132d156f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordSightingsNZ": {
+        "hash": "69706dcd39068cb0",
+        "englishHash": "69706dcd39068cb0",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordUnresolved": {
+        "hash": "20ad2d030552a383",
+        "englishHash": "20ad2d030552a383",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:cornell-blaschka:why": {
+        "hash": "1d6b3cc76fe399dc",
+        "englishHash": "1d6b3cc76fe399dc",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:cmog-fragile-legacy-marine-invertebrate-glass:why": {
+        "hash": "1e333c23cf820b41",
+        "englishHash": "1e333c23cf820b41",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:hmnh-glass-flowers:why": {
+        "hash": "72f498396ca84a54",
+        "englishHash": "72f498396ca84a54",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-corals-anemones-and-jellyfish-page-4:why": {
+        "hash": "bac5c3b15a5bdcb5",
+        "englishHash": "bac5c3b15a5bdcb5",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-corals-anemones-and-jellyfish-page-3:why": {
+        "hash": "6d43b9fe6a75f2d6",
+        "englishHash": "6d43b9fe6a75f2d6",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-marine-animals-without-backbones-page-1:why": {
+        "hash": "cd57ac81959942dd",
+        "englishHash": "cd57ac81959942dd",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-marine-animals-without-backbones-page-6:why": {
+        "hash": "9f15e23209c7630e",
+        "englishHash": "9f15e23209c7630e",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-octopus-and-squid:why": {
+        "hash": "5385cd905382a98b",
+        "englishHash": "5385cd905382a98b",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-shellfish-page-3:why": {
+        "hash": "6540759ac8ad31a0",
+        "englishHash": "6540759ac8ad31a0",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-corals-anemones-and-jellyfish-page-2:why": {
+        "hash": "84601ab2ff382690",
+        "englishHash": "84601ab2ff382690",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-corals-anemones-and-jellyfish-page-1:why": {
+        "hash": "1c99d662b3329fa4",
+        "englishHash": "5a5e57831141106e",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-starfish-sea-urchins-and-other:why": {
+        "hash": "146b2f7e3e14c53f",
+        "englishHash": "146b2f7e3e14c53f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-marine-animals-without-backbones-page-3:why": {
+        "hash": "2f327d6433eb8790",
+        "englishHash": "2f327d6433eb8790",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-marine-animals-without-backbones-page-2:why": {
+        "hash": "566a2a86eaceb26b",
+        "englishHash": "566a2a86eaceb26b",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-snails-and-slugs-page-1:why": {
+        "hash": "37e2eff445fb0453",
+        "englishHash": "37e2eff445fb0453",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-moon-jellyfish:why": {
+        "hash": "48eb5be6e543bc2c",
+        "englishHash": "48eb5be6e543bc2c",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-moon-jellyfish-1884.137.24:why": {
+        "hash": "f9f59e23d6d2970f",
+        "englishHash": "f9f59e23d6d2970f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-washed-up-portuguese-men-of:why": {
+        "hash": "a0140dcf6ad84d32",
+        "englishHash": "a0140dcf6ad84d32",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-portuguese-man-of-war:why": {
+        "hash": "3c7ffadb449d88a5",
+        "englishHash": "3c7ffadb449d88a5",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:niwa-critter-week-mediterranean-fanworm-sabella:why": {
+        "hash": "e3165a1330ddedf4",
+        "englishHash": "e3165a1330ddedf4",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-sea-hare:why": {
+        "hash": "964e862c46c56e53",
+        "englishHash": "964e862c46c56e53",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-sea-hare-1884.137.94:why": {
+        "hash": "20bd2ce6bcf01ee1",
+        "englishHash": "20bd2ce6bcf01ee1",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-comb-jelly:why": {
+        "hash": "c96eb6e1416d1e47",
+        "englishHash": "c96eb6e1416d1e47",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-spoon-worm:why": {
+        "hash": "d19e7ca8c550abc6",
+        "englishHash": "e21c85486b2b969f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-tube-worm:why": {
+        "hash": "b1d657bf2c7d2609",
+        "englishHash": "b1d657bf2c7d2609",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-ribbon-worms:why": {
+        "hash": "d41adbb2eedc0305",
+        "englishHash": "d41adbb2eedc0305",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-ribbon-worms-1884.137.49:why": {
+        "hash": "a216d578e6a1e123",
+        "englishHash": "a216d578e6a1e123",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-bristle-worm:why": {
+        "hash": "ceb504f759467162",
+        "englishHash": "ceb504f759467162",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-a-salp-chain:why": {
+        "hash": "85fc72ab290acc68",
+        "englishHash": "85fc72ab290acc68",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-a-salp-chain-1884.137.47:why": {
+        "hash": "b6442c3799ad033a",
+        "englishHash": "b6442c3799ad033a",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:record": {
+        "hash": "ce8e196e298002c8",
+        "englishHash": "ce8e196e298002c8",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordCatalogue": {
+        "hash": "2e93c199fbf98458",
+        "englishHash": "2e93c199fbf98458",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordChecked": {
+        "hash": "2fb9c1b3d4ebd38d",
+        "englishHash": "2fb9c1b3d4ebd38d",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
       }
     },
     "ko": {
@@ -13663,6 +14265,307 @@
       },
       "story:1884.137.93:seg:colour:text": {
         "hash": "ff40955677115ac4",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:elsewhere": {
+        "hash": "9d3104fe84733f6d",
+        "englishHash": "9d3104fe84733f6d",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:marlinWhy": {
+        "hash": "e53dac55367d5f19",
+        "englishHash": "e53dac55367d5f19",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:claim.this-species": {
+        "hash": "84bf90d0e4b9dd1e",
+        "englishHash": "84bf90d0e4b9dd1e",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:claim.this-kind": {
+        "hash": "dbbc4394dcbf0bd6",
+        "englishHash": "dbbc4394dcbf0bd6",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:claim.this-group": {
+        "hash": "424c8de7df9632fb",
+        "englishHash": "424c8de7df9632fb",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:claim.this-collection": {
+        "hash": "7af7b95e14d55adc",
+        "englishHash": "7af7b95e14d55adc",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordCurrent": {
+        "hash": "a9b59df888510611",
+        "englishHash": "a9b59df888510611",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordSightings": {
+        "hash": "933878e9132d156f",
+        "englishHash": "933878e9132d156f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordSightingsNZ": {
+        "hash": "69706dcd39068cb0",
+        "englishHash": "69706dcd39068cb0",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordUnresolved": {
+        "hash": "20ad2d030552a383",
+        "englishHash": "20ad2d030552a383",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:cornell-blaschka:why": {
+        "hash": "1d6b3cc76fe399dc",
+        "englishHash": "1d6b3cc76fe399dc",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:cmog-fragile-legacy-marine-invertebrate-glass:why": {
+        "hash": "1e333c23cf820b41",
+        "englishHash": "1e333c23cf820b41",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:hmnh-glass-flowers:why": {
+        "hash": "72f498396ca84a54",
+        "englishHash": "72f498396ca84a54",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-corals-anemones-and-jellyfish-page-4:why": {
+        "hash": "bac5c3b15a5bdcb5",
+        "englishHash": "bac5c3b15a5bdcb5",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-corals-anemones-and-jellyfish-page-3:why": {
+        "hash": "6d43b9fe6a75f2d6",
+        "englishHash": "6d43b9fe6a75f2d6",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-marine-animals-without-backbones-page-1:why": {
+        "hash": "cd57ac81959942dd",
+        "englishHash": "cd57ac81959942dd",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-marine-animals-without-backbones-page-6:why": {
+        "hash": "9f15e23209c7630e",
+        "englishHash": "9f15e23209c7630e",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-octopus-and-squid:why": {
+        "hash": "5385cd905382a98b",
+        "englishHash": "5385cd905382a98b",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-shellfish-page-3:why": {
+        "hash": "6540759ac8ad31a0",
+        "englishHash": "6540759ac8ad31a0",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-corals-anemones-and-jellyfish-page-2:why": {
+        "hash": "84601ab2ff382690",
+        "englishHash": "84601ab2ff382690",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-corals-anemones-and-jellyfish-page-1:why": {
+        "hash": "9a8388317f48a0d5",
+        "englishHash": "5a5e57831141106e",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-starfish-sea-urchins-and-other:why": {
+        "hash": "146b2f7e3e14c53f",
+        "englishHash": "146b2f7e3e14c53f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-marine-animals-without-backbones-page-3:why": {
+        "hash": "2f327d6433eb8790",
+        "englishHash": "2f327d6433eb8790",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-marine-animals-without-backbones-page-2:why": {
+        "hash": "566a2a86eaceb26b",
+        "englishHash": "566a2a86eaceb26b",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-snails-and-slugs-page-1:why": {
+        "hash": "37e2eff445fb0453",
+        "englishHash": "37e2eff445fb0453",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-moon-jellyfish:why": {
+        "hash": "48eb5be6e543bc2c",
+        "englishHash": "48eb5be6e543bc2c",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-moon-jellyfish-1884.137.24:why": {
+        "hash": "f9f59e23d6d2970f",
+        "englishHash": "f9f59e23d6d2970f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-washed-up-portuguese-men-of:why": {
+        "hash": "a0140dcf6ad84d32",
+        "englishHash": "a0140dcf6ad84d32",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-portuguese-man-of-war:why": {
+        "hash": "3c7ffadb449d88a5",
+        "englishHash": "3c7ffadb449d88a5",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:niwa-critter-week-mediterranean-fanworm-sabella:why": {
+        "hash": "e3165a1330ddedf4",
+        "englishHash": "e3165a1330ddedf4",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-sea-hare:why": {
+        "hash": "964e862c46c56e53",
+        "englishHash": "964e862c46c56e53",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-sea-hare-1884.137.94:why": {
+        "hash": "20bd2ce6bcf01ee1",
+        "englishHash": "20bd2ce6bcf01ee1",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-comb-jelly:why": {
+        "hash": "c96eb6e1416d1e47",
+        "englishHash": "c96eb6e1416d1e47",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-spoon-worm:why": {
+        "hash": "e21c85486b2b969f",
+        "englishHash": "e21c85486b2b969f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-tube-worm:why": {
+        "hash": "b1d657bf2c7d2609",
+        "englishHash": "b1d657bf2c7d2609",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-ribbon-worms:why": {
+        "hash": "d41adbb2eedc0305",
+        "englishHash": "d41adbb2eedc0305",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-ribbon-worms-1884.137.49:why": {
+        "hash": "a216d578e6a1e123",
+        "englishHash": "a216d578e6a1e123",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-bristle-worm:why": {
+        "hash": "ceb504f759467162",
+        "englishHash": "ceb504f759467162",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-a-salp-chain:why": {
+        "hash": "85fc72ab290acc68",
+        "englishHash": "85fc72ab290acc68",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-a-salp-chain-1884.137.47:why": {
+        "hash": "b6442c3799ad033a",
+        "englishHash": "b6442c3799ad033a",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:record": {
+        "hash": "ce8e196e298002c8",
+        "englishHash": "ce8e196e298002c8",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordCatalogue": {
+        "hash": "2e93c199fbf98458",
+        "englishHash": "2e93c199fbf98458",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordChecked": {
+        "hash": "2fb9c1b3d4ebd38d",
+        "englishHash": "2fb9c1b3d4ebd38d",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"
@@ -18254,6 +19157,307 @@
         "engine": "unknown-legacy",
         "translatedAt": null,
         "reviewStatus": "unreviewed"
+      },
+      "ui:elsewhere": {
+        "hash": "9d3104fe84733f6d",
+        "englishHash": "9d3104fe84733f6d",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:marlinWhy": {
+        "hash": "e53dac55367d5f19",
+        "englishHash": "e53dac55367d5f19",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:claim.this-species": {
+        "hash": "84bf90d0e4b9dd1e",
+        "englishHash": "84bf90d0e4b9dd1e",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:claim.this-kind": {
+        "hash": "dbbc4394dcbf0bd6",
+        "englishHash": "dbbc4394dcbf0bd6",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:claim.this-group": {
+        "hash": "424c8de7df9632fb",
+        "englishHash": "424c8de7df9632fb",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:claim.this-collection": {
+        "hash": "7af7b95e14d55adc",
+        "englishHash": "7af7b95e14d55adc",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordCurrent": {
+        "hash": "a9b59df888510611",
+        "englishHash": "a9b59df888510611",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordSightings": {
+        "hash": "933878e9132d156f",
+        "englishHash": "933878e9132d156f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordSightingsNZ": {
+        "hash": "69706dcd39068cb0",
+        "englishHash": "69706dcd39068cb0",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordUnresolved": {
+        "hash": "20ad2d030552a383",
+        "englishHash": "20ad2d030552a383",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:cornell-blaschka:why": {
+        "hash": "1d6b3cc76fe399dc",
+        "englishHash": "1d6b3cc76fe399dc",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:cmog-fragile-legacy-marine-invertebrate-glass:why": {
+        "hash": "1e333c23cf820b41",
+        "englishHash": "1e333c23cf820b41",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:hmnh-glass-flowers:why": {
+        "hash": "72f498396ca84a54",
+        "englishHash": "72f498396ca84a54",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-corals-anemones-and-jellyfish-page-4:why": {
+        "hash": "bac5c3b15a5bdcb5",
+        "englishHash": "bac5c3b15a5bdcb5",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-corals-anemones-and-jellyfish-page-3:why": {
+        "hash": "6d43b9fe6a75f2d6",
+        "englishHash": "6d43b9fe6a75f2d6",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-marine-animals-without-backbones-page-1:why": {
+        "hash": "cd57ac81959942dd",
+        "englishHash": "cd57ac81959942dd",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-marine-animals-without-backbones-page-6:why": {
+        "hash": "9f15e23209c7630e",
+        "englishHash": "9f15e23209c7630e",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-octopus-and-squid:why": {
+        "hash": "5385cd905382a98b",
+        "englishHash": "5385cd905382a98b",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-shellfish-page-3:why": {
+        "hash": "6540759ac8ad31a0",
+        "englishHash": "6540759ac8ad31a0",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-corals-anemones-and-jellyfish-page-2:why": {
+        "hash": "84601ab2ff382690",
+        "englishHash": "84601ab2ff382690",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-corals-anemones-and-jellyfish-page-1:why": {
+        "hash": "4de5a4815e3972df",
+        "englishHash": "5a5e57831141106e",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-starfish-sea-urchins-and-other:why": {
+        "hash": "146b2f7e3e14c53f",
+        "englishHash": "146b2f7e3e14c53f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-marine-animals-without-backbones-page-3:why": {
+        "hash": "2f327d6433eb8790",
+        "englishHash": "2f327d6433eb8790",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-marine-animals-without-backbones-page-2:why": {
+        "hash": "566a2a86eaceb26b",
+        "englishHash": "566a2a86eaceb26b",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-snails-and-slugs-page-1:why": {
+        "hash": "37e2eff445fb0453",
+        "englishHash": "37e2eff445fb0453",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-moon-jellyfish:why": {
+        "hash": "48eb5be6e543bc2c",
+        "englishHash": "48eb5be6e543bc2c",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-moon-jellyfish-1884.137.24:why": {
+        "hash": "f9f59e23d6d2970f",
+        "englishHash": "f9f59e23d6d2970f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-washed-up-portuguese-men-of:why": {
+        "hash": "a0140dcf6ad84d32",
+        "englishHash": "a0140dcf6ad84d32",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-portuguese-man-of-war:why": {
+        "hash": "3c7ffadb449d88a5",
+        "englishHash": "3c7ffadb449d88a5",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:niwa-critter-week-mediterranean-fanworm-sabella:why": {
+        "hash": "e3165a1330ddedf4",
+        "englishHash": "e3165a1330ddedf4",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-sea-hare:why": {
+        "hash": "964e862c46c56e53",
+        "englishHash": "964e862c46c56e53",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-sea-hare-1884.137.94:why": {
+        "hash": "20bd2ce6bcf01ee1",
+        "englishHash": "20bd2ce6bcf01ee1",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-comb-jelly:why": {
+        "hash": "e323f39730a47272",
+        "englishHash": "c96eb6e1416d1e47",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-spoon-worm:why": {
+        "hash": "e2d2921d97515b5c",
+        "englishHash": "e21c85486b2b969f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-tube-worm:why": {
+        "hash": "b1d657bf2c7d2609",
+        "englishHash": "b1d657bf2c7d2609",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-ribbon-worms:why": {
+        "hash": "d41adbb2eedc0305",
+        "englishHash": "d41adbb2eedc0305",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-ribbon-worms-1884.137.49:why": {
+        "hash": "a216d578e6a1e123",
+        "englishHash": "a216d578e6a1e123",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-bristle-worm:why": {
+        "hash": "ceb504f759467162",
+        "englishHash": "ceb504f759467162",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-a-salp-chain:why": {
+        "hash": "85fc72ab290acc68",
+        "englishHash": "85fc72ab290acc68",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-a-salp-chain-1884.137.47:why": {
+        "hash": "b6442c3799ad033a",
+        "englishHash": "b6442c3799ad033a",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:record": {
+        "hash": "ce8e196e298002c8",
+        "englishHash": "ce8e196e298002c8",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordCatalogue": {
+        "hash": "2e93c199fbf98458",
+        "englishHash": "2e93c199fbf98458",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordChecked": {
+        "hash": "2fb9c1b3d4ebd38d",
+        "englishHash": "2fb9c1b3d4ebd38d",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
       }
     },
     "fr": {
@@ -22838,6 +24042,307 @@
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed",
         "englishHash": "d9b404595630a4f6"
+      },
+      "ui:elsewhere": {
+        "hash": "9d3104fe84733f6d",
+        "englishHash": "9d3104fe84733f6d",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:marlinWhy": {
+        "hash": "e53dac55367d5f19",
+        "englishHash": "e53dac55367d5f19",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:claim.this-species": {
+        "hash": "84bf90d0e4b9dd1e",
+        "englishHash": "84bf90d0e4b9dd1e",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:claim.this-kind": {
+        "hash": "dbbc4394dcbf0bd6",
+        "englishHash": "dbbc4394dcbf0bd6",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:claim.this-group": {
+        "hash": "424c8de7df9632fb",
+        "englishHash": "424c8de7df9632fb",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:claim.this-collection": {
+        "hash": "7af7b95e14d55adc",
+        "englishHash": "7af7b95e14d55adc",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordCurrent": {
+        "hash": "a9b59df888510611",
+        "englishHash": "a9b59df888510611",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordSightings": {
+        "hash": "933878e9132d156f",
+        "englishHash": "933878e9132d156f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordSightingsNZ": {
+        "hash": "69706dcd39068cb0",
+        "englishHash": "69706dcd39068cb0",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordUnresolved": {
+        "hash": "20ad2d030552a383",
+        "englishHash": "20ad2d030552a383",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:cornell-blaschka:why": {
+        "hash": "1d6b3cc76fe399dc",
+        "englishHash": "1d6b3cc76fe399dc",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:cmog-fragile-legacy-marine-invertebrate-glass:why": {
+        "hash": "1e333c23cf820b41",
+        "englishHash": "1e333c23cf820b41",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:hmnh-glass-flowers:why": {
+        "hash": "72f498396ca84a54",
+        "englishHash": "72f498396ca84a54",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-corals-anemones-and-jellyfish-page-4:why": {
+        "hash": "bac5c3b15a5bdcb5",
+        "englishHash": "bac5c3b15a5bdcb5",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-corals-anemones-and-jellyfish-page-3:why": {
+        "hash": "6d43b9fe6a75f2d6",
+        "englishHash": "6d43b9fe6a75f2d6",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-marine-animals-without-backbones-page-1:why": {
+        "hash": "cd57ac81959942dd",
+        "englishHash": "cd57ac81959942dd",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-marine-animals-without-backbones-page-6:why": {
+        "hash": "9f15e23209c7630e",
+        "englishHash": "9f15e23209c7630e",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-octopus-and-squid:why": {
+        "hash": "5385cd905382a98b",
+        "englishHash": "5385cd905382a98b",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-shellfish-page-3:why": {
+        "hash": "6540759ac8ad31a0",
+        "englishHash": "6540759ac8ad31a0",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-corals-anemones-and-jellyfish-page-2:why": {
+        "hash": "84601ab2ff382690",
+        "englishHash": "84601ab2ff382690",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-corals-anemones-and-jellyfish-page-1:why": {
+        "hash": "b6fda25639c2be52",
+        "englishHash": "5a5e57831141106e",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-starfish-sea-urchins-and-other:why": {
+        "hash": "146b2f7e3e14c53f",
+        "englishHash": "146b2f7e3e14c53f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-marine-animals-without-backbones-page-3:why": {
+        "hash": "2f327d6433eb8790",
+        "englishHash": "2f327d6433eb8790",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-marine-animals-without-backbones-page-2:why": {
+        "hash": "566a2a86eaceb26b",
+        "englishHash": "566a2a86eaceb26b",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-snails-and-slugs-page-1:why": {
+        "hash": "37e2eff445fb0453",
+        "englishHash": "37e2eff445fb0453",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-moon-jellyfish:why": {
+        "hash": "48eb5be6e543bc2c",
+        "englishHash": "48eb5be6e543bc2c",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-moon-jellyfish-1884.137.24:why": {
+        "hash": "f9f59e23d6d2970f",
+        "englishHash": "f9f59e23d6d2970f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-washed-up-portuguese-men-of:why": {
+        "hash": "a0140dcf6ad84d32",
+        "englishHash": "a0140dcf6ad84d32",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-portuguese-man-of-war:why": {
+        "hash": "3c7ffadb449d88a5",
+        "englishHash": "3c7ffadb449d88a5",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:niwa-critter-week-mediterranean-fanworm-sabella:why": {
+        "hash": "e3165a1330ddedf4",
+        "englishHash": "e3165a1330ddedf4",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-sea-hare:why": {
+        "hash": "964e862c46c56e53",
+        "englishHash": "964e862c46c56e53",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-sea-hare-1884.137.94:why": {
+        "hash": "20bd2ce6bcf01ee1",
+        "englishHash": "20bd2ce6bcf01ee1",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-comb-jelly:why": {
+        "hash": "c96eb6e1416d1e47",
+        "englishHash": "c96eb6e1416d1e47",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-spoon-worm:why": {
+        "hash": "6b8ac4f6e81906a2",
+        "englishHash": "e21c85486b2b969f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-tube-worm:why": {
+        "hash": "b1d657bf2c7d2609",
+        "englishHash": "b1d657bf2c7d2609",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-ribbon-worms:why": {
+        "hash": "d41adbb2eedc0305",
+        "englishHash": "d41adbb2eedc0305",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-ribbon-worms-1884.137.49:why": {
+        "hash": "a216d578e6a1e123",
+        "englishHash": "a216d578e6a1e123",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-bristle-worm:why": {
+        "hash": "ceb504f759467162",
+        "englishHash": "ceb504f759467162",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-a-salp-chain:why": {
+        "hash": "85fc72ab290acc68",
+        "englishHash": "85fc72ab290acc68",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-a-salp-chain-1884.137.47:why": {
+        "hash": "b6442c3799ad033a",
+        "englishHash": "b6442c3799ad033a",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:record": {
+        "hash": "ce8e196e298002c8",
+        "englishHash": "ce8e196e298002c8",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordCatalogue": {
+        "hash": "2e93c199fbf98458",
+        "englishHash": "2e93c199fbf98458",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordChecked": {
+        "hash": "2fb9c1b3d4ebd38d",
+        "englishHash": "2fb9c1b3d4ebd38d",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
       }
     },
     "es": {
@@ -27395,6 +28900,307 @@
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed",
         "englishHash": "a622c6f8acf42b7d"
+      },
+      "ui:elsewhere": {
+        "hash": "9d3104fe84733f6d",
+        "englishHash": "9d3104fe84733f6d",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:marlinWhy": {
+        "hash": "e53dac55367d5f19",
+        "englishHash": "e53dac55367d5f19",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:claim.this-species": {
+        "hash": "84bf90d0e4b9dd1e",
+        "englishHash": "84bf90d0e4b9dd1e",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:claim.this-kind": {
+        "hash": "dbbc4394dcbf0bd6",
+        "englishHash": "dbbc4394dcbf0bd6",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:claim.this-group": {
+        "hash": "424c8de7df9632fb",
+        "englishHash": "424c8de7df9632fb",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:claim.this-collection": {
+        "hash": "7af7b95e14d55adc",
+        "englishHash": "7af7b95e14d55adc",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordCurrent": {
+        "hash": "a9b59df888510611",
+        "englishHash": "a9b59df888510611",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordSightings": {
+        "hash": "933878e9132d156f",
+        "englishHash": "933878e9132d156f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordSightingsNZ": {
+        "hash": "69706dcd39068cb0",
+        "englishHash": "69706dcd39068cb0",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordUnresolved": {
+        "hash": "20ad2d030552a383",
+        "englishHash": "20ad2d030552a383",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:cornell-blaschka:why": {
+        "hash": "1d6b3cc76fe399dc",
+        "englishHash": "1d6b3cc76fe399dc",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:cmog-fragile-legacy-marine-invertebrate-glass:why": {
+        "hash": "1e333c23cf820b41",
+        "englishHash": "1e333c23cf820b41",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:hmnh-glass-flowers:why": {
+        "hash": "72f498396ca84a54",
+        "englishHash": "72f498396ca84a54",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-corals-anemones-and-jellyfish-page-4:why": {
+        "hash": "bac5c3b15a5bdcb5",
+        "englishHash": "bac5c3b15a5bdcb5",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-corals-anemones-and-jellyfish-page-3:why": {
+        "hash": "6d43b9fe6a75f2d6",
+        "englishHash": "6d43b9fe6a75f2d6",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-marine-animals-without-backbones-page-1:why": {
+        "hash": "cd57ac81959942dd",
+        "englishHash": "cd57ac81959942dd",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-marine-animals-without-backbones-page-6:why": {
+        "hash": "9f15e23209c7630e",
+        "englishHash": "9f15e23209c7630e",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-octopus-and-squid:why": {
+        "hash": "5385cd905382a98b",
+        "englishHash": "5385cd905382a98b",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-shellfish-page-3:why": {
+        "hash": "6540759ac8ad31a0",
+        "englishHash": "6540759ac8ad31a0",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-corals-anemones-and-jellyfish-page-2:why": {
+        "hash": "84601ab2ff382690",
+        "englishHash": "84601ab2ff382690",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-corals-anemones-and-jellyfish-page-1:why": {
+        "hash": "af56be60ca3bbc3b",
+        "englishHash": "5a5e57831141106e",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-starfish-sea-urchins-and-other:why": {
+        "hash": "146b2f7e3e14c53f",
+        "englishHash": "146b2f7e3e14c53f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-marine-animals-without-backbones-page-3:why": {
+        "hash": "2f327d6433eb8790",
+        "englishHash": "2f327d6433eb8790",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-marine-animals-without-backbones-page-2:why": {
+        "hash": "566a2a86eaceb26b",
+        "englishHash": "566a2a86eaceb26b",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-snails-and-slugs-page-1:why": {
+        "hash": "37e2eff445fb0453",
+        "englishHash": "37e2eff445fb0453",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-moon-jellyfish:why": {
+        "hash": "48eb5be6e543bc2c",
+        "englishHash": "48eb5be6e543bc2c",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-moon-jellyfish-1884.137.24:why": {
+        "hash": "f9f59e23d6d2970f",
+        "englishHash": "f9f59e23d6d2970f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-washed-up-portuguese-men-of:why": {
+        "hash": "a0140dcf6ad84d32",
+        "englishHash": "a0140dcf6ad84d32",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-portuguese-man-of-war:why": {
+        "hash": "3c7ffadb449d88a5",
+        "englishHash": "3c7ffadb449d88a5",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:niwa-critter-week-mediterranean-fanworm-sabella:why": {
+        "hash": "e3165a1330ddedf4",
+        "englishHash": "e3165a1330ddedf4",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-sea-hare:why": {
+        "hash": "964e862c46c56e53",
+        "englishHash": "964e862c46c56e53",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-sea-hare-1884.137.94:why": {
+        "hash": "20bd2ce6bcf01ee1",
+        "englishHash": "20bd2ce6bcf01ee1",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-comb-jelly:why": {
+        "hash": "c96eb6e1416d1e47",
+        "englishHash": "c96eb6e1416d1e47",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-spoon-worm:why": {
+        "hash": "e21c85486b2b969f",
+        "englishHash": "e21c85486b2b969f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-tube-worm:why": {
+        "hash": "b1d657bf2c7d2609",
+        "englishHash": "b1d657bf2c7d2609",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-ribbon-worms:why": {
+        "hash": "d41adbb2eedc0305",
+        "englishHash": "d41adbb2eedc0305",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-ribbon-worms-1884.137.49:why": {
+        "hash": "a216d578e6a1e123",
+        "englishHash": "a216d578e6a1e123",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-bristle-worm:why": {
+        "hash": "ceb504f759467162",
+        "englishHash": "ceb504f759467162",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-a-salp-chain:why": {
+        "hash": "85fc72ab290acc68",
+        "englishHash": "85fc72ab290acc68",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-a-salp-chain-1884.137.47:why": {
+        "hash": "b6442c3799ad033a",
+        "englishHash": "b6442c3799ad033a",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:record": {
+        "hash": "ce8e196e298002c8",
+        "englishHash": "ce8e196e298002c8",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordCatalogue": {
+        "hash": "2e93c199fbf98458",
+        "englishHash": "2e93c199fbf98458",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordChecked": {
+        "hash": "2fb9c1b3d4ebd38d",
+        "englishHash": "2fb9c1b3d4ebd38d",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
       }
     },
     "ar": {
@@ -31935,6 +33741,307 @@
       },
       "story:1884.137.10:seg:male-and-female:text": {
         "hash": "dccdbed9177d574f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:elsewhere": {
+        "hash": "9d3104fe84733f6d",
+        "englishHash": "9d3104fe84733f6d",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:marlinWhy": {
+        "hash": "e53dac55367d5f19",
+        "englishHash": "e53dac55367d5f19",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:claim.this-species": {
+        "hash": "84bf90d0e4b9dd1e",
+        "englishHash": "84bf90d0e4b9dd1e",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:claim.this-kind": {
+        "hash": "dbbc4394dcbf0bd6",
+        "englishHash": "dbbc4394dcbf0bd6",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:claim.this-group": {
+        "hash": "424c8de7df9632fb",
+        "englishHash": "424c8de7df9632fb",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:claim.this-collection": {
+        "hash": "7af7b95e14d55adc",
+        "englishHash": "7af7b95e14d55adc",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordCurrent": {
+        "hash": "a9b59df888510611",
+        "englishHash": "a9b59df888510611",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordSightings": {
+        "hash": "933878e9132d156f",
+        "englishHash": "933878e9132d156f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordSightingsNZ": {
+        "hash": "69706dcd39068cb0",
+        "englishHash": "69706dcd39068cb0",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordUnresolved": {
+        "hash": "20ad2d030552a383",
+        "englishHash": "20ad2d030552a383",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:cornell-blaschka:why": {
+        "hash": "1d6b3cc76fe399dc",
+        "englishHash": "1d6b3cc76fe399dc",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:cmog-fragile-legacy-marine-invertebrate-glass:why": {
+        "hash": "1e333c23cf820b41",
+        "englishHash": "1e333c23cf820b41",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:hmnh-glass-flowers:why": {
+        "hash": "72f498396ca84a54",
+        "englishHash": "72f498396ca84a54",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-corals-anemones-and-jellyfish-page-4:why": {
+        "hash": "bac5c3b15a5bdcb5",
+        "englishHash": "bac5c3b15a5bdcb5",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-corals-anemones-and-jellyfish-page-3:why": {
+        "hash": "6d43b9fe6a75f2d6",
+        "englishHash": "6d43b9fe6a75f2d6",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-marine-animals-without-backbones-page-1:why": {
+        "hash": "cd57ac81959942dd",
+        "englishHash": "cd57ac81959942dd",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-marine-animals-without-backbones-page-6:why": {
+        "hash": "9f15e23209c7630e",
+        "englishHash": "9f15e23209c7630e",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-octopus-and-squid:why": {
+        "hash": "5385cd905382a98b",
+        "englishHash": "5385cd905382a98b",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-shellfish-page-3:why": {
+        "hash": "6540759ac8ad31a0",
+        "englishHash": "6540759ac8ad31a0",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-corals-anemones-and-jellyfish-page-2:why": {
+        "hash": "84601ab2ff382690",
+        "englishHash": "84601ab2ff382690",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-corals-anemones-and-jellyfish-page-1:why": {
+        "hash": "d5657d4f1577bb72",
+        "englishHash": "5a5e57831141106e",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-starfish-sea-urchins-and-other:why": {
+        "hash": "146b2f7e3e14c53f",
+        "englishHash": "146b2f7e3e14c53f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-marine-animals-without-backbones-page-3:why": {
+        "hash": "2f327d6433eb8790",
+        "englishHash": "2f327d6433eb8790",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-marine-animals-without-backbones-page-2:why": {
+        "hash": "566a2a86eaceb26b",
+        "englishHash": "566a2a86eaceb26b",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-snails-and-slugs-page-1:why": {
+        "hash": "37e2eff445fb0453",
+        "englishHash": "37e2eff445fb0453",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-moon-jellyfish:why": {
+        "hash": "48eb5be6e543bc2c",
+        "englishHash": "48eb5be6e543bc2c",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-moon-jellyfish-1884.137.24:why": {
+        "hash": "f9f59e23d6d2970f",
+        "englishHash": "f9f59e23d6d2970f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-washed-up-portuguese-men-of:why": {
+        "hash": "a0140dcf6ad84d32",
+        "englishHash": "a0140dcf6ad84d32",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-portuguese-man-of-war:why": {
+        "hash": "3c7ffadb449d88a5",
+        "englishHash": "3c7ffadb449d88a5",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:niwa-critter-week-mediterranean-fanworm-sabella:why": {
+        "hash": "e3165a1330ddedf4",
+        "englishHash": "e3165a1330ddedf4",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-sea-hare:why": {
+        "hash": "964e862c46c56e53",
+        "englishHash": "964e862c46c56e53",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-sea-hare-1884.137.94:why": {
+        "hash": "20bd2ce6bcf01ee1",
+        "englishHash": "20bd2ce6bcf01ee1",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-comb-jelly:why": {
+        "hash": "c96eb6e1416d1e47",
+        "englishHash": "c96eb6e1416d1e47",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-spoon-worm:why": {
+        "hash": "e21c85486b2b969f",
+        "englishHash": "e21c85486b2b969f",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-tube-worm:why": {
+        "hash": "b1d657bf2c7d2609",
+        "englishHash": "b1d657bf2c7d2609",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-ribbon-worms:why": {
+        "hash": "d41adbb2eedc0305",
+        "englishHash": "d41adbb2eedc0305",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-ribbon-worms-1884.137.49:why": {
+        "hash": "a216d578e6a1e123",
+        "englishHash": "a216d578e6a1e123",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-bristle-worm:why": {
+        "hash": "ceb504f759467162",
+        "englishHash": "ceb504f759467162",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-a-salp-chain:why": {
+        "hash": "85fc72ab290acc68",
+        "englishHash": "85fc72ab290acc68",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "elsewhere:teara-a-salp-chain-1884.137.47:why": {
+        "hash": "b6442c3799ad033a",
+        "englishHash": "b6442c3799ad033a",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:record": {
+        "hash": "ce8e196e298002c8",
+        "englishHash": "ce8e196e298002c8",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordCatalogue": {
+        "hash": "2e93c199fbf98458",
+        "englishHash": "2e93c199fbf98458",
+        "engine": "nmt",
+        "translatedAt": "2026-08-15",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:recordChecked": {
+        "hash": "2fb9c1b3d4ebd38d",
+        "englishHash": "2fb9c1b3d4ebd38d",
         "engine": "nmt",
         "translatedAt": "2026-08-15",
         "reviewStatus": "unreviewed"

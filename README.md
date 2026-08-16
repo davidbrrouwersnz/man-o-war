@@ -87,7 +87,8 @@ photographs, because only media near the viewport loads.
 non-empty story on all 128 (§20). All eleven group pages. `/` — the eleven group tiles, with every
 object as a second tab. `/o/{accession}` for all 128, resolving to the group page and scrolling to
 the object. The two reading essays. Eight languages with RTL, complete: every interface string,
-every group panel, both essays and all 128 object stories in each. A 438-file audio guide with
+every group panel, both essays, all 128 object stories and all 30 further-reading annotations in
+each. A 438-file audio guide with
 word-level read-along, a scrubber and lock-screen controls. Lazy media, a dark grid, and a reading
 area that follows `prefers-color-scheme`.
 
@@ -96,6 +97,32 @@ page: sea anemones runs 22.8 screen-heights in one column and 14.5 in two.
 
 **Text size and high contrast** (§18), persisted, reachable from every route alongside the language
 picker — which matters most on the QR route, where a visitor lands on a group page rather than here.
+
+**Further reading, at three scales** (§6's external sources). The collection page ends with the
+other Blaschka world — Cornell's 570 models, Corning's exhibition, Harvard's Glass Flowers. Each
+group page ends with the Te Ara article on those animals in New Zealand. Each object carries a
+closed disclosure holding whatever can be verified for it: a Te Ara or MarLIN page where one
+exists, and its taxonomic record either way.
+
+**Every link says how close it actually is to the object** — *the same species*, or *a related
+animal, not the species in the glass*, or *the group, not this object*. That is the same discipline
+§6 applies to GBIF photographs, and it is why the curation is hand-authored: a Te Ara photograph of
+a New Zealand spoon worm beside a Blaschka model of a Mediterranean one is worth linking and is not
+the same animal.
+
+**Our words translate; the citations do not.** The sentence explaining why a source is worth reading
+is a fourth translation tier (`src/data/i18n/elsewhere/`), complete in all eight languages. The
+title of somebody else's article and the name of the institution that published it stay in English
+and are marked `lang="en" dir="ltr"` — a citation is quoted as printed, and translating "Fragile
+Legacy" would tell a German reader it leads somewhere German. It does not.
+
+**The taxonomy is resolved once, at build time, and refuses more often than it answers.** `npm run
+taxa` resolves all 128 against WoRMS and GBIF: **104 resolve, 60 of those to a name that has since
+been superseded** — which is §6's ~57% measured independently. The other 24 are refusals with
+reasons: fourteen misspellings that only match fuzzily, two homonyms where the catalogue name points
+at two different accepted species, and the objects with no animal to look up. **None of them is
+published on a guess**, and the interface says so rather than rendering an empty link. `npm run
+taxa:verify` re-checks every URL the app can hand a visitor.
 
 **Not built, deliberately.** Trails, the quiz, video, sign video, offline support, NFC, the
 seen-set, and deep zoom — §12 defers that last one until the Museum can export larger derivatives.

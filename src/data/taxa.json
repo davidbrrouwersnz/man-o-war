@@ -1,0 +1,4399 @@
+{
+ "note": "Machine-resolved taxonomic records, one per object, produced by scripts/taxa.mjs and NOT hand-edited — a re-run overwrites this file. It exists so §6's external links can be built without a runtime dependency on WoRMS or GBIF. `resolved: false` is a real answer and the app must render it as one: the reasons are the homonyms, the misspellings and the three objects with no animal to look up, all of which §6 names. Hand-curated further reading lives in src/data/elsewhere.json instead, which this file never touches.",
+ "generatedBy": "scripts/taxa.mjs",
+ "retrieved": "2026-08-15",
+ "sources": {
+  "worms": {
+   "name": "World Register of Marine Species",
+   "url": "https://www.marinespecies.org",
+   "licence": "CC BY 4.0"
+  },
+  "gbif": {
+   "name": "Global Biodiversity Information Facility",
+   "url": "https://www.gbif.org",
+   "licence": "CC BY 4.0"
+  },
+  "marlin": {
+   "name": "MarLIN — the Marine Life Information Network",
+   "url": "https://www.marlin.ac.uk",
+   "licence": "CC BY-NC-SA 4.0"
+  }
+ },
+ "counts": {
+  "total": 128,
+  "resolved": 104,
+  "unresolved": 24,
+  "marlin": 28
+ },
+ "taxa": {
+  "1884.137.47": {
+   "accession": "1884.137.47",
+   "catalogueName": "Salpa pinnata",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Salpa pinnata"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 720266,
+    "name": "Salpa pinnata",
+    "authority": "Forskål, 1775",
+    "status": "unaccepted",
+    "unacceptReason": "genus transfer",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=720266",
+    "citation": "Garic, R.; van Soest, R.W.M. (2026). World List of Thaliacea. Salpa pinnata Forskål, 1775. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=720266 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 137260,
+    "name": "Cyclosalpa pinnata",
+    "authority": "(Forskål, 1775)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=137260"
+   },
+   "gbif": {
+    "usageKey": 2498510,
+    "name": "Cyclosalpa pinnata",
+    "url": "https://www.gbif.org/species/2498510",
+    "occurrences": 169,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Chordata",
+    "class": "Thaliacea",
+    "order": "Salpida",
+    "family": "Salpidae"
+   }
+  },
+  "1884.137.48": {
+   "accession": "1884.137.48",
+   "catalogueName": "Bonellia viridis",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Bonellia viridis"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 110363,
+    "name": "Bonellia viridis",
+    "authority": "Rolando, 1822",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=110363",
+    "citation": "WoRMS (2026). Bonellia viridis Rolando, 1822. Accessed at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=110363 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 5234395,
+    "name": "Bonellia viridis",
+    "url": "https://www.gbif.org/species/5234395",
+    "occurrences": 6968,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Annelida",
+    "class": "Polychaeta",
+    "order": "Echiuroidea",
+    "family": "Bonelliidae"
+   }
+  },
+  "1884.137.49": {
+   "accession": "1884.137.49",
+   "catalogueName": "Borlasia trilineata",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Borlasia trilineata"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 177739,
+    "name": "Borlasia trilineata",
+    "authority": "Schmarda, 1859",
+    "status": "unaccepted",
+    "unacceptReason": "synonym",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=177739",
+    "citation": "Norenburg, J.; Chernyshev, A.; Kajihara, H.; Maslakova, S. (2026). World Nemertea Database. Borlasia trilineata Schmarda, 1859. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=177739 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 155869,
+    "name": "Lineopsella trilineata",
+    "authority": "(Schmarda, 1859)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=155869"
+   },
+   "gbif": {
+    "usageKey": 2508726,
+    "name": "Lineopsella trilineata",
+    "url": "https://www.gbif.org/species/2508726",
+    "occurrences": 0,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Nemertea",
+    "class": "Pilidiophora",
+    "order": "Heteronemertea",
+    "family": "Lineidae"
+   }
+  },
+  "1884.137.50": {
+   "accession": "1884.137.50",
+   "catalogueName": "Arion empiricorum, anatomy",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Arion empiricorum"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 875548,
+    "name": "Arion empiricorum",
+    "authority": "A. Férussac, 1819",
+    "status": "junior subjective synonym",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=875548",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Arion empiricorum A. Férussac, 1819. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=875548 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 875546,
+    "name": "Arion ater",
+    "authority": "(Linnaeus, 1758)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=875546"
+   },
+   "gbif": {
+    "usageKey": 2294101,
+    "name": "Arion ater",
+    "url": "https://www.gbif.org/species/2294101",
+    "occurrences": 39360,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Gastropoda",
+    "order": "Stylommatophora",
+    "family": "Arionidae"
+   }
+  },
+  "1884.137.51": {
+   "accession": "1884.137.51",
+   "catalogueName": "Salpa democratica-mucronata",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Salpa democratica",
+    "Salpa mucronata"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 719679,
+    "name": "Salpa democratica",
+    "authority": "Forskål, 1775",
+    "status": "unaccepted",
+    "unacceptReason": "genus transfer",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=719679",
+    "citation": "Garic, R.; van Soest, R.W.M. (2026). World List of Thaliacea. Salpa democratica Forskål, 1775. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=719679 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 137279,
+    "name": "Thalia democratica",
+    "authority": "(Forskål, 1775)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=137279"
+   },
+   "gbif": {
+    "usageKey": 5232491,
+    "name": "Thalia democratica",
+    "url": "https://www.gbif.org/species/5232491",
+    "occurrences": 6180,
+    "occurrencesNZ": 91
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Chordata",
+    "class": "Thaliacea",
+    "order": "Salpida",
+    "family": "Salpidae"
+   }
+  },
+  "1884.137.52": {
+   "accession": "1884.137.52",
+   "catalogueName": "Beroë punctata",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Beroe punctata"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 559365,
+    "name": "Beroe punctata",
+    "authority": "Chamisso & Eysenhardt, 1821",
+    "status": "junior subjective synonym",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=559365",
+    "citation": "Mills, C.E. Internet (1998-present). Phylum Ctenophora: list of all valid species names. Electronic internet document. Beroe punctata Chamisso & Eysenhardt, 1821. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=559365 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 1719780,
+    "name": "Beroe ovata",
+    "authority": "Bruguière, 1789",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=1719780"
+   },
+   "gbif": {
+    "usageKey": 5233152,
+    "name": "Beroe ovata",
+    "url": "https://www.gbif.org/species/5233152",
+    "occurrences": 2156,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Ctenophora",
+    "class": "Nuda",
+    "order": "Beroida",
+    "family": "Beroidae"
+   }
+  },
+  "1884.137.53": {
+   "accession": "1884.137.53",
+   "catalogueName": "Pleurobranchia pileus",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Pleurobranchia pileus"
+   ],
+   "rank": "species",
+   "resolved": false,
+   "why": "No exact match in WoRMS. A fuzzy match suggests Pleurobrachia pileus (AphiaID 106386), which §6 forbids publishing on without a human confirming it.",
+   "fuzzyCandidate": {
+    "name": "Pleurobrachia pileus",
+    "aphiaID": 106386,
+    "matchType": "near_1",
+    "status": "accepted"
+   }
+  },
+  "1884.137.54": {
+   "accession": "1884.137.54",
+   "catalogueName": "Vellela spirans",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Vellela spirans"
+   ],
+   "rank": "species",
+   "resolved": false,
+   "why": "No match in WoRMS, exact or fuzzy.",
+   "fuzzyCandidate": null
+  },
+  "1884.137.57": {
+   "accession": "1884.137.57",
+   "catalogueName": "Alcyonium digitatum",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Alcyonium digitatum"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 125333,
+    "name": "Alcyonium digitatum",
+    "authority": "Linnaeus, 1758",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=125333",
+    "citation": "McFadden, C.S.; Cordeiro, R.; Samimi-Namin, K.; Hoeksema, B.W., Williams, G.; van Ofwegen, L.P. (2026). World List of Octocorallia. Alcyonium digitatum Linnaeus, 1758. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=125333 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 5185175,
+    "name": "Alcyonium digitatum",
+    "url": "https://www.gbif.org/species/5185175",
+    "occurrences": 43117,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Octocorallia",
+    "order": "Malacalcyonacea",
+    "family": "Alcyoniidae"
+   },
+   "marlin": {
+    "id": "1187",
+    "name": "Alcyonium digitatum",
+    "common": "Dead man's fingers",
+    "url": "https://www.marlin.ac.uk/species/detail/1187"
+   }
+  },
+  "1884.137.58": {
+   "accession": "1884.137.58",
+   "catalogueName": "Phallusia pustulosa",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Phallusia pustulosa"
+   ],
+   "rank": "species",
+   "resolved": false,
+   "why": "No match in WoRMS, exact or fuzzy.",
+   "fuzzyCandidate": null
+  },
+  "1884.137.59": {
+   "accession": "1884.137.59",
+   "catalogueName": "Porpita",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Porpita"
+   ],
+   "rank": "genus",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 117199,
+    "name": "Porpita",
+    "authority": "Lamarck, 1801",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=117199",
+    "citation": "Schuchert, P.; Choong, H.; Galea, H.; Hoeksema, B.; Lindsay, D.; Mańko, M.; Pica, D. (2026). World Hydrozoa Database. Porpita Lamarck, 1801. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=117199 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 2265786,
+    "name": "Porpita",
+    "url": "https://www.gbif.org/species/2265786",
+    "occurrences": 3931,
+    "occurrencesNZ": 158
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hydrozoa",
+    "order": "Anthoathecata",
+    "family": "Porpitidae"
+   }
+  },
+  "1884.137.60": {
+   "accession": "1884.137.60",
+   "catalogueName": "Doris pantherina",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Doris pantherina"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 533980,
+    "name": "Doris pantherina",
+    "authority": "Angas, 1864",
+    "status": "superseded combination",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=533980",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Doris pantherina Angas, 1864. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=533980 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 533979,
+    "name": "Jorunna pantherina",
+    "authority": "(Angas, 1864)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=533979"
+   },
+   "gbif": {
+    "usageKey": 4596706,
+    "name": "Jorunna pantherina",
+    "url": "https://www.gbif.org/species/4596706",
+    "occurrences": 181,
+    "occurrencesNZ": 6
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Gastropoda",
+    "order": "Doridida",
+    "family": "Discodorididae"
+   }
+  },
+  "1884.137.62": {
+   "accession": "1884.137.62",
+   "catalogueName": "Thalassianthus aster",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Thalassianthus aster"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 291206,
+    "name": "Thalassianthus aster",
+    "authority": "Rüppell & Leuckart, 1828",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=291206",
+    "citation": "Rodríguez, E.; Fautin, D; Daly, M. (2026). World List of Actiniaria. Thalassianthus aster Rüppell & Leuckart, 1828. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=291206 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 8107370,
+    "name": "Thalassianthus aster",
+    "url": "https://www.gbif.org/species/8107370",
+    "occurrences": 26,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hexacorallia",
+    "order": "Actiniaria",
+    "family": "Thalassianthidae"
+   }
+  },
+  "1884.137.63": {
+   "accession": "1884.137.63",
+   "catalogueName": "Tubularia indivisa",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Tubularia indivisa"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 117994,
+    "name": "Tubularia indivisa",
+    "authority": "Linnaeus, 1758",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=117994",
+    "citation": "Schuchert, P.; Choong, H.; Galea, H.; Hoeksema, B.; Lindsay, D.; Mańko, M.; Pica, D. (2026). World Hydrozoa Database. Tubularia indivisa Linnaeus, 1758. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=117994 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 5185603,
+    "name": "Tubularia indivisa",
+    "url": "https://www.gbif.org/species/5185603",
+    "occurrences": 26048,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hydrozoa",
+    "order": "Anthoathecata",
+    "family": "Tubulariidae"
+   },
+   "marlin": {
+    "id": "1967",
+    "name": "Tubularia indivisa",
+    "common": "Oaten pipes hydroid",
+    "url": "https://www.marlin.ac.uk/species/detail/1967"
+   }
+  },
+  "1884.137.64": {
+   "accession": "1884.137.64",
+   "catalogueName": "Cerianthus membranaceus",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Cerianthus membranaceus"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 101011,
+    "name": "Cerianthus membranaceus",
+    "authority": "(Gmelin, 1791)",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=101011",
+    "citation": "Molodtsova, T. (2026). World List of Ceriantharia. Cerianthus membranaceus (Gmelin, 1791). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=101011 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 5841862,
+    "name": "Cerianthus membranaceus",
+    "url": "https://www.gbif.org/species/5841862",
+    "occurrences": 1517,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hexacorallia",
+    "order": "Ceriantharia",
+    "family": "Cerianthidae"
+   }
+  },
+  "1884.137.65": {
+   "accession": "1884.137.65",
+   "catalogueName": "Phymactis pustulata",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Phymactis pustulata"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 290762,
+    "name": "Phymactis pustulata",
+    "authority": "(Couthouy in Dana, 1846)",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=290762",
+    "citation": "Rodríguez, E.; Fautin, D; Daly, M. (2026). World List of Actiniaria. Phymactis pustulata (Couthouy in Dana, 1846). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=290762 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 2256778,
+    "name": "Phymactis pustulata",
+    "url": "https://www.gbif.org/species/2256778",
+    "occurrences": 2,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hexacorallia",
+    "order": "Actiniaria",
+    "family": "Actiniidae"
+   }
+  },
+  "1884.137.66": {
+   "accession": "1884.137.66",
+   "catalogueName": "Pyrosoma atlanticum",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Pyrosoma atlanticum"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 137250,
+    "name": "Pyrosoma atlanticum",
+    "authority": "Péron, 1804",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=137250",
+    "citation": "Garic, R.; van Soest, R.W.M. (2026). World List of Thaliacea. Pyrosoma atlanticum Péron, 1804. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=137250 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 5232532,
+    "name": "Pyrosoma atlanticum",
+    "url": "https://www.gbif.org/species/5232532",
+    "occurrences": 5703,
+    "occurrencesNZ": 1264
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Chordata",
+    "class": "Thaliacea",
+    "order": "Pyrosomatida",
+    "family": "Pyrosomatidae"
+   }
+  },
+  "1884.137.67": {
+   "accession": "1884.137.67",
+   "catalogueName": "Sepiola rondeleti",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Sepiola rondeleti"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 750350,
+    "name": "Sepiola rondeleti",
+    "authority": "Leach, 1817",
+    "status": "unaccepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=750350",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Sepiola rondeleti Leach, 1817. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=750350 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 141459,
+    "name": "Sepiola rondeletii",
+    "authority": "Leach, 1817",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=141459"
+   },
+   "gbif": {
+    "usageKey": 2289171,
+    "name": "Sepiola rondeletii",
+    "url": "https://www.gbif.org/species/2289171",
+    "occurrences": 925,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Cephalopoda",
+    "order": "Sepiolida",
+    "family": "Sepiolidae"
+   },
+   "marlin": {
+    "id": "1104",
+    "name": "Sepiola rondeletii",
+    "common": "Dwarf bobtail",
+    "url": "https://www.marlin.ac.uk/species/detail/1104"
+   }
+  },
+  "1884.137.68": {
+   "accession": "1884.137.68",
+   "catalogueName": "Rhizostoma pulmo",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Rhizostoma pulmo"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 135299,
+    "name": "Rhizostoma pulmo",
+    "authority": "(Macri, 1778)",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=135299",
+    "citation": "Collins, A.G.; Morandini, A.C. (2026). World List of Scyphozoa. Rhizostoma pulmo (Macri, 1778). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=135299 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 5185453,
+    "name": "Rhizostoma pulmo",
+    "url": "https://www.gbif.org/species/5185453",
+    "occurrences": 56011,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Scyphozoa",
+    "order": "Rhizostomeae",
+    "family": "Rhizostomatidae"
+   }
+  },
+  "1884.137.69": {
+   "accession": "1884.137.69",
+   "catalogueName": "Helix pomatia, anatomy",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Helix pomatia"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 1050286,
+    "name": "Helix pomatia",
+    "authority": "Linnaeus, 1758",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=1050286",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Helix pomatia Linnaeus, 1758. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=1050286 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 2294287,
+    "name": "Helix pomatia",
+    "url": "https://www.gbif.org/species/2294287",
+    "occurrences": 250591,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Gastropoda",
+    "order": "Stylommatophora",
+    "family": "Helicidae"
+   }
+  },
+  "1884.137.70": {
+   "accession": "1884.137.70",
+   "catalogueName": "Zoanthus couchii",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Zoanthus couchii"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 1472545,
+    "name": "Zoanthus couchii",
+    "authority": "Johnston in Couch, 1844",
+    "status": "unaccepted",
+    "unacceptReason": "original representation",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=1472545",
+    "citation": "WoRMS (2026). Zoanthus couchii Johnston in Couch, 1844. Accessed at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=1472545 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 101025,
+    "name": "Epizoanthus couchii",
+    "authority": "(Johnston in Couch, 1844)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=101025"
+   },
+   "gbif": {
+    "usageKey": 2258081,
+    "name": "Epizoanthus couchii",
+    "url": "https://www.gbif.org/species/2258081",
+    "occurrences": 3098,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hexacorallia",
+    "order": "Zoantharia",
+    "family": "Epizoanthidae"
+   },
+   "marlin": {
+    "id": "1829",
+    "name": "Epizoanthus couchii",
+    "common": "Sandy creeplet",
+    "url": "https://www.marlin.ac.uk/species/detail/1829"
+   }
+  },
+  "1884.137.71": {
+   "accession": "1884.137.71",
+   "catalogueName": "Sympodium coeruleum",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Sympodium coeruleum"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 1343349,
+    "name": "Sympodium coeruleum",
+    "authority": "Ehrenberg, 1834",
+    "status": "unaccepted",
+    "unacceptReason": "misspelling",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=1343349",
+    "citation": "McFadden, C.S.; Cordeiro, R.; Samimi-Namin, K.; Hoeksema, B.W., Williams, G.; van Ofwegen, L.P. (2026). World List of Octocorallia. Sympodium coeruleum Ehrenberg, 1834. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=1343349 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 210007,
+    "name": "Sympodium caeruleum",
+    "authority": "Ehrenberg, 1834",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=210007"
+   },
+   "gbif": {
+    "usageKey": 5185285,
+    "name": "Sympodium caeruleum",
+    "url": "https://www.gbif.org/species/5185285",
+    "occurrences": 83,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Octocorallia",
+    "order": "Malacalcyonacea",
+    "family": "Xeniidae"
+   }
+  },
+  "1884.137.72": {
+   "accession": "1884.137.72",
+   "catalogueName": "Lucernaria campanulata",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Lucernaria campanulata"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 564450,
+    "name": "Lucernaria campanulata",
+    "authority": "Lamouroux, 1815",
+    "status": "unaccepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=564450",
+    "citation": "Collins, A.G.; Mills, C.; Miranda, L.S. (2026). World List of Staurozoa. Lucernaria campanulata Lamouroux, 1815. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=564450 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 886183,
+    "name": "Calvadosia campanulata",
+    "authority": "(Lamouroux, 1815)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=886183"
+   },
+   "gbif": {
+    "usageKey": 8889428,
+    "name": "Calvadosia campanulata",
+    "url": "https://www.gbif.org/species/8889428",
+    "occurrences": 279,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Staurozoa",
+    "order": "Stauromedusae",
+    "family": "Kishinouyeidae"
+   },
+   "marlin": {
+    "id": "2101",
+    "name": "Calvadosia campanulata",
+    "common": "A stalked jellyfish",
+    "url": "https://www.marlin.ac.uk/species/detail/2101"
+   }
+  },
+  "1884.137.73": {
+   "accession": "1884.137.73",
+   "catalogueName": "Astroides calycularis",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Astroides calycularis"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 135178,
+    "name": "Astroides calycularis",
+    "authority": "(Pallas, 1766)",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=135178",
+    "citation": "Hoeksema, B. W.; Cairns, S.; Samimi-Namin, K. (2026). World List of Scleractinia. Astroides calycularis (Pallas, 1766). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=135178 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 5184544,
+    "name": "Astroides calycularis",
+    "url": "https://www.gbif.org/species/5184544",
+    "occurrences": 511,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hexacorallia",
+    "order": "Scleractinia",
+    "family": "Dendrophylliidae"
+   }
+  },
+  "1884.137.74": {
+   "accession": "1884.137.74",
+   "catalogueName": "Bolocera eques",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Bolocera eques"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 855396,
+    "name": "Bolocera eques",
+    "authority": "Gosse, 1860",
+    "status": "unaccepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=855396",
+    "citation": "Rodríguez, E.; Fautin, D; Daly, M. (2026). World List of Actiniaria. Bolocera eques Gosse, 1860. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=855396 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 100834,
+    "name": "Urticina felina",
+    "authority": "(Linnaeus, 1761)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=100834"
+   },
+   "gbif": {
+    "usageKey": 2256780,
+    "name": "Urticina felina",
+    "url": "https://www.gbif.org/species/2256780",
+    "occurrences": 22428,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hexacorallia",
+    "order": "Actiniaria",
+    "family": "Tealidae"
+   },
+   "marlin": {
+    "id": "1392",
+    "name": "Urticina felina",
+    "common": "Dahlia anemone",
+    "url": "https://www.marlin.ac.uk/species/detail/1392"
+   }
+  },
+  "1884.137.75": {
+   "accession": "1884.137.75",
+   "catalogueName": "Holothuria tubulosa",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Holothuria tubulosa"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 732401,
+    "name": "Holothuria tubulosa",
+    "authority": "Gmelin, 1791",
+    "status": "alternative representation",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=732401",
+    "citation": "WoRMS (2026). Holothuria tubulosa Gmelin, 1791. Accessed at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=732401 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 125182,
+    "name": "Holothuria (Holothuria) tubulosa",
+    "authority": "Gmelin, 1791",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=125182"
+   },
+   "gbif": {
+    "usageKey": 2279156,
+    "name": "Holothuria tubulosa",
+    "url": "https://www.gbif.org/species/2279156",
+    "occurrences": 7081,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Echinodermata",
+    "class": "Holothuroidea",
+    "order": "Holothuriida",
+    "family": "Holothuriidae"
+   }
+  },
+  "1884.137.76": {
+   "accession": "1884.137.76",
+   "catalogueName": "Elysia chlorotica",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Elysia chlorotica"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 160280,
+    "name": "Elysia chlorotica",
+    "authority": "A. A. Gould, 1870",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=160280",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Elysia chlorotica A. A. Gould, 1870. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=160280 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 5192082,
+    "name": "Elysia chlorotica",
+    "url": "https://www.gbif.org/species/5192082",
+    "occurrences": 284,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Gastropoda",
+    "order": null,
+    "family": "Plakobranchidae"
+   }
+  },
+  "1884.137.77": {
+   "accession": "1884.137.77",
+   "catalogueName": "Limax agrestis",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Limax agrestis"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 875539,
+    "name": "Limax agrestis",
+    "authority": "Linnaeus, 1758",
+    "status": "unaccepted",
+    "unacceptReason": "original name",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=875539",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Limax agrestis Linnaeus, 1758. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=875539 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 875541,
+    "name": "Deroceras agreste",
+    "authority": "(Linnaeus, 1758)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=875541"
+   },
+   "gbif": {
+    "usageKey": 5781288,
+    "name": "Deroceras agreste",
+    "url": "https://www.gbif.org/species/5781288",
+    "occurrences": 8887,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Gastropoda",
+    "order": "Stylommatophora",
+    "family": "Agriolimacidae"
+   }
+  },
+  "1884.137.78": {
+   "accession": "1884.137.78",
+   "catalogueName": "Clio borealis",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Clio borealis"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 391324,
+    "name": "Clio borealis",
+    "authority": "(Pallas, 1774)",
+    "status": "unaccepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=391324",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Clio borealis (Pallas, 1774). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=391324 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 139178,
+    "name": "Clione limacina",
+    "authority": "(Phipps, 1774)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=139178"
+   },
+   "gbif": {
+    "usageKey": 5193700,
+    "name": "Clione limacina",
+    "url": "https://www.gbif.org/species/5193700",
+    "occurrences": 16104,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Gastropoda",
+    "order": "Pteropoda",
+    "family": "Clionidae"
+   }
+  },
+  "1884.137.79": {
+   "accession": "1884.137.79",
+   "catalogueName": "Doliolum Ehrenbergii-Troschelii",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Doliolum ehrenbergii",
+    "Doliolum troschelii"
+   ],
+   "rank": "species",
+   "resolved": false,
+   "why": "No match in WoRMS, exact or fuzzy.",
+   "fuzzyCandidate": null
+  },
+  "1884.137.81": {
+   "accession": "1884.137.81",
+   "catalogueName": "Gorgonia verrucosa",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Gorgonia verrucosa"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 1337406,
+    "name": "Gorgonia verrucosa",
+    "authority": "Pallas, 1766",
+    "status": "superseded combination",
+    "unacceptReason": "original combination",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=1337406",
+    "citation": "McFadden, C.S.; Cordeiro, R.; Samimi-Namin, K.; Hoeksema, B.W., Williams, G.; van Ofwegen, L.P. (2026). World List of Octocorallia. Gorgonia verrucosa Pallas, 1766. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=1337406 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 125366,
+    "name": "Eunicella verrucosa",
+    "authority": "(Pallas, 1766)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=125366"
+   },
+   "gbif": {
+    "usageKey": 2263967,
+    "name": "Eunicella verrucosa",
+    "url": "https://www.gbif.org/species/2263967",
+    "occurrences": 5083,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Octocorallia",
+    "order": "Malacalcyonacea",
+    "family": "Eunicellidae"
+   },
+   "marlin": {
+    "id": "1121",
+    "name": "Eunicella verrucosa",
+    "common": "Pink sea fan",
+    "url": "https://www.marlin.ac.uk/species/detail/1121"
+   }
+  },
+  "1884.137.82": {
+   "accession": "1884.137.82",
+   "catalogueName": "Thyone fusus",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Thyone fusus"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 124670,
+    "name": "Thyone fusus",
+    "authority": "(O.F. Müller, 1776)",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=124670",
+    "citation": "WoRMS (2026). Thyone fusus (O.F. Müller, 1776). Accessed at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=124670 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 5188213,
+    "name": "Thyone fusus",
+    "url": "https://www.gbif.org/species/5188213",
+    "occurrences": 3587,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Echinodermata",
+    "class": "Holothuroidea",
+    "order": "Dendrochirotida",
+    "family": "Phyllophoridae"
+   }
+  },
+  "1884.137.84": {
+   "accession": "1884.137.84",
+   "catalogueName": "Cucumeria hyndmanni",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Cucumeria hyndmanni"
+   ],
+   "rank": "species",
+   "resolved": false,
+   "why": "No exact match in WoRMS. A fuzzy match suggests Cucumaria hyndmanni (AphiaID 124616), which §6 forbids publishing on without a human confirming it.",
+   "fuzzyCandidate": {
+    "name": "Cucumaria hyndmanni",
+    "aphiaID": 124616,
+    "matchType": "near_1",
+    "status": "unaccepted"
+   }
+  },
+  "1884.137.85": {
+   "accession": "1884.137.85",
+   "catalogueName": "Boltenia rubra",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Boltenia rubra"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 252260,
+    "name": "Boltenia rubra",
+    "authority": "Stimpson, 1852",
+    "status": "unaccepted",
+    "unacceptReason": "original combination",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=252260",
+    "citation": "Shenkar, N.; Gittenberger, A.; Lambert, G.; Rius, M.; Moreira da Rocha, R.; Swalla, B.J.; Turon, X. (2026). Ascidiacea World Database. Boltenia rubra Stimpson, 1852. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=252260 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 103815,
+    "name": "Boltenia ovifera",
+    "authority": "(Linnaeus, 1767)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=103815"
+   },
+   "gbif": {
+    "usageKey": 5200636,
+    "name": "Boltenia ovifera",
+    "url": "https://www.gbif.org/species/5200636",
+    "occurrences": 15416,
+    "occurrencesNZ": 1
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Chordata",
+    "class": "Ascidiacea",
+    "order": "Stolidobranchia",
+    "family": "Pyuridae"
+   }
+  },
+  "1884.137.86": {
+   "accession": "1884.137.86",
+   "catalogueName": "Helix pomatia",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Helix pomatia"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 1050286,
+    "name": "Helix pomatia",
+    "authority": "Linnaeus, 1758",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=1050286",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Helix pomatia Linnaeus, 1758. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=1050286 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 2294287,
+    "name": "Helix pomatia",
+    "url": "https://www.gbif.org/species/2294287",
+    "occurrences": 250591,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Gastropoda",
+    "order": "Stylommatophora",
+    "family": "Helicidae"
+   }
+  },
+  "1884.137.87": {
+   "accession": "1884.137.87",
+   "catalogueName": "Phyllobranchus orientalis",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Phyllobranchus orientalis"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 738474,
+    "name": "Phyllobranchus orientalis",
+    "authority": "(Kelaart, 1858)",
+    "status": "unaccepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=738474",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Phyllobranchus orientalis (Kelaart, 1858). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=738474 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 494520,
+    "name": "Polybranchia orientalis",
+    "authority": "(Kelaart, 1858)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=494520"
+   },
+   "gbif": {
+    "usageKey": 5794900,
+    "name": "Polybranchia orientalis",
+    "url": "https://www.gbif.org/species/5794900",
+    "occurrences": 233,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Gastropoda",
+    "order": null,
+    "family": "Caliphyllidae"
+   }
+  },
+  "1884.137.88": {
+   "accession": "1884.137.88",
+   "catalogueName": "Doto coronata",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Doto coronata"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 139631,
+    "name": "Doto coronata",
+    "authority": "(Gmelin, 1791)",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=139631",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Doto coronata (Gmelin, 1791). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=139631 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 5190041,
+    "name": "Doto coronata",
+    "url": "https://www.gbif.org/species/5190041",
+    "occurrences": 2873,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Gastropoda",
+    "order": "Nudibranchia",
+    "family": "Dotidae"
+   }
+  },
+  "1884.137.89": {
+   "accession": "1884.137.89",
+   "catalogueName": "Aeolis exigua",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Aeolis exigua"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 730397,
+    "name": "Aeolis exigua",
+    "authority": "(Alder & Hancock, 1848)",
+    "status": "unaccepted",
+    "unacceptReason": "synonym",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=730397",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Aeolis exigua (Alder & Hancock, 1848). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=730397 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 827532,
+    "name": "Nudibranchus exiguus",
+    "authority": "(Alder & Hancock, 1848)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=827532"
+   },
+   "gbif": {
+    "usageKey": 7879493,
+    "name": "Nudibranchus exiguus",
+    "url": "https://www.gbif.org/species/7879493",
+    "occurrences": 198,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Gastropoda",
+    "order": "Nudibranchia",
+    "family": "Eubranchidae"
+   }
+  },
+  "1884.137.90": {
+   "accession": "1884.137.90",
+   "catalogueName": "Eunice norvegica",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Eunice norvegica"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 130058,
+    "name": "Eunice norvegica",
+    "authority": "(Linnaeus, 1767)",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=130058",
+    "citation": "Read, G.; Fauchald, K. (Ed.) (2026). World Polychaeta Database. Eunice norvegica (Linnaeus, 1767). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=130058 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 5198375,
+    "name": "Eunice norvegica",
+    "url": "https://www.gbif.org/species/5198375",
+    "occurrences": 559,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Annelida",
+    "class": "Polychaeta",
+    "order": "Eunicida",
+    "family": "Eunicidae"
+   }
+  },
+  "1884.137.91": {
+   "accession": "1884.137.91",
+   "catalogueName": "Siphonostoma diplochaitos",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Siphonostoma diplochaitos"
+   ],
+   "rank": "species",
+   "resolved": false,
+   "why": "No exact match in WoRMS. A fuzzy match suggests Siphonostoma diplochaitus (AphiaID 888551), which §6 forbids publishing on without a human confirming it.",
+   "fuzzyCandidate": {
+    "name": "Siphonostoma diplochaitus",
+    "aphiaID": 888551,
+    "matchType": "near_1",
+    "status": "unaccepted"
+   }
+  },
+  "1884.137.93": {
+   "accession": "1884.137.93",
+   "catalogueName": "Actinodoris australis",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Actinodoris australis"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 533885,
+    "name": "Actinodoris australis",
+    "authority": "Angas, 1864",
+    "status": "unaccepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=533885",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Actinodoris australis Angas, 1864. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=533885 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 139519,
+    "name": "Dendrodoris nigra",
+    "authority": "(W. Stimpson, 1855)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=139519"
+   },
+   "gbif": {
+    "usageKey": 4359827,
+    "name": "Dendrodoris nigra",
+    "url": "https://www.gbif.org/species/4359827",
+    "occurrences": 2198,
+    "occurrencesNZ": 185
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Gastropoda",
+    "order": "Doridida",
+    "family": "Dendrodorididae"
+   }
+  },
+  "1884.137.94": {
+   "accession": "1884.137.94",
+   "catalogueName": "Dolabrifera fusca",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Dolabrifera fusca"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 596767,
+    "name": "Dolabrifera fusca",
+    "authority": "Pease, 1868",
+    "status": "unaccepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=596767",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Dolabrifera fusca Pease, 1868. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=596767 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 224652,
+    "name": "Dolabrifera dolabrifera",
+    "authority": "(Rang, 1828)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=224652"
+   },
+   "gbif": {
+    "usageKey": 9795524,
+    "name": "Dolabrifera dolabrifera",
+    "url": "https://www.gbif.org/species/9795524",
+    "occurrences": 1392,
+    "occurrencesNZ": 1
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Gastropoda",
+    "order": "Aplysiida",
+    "family": "Aplysiidae"
+   }
+  },
+  "1884.137.95": {
+   "accession": "1884.137.95",
+   "catalogueName": "Tiedemannia neapolitana",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Tiedemannia neapolitana"
+   ],
+   "rank": "species",
+   "resolved": false,
+   "why": "No exact match in WoRMS. A fuzzy match suggests Tiedemannia napolitana (AphiaID 750574), which §6 forbids publishing on without a human confirming it.",
+   "fuzzyCandidate": {
+    "name": "Tiedemannia napolitana",
+    "aphiaID": 750574,
+    "matchType": "near_1",
+    "status": "unaccepted"
+   }
+  },
+  "1884.137.96": {
+   "accession": "1884.137.96",
+   "catalogueName": "Halcampa chrysanthellum",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Halcampa chrysanthellum"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 100916,
+    "name": "Halcampa chrysanthellum",
+    "authority": "(Peach in Johnston, 1847)",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=100916",
+    "citation": "Rodríguez, E.; Fautin, D; Daly, M. (2026). World List of Actiniaria. Halcampa chrysanthellum (Peach in Johnston, 1847). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=100916 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 7721036,
+    "name": "Halcampa chrysanthellum",
+    "url": "https://www.gbif.org/species/7721036",
+    "occurrences": 1534,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hexacorallia",
+    "order": "Actiniaria",
+    "family": "Halcampidae"
+   },
+   "marlin": {
+    "id": "1620",
+    "name": "Halcampa chrysanthellum",
+    "common": "A sea anemone",
+    "url": "https://www.marlin.ac.uk/species/detail/1620"
+   }
+  },
+  "1884.137.97": {
+   "accession": "1884.137.97",
+   "catalogueName": "Centrostomum polycyclium",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Centrostomum polycyclium"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 486685,
+    "name": "Centrostomum polycyclium",
+    "authority": "Schmarda, 1859",
+    "status": "unaccepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=486685",
+    "citation": "Tyler, S., Artois, T.; Schilling, S.; Hooge, M.; Bush, L.F. (eds) (2006-2026). World List of turbellarian worms: Acoelomorpha, Catenulida, Rhabditophora. Centrostomum polycyclium Schmarda, 1859. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=486685 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 484765,
+    "name": "Leptoplana polycyclia",
+    "authority": "Schmarda, 1859",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=484765"
+   },
+   "gbif": {
+    "usageKey": 6479905,
+    "name": "Leptoplana polycyclia",
+    "url": "https://www.gbif.org/species/6479905",
+    "occurrences": 0,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Platyhelminthes",
+    "class": null,
+    "order": "Polycladida",
+    "family": "Leptoplanidae"
+   }
+  },
+  "1884.137.99": {
+   "accession": "1884.137.99",
+   "catalogueName": "Tiedemannia neapolitana",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Tiedemannia neapolitana"
+   ],
+   "rank": "species",
+   "resolved": false,
+   "why": "No exact match in WoRMS. A fuzzy match suggests Tiedemannia napolitana (AphiaID 750574), which §6 forbids publishing on without a human confirming it.",
+   "fuzzyCandidate": {
+    "name": "Tiedemannia napolitana",
+    "aphiaID": 750574,
+    "matchType": "near_1",
+    "status": "unaccepted"
+   }
+  },
+  "1884.137.100": {
+   "accession": "1884.137.100",
+   "catalogueName": "Clionopsis krohnii",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Clionopsis krohnii"
+   ],
+   "rank": "species",
+   "resolved": false,
+   "why": "No exact match in WoRMS. A fuzzy match suggests Cliopsis krohnii (AphiaID 139185), which §6 forbids publishing on without a human confirming it.",
+   "fuzzyCandidate": {
+    "name": "Cliopsis krohnii",
+    "aphiaID": 139185,
+    "matchType": "near_2",
+    "status": "accepted"
+   }
+  },
+  "1884.137.104": {
+   "accession": "1884.137.104",
+   "catalogueName": "Chrysaora hysoscella",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Chrysaora hysoscella"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 135304,
+    "name": "Chrysaora hysoscella",
+    "authority": "(Linnaeus, 1767)",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=135304",
+    "citation": "Collins, A.G.; Morandini, A.C. (2026). World List of Scyphozoa. Chrysaora hysoscella (Linnaeus, 1767). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=135304 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 5185425,
+    "name": "Chrysaora hysoscella",
+    "url": "https://www.gbif.org/species/5185425",
+    "occurrences": 39629,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Scyphozoa",
+    "order": "Semaeostomeae",
+    "family": "Pelagiidae"
+   },
+   "marlin": {
+    "id": "2020",
+    "name": "Chrysaora hysoscella",
+    "common": "Compass jellyfish",
+    "url": "https://www.marlin.ac.uk/species/detail/2020"
+   }
+  },
+  "1884.137.105": {
+   "accession": "1884.137.105",
+   "catalogueName": "Pelagia noctiluca",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Pelagia noctiluca"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 135305,
+    "name": "Pelagia noctiluca",
+    "authority": "(Forsskål, 1775)",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=135305",
+    "citation": "Collins, A.G.; Morandini, A.C. (2026). World List of Scyphozoa. Pelagia noctiluca (Forsskål, 1775). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=135305 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 2264423,
+    "name": "Pelagia noctiluca",
+    "url": "https://www.gbif.org/species/2264423",
+    "occurrences": 11859,
+    "occurrencesNZ": 6
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Scyphozoa",
+    "order": "Semaeostomeae",
+    "family": "Pelagiidae"
+   },
+   "marlin": {
+    "id": "2106",
+    "name": "Pelagia noctiluca",
+    "common": "Mauve stinger",
+    "url": "https://www.marlin.ac.uk/species/detail/2106"
+   }
+  },
+  "1884.137.136": {
+   "accession": "1884.137.136",
+   "catalogueName": "soft coral polyp",
+   "retrieved": "2026-08-15",
+   "resolved": false,
+   "why": "The catalogue name is \"soft coral polyp\" — a description, not a binomial. No species was ever recorded."
+  },
+  "1884.137.107": {
+   "accession": "1884.137.107",
+   "catalogueName": "Lafoea calcarata",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Lafoea calcarata"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 1507829,
+    "name": "Lafoea calcarata",
+    "authority": "(A. Agassiz, 1862)",
+    "status": "unaccepted",
+    "unacceptReason": "incorrect genus",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=1507829",
+    "citation": "Schuchert, P.; Choong, H.; Galea, H.; Hoeksema, B.; Lindsay, D.; Mańko, M.; Pica, D. (2026). World Hydrozoa Database. Lafoea calcarata (A. Agassiz, 1862). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=1507829 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 117725,
+    "name": "Laodicea undulata",
+    "authority": "(Forbes & Goodsir, 1853)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=117725"
+   },
+   "gbif": {
+    "usageKey": 2267857,
+    "name": "Laodicea undulata",
+    "url": "https://www.gbif.org/species/2267857",
+    "occurrences": 1480,
+    "occurrencesNZ": 5
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hydrozoa",
+    "order": "Leptothecata",
+    "family": "Laodiceidae"
+   }
+  },
+  "1884.137.108": {
+   "accession": "1884.137.108",
+   "catalogueName": "Carmarina hastata showing development in three stages.",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Carmarina hastata"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 887892,
+    "name": "Carmarina hastata",
+    "authority": "Haeckel, 1864",
+    "status": "unaccepted",
+    "unacceptReason": "synonym",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=887892",
+    "citation": "Schuchert, P.; Choong, H.; Galea, H.; Hoeksema, B.; Lindsay, D.; Mańko, M.; Pica, D. (2026). World Hydrozoa Database. Carmarina hastata Haeckel, 1864. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=887892 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 117567,
+    "name": "Geryonia proboscidalis",
+    "authority": "(Forsskål, 1775)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=117567"
+   },
+   "gbif": {
+    "usageKey": 5186387,
+    "name": "Geryonia proboscidalis",
+    "url": "https://www.gbif.org/species/5186387",
+    "occurrences": 549,
+    "occurrencesNZ": 2
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hydrozoa",
+    "order": "Limnomedusae",
+    "family": "Geryoniidae"
+   }
+  },
+  "1884.137.111": {
+   "accession": "1884.137.111",
+   "catalogueName": "Velella spirans, Stage One and Two",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Velella spirans"
+   ],
+   "rank": "species",
+   "resolved": false,
+   "why": "No match in WoRMS, exact or fuzzy.",
+   "fuzzyCandidate": null
+  },
+  "1884.137.113": {
+   "accession": "1884.137.113",
+   "catalogueName": "Oceania phosphorica",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Oceania phosphorica"
+   ],
+   "rank": "species",
+   "resolved": false,
+   "why": "2 WoRMS records resolving to 2 different accepted taxa. §6: never take hits[0].",
+   "candidates": [
+    {
+     "aphiaID": 762339,
+     "name": "Oceania phosphorica",
+     "status": "unaccepted",
+     "valid": "Clytia hemisphaerica",
+     "validAphiaID": 117368
+    },
+    {
+     "aphiaID": 884857,
+     "name": "Oceania phosphorica",
+     "status": "unaccepted",
+     "valid": "Olindias muelleri",
+     "validAphiaID": 292470
+    }
+   ]
+  },
+  "1884.137.114": {
+   "accession": "1884.137.114",
+   "catalogueName": "Diphyes sieboldii",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Diphyes sieboldii"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 709350,
+    "name": "Diphyes sieboldii",
+    "authority": "Kölliker, 1853",
+    "status": "unaccepted",
+    "unacceptReason": "synonym",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=709350",
+    "citation": "Schuchert, P.; Choong, H.; Galea, H.; Hoeksema, B.; Lindsay, D.; Mańko, M.; Pica, D. (2026). World Hydrozoa Database. Diphyes sieboldii Kölliker, 1853. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=709350 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 135417,
+    "name": "Chelophyes appendiculata",
+    "authority": "(Eschscholtz, 1829)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=135417"
+   },
+   "gbif": {
+    "usageKey": 2264783,
+    "name": "Chelophyes appendiculata",
+    "url": "https://www.gbif.org/species/2264783",
+    "occurrences": 4422,
+    "occurrencesNZ": 42
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hydrozoa",
+    "order": "Siphonophorae",
+    "family": "Diphyidae"
+   }
+  },
+  "1884.137.115": {
+   "accession": "1884.137.115",
+   "catalogueName": "Actineria hemprichi",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Actineria hemprichi"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 855131,
+    "name": "Actineria hemprichi",
+    "authority": "Ehrenberg",
+    "status": "unaccepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=855131",
+    "citation": "Rodríguez, E.; Fautin, D; Daly, M. (2026). World List of Actiniaria. Actineria hemprichi Ehrenberg. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=855131 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 220970,
+    "name": "Megalactis hemprichii",
+    "authority": "Ehrenberg, 1834",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=220970"
+   },
+   "gbif": {
+    "usageKey": 2257592,
+    "name": "Megalactis hemprichii",
+    "url": "https://www.gbif.org/species/2257592",
+    "occurrences": 63,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hexacorallia",
+    "order": "Actiniaria",
+    "family": "Actinodendridae"
+   }
+  },
+  "1884.137.116": {
+   "accession": "1884.137.116",
+   "catalogueName": "Plocamophorus imperialis",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Plocamophorus imperialis"
+   ],
+   "rank": "species",
+   "resolved": false,
+   "why": "No exact match in WoRMS. A fuzzy match suggests Plocamopherus imperialis (AphiaID 531273), which §6 forbids publishing on without a human confirming it.",
+   "fuzzyCandidate": {
+    "name": "Plocamopherus imperialis",
+    "aphiaID": 531273,
+    "matchType": "near_1",
+    "status": "accepted"
+   }
+  },
+  "1884.137.117": {
+   "accession": "1884.137.117",
+   "catalogueName": "Goniodoris verrucosa",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Goniodoris verrucosa"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 533997,
+    "name": "Goniodoris verrucosa",
+    "authority": "Crosse, 1864",
+    "status": "unaccepted",
+    "unacceptReason": "original combination",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=533997",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Goniodoris verrucosa Crosse, 1864. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=533997 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 533996,
+    "name": "Thordisa verrucosa",
+    "authority": "(Crosse, 1864)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=533996"
+   },
+   "gbif": {
+    "usageKey": 4596714,
+    "name": "Thordisa verrucosa",
+    "url": "https://www.gbif.org/species/4596714",
+    "occurrences": 65,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Gastropoda",
+    "order": "Doridida",
+    "family": "Discodorididae"
+   }
+  },
+  "1884.137.118": {
+   "accession": "1884.137.118",
+   "catalogueName": "Renilla violacea",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Renilla violacea"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 1398216,
+    "name": "Renilla violacea",
+    "authority": "Quoy & Gaimard, 1824",
+    "status": "uncertain",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=1398216",
+    "citation": "McFadden, C.S.; Cordeiro, R.; Samimi-Namin, K.; Hoeksema, B.W., Williams, G.; van Ofwegen, L.P. (2026). World List of Octocorallia. Renilla violacea Quoy & Gaimard, 1824. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=1398216 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 10699503,
+    "name": "Renilla violacea",
+    "url": "https://www.gbif.org/species/10699503",
+    "occurrences": 1,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Octocorallia",
+    "order": "Scleralcyonacea",
+    "family": "Renillidae"
+   }
+  },
+  "1884.137.119": {
+   "accession": "1884.137.119",
+   "catalogueName": "Clavellina lepadiformis",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Clavellina lepadiformis"
+   ],
+   "rank": "species",
+   "resolved": false,
+   "why": "No exact match in WoRMS. A fuzzy match suggests Clavelina lepadiformis (AphiaID 103552), which §6 forbids publishing on without a human confirming it.",
+   "fuzzyCandidate": {
+    "name": "Clavelina lepadiformis",
+    "aphiaID": 103552,
+    "matchType": "phonetic",
+    "status": "accepted"
+   }
+  },
+  "1884.137.122": {
+   "accession": "1884.137.122",
+   "catalogueName": "Sagartia bellis variety tyriensis",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Sagartia bellis"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 854755,
+    "name": "Sagartia bellis",
+    "authority": "(Ellis & Solander)",
+    "status": "unaccepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=854755",
+    "citation": "Rodríguez, E.; Fautin, D; Daly, M. (2026). World List of Actiniaria. Sagartia bellis (Ellis & Solander). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=854755 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 100987,
+    "name": "Cereus pedunculatus",
+    "authority": "(Pennant, 1777)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=100987"
+   },
+   "gbif": {
+    "usageKey": 5184341,
+    "name": "Cereus pedunculatus",
+    "url": "https://www.gbif.org/species/5184341",
+    "occurrences": 10834,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hexacorallia",
+    "order": "Actiniaria",
+    "family": "Sagartiidae"
+   },
+   "marlin": {
+    "id": "1610",
+    "name": "Cereus pedunculatus",
+    "common": "Daisy anemone",
+    "url": "https://www.marlin.ac.uk/species/detail/1610"
+   }
+  },
+  "1884.137.123": {
+   "accession": "1884.137.123",
+   "catalogueName": "Bunodes gemmacea",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Bunodes gemmacea"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 855467,
+    "name": "Bunodes gemmacea",
+    "authority": "Ellis & Solander",
+    "status": "unaccepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=855467",
+    "citation": "Rodríguez, E.; Fautin, D; Daly, M. (2026). World List of Actiniaria. Bunodes gemmacea Ellis & Solander. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=855467 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 100819,
+    "name": "Bunodactis verrucosa",
+    "authority": "(Pennant, 1777)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=100819"
+   },
+   "gbif": {
+    "usageKey": 4283460,
+    "name": "Bunodactis verrucosa",
+    "url": "https://www.gbif.org/species/4283460",
+    "occurrences": 2695,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hexacorallia",
+    "order": "Actiniaria",
+    "family": "Actiniidae"
+   },
+   "marlin": {
+    "id": "1601",
+    "name": "Bunodactis verrucosa",
+    "common": "Gem anemone",
+    "url": "https://www.marlin.ac.uk/species/detail/1601"
+   }
+  },
+  "1884.137.124": {
+   "accession": "1884.137.124",
+   "catalogueName": "Nemactis primula",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Nemactis primula"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 410935,
+    "name": "Nemactis primula",
+    "authority": "(Drayton in Dana, 1846)",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=410935",
+    "citation": "Rodríguez, E.; Fautin, D; Daly, M. (2026). World List of Actiniaria. Nemactis primula (Drayton in Dana, 1846). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=410935 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 6472128,
+    "name": "Nemactis primula",
+    "url": "https://www.gbif.org/species/6472128",
+    "occurrences": 8,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hexacorallia",
+    "order": "Actiniaria",
+    "family": null
+   }
+  },
+  "1884.137.109": {
+   "accession": "1884.137.109",
+   "catalogueName": "Obelia dichotoma male polyps and medusa",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Obelia dichotoma"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 117386,
+    "name": "Obelia dichotoma",
+    "authority": "(Linnaeus, 1758)",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=117386",
+    "citation": "Schuchert, P.; Choong, H.; Galea, H.; Hoeksema, B.; Lindsay, D.; Mańko, M.; Pica, D. (2026). World Hydrozoa Database. Obelia dichotoma (Linnaeus, 1758). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=117386 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 5185976,
+    "name": "Obelia dichotoma",
+    "url": "https://www.gbif.org/species/5185976",
+    "occurrences": 6670,
+    "occurrencesNZ": 27
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hydrozoa",
+    "order": "Leptothecata",
+    "family": "Campanulariidae"
+   },
+   "marlin": {
+    "id": "37",
+    "name": "Obelia dichotoma",
+    "common": "Thin-walled obelia",
+    "url": "https://www.marlin.ac.uk/species/detail/37"
+   }
+  },
+  "1884.137.126": {
+   "accession": "1884.137.126",
+   "catalogueName": "Tubularia indivisa, male",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Tubularia indivisa"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 117994,
+    "name": "Tubularia indivisa",
+    "authority": "Linnaeus, 1758",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=117994",
+    "citation": "Schuchert, P.; Choong, H.; Galea, H.; Hoeksema, B.; Lindsay, D.; Mańko, M.; Pica, D. (2026). World Hydrozoa Database. Tubularia indivisa Linnaeus, 1758. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=117994 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 5185603,
+    "name": "Tubularia indivisa",
+    "url": "https://www.gbif.org/species/5185603",
+    "occurrences": 26048,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hydrozoa",
+    "order": "Anthoathecata",
+    "family": "Tubulariidae"
+   },
+   "marlin": {
+    "id": "1967",
+    "name": "Tubularia indivisa",
+    "common": "Oaten pipes hydroid",
+    "url": "https://www.marlin.ac.uk/species/detail/1967"
+   }
+  },
+  "1884.137.127": {
+   "accession": "1884.137.127",
+   "catalogueName": "Cestum veneris",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Cestum veneris"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 106363,
+    "name": "Cestum veneris",
+    "authority": "Lesueur, 1813",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=106363",
+    "citation": "Mills, C.E. Internet (1998-present). Phylum Ctenophora: list of all valid species names. Electronic internet document. Cestum veneris Lesueur, 1813. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=106363 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 2501198,
+    "name": "Cestum veneris",
+    "url": "https://www.gbif.org/species/2501198",
+    "occurrences": 697,
+    "occurrencesNZ": 8
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Ctenophora",
+    "class": "Tentaculata",
+    "order": "Cestida",
+    "family": "Cestidae"
+   }
+  },
+  "1884.137.128": {
+   "accession": "1884.137.128",
+   "catalogueName": "Planaria lactea",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Planaria lactea"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 486160,
+    "name": "Planaria lactea",
+    "authority": "Müller, 1776",
+    "status": "unaccepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=486160",
+    "citation": "Tyler, S., Artois, T.; Schilling, S.; Hooge, M.; Bush, L.F. (eds) (2006-2026). World List of turbellarian worms: Acoelomorpha, Catenulida, Rhabditophora. Planaria lactea Müller, 1776. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=486160 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 481493,
+    "name": "Bothrioplana semperi",
+    "authority": "Braun, 1881",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=481493"
+   },
+   "gbif": {
+    "usageKey": 2503317,
+    "name": "Bothrioplana semperi",
+    "url": "https://www.gbif.org/species/2503317",
+    "occurrences": 82,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Platyhelminthes",
+    "class": null,
+    "order": "Bothrioplanida",
+    "family": "Bothrioplanidae"
+   }
+  },
+  "1884.137.129": {
+   "accession": "1884.137.129",
+   "catalogueName": "Botryllus gemmeus",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Botryllus gemmeus"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 252312,
+    "name": "Botryllus gemmeus",
+    "authority": "Savigny, 1816",
+    "status": "unaccepted",
+    "unacceptReason": "original combination",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=252312",
+    "citation": "Shenkar, N.; Gittenberger, A.; Lambert, G.; Rius, M.; Moreira da Rocha, R.; Swalla, B.J.; Turon, X. (2026). Ascidiacea World Database. Botryllus gemmeus Savigny, 1816. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=252312 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 103862,
+    "name": "Botryllus schlosseri",
+    "authority": "(Pallas, 1766)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=103862"
+   },
+   "gbif": {
+    "usageKey": 5200757,
+    "name": "Botryllus schlosseri",
+    "url": "https://www.gbif.org/species/5200757",
+    "occurrences": 21339,
+    "occurrencesNZ": 82
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Chordata",
+    "class": "Ascidiacea",
+    "order": "Stolidobranchia",
+    "family": "Styelidae"
+   },
+   "marlin": {
+    "id": "1340",
+    "name": "Botryllus schlosseri",
+    "common": "Star ascidian",
+    "url": "https://www.marlin.ac.uk/species/detail/1340"
+   }
+  },
+  "1884.137.112": {
+   "accession": "1884.137.112",
+   "catalogueName": "Thysanozoon discoideum",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Thysanozoon discoideum"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 484039,
+    "name": "Thysanozoon discoideum",
+    "authority": "Schmarda, 1859",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=484039",
+    "citation": "Tyler, S., Artois, T.; Schilling, S.; Hooge, M.; Bush, L.F. (eds) (2006-2026). World List of turbellarian worms: Acoelomorpha, Catenulida, Rhabditophora. Thysanozoon discoideum Schmarda, 1859. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=484039 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 6479501,
+    "name": "Thysanozoon discoideum",
+    "url": "https://www.gbif.org/species/6479501",
+    "occurrences": 1,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Platyhelminthes",
+    "class": null,
+    "order": "Polycladida",
+    "family": "Pseudocerotidae"
+   }
+  },
+  "1884.137.120": {
+   "accession": "1884.137.120",
+   "catalogueName": "Dendrophyllia ramea",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Dendrophyllia ramea"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 135187,
+    "name": "Dendrophyllia ramea",
+    "authority": "(Linnaeus, 1758)",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=135187",
+    "citation": "Hoeksema, B. W.; Cairns, S.; Samimi-Namin, K. (2026). World List of Scleractinia. Dendrophyllia ramea (Linnaeus, 1758). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=135187 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 2259688,
+    "name": "Dendrophyllia ramea",
+    "url": "https://www.gbif.org/species/2259688",
+    "occurrences": 280,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hexacorallia",
+    "order": "Scleractinia",
+    "family": "Dendrophylliidae"
+   }
+  },
+  "1884.137.121": {
+   "accession": "1884.137.121",
+   "catalogueName": "Pennatula rubra",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Pennatula rubra"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 128519,
+    "name": "Pennatula rubra",
+    "authority": "Ellis, 1764",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=128519",
+    "citation": "McFadden, C.S.; Cordeiro, R.; Samimi-Namin, K.; Hoeksema, B.W., Williams, G.; van Ofwegen, L.P. (2026). World List of Octocorallia. Pennatula rubra Ellis, 1764. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=128519 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 2258707,
+    "name": "Pennatula rubra",
+    "url": "https://www.gbif.org/species/2258707",
+    "occurrences": 324,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Octocorallia",
+    "order": "Scleralcyonacea",
+    "family": "Pennatulidae"
+   }
+  },
+  "1884.137.125": {
+   "accession": "1884.137.125",
+   "catalogueName": "Priapulus caudatus",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Priapulus caudatus"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 101160,
+    "name": "Priapulus caudatus",
+    "authority": "Lamarck, 1816",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=101160",
+    "citation": "Paulay, G. (2026). World List of Priapulida. Priapulus caudatus Lamarck, 1816. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=101160 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 2501343,
+    "name": "Priapulus caudatus",
+    "url": "https://www.gbif.org/species/2501343",
+    "occurrences": 10016,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Priapulida",
+    "class": null,
+    "order": "Priapulomorpha",
+    "family": "Priapulidae"
+   }
+  },
+  "1884.137.106": {
+   "accession": "1884.137.106",
+   "catalogueName": "Caryophyllia smithii variety clara",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Caryophyllia smithii"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 1288958,
+    "name": "Caryophyllia smithii",
+    "authority": "Stokes & Broderip, 1828",
+    "status": "alternative representation",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=1288958",
+    "citation": "Hoeksema, B. W.; Cairns, S.; Samimi-Namin, K. (2026). World List of Scleractinia. Caryophyllia smithii Stokes & Broderip, 1828. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=1288958 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 135144,
+    "name": "Caryophyllia (Caryophyllia) smithii",
+    "authority": "Stokes & Broderip, 1828",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=135144"
+   },
+   "gbif": {
+    "usageKey": 2259158,
+    "name": "Caryophyllia smithii",
+    "url": "https://www.gbif.org/species/2259158",
+    "occurrences": 23684,
+    "occurrencesNZ": 20
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hexacorallia",
+    "order": "Scleractinia",
+    "family": "Caryophylliidae"
+   },
+   "marlin": {
+    "id": "1668",
+    "name": "Caryophyllia (Caryophyllia) smithii",
+    "common": "Devonshire cup coral",
+    "url": "https://www.marlin.ac.uk/species/detail/1668"
+   }
+  },
+  "1884.137.83": {
+   "accession": "1884.137.83",
+   "catalogueName": "Planorbis corneus",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Planorbis corneus"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 1600377,
+    "name": "Planorbis corneus",
+    "authority": "(Linnaeus, 1758)",
+    "status": "superseded combination",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=1600377",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Planorbis corneus (Linnaeus, 1758). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=1600377 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 819958,
+    "name": "Planorbarius corneus",
+    "authority": "(Linnaeus, 1758)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=819958"
+   },
+   "gbif": {
+    "usageKey": 2290946,
+    "name": "Planorbarius corneus",
+    "url": "https://www.gbif.org/species/2290946",
+    "occurrences": 37179,
+    "occurrencesNZ": 25
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Gastropoda",
+    "order": null,
+    "family": "Planorbidae"
+   }
+  },
+  "1884.137.110": {
+   "accession": "1884.137.110",
+   "catalogueName": "Terebella conchilega, developmental stages",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Terebella conchilega"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 1349738,
+    "name": "Terebella conchilega",
+    "authority": "(Pallas, 1766)",
+    "status": "unaccepted",
+    "unacceptReason": "superseded subsequent recombination",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=1349738",
+    "citation": "Read, G.; Fauchald, K. (Ed.) (2026). World Polychaeta Database. Terebella conchilega (Pallas, 1766). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=1349738 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 131495,
+    "name": "Lanice conchilega",
+    "authority": "(Pallas, 1766)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=131495"
+   },
+   "gbif": {
+    "usageKey": 2325106,
+    "name": "Lanice conchilega",
+    "url": "https://www.gbif.org/species/2325106",
+    "occurrences": 101146,
+    "occurrencesNZ": 3
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Annelida",
+    "class": "Polychaeta",
+    "order": "Terebellida",
+    "family": "Terebellidae"
+   },
+   "marlin": {
+    "id": "1642",
+    "name": "Lanice conchilega",
+    "common": "Sand mason",
+    "url": "https://www.marlin.ac.uk/species/detail/1642"
+   }
+  },
+  "1884.137.35": {
+   "accession": "1884.137.35",
+   "catalogueName": "Clepsine marginata",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Clepsine marginata"
+   ],
+   "rank": "species",
+   "resolved": false,
+   "why": "No match in WoRMS, exact or fuzzy.",
+   "fuzzyCandidate": null
+  },
+  "1884.137.37": {
+   "accession": "1884.137.37",
+   "catalogueName": "Meckelia macrorrhochma",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Meckelia macrorrhochma"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 147344,
+    "name": "Meckelia macrorrhochma",
+    "authority": "Schmarda, 1859",
+    "status": "unaccepted",
+    "unacceptReason": "basionym",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=147344",
+    "citation": "Norenburg, J.; Chernyshev, A.; Kajihara, H.; Maslakova, S. (2026). World Nemertea Database. Meckelia macrorrhochma Schmarda, 1859. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=147344 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 147343,
+    "name": "Cerebratulus macrorrhochmus",
+    "authority": "(Schmarda, 1859)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=147343"
+   },
+   "gbif": {
+    "usageKey": 2507775,
+    "name": "Cerebratulus macrorrhochmus",
+    "url": "https://www.gbif.org/species/2507775",
+    "occurrences": 1,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Nemertea",
+    "class": "Pilidiophora",
+    "order": "Heteronemertea",
+    "family": "Lineidae"
+   }
+  },
+  "1884.137.38": {
+   "accession": "1884.137.38",
+   "catalogueName": "Sepia officinalis",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Sepia officinalis"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 141444,
+    "name": "Sepia officinalis",
+    "authority": "Linnaeus, 1758",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=141444",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Sepia officinalis Linnaeus, 1758. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=141444 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 2290849,
+    "name": "Sepia officinalis",
+    "url": "https://www.gbif.org/species/2290849",
+    "occurrences": 69873,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Cephalopoda",
+    "order": "Sepiida",
+    "family": "Sepiidae"
+   },
+   "marlin": {
+    "id": "1098",
+    "name": "Sepia officinalis",
+    "common": "Common cuttlefish",
+    "url": "https://www.marlin.ac.uk/species/detail/1098"
+   }
+  },
+  "1884.137.1": {
+   "accession": "1884.137.1",
+   "catalogueName": "Limax maximus",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Limax maximus"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 819992,
+    "name": "Limax maximus",
+    "authority": "Linnaeus, 1758",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=819992",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Limax maximus Linnaeus, 1758. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=819992 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 2295438,
+    "name": "Limax maximus",
+    "url": "https://www.gbif.org/species/2295438",
+    "occurrences": 108106,
+    "occurrencesNZ": 1104
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Gastropoda",
+    "order": "Stylommatophora",
+    "family": "Limacidae"
+   }
+  },
+  "1884.137.2": {
+   "accession": "1884.137.2",
+   "catalogueName": "Psolus phantapus",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Psolus phantapus"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 124710,
+    "name": "Psolus phantapus",
+    "authority": "(Strussenfelt, 1765)",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=124710",
+    "citation": "WoRMS (2026). Psolus phantapus (Strussenfelt, 1765). Accessed at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=124710 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 5188274,
+    "name": "Psolus phantapus",
+    "url": "https://www.gbif.org/species/5188274",
+    "occurrences": 3091,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Echinodermata",
+    "class": "Holothuroidea",
+    "order": "Dendrochirotida",
+    "family": "Psolidae"
+   }
+  },
+  "1884.137.3": {
+   "accession": "1884.137.3",
+   "catalogueName": "Synapta oceanica",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Synapta oceanica"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 210973,
+    "name": "Synapta oceanica",
+    "authority": "(Lesson, 1830)",
+    "status": "unaccepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=210973",
+    "citation": "WoRMS (2026). Synapta oceanica (Lesson, 1830). Accessed at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=210973 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 210974,
+    "name": "Synapta maculata",
+    "authority": "(Chamisso & Eysenhardt, 1821)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=210974"
+   },
+   "gbif": {
+    "usageKey": 5721258,
+    "name": "Synapta maculata",
+    "url": "https://www.gbif.org/species/5721258",
+    "occurrences": 1402,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Echinodermata",
+    "class": "Holothuroidea",
+    "order": "Apodida",
+    "family": "Synaptidae"
+   }
+  },
+  "1884.137.4": {
+   "accession": "1884.137.4",
+   "catalogueName": "Cynthia pyriformis",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Cynthia pyriformis"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 252368,
+    "name": "Cynthia pyriformis",
+    "authority": "(Rathke, 1806)",
+    "status": "unaccepted",
+    "unacceptReason": "new combination",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=252368",
+    "citation": "Shenkar, N.; Gittenberger, A.; Lambert, G.; Rius, M.; Moreira da Rocha, R.; Swalla, B.J.; Turon, X. (2026). Ascidiacea World Database. Cynthia pyriformis (Rathke, 1806). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=252368 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 103828,
+    "name": "Halocynthia pyriformis",
+    "authority": "(Rathke, 1806)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=103828"
+   },
+   "gbif": {
+    "usageKey": 2331871,
+    "name": "Halocynthia pyriformis",
+    "url": "https://www.gbif.org/species/2331871",
+    "occurrences": 14256,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Chordata",
+    "class": "Ascidiacea",
+    "order": "Stolidobranchia",
+    "family": "Pyuridae"
+   }
+  },
+  "1884.137.5": {
+   "accession": "1884.137.5",
+   "catalogueName": "Actinia mesembrianthemum",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Actinia mesembrianthemum"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 856116,
+    "name": "Actinia mesembrianthemum",
+    "authority": null,
+    "status": "nomen dubium",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=856116",
+    "citation": "Rodríguez, E.; Fautin, D; Daly, M. (2026). World List of Actiniaria. Actinia mesembrianthemum. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=856116 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": null,
+   "gbifWhy": "GBIF matched only by FUZZY at 95% confidence — not published.",
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hexacorallia",
+    "order": "Actiniaria",
+    "family": "Actiniidae"
+   }
+  },
+  "1884.137.6": {
+   "accession": "1884.137.6",
+   "catalogueName": "Loligo vulgaris",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Loligo vulgaris"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 140271,
+    "name": "Loligo vulgaris",
+    "authority": "Lamarck, 1798",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=140271",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Loligo vulgaris Lamarck, 1798. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=140271 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 2290374,
+    "name": "Loligo vulgaris",
+    "url": "https://www.gbif.org/species/2290374",
+    "occurrences": 7360,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Cephalopoda",
+    "order": "Myopsida",
+    "family": "Loliginidae"
+   },
+   "marlin": {
+    "id": "1111",
+    "name": "Loligo vulgaris",
+    "common": "Common squid",
+    "url": "https://www.marlin.ac.uk/species/detail/1111"
+   }
+  },
+  "1884.137.7": {
+   "accession": "1884.137.7",
+   "catalogueName": "Dendronotus arborescens variety carneus",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Dendronotus arborescens"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 845522,
+    "name": "Dendronotus arborescens",
+    "authority": "(O. F. Müller, 1776)",
+    "status": "unaccepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=845522",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Dendronotus arborescens (O. F. Müller, 1776). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=845522 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 139523,
+    "name": "Dendronotus frondosus",
+    "authority": "(Ascanius, 1774)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=139523"
+   },
+   "gbif": {
+    "usageKey": 2292071,
+    "name": "Dendronotus frondosus",
+    "url": "https://www.gbif.org/species/2292071",
+    "occurrences": 5219,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Gastropoda",
+    "order": "Nudibranchia",
+    "family": "Dendronotidae"
+   },
+   "marlin": {
+    "id": "2046",
+    "name": "Dendronotus frondosus",
+    "common": "Bushy-backed sea slug",
+    "url": "https://www.marlin.ac.uk/species/detail/2046"
+   }
+  },
+  "1884.137.8": {
+   "accession": "1884.137.8",
+   "catalogueName": "Melibe fimbriata",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Melibe fimbriata"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 141642,
+    "name": "Melibe fimbriata",
+    "authority": "Alder & Hancock, 1864",
+    "status": "unaccepted",
+    "unacceptReason": "synonym",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=141642",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Melibe fimbriata Alder & Hancock, 1864. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=141642 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 181237,
+    "name": "Melibe viridis",
+    "authority": "(Kelaart, 1858)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=181237"
+   },
+   "gbif": {
+    "usageKey": 4360148,
+    "name": "Melibe viridis",
+    "url": "https://www.gbif.org/species/4360148",
+    "occurrences": 468,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Gastropoda",
+    "order": "Nudibranchia",
+    "family": "Tethydidae"
+   }
+  },
+  "1884.137.9": {
+   "accession": "1884.137.9",
+   "catalogueName": "Arenicola marina",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Arenicola marina"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 129868,
+    "name": "Arenicola marina",
+    "authority": "(Linnaeus, 1758)",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=129868",
+    "citation": "Read, G.; Fauchald, K. (Ed.) (2026). World Polychaeta Database. Arenicola marina (Linnaeus, 1758). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=129868 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 5197443,
+    "name": "Arenicola marina",
+    "url": "https://www.gbif.org/species/5197443",
+    "occurrences": 38385,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Annelida",
+    "class": "Polychaeta",
+    "order": null,
+    "family": "Arenicolidae"
+   },
+   "marlin": {
+    "id": "1402",
+    "name": "Arenicola marina",
+    "common": "Blow lug",
+    "url": "https://www.marlin.ac.uk/species/detail/1402"
+   }
+  },
+  "1884.137.10": {
+   "accession": "1884.137.10",
+   "catalogueName": "Argonauta argo, female",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Argonauta argo"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 138803,
+    "name": "Argonauta argo",
+    "authority": "Linnaeus, 1758",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=138803",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Argonauta argo Linnaeus, 1758. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=138803 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 5189614,
+    "name": "Argonauta argo",
+    "url": "https://www.gbif.org/species/5189614",
+    "occurrences": 4189,
+    "occurrencesNZ": 21
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Cephalopoda",
+    "order": "Octopoda",
+    "family": "Argonautidae"
+   }
+  },
+  "1884.137.11": {
+   "accession": "1884.137.11",
+   "catalogueName": "Aplysia inca",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Aplysia inca"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 568198,
+    "name": "Aplysia inca",
+    "authority": "A. d'Orbigny, 1836",
+    "status": "junior subjective synonym",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=568198",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Aplysia inca A. d'Orbigny, 1836. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=568198 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 1719761,
+    "name": "Aplysia lessonii",
+    "authority": "Rang, 1828",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=1719761"
+   },
+   "gbif": null,
+   "gbifWhy": "GBIF matched only by HIGHERRANK at 92% confidence — not published.",
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Gastropoda",
+    "order": "Aplysiida",
+    "family": "Aplysiidae"
+   }
+  },
+  "1884.137.12": {
+   "accession": "1884.137.12",
+   "catalogueName": "Tethys leporina",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Tethys leporina"
+   ],
+   "rank": "species",
+   "resolved": false,
+   "why": "3 WoRMS records resolving to 2 different accepted taxa. §6: never take hits[0].",
+   "candidates": [
+    {
+     "aphiaID": 1867688,
+     "name": "Tethys leporina",
+     "status": "unavailable name",
+     "valid": "Aplysia fasciata",
+     "validAphiaID": 138755
+    },
+    {
+     "aphiaID": 750555,
+     "name": "Tethys leporina",
+     "status": "unavailable name",
+     "valid": null,
+     "validAphiaID": null
+    },
+    {
+     "aphiaID": 1867705,
+     "name": "Tethys leporina",
+     "status": "unavailable name",
+     "valid": "Tethys fimbria",
+     "validAphiaID": 141643
+    }
+   ]
+  },
+  "1884.137.13": {
+   "accession": "1884.137.13",
+   "catalogueName": "Comatula hamata",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Comatula hamata"
+   ],
+   "rank": "species",
+   "resolved": false,
+   "why": "No match in WoRMS, exact or fuzzy.",
+   "fuzzyCandidate": null
+  },
+  "1884.137.14": {
+   "accession": "1884.137.14",
+   "catalogueName": "Carinaria mediterranea",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Carinaria mediterranea"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 139022,
+    "name": "Carinaria mediterranea",
+    "authority": "Blainville, 1825",
+    "status": "unaccepted",
+    "unacceptReason": "junior subjective synonym",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=139022",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Carinaria mediterranea Blainville, 1825. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=139022 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 416623,
+    "name": "Carinaria lamarckii",
+    "authority": "Blainville, 1817",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=416623"
+   },
+   "gbif": {
+    "usageKey": 6490136,
+    "name": "Carinaria lamarckii",
+    "url": "https://www.gbif.org/species/6490136",
+    "occurrences": 403,
+    "occurrencesNZ": 4
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Gastropoda",
+    "order": "Littorinimorpha",
+    "family": "Carinariidae"
+   }
+  },
+  "1884.137.15": {
+   "accession": "1884.137.15",
+   "catalogueName": "Serpula contortuplicata",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Serpula contortuplicata"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 338090,
+    "name": "Serpula contortuplicata",
+    "authority": "Linnaeus, 1758",
+    "status": "nomen dubium",
+    "unacceptReason": "indeterminable, but most later usages likely S. vermicularis",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=338090",
+    "citation": "Read, G.; Fauchald, K. (Ed.) (2026). World Polychaeta Database. Serpula contortuplicata Linnaeus, 1758. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=338090 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 5200099,
+    "name": "Serpula contortuplicata",
+    "url": "https://www.gbif.org/species/5200099",
+    "occurrences": 30,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Annelida",
+    "class": "Polychaeta",
+    "order": "Sabellida",
+    "family": "Serpulidae"
+   }
+  },
+  "1884.137.16": {
+   "accession": "1884.137.16",
+   "catalogueName": "Argonauta argo, males",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Argonauta argo"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 138803,
+    "name": "Argonauta argo",
+    "authority": "Linnaeus, 1758",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=138803",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Argonauta argo Linnaeus, 1758. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=138803 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 5189614,
+    "name": "Argonauta argo",
+    "url": "https://www.gbif.org/species/5189614",
+    "occurrences": 4189,
+    "occurrencesNZ": 21
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Cephalopoda",
+    "order": "Octopoda",
+    "family": "Argonautidae"
+   }
+  },
+  "1884.137.18": {
+   "accession": "1884.137.18",
+   "catalogueName": "Phyllodoce parettii",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Phyllodoce parettii"
+   ],
+   "rank": "species",
+   "resolved": false,
+   "why": "No exact match in WoRMS. A fuzzy match suggests Phyllodoce paretti (AphiaID 155422), which §6 forbids publishing on without a human confirming it.",
+   "fuzzyCandidate": {
+    "name": "Phyllodoce paretti",
+    "aphiaID": 155422,
+    "matchType": "phonetic",
+    "status": "unaccepted"
+   }
+  },
+  "1884.137.17": {
+   "accession": "1884.137.17",
+   "catalogueName": "Onychoteuthis lichtensteinii",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Onychoteuthis lichtensteinii"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 550402,
+    "name": "Onychoteuthis lichtensteinii",
+    "authority": "A. Férussac, 1835",
+    "status": "unaccepted",
+    "unacceptReason": "superseded combination",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=550402",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Onychoteuthis lichtensteinii A. Férussac, 1835. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=550402 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 140647,
+    "name": "Ancistroteuthis lichtensteinii",
+    "authority": "(A. Férussac [in A. Férussac & d'Orbigny], 1835)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=140647"
+   },
+   "gbif": {
+    "usageKey": 9681862,
+    "name": "Ancistroteuthis lichtensteinii",
+    "url": "https://www.gbif.org/species/9681862",
+    "occurrences": 347,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Cephalopoda",
+    "order": "Oegopsida",
+    "family": "Onychoteuthidae"
+   }
+  },
+  "1884.137.19": {
+   "accession": "1884.137.19",
+   "catalogueName": "Limax arborum",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Limax arborum"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 1480236,
+    "name": "Limax arborum",
+    "authority": "Bouchard-Chantereaux, 1838",
+    "status": "junior subjective synonym",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=1480236",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Limax arborum Bouchard-Chantereaux, 1838. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=1480236 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 875564,
+    "name": "Lehmannia marginata",
+    "authority": "(O. F. Müller, 1774)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=875564"
+   },
+   "gbif": {
+    "usageKey": 5781247,
+    "name": "Lehmannia marginata",
+    "url": "https://www.gbif.org/species/5781247",
+    "occurrences": 24508,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Gastropoda",
+    "order": "Stylommatophora",
+    "family": "Limacidae"
+   }
+  },
+  "1884.137.20": {
+   "accession": "1884.137.20",
+   "catalogueName": "Nereis margaritacea",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Nereis margaritacea"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 339124,
+    "name": "Nereis margaritacea",
+    "authority": "Leach, 1816",
+    "status": "unaccepted",
+    "unacceptReason": "subjective synonym",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=339124",
+    "citation": "Read, G.; Fauchald, K. (Ed.) (2026). World Polychaeta Database. Nereis margaritacea Leach, 1816. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=339124 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 130408,
+    "name": "Perinereis cultrifera",
+    "authority": "(Grube, 1840)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=130408"
+   },
+   "gbif": {
+    "usageKey": 2316069,
+    "name": "Perinereis cultrifera",
+    "url": "https://www.gbif.org/species/2316069",
+    "occurrences": 2036,
+    "occurrencesNZ": 1
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Annelida",
+    "class": "Polychaeta",
+    "order": "Phyllodocida",
+    "family": "Nereididae"
+   }
+  },
+  "1884.137.21": {
+   "accession": "1884.137.21",
+   "catalogueName": "Corallium rubrum",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Corallium rubrum"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 125416,
+    "name": "Corallium rubrum",
+    "authority": "(Linnaeus, 1758)",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=125416",
+    "citation": "McFadden, C.S.; Cordeiro, R.; Samimi-Namin, K.; Hoeksema, B.W., Williams, G.; van Ofwegen, L.P. (2026). World List of Octocorallia. Corallium rubrum (Linnaeus, 1758). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=125416 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 5185014,
+    "name": "Corallium rubrum",
+    "url": "https://www.gbif.org/species/5185014",
+    "occurrences": 5530,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Octocorallia",
+    "order": "Scleralcyonacea",
+    "family": "Coralliidae"
+   }
+  },
+  "1884.137.22": {
+   "accession": "1884.137.22",
+   "catalogueName": "Terebella conchilega",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Terebella conchilega"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 1349738,
+    "name": "Terebella conchilega",
+    "authority": "(Pallas, 1766)",
+    "status": "unaccepted",
+    "unacceptReason": "superseded subsequent recombination",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=1349738",
+    "citation": "Read, G.; Fauchald, K. (Ed.) (2026). World Polychaeta Database. Terebella conchilega (Pallas, 1766). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=1349738 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 131495,
+    "name": "Lanice conchilega",
+    "authority": "(Pallas, 1766)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=131495"
+   },
+   "gbif": {
+    "usageKey": 2325106,
+    "name": "Lanice conchilega",
+    "url": "https://www.gbif.org/species/2325106",
+    "occurrences": 101146,
+    "occurrencesNZ": 3
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Annelida",
+    "class": "Polychaeta",
+    "order": "Terebellida",
+    "family": "Terebellidae"
+   },
+   "marlin": {
+    "id": "1642",
+    "name": "Lanice conchilega",
+    "common": "Sand mason",
+    "url": "https://www.marlin.ac.uk/species/detail/1642"
+   }
+  },
+  "1884.137.24": {
+   "accession": "1884.137.24",
+   "catalogueName": "Aurelia aurita, stages of development",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Aurelia aurita"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 135306,
+    "name": "Aurelia aurita",
+    "authority": "(Linnaeus, 1758)",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=135306",
+    "citation": "Collins, A.G.; Morandini, A.C. (2026). World List of Scyphozoa. Aurelia aurita (Linnaeus, 1758). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=135306 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 2264442,
+    "name": "Aurelia aurita",
+    "url": "https://www.gbif.org/species/2264442",
+    "occurrences": 64507,
+    "occurrencesNZ": 3
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Scyphozoa",
+    "order": "Semaeostomeae",
+    "family": "Ulmaridae"
+   },
+   "marlin": {
+    "id": "2089",
+    "name": "Aurelia aurita",
+    "common": "Moon jellyfish",
+    "url": "https://www.marlin.ac.uk/species/detail/2089"
+   }
+  },
+  "1884.137.25": {
+   "accession": "1884.137.25",
+   "catalogueName": "Amphiura filiformis, stage of development",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Amphiura filiformis"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 125080,
+    "name": "Amphiura filiformis",
+    "authority": "(O.F. Müller, 1776)",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=125080",
+    "citation": "Stöhr, S.; O’Hara, T.; Thuy, B. (Eds) (2026). World Ophiuroidea Database. Amphiura filiformis (O.F. Müller, 1776). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=125080 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 2277820,
+    "name": "Amphiura filiformis",
+    "url": "https://www.gbif.org/species/2277820",
+    "occurrences": 71472,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Echinodermata",
+    "class": "Ophiuroidea",
+    "order": "Amphilepidida",
+    "family": "Amphiuridae"
+   },
+   "marlin": {
+    "id": "1400",
+    "name": "Amphiura filiformis",
+    "common": "A brittlestar",
+    "url": "https://www.marlin.ac.uk/species/detail/1400"
+   }
+  },
+  "1884.137.26": {
+   "accession": "1884.137.26",
+   "catalogueName": "Ilanthos scoticus",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Ilanthos scoticus"
+   ],
+   "rank": "species",
+   "resolved": false,
+   "why": "No exact match in WoRMS. A fuzzy match suggests Iluanthos scoticus (AphiaID 741447), which §6 forbids publishing on without a human confirming it.",
+   "fuzzyCandidate": {
+    "name": "Iluanthos scoticus",
+    "aphiaID": 741447,
+    "matchType": "near_1",
+    "status": "unaccepted"
+   }
+  },
+  "1884.137.27": {
+   "accession": "1884.137.27",
+   "catalogueName": "Tealia crassicornis variety purpurea",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Tealia crassicornis"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 100797,
+    "name": "Tealia crassicornis",
+    "authority": "(Müller, 1776)",
+    "status": "unaccepted",
+    "unacceptReason": "Synonym",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=100797",
+    "citation": "Rodríguez, E.; Fautin, D; Daly, M. (2026). World List of Actiniaria. Tealia crassicornis (Müller, 1776). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=100797 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 100832,
+    "name": "Urticina crassicornis",
+    "authority": "(Müller, 1776)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=100832"
+   },
+   "gbif": {
+    "usageKey": 2256789,
+    "name": "Urticina crassicornis",
+    "url": "https://www.gbif.org/species/2256789",
+    "occurrences": 130509,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hexacorallia",
+    "order": "Actiniaria",
+    "family": "Tealidae"
+   }
+  },
+  "1884.137.28": {
+   "accession": "1884.137.28",
+   "catalogueName": "Peachia hastata",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Peachia hastata"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 100928,
+    "name": "Peachia hastata",
+    "authority": "Gosse, 1855",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=100928",
+    "citation": "Rodríguez, E.; Fautin, D; Daly, M. (2026). World List of Actiniaria. Peachia hastata Gosse, 1855. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=100928 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 2256424,
+    "name": "Peachia hastata",
+    "url": "https://www.gbif.org/species/2256424",
+    "occurrences": 53,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hexacorallia",
+    "order": "Actiniaria",
+    "family": "Peachiidae"
+   }
+  },
+  "1884.137.29": {
+   "accession": "1884.137.29",
+   "catalogueName": "Actinoloba dianthus",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Actinoloba dianthus"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 742385,
+    "name": "Actinoloba dianthus",
+    "authority": "de Blainville, 1830",
+    "status": "unaccepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=742385",
+    "citation": "Rodríguez, E.; Fautin, D; Daly, M. (2026). World List of Actiniaria. Actinoloba dianthus de Blainville, 1830. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=742385 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 100982,
+    "name": "Metridium senile",
+    "authority": "(Linnaeus, 1761)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=100982"
+   },
+   "gbif": {
+    "usageKey": 5183974,
+    "name": "Metridium senile",
+    "url": "https://www.gbif.org/species/5183974",
+    "occurrences": 26241,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hexacorallia",
+    "order": "Actiniaria",
+    "family": "Metridiidae"
+   },
+   "marlin": {
+    "id": "1185",
+    "name": "Metridium senile",
+    "common": "Plumose anemone",
+    "url": "https://www.marlin.ac.uk/species/detail/1185"
+   }
+  },
+  "1884.137.30": {
+   "accession": "1884.137.30",
+   "catalogueName": "Phymanthus loligo",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Phymanthus loligo"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 220511,
+    "name": "Phymanthus loligo",
+    "authority": "(Hemprich & Ehrenberg in Ehrenberg, 1834)",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=220511",
+    "citation": "Rodríguez, E.; Fautin, D; Daly, M. (2026). World List of Actiniaria. Phymanthus loligo (Hemprich & Ehrenberg in Ehrenberg, 1834). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=220511 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 7545862,
+    "name": "Phymanthus loligo",
+    "url": "https://www.gbif.org/species/7545862",
+    "occurrences": 23,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hexacorallia",
+    "order": "Actiniaria",
+    "family": "Phymanthidae"
+   }
+  },
+  "1884.137.31": {
+   "accession": "1884.137.31",
+   "catalogueName": "Tubipora hemiprichii",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Tubipora hemiprichii"
+   ],
+   "rank": "species",
+   "resolved": false,
+   "why": "No exact match in WoRMS. A fuzzy match suggests Tubipora hemprichi (AphiaID 517848), which §6 forbids publishing on without a human confirming it.",
+   "fuzzyCandidate": {
+    "name": "Tubipora hemprichi",
+    "aphiaID": 517848,
+    "matchType": "near_2",
+    "status": "accepted"
+   }
+  },
+  "1884.137.32": {
+   "accession": "1884.137.32",
+   "catalogueName": "Aurelia aurita, adult",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Aurelia aurita"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 135306,
+    "name": "Aurelia aurita",
+    "authority": "(Linnaeus, 1758)",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=135306",
+    "citation": "Collins, A.G.; Morandini, A.C. (2026). World List of Scyphozoa. Aurelia aurita (Linnaeus, 1758). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=135306 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 2264442,
+    "name": "Aurelia aurita",
+    "url": "https://www.gbif.org/species/2264442",
+    "occurrences": 64507,
+    "occurrencesNZ": 3
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Scyphozoa",
+    "order": "Semaeostomeae",
+    "family": "Ulmaridae"
+   },
+   "marlin": {
+    "id": "2089",
+    "name": "Aurelia aurita",
+    "common": "Moon jellyfish",
+    "url": "https://www.marlin.ac.uk/species/detail/2089"
+   }
+  },
+  "1884.137.34": {
+   "accession": "1884.137.34",
+   "catalogueName": "Corynactis clavigera",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Corynactis clavigera"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 854247,
+    "name": "Corynactis clavigera",
+    "authority": null,
+    "status": "unaccepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=854247",
+    "citation": "Daly, M.; Fautin, D.G. (2013). World List of Corallimorpharia. Corynactis clavigera. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=854247 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 854229,
+    "name": "Actinodactylus clavigerum",
+    "authority": "(Drayton in Dana, 1846)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=854229"
+   },
+   "gbif": {
+    "usageKey": 7572994,
+    "name": "Actinodactylus clavigerum",
+    "url": "https://www.gbif.org/species/7572994",
+    "occurrences": 9,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hexacorallia",
+    "order": "Actiniaria",
+    "family": null
+   }
+  },
+  "1884.137.39": {
+   "accession": "1884.137.39",
+   "catalogueName": "Histioteuthis bonelliana",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Histioteuthis bonelliana"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 748920,
+    "name": "Histioteuthis bonelliana",
+    "authority": "[sic]",
+    "status": "unaccepted",
+    "unacceptReason": "emendation or incorrect subsequent spelling",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=748920",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Histioteuthis bonelliana [sic]. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=748920 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 140111,
+    "name": "Histioteuthis bonnellii",
+    "authority": "(A. Férussac, 1834)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=140111"
+   },
+   "gbif": {
+    "usageKey": 2290656,
+    "name": "Histioteuthis bonnellii",
+    "url": "https://www.gbif.org/species/2290656",
+    "occurrences": 451,
+    "occurrencesNZ": 17
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Cephalopoda",
+    "order": "Oegopsida",
+    "family": "Histioteuthidae"
+   }
+  },
+  "1884.137.40": {
+   "accession": "1884.137.40",
+   "catalogueName": "Physophora magnifica, stages of development",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Physophora magnifica"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 711464,
+    "name": "Physophora magnifica",
+    "authority": "Haeckel, 1869",
+    "status": "junior subjective synonym",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=711464",
+    "citation": "Schuchert, P.; Choong, H.; Galea, H.; Hoeksema, B.; Lindsay, D.; Mańko, M.; Pica, D. (2026). World Hydrozoa Database. Physophora magnifica Haeckel, 1869. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=711464 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 135504,
+    "name": "Physophora hydrostatica",
+    "authority": "Forsskål, 1775",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=135504"
+   },
+   "gbif": {
+    "usageKey": 5185492,
+    "name": "Physophora hydrostatica",
+    "url": "https://www.gbif.org/species/5185492",
+    "occurrences": 561,
+    "occurrencesNZ": 20
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hydrozoa",
+    "order": "Siphonophorae",
+    "family": "Physophoridae"
+   }
+  },
+  "1884.137.41": {
+   "accession": "1884.137.41",
+   "catalogueName": "Carmarina hastata, female",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Carmarina hastata"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 887892,
+    "name": "Carmarina hastata",
+    "authority": "Haeckel, 1864",
+    "status": "unaccepted",
+    "unacceptReason": "synonym",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=887892",
+    "citation": "Schuchert, P.; Choong, H.; Galea, H.; Hoeksema, B.; Lindsay, D.; Mańko, M.; Pica, D. (2026). World Hydrozoa Database. Carmarina hastata Haeckel, 1864. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=887892 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 117567,
+    "name": "Geryonia proboscidalis",
+    "authority": "(Forsskål, 1775)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=117567"
+   },
+   "gbif": {
+    "usageKey": 5186387,
+    "name": "Geryonia proboscidalis",
+    "url": "https://www.gbif.org/species/5186387",
+    "occurrences": 549,
+    "occurrencesNZ": 2
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hydrozoa",
+    "order": "Limnomedusae",
+    "family": "Geryoniidae"
+   }
+  },
+  "1884.137.42": {
+   "accession": "1884.137.42",
+   "catalogueName": "Carmarina hastata, male",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Carmarina hastata"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 887892,
+    "name": "Carmarina hastata",
+    "authority": "Haeckel, 1864",
+    "status": "unaccepted",
+    "unacceptReason": "synonym",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=887892",
+    "citation": "Schuchert, P.; Choong, H.; Galea, H.; Hoeksema, B.; Lindsay, D.; Mańko, M.; Pica, D. (2026). World Hydrozoa Database. Carmarina hastata Haeckel, 1864. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=887892 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 117567,
+    "name": "Geryonia proboscidalis",
+    "authority": "(Forsskål, 1775)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=117567"
+   },
+   "gbif": {
+    "usageKey": 5186387,
+    "name": "Geryonia proboscidalis",
+    "url": "https://www.gbif.org/species/5186387",
+    "occurrences": 549,
+    "occurrencesNZ": 2
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hydrozoa",
+    "order": "Limnomedusae",
+    "family": "Geryoniidae"
+   }
+  },
+  "1884.137.43": {
+   "accession": "1884.137.43",
+   "catalogueName": "Aequorea cyanea",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Aequorea cyanea"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 283990,
+    "name": "Aequorea cyanea",
+    "authority": "de Blainville, 1834",
+    "status": "accepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=283990",
+    "citation": "Schuchert, P.; Choong, H.; Galea, H.; Hoeksema, B.; Lindsay, D.; Mańko, M.; Pica, D. (2026). World Hydrozoa Database. Aequorea cyanea de Blainville, 1834. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=283990 on 2026-08-15"
+   },
+   "current": null,
+   "gbif": {
+    "usageKey": 2267496,
+    "name": "Aequorea cyanea",
+    "url": "https://www.gbif.org/species/2267496",
+    "occurrences": 2,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hydrozoa",
+    "order": "Leptothecata",
+    "family": "Aequoreidae"
+   }
+  },
+  "1884.137.44": {
+   "accession": "1884.137.44",
+   "catalogueName": "Zygodactyla crassa",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Zygodactyla crassa"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 1327290,
+    "name": "Zygodactyla crassa",
+    "authority": "A. Agassiz, 1865",
+    "status": "unaccepted",
+    "unacceptReason": "possible synonym",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=1327290",
+    "citation": "Schuchert, P.; Choong, H.; Galea, H.; Hoeksema, B.; Lindsay, D.; Mańko, M.; Pica, D. (2026). World Hydrozoa Database. Zygodactyla crassa A. Agassiz, 1865. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=1327290 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 156967,
+    "name": "Rhacostoma atlanticum",
+    "authority": "L. Agassiz, 1851",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=156967"
+   },
+   "gbif": {
+    "usageKey": 5711633,
+    "name": "Rhacostoma atlanticum",
+    "url": "https://www.gbif.org/species/5711633",
+    "occurrences": 546,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hydrozoa",
+    "order": "Leptothecata",
+    "family": "Aequoreidae"
+   }
+  },
+  "1884.137.45": {
+   "accession": "1884.137.45",
+   "catalogueName": "Arion empiricorum variety ater",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Arion empiricorum"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 875548,
+    "name": "Arion empiricorum",
+    "authority": "A. Férussac, 1819",
+    "status": "junior subjective synonym",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=875548",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Arion empiricorum A. Férussac, 1819. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=875548 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 875546,
+    "name": "Arion ater",
+    "authority": "(Linnaeus, 1758)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=875546"
+   },
+   "gbif": {
+    "usageKey": 2294101,
+    "name": "Arion ater",
+    "url": "https://www.gbif.org/species/2294101",
+    "occurrences": 39360,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Gastropoda",
+    "order": "Stylommatophora",
+    "family": "Arionidae"
+   }
+  },
+  "1884.137.46": {
+   "accession": "1884.137.46",
+   "catalogueName": "Doris formosa",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Doris formosa"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 737998,
+    "name": "Doris formosa",
+    "authority": "Alder & Hancock, 1864",
+    "status": "unaccepted",
+    "unacceptReason": "original combination",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=737998",
+    "citation": "MolluscaBase eds. (2026). MolluscaBase. Doris formosa Alder & Hancock, 1864. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=737998 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 560056,
+    "name": "Platydoris formosa",
+    "authority": "(Alder & Hancock, 1864)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=560056"
+   },
+   "gbif": {
+    "usageKey": 6519176,
+    "name": "Platydoris formosa",
+    "url": "https://www.gbif.org/species/6519176",
+    "occurrences": 119,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Mollusca",
+    "class": "Gastropoda",
+    "order": "Doridida",
+    "family": "Discodorididae"
+   }
+  },
+  "1884.137.36": {
+   "accession": "1884.137.36",
+   "catalogueName": "Stephanomia canariensis",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Stephanomia canariensis"
+   ],
+   "rank": "species",
+   "resolved": false,
+   "why": "No match in WoRMS, exact or fuzzy.",
+   "fuzzyCandidate": null
+  },
+  "1884.137.55": {
+   "accession": "1884.137.55",
+   "catalogueName": "Paractis adhaerens",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Paractis adhaerens"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 854537,
+    "name": "Paractis adhaerens",
+    "authority": null,
+    "status": "unaccepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=854537",
+    "citation": "Rodríguez, E.; Fautin, D; Daly, M. (2026). World List of Actiniaria. Paractis adhaerens. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=854537 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 289898,
+    "name": "Entacmaea quadricolor",
+    "authority": "(Leuckart in Rüppell & Leuckart, 1828)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=289898"
+   },
+   "gbif": {
+    "usageKey": 4339208,
+    "name": "Entacmaea quadricolor",
+    "url": "https://www.gbif.org/species/4339208",
+    "occurrences": 3163,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hexacorallia",
+    "order": "Actiniaria",
+    "family": "Actiniidae"
+   }
+  },
+  "1884.137.56": {
+   "accession": "1884.137.56",
+   "catalogueName": "Anthea cereus variety maxima",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Anthea cereus"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 855309,
+    "name": "Anthea cereus",
+    "authority": "Gærtner",
+    "status": "unaccepted",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=855309",
+    "citation": "Rodríguez, E.; Fautin, D; Daly, M. (2026). World List of Actiniaria. Anthea cereus Gærtner. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=855309 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 100808,
+    "name": "Anemonia viridis",
+    "authority": "(Forsskål, 1775)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=100808"
+   },
+   "gbif": {
+    "usageKey": 2256644,
+    "name": "Anemonia viridis",
+    "url": "https://www.gbif.org/species/2256644",
+    "occurrences": 26242,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hexacorallia",
+    "order": "Actiniaria",
+    "family": "Actiniidae"
+   },
+   "marlin": {
+    "id": "1415",
+    "name": "Anemonia viridis",
+    "common": "Snakelocks anemone",
+    "url": "https://www.marlin.ac.uk/species/detail/1415"
+   }
+  },
+  "1884.137.61": {
+   "accession": "1884.137.61",
+   "catalogueName": "Physophora magnifica",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Physophora magnifica"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 711464,
+    "name": "Physophora magnifica",
+    "authority": "Haeckel, 1869",
+    "status": "junior subjective synonym",
+    "unacceptReason": null,
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=711464",
+    "citation": "Schuchert, P.; Choong, H.; Galea, H.; Hoeksema, B.; Lindsay, D.; Mańko, M.; Pica, D. (2026). World Hydrozoa Database. Physophora magnifica Haeckel, 1869. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=711464 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 135504,
+    "name": "Physophora hydrostatica",
+    "authority": "Forsskål, 1775",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=135504"
+   },
+   "gbif": {
+    "usageKey": 5185492,
+    "name": "Physophora hydrostatica",
+    "url": "https://www.gbif.org/species/5185492",
+    "occurrences": 561,
+    "occurrencesNZ": 20
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hydrozoa",
+    "order": "Siphonophorae",
+    "family": "Physophoridae"
+   }
+  },
+  "1884.137.80": {
+   "accession": "1884.137.80",
+   "catalogueName": "Appendicularia flagellum",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Appendicularia flagellum"
+   ],
+   "rank": "species",
+   "resolved": false,
+   "why": "No match in WoRMS, exact or fuzzy.",
+   "fuzzyCandidate": null
+  },
+  "1884.137.92": {
+   "accession": "1884.137.92",
+   "catalogueName": "Glass studded spike from unknown model",
+   "retrieved": "2026-08-15",
+   "resolved": false,
+   "why": "The catalogue calls it \"Glass studded spike from unknown model\". There is no animal to look up."
+  },
+  "1884.137.98": {
+   "accession": "1884.137.98",
+   "catalogueName": "Sabella penicillus",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Sabella penicillus"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 152320,
+    "name": "Sabella penicillus",
+    "authority": "(Linnaeus, 1758)",
+    "status": "unaccepted",
+    "unacceptReason": "superseded recombination of subjective synonym",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=152320",
+    "citation": "Read, G.; Fauchald, K. (Ed.) (2026). World Polychaeta Database. Sabella penicillus (Linnaeus, 1758). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=152320 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 130969,
+    "name": "Sabella spallanzanii",
+    "authority": "(Gmelin, 1791)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=130969"
+   },
+   "gbif": {
+    "usageKey": 2328603,
+    "name": "Sabella spallanzanii",
+    "url": "https://www.gbif.org/species/2328603",
+    "occurrences": 16877,
+    "occurrencesNZ": 7552
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Annelida",
+    "class": "Polychaeta",
+    "order": "Sabellida",
+    "family": "Sabellidae"
+   }
+  },
+  "1884.137.103": {
+   "accession": "1884.137.103",
+   "catalogueName": "Clionopsis krohnii",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Clionopsis krohnii"
+   ],
+   "rank": "species",
+   "resolved": false,
+   "why": "No exact match in WoRMS. A fuzzy match suggests Cliopsis krohnii (AphiaID 139185), which §6 forbids publishing on without a human confirming it.",
+   "fuzzyCandidate": {
+    "name": "Cliopsis krohnii",
+    "aphiaID": 139185,
+    "matchType": "near_2",
+    "status": "accepted"
+   }
+  },
+  "1884.137.23": {
+   "accession": "1884.137.23",
+   "catalogueName": "Synapta beselii",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Synapta beselii"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 210971,
+    "name": "Synapta beselii",
+    "authority": "(Jaeger, 1833)",
+    "status": "unaccepted",
+    "unacceptReason": "synonym",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=210971",
+    "citation": "WoRMS (2026). Synapta beselii (Jaeger, 1833). Accessed at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=210971 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 210974,
+    "name": "Synapta maculata",
+    "authority": "(Chamisso & Eysenhardt, 1821)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=210974"
+   },
+   "gbif": {
+    "usageKey": 5721258,
+    "name": "Synapta maculata",
+    "url": "https://www.gbif.org/species/5721258",
+    "occurrences": 1402,
+    "occurrencesNZ": 0
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Echinodermata",
+    "class": "Holothuroidea",
+    "order": "Apodida",
+    "family": "Synaptidae"
+   }
+  },
+  "1884.137.33": {
+   "accession": "1884.137.33",
+   "catalogueName": "Physalia pelagica",
+   "retrieved": "2026-08-15",
+   "queried": [
+    "Physalia pelagica"
+   ],
+   "rank": "species",
+   "resolved": true,
+   "worms": {
+    "aphiaID": 740854,
+    "name": "Physalia pelagica",
+    "authority": "Lamarck, 1801",
+    "status": "unaccepted",
+    "unacceptReason": "synonym",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=740854",
+    "citation": "Schuchert, P.; Choong, H.; Galea, H.; Hoeksema, B.; Lindsay, D.; Mańko, M.; Pica, D. (2026). World Hydrozoa Database. Physalia pelagica Lamarck, 1801. Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=740854 on 2026-08-15"
+   },
+   "current": {
+    "aphiaID": 135479,
+    "name": "Physalia physalis",
+    "authority": "(Linnaeus, 1758)",
+    "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=135479"
+   },
+   "gbif": {
+    "usageKey": 2264734,
+    "name": "Physalia physalis",
+    "url": "https://www.gbif.org/species/2264734",
+    "occurrences": 16746,
+    "occurrencesNZ": 1009
+   },
+   "gbifWhy": null,
+   "classification": {
+    "phylum": "Cnidaria",
+    "class": "Hydrozoa",
+    "order": "Siphonophorae",
+    "family": "Physaliidae"
+   },
+   "marlin": {
+    "id": "2093",
+    "name": "Physalia physalis",
+    "common": "Portuguese man o' war",
+    "url": "https://www.marlin.ac.uk/species/detail/2093"
+   }
+  }
+ }
+}

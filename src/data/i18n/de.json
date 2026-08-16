@@ -46,7 +46,22 @@
     "reading": "Lesen",
     "followWords": "Mitscrollen, um den vorgelesenen Wörtern zu folgen",
     "notFoundAccession": "{accession} ist keine Inventarnummer in dieser Sammlung.",
-    "collectionIntroOnDisplay": "Eines ist ausgestellt"
+    "collectionIntroOnDisplay": "Eines ist ausgestellt",
+    "elsewhere": "Lesen Sie anderswo mehr",
+    "marlinWhy": "Was dieses Tier tut, wo es lebt und wie es sich fortpflanzt, ist für einen allgemeinen Leser von den Menschen verfasst, die den Nordostatlantik – das Meer, das die Blaschkas modelliert haben, beobachten.",
+    "claim": {
+      "this-species": "Die gleiche Art.",
+      "this-kind": "Ein verwandtes Tier, nicht die Art im Glas.",
+      "this-group": "Die Gruppe, nicht dieses Objekt.",
+      "this-collection": "Diese Sammlung und die Menschen, die sie gemacht haben."
+    },
+    "recordCurrent": "der heute akzeptierte Name",
+    "recordSightings": "{n} weltweit dokumentierte Sichtungen",
+    "recordSightingsNZ": "{n} von ihnen in Neuseeland",
+    "recordUnresolved": "Der Katalogname lässt sich nicht auf eine aktuelle Art festlegen, daher gibt es hier nichts, worauf man verlinken könnte. Das ist eine echte Antwort auf einen 140 Jahre alten Katalog, keine Lücke.",
+    "record": "Der Katalogeintrag",
+    "recordCatalogue": "Der Name im Katalogeintrag",
+    "recordChecked": "Zuletzt im Vergleich zu WoRMS und GBIF: {date}"
   },
   "groups": {
     "jellyfish": "Quallen, große und kleine",

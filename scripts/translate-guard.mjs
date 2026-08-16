@@ -147,6 +147,18 @@ export function protect(text, opts = {}) {
     }
   }
   for (const term of terms) candidates.push({ term, say: null })
+
+  // Interpolation placeholders — {n}, {date}, {language}, {accession}. src/lang.jsx substitutes
+  // these by name at render time, so a translated placeholder is not a wording problem, it is a
+  // broken string: nothing matches {Datum} and the visitor reads the braces.
+  //
+  // MEASURED, not theoretical. {date} came back as {Datum} in German and {fecha} in Spanish, and
+  // Korean and Chinese dropped it altogether. The placeholders that had been in the app for months
+  // survived only because {m} and {accession} are not words an engine is tempted to translate —
+  // which is luck, and luck is not a mechanism. Every future interpolated string was going to hit
+  // this eventually.
+  for (const ph of new Set(text.match(/\{\w+\}/g) ?? [])) candidates.push({ term: ph, say: null })
+
   candidates.sort((a, b) => b.term.length - a.term.length)
 
   // Collect non-overlapping matches across the whole string before rewriting any of it.
@@ -184,6 +196,19 @@ export function protect(text, opts = {}) {
   out += text.slice(at)
 
   return { html: out, protectedHere: kept, glossedHere: said }
+}
+
+// Put back a space the inline markup ate.
+//
+// A protected placeholder travels as <span class="notranslate">{date}</span>, and an engine that
+// reorders the sentence around it sometimes drops the space that was outside the tag: German came
+// back as "Am {date}mit WoRMS und GBIF abgeglichen", which renders as "Am 2026-08-15mit".
+//
+// Keyed on the script of the neighbouring character, because the answer differs by language. A
+// Latin letter hard against the brace is a missing space; Japanese "{date}でWoRMS" and Korean
+// "{date}에서" are correct exactly as they are, and inserting a space there would be the error.
+export function tidyPlaceholders(text) {
+  return text.replace(/\}(?=[A-Za-zÀ-ÿ])/g, '} ').replace(/(?<=[A-Za-zÀ-ÿ])\{/g, ' {')
 }
 
 export function unprotect(html) {
@@ -286,6 +311,18 @@ export function assertNumerals(english, translated, id) {
 export function assertProtected(terms, translated, id) {
   const lost = terms.filter((t) => !translated.includes(t))
   if (lost.length) throw new Error(`${id}: protected names did not survive translation: ${lost.join(', ')}`)
+}
+
+// A placeholder that did not come back is a string the app cannot render. Separate from
+// assertProtected because the failure is different in kind: a lost proper noun reads as a bad
+// translation, a lost {date} reads as a bug — either the braces are printed at the visitor or the
+// value silently disappears from the sentence. Both happened before this existed.
+export function assertPlaceholders(source, translated, id) {
+  const want = [...new Set(source.match(/\{\w+\}/g) ?? [])]
+  const lost = want.filter((p) => !translated.includes(p))
+  if (lost.length) {
+    throw new Error(`${id}: interpolation placeholders did not survive translation: ${lost.join(', ')} — got "${translated.replace(/\s+/g, ' ').slice(0, 120)}"`)
+  }
 }
 
 // A glossed term whose agreed translation is absent means the dictionary was ignored — and the

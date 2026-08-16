@@ -1111,6 +1111,24 @@ ol.grid {
   padding-right: 1rem;
 }
 
+/* The disclosure marker is a rotated corner, so it points into the text rather than away from it
+   only if the rotation flips with the writing direction. Arabic is the one shipped RTL language
+   and this block would otherwise point off the wrong edge of the summary.
+
+   Matched on the SUMMARY's own dir, not on an RTL ancestor. §7 puts dir on the element according
+   to what it actually renders, so an untranslated English label inside an Arabic page is an LTR
+   element with an RTL parent — and a descendant selector flipped its marker backwards while the
+   words beside it ran the other way. */
+[dir='rtl'].elsewhere-summary::before {
+  border-right: 0;
+  border-left: 1.5px solid currentColor;
+  transform: rotate(45deg);
+}
+
+[open] > [dir='rtl'].elsewhere-summary::before {
+  transform: rotate(-45deg);
+}
+
 /* A binomial inside non-Latin text must be marked, or a screen reader speaks it with the wrong
    phonetics — §7 names this explicitly, because every object here carries one. */
 .binomial {
@@ -1268,6 +1286,174 @@ ol.grid-dense {
   border-top: 1px solid var(--rule);
   padding-top: 1.5rem;
   margin-top: 2.5rem;
+}
+
+/* ------------------------------------------------------------------ further reading (§6)
+
+   Three placements, one look: quiet, typographic, and clearly not part of the guide's own voice.
+   It sits below the writing everywhere it appears, set in meta colour, so nothing here competes
+   with the story above it.
+
+   The object form is a closed <details>. §10 measures a group page at 11.7 screen-heights already
+   and 38.4 for a nineteen-object one; an open block on every object would add most of a screen
+   apiece to the page the spec says is the scaling problem. Native disclosure rather than a
+   scripted one — it is keyboard-operable, it is in the accessibility tree as expanded/collapsed
+   without help, and it survives with JavaScript broken. */
+
+.elsewhere {
+  margin: 1.5rem 0 0;
+  color: var(--ink-soft);
+  font-size: var(--step--1);
+}
+
+.elsewhere.is-collection {
+  border-top: 1px solid var(--rule);
+  padding-top: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+/* No rule of its own on a group page. This block always follows the last object, and .object
+   already draws a border-bottom with 2.5rem of margin under it — a second hairline 5rem below the
+   first, with nothing between them, read as a section that had failed to load its contents. */
+.elsewhere.is-group {
+  margin-top: 0;
+}
+
+/* The collection-level block is a sibling of the essays rather than a child of one, so it does not
+   inherit .essay's measure or its side padding — it ran edge to edge on a phone. Same measure and
+   the same gutters, so the reading column has one left edge all the way down. */
+.elsewhere.is-collection {
+  max-width: var(--measure);
+  margin-inline: auto;
+  padding: 1.5rem 1.25rem 2.5rem;
+}
+
+.elsewhere-head,
+.elsewhere-summary {
+  font-size: var(--step--1);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: var(--ink-meta);
+  margin: 0 0 0.75rem;
+}
+
+/* The disclosure's own hit target. 44px tall so it can be hit on a phone held one-handed in a
+   gallery — the same floor the Listen control is built to. */
+.elsewhere-summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  margin: 0;
+}
+
+/* Safari still paints its own triangle through ::-webkit-details-marker even with list-style
+   none, and it lands outside the flex row rather than in it. */
+.elsewhere-summary::-webkit-details-marker {
+  display: none;
+}
+
+/* A marker this file owns, so it can sit on the baseline of the label and turn with the
+   disclosure. Rotated rather than swapped, so there is one glyph and no reflow. */
+.elsewhere-summary::before {
+  content: '';
+  width: 0.4rem;
+  height: 0.4rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform 150ms ease;
+  flex: none;
+}
+
+[open] > .elsewhere-summary::before {
+  transform: rotate(45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .elsewhere-summary::before {
+    transition: none;
+  }
+}
+
+.elsewhere-list {
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.elsewhere-item {
+  margin: 0 0 1.1rem;
+}
+
+/* Underlined, because colour alone must not carry a link — WCAG 1.4.1 — and these sit inside
+   prose rather than in a control. */
+.elsewhere-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  font-weight: 700;
+}
+
+.elsewhere-title {
+  margin: 0;
+}
+
+.elsewhere-source {
+  color: var(--ink-meta);
+}
+
+.elsewhere-why {
+  margin: 0.3rem 0 0;
+  line-height: 1.5;
+}
+
+/* The claim. It is the sentence that keeps a link from asserting more than the research supports,
+   so it is set apart from the description above it rather than run together with it — but it is
+   still text in the flow, never a badge. */
+.elsewhere-claim {
+  margin: 0.3rem 0 0;
+  color: var(--ink-meta);
+  font-style: italic;
+}
+
+.record {
+  border-top: 1px solid var(--rule);
+  padding-top: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.record-head {
+  font-size: var(--step--1);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: var(--ink-meta);
+  margin: 0 0 0.5rem;
+}
+
+.record-line {
+  margin: 0 0 0.35rem;
+  line-height: 1.5;
+}
+
+.record-line a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.record-authority,
+.record-note {
+  color: var(--ink-meta);
+}
+
+.record-checked {
+  margin: 0.6rem 0 0;
+  color: var(--ink-meta);
 }
 
 .layer-sources ul {

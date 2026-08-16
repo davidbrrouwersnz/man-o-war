@@ -21,6 +21,67 @@ const drafted = read('stories-drafted.json')
 const OBJECTS = new Map(manifest.objects.map((o) => [o.accession, o]))
 const STORIES = { ...drafted.stories, ...museum.stories }
 
+// ------------------------------------------------------------------ further reading (§6)
+//
+// Two files meet here and they are kept apart on purpose. src/data/taxa.json is machine-resolved
+// and regenerable — a re-run of scripts/taxa.mjs overwrites it wholesale. src/data/elsewhere.json
+// is hand-authored editorial judgment and nothing overwrites it. Merging happens at build time so
+// that a page can render both as one list without the app knowing which is which.
+//
+// The prose that describes a PUBLISHER is shipped once, in the index, rather than on every link:
+// "the national encyclopedia, written for a general reader" is the same sentence on all fourteen
+// Te Ara links, and 128 objects' worth of repeated boilerplate is exactly the kind of payload §2's
+// visitor on a gallery connection should not be asked to pay for.
+const taxa = existsSync(new URL('../src/data/taxa.json', import.meta.url)) ? read('taxa.json') : { taxa: {} }
+const curated = read('elsewhere.json')
+
+// A link as it ships: the publisher by key, the link's own id so the page can find its translated
+// `why`, and only the words specific to this link.
+const link = (l) => ({ id: l.id, p: l.publisher, title: l.title, url: l.url, why: l.why, claim: l.claim })
+
+// MarLIN is machine-resolved but reads as further reading rather than as a record, so it joins the
+// curated list rather than the taxon block. Its own common name is kept where MarLIN has one —
+// "Dustbin lid jellyfish" is the kind of thing worth arriving at.
+//
+// Its sentence is a UI string rather than text on the link. It is the same 180 characters on all 28
+// of them, so shipping it per link cost about 5KB across the group chunks to say one thing 28
+// times — and it would have cost 28 translations of one sentence in every language.
+function elsewhereFor(accession) {
+  const hand = curated.objects[accession] ?? []
+  const m = taxa.taxa[accession]?.marlin
+  const links = hand.map(link)
+  if (m) {
+    links.push({
+      p: 'marlin',
+      title: m.common ? `${m.common} (${m.name})` : m.name,
+      url: m.url,
+      whyKey: 'ui.marlinWhy',
+      claim: 'this-species',
+    })
+  }
+  return links
+}
+
+// The catalogue record's own taxonomy, reduced to what the page prints. §6: "Never silently replace
+// a catalogue name with a modern one. Show both." So `catalogue` is always the name on the record
+// and `current` is only present when those differ.
+//
+// `why` carries the refusal where there is one, and it is shipped rather than dropped: an object
+// whose name resolves nowhere is telling a visitor something true about a 140-year-old catalogue,
+// and §6's third state exists precisely so the UI does not render an empty link instead.
+function taxonFor(accession) {
+  const t = taxa.taxa[accession]
+  if (!t) return null
+  if (!t.resolved) return { resolved: false, why: t.why, retrieved: t.retrieved }
+  return {
+    resolved: true,
+    retrieved: t.retrieved,
+    catalogue: { name: t.worms.name, authority: t.worms.authority ?? null, status: t.worms.status, url: t.worms.url },
+    current: t.current ? { name: t.current.name, authority: t.current.authority ?? null, url: t.current.url } : null,
+    gbif: t.gbif ? { url: t.gbif.url, occurrences: t.gbif.occurrences, occurrencesNZ: t.gbif.occurrencesNZ } : null,
+  }
+}
+
 // Build-time-only fields, stripped from everything written to src/data/chunks/. They instruct the
 // translation pipeline — §7's carve-outs, and the reason each one is held back — and a visitor on a
 // gallery connection should not pay for an argument addressed to a build script. A stringify
@@ -100,6 +161,40 @@ let chunkTotal = 0
   }
 }
 
+// §6's external sources, asserted rather than trusted. Each of these has a failure mode that is
+// invisible on the page: a link attributed to a publisher nobody described, a curated entry keyed
+// to an accession that no longer exists, a claim strength the interface has no words for. All three
+// render as something plausible and wrong, so they stop the build instead.
+const CURATED_IDS = new Set()
+{
+  const bad = []
+  const publishers = new Set(Object.keys(curated.publishers))
+  const CLAIMS = new Set(['this-species', 'this-kind', 'this-group', 'this-collection'])
+  const allAcc = new Set(manifest.objects.map((o) => o.accession))
+  const slugs = new Set(groups.groups.map((g) => g.slug))
+
+  for (const [where, list] of [
+    ['collection', curated.collection],
+    ...Object.entries(curated.groups).map(([k, v]) => [`groups.${k}`, v]),
+    ...Object.entries(curated.objects).map(([k, v]) => [`objects.${k}`, v]),
+  ]) {
+    for (const l of list) {
+      if (!publishers.has(l.publisher)) bad.push(`${where}: unknown publisher "${l.publisher}"`)
+      if (!CLAIMS.has(l.claim)) bad.push(`${where}: unknown claim "${l.claim}"`)
+      if (!/^https:\/\//.test(l.url)) bad.push(`${where}: not an https URL — ${l.url}`)
+      // The id is what a translation is keyed to. A missing one means that link can never be
+      // translated; a duplicated one is worse — two links would share one language's words, and
+      // the wrong sentence under a link is exactly the failure the `claim` field exists to prevent.
+      if (!l.id) bad.push(`${where}: link "${l.title}" has no id`)
+      else if (CURATED_IDS.has(l.id)) bad.push(`${where}: duplicate id "${l.id}"`)
+      else CURATED_IDS.add(l.id)
+    }
+  }
+  for (const a of Object.keys(curated.objects)) if (!allAcc.has(a)) bad.push(`objects.${a}: not in the manifest`)
+  for (const s of Object.keys(curated.groups)) if (!slugs.has(s)) bad.push(`groups.${s}: not a group`)
+  if (bad.length) throw new Error(`§6 external sources — src/data/elsewhere.json:\n    ${bad.join('\n    ')}`)
+}
+
 for (const g of groups.groups) {
   const panel = museum.panels[g.slug]
 
@@ -125,6 +220,10 @@ for (const g of groups.groups) {
       placeholder: o.placeholder,
       image: { xlarge: o.image.xlarge, large: o.image.large },
       story,
+      // Omitted rather than empty where there is nothing to link: an empty array renders as a
+      // heading with no list under it, which reads as a section that failed to load.
+      elsewhere: elsewhereFor(accession).length ? elsewhereFor(accession) : undefined,
+      taxon: taxonFor(accession) ?? undefined,
     }
   })
 
@@ -145,7 +244,8 @@ for (const g of groups.groups) {
 
   // No ending. The closing line is no longer rendered or narrated, so shipping it would be bytes
   // on a gallery connection that nobody reads. The text stays in src/data/stories.json.
-  const chunk = { slug: g.slug, title: g.title, panel: panel?.panel ?? null, objects }
+  const groupLinks = (curated.groups[g.slug] ?? []).map(link)
+  const chunk = { slug: g.slug, title: g.title, panel: panel?.panel ?? null, elsewhere: groupLinks, objects }
   const json = ship(chunk)
   writeFileSync(new URL(`${g.slug}.json`, dir), json)
   chunkTotal += gzipSync(json).length
@@ -221,7 +321,8 @@ function assertSegmentIds(file, translated, english) {
 
 const packs = []
 for (const file of readdirSync(langDir)) {
-  if (file === 'en.json' || file === 'layers' || file === 'stories') continue
+  // The per-tier pack directories are not language files. English is compiled into the bundle.
+  if (file === 'en.json' || file === 'layers' || file === 'stories' || file === 'elsewhere') continue
   const code = file.replace(/\.json$/, '')
   const pack = JSON.parse(readFileSync(new URL(file, langDir), 'utf8'))
   if (pack.__code !== code) throw new Error(`${file}: __code is "${pack.__code}"`)
@@ -265,15 +366,30 @@ for (const file of readdirSync(langDir)) {
     storiesDone = Object.keys(ts.stories ?? {}).length
   }
 
+  // Further reading annotations, keyed by the link's own id. Its own file for the same reason as
+  // the layers and the stories: a language gains this tier incrementally, and its coverage is
+  // countable on its own rather than hidden inside the interface percentage.
+  const elseFile = new URL(`elsewhere/${code}.json`, langDir)
+  let elseDone = 0
+  if (existsSync(elseFile)) {
+    const te = JSON.parse(readFileSync(elseFile, 'utf8'))
+    const stray = Object.keys(te.elsewhere ?? {}).filter((id) => !CURATED_IDS.has(id))
+    if (stray.length) throw new Error(`elsewhere/${code}.json: link ids not in src/data/elsewhere.json: ${stray.join(', ')}`)
+    pack.elsewhere = te.elsewhere
+    elseDone = Object.keys(te.elsewhere ?? {}).length
+  }
+
   const panelsDone = Object.keys(pack.panels ?? {}).length
   const json = ship(pack)
   writeFileSync(new URL(`lang-${code}.json`, dir), json)
-  packs.push({ code, missing: missing.length, panels: panelsDone, layers: layersDone, stories: storiesDone, kb: (gzipSync(json).length / 1024).toFixed(1) })
+  packs.push({ code, missing: missing.length, panels: panelsDone, layers: layersDone, stories: storiesDone, elsewhere: elseDone, kb: (gzipSync(json).length / 1024).toFixed(1) })
 }
 
 console.log('')
 for (const p of packs) {
-  console.log(`  ${p.code.padEnd(8)} ui ${String(enKeys.length - p.missing).padStart(2)}/${enKeys.length}  panels ${String(p.panels).padStart(2)}/11  layers ${p.layers}/${LAYER_COUNT}  stories ${String(p.stories).padStart(3)}/128  ${p.kb}KB gz${p.missing ? '  <- falls back to English' : ''}`)
+  console.log(
+    `  ${p.code.padEnd(8)} ui ${String(enKeys.length - p.missing).padStart(2)}/${enKeys.length}  panels ${String(p.panels).padStart(2)}/11  layers ${p.layers}/${LAYER_COUNT}  stories ${String(p.stories).padStart(3)}/128  further reading ${String(p.elsewhere).padStart(2)}/${CURATED_IDS.size}  ${p.kb}KB gz${p.missing ? '  <- falls back to English' : ''}`
+  )
 }
 
 index.languages = packs.map((p) => p.code)
@@ -319,9 +435,26 @@ for (const p of packs) {
 
 // Layers 3–5, written once and reached from any group page (§6, §10).
 
-const layersJson = ship(LAYERS)
+const layersJson = ship({
+  ...LAYERS,
+  // Collection-level further reading rides with the essays rather than in the index, because it is
+  // printed at the foot of the reading column and arrives when that column does. The index is
+  // loaded on every route and this is needed on one.
+  elsewhere: curated.collection.map(link),
+})
 writeFileSync(new URL('layers.json', dir), layersJson)
 index.layers = LAYERS.order.map((slug) => ({ slug, title: LAYERS.layers[slug].title }))
+
+// Who each source is, said once. Every link anywhere in the app names a key in here, and the
+// assertion above is what stops a link naming a publisher that was never described — which would
+// render as an attribution line with a blank where the institution should be.
+//
+// The name and the institution behind it ship; the paragraph in elsewhere.json explaining why that
+// institution is worth trusting does NOT. It is written for whoever reviews this file, and the
+// index is loaded on every route in the app — including the ones with no links on them at all.
+index.publishers = Object.fromEntries(
+  Object.entries(curated.publishers).map(([key, p]) => [key, { name: p.name, publisher: p.publisher }])
+)
 
 const indexJson = JSON.stringify(index)
 writeFileSync(new URL('index.json', dir), indexJson)

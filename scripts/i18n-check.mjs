@@ -101,8 +101,21 @@ const { result: rtl } = await send('Runtime.evaluate', {
     lang: document.documentElement.lang,
     wellDir: getComputedStyle(document.querySelector('.well')).direction,
     bodyDir: getComputedStyle(document.body).direction,
-    fallbacks: document.querySelectorAll('.fallback-notice').length,
-    englishBlocks: document.querySelectorAll('[lang="en"]').length,
+    notices: document.querySelectorAll('.fallback-notice').length,
+    // A story body carries lang="en" exactly when its text fell back to English, because
+    // langAttrs() puts the RESOLVED language on the element. So this is the count of fallbacks
+    // actually on the page, and the notice count has to match it.
+    fellBack: document.querySelectorAll('.story section > div[lang="en"]').length,
+    // ...and a notice that is NOT inside a fallen-back body is a page telling a visitor its Arabic
+    // is English when it is not.
+    strayNotices: [...document.querySelectorAll('.fallback-notice')]
+      .filter((n) => !n.closest('.story section > div[lang="en"]')).length,
+    // The catalogue name is never translated by design — §6 has the catalogue speak its own words,
+    // and scripts/units.mjs deliberately collects no unit for it. So on an Arabic page these are
+    // guaranteed to exist and are guaranteed to be English, which makes them the one anchor for
+    // §7's marking rule that does not depend on how complete a language happens to be.
+    catalogueAll: document.querySelectorAll('.object-catalogue').length,
+    catalogueEn: document.querySelectorAll('.object-catalogue[lang="en"][dir="ltr"]').length,
     panelText: (document.querySelector('.group-panel')||{}).textContent.slice(0,30)
   })`,
   returnByValue: true,
@@ -111,8 +124,23 @@ const r = JSON.parse(rtl.value)
 check(r.root === 'rtl', 'root dir is rtl for Arabic', r.root)
 check(r.bodyDir === 'rtl', 'layout mirrors', r.bodyDir)
 check(r.wellDir === 'ltr', 'media well is NOT mirrored', r.wellDir)
-check(r.fallbacks > 0, 'untranslated content shows a stated fallback', `${r.fallbacks} notices`)
-check(r.englishBlocks > 0, 'fallen-back blocks carry lang="en"', `${r.englishBlocks} blocks`)
+
+// §7: "The fallback is never silent." This used to assert that SOME notice was on the page, which
+// stopped being a statement about the rule the day Arabic reached 128/128 stories: there was no
+// longer anything on this page to fall back, so the check could not pass however correct the app
+// was. It had been failing on the deployed build too, which is how a check earns being ignored.
+//
+// Stated as the invariant instead — one notice per fallen-back body, no notices anywhere else — it
+// is true at every level of coverage, and it still fails loudly if the notice stops rendering or
+// starts rendering on translated text. The exercised count is printed rather than hidden, because
+// an invariant that currently holds over zero cases is passing vacuously and should say so.
+check(r.notices === r.fellBack, 'every fallen-back body states it, and only those', `${r.notices} notices / ${r.fellBack} fell back`)
+check(r.strayNotices === 0, 'no fallback notice on text that did not fall back', `${r.strayNotices} stray`)
+if (r.fellBack === 0) console.log('  note  nothing on this page falls back — the two checks above passed over zero cases')
+
+// The rule those checks can no longer exercise, tested on content that is English BY DESIGN and
+// therefore always present: the catalogue's own words, marked as English inside an Arabic page.
+check(r.catalogueAll > 0 && r.catalogueEn === r.catalogueAll, 'untranslated-by-design text carries lang="en" dir="ltr"', `${r.catalogueEn}/${r.catalogueAll} catalogue names`)
 check(!/^[A-Za-z]/.test(r.panelText.trim()), 'the group panel is in Arabic', r.panelText)
 
 // The override must beat the device language and survive a reload.

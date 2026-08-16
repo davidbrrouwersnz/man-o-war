@@ -30,17 +30,19 @@
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { LANGUAGES } from '../src/i18n.js'
-import { collect, PACK, LAYERS, STORIES } from './units.mjs'
+import { collect, PACK, LAYERS, STORIES, ELSEWHERE } from './units.mjs'
 import { loadGlossary } from './glossary.mjs'
 import {
   assertAudited,
   assertGlossed,
   assertNumerals,
+  assertPlaceholders,
   assertProtected,
   assertStructure,
   carveOut,
   protect,
   protectedTerms,
+  tidyPlaceholders,
   unprotect,
 } from './translate-guard.mjs'
 
@@ -209,7 +211,9 @@ const fileFor = (kind, code) =>
     ? new URL(`i18n/${code}.json`, dataDir)
     : kind === LAYERS
       ? new URL(`i18n/layers/${code}.json`, dataDir)
-      : new URL(`i18n/stories/${code}.json`, dataDir)
+      : kind === ELSEWHERE
+        ? new URL(`i18n/elsewhere/${code}.json`, dataDir)
+        : new URL(`i18n/stories/${code}.json`, dataDir)
 
 const readJson = (url, fallback) => (existsSync(url) ? JSON.parse(readFileSync(url, 'utf8')) : fallback)
 
@@ -299,6 +303,7 @@ for (const code of chosen) {
     [PACK]: readJson(fileFor(PACK, code), { __code: code, reviewed: false }),
     [LAYERS]: readJson(fileFor(LAYERS, code), { __code: code, reviewed: false, layers: {} }),
     [STORIES]: readJson(fileFor(STORIES, code), { __code: code, reviewed: false, stories: {} }),
+    [ELSEWHERE]: readJson(fileFor(ELSEWHERE, code), { __code: code, reviewed: false, elsewhere: {} }),
   }
   const touched = new Set()
 
@@ -399,7 +404,7 @@ for (const code of chosen) {
       // A unit is applied only when every one of its blocks came back. A half-translated segment
       // would join English and Spanish across a paragraph break and read as corruption.
       if (!parts.every((p) => results.has(p))) continue
-      const text = parts.map((p) => results.get(p)).join('\n\n')
+      const text = tidyPlaceholders(parts.map((p) => results.get(p)).join('\n\n'))
       // A unit that fails a check is REJECTED, not fatal. Aborting the run on the first bad
       // translation means one stubborn headline out of six hundred and fifty throws away the other
       // six hundred and forty-nine, all of them paid for. The failing unit is simply not written —
@@ -409,6 +414,7 @@ for (const code of chosen) {
         assertNumerals(unit.text, text, `${code} ${unit.id}`)
         assertProtected([...new Set(parts.flatMap((p) => p.protectedHere))], text, `${code} ${unit.id}`)
         assertGlossed([...new Set(parts.flatMap((p) => p.glossedHere ?? []))], text, `${code} ${unit.id}`)
+        assertPlaceholders(unit.text, text, `${code} ${unit.id}`)
       } catch (err) {
         rejected.push({ id: unit.id, code, why: err.message.split('\n')[0], got: text })
         continue

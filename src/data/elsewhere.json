@@ -1,0 +1,347 @@
+{
+ "note": "Hand-authored further reading: the links a script cannot derive. Machine-resolved records (WoRMS, GBIF, MarLIN) live in src/data/taxa.json and are merged with this at build time by scripts/split.mjs — nothing here duplicates them. NOT CURATOR-REVIEWED. Every link was opened and read before it was written down, and every URL is re-checked by `npm run taxa:verify`, but which source is worth a visitor's time is an editorial judgment and a curator should be able to strike any of them. `claim` is the load-bearing field and the reason this file is hand-authored at all: it records how close the source actually is to the object in the case, and the interface prints it. A source about a related animal photographed in New Zealand is worth linking and is NOT the animal in the glass, and §6 spends a page on exactly that distinction.",
+ "reviewed": false,
+ "retrieved": "2026-08-15",
+ "claimsNote": "Three strengths of claim, and the UI must never round one up to the next. `this-species` means the source is about the species the model depicts, as currently accepted. `this-kind` means it is about a close relative or the same kind of animal — usually the New Zealand one, where the modelled animal is Mediterranean or North Atlantic and does not live here. `this-group` means it is about the group, not this animal: good orientation, no claim about the object.",
+ "publishers": {
+  "teara": {
+   "name": "Te Ara — the Encyclopedia of New Zealand",
+   "url": "https://teara.govt.nz",
+   "publisher": "Manatū Taonga — Ministry for Culture and Heritage",
+   "why": "The national encyclopedia, written for a general reader and edited to a published standard. Its marine invertebrate articles are by Dennis Gordon and Maggy Wassilieff. It answers the question a visitor in Christchurch actually has — what about here? — which no European source can."
+  },
+  "marlin": {
+   "name": "MarLIN — the Marine Life Information Network",
+   "url": "https://www.marlin.ac.uk",
+   "publisher": "Marine Biological Association of the United Kingdom",
+   "why": "Species pages for the north-east Atlantic, which is the sea the Blaschkas modelled. For most of this collection it is the closest thing to a written account of the living animal by people who work on it."
+  },
+  "niwa": {
+   "name": "NIWA — Earth Sciences New Zealand",
+   "url": "https://niwa.co.nz",
+   "publisher": "National Institute of Water and Atmospheric Research",
+   "why": "New Zealand's marine science institute. Its Critter of the Week series is short, current and written by the taxonomists who hold the specimens."
+  },
+  "cornell": {
+   "name": "Cornell University Library Digital Collections",
+   "url": "https://digital.library.cornell.edu/collections/blaschka",
+   "publisher": "Cornell University",
+   "why": "About 570 Blaschka models, catalogued and photographed, with the scholarship around them. The largest and best-documented Blaschka collection published online, and the obvious place to go after 128."
+  },
+  "cmog": {
+   "name": "The Corning Museum of Glass",
+   "url": "https://www.cmog.org",
+   "publisher": "The Corning Museum of Glass",
+   "why": "The museum of the material. Its 2016 Blaschka exhibition put the models beside the Blaschkas' own drawings and their flameworking tools, which is the making rather than the animals."
+  },
+  "hmnh": {
+   "name": "Harvard Museum of Natural History",
+   "url": "https://www.hmnh.harvard.edu",
+   "publisher": "Harvard University",
+   "why": "Holds the Glass Flowers — the 4,300 botanical models the Blaschkas made from 1886, after they stopped making sea creatures. It is what happened next to the people who made these."
+  },
+  "canterbury": {
+   "name": "Canterbury Museum",
+   "url": "https://www.canterburymuseum.com",
+   "publisher": "Canterbury Museum",
+   "why": "The Museum that holds these 128 objects."
+  }
+ },
+ "collectionNote": "Deliberately NOT listing Shaw et al. 2017 or Le Grice's Blaschka page here, though both are the best sources on this collection there are. Both are already printed on this same page, twice, as the sources under each of the two essays — and a page that names the same two documents three times reads as though it has nothing else to offer. This block is the other Blaschka world: what the same workshop sent elsewhere, and what the two men did afterwards.",
+ "collection": [
+  {
+   "id": "cornell-blaschka",
+   "publisher": "cornell",
+   "title": "The Cornell Collection of Blaschka Invertebrate Models",
+   "url": "https://digital.library.cornell.edu/collections/blaschka",
+   "why": "About 570 models, photographed and catalogued. Canterbury's 128 came from the same Dresden workshop and the same printed catalogue, so a model missing here is often present there — this is how to see the rest of what the Blaschkas made.",
+   "claim": "this-collection"
+  },
+  {
+   "id": "cmog-fragile-legacy-marine-invertebrate-glass",
+   "publisher": "cmog",
+   "title": "Fragile Legacy: the marine invertebrate glass models of Leopold and Rudolf Blaschka",
+   "url": "https://whatson.cmog.org/exhibitions-galleries/fragile-legacy-marine-invertebrate-glass-models-leopold-and-rudolf-blaschka",
+   "why": "The 2016 exhibition that showed the models beside the Blaschkas' original drawings and the tools from their Dresden studio. The best published account of how these were actually made.",
+   "claim": "this-collection"
+  },
+  {
+   "id": "hmnh-glass-flowers",
+   "publisher": "hmnh",
+   "title": "The Glass Flowers: the Ware Collection of Blaschka glass models of plants",
+   "url": "https://www.hmnh.harvard.edu/glass-flowers",
+   "why": "From 1886 the Blaschkas stopped making sea creatures and spent fifty years on 4,300 glass plants for Harvard, under an exclusive contract. Canterbury's order in 1883 was near the end of the marine work.",
+   "claim": "this-collection"
+  }
+ ],
+ "groups": {
+  "jellyfish": [
+   {
+    "id": "teara-corals-anemones-and-jellyfish-page-4",
+    "publisher": "teara",
+    "title": "Jellyfish",
+    "url": "https://teara.govt.nz/en/corals-anemones-and-jellyfish/page-4",
+    "why": "What jellyfish are, and which ones turn up here. New Zealand's species have never been properly studied and several are probably new to science.",
+    "claim": "this-group"
+   }
+  ],
+  "floating-colonies": [
+   {
+    "id": "teara-corals-anemones-and-jellyfish-page-3",
+    "publisher": "teara",
+    "title": "Hydroids and siphonophores",
+    "url": "https://teara.govt.nz/en/corals-anemones-and-jellyfish/page-3",
+    "why": "The colonial animals — how thousands of individuals budded from one parent divide the work of being a single creature between them.",
+    "claim": "this-group"
+   }
+  ],
+  "see-through-swimmers": [
+   {
+    "id": "teara-marine-animals-without-backbones-page-1",
+    "publisher": "teara",
+    "title": "Sponges and jellies",
+    "url": "https://teara.govt.nz/en/marine-animals-without-backbones/page-1",
+    "why": "Comb jellies are not jellyfish, and this is the clearest short explanation of the difference. Nineteen of the world's hundred species are known from New Zealand waters.",
+    "claim": "this-group"
+   }
+  ],
+  "sea-squirts-and-salps": [
+   {
+    "id": "teara-marine-animals-without-backbones-page-6",
+    "publisher": "teara",
+    "title": "Tunicates: sea squirts, salps and appendicularians",
+    "url": "https://teara.govt.nz/en/marine-animals-without-backbones/page-6",
+    "why": "Why these animals — bags on a rock, and transparent barrels in the open sea — are more closely related to us than to anything else in this collection.",
+    "claim": "this-group"
+   }
+  ],
+  "cephalopods": [
+   {
+    "id": "teara-octopus-and-squid",
+    "publisher": "teara",
+    "title": "Octopus and squid",
+    "url": "https://teara.govt.nz/en/octopus-and-squid",
+    "why": "More than 85 squid species and 42 octopus species are known from New Zealand waters. None of the animals in this group is one of them, and that contrast is the point.",
+    "claim": "this-group"
+   }
+  ],
+  "sea-slugs": [
+   {
+    "id": "teara-shellfish-page-3",
+    "publisher": "teara",
+    "title": "Sea slugs",
+    "url": "https://teara.govt.nz/en/shellfish/page-3",
+    "why": "Sea slugs are snails that gave up the shell. This is where the New Zealand ones are, and they are as strange as anything the Blaschkas modelled.",
+    "claim": "this-group"
+   }
+  ],
+  "sea-anemones": [
+   {
+    "id": "teara-corals-anemones-and-jellyfish-page-2",
+    "publisher": "teara",
+    "title": "True corals and sea anemones",
+    "url": "https://teara.govt.nz/en/corals-anemones-and-jellyfish/page-2",
+    "why": "An anemone is a polyp that never became anything else. The New Zealand species include the jewel anemones this group also holds a model of.",
+    "claim": "this-group"
+   }
+  ],
+  "corals-and-sea-fans": [
+   {
+    "id": "teara-corals-anemones-and-jellyfish-page-1",
+    "publisher": "teara",
+    "title": "Cnidaria — the nettle animals",
+    "url": "https://teara.govt.nz/en/corals-anemones-and-jellyfish/page-1",
+    "why": "One phylum holds the corals, the sea fans, the anemones, the jellyfish and the man o' war. The name is from the Greek for nettle, and the sting is what they have in common.",
+    "claim": "this-group"
+   }
+  ],
+  "sea-cucumbers-and-stars": [
+   {
+    "id": "teara-starfish-sea-urchins-and-other",
+    "publisher": "teara",
+    "title": "Starfish, sea urchins and other echinoderms",
+    "url": "https://teara.govt.nz/en/starfish-sea-urchins-and-other-echinoderms",
+    "why": "Six hundred and seventeen species of spiny-skinned animal live in New Zealand waters, including about a hundred sea cucumbers.",
+    "claim": "this-group"
+   }
+  ],
+  "worms": [
+   {
+    "id": "teara-marine-animals-without-backbones-page-3",
+    "publisher": "teara",
+    "title": "Advanced worms",
+    "url": "https://teara.govt.nz/en/marine-animals-without-backbones/page-3",
+    "why": "Thirteen major groups of worms and worm-like animals live in New Zealand seas. The word names a body shape rather than a family, and this is the article that takes it apart.",
+    "claim": "this-group"
+   },
+   {
+    "id": "teara-marine-animals-without-backbones-page-2",
+    "publisher": "teara",
+    "title": "Simple worms",
+    "url": "https://teara.govt.nz/en/marine-animals-without-backbones/page-2",
+    "why": "The flatworms and the ribbon worms — the animals at the start of this group, which are worms in a much older sense than the bristle worms are.",
+    "claim": "this-group"
+   }
+  ],
+  "never-went-to-sea": [
+   {
+    "id": "teara-snails-and-slugs-page-1",
+    "publisher": "teara",
+    "title": "New Zealand land molluscs",
+    "url": "https://teara.govt.nz/en/snails-and-slugs/page-1",
+    "why": "An estimated 1,400 native species of land snail and slug, most of them found nowhere else. The Blaschkas modelled European garden animals; this is what the same idea produced in a country that was isolated for eighty million years.",
+    "claim": "this-group"
+   }
+  ]
+ },
+ "objects": {
+  "1884.137.32": [
+   {
+    "id": "teara-moon-jellyfish",
+    "publisher": "teara",
+    "title": "Moon jellyfish",
+    "url": "https://teara.govt.nz/en/photograph/4738/moon-jellyfish",
+    "why": "A moon jelly photographed alive in New Zealand water — the animal the glass is arguing with. Te Ara writes it as Aurelia species rather than naming one, and it is right to: moon jellies are several near-identical species worldwide and the New Zealand animal may not be the Atlantic one the Blaschkas modelled.",
+    "claim": "this-kind"
+   }
+  ],
+  "1884.137.24": [
+   {
+    "id": "teara-moon-jellyfish-1884.137.24",
+    "publisher": "teara",
+    "title": "Moon jellyfish",
+    "url": "https://teara.govt.nz/en/photograph/4738/moon-jellyfish",
+    "why": "The grown animal this model shows growing up, photographed alive here. Moon jellies gather in New Zealand bays in numbers large enough to kill farmed fish — the same blooms the story above describes.",
+    "claim": "this-kind"
+   }
+  ],
+  "1884.137.33": [
+   {
+    "id": "teara-washed-up-portuguese-men-of",
+    "publisher": "teara",
+    "title": "Washed-up Portuguese men-of-war",
+    "url": "https://teara.govt.nz/en/photograph/4737/washed-up-portuguese-men-of-war",
+    "why": "What this animal looks like when it arrives on a New Zealand beach, which is how most people here meet it. Note the caution below: the animal that strands here may not be the species the glass depicts.",
+    "claim": "this-kind"
+   },
+   {
+    "id": "teara-portuguese-man-of-war",
+    "publisher": "teara",
+    "title": "Portuguese man-of-war, from the 1966 Encyclopaedia",
+    "url": "https://teara.govt.nz/en/1966/portuguese-man-of-war",
+    "why": "The entry from the 1966 Encyclopaedia of New Zealand, kept online as written. Sixty years old and confident about things that have since been reopened — a useful sight of how this kind of knowledge dates.",
+    "claim": "this-kind"
+   }
+  ],
+  "1884.137.98": [
+   {
+    "id": "niwa-critter-week-mediterranean-fanworm-sabella",
+    "publisher": "niwa",
+    "title": "Critter of the Week: the Mediterranean fanworm, Sabella spallanzanii",
+    "url": "https://niwa.co.nz/oceans/critter-week/critter-week-mediterranean-fanworm-sabella-spallanzanii",
+    "why": "This glass model of a Mediterranean fanworm has been in Christchurch since 1883. The living animal reached Lyttelton Harbour in 2008 and is now a notifiable organism under the Biosecurity Act. Same species, arriving 125 years apart.",
+    "claim": "this-species"
+   }
+  ],
+  "1884.137.11": [
+   {
+    "id": "teara-sea-hare",
+    "publisher": "teara",
+    "title": "Sea hare",
+    "url": "https://teara.govt.nz/en/photograph/8020/sea-hare",
+    "why": "A New Zealand sea hare photographed alive. The modelled animal is a different species from a different ocean, but the body — the ear-like flaps that give it the name — is the same idea.",
+    "claim": "this-kind"
+   }
+  ],
+  "1884.137.94": [
+   {
+    "id": "teara-sea-hare-1884.137.94",
+    "publisher": "teara",
+    "title": "Sea hare",
+    "url": "https://teara.govt.nz/en/photograph/8020/sea-hare",
+    "why": "A New Zealand sea hare photographed alive, for comparison with the glass.",
+    "claim": "this-kind"
+   }
+  ],
+  "1884.137.52": [
+   {
+    "id": "teara-comb-jelly",
+    "publisher": "teara",
+    "title": "Comb jelly",
+    "url": "https://teara.govt.nz/en/photograph/5850/comb-jelly",
+    "why": "A comb jelly photographed alive, with the eight rows of beating combs the glass can only imply.",
+    "claim": "this-kind"
+   }
+  ],
+  "1884.137.48": [
+   {
+    "id": "teara-spoon-worm",
+    "publisher": "teara",
+    "title": "Spoon worm",
+    "url": "https://teara.govt.nz/en/photograph/5857/spoon-worm",
+    "why": "A spoon worm photographed in New Zealand waters — the same body plan as the green spoon worm in the glass, whose male lives inside the female and is a fraction of her size.",
+    "claim": "this-kind"
+   }
+  ],
+  "1884.137.15": [
+   {
+    "id": "teara-tube-worm",
+    "publisher": "teara",
+    "title": "Tube worm",
+    "url": "https://teara.govt.nz/en/photograph/5855/tube-worm",
+    "why": "A tube worm with its crown out, photographed alive. The animal in the glass is the part that almost never gets seen — the worm outside its tube.",
+    "claim": "this-kind"
+   }
+  ],
+  "1884.137.37": [
+   {
+    "id": "teara-ribbon-worms",
+    "publisher": "teara",
+    "title": "Ribbon worms",
+    "url": "https://teara.govt.nz/en/artwork/5854/ribbon-worms",
+    "why": "Ribbon worms drawn rather than photographed, because they are almost impossible to photograph whole — some species stretch to thirty metres and break if handled.",
+    "claim": "this-kind"
+   }
+  ],
+  "1884.137.49": [
+   {
+    "id": "teara-ribbon-worms-1884.137.49",
+    "publisher": "teara",
+    "title": "Ribbon worms",
+    "url": "https://teara.govt.nz/en/artwork/5854/ribbon-worms",
+    "why": "Ribbon worms drawn rather than photographed — an illustration made for the same reason the Blaschkas made models.",
+    "claim": "this-kind"
+   }
+  ],
+  "1884.137.20": [
+   {
+    "id": "teara-bristle-worm",
+    "publisher": "teara",
+    "title": "Bristle-worm",
+    "url": "https://teara.govt.nz/en/photograph/6887/bristle-worm",
+    "why": "A bristle worm photographed alive, showing the paired paddles down each side that give the group its name.",
+    "claim": "this-kind"
+   }
+  ],
+  "1884.137.51": [
+   {
+    "id": "teara-a-salp-chain",
+    "publisher": "teara",
+    "title": "A salp chain",
+    "url": "https://teara.govt.nz/en/photograph/5356/a-salp-chain",
+    "why": "A living salp chain in the open ocean. Salps swarm around New Zealand in late spring, and colonies of twenty metres have been recorded off the north.",
+    "claim": "this-kind"
+   }
+  ],
+  "1884.137.47": [
+   {
+    "id": "teara-a-salp-chain-1884.137.47",
+    "publisher": "teara",
+    "title": "A salp chain",
+    "url": "https://teara.govt.nz/en/photograph/5356/a-salp-chain",
+    "why": "What the colony this model shows looks like alive and lit — the thing a glass model of a transparent animal is always arguing with.",
+    "claim": "this-kind"
+   }
+  ]
+ }
+}

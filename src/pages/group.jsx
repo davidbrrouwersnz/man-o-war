@@ -5,8 +5,8 @@ import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react'
 import { BY_CODE } from '../i18n.js'
 import { langAttrs, useLang, useT } from '../lang.jsx'
 import { Spoken, blocksOf, hasAudio } from '../audio.jsx'
-import { BY_SLUG, GROUPS, loadChunk } from '../collection.js'
-import { Listen, Media, Translated } from '../components/reading.jsx'
+import { BY_SLUG, GROUPS, PUBLISHERS, loadChunk } from '../collection.js'
+import { Elsewhere, Listen, Media, Translated } from '../components/reading.jsx'
 import { Tools } from '../components/tools.jsx'
 import { Missing } from './missing.jsx'
 
@@ -170,6 +170,10 @@ function ObjectSection({ object, arrived, registry }) {
           </p>
         </div>
       )}
+      {/* §6's external sources, at the object scale: where to read about this animal, and the
+          taxonomic record behind the name at the top of this section. Not narrated — §13 requires
+          the spoken words to be the printed words, and none of this is in the audio index. */}
+      <Elsewhere links={object.elsewhere} taxon={object.taxon} publishers={PUBLISHERS} variant="object" />
       </div>
     </article>
   )
@@ -291,6 +295,10 @@ function GroupPage({ route, go }) {
           {data.objects.map((o) => (
             <ObjectSection key={o.accession} object={o} arrived={o.accession === route.arrivedAt} registry={registry} />
           ))}
+
+          {/* The group's own further reading, after every object and before the page turns. Open
+              rather than behind a disclosure: there is one of these per page, not one per object. */}
+          <Elsewhere links={data.elsewhere} publishers={PUBLISHERS} variant="group" />
         </>
       ) : (
         <p className="loading">Loading the objects…</p>
