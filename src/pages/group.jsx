@@ -114,7 +114,12 @@ function ObjectMedia({ object, priority }) {
 // is above the fold on a phone, so it is that page's LCP element instead.
 // `media` is false when the caller is placing the photograph elsewhere itself (the collection page,
 // in its own section of the browsing column) — everything else about the object still renders here.
-function ObjectSection({ object, arrived, registry, priority = arrived, media = true }) {
+// `elsewhereCollapsed` defaults to true, which is the group page's rule: many objects on one page,
+// so each one's further reading starts closed (see the note on Elsewhere in reading.jsx). The
+// collection page's on-display object is the one place there is exactly one object on the whole
+// page, same as the group and collection further-reading blocks that are already open by default —
+// so it passes false and gets the same open treatment they get, instead of the many-objects rule.
+function ObjectSection({ object, arrived, registry, priority = arrived, media = true, elsewhereCollapsed = true }) {
   const ref = useRef(null)
   const [t, tr] = useT()
   const { code } = useLang()
@@ -200,7 +205,7 @@ function ObjectSection({ object, arrived, registry, priority = arrived, media = 
       {/* §6's external sources, at the object scale: where to read about this animal, and the
           taxonomic record behind the name at the top of this section. Not narrated — §13 requires
           the spoken words to be the printed words, and none of this is in the audio index. */}
-      <Elsewhere links={object.elsewhere} taxon={object.taxon} publishers={PUBLISHERS} variant="object" />
+      <Elsewhere links={object.elsewhere} taxon={object.taxon} publishers={PUBLISHERS} variant="object" collapsed={elsewhereCollapsed} />
       </div>
     </article>
   )

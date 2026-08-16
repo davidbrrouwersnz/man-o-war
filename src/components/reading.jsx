@@ -281,17 +281,24 @@ function Record({ taxon, heading = true }) {
   )
 }
 
-// One block, three placements.
+// One block, several placements.
 //
-// On an object it is a disclosure, closed. That is a deliberate exception to this app's own rule
-// that nothing worth reading sits behind a tap — §6 puts the story inline precisely because "every
-// tap between a visitor and the writing is where most of them stop". Further reading is not that:
-// it is the thing you do afterwards, and §10's measured problem is that a group page is already
-// 11.7 screen-heights and a nineteen-object page would be 38.4. An open block on every object would
-// add most of a screen-height per object to the one page the spec already says is too long.
+// On a group page's own objects it is a disclosure, closed by default. That is a deliberate
+// exception to this app's own rule that nothing worth reading sits behind a tap — §6 puts the
+// story inline precisely because "every tap between a visitor and the writing is where most of
+// them stop". Further reading is not that: it is the thing you do afterwards, and §10's measured
+// problem is that a group page is already 11.7 screen-heights and a nineteen-object page would be
+// 38.4. An open block on every object would add most of a screen-height per object to the one page
+// the spec already says is too long.
 //
-// On a group and on the collection it is open, because there is one of it per page.
-function Elsewhere({ links = [], taxon = null, publishers, variant = 'group', className = '' }) {
+// On a group and on the collection it is open, because there is one of it per page — and that is
+// the actual reason the group page's own objects collapse, not something inherent to an object's
+// further reading as a category. The collection page's on-display object is also exactly one
+// object, so it takes `collapsed={false}` from ObjectSection and gets the open treatment instead;
+// see the note there. Without that override, this page had a closed "Read more elsewhere" for the
+// object immediately above an open one for the collection a few screens down — same words, same
+// look, and no reason a visitor could see for why one asked for a tap and the other did not.
+function Elsewhere({ links = [], taxon = null, publishers, variant = 'group', collapsed = variant === 'object', className = '' }) {
   const [, tr] = useT()
   if (!links.length && !taxon) return null
 
@@ -313,12 +320,12 @@ function Elsewhere({ links = [], taxon = null, publishers, variant = 'group', cl
     </>
   )
 
-  if (variant === 'object') {
+  if (collapsed) {
     // Ninety of the 128 objects have no further reading anyone could verify — the name resolves to
     // a record and no more. Labelling those "Read more elsewhere" promises an article and opens on
     // a taxonomic entry, so the summary says which of the two this actually is.
     return (
-      <details className={`elsewhere is-object ${className}`.trim()}>
+      <details className={`elsewhere is-${variant} ${className}`.trim()}>
         <summary className="elsewhere-summary" {...langAttrs(headingR)}>
           {headingR.text}
         </summary>
