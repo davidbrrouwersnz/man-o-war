@@ -142,6 +142,21 @@ body {
   overflow-wrap: break-word;
 }
 
+/* Body copy on request goes back to --font-serif — see the note on that token. Everywhere else
+   (headings, chrome, controls, meta text) stays on the body default above; only the actual reading
+   text overrides it: an object's story and its plain-language description when it has none yet, an
+   essay's standfirst and its own sub-sectioned body, and the collection's own opening paragraph.
+   One rule for all of it, since nothing else on the page currently sets its own font-family for
+   this to conflict with. */
+.home-head p,
+.group-panel,
+.object-catalogue,
+.story p,
+.catalogue-words,
+.layer-section p {
+  font-family: var(--font-serif);
+}
+
 /* The nine shipped languages do not all want 1.5. Arabic ascenders and descenders need more room,
    and CJK is set solid enough that Latin leading reads loose. One rule per script beats one number
    for all of them. */
@@ -836,12 +851,13 @@ ol.grid {
   margin: 0 0 1.5rem;
 }
 
+/* No rule under the standfirst any more, on request — the padding that gave that line room to
+   breathe on both sides is gone with it rather than left doubling the margin below into a blank
+   ~5rem gap with nothing to explain it. One margin instead of two contributors to it. */
 .group-panel {
   font-size: var(--step-1);
   line-height: 1.5;
   margin: 0 0 2.5rem;
-  padding-bottom: 2.5rem;
-  border-bottom: 1px solid var(--rule);
 }
 
 /* ------------------------------------------------------------------ object */
@@ -938,11 +954,17 @@ ol.grid {
   margin: 0 0 0.2rem;
 }
 
+/* Same size, line-height and colour (inherited, not the meta grey it had) as .group-panel — a
+   subtitle under a title should read the same as a standfirst under one. Not the same margin: that
+   one is sized to separate an essay's lede from a multi-section body several screens long, and
+   copying it here would open a gap between this one line and the story starting immediately under
+   it that the object's own layout gives no reason for. Kept close to its previous spacing instead,
+   nudged up slightly for the bigger type — a judgement call, flagged rather than silently decided
+   either way. */
 .object-catalogue {
-  font-size: var(--step--1);
-  letter-spacing: 0.01em;
-  color: var(--ink-meta);
-  margin: 0 0 0.9rem;
+  font-size: var(--step-1);
+  line-height: 1.5;
+  margin: 0 0 1.25rem;
 }
 
 /* Every well is the same width; the height follows the photograph.
@@ -1836,6 +1858,13 @@ html:has(.audio-bar) {
      every device we care about. */
   --font-sans: 'Helvetica Neue', Helvetica, Arial, system-ui, sans-serif;
   --font-heading: var(--font-sans);
+
+  /* The body copy's own face, before 68bd2b8 moved the whole app onto Helvetica Neue for §15's
+     "the Museum's own face at 16px/24px". Restored here on request for reading text specifically —
+     the exact stack that shipped until then, a system serif rather than a webfont, for the same
+     reason --font-sans avoids one. Headings and every control keep --font-sans; only the prose that
+     actually reads as body copy (the story, the essays, the catalogue description) takes this. */
+  --font-serif: ui-serif, Georgia, 'Iowan Old Style', 'Times New Roman', serif;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
