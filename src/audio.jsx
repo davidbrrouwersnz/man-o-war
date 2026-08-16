@@ -219,10 +219,15 @@ export function AudioProvider({ children }) {
     return () => {
       wanted = false
     }
+    // `queue?.key` is a dependency because queues share item ids by design — a group tour and an
+    // object's own queue name the same sections with the same strings. Keyed on the id alone,
+    // switching queues onto an identical first item never re-ran this effect, so nothing called
+    // play(): the bar claimed to be playing while the element sat paused. A queue switch reloads
+    // the section instead, which also honours what the press meant — play this from the start.
     // `playing` and `rate` are deliberately not dependencies - they are applied here on load and
     // maintained by the effects below. Including them would reload the file on every speed change.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [item?.id])
+  }, [queue?.key, item?.id])
 
   useEffect(() => {
     const audio = el.current
@@ -314,11 +319,17 @@ export function AudioProvider({ children }) {
 
   // §13's skip. Because a section is a file, this is just "load the next one" - it cannot land in
   // the wrong place the way a seek into a long file can.
+  //
+  // At the ends it does nothing at all. The on-screen buttons are disabled there, but a lock
+  // screen's next-track button is not: clamping the index and then asserting `playing` turned
+  // that press into a phone that says "playing" over a paused element.
   const skip = useCallback(
     (delta) => {
       if (!queue) return
+      const next = Math.min(queue.items.length - 1, Math.max(0, atRef.current + delta))
+      if (next === atRef.current) return
       takenOver.current = null
-      setAt((i) => Math.min(queue.items.length - 1, Math.max(0, i + delta)))
+      setAt(next)
       setPlaying(true)
     },
     [queue]
