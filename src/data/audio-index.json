@@ -3545,6 +3545,3286 @@
           "bytes": 179136,
           "track": "interpretation",
           "kind": "story"
+        },
+        "1884.137.47/00-title": {
+          "hash": "8b3f9b0e23fe5583",
+          "durationMs": 5225,
+          "words": 7,
+          "bytes": 31680,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.47/look": {
+          "hash": "c94c2b2c43337744",
+          "durationMs": 9025,
+          "words": 20,
+          "bytes": 54576,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.47/two-forms": {
+          "hash": "79f9d0107a8295e4",
+          "durationMs": 32688,
+          "words": 87,
+          "bytes": 196416,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.48/00-title": {
+          "hash": "8603239b6e22ba30",
+          "durationMs": 6113,
+          "words": 8,
+          "bytes": 37008,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.48/look": {
+          "hash": "e722f37b9173ac09",
+          "durationMs": 8038,
+          "words": 21,
+          "bytes": 48528,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.48/the-proboscis": {
+          "hash": "749278733f2a1750",
+          "durationMs": 36275,
+          "words": 89,
+          "bytes": 218016,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.49/00-title": {
+          "hash": "de380cda36d072d7",
+          "durationMs": 6838,
+          "words": 10,
+          "bytes": 41328,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.49/look": {
+          "hash": "88ebd2b8b9ba0841",
+          "durationMs": 4488,
+          "words": 10,
+          "bytes": 27216,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.49/fragile": {
+          "hash": "d7d62fc2fe137040",
+          "durationMs": 32763,
+          "words": 83,
+          "bytes": 196992,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.50/00-title": {
+          "hash": "5f2d898111043895",
+          "durationMs": 8463,
+          "words": 13,
+          "bytes": 51120,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.50/look": {
+          "hash": "04bdc9c28db350f4",
+          "durationMs": 8875,
+          "words": 19,
+          "bytes": 53568,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.50/why-dissect": {
+          "hash": "b95df353d17199a6",
+          "durationMs": 32738,
+          "words": 80,
+          "bytes": 196848,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.51/00-title": {
+          "hash": "bc9e5dee17b5744c",
+          "durationMs": 6713,
+          "words": 7,
+          "bytes": 40608,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.51/look": {
+          "hash": "a906eaf19254a873",
+          "durationMs": 8013,
+          "words": 18,
+          "bytes": 48384,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.51/jet-propulsion": {
+          "hash": "4f7d11c329f6fc85",
+          "durationMs": 23513,
+          "words": 62,
+          "bytes": 141408,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.52/00-title": {
+          "hash": "25a206374b2b7886",
+          "durationMs": 6313,
+          "words": 7,
+          "bytes": 38304,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.52/look": {
+          "hash": "b11c84aa3f9fb57b",
+          "durationMs": 8150,
+          "words": 23,
+          "bytes": 49248,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.52/the-combs": {
+          "hash": "61c26a57c98d9001",
+          "durationMs": 30713,
+          "words": 81,
+          "bytes": 184608,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.53/00-title": {
+          "hash": "5d69ca86511047bf",
+          "durationMs": 6313,
+          "words": 7,
+          "bytes": 38304,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.53/look": {
+          "hash": "2cf98504560149ce",
+          "durationMs": 9588,
+          "words": 24,
+          "bytes": 57888,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.53/sticky-not-stinging": {
+          "hash": "8a31df734a9d4f37",
+          "durationMs": 31738,
+          "words": 75,
+          "bytes": 190800,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.54/00-title": {
+          "hash": "b8c5fa5310e5a3aa",
+          "durationMs": 5788,
+          "words": 7,
+          "bytes": 35136,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.54/look": {
+          "hash": "deac53caf7ab31b9",
+          "durationMs": 8138,
+          "words": 19,
+          "bytes": 49248,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.54/the-sail": {
+          "hash": "70cf1f2a54d0b70f",
+          "durationMs": 30463,
+          "words": 82,
+          "bytes": 183168,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.57/00-title": {
+          "hash": "8cf960104123aef6",
+          "durationMs": 6213,
+          "words": 8,
+          "bytes": 37584,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.57/look": {
+          "hash": "312aa4e96d00f6de",
+          "durationMs": 4875,
+          "words": 11,
+          "bytes": 29664,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.57/the-name": {
+          "hash": "9563b8ef46eff55f",
+          "durationMs": 33188,
+          "words": 79,
+          "bytes": 199440,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.58/00-title": {
+          "hash": "14d918b4d6dad130",
+          "durationMs": 6863,
+          "words": 10,
+          "bytes": 41472,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.58/look": {
+          "hash": "883e68c86516f0f4",
+          "durationMs": 7600,
+          "words": 20,
+          "bytes": 45936,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.58/living-in-crowds": {
+          "hash": "465b03d28901b1e5",
+          "durationMs": 33650,
+          "words": 89,
+          "bytes": 202320,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.59/00-title": {
+          "hash": "ebfb2e0763c7329e",
+          "durationMs": 5250,
+          "words": 7,
+          "bytes": 31824,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.59/look": {
+          "hash": "5a80f79f01bd615a",
+          "durationMs": 8525,
+          "words": 20,
+          "bytes": 51552,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.59/not-one-animal": {
+          "hash": "8fa27de8ab43b243",
+          "durationMs": 31538,
+          "words": 82,
+          "bytes": 189648,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.60/00-title": {
+          "hash": "7874a882b002b001",
+          "durationMs": 2025,
+          "words": 2,
+          "bytes": 12528,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.60/look": {
+          "hash": "4704a7b2a9c8f235",
+          "durationMs": 7338,
+          "words": 17,
+          "bytes": 44352,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.60/chemistry": {
+          "hash": "3fa80f0748343f55",
+          "durationMs": 33150,
+          "words": 87,
+          "bytes": 199296,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.62/00-title": {
+          "hash": "ea94cf7967f31dc3",
+          "durationMs": 2363,
+          "words": 2,
+          "bytes": 14544,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.62/look": {
+          "hash": "286e45def616ac2a",
+          "durationMs": 5513,
+          "words": 14,
+          "bytes": 33408,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.62/wide-not-tall": {
+          "hash": "11170dd77dd3718f",
+          "durationMs": 28125,
+          "words": 74,
+          "bytes": 169056,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.63/00-title": {
+          "hash": "607e5e6df2d13a3e",
+          "durationMs": 6463,
+          "words": 8,
+          "bytes": 39168,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.63/look": {
+          "hash": "ad26fad51b5fc4c2",
+          "durationMs": 7238,
+          "words": 16,
+          "bytes": 43776,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.63/not-a-plant": {
+          "hash": "57e128dd7c84dec1",
+          "durationMs": 26663,
+          "words": 73,
+          "bytes": 160272,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.64/00-title": {
+          "hash": "394bcf12b43e7519",
+          "durationMs": 6525,
+          "words": 7,
+          "bytes": 39456,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.64/look": {
+          "hash": "f530f24afb76d401",
+          "durationMs": 10188,
+          "words": 21,
+          "bytes": 61488,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.64/the-tube": {
+          "hash": "287d12b347575b14",
+          "durationMs": 30150,
+          "words": 73,
+          "bytes": 181296,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.65/00-title": {
+          "hash": "93acdea5f171605d",
+          "durationMs": 2338,
+          "words": 2,
+          "bytes": 14400,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.65/look": {
+          "hash": "b3c6da338535bf62",
+          "durationMs": 6125,
+          "words": 16,
+          "bytes": 37152,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.65/blobs": {
+          "hash": "536d6aabc45c2a6f",
+          "durationMs": 27025,
+          "words": 70,
+          "bytes": 162576,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.66/00-title": {
+          "hash": "b2fc800ee8adc94d",
+          "durationMs": 5613,
+          "words": 7,
+          "bytes": 33984,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.66/look": {
+          "hash": "3780be084e5980fd",
+          "durationMs": 6500,
+          "words": 14,
+          "bytes": 39312,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.66/the-tube": {
+          "hash": "5b34c7daf235c7a6",
+          "durationMs": 32563,
+          "words": 88,
+          "bytes": 195696,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.67/00-title": {
+          "hash": "e6611d57ed2b2c9d",
+          "durationMs": 6725,
+          "words": 7,
+          "bytes": 40752,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.67/look": {
+          "hash": "616a651e8814c7c6",
+          "durationMs": 7488,
+          "words": 19,
+          "bytes": 45216,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.67/the-light-organ": {
+          "hash": "90501a57d2abab6b",
+          "durationMs": 32350,
+          "words": 88,
+          "bytes": 194400,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.68/00-title": {
+          "hash": "3eef130ca05f70ab",
+          "durationMs": 5850,
+          "words": 7,
+          "bytes": 35424,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.68/look": {
+          "hash": "0c01134e79ffad3c",
+          "durationMs": 18313,
+          "words": 37,
+          "bytes": 110304,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.68/how-it-eats": {
+          "hash": "97b11e65b0e49cca",
+          "durationMs": 13600,
+          "words": 36,
+          "bytes": 81936,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.68/where": {
+          "hash": "5ecbb20f601c52e8",
+          "durationMs": 15388,
+          "words": 35,
+          "bytes": 92736,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.69/00-title": {
+          "hash": "c2ce4e0268822aa8",
+          "durationMs": 7550,
+          "words": 11,
+          "bytes": 45648,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.69/look": {
+          "hash": "ca55790352d7698b",
+          "durationMs": 6400,
+          "words": 17,
+          "bytes": 38736,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.69/the-twist": {
+          "hash": "0af6f11819c4de73",
+          "durationMs": 30500,
+          "words": 83,
+          "bytes": 183312,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.70/00-title": {
+          "hash": "7e07a4ded61f9b52",
+          "durationMs": 5525,
+          "words": 7,
+          "bytes": 33552,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.70/look": {
+          "hash": "13a31b702efd97c4",
+          "durationMs": 18725,
+          "words": 39,
+          "bytes": 112752,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.70/disappearing": {
+          "hash": "9079bbdac55884e5",
+          "durationMs": 24700,
+          "words": 63,
+          "bytes": 148608,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.71/00-title": {
+          "hash": "96c1d504621aec90",
+          "durationMs": 5963,
+          "words": 7,
+          "bytes": 36144,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.71/look": {
+          "hash": "0f2654fe68ced7cf",
+          "durationMs": 7838,
+          "words": 17,
+          "bytes": 47376,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.71/eight": {
+          "hash": "183a3d04e29ef184",
+          "durationMs": 29563,
+          "words": 80,
+          "bytes": 177696,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.72/00-title": {
+          "hash": "21953120a63fc18a",
+          "durationMs": 5850,
+          "words": 7,
+          "bytes": 35424,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.72/look": {
+          "hash": "a84746d1b014d76c",
+          "durationMs": 10000,
+          "words": 24,
+          "bytes": 60336,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.72/upside-down": {
+          "hash": "56d8ca29c5444fe7",
+          "durationMs": 32900,
+          "words": 89,
+          "bytes": 197712,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.73/00-title": {
+          "hash": "7fcb03ce7d7b9d6a",
+          "durationMs": 6213,
+          "words": 7,
+          "bytes": 37584,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.73/look": {
+          "hash": "c048d766ccf36653",
+          "durationMs": 7113,
+          "words": 15,
+          "bytes": 43056,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.73/no-algae": {
+          "hash": "ee9517a5335754c5",
+          "durationMs": 31050,
+          "words": 84,
+          "bytes": 186624,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.74/00-title": {
+          "hash": "fc03f6b724c684a6",
+          "durationMs": 6238,
+          "words": 8,
+          "bytes": 37728,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.74/look": {
+          "hash": "85fbaef1a8b4f158",
+          "durationMs": 5938,
+          "words": 13,
+          "bytes": 36000,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.74/deep-water": {
+          "hash": "72d1762485399ce4",
+          "durationMs": 28600,
+          "words": 76,
+          "bytes": 171936,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.75/00-title": {
+          "hash": "4a20fa91a5747dae",
+          "durationMs": 6213,
+          "words": 7,
+          "bytes": 37584,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.75/look": {
+          "hash": "e1954e6cbaf15d05",
+          "durationMs": 5588,
+          "words": 12,
+          "bytes": 33840,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.75/five": {
+          "hash": "61f80675f814d218",
+          "durationMs": 33775,
+          "words": 90,
+          "bytes": 203040,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.76/00-title": {
+          "hash": "8ac90711c09f7cb9",
+          "durationMs": 6288,
+          "words": 7,
+          "bytes": 38016,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.76/look": {
+          "hash": "4742e4b7b7fb2013",
+          "durationMs": 10200,
+          "words": 27,
+          "bytes": 61488,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.76/solar-power": {
+          "hash": "95faa1b08aec8b11",
+          "durationMs": 32563,
+          "words": 83,
+          "bytes": 195696,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.77/00-title": {
+          "hash": "4f47a8c6c5235759",
+          "durationMs": 6000,
+          "words": 8,
+          "bytes": 36288,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.77/look": {
+          "hash": "3e31f07bb6212012",
+          "durationMs": 5450,
+          "words": 14,
+          "bytes": 33120,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.77/four-tentacles": {
+          "hash": "d88e78dc37166418",
+          "durationMs": 29338,
+          "words": 69,
+          "bytes": 176400,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.78/00-title": {
+          "hash": "7323120569105344",
+          "durationMs": 5263,
+          "words": 7,
+          "bytes": 31968,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.78/look": {
+          "hash": "105ae82bb1b9c62d",
+          "durationMs": 8100,
+          "words": 24,
+          "bytes": 48960,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.78/no-shell": {
+          "hash": "d3ec849bdc36c6a6",
+          "durationMs": 31338,
+          "words": 85,
+          "bytes": 188352,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.79/00-title": {
+          "hash": "b35b025f5826dc93",
+          "durationMs": 2800,
+          "words": 2,
+          "bytes": 17136,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.79/look": {
+          "hash": "1a006146b46e9869",
+          "durationMs": 7013,
+          "words": 20,
+          "bytes": 42480,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.79/the-bands": {
+          "hash": "ff45ab31265d1ec4",
+          "durationMs": 31013,
+          "words": 77,
+          "bytes": 186480,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.81/00-title": {
+          "hash": "c7562ffccb1912d2",
+          "durationMs": 6213,
+          "words": 8,
+          "bytes": 37584,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.81/look": {
+          "hash": "9013479c75fe2911",
+          "durationMs": 11125,
+          "words": 28,
+          "bytes": 67104,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.81/facing-the-current": {
+          "hash": "3d7b3ba01fd69185",
+          "durationMs": 33075,
+          "words": 85,
+          "bytes": 198864,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.82/00-title": {
+          "hash": "1f436d7b5abd2f29",
+          "durationMs": 5413,
+          "words": 7,
+          "bytes": 32832,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.82/look": {
+          "hash": "377b48d63d8abe2e",
+          "durationMs": 4950,
+          "words": 12,
+          "bytes": 30096,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.82/filter-feeding": {
+          "hash": "51db4e79b3f11867",
+          "durationMs": 27938,
+          "words": 70,
+          "bytes": 168048,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.84/00-title": {
+          "hash": "f446b5f15ad41e5d",
+          "durationMs": 6200,
+          "words": 7,
+          "bytes": 37584,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.84/look": {
+          "hash": "fb782d1341ea7b2a",
+          "durationMs": 5525,
+          "words": 13,
+          "bytes": 33552,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.84/the-stripes": {
+          "hash": "9355d472e60c80e9",
+          "durationMs": 33288,
+          "words": 89,
+          "bytes": 200016,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.85/00-title": {
+          "hash": "49fc18ccab43ceb2",
+          "durationMs": 6138,
+          "words": 8,
+          "bytes": 37152,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.85/look": {
+          "hash": "53254f60c6a4c913",
+          "durationMs": 8125,
+          "words": 20,
+          "bytes": 49104,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.85/the-stalk": {
+          "hash": "438d4dd9596499ec",
+          "durationMs": 30775,
+          "words": 83,
+          "bytes": 185040,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.86/00-title": {
+          "hash": "3f08b192c78c5d68",
+          "durationMs": 5738,
+          "words": 7,
+          "bytes": 34848,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.86/look": {
+          "hash": "863f66a81d4d0499",
+          "durationMs": 9313,
+          "words": 23,
+          "bytes": 56304,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.86/using-the-real-thing": {
+          "hash": "4b29ea55e1ec305d",
+          "durationMs": 30188,
+          "words": 79,
+          "bytes": 181440,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.87/00-title": {
+          "hash": "6fe55411b8abe4c5",
+          "durationMs": 2638,
+          "words": 2,
+          "bytes": 16128,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.87/look": {
+          "hash": "4eab36a9a2f49901",
+          "durationMs": 6288,
+          "words": 13,
+          "bytes": 38016,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.87/leaves": {
+          "hash": "95868e7dc3c5f608",
+          "durationMs": 31213,
+          "words": 81,
+          "bytes": 187632,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.88/00-title": {
+          "hash": "cc203ef5f8004ad5",
+          "durationMs": 2088,
+          "words": 2,
+          "bytes": 12816,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.88/look": {
+          "hash": "a7ef057caa153cd7",
+          "durationMs": 6713,
+          "words": 18,
+          "bytes": 40608,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.88/eating-relatives": {
+          "hash": "e2f595f2f6f8158f",
+          "durationMs": 31688,
+          "words": 76,
+          "bytes": 190512,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.89/00-title": {
+          "hash": "721451a24e5e01aa",
+          "durationMs": 2125,
+          "words": 2,
+          "bytes": 13104,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.89/look": {
+          "hash": "3c9e8bef92539474",
+          "durationMs": 8038,
+          "words": 19,
+          "bytes": 48528,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.89/borrowed-weapons": {
+          "hash": "43d17b380c847720",
+          "durationMs": 29900,
+          "words": 81,
+          "bytes": 179712,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.90/00-title": {
+          "hash": "97a7188748bef23d",
+          "durationMs": 5475,
+          "words": 7,
+          "bytes": 33264,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.90/look": {
+          "hash": "3e3d1f609daf0a17",
+          "durationMs": 7738,
+          "words": 18,
+          "bytes": 46800,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.90/jaws": {
+          "hash": "f0a1dc98ededfb15",
+          "durationMs": 32888,
+          "words": 88,
+          "bytes": 197712,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.91/00-title": {
+          "hash": "26bed9160fc6c2fc",
+          "durationMs": 6438,
+          "words": 7,
+          "bytes": 39024,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.91/look": {
+          "hash": "501cb46a9037f539",
+          "durationMs": 6175,
+          "words": 13,
+          "bytes": 37440,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.91/the-bristles": {
+          "hash": "d1df35d8f13e8209",
+          "durationMs": 29638,
+          "words": 80,
+          "bytes": 178128,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.93/00-title": {
+          "hash": "d432d40e6c51c001",
+          "durationMs": 6163,
+          "words": 7,
+          "bytes": 37296,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.93/look": {
+          "hash": "00a89d930ae6280d",
+          "durationMs": 9475,
+          "words": 23,
+          "bytes": 57168,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.93/colour": {
+          "hash": "7726d0543d729d8a",
+          "durationMs": 26625,
+          "words": 65,
+          "bytes": 160128,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.94/00-title": {
+          "hash": "41f35e1b7e2e6153",
+          "durationMs": 5688,
+          "words": 7,
+          "bytes": 34416,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.94/look": {
+          "hash": "1860e52230b50279",
+          "durationMs": 6900,
+          "words": 17,
+          "bytes": 41760,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.94/the-shell": {
+          "hash": "b1b6bcae4c399479",
+          "durationMs": 30913,
+          "words": 78,
+          "bytes": 185904,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.95/00-title": {
+          "hash": "59d023dbd68a218b",
+          "durationMs": 7938,
+          "words": 9,
+          "bytes": 47952,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.95/look": {
+          "hash": "490d5e219629e8d8",
+          "durationMs": 6675,
+          "words": 17,
+          "bytes": 40464,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.95/swimming-snails": {
+          "hash": "c2f519d47c346cf5",
+          "durationMs": 35063,
+          "words": 101,
+          "bytes": 210672,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.96/00-title": {
+          "hash": "542ae18a4d4a1434",
+          "durationMs": 6250,
+          "words": 7,
+          "bytes": 37872,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.96/look": {
+          "hash": "b2713d303c022599",
+          "durationMs": 9038,
+          "words": 21,
+          "bytes": 54576,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.96/ten": {
+          "hash": "6af74a9ba042dcc3",
+          "durationMs": 31150,
+          "words": 85,
+          "bytes": 187200,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.97/00-title": {
+          "hash": "0353e8cb36142d9a",
+          "durationMs": 6288,
+          "words": 7,
+          "bytes": 38016,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.97/look": {
+          "hash": "f67b39439d7f610f",
+          "durationMs": 6700,
+          "words": 14,
+          "bytes": 40608,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.97/no-plumbing": {
+          "hash": "b22ff48aac70a20e",
+          "durationMs": 30438,
+          "words": 79,
+          "bytes": 183024,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.99/00-title": {
+          "hash": "3c59408f797d8ae0",
+          "durationMs": 6450,
+          "words": 7,
+          "bytes": 39024,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.99/look": {
+          "hash": "35c26ec9f54cc0fa",
+          "durationMs": 5588,
+          "words": 12,
+          "bytes": 33840,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.99/the-net": {
+          "hash": "2fa38e61319d2d12",
+          "durationMs": 26063,
+          "words": 66,
+          "bytes": 156672,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.100/00-title": {
+          "hash": "95662c42e36c8ca1",
+          "durationMs": 5750,
+          "words": 7,
+          "bytes": 34848,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.100/look": {
+          "hash": "adf084500c78e4ca",
+          "durationMs": 18488,
+          "words": 42,
+          "bytes": 111312,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.100/the-hunt": {
+          "hash": "475e413da091fbda",
+          "durationMs": 18813,
+          "words": 43,
+          "bytes": 113184,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.104/00-title": {
+          "hash": "a228c48d02aa2df9",
+          "durationMs": 6188,
+          "words": 7,
+          "bytes": 37440,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.104/look": {
+          "hash": "6d4020b61dd072db",
+          "durationMs": 20575,
+          "words": 48,
+          "bytes": 123840,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.104/two-kinds-of-arm": {
+          "hash": "df641c2d60465854",
+          "durationMs": 23100,
+          "words": 49,
+          "bytes": 138960,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.105/00-title": {
+          "hash": "6afbf91b6c6439ed",
+          "durationMs": 5925,
+          "words": 7,
+          "bytes": 35856,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.105/look": {
+          "hash": "3c4a7027157e28d4",
+          "durationMs": 15650,
+          "words": 41,
+          "bytes": 94320,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.105/two-names": {
+          "hash": "25c1aaa4a5db234b",
+          "durationMs": 20563,
+          "words": 49,
+          "bytes": 123696,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.136/00-title": {
+          "hash": "14fbd9b60404e1e5",
+          "durationMs": 5750,
+          "words": 8,
+          "bytes": 34848,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.136/look": {
+          "hash": "278e2c8b95f4ff65",
+          "durationMs": 7400,
+          "words": 15,
+          "bytes": 44784,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.136/eight-again": {
+          "hash": "e00cef7d7e32be14",
+          "durationMs": 31375,
+          "words": 78,
+          "bytes": 188640,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.107/00-title": {
+          "hash": "6586e6962e986a08",
+          "durationMs": 7225,
+          "words": 10,
+          "bytes": 43776,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.107/look": {
+          "hash": "73b7c6950aadef51",
+          "durationMs": 10738,
+          "words": 23,
+          "bytes": 64800,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.107/two-lives": {
+          "hash": "6b33b697974596cc",
+          "durationMs": 36425,
+          "words": 96,
+          "bytes": 218880,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.108/00-title": {
+          "hash": "f55ba4794eaa51de",
+          "durationMs": 9438,
+          "words": 16,
+          "bytes": 57024,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.108/look": {
+          "hash": "a71b70a8fc4b1222",
+          "durationMs": 15225,
+          "words": 38,
+          "bytes": 91728,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.108/why-stages": {
+          "hash": "1d79cc6c7d41d69c",
+          "durationMs": 26638,
+          "words": 63,
+          "bytes": 160128,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.111/00-title": {
+          "hash": "1b2a13437ae8f12e",
+          "durationMs": 8350,
+          "words": 15,
+          "bytes": 50400,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.111/look": {
+          "hash": "268f70b563266c61",
+          "durationMs": 12513,
+          "words": 30,
+          "bytes": 75456,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.111/the-other-half": {
+          "hash": "898bd6229af225f6",
+          "durationMs": 29288,
+          "words": 80,
+          "bytes": 176112,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.113/00-title": {
+          "hash": "aed0c9889dfbee45",
+          "durationMs": 2475,
+          "words": 2,
+          "bytes": 15264,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.113/look": {
+          "hash": "849a6be2cad914fa",
+          "durationMs": 12950,
+          "words": 31,
+          "bytes": 78048,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.113/the-name": {
+          "hash": "37f88a1b8f65d5b4",
+          "durationMs": 24913,
+          "words": 64,
+          "bytes": 149904,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.114/00-title": {
+          "hash": "6007ce20a971723b",
+          "durationMs": 2013,
+          "words": 2,
+          "bytes": 12384,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.114/look": {
+          "hash": "73e88de355af6395",
+          "durationMs": 7438,
+          "words": 17,
+          "bytes": 44928,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.114/swimming-bells": {
+          "hash": "8e9c57552a8d8146",
+          "durationMs": 31575,
+          "words": 81,
+          "bytes": 189792,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.115/00-title": {
+          "hash": "0a2f1a59a5ed3ed6",
+          "durationMs": 2438,
+          "words": 2,
+          "bytes": 14976,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.115/look": {
+          "hash": "ecc57028050cee25",
+          "durationMs": 6825,
+          "words": 16,
+          "bytes": 41328,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.115/branched": {
+          "hash": "b20f507c445db7b0",
+          "durationMs": 29813,
+          "words": 72,
+          "bytes": 179280,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.116/00-title": {
+          "hash": "e82398991afbcee7",
+          "durationMs": 2588,
+          "words": 2,
+          "bytes": 15840,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.116/look": {
+          "hash": "756dcdb63dfd1138",
+          "durationMs": 9300,
+          "words": 22,
+          "bytes": 56160,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.116/the-lobes": {
+          "hash": "1cd90b63877c3aa6",
+          "durationMs": 25788,
+          "words": 67,
+          "bytes": 155088,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.117/00-title": {
+          "hash": "4d19de60d2cec691",
+          "durationMs": 2438,
+          "words": 2,
+          "bytes": 14976,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.117/look": {
+          "hash": "8168e9074d174fbb",
+          "durationMs": 6425,
+          "words": 16,
+          "bytes": 38880,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.117/what-it-eats": {
+          "hash": "755a56d7f773db34",
+          "durationMs": 26663,
+          "words": 67,
+          "bytes": 160272,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.118/00-title": {
+          "hash": "c6c076fec6bfbdeb",
+          "durationMs": 5575,
+          "words": 7,
+          "bytes": 33840,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.118/look": {
+          "hash": "b0c75105c210a4b8",
+          "durationMs": 7738,
+          "words": 16,
+          "bytes": 46800,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.118/on-the-sand": {
+          "hash": "7d8a53631a47d7a0",
+          "durationMs": 31125,
+          "words": 79,
+          "bytes": 187056,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.119/00-title": {
+          "hash": "27ed5e466cf83457",
+          "durationMs": 6588,
+          "words": 7,
+          "bytes": 39888,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.119/look": {
+          "hash": "c04139b26ac1802c",
+          "durationMs": 6625,
+          "words": 15,
+          "bytes": 40176,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.119/the-name": {
+          "hash": "58aed0983eedc479",
+          "durationMs": 32388,
+          "words": 81,
+          "bytes": 194688,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.122/00-title": {
+          "hash": "c610150c8d4a18df",
+          "durationMs": 7350,
+          "words": 9,
+          "bytes": 44496,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.122/look": {
+          "hash": "e70cfabc2e7ab853",
+          "durationMs": 7300,
+          "words": 17,
+          "bytes": 44208,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.122/the-daisy": {
+          "hash": "0b1e7d6fb0175e08",
+          "durationMs": 30538,
+          "words": 81,
+          "bytes": 183600,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.123/00-title": {
+          "hash": "9ed936ec52c2ef79",
+          "durationMs": 5800,
+          "words": 7,
+          "bytes": 35136,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.123/look": {
+          "hash": "557c10b713ad484b",
+          "durationMs": 6238,
+          "words": 12,
+          "bytes": 37728,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.123/the-craze": {
+          "hash": "936837b9a448765d",
+          "durationMs": 29650,
+          "words": 75,
+          "bytes": 178272,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.124/00-title": {
+          "hash": "9328c258d0dc19b6",
+          "durationMs": 2138,
+          "words": 2,
+          "bytes": 13248,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.124/look": {
+          "hash": "6ba5914d0af4a657",
+          "durationMs": 5013,
+          "words": 11,
+          "bytes": 30384,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.124/clear-glass": {
+          "hash": "1a81ecc872f8d5d3",
+          "durationMs": 26650,
+          "words": 67,
+          "bytes": 160272,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.109/00-title": {
+          "hash": "188b18e89dc24a92",
+          "durationMs": 8913,
+          "words": 15,
+          "bytes": 53856,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.109/look": {
+          "hash": "f5946140ff0acf04",
+          "durationMs": 10938,
+          "words": 24,
+          "bytes": 65952,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.109/one-animal-two-lives": {
+          "hash": "8b236fc08cc2d496",
+          "durationMs": 35863,
+          "words": 90,
+          "bytes": 215568,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.126/00-title": {
+          "hash": "6de221f909c8b78f",
+          "durationMs": 8225,
+          "words": 12,
+          "bytes": 49680,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.126/look": {
+          "hash": "57e09668883cb634",
+          "durationMs": 7013,
+          "words": 16,
+          "bytes": 42480,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.126/no-free-medusa": {
+          "hash": "406de2a2c6fda2bb",
+          "durationMs": 31050,
+          "words": 72,
+          "bytes": 186624,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.127/00-title": {
+          "hash": "a6b27f5d861ed024",
+          "durationMs": 5675,
+          "words": 7,
+          "bytes": 34416,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.127/look": {
+          "hash": "6538010f10e94490",
+          "durationMs": 8913,
+          "words": 22,
+          "bytes": 53856,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.127/the-ribbon": {
+          "hash": "70dc632fb26ee144",
+          "durationMs": 33475,
+          "words": 90,
+          "bytes": 201168,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.128/00-title": {
+          "hash": "0247e75a11fc74e0",
+          "durationMs": 6113,
+          "words": 7,
+          "bytes": 37008,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.128/look": {
+          "hash": "f017ed4539152b54",
+          "durationMs": 5700,
+          "words": 13,
+          "bytes": 34560,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.128/cut-in-half": {
+          "hash": "b3ebc608b3b8fc13",
+          "durationMs": 36000,
+          "words": 88,
+          "bytes": 216288,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.129/00-title": {
+          "hash": "e85d6fc435d4c257",
+          "durationMs": 5925,
+          "words": 7,
+          "bytes": 35856,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.129/look": {
+          "hash": "ead68e4f26c931c5",
+          "durationMs": 7788,
+          "words": 17,
+          "bytes": 47088,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.129/the-stars": {
+          "hash": "41d472bb414df7c7",
+          "durationMs": 27938,
+          "words": 67,
+          "bytes": 168048,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.112/00-title": {
+          "hash": "09490afdc411c434",
+          "durationMs": 6038,
+          "words": 7,
+          "bytes": 36576,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.112/look": {
+          "hash": "a1e1870b4707a650",
+          "durationMs": 7338,
+          "words": 15,
+          "bytes": 44352,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.112/swimming": {
+          "hash": "b37918374a558daf",
+          "durationMs": 28563,
+          "words": 73,
+          "bytes": 171792,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.120/00-title": {
+          "hash": "f4839df7b4afd548",
+          "durationMs": 6213,
+          "words": 8,
+          "bytes": 37584,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.120/look": {
+          "hash": "9af56a1e71d1a396",
+          "durationMs": 5125,
+          "words": 13,
+          "bytes": 31104,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.120/branching": {
+          "hash": "2e82d86cf334c03c",
+          "durationMs": 28850,
+          "words": 74,
+          "bytes": 173520,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.121/00-title": {
+          "hash": "acd35fa6984f3350",
+          "durationMs": 5938,
+          "words": 8,
+          "bytes": 36000,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.121/look": {
+          "hash": "b0dd77f6a862626d",
+          "durationMs": 7600,
+          "words": 19,
+          "bytes": 45936,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.121/the-quill": {
+          "hash": "fac1c869df666d94",
+          "durationMs": 33375,
+          "words": 82,
+          "bytes": 200592,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.125/00-title": {
+          "hash": "afa99f6fe6540899",
+          "durationMs": 6725,
+          "words": 8,
+          "bytes": 40752,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.125/look": {
+          "hash": "c4a5a5c8efed72a3",
+          "durationMs": 7475,
+          "words": 17,
+          "bytes": 45216,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.125/old": {
+          "hash": "998ddc9885243b36",
+          "durationMs": 32675,
+          "words": 81,
+          "bytes": 196416,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.106/00-title": {
+          "hash": "cb44aa923cceda19",
+          "durationMs": 6888,
+          "words": 9,
+          "bytes": 41616,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.106/look": {
+          "hash": "fa89e5f6fd4e0245",
+          "durationMs": 5925,
+          "words": 14,
+          "bytes": 35856,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.106/solitary": {
+          "hash": "a6d36f47784a6cc7",
+          "durationMs": 26963,
+          "words": 73,
+          "bytes": 162144,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.83/00-title": {
+          "hash": "f4284586698acb5b",
+          "durationMs": 6525,
+          "words": 8,
+          "bytes": 39456,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.83/look": {
+          "hash": "bf5f54618c34a0ff",
+          "durationMs": 8675,
+          "words": 19,
+          "bytes": 52416,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.83/red-blood": {
+          "hash": "6ff1b853e232330f",
+          "durationMs": 33388,
+          "words": 84,
+          "bytes": 200736,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.110/00-title": {
+          "hash": "65f2948de74c4b31",
+          "durationMs": 8988,
+          "words": 12,
+          "bytes": 54288,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.110/look": {
+          "hash": "82b782c7e91c1e74",
+          "durationMs": 6188,
+          "words": 14,
+          "bytes": 37440,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.110/the-missing-one": {
+          "hash": "bf00fe0c0f152af1",
+          "durationMs": 38438,
+          "words": 99,
+          "bytes": 230976,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.35/00-title": {
+          "hash": "42d0da41a452e3e1",
+          "durationMs": 5975,
+          "words": 7,
+          "bytes": 36144,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.35/look": {
+          "hash": "aa56f0a91522fefa",
+          "durationMs": 7238,
+          "words": 19,
+          "bytes": 43776,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.35/the-eggs": {
+          "hash": "2d87a1f2c584de4c",
+          "durationMs": 33088,
+          "words": 84,
+          "bytes": 198864,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.37/00-title": {
+          "hash": "8aa8c0300d3d15a9",
+          "durationMs": 6800,
+          "words": 10,
+          "bytes": 41184,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.37/look": {
+          "hash": "0dcadc3fab1c0997",
+          "durationMs": 5525,
+          "words": 14,
+          "bytes": 33552,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.37/the-proboscis": {
+          "hash": "8eb3f32debf7b90d",
+          "durationMs": 31513,
+          "words": 84,
+          "bytes": 189504,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.38/00-title": {
+          "hash": "19b6c4e97ad4198f",
+          "durationMs": 6675,
+          "words": 8,
+          "bytes": 40464,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.38/look": {
+          "hash": "cbf3e609a2e2f3e5",
+          "durationMs": 6188,
+          "words": 14,
+          "bytes": 37440,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.38/the-skin": {
+          "hash": "cb65908a7a6c1eba",
+          "durationMs": 31525,
+          "words": 83,
+          "bytes": 189504,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.1/00-title": {
+          "hash": "3ab98082ce881944",
+          "durationMs": 5550,
+          "words": 7,
+          "bytes": 33696,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.1/look": {
+          "hash": "057b15e238738289",
+          "durationMs": 5225,
+          "words": 13,
+          "bytes": 31680,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.1/hanging": {
+          "hash": "bfb66c44f5468cbb",
+          "durationMs": 31688,
+          "words": 87,
+          "bytes": 190512,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.2/00-title": {
+          "hash": "c5760faca2136396",
+          "durationMs": 5863,
+          "words": 7,
+          "bytes": 35568,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.2/look": {
+          "hash": "cdb31f21d6497263",
+          "durationMs": 8138,
+          "words": 18,
+          "bytes": 49248,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.2/tube-feet": {
+          "hash": "43568966a0a04a91",
+          "durationMs": 32800,
+          "words": 90,
+          "bytes": 197136,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.3/00-title": {
+          "hash": "d0135c072f1f8ebd",
+          "durationMs": 5650,
+          "words": 7,
+          "bytes": 34272,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.3/look": {
+          "hash": "772f0ef50b494876",
+          "durationMs": 8863,
+          "words": 19,
+          "bytes": 53568,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.3/no-feet": {
+          "hash": "e1ccd12d52cb30b9",
+          "durationMs": 29038,
+          "words": 77,
+          "bytes": 174528,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.4/00-title": {
+          "hash": "8808c06267280038",
+          "durationMs": 5575,
+          "words": 7,
+          "bytes": 33840,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.4/look": {
+          "hash": "731943c2c7669100",
+          "durationMs": 9238,
+          "words": 21,
+          "bytes": 55728,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.4/two-openings": {
+          "hash": "ca5bfb520be12618",
+          "durationMs": 35538,
+          "words": 95,
+          "bytes": 213552,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.5/00-title": {
+          "hash": "72d912de3c922625",
+          "durationMs": 6250,
+          "words": 7,
+          "bytes": 37872,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.5/look": {
+          "hash": "0e87216bfb8aaa1e",
+          "durationMs": 6288,
+          "words": 13,
+          "bytes": 38016,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.5/the-body-plan": {
+          "hash": "31da5c49f6ef5153",
+          "durationMs": 32938,
+          "words": 85,
+          "bytes": 198000,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.6/00-title": {
+          "hash": "7ecbb73553d243d7",
+          "durationMs": 6675,
+          "words": 10,
+          "bytes": 40464,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.6/look": {
+          "hash": "f948e4e6464a72b4",
+          "durationMs": 7913,
+          "words": 22,
+          "bytes": 47808,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.6/the-strike": {
+          "hash": "13fa1c82085a64c7",
+          "durationMs": 32250,
+          "words": 82,
+          "bytes": 193824,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.7/00-title": {
+          "hash": "5e4991b9d4b68cef",
+          "durationMs": 7963,
+          "words": 9,
+          "bytes": 48096,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.7/look": {
+          "hash": "6db2d1626667b1bd",
+          "durationMs": 8538,
+          "words": 21,
+          "bytes": 51552,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.7/the-branches": {
+          "hash": "840804957683e1c8",
+          "durationMs": 30325,
+          "words": 79,
+          "bytes": 182304,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.8/00-title": {
+          "hash": "d96907f3a0886a4c",
+          "durationMs": 5925,
+          "words": 8,
+          "bytes": 35856,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.8/look": {
+          "hash": "8dd40e234b5d8f25",
+          "durationMs": 12625,
+          "words": 32,
+          "bytes": 76176,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.8/the-net": {
+          "hash": "e36d55643ff06ec8",
+          "durationMs": 24975,
+          "words": 61,
+          "bytes": 150192,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.9/00-title": {
+          "hash": "5b5a26bc2d37618c",
+          "durationMs": 5338,
+          "words": 7,
+          "bytes": 32400,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.9/look": {
+          "hash": "494c51aaf4852b5b",
+          "durationMs": 8150,
+          "words": 20,
+          "bytes": 49248,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.9/the-cast": {
+          "hash": "2a3f8764759b48c2",
+          "durationMs": 31975,
+          "words": 85,
+          "bytes": 192240,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.10/00-title": {
+          "hash": "62d128557332771d",
+          "durationMs": 6525,
+          "words": 10,
+          "bytes": 39456,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.10/look": {
+          "hash": "642bed1f37e9a8cf",
+          "durationMs": 24400,
+          "words": 72,
+          "bytes": 146736,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.10/male-and-female": {
+          "hash": "31c0e8592c899e38",
+          "durationMs": 17188,
+          "words": 40,
+          "bytes": 103536,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.10/the-jellyfish": {
+          "hash": "a0c5f12be67a639e",
+          "durationMs": 20963,
+          "words": 59,
+          "bytes": 126144,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.11/00-title": {
+          "hash": "69ba60162d6b3fe4",
+          "durationMs": 5438,
+          "words": 7,
+          "bytes": 32976,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.11/look": {
+          "hash": "2338ab92c158c1f7",
+          "durationMs": 6788,
+          "words": 16,
+          "bytes": 41040,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.11/the-ink": {
+          "hash": "7d520dde737d2294",
+          "durationMs": 27663,
+          "words": 74,
+          "bytes": 166320,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.12/00-title": {
+          "hash": "bc92a2fb1f3d5bc0",
+          "durationMs": 2113,
+          "words": 2,
+          "bytes": 13104,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.12/look": {
+          "hash": "5f21f5977914fcc2",
+          "durationMs": 7213,
+          "words": 19,
+          "bytes": 43632,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.12/the-hood": {
+          "hash": "483002227901575b",
+          "durationMs": 29875,
+          "words": 80,
+          "bytes": 179568,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.13/00-title": {
+          "hash": "d44a62da28ffc3c5",
+          "durationMs": 5575,
+          "words": 7,
+          "bytes": 33840,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.13/look": {
+          "hash": "445324b2a85f218e",
+          "durationMs": 8563,
+          "words": 22,
+          "bytes": 51696,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.13/the-oldest-shape": {
+          "hash": "741237ac32d75c11",
+          "durationMs": 30650,
+          "words": 83,
+          "bytes": 184320,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.14/00-title": {
+          "hash": "b8aef74a7aa72a1b",
+          "durationMs": 6725,
+          "words": 8,
+          "bytes": 40752,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.14/look": {
+          "hash": "b2786eba512ae3bc",
+          "durationMs": 12288,
+          "words": 31,
+          "bytes": 74016,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.14/upside-down": {
+          "hash": "63c188f43d7e68e2",
+          "durationMs": 28125,
+          "words": 78,
+          "bytes": 169056,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.15/00-title": {
+          "hash": "ab6599acc0a36916",
+          "durationMs": 5913,
+          "words": 7,
+          "bytes": 35856,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.15/look": {
+          "hash": "fc18881867cc4975",
+          "durationMs": 9038,
+          "words": 24,
+          "bytes": 54576,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.15/the-tube": {
+          "hash": "2929575715655702",
+          "durationMs": 29563,
+          "words": 74,
+          "bytes": 177696,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.16/00-title": {
+          "hash": "64a4536656b5acbd",
+          "durationMs": 6800,
+          "words": 11,
+          "bytes": 41184,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.16/look": {
+          "hash": "16cc0834c853a2de",
+          "durationMs": 8238,
+          "words": 18,
+          "bytes": 49824,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.16/the-small-one": {
+          "hash": "1b7197af8a9117a2",
+          "durationMs": 34250,
+          "words": 90,
+          "bytes": 205920,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.18/00-title": {
+          "hash": "9a3f2f215dc7614e",
+          "durationMs": 5413,
+          "words": 7,
+          "bytes": 32832,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.18/look": {
+          "hash": "2d21081b6381abfe",
+          "durationMs": 9950,
+          "words": 23,
+          "bytes": 60048,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.18/the-leaves": {
+          "hash": "3f943d2f60dccd04",
+          "durationMs": 31288,
+          "words": 83,
+          "bytes": 188064,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.17/00-title": {
+          "hash": "2ea43506979610e8",
+          "durationMs": 6313,
+          "words": 7,
+          "bytes": 38304,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.17/look": {
+          "hash": "fd4920abaaab0d50",
+          "durationMs": 7675,
+          "words": 18,
+          "bytes": 46368,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.17/the-hooks": {
+          "hash": "c6c13eb6f8ed89d4",
+          "durationMs": 31388,
+          "words": 86,
+          "bytes": 188640,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.19/00-title": {
+          "hash": "1019e412fd000b3b",
+          "durationMs": 5563,
+          "words": 7,
+          "bytes": 33696,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.19/look": {
+          "hash": "180b73d604b08846",
+          "durationMs": 6338,
+          "words": 16,
+          "bytes": 38448,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.19/painted-inside": {
+          "hash": "00a6ab1ad9355daf",
+          "durationMs": 29738,
+          "words": 83,
+          "bytes": 178848,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.20/00-title": {
+          "hash": "9302cc2236037316",
+          "durationMs": 5988,
+          "words": 7,
+          "bytes": 36288,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.20/look": {
+          "hash": "d71faffb1effd1a7",
+          "durationMs": 9788,
+          "words": 24,
+          "bytes": 59040,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.20/paddles": {
+          "hash": "d5b5a5b0d5ee77f4",
+          "durationMs": 28188,
+          "words": 77,
+          "bytes": 169488,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.21/00-title": {
+          "hash": "9fc4f532a87b02a8",
+          "durationMs": 5713,
+          "words": 7,
+          "bytes": 34704,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.21/look": {
+          "hash": "ff520fafdf88d7da",
+          "durationMs": 6725,
+          "words": 16,
+          "bytes": 40752,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.21/the-jewel": {
+          "hash": "af80274a2aae0708",
+          "durationMs": 30350,
+          "words": 82,
+          "bytes": 182448,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.22/00-title": {
+          "hash": "23e1f8493003a63d",
+          "durationMs": 6350,
+          "words": 7,
+          "bytes": 38448,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.22/look": {
+          "hash": "ee711c15b3692dd3",
+          "durationMs": 9675,
+          "words": 24,
+          "bytes": 58464,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.22/building": {
+          "hash": "6deeb6eb2d7a02c5",
+          "durationMs": 27675,
+          "words": 69,
+          "bytes": 166464,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.24/00-title": {
+          "hash": "029b6fd84f20110b",
+          "durationMs": 8613,
+          "words": 13,
+          "bytes": 51984,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.24/look": {
+          "hash": "182e9e67746487bc",
+          "durationMs": 11025,
+          "words": 26,
+          "bytes": 66528,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.24/the-life-cycle": {
+          "hash": "d76238cb8fa9220f",
+          "durationMs": 36738,
+          "words": 100,
+          "bytes": 220752,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.25/00-title": {
+          "hash": "6b3a217c731d6f46",
+          "durationMs": 8638,
+          "words": 13,
+          "bytes": 52128,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.25/look": {
+          "hash": "ec7e58356298abef",
+          "durationMs": 7488,
+          "words": 20,
+          "bytes": 45216,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.25/a-different-animal": {
+          "hash": "5c42b4e4c3c99d05",
+          "durationMs": 38675,
+          "words": 96,
+          "bytes": 232416,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.26/00-title": {
+          "hash": "00d08c1522ae3fc6",
+          "durationMs": 2225,
+          "words": 2,
+          "bytes": 13680,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.26/look": {
+          "hash": "df59f179198c2da1",
+          "durationMs": 6375,
+          "words": 13,
+          "bytes": 38592,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.26/counting": {
+          "hash": "8b99eb12ca48592e",
+          "durationMs": 31175,
+          "words": 78,
+          "bytes": 187344,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.27/00-title": {
+          "hash": "b6ee17b6510eb1af",
+          "durationMs": 7800,
+          "words": 11,
+          "bytes": 47088,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.27/look": {
+          "hash": "4c9a2ead94312244",
+          "durationMs": 6600,
+          "words": 16,
+          "bytes": 39888,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.27/the-bumps": {
+          "hash": "4d8b150dc40f98f1",
+          "durationMs": 27925,
+          "words": 74,
+          "bytes": 167904,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.28/00-title": {
+          "hash": "018661c3f85edbb8",
+          "durationMs": 5863,
+          "words": 7,
+          "bytes": 35568,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.28/look": {
+          "hash": "9d6949aefa58aa29",
+          "durationMs": 9050,
+          "words": 20,
+          "bytes": 54720,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.28/no-foot": {
+          "hash": "ae16203f18f1d9f1",
+          "durationMs": 27613,
+          "words": 76,
+          "bytes": 166032,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.29/00-title": {
+          "hash": "2bdcc63150363da6",
+          "durationMs": 5538,
+          "words": 7,
+          "bytes": 33552,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.29/look": {
+          "hash": "5d3d2024345b579b",
+          "durationMs": 6263,
+          "words": 15,
+          "bytes": 37872,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.29/very-many": {
+          "hash": "de3c16ee9d69ddf3",
+          "durationMs": 32550,
+          "words": 88,
+          "bytes": 195696,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.30/00-title": {
+          "hash": "93a764981bd0bb0e",
+          "durationMs": 2188,
+          "words": 2,
+          "bytes": 13536,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.30/look": {
+          "hash": "ce40e230bef3576a",
+          "durationMs": 5638,
+          "words": 13,
+          "bytes": 34128,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.30/the-green": {
+          "hash": "3963b88ba50ad521",
+          "durationMs": 29163,
+          "words": 69,
+          "bytes": 175392,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.31/00-title": {
+          "hash": "8c444141bcb74cba",
+          "durationMs": 6450,
+          "words": 7,
+          "bytes": 39024,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.31/look": {
+          "hash": "086ed75c9de64b3b",
+          "durationMs": 3763,
+          "words": 7,
+          "bytes": 22896,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.31/the-pipes": {
+          "hash": "717392abda83d93d",
+          "durationMs": 30825,
+          "words": 76,
+          "bytes": 185328,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.32/00-title": {
+          "hash": "c570d740408cfdec",
+          "durationMs": 6400,
+          "words": 9,
+          "bytes": 38736,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.32/look": {
+          "hash": "6d5601d0e45a52a2",
+          "durationMs": 27863,
+          "words": 60,
+          "bytes": 167472,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.32/how-it-eats": {
+          "hash": "2a1751bd9987dc31",
+          "durationMs": 15200,
+          "words": 34,
+          "bytes": 91584,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.32/blooms": {
+          "hash": "a37393e5bdb794fa",
+          "durationMs": 29375,
+          "words": 71,
+          "bytes": 176544,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.34/00-title": {
+          "hash": "fc82ddc559b5caf8",
+          "durationMs": 6400,
+          "words": 7,
+          "bytes": 38736,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.34/look": {
+          "hash": "13d719ae3b5aebd7",
+          "durationMs": 6688,
+          "words": 17,
+          "bytes": 40464,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.34/the-knobs": {
+          "hash": "7c46f0927d4a7a3e",
+          "durationMs": 33638,
+          "words": 87,
+          "bytes": 202176,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.39/00-title": {
+          "hash": "ba8d6e800a8ff5cc",
+          "durationMs": 6375,
+          "words": 7,
+          "bytes": 38592,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.39/look": {
+          "hash": "6453238f7c71df3f",
+          "durationMs": 7325,
+          "words": 18,
+          "bytes": 44352,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.39/two-eyes": {
+          "hash": "d158adf1be51de32",
+          "durationMs": 33538,
+          "words": 92,
+          "bytes": 201600,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.40/00-title": {
+          "hash": "078448d24e22f15a",
+          "durationMs": 9325,
+          "words": 13,
+          "bytes": 56304,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.40/look": {
+          "hash": "8ce8fc84b752d726",
+          "durationMs": 6738,
+          "words": 17,
+          "bytes": 40752,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.40/building-a-colony": {
+          "hash": "616173fb69b2175e",
+          "durationMs": 35650,
+          "words": 91,
+          "bytes": 214272,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.41/00-title": {
+          "hash": "3376d0e2bd7e2088",
+          "durationMs": 7413,
+          "words": 11,
+          "bytes": 44784,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.41/look": {
+          "hash": "c565424344da9831",
+          "durationMs": 12088,
+          "words": 33,
+          "bytes": 72864,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.41/the-tube": {
+          "hash": "c91357375fb60bac",
+          "durationMs": 30663,
+          "words": 79,
+          "bytes": 184320,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.42/00-title": {
+          "hash": "52a88ccf542e551a",
+          "durationMs": 7375,
+          "words": 11,
+          "bytes": 44640,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.42/look": {
+          "hash": "b2d8125ccd133ae1",
+          "durationMs": 7763,
+          "words": 17,
+          "bytes": 46944,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.42/the-pair": {
+          "hash": "9482cbb19d906e2c",
+          "durationMs": 25888,
+          "words": 66,
+          "bytes": 155664,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.43/00-title": {
+          "hash": "03596344f169ff12",
+          "durationMs": 5375,
+          "words": 7,
+          "bytes": 32544,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.43/look": {
+          "hash": "94005deb52ff4492",
+          "durationMs": 12238,
+          "words": 32,
+          "bytes": 73728,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.43/the-glow": {
+          "hash": "1d7b8444d6da8fba",
+          "durationMs": 30150,
+          "words": 82,
+          "bytes": 181296,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.44/00-title": {
+          "hash": "e5aac0979933aa5f",
+          "durationMs": 6288,
+          "words": 8,
+          "bytes": 38016,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.44/look": {
+          "hash": "bd4e669514d32196",
+          "durationMs": 15513,
+          "words": 37,
+          "bytes": 93456,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.44/the-yellow": {
+          "hash": "7f6ea84e80a4fde4",
+          "durationMs": 34475,
+          "words": 77,
+          "bytes": 207216,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.45/00-title": {
+          "hash": "b865d566eb38473f",
+          "durationMs": 6813,
+          "words": 10,
+          "bytes": 41184,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.45/look": {
+          "hash": "461654b532f0a0f9",
+          "durationMs": 6788,
+          "words": 18,
+          "bytes": 41040,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.45/the-mantle": {
+          "hash": "40b4ed82849393e3",
+          "durationMs": 32588,
+          "words": 87,
+          "bytes": 195840,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.46/00-title": {
+          "hash": "967182d6a90c88a6",
+          "durationMs": 1938,
+          "words": 2,
+          "bytes": 11952,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.46/look": {
+          "hash": "06af197e1405f619",
+          "durationMs": 6550,
+          "words": 16,
+          "bytes": 39600,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.46/horns-and-rosette": {
+          "hash": "f56dd8549fb7cf48",
+          "durationMs": 28288,
+          "words": 74,
+          "bytes": 170064,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.36/00-title": {
+          "hash": "85d375f509191943",
+          "durationMs": 2825,
+          "words": 2,
+          "bytes": 17280,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.36/look": {
+          "hash": "52a4c695ac20c36f",
+          "durationMs": 8688,
+          "words": 20,
+          "bytes": 52416,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.36/a-drifting-net": {
+          "hash": "15ba200fcab9d024",
+          "durationMs": 31963,
+          "words": 82,
+          "bytes": 192096,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.55/00-title": {
+          "hash": "86118fbb01a93464",
+          "durationMs": 2313,
+          "words": 2,
+          "bytes": 14256,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.55/look": {
+          "hash": "e373d9ef9a61352c",
+          "durationMs": 6150,
+          "words": 13,
+          "bytes": 37296,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.55/moving": {
+          "hash": "8e83f4af88108310",
+          "durationMs": 33450,
+          "words": 84,
+          "bytes": 201024,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.56/00-title": {
+          "hash": "5a0b825e7be10ecc",
+          "durationMs": 6988,
+          "words": 9,
+          "bytes": 42336,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.56/look": {
+          "hash": "0d019c491e196c22",
+          "durationMs": 7063,
+          "words": 18,
+          "bytes": 42768,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.56/always-out": {
+          "hash": "73a76a615a7aed37",
+          "durationMs": 28888,
+          "words": 74,
+          "bytes": 173664,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.61/00-title": {
+          "hash": "4398de60cd7b5e7f",
+          "durationMs": 6575,
+          "words": 7,
+          "bytes": 39744,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.61/look": {
+          "hash": "2245502fea115a78",
+          "durationMs": 16850,
+          "words": 45,
+          "bytes": 101520,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.61/a-colony": {
+          "hash": "e497c0cc5375966b",
+          "durationMs": 22200,
+          "words": 53,
+          "bytes": 133488,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.61/the-float": {
+          "hash": "4979ea70b7c798e1",
+          "durationMs": 18025,
+          "words": 47,
+          "bytes": 108576,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.80/00-title": {
+          "hash": "2fa71f7ff0d304f6",
+          "durationMs": 2613,
+          "words": 2,
+          "bytes": 15984,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.80/look": {
+          "hash": "29c16b4af32bec2d",
+          "durationMs": 9138,
+          "words": 18,
+          "bytes": 55152,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.80/the-house": {
+          "hash": "fdfa64827720c9fc",
+          "durationMs": 30325,
+          "words": 78,
+          "bytes": 182304,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.92/00-title": {
+          "hash": "294e1d560abfad3a",
+          "durationMs": 7750,
+          "words": 14,
+          "bytes": 46800,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.92/look": {
+          "hash": "d235ab16e8dc50d6",
+          "durationMs": 9113,
+          "words": 22,
+          "bytes": 55008,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.92/why-keep-it": {
+          "hash": "99c71a94f0909692",
+          "durationMs": 30288,
+          "words": 85,
+          "bytes": 182016,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.98/00-title": {
+          "hash": "d11eccd22aeb399a",
+          "durationMs": 6025,
+          "words": 7,
+          "bytes": 36576,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.98/look": {
+          "hash": "f65ac4b5a914917c",
+          "durationMs": 6175,
+          "words": 14,
+          "bytes": 37440,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.98/lyttelton": {
+          "hash": "5eebe4ac84dd56c7",
+          "durationMs": 35175,
+          "words": 80,
+          "bytes": 211392,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.103/00-title": {
+          "hash": "3122883154cc4fd7",
+          "durationMs": 7313,
+          "words": 10,
+          "bytes": 44208,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.103/look": {
+          "hash": "f6bf3404f47a23ca",
+          "durationMs": 9213,
+          "words": 22,
+          "bytes": 55584,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.103/why-enlarge": {
+          "hash": "1523dbeee713f32a",
+          "durationMs": 29100,
+          "words": 78,
+          "bytes": 174960,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.23/00-title": {
+          "hash": "840ff7d1add6d4aa",
+          "durationMs": 5788,
+          "words": 7,
+          "bytes": 35136,
+          "track": "interpretation",
+          "kind": "title"
+        },
+        "1884.137.23/look": {
+          "hash": "d3ad06e528bdf7a2",
+          "durationMs": 8238,
+          "words": 17,
+          "bytes": 49824,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "1884.137.23/coming-apart": {
+          "hash": "49cd3fd803a0dcb1",
+          "durationMs": 32525,
+          "words": 82,
+          "bytes": 195552,
+          "track": "interpretation",
+          "kind": "story"
+        },
+        "home/00-intro": {
+          "hash": "471b62aca8e3ff77",
+          "durationMs": 17550,
+          "words": 31,
+          "bytes": 105696,
+          "track": "interpretation",
+          "kind": "home"
+        },
+        "groups/jellyfish/00-panel": {
+          "hash": "b2e20f6b7d78f0c6",
+          "durationMs": 24025,
+          "words": 64,
+          "bytes": 144576,
+          "track": "interpretation",
+          "kind": "panel"
+        },
+        "groups/floating-colonies/00-panel": {
+          "hash": "825b0676d887d38c",
+          "durationMs": 27350,
+          "words": 65,
+          "bytes": 164448,
+          "track": "interpretation",
+          "kind": "panel"
+        },
+        "groups/see-through-swimmers/00-panel": {
+          "hash": "65ca6312d2a19d7b",
+          "durationMs": 22463,
+          "words": 51,
+          "bytes": 135072,
+          "track": "interpretation",
+          "kind": "panel"
+        },
+        "groups/sea-squirts-and-salps/00-panel": {
+          "hash": "c34204ecb6756d84",
+          "durationMs": 21738,
+          "words": 55,
+          "bytes": 130752,
+          "track": "interpretation",
+          "kind": "panel"
+        },
+        "groups/cephalopods/00-panel": {
+          "hash": "43b2dc424c935107",
+          "durationMs": 24425,
+          "words": 54,
+          "bytes": 146880,
+          "track": "interpretation",
+          "kind": "panel"
+        },
+        "groups/sea-slugs/00-panel": {
+          "hash": "fde430a0b544029d",
+          "durationMs": 26313,
+          "words": 71,
+          "bytes": 158256,
+          "track": "interpretation",
+          "kind": "panel"
+        },
+        "groups/sea-anemones/00-panel": {
+          "hash": "8629d2ef9847f0d0",
+          "durationMs": 28063,
+          "words": 71,
+          "bytes": 168768,
+          "track": "interpretation",
+          "kind": "panel"
+        },
+        "groups/corals-and-sea-fans/00-panel": {
+          "hash": "c46d63f5c6fb86ea",
+          "durationMs": 27313,
+          "words": 69,
+          "bytes": 164304,
+          "track": "interpretation",
+          "kind": "panel"
+        },
+        "groups/sea-cucumbers-and-stars/00-panel": {
+          "hash": "dfd18c818a27c604",
+          "durationMs": 33638,
+          "words": 87,
+          "bytes": 202176,
+          "track": "interpretation",
+          "kind": "panel"
+        },
+        "groups/worms/00-panel": {
+          "hash": "0c792e314f644a73",
+          "durationMs": 24213,
+          "words": 65,
+          "bytes": 145584,
+          "track": "interpretation",
+          "kind": "panel"
+        },
+        "groups/never-went-to-sea/00-panel": {
+          "hash": "d8979cd7d72db587",
+          "durationMs": 22425,
+          "words": 57,
+          "bytes": 134928,
+          "track": "interpretation",
+          "kind": "panel"
+        },
+        "layers/how-it-was-made/00-standfirst": {
+          "hash": "6147197ec38a7572",
+          "durationMs": 8163,
+          "words": 19,
+          "bytes": 49392,
+          "track": "reading",
+          "kind": "layer"
+        },
+        "layers/how-it-was-made/the-problem": {
+          "hash": "10490c7e2311f1b8",
+          "durationMs": 45688,
+          "words": 109,
+          "bytes": 274464,
+          "track": "reading",
+          "kind": "layer"
+        },
+        "layers/how-it-was-made/the-method": {
+          "hash": "8313eaf0a01ec83b",
+          "durationMs": 40150,
+          "words": 108,
+          "bytes": 241200,
+          "track": "reading",
+          "kind": "layer"
+        },
+        "layers/how-it-was-made/colour": {
+          "hash": "ac5267c581e9ed5d",
+          "durationMs": 35613,
+          "words": 82,
+          "bytes": 213984,
+          "track": "reading",
+          "kind": "layer"
+        },
+        "layers/how-it-was-made/mixed-media": {
+          "hash": "1e3c09a649bfcdb3",
+          "durationMs": 38475,
+          "words": 103,
+          "bytes": 231264,
+          "track": "reading",
+          "kind": "layer"
+        },
+        "layers/how-it-was-made/accuracy": {
+          "hash": "2d67b7d1ea36ad47",
+          "durationMs": 40263,
+          "words": 88,
+          "bytes": 241920,
+          "track": "reading",
+          "kind": "layer"
+        },
+        "layers/how-it-got-here/00-standfirst": {
+          "hash": "b59945785b4bbe4a",
+          "durationMs": 9225,
+          "words": 17,
+          "bytes": 55728,
+          "track": "reading",
+          "kind": "layer"
+        },
+        "layers/how-it-got-here/the-gap": {
+          "hash": "e0a9be7da5e1041b",
+          "durationMs": 37200,
+          "words": 93,
+          "bytes": 223488,
+          "track": "reading",
+          "kind": "layer"
+        },
+        "layers/how-it-got-here/haast": {
+          "hash": "0285c671c93906e9",
+          "durationMs": 28850,
+          "words": 75,
+          "bytes": 173520,
+          "track": "reading",
+          "kind": "layer"
+        },
+        "layers/how-it-got-here/otago-first": {
+          "hash": "8678252f0692c471",
+          "durationMs": 33900,
+          "words": 78,
+          "bytes": 203760,
+          "track": "reading",
+          "kind": "layer"
+        },
+        "layers/how-it-got-here/the-order": {
+          "hash": "e9e63bdc9b6ec100",
+          "durationMs": 35763,
+          "words": 79,
+          "bytes": 214992,
+          "track": "reading",
+          "kind": "layer"
+        },
+        "layers/how-it-got-here/the-gifts": {
+          "hash": "b5478a3725556b35",
+          "durationMs": 32313,
+          "words": 71,
+          "bytes": 194256,
+          "track": "reading",
+          "kind": "layer"
+        },
+        "layers/how-it-got-here/since": {
+          "hash": "2e69c4fa0cdbf502",
+          "durationMs": 42438,
+          "words": 101,
+          "bytes": 255024,
+          "track": "reading",
+          "kind": "layer"
         }
       },
       "voice": "de-DE-KatjaNeural",
