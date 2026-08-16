@@ -423,17 +423,42 @@ svg.lucide {
   color: var(--ink);
 }
 
-.home-head {
-  padding: 3.5rem 1.25rem 2rem;
+/* The reading column's one left edge — .home-head, the object, each essay, its sources and the
+   collection-wide further reading all carry this class and share it, flush against the column's
+   own padding rather than centred inside a measure-width box.
+
+   Centring used to be the difference between them, and it was never a decision: a max-width and an
+   auto margin together put a different amount of space in front of each one depending on which
+   font-size it happened to render at, because `ch` resolves against the element's OWN font-size —
+   a step--1 block (the further reading) centred inside a smaller box than a step-0 one (the object,
+   each essay) under the very same --measure. Measured on a 900px viewport: .home-head flush at 0,
+   .home-object and .essay centred in at 159px, the collection's further-reading block at 210px.
+   Flush-left removes the mechanism rather than the symptom — a max-width alone, with no margin to
+   split, still caps the LINE at roughly 62 characters at whatever size the text renders, which was
+   always the point of --measure; it just stops moving the left edge to do it. Same left-aligned-
+   editorial decision the group page's .reading already makes at its own breakpoint. */
+.home-col {
   max-width: var(--measure);
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
-/* The object on display, in the reading column. Same measure and gutters as .essay so the reading
-   has one left edge from the title to the end of the last essay. */
+@media (min-width: 80rem) {
+  .home-col {
+    max-width: none;
+    padding-left: clamp(1.5rem, 3vw, 3rem);
+    padding-right: clamp(1.5rem, 3vw, 3rem);
+  }
+}
+
+.home-head {
+  padding-top: 3.5rem;
+  padding-bottom: 2rem;
+}
+
+/* The object on display, in the reading column. */
 .home-object {
-  max-width: var(--measure);
-  margin: 0 auto;
-  padding: 1rem 1.25rem 0;
+  padding-top: 1rem;
 }
 
 /* Its own bottom rule is the separator before "How it was made", which is why the first essay does
@@ -477,11 +502,12 @@ svg.lucide {
   .home-head {
     grid-area: head;
     /* The head sits on the reading ground now, not the dark one. Its text colours and its controls
-       are further down this file, after the dark rules they have to beat. */
+       are further down this file, after the dark rules they have to beat. Horizontal padding and
+       the max-width switch are .home-col's job, above. */
     background: var(--paper);
     color: var(--ink);
-    max-width: none;
-    padding: 3.5rem clamp(1.5rem, 3vw, 3rem) 1.5rem;
+    padding-top: 3.5rem;
+    padding-bottom: 1.5rem;
   }
 
   .home-browse {
@@ -514,16 +540,29 @@ svg.lucide {
   font-weight: 400;
 }
 
-/* The one link in the collection standfirst, pointing at the object that is actually on display.
-   Underlined because colour alone must not carry it — WCAG 1.4.1 — and the standfirst is prose. */
-.intro-link {
+/* One underline treatment for every link that sits inside a sentence of running prose, wherever it
+   appears: the collection standfirst's own link to the object on display, the further-reading list
+   (.elsewhere-link), the catalogue record's WoRMS/GBIF/current-name links (.record-line a) and the
+   citations under the essays (.layer-sources a). Underlined rather than colour-only, because colour
+   alone must not carry a link — WCAG 1.4.1 — and all four sit in prose rather than in a control.
+
+   One rule rather than four: .elsewhere-link alone used to be bold, and none of the four answered a
+   hover the same way as .intro-link's own thickened underline — a link one further-reading item
+   down from another read as a different kind of thing for no reason a visitor could tell. */
+.intro-link,
+.elsewhere-link,
+.record-line a,
+.layer-sources a {
   color: inherit;
   text-decoration: underline;
   text-underline-offset: 0.15em;
   text-decoration-thickness: 1px;
 }
 
-.intro-link:hover {
+.intro-link:hover,
+.elsewhere-link:hover,
+.record-line a:hover,
+.layer-sources a:hover {
   text-decoration-thickness: 2px;
 }
 
@@ -695,9 +734,8 @@ ol.grid {
 }
 
 .essay {
-  max-width: var(--measure);
-  margin: 0 auto;
-  padding: 2.5rem 1.25rem;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
   scroll-margin-top: 0.5rem;
 }
 
@@ -978,15 +1016,22 @@ ol.grid {
   margin: 0 0 1.5rem;
 }
 
-/* The small uppercase heading above a passage of reading. It was written out five times — once
-   for object stories, twice for the essays, and twice more for a heading level the essays stopped
-   using when they moved onto the collection page. One rule, three live places.
+/* The small uppercase heading above a passage of reading, and the same shape at two more scales: a
+   further-reading section's own heading — open (.elsewhere-head) or as a disclosure's summary
+   (.elsewhere-summary, object pages only) — and the catalogue record's (.record-head) one level
+   inside that. One rule, six places now rather than a slightly different copy at each. (A seventh,
+   .browse-title, is the same recipe again on the browsing column's dark ground instead of the
+   reading column's paper one, so it keeps its own rule rather than a colour exception grafted onto
+   this one.)
 
    The essays' own headings are h3 rather than h2 because the collection title holds the h1 there;
    a page with two h1s reads to a screen reader as two documents stapled together. */
 .story h3,
 .essay .layer-section h3,
-.layer-sources h3 {
+.layer-sources h3,
+.elsewhere-head,
+.elsewhere-summary,
+.record-head {
   font-size: var(--step--1);
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -1340,8 +1385,8 @@ ol.grid-dense {
 
 @media (min-width: 80rem) {
   .essay {
-    margin: 0;
-    padding: 2rem clamp(1.5rem, 3vw, 3rem);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 }
 
@@ -1354,14 +1399,11 @@ ol.grid-dense {
 }
 
 /* One list for the whole reading now, so it sits in the reading column rather than inside an essay
-   and needs that column's measure and gutters of its own. */
+   and needs that column's measure and gutters of its own — .home-col, same as .essay beside it. */
 .layer-sources {
   border-top: 1px solid var(--rule);
   padding-top: 1.5rem;
-  margin: 2.5rem auto 0;
-  max-width: var(--measure);
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+  margin-top: 2.5rem;
 }
 
 /* ------------------------------------------------------------------ further reading (§6)
@@ -1382,9 +1424,13 @@ ol.grid-dense {
   font-size: var(--step--1);
 }
 
+/* The collection-level block is a sibling of the essays rather than a child of one, so it does not
+   inherit .essay's measure or its side padding on its own — given .home-col in the markup (see
+   home.jsx), the reading column keeps its one left edge all the way down to here. */
 .elsewhere.is-collection {
   border-top: 1px solid var(--rule);
   padding-top: 1.5rem;
+  padding-bottom: 2.5rem;
   margin-top: 2.5rem;
 }
 
@@ -1395,27 +1441,11 @@ ol.grid-dense {
   margin-top: 0;
 }
 
-/* The collection-level block is a sibling of the essays rather than a child of one, so it does not
-   inherit .essay's measure or its side padding — it ran edge to edge on a phone. Same measure and
-   the same gutters, so the reading column has one left edge all the way down. */
-.elsewhere.is-collection {
-  max-width: var(--measure);
-  margin-inline: auto;
-  padding: 1.5rem 1.25rem 2.5rem;
-}
-
-.elsewhere-head,
-.elsewhere-summary {
-  font-size: var(--step--1);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 700;
-  color: var(--ink-meta);
-  margin: 0 0 0.75rem;
-}
-
-/* The disclosure's own hit target. 44px tall so it can be hit on a phone held one-handed in a
-   gallery — the same floor the Listen control is built to. */
+/* Text styling for both is the shared eyebrow rule near .story h3, above. The disclosure's own hit
+   target follows here: 44px tall so it can be hit on a phone held one-handed in a gallery — the
+   same floor the Listen control is built to. Its own margin:0 below means .elsewhere-summary never
+   actually rendered the shared rule's margin regardless — a summary sits inline against the
+   disclosure triangle, not above a paragraph — so nothing changes for it here. */
 .elsewhere-summary {
   cursor: pointer;
   list-style: none;
@@ -1465,14 +1495,7 @@ ol.grid-dense {
   margin: 0 0 1.1rem;
 }
 
-/* Underlined, because colour alone must not carry a link — WCAG 1.4.1 — and these sit inside
-   prose rather than in a control. */
-.elsewhere-link {
-  color: inherit;
-  text-decoration: underline;
-  text-underline-offset: 0.15em;
-  font-weight: 700;
-}
+/* The link itself is .intro-link's shared rule, near the top of this file. */
 
 .elsewhere-title {
   margin: 0;
@@ -1502,25 +1525,14 @@ ol.grid-dense {
   margin-top: 0.5rem;
 }
 
-.record-head {
-  font-size: var(--step--1);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 700;
-  color: var(--ink-meta);
-  margin: 0 0 0.5rem;
-}
+/* Text styling is the shared eyebrow rule near .story h3, above. */
 
 .record-line {
   margin: 0 0 0.35rem;
   line-height: 1.5;
 }
 
-.record-line a {
-  color: inherit;
-  text-decoration: underline;
-  text-underline-offset: 0.15em;
-}
+/* The link itself is .intro-link's shared rule, near the top of this file. */
 
 .record-authority,
 .record-note {
@@ -1821,12 +1833,9 @@ html:has(.audio-bar) {
   list-style: disc;
 }
 
-/* Preflight sets `text-decoration: inherit` on links, so these lost the underline they relied on.
-   A link inside a paragraph of prose needs more than colour to mark it — WCAG 1.4.1. */
-.layer-sources a {
-  text-decoration: underline;
-  text-underline-offset: 0.15em;
-}
+/* Preflight sets `text-decoration: inherit` on links, so these would otherwise lose the underline
+   they rely on — but the underline itself is .intro-link's shared rule, near the top of this file,
+   restated there for exactly this reason rather than a second time here. */
 
 }
 /* ^ closes @layer app */

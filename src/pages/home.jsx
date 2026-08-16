@@ -96,7 +96,7 @@ function Essay({ slug, layer, meta, code, langName }) {
   const queue = { key: `l:${slug}`, title: titleR.text, items }
 
   return (
-    <section className="essay" id={slug}>
+    <section className="essay home-col" id={slug}>
       {/* The control sits beside the heading it plays, after it — not inside it. A button inside a
           heading contributes its own label to the heading's accessible name, so this essay would
           have been announced as "How it was made, Listen — How it was made". */}
@@ -157,7 +157,7 @@ function ReadingSources({ layers }) {
   if (!sources.length) return null
   const heading = tr('ui.sources')
   return (
-    <div className="layer-sources">
+    <div className="layer-sources home-col">
       <h3 {...langAttrs(heading)}>{heading.text}</h3>
       <ul>
         {sources.map((s) => (
@@ -283,7 +283,7 @@ function Home({ go, route }) {
   }
   return (
     <main className="home" id="main" tabIndex={-1}>
-      <header className="home-head">
+      <header className="home-head home-col">
         <Tools
           listen={
             <Listen
@@ -345,7 +345,7 @@ function Home({ go, route }) {
             which still lands on the group page. `media` is false: the photograph itself is in its
             own section of the browsing column now, not here — see .browse-object below. */}
         {display && (
-          <div className="home-object">
+          <div className="home-object home-col">
             <ObjectSection object={display.object} arrived={false} priority media={false} />
           </div>
         )}
@@ -365,7 +365,7 @@ function Home({ go, route }) {
                 collection — the other Blaschka collections, the scholarship on these objects, and
                 what the two men did after they stopped making sea creatures. It sits after both
                 essays because that is where a reader who has finished them is. */}
-            <Elsewhere links={layers.elsewhere} publishers={PUBLISHERS} variant="collection" />
+            <Elsewhere links={layers.elsewhere} publishers={PUBLISHERS} variant="collection" className="home-col" />
           </div>
         )}
       </div>
