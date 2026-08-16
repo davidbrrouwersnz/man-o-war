@@ -82,7 +82,21 @@ function objectAudio(object, tr, t) {
   return { headlineR, catalogueR, showCatalogue, parts, available, items }
 }
 
-function ObjectSection({ object, arrived, registry }) {
+// One object, rendered whole: name, photograph, story, further reading and the catalogue record.
+//
+// Exported because the collection page renders the object on display with it. That is the point of
+// sharing the component rather than writing a second one — the man o' war on the front page is the
+// same words, the same translations, the same narration and the same further reading as the man o'
+// war inside Floating colonies, because it IS the same component reading the same data. A copy
+// would have started identical and drifted the first time either was edited.
+//
+// `registry` is the group page's scroll map and is optional: the collection page has one object and
+// nothing to scroll to.
+// `priority` defaults to `arrived`, which is the group page's rule: the object someone scanned a
+// code to see is the LCP element on that route and everything else stays lazy. The collection page
+// overrides it — nothing was scanned there, but the object is the first photograph on the page and
+// is above the fold on a phone, so it is that page's LCP element instead.
+function ObjectSection({ object, arrived, registry, priority = arrived }) {
   const ref = useRef(null)
   const [t, tr] = useT()
   const { code } = useLang()
@@ -90,6 +104,7 @@ function ObjectSection({ object, arrived, registry }) {
   // Layout effect, not passive: child layout effects run before the parent's, so the registry is
   // populated by the time GroupPage tries to scroll to the arrived-at object.
   useLayoutEffect(() => {
+    if (!registry) return
     registry.current.set(object.accession, ref.current)
     return () => registry.current.delete(object.accession)
   }, [object.accession, registry])
@@ -131,7 +146,7 @@ function ObjectSection({ object, arrived, registry }) {
       {/* A photograph and the line that credits it are a figure and its caption. It was a div and
           a loose <p>, which said nothing about the relationship to anything reading the markup. */}
       <figure className="object-media">
-        <Media object={object} priority={arrived} />
+        <Media object={object} priority={priority} />
         <figcaption className="object-meta">{metaLine}</figcaption>
       </figure>
 
@@ -322,4 +337,4 @@ function GroupPage({ route, go }) {
   )
 }
 
-export { GroupPage, objectAudio }
+export { GroupPage, ObjectSection, objectAudio }
