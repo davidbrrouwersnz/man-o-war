@@ -22,7 +22,7 @@
 // the gallery and the wrong one for a visitor who came to browse, and at desktop it stops being a
 // trade at all — the reading is one column and the grid is the other, both visible at once.
 
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import { BY_CODE, dirOf } from '../i18n.js'
 import { langAttrs, useLang, useT } from '../lang.jsx'
 import { Spoken, blocksOf, hasAudio } from '../audio.jsx'
@@ -30,6 +30,7 @@ import { GROUPS, PUBLISHERS, index, loadChunk } from '../collection.js'
 import { Elsewhere, Listen, Translated } from '../components/reading.jsx'
 import { ObjectSection, ObjectMedia, objectAudio } from './group.jsx'
 import { Tools } from '../components/tools.jsx'
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '../components/ui/tabs.jsx'
 
 // 1884.137.33, the Portuguese man o' war. Written down once, by scripts/split.mjs, and shipped in
 // the index — it used to be a constant here as well as there. The fallback keeps a checkout whose
@@ -180,7 +181,9 @@ function Home({ go, route }) {
   const [layers, setLayers] = useState(null)
   const [all, setAll] = useState(null)
   const [display, setDisplay] = useState(null)
-  const allRef = useRef(null)
+  // Which of the two grids is showing. Categories by default; an arrival on /all opens straight
+  // onto the other one, which is what that URL is asking for.
+  const [tab, setTab] = useState(() => (route?.at === 'all-objects' ? 'all' : 'categories'))
 
   // The document title follows whatever language is active, so it has no dependency list at all —
   // it is one assignment and it is correct on every render.
@@ -199,31 +202,21 @@ function Home({ go, route }) {
     if (!route?.at) scrollTo(0, 0)
   }, [route?.at])
 
-  // 62KB of tiles for 128 objects, and now nothing gates it behind a press. Fetched when the
-  // second grid comes within a couple of screens instead — the same treatment the object
-  // photographs get — so the front page still paints on the eleven category tiles alone and §2's
-  // visitor on a museum connection does not pay for 128 of them before seeing anything.
-  //
-  // An arrival on /all skips the wait: the chunk is what that URL is asking for.
+  // 62KB of tiles for 128 objects, and now nothing gates it behind a press except the tab itself:
+  // fetched the moment that tab is open, whether that is a click or an arrival on /all — the same
+  // treatment the object photographs get, so the front page still paints on the eleven category
+  // tiles alone and §2's visitor on a museum connection does not pay for 128 of them unopened.
   useEffect(() => {
-    if (all) return
-    if (route?.at === 'all-objects') {
-      loadChunk('all')?.then(setAll)
-      return
-    }
-    const el = allRef.current
-    if (!el) return
-    const io = new IntersectionObserver(
-      ([e]) => {
-        if (!e.isIntersecting) return
-        io.disconnect()
-        loadChunk('all')?.then(setAll)
-      },
-      { rootMargin: '200% 0px' }
-    )
-    io.observe(el)
-    return () => io.disconnect()
-  }, [all, route?.at])
+    if (tab !== 'all' || all) return
+    loadChunk('all')?.then(setAll)
+  }, [tab, all])
+
+  // Back/forward can land route.at on 'all-objects' without remounting Home — both '/' and '/all'
+  // are the same view — so the tab the URL asks for has to be re-applied on every arrival, not just
+  // read once into the initial state above.
+  useEffect(() => {
+    if (route?.at === 'all-objects') setTab('all')
+  }, [route?.at])
 
   // The essays are a chunk, fetched after the page is up rather than compiled into the bundle. The
   // front page is the one every visitor loads first and §2's visitor is on a museum connection —
@@ -395,60 +388,76 @@ function Home({ go, route }) {
 
         {/* Two ways into the same 128 objects. §9 kept the full grid as a secondary route rather
             than the front door — it rescues browsing by eye and the completionist — and a tab does
-            that job better than a page: it is visible from the front rather than found, and it
-            costs nothing until it is opened. */}
-        {/* Both grids, one after the other, rather than two tabs over one slot. Each is a section
-            with its own heading, which is what makes them addressable — #all-objects is where /all
-            now lands — and what lets a screen reader list them. h2 because the collection title
-            above is the h1; the essays in the reading column are h2 as well. */}
-        <section className="browse" aria-labelledby="categories-title">
-          <h2 className="browse-title" id="categories-title">
-            {t('ui.categories')}
-          </h2>
-          <ol className="grid">
-            {GROUPS.map((g) => (
-              <li key={g.slug} className="tile">
-                <a href={`/g/${g.slug}`} onClick={go(`/g/${g.slug}`)}>
-                  <div className="tile-well">
-                    <img className="tile-blur" src={g.representative.placeholder} alt="" aria-hidden="true" />
-                    <img className="tile-img" src={g.representative.url} alt="" loading="lazy" decoding="async" />
-                  </div>
-                  <div className="tile-text">
-                    <h3 {...langAttrs(tr(`groups.${g.slug}`, null, g.title))}>{tr(`groups.${g.slug}`, null, g.title).text}</h3>
-                    <p>
-                      {g.size} {t('ui.models')}. {t('ui.aboutMinutes', { m: g.minutes })}
-                    </p>
-                  </div>
-                </a>
-              </li>
-            ))}
-          </ol>
-        </section>
+            that job better than a page: it is visible from the front rather than found, costs
+            nothing until it is opened, and does not put 128 more tiles between a visitor and the
+            eleven they are actually choosing between.
 
-        <section className="browse" id="all-objects" aria-labelledby="all-objects-title" ref={allRef}>
-          <h2 className="browse-title" id="all-objects-title">
-            {t('ui.allObjects')}
-          </h2>
-          {all ? (
-            <ol className="grid grid-dense">
-              {all.objects.map((o) => (
-                <li key={o.accession} className="tile">
-                  <a href={`/o/${o.accession}`} onClick={go(`/o/${o.accession}`)}>
+            id="all-objects" sits on the whole control rather than on either panel, because that is
+            the one part of it that exists whichever tab is open — #all-objects is where /all lands,
+            and that arrival also drives `tab` to 'all' above. */}
+        <Tabs className="browse-tabs" id="all-objects" value={tab} onValueChange={setTab}>
+          {/* The padding that used to sit on .browse-title lives on this plain wrapper instead of
+              on TabsList itself — TabsList already carries its own Tailwind utilities for size and
+              layout, in the same cascade layer as anything styles.css could set on it, so a rule
+              written here would lose to those rather than add to them. */}
+          <div className="browse-tablist">
+            <TabsList
+              variant="line"
+              className="h-11 w-full justify-start gap-6 group-data-horizontal/tabs:h-11"
+              aria-label={t('ui.browse')}
+            >
+              <TabsTrigger value="categories" className="h-[calc(100%-1px)] flex-none px-1 text-[length:var(--step-0)]">
+                {t('ui.categories')}
+              </TabsTrigger>
+              <TabsTrigger value="all" className="h-[calc(100%-1px)] flex-none px-1 text-[length:var(--step-0)]">
+                {t('ui.allObjects')}
+              </TabsTrigger>
+            </TabsList>
+          </div>
+
+          <TabsContent value="categories" className="browse-panel">
+            <ol className="grid">
+              {GROUPS.map((g) => (
+                <li key={g.slug} className="tile">
+                  <a href={`/g/${g.slug}`} onClick={go(`/g/${g.slug}`)}>
                     <div className="tile-well">
-                      <img className="tile-blur" src={o.placeholder} alt="" aria-hidden="true" />
-                      <img className="tile-img" src={o.url} alt="" loading="lazy" decoding="async" />
+                      <img className="tile-blur" src={g.representative.placeholder} alt="" aria-hidden="true" />
+                      <img className="tile-img" src={g.representative.url} alt="" loading="lazy" decoding="async" />
                     </div>
                     <div className="tile-text">
-                      <h3 className="tile-small">{o.name}</h3>
+                      <h3 {...langAttrs(tr(`groups.${g.slug}`, null, g.title))}>{tr(`groups.${g.slug}`, null, g.title).text}</h3>
+                      <p>
+                        {g.size} {t('ui.models')}. {t('ui.aboutMinutes', { m: g.minutes })}
+                      </p>
                     </div>
                   </a>
                 </li>
               ))}
             </ol>
-          ) : (
-            <p className="loading loading-dark">{t('ui.loading')}</p>
-          )}
-        </section>
+          </TabsContent>
+
+          <TabsContent value="all" className="browse-panel">
+            {all ? (
+              <ol className="grid grid-dense">
+                {all.objects.map((o) => (
+                  <li key={o.accession} className="tile">
+                    <a href={`/o/${o.accession}`} onClick={go(`/o/${o.accession}`)}>
+                      <div className="tile-well">
+                        <img className="tile-blur" src={o.placeholder} alt="" aria-hidden="true" />
+                        <img className="tile-img" src={o.url} alt="" loading="lazy" decoding="async" />
+                      </div>
+                      <div className="tile-text">
+                        <h3 className="tile-small">{o.name}</h3>
+                      </div>
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            ) : (
+              <p className="loading loading-dark">{t('ui.loading')}</p>
+            )}
+          </TabsContent>
+        </Tabs>
       </div>
     </main>
   )

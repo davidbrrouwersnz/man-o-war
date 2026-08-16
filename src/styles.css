@@ -534,23 +534,42 @@ svg.lucide {
   line-height: 1.5;
 }
 
-/* Two ways into the same objects, on the dark home ground. Underline rather than a pill or a box:
-   the tiles below are already a field of rectangles, and another one competes with them. */
+/* Two ways into the same objects, on the dark home ground: one tab each, categories open by
+   default. Underline rather than a pill or a box — set by variant="line" in home.jsx — because the
+   tiles below are already a field of rectangles, and another one competes with them.
 
-/* The tab bar is shadcn's Tabs now. Its look lives in the className on TabsList/TabsTrigger in
-   pages/home.jsx rather than here — Tailwind utilities sit in the last cascade layer, so rules in
-   this file cannot reach a shadcn component. Only the colours are still decided here, through
-   --control-* , which is what keeps the dark-ground decision documented and asserted.
+   The tab bar is shadcn's Tabs. Its own look lives in the className on TabsList/TabsTrigger in
+   pages/home.jsx and in src/components/ui/tabs.jsx rather than here — Tailwind utilities sit in
+   the last cascade layer, so a rule in this file cannot reach a shadcn component; only the colours
+   are decided that way, through --control-*, which is what keeps the dark-ground decision
+   documented and asserted. What this file CAN still do is style the plain wrapper around it — see
+   .browse-tablist below — because that div carries no utilities of its own to lose to.
 
-   What went with the old rules: a hand-written roving tabindex and an arrow/Home/End key handler,
-   about twenty lines, now the primitive's job. */
+   What a hand-rolled tab bar would have needed and does not: a roving tabindex and an arrow/Home/
+   End key handler, about twenty lines, now the primitive's job. */
+.browse-tablist {
+  padding: 2.5rem var(--gutter, 1.25rem) 0.75rem;
+}
 
-/* The two grids on the collection page. They were tabs over one slot; now they are sections one
-   after the other, each with a heading that names it and anchors it — /all lands on #all-objects.
+/* The first one sits under the tab bar's old position, so it does not need the full run-up. Only
+   .browse-object ever qualifies — the tab control itself does not carry the .browse class, so this
+   cannot fire on it by accident. */
+.browse:first-of-type .browse-title {
+  padding-top: 1.25rem;
+}
 
-   The heading is set as a signpost rather than as a title: this column is navigation, and a
-   display-sized heading over a field of photographs competes with them. Same treatment as the
-   legends in the settings dialog, which do the same job. */
+.browse-panel {
+  padding-top: 0.5rem;
+}
+
+/* The heading above the man o' war's photograph. Set as a signpost rather than as a title: this
+   column is navigation, and a display-sized heading over a field of photographs competes with
+   them. Same treatment as the legends in the settings dialog, which do the same job.
+
+   Deliberately not the tab labels' own size just below it — those are body-sized text on a
+   44px-tall control (§18's WCAG 2.5.8 touch-target floor, same reasoning as the `touch` button
+   size), where this eyebrow-small caps treatment would have made the target read as decoration
+   rather than something to press. */
 .browse-title {
   margin: 0;
   padding: 2.5rem var(--gutter, 1.25rem) 0.75rem;
@@ -559,11 +578,6 @@ svg.lucide {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--dark-ink-soft);
-}
-
-/* The first one sits under the tab bar's old position, so it does not need the full run-up. */
-.browse:first-of-type .browse-title {
-  padding-top: 1.25rem;
 }
 
 /* The man o' war's photograph, at the top of the browsing column — the same figure ObjectSection

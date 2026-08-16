@@ -13,9 +13,9 @@ import { BY_SLUG, index } from './collection.js'
 function parse(pathname) {
   const path = decodeURIComponent(pathname).replace(/\/+$/, '') || '/'
   if (path === '/') return { view: 'home' }
-  // Both grids are on the collection page now, one after the other. The path survives so that
-  // anything already pointing at it lands on the right part of that page rather than a dead end —
-  // as an anchor, which is the same mechanism the old essay paths use.
+  // Both grids are on the collection page now, one tab each. The path survives so that anything
+  // already pointing at it still lands on the right part of that page — scrolled to the tab
+  // control and with the all-objects tab open — rather than a dead end.
   if (path === '/all') return { view: 'home', at: 'all-objects' }
   // The two reading essays used to be pages of their own. They now sit on the collection page, but
   // the old paths still resolve — a printed QR code or a shared link lands on the section rather
