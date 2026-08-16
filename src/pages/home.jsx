@@ -27,7 +27,7 @@ import { BY_CODE, dirOf } from '../i18n.js'
 import { langAttrs, useLang, useT } from '../lang.jsx'
 import { Spoken, blocksOf, hasAudio } from '../audio.jsx'
 import { GROUPS, PUBLISHERS, index, loadChunk } from '../collection.js'
-import { Elsewhere, Listen, Translated } from '../components/reading.jsx'
+import { ExternalLink, Listen, Translated } from '../components/reading.jsx'
 import { ObjectSection, ObjectMedia, objectAudio } from './group.jsx'
 import { Tools } from '../components/tools.jsx'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '../components/ui/tabs.jsx'
@@ -134,17 +134,23 @@ function Essay({ slug, layer, meta, code, langName }) {
   )
 }
 
-// The sources for the reading, once, after both essays.
+// The essays' citations and the collection's own further reading — Cornell's collection, the
+// Corning exhibition, Harvard's glass flowers — merged into one list under one heading, once, after
+// both essays. They used to be two sections: "Sources" for the citations, then "Read more
+// elsewhere" (the shared Elsewhere component, variant="collection") for everything else, right
+// below it — one line of prose each, under two headings, with nothing on the page saying why a
+// citation could not sit in the same list as an external link.
 //
-// They used to be printed under each essay, which meant Shaw et al. 2017 — a thirty-word
-// bibliographic citation — appeared twice within a few screens, because both essays draw on it.
-// That was defensible while the essays were separate pages. On one continuous read it is just the
-// same citation twice, and it was the largest piece of duplicated text on the page.
+// Not built on Elsewhere itself: a citation has no publisher, no claim, no "why it's worth reading"
+// — it is a URL and a line of already-formatted text, quoted as printed (§7) — so it renders as its
+// own kind of paragraph rather than being forced through ExternalLink's shape. The collection's own
+// further-reading links still go through ExternalLink below it, so they keep its tooltip and the
+// shared .elsewhere-link underline; both kinds land on the same <p>-per-link shape.
 //
-// Deduplicated on URL and kept in the order the essays declare them, so nothing is dropped: every
-// source either essay cites is still cited, once, and still under the word §7 already translates.
-function ReadingSources({ layers }) {
-  const [t, tr] = useT()
+// Citations are deduplicated on URL and kept in the order the essays declare them, so nothing is
+// dropped: every source either essay cites is still cited, once.
+function FurtherReading({ layers }) {
+  const [, tr] = useT()
   const seen = new Set()
   const sources = []
   for (const meta of index.layers) {
@@ -154,23 +160,25 @@ function ReadingSources({ layers }) {
       sources.push(s)
     }
   }
-  if (!sources.length) return null
-  const heading = tr('ui.sources')
+  const links = layers.elsewhere ?? []
+  if (!sources.length && !links.length) return null
+  const heading = tr('ui.elsewhere')
   return (
-    <div className="layer-sources home-col">
-      <h3 {...langAttrs(heading)}>{heading.text}</h3>
-      <ul>
-        {sources.map((s) => (
-          <li key={s.url}>
-            {/* A citation is quoted as printed, so it stays in the language it was published in —
-                the same rule the further-reading titles below follow. */}
-            <a href={s.url} target="_blank" rel="noreferrer" lang="en" dir="ltr">
-              {s.text}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <section className="elsewhere is-collection home-col">
+      <h3 className="elsewhere-head" {...langAttrs(heading)}>
+        {heading.text}
+      </h3>
+      {sources.map((s) => (
+        <p key={s.url} className="elsewhere-title" lang="en" dir="ltr">
+          <a href={s.url} target="_blank" rel="noreferrer" className="elsewhere-link">
+            {s.text}
+          </a>
+        </p>
+      ))}
+      {links.map((l) => (
+        <ExternalLink key={l.url} link={l} publishers={PUBLISHERS} variant="collection" />
+      ))}
+    </section>
   )
 }
 
@@ -362,14 +370,12 @@ function Home({ go, route }) {
               return <Essay key={meta.slug} slug={meta.slug} layer={l} meta={meta} code={code} langName={langName} />
             })}
 
-            {/* What the reading is built on, once, rather than once per essay. */}
-            <ReadingSources layers={layers} />
-
-            {/* §6's external sources at the widest scale: not this animal or this group, but this
-                collection — the other Blaschka collections, the scholarship on these objects, and
-                what the two men did after they stopped making sea creatures. It sits after both
-                essays because that is where a reader who has finished them is. */}
-            <Elsewhere links={layers.elsewhere} publishers={PUBLISHERS} variant="collection" className="home-col" />
+            {/* What the reading is built on, and §6's external sources at the widest scale — not
+                this animal or this group, but this collection: the other Blaschka collections, the
+                scholarship on these objects, and what the two men did after they stopped making sea
+                creatures. One list now, after both essays, because that is where a reader who has
+                finished them is. */}
+            <FurtherReading layers={layers} />
           </div>
         )}
       </div>

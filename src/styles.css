@@ -554,17 +554,18 @@ svg.lucide {
 
 /* One underline treatment for every link that sits inside a sentence of running prose, wherever it
    appears: the collection standfirst's own link to the object on display, the further-reading list
-   (.elsewhere-link), the catalogue record's WoRMS/GBIF/current-name links (.record-line a) and the
-   citations under the essays (.layer-sources a). Underlined rather than colour-only, because colour
-   alone must not carry a link — WCAG 1.4.1 — and all four sit in prose rather than in a control.
+   and the essay citations that now share its markup (.elsewhere-link), and the catalogue record's
+   WoRMS/GBIF/current-name links (.record-line a). Underlined rather than colour-only, because
+   colour alone must not carry a link — WCAG 1.4.1 — and all three sit in prose rather than a
+   control.
 
-   One rule rather than four: .elsewhere-link alone used to be bold, and none of the four answered a
-   hover the same way as .intro-link's own thickened underline — a link one further-reading item
-   down from another read as a different kind of thing for no reason a visitor could tell. */
+   One rule rather than three: .elsewhere-link alone used to be bold, and neither of the others
+   answered a hover the same way as .intro-link's own thickened underline — a link one further-
+   reading item down from another read as a different kind of thing for no reason a visitor could
+   tell. */
 .intro-link,
 .elsewhere-link,
-.record-line a,
-.layer-sources a {
+.record-line a {
   color: inherit;
   text-decoration: underline;
   text-underline-offset: 0.15em;
@@ -573,8 +574,7 @@ svg.lucide {
 
 .intro-link:hover,
 .elsewhere-link:hover,
-.record-line a:hover,
-.layer-sources a:hover {
+.record-line a:hover {
   text-decoration-thickness: 2px;
 }
 
@@ -1028,11 +1028,12 @@ ol.grid {
   margin: 0 0 1.5rem;
 }
 
-/* The small uppercase heading above a passage of reading, and the same shape at two more scales: a
-   further-reading section's own heading — open (.elsewhere-head) or as a disclosure's summary
-   (.elsewhere-summary, object pages only) — and the catalogue record's (.record-head) one level
-   inside that. One rule, six places now rather than a slightly different copy at each. (A seventh,
-   .browse-title, is the same recipe again on the browsing column's dark ground instead of the
+/* The small uppercase heading above a passage of reading, and the same shape one scale up: a
+   further-reading section's own heading, open (.elsewhere-head, also what the essay citations sit
+   under now — see the note in home.jsx) or as a disclosure's summary (.elsewhere-summary, object
+   pages only). One rule, four places now rather than a slightly different copy at each — it was six
+   before the catalogue record and the essay citations stopped keeping their own separate headings.
+   (.browse-title is the same recipe again on the browsing column's dark ground instead of the
    reading column's paper one, so it keeps its own rule rather than a colour exception grafted onto
    this one.)
 
@@ -1040,10 +1041,8 @@ ol.grid {
    a page with two h1s reads to a screen reader as two documents stapled together. */
 .story h3,
 .essay .layer-section h3,
-.layer-sources h3,
 .elsewhere-head,
-.elsewhere-summary,
-.record-head {
+.elsewhere-summary {
   font-size: var(--step--1);
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -1227,11 +1226,6 @@ ol.grid {
   border-right: 2px solid var(--rule);
   padding-left: 0;
   padding-right: 0.75rem;
-}
-
-[dir='rtl'] .layer-sources ul {
-  padding-left: 0;
-  padding-right: 1rem;
 }
 
 /* The disclosure marker is a rotated corner, so it points into the text rather than away from it
@@ -1425,14 +1419,6 @@ ol.grid-dense {
   margin: 0 0 0.9rem;
 }
 
-/* One list for the whole reading now, so it sits in the reading column rather than inside an essay
-   and needs that column's measure and gutters of its own — .home-col, same as .essay beside it. */
-.layer-sources {
-  border-top: 1px solid var(--rule);
-  padding-top: 1.5rem;
-  margin-top: 2.5rem;
-}
-
 /* ------------------------------------------------------------------ further reading (§6)
 
    Three placements, one look: quiet, typographic, and clearly not part of the guide's own voice.
@@ -1512,20 +1498,10 @@ ol.grid-dense {
   }
 }
 
-.elsewhere-list {
-  margin: 0 0 1rem;
-  padding: 0;
-  list-style: none;
-}
-
-.elsewhere-item {
-  margin: 0 0 1.1rem;
-}
-
 /* The link itself is .intro-link's shared rule, near the top of this file. */
 
 .elsewhere-title {
-  margin: 0;
+  margin: 0 0 1.1rem;
 }
 
 .elsewhere-source {
@@ -1551,19 +1527,10 @@ ol.grid-dense {
   opacity: 0.85;
 }
 
-/* No rule of its own. The record sits inside further reading — under the same "Read more
-   elsewhere" heading as the links above it, or straight under "The record" when there are no links
-   — and either way a heading is already what marks it off; a border here would draw a second line
-   under a relationship the heading and (where there is one) .record-head's own "THE CATALOGUE
-   ENTRY" already state. That doubling only started being visible on the collection page once its
-   object's further reading opened by default — group and object pages had it hidden inside a
-   closed disclosure since the day it shipped. */
-.record {
-  margin-top: 1.25rem;
-}
-
-/* Text styling is the shared eyebrow rule near .story h3, above. */
-
+/* No wrapper of its own any more, and no heading of its own either — the record is a flat part of
+   further reading now, not a second, nested section inside it. .elsewhere-title's own bottom margin
+   above is what separates the links from these lines; the outer "Read more elsewhere" (or "The
+   record", when there is no further reading, only this) is the one heading over both. */
 .record-line {
   margin: 0 0 0.35rem;
   line-height: 1.5;
@@ -1574,22 +1541,6 @@ ol.grid-dense {
 .record-authority,
 .record-note {
   color: var(--ink-meta);
-}
-
-.record-checked {
-  margin: 0.6rem 0 0;
-  color: var(--ink-meta);
-}
-
-.layer-sources ul {
-  margin: 0;
-  padding-left: 1rem;
-}
-
-.layer-sources li {
-  font-size: var(--step-0);
-  margin-bottom: 0.5rem;
-  color: var(--ink-soft);
 }
 
 .stub-note {
@@ -1859,20 +1810,6 @@ html:has(.audio-bar) {
     scroll-padding-block-end: 7rem;
   }
 }
-
-/* ------------------------------------------------------- what Preflight takes away
-
-   Two things below used to come from the browser's own defaults, and Preflight removes both.
-   Restated here explicitly, which is where they should have been anyway. */
-
-/* Preflight sets `list-style: none` on every ul. The sources list is prose and wants its bullets. */
-.layer-sources ul {
-  list-style: disc;
-}
-
-/* Preflight sets `text-decoration: inherit` on links, so these would otherwise lose the underline
-   they rely on — but the underline itself is .intro-link's shared rule, near the top of this file,
-   restated there for exactly this reason rather than a second time here. */
 
 }
 /* ^ closes @layer app */

@@ -113,7 +113,7 @@ function Listen({ queue, available, note, pending = false, compact = false }) {
 // a gallery halfway down a group page has a scroll position and a queue of audio, and sending them
 // off-site in the same tab throws both away.
 function ExternalLink({ link, publishers, variant }) {
-  const [t, tr] = useT()
+  const [, tr] = useT()
   const source = publishers[link.p]
   // The claim is printed wherever it says something the placement does not. Under a group heading
   // a link claiming "the group" is saying only what the reader can see, and "the group, not this
@@ -150,54 +150,57 @@ function ExternalLink({ link, publishers, variant }) {
   )
 
   return (
-    <li className="elsewhere-item">
-      {/* Title and publisher are ONE English phrase and share one block, rather than two inline
-          elements each marked English on its own. Marked separately they were isolated separately:
-          inside an Arabic page the RTL flow then laid the two boxes out right to left and printed
-          the institution BEFORE the title of its own article. */}
-      <p className="elsewhere-title" {...english}>
-        {/* The why and the claim used to be printed under the link, always. Moved into a tooltip on
-            request; no `aria-hidden` on the content, unlike the Listen button's tooltip, because
-            this text is not said anywhere else on the page — hiding it from the accessibility tree
-            too would delete it rather than relocate it.
+    /* Title and publisher are ONE English phrase and share one block, rather than two inline
+       elements each marked English on its own. Marked separately they were isolated separately:
+       inside an Arabic page the RTL flow then laid the two boxes out right to left and printed the
+       institution BEFORE the title of its own article.
 
-            Measured rather than assumed: this version of Base UI's Tooltip does NOT wire
-            aria-describedby or role="tooltip" on its own, so a screen reader tabbing to the link is
-            not told this text exists — verified with a real Tab key press, not element.focus(),
-            since Chromium only opens the tooltip on genuine :focus-visible focus. A sighted keyboard
-            user does see it open on Tab; a sighted mouse user sees it on hover; a touch user has
-            neither gesture available.
+       A plain <p>, not a list item: further reading was a <ul> of these on request, now it is not
+       — one flat paragraph per link, the same shape .record-line already used for the catalogue
+       record beneath it, so the two no longer look like two different kinds of list stitched
+       together. */
+    <p className="elsewhere-title" {...english}>
+      {/* The why and the claim used to be printed under the link, always. Moved into a tooltip on
+          request; no `aria-hidden` on the content, unlike the Listen button's tooltip, because this
+          text is not said anywhere else on the page — hiding it from the accessibility tree too
+          would delete it rather than relocate it.
 
-            That is a real cost, not a footnote: §6 put the claim in the flow on purpose — "not a
-            decorative badge" — specifically so a visitor never has to find it, and §11 is built
-            around exactly the visitor a hover-only disclosure fails, someone standing in a gallery
-            reading this on a phone. Flagged to the user rather than solved unasked; the fix most
-            likely to hold — a separate always-visible affordance a tap can open without triggering
-            the link's own navigation — is a bigger change than "put it in a tooltip." */}
-        {whyR || claimR ? (
-          <Tooltip>
-            <TooltipTrigger render={anchor} />
-            <TooltipContent
-              className="elsewhere-tooltip flex-col items-start gap-1 max-w-sm py-2 text-[length:var(--step--1)] text-start text-pretty"
-              side="bottom"
-            >
-              {whyR && <span {...langAttrs(whyR)}>{whyR.text}</span>}
-              {claimR && (
-                <span {...langAttrs(claimR)} className="elsewhere-tooltip-claim">
-                  {claimR.text}
-                </span>
-              )}
-            </TooltipContent>
-          </Tooltip>
-        ) : (
-          anchor
-        )}
-        {/* A middle dot rather than a dash: several publisher names carry a dash of their own — "Te
-            Ara — the Encyclopedia of New Zealand", "MarLIN — the Marine Life Information Network" —
-            and two dashes in one line made the title and the institution impossible to tell apart. */}
-        {source && <span className="elsewhere-source"> · {source.name}</span>}
-      </p>
-    </li>
+          Measured rather than assumed: this version of Base UI's Tooltip does NOT wire
+          aria-describedby or role="tooltip" on its own, so a screen reader tabbing to the link is
+          not told this text exists — verified with a real Tab key press, not element.focus(), since
+          Chromium only opens the tooltip on genuine :focus-visible focus. A sighted keyboard user
+          does see it open on Tab; a sighted mouse user sees it on hover; a touch user has neither
+          gesture available.
+
+          That is a real cost, not a footnote: §6 put the claim in the flow on purpose — "not a
+          decorative badge" — specifically so a visitor never has to find it, and §11 is built around
+          exactly the visitor a hover-only disclosure fails, someone standing in a gallery reading
+          this on a phone. Flagged to the user rather than solved unasked; the fix most likely to
+          hold — a separate always-visible affordance a tap can open without triggering the link's
+          own navigation — is a bigger change than "put it in a tooltip." */}
+      {whyR || claimR ? (
+        <Tooltip>
+          <TooltipTrigger render={anchor} />
+          <TooltipContent
+            className="elsewhere-tooltip flex-col items-start gap-1 max-w-sm py-2 text-[length:var(--step--1)] text-start text-pretty"
+            side="bottom"
+          >
+            {whyR && <span {...langAttrs(whyR)}>{whyR.text}</span>}
+            {claimR && (
+              <span {...langAttrs(claimR)} className="elsewhere-tooltip-claim">
+                {claimR.text}
+              </span>
+            )}
+          </TooltipContent>
+        </Tooltip>
+      ) : (
+        anchor
+      )}
+      {/* A middle dot rather than a dash: several publisher names carry a dash of their own — "Te
+          Ara — the Encyclopedia of New Zealand", "MarLIN — the Marine Life Information Network" —
+          and two dashes in one line made the title and the institution impossible to tell apart. */}
+      {source && <span className="elsewhere-source"> · {source.name}</span>}
+    </p>
   )
 }
 
@@ -224,10 +227,11 @@ function Note({ children: r }) {
   )
 }
 
-// `heading` is false where the block above already carries the words — an object with no further
-// reading has a disclosure labelled "The record", and a second "THE RECORD" immediately under it
-// reads as a section that repeated itself.
-function Record({ taxon, heading = true }) {
+// No heading of its own any more — see the note on Elsewhere below. The date it used to print
+// ("Last checked against WoRMS and GBIF: {date}") is gone on request too; WoRMS opinions are still
+// revised continuously and an undated answer is still, in principle, implying a timeless truth, but
+// that is now a cost the page has chosen to accept rather than one this component states.
+function Record({ taxon }) {
   const [t, tr] = useT()
   if (!taxon) return null
 
@@ -236,16 +240,9 @@ function Record({ taxon, heading = true }) {
     // further twenty-one carry a name that no longer resolves to one species. §6 requires this
     // state to exist "without it the UI renders an empty link".
     return (
-      <div className="record">
-        {heading && (
-        <h4 className="record-head" {...langAttrs(tr('ui.record'))}>
-          {t('ui.record')}
-        </h4>
-      )}
-        <p className="record-line" {...langAttrs(tr('ui.recordUnresolved'))}>
-          {t('ui.recordUnresolved')}
-        </p>
-      </div>
+      <p className="record-line" {...langAttrs(tr('ui.recordUnresolved'))}>
+        {t('ui.recordUnresolved')}
+      </p>
     )
   }
 
@@ -256,12 +253,7 @@ function Record({ taxon, heading = true }) {
   // that job and is used everywhere else in the app for the same reason.
   const latin = { lang: 'la', dir: 'ltr' }
   return (
-    <div className="record">
-      {heading && (
-        <h4 className="record-head" {...langAttrs(tr('ui.record'))}>
-          {t('ui.record')}
-        </h4>
-      )}
+    <>
       <p className="record-line">
         <a href={catalogue.url} target="_blank" rel="noreferrer noopener" {...latin}>
           <i className="binomial">{catalogue.name}</i>
@@ -295,19 +287,16 @@ function Record({ taxon, heading = true }) {
           {gbif.occurrencesNZ > 0 && <Note>{tr('ui.recordSightingsNZ', { n: gbif.occurrencesNZ.toLocaleString() })}</Note>}
         </p>
       )}
-      {(() => {
-        const r = tr('ui.recordChecked', { date: taxon.retrieved })
-        return (
-          <p className="record-checked" {...langAttrs(r)}>
-            {r.text}
-          </p>
-        )
-      })()}
-    </div>
+    </>
   )
 }
 
-// One block, several placements.
+// One block, several placements, and one heading over all of it now. The external links and the
+// catalogue record used to print under two: "Read more elsewhere", then "The catalogue entry"
+// wherever Record was not the only thing in the block. Consolidated on request — the record's own
+// heading only ever repeated words the outer one had already said a few lines up, and splitting one
+// further-reading list in two by KIND (an article, a taxonomic identifier) needed a reason nothing
+// else on the page gave it. `Record` takes no heading prop any more; see the note there.
 //
 // On a group page's own objects it is a disclosure, closed by default. That is a deliberate
 // exception to this app's own rule that nothing worth reading sits behind a tap — §6 puts the
@@ -321,9 +310,7 @@ function Record({ taxon, heading = true }) {
 // the actual reason the group page's own objects collapse, not something inherent to an object's
 // further reading as a category. The collection page's on-display object is also exactly one
 // object, so it takes `collapsed={false}` from ObjectSection and gets the open treatment instead;
-// see the note there. Without that override, this page had a closed "Read more elsewhere" for the
-// object immediately above an open one for the collection a few screens down — same words, same
-// look, and no reason a visitor could see for why one asked for a tap and the other did not.
+// see the note there.
 function Elsewhere({ links = [], taxon = null, publishers, variant = 'group', collapsed = variant === 'object', className = '' }) {
   const [, tr] = useT()
   if (!links.length && !taxon) return null
@@ -333,16 +320,16 @@ function Elsewhere({ links = [], taxon = null, publishers, variant = 'group', co
   // Arabic page is right-aligned against text it does not belong to.
   const headingR = tr(links.length ? 'ui.elsewhere' : 'ui.record')
 
+  // A flat run of paragraphs now, not a list wrapping a nested block: every link is its own <p>
+  // (ExternalLink), and the record's own lines (also <p>) just follow on, both under whichever
+  // heading is above — either is a valid place for a reader to stop, so nothing in the markup marks
+  // a boundary between them beyond that.
   const body = (
     <>
-      {links.length > 0 && (
-        <ul className="elsewhere-list">
-          {links.map((l) => (
-            <ExternalLink key={l.url} link={l} publishers={publishers} variant={variant} />
-          ))}
-        </ul>
-      )}
-      <Record taxon={taxon} heading={links.length > 0} />
+      {links.map((l) => (
+        <ExternalLink key={l.url} link={l} publishers={publishers} variant={variant} />
+      ))}
+      <Record taxon={taxon} />
     </>
   )
 
@@ -428,4 +415,4 @@ function Media({ object, priority }) {
   )
 }
 
-export { Translated, firstWords, Listen, Media, Elsewhere }
+export { Translated, firstWords, Listen, Media, Elsewhere, ExternalLink }
