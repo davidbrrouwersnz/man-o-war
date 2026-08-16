@@ -78,6 +78,18 @@
      screen is a very long line for a reader who asked for larger type. */
   --measure: 62ch;
 
+  /* The same ~550px, in rem: 34.5rem is 62ch measured in this font stack at the base 16px size
+     (551.7px, or 34.4814rem — rounded a third of a pixel doesn't read). --measure tracks the font
+     size ON PURPOSE, for the one paragraph it caps directly (.home-head p) — a bigger standfirst
+     earns a proportionally wider line. .home-col wants the opposite: several DIFFERENT elements —
+     the object, each essay, the collection's further reading at step--1 — sharing one column width,
+     and `ch` resolves against whichever element's own font-size happens to carry it, so the same
+     --measure produced a NARROWER box wherever a smaller font sat under it: 408px instead of 512px
+     on a 900px viewport, for the further-reading block alone. rem answers to the root font size
+     only, which is what §18's text-size control already multiplies, so this still grows at 200%
+     without also drifting by whichever text happens to fill the box today. */
+  --measure-rem: 34.5rem;
+
   /* One 1.2 modular scale from a 16px base. §15 asks for the Museum's 16px/24px, which is
      --step-0 at line-height 1.5, exactly.
 
@@ -438,7 +450,7 @@ svg.lucide {
    always the point of --measure; it just stops moving the left edge to do it. Same left-aligned-
    editorial decision the group page's .reading already makes at its own breakpoint. */
 .home-col {
-  max-width: var(--measure);
+  max-width: var(--measure-rem);
   padding-left: 1.25rem;
   padding-right: 1.25rem;
 }
@@ -1519,10 +1531,15 @@ ol.grid-dense {
   font-style: italic;
 }
 
+/* No rule of its own. The record sits inside further reading — under the same "Read more
+   elsewhere" heading as the links above it, or straight under "The record" when there are no links
+   — and either way a heading is already what marks it off; a border here would draw a second line
+   under a relationship the heading and (where there is one) .record-head's own "THE CATALOGUE
+   ENTRY" already state. That doubling only started being visible on the collection page once its
+   object's further reading opened by default — group and object pages had it hidden inside a
+   closed disclosure since the day it shipped. */
 .record {
-  border-top: 1px solid var(--rule);
-  padding-top: 0.9rem;
-  margin-top: 0.5rem;
+  margin-top: 1.25rem;
 }
 
 /* Text styling is the shared eyebrow rule near .story h3, above. */
