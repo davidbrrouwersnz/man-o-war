@@ -568,17 +568,15 @@ svg.lucide {
 }
 
 /* One underline treatment for every link that sits inside a sentence of running prose, wherever it
-   appears: the collection standfirst's own link to the object on display, the further-reading list
-   and the essay citations that now share its markup (.elsewhere-link), and the catalogue record's
-   WoRMS/GBIF/current-name links (.record-line a). Underlined rather than colour-only, because
-   colour alone must not carry a link — WCAG 1.4.1 — and all three sit in prose rather than a
-   control.
+   appears: the further-reading list and the essay citations that share its markup (.elsewhere-link),
+   and the catalogue record's WoRMS/GBIF/current-name links (.record-line a). Underlined rather than
+   colour-only, because colour alone must not carry a link — WCAG 1.4.1 — and both sit in prose
+   rather than a control.
 
-   One rule rather than three: .elsewhere-link alone used to be bold, and neither of the others
-   answered a hover the same way as .intro-link's own thickened underline — a link one further-
-   reading item down from another read as a different kind of thing for no reason a visitor could
-   tell. */
-.intro-link,
+   One rule rather than two: .elsewhere-link alone used to be bold, and .record-line a did not answer
+   a hover the same way — a link one further-reading item down from another read as a different kind
+   of thing for no reason a visitor could tell. (A third link used to share this rule, the collection
+   standfirst's own to the object on display — removed on request, not this treatment with it.) */
 .elsewhere-link,
 .record-line a {
   color: inherit;
@@ -587,7 +585,6 @@ svg.lucide {
   text-decoration-thickness: 1px;
 }
 
-.intro-link:hover,
 .elsewhere-link:hover,
 .record-line a:hover {
   text-decoration-thickness: 2px;
@@ -1502,11 +1499,12 @@ ol.grid-dense {
   }
 }
 
-/* The link itself is .intro-link's shared rule, near the top of this file. */
-
-.elsewhere-title {
-  margin: 0 0 1.1rem;
-}
+/* The link itself is .elsewhere-link's shared rule, near the top of this file. .elsewhere-title
+   itself carries no CSS of its own any more — every element wearing it also wears .record-line,
+   below, which is what actually sets its spacing now (on request, so a further-reading line and a
+   catalogue-record line match exactly rather than the wider margin a rule here used to state). Kept
+   in the markup rather than removed: it is still the semantic hook reading.jsx and home.jsx use for
+   "this paragraph is a further-reading title," which .record-line's own name does not say. */
 
 .elsewhere-source {
   color: var(--ink-meta);
@@ -1532,15 +1530,16 @@ ol.grid-dense {
 }
 
 /* No wrapper of its own any more, and no heading of its own either — the record is a flat part of
-   further reading now, not a second, nested section inside it. .elsewhere-title's own bottom margin
-   above is what separates the links from these lines; the outer "Read more elsewhere" (or "The
-   record", when there is no further reading, only this) is the one heading over both. */
+   further reading now, not a second, nested section inside it. This rule's own margin is what
+   separates one line from the next throughout, above it (.elsewhere-title wears this class too now)
+   as well as within the record itself; the outer "Read more elsewhere" (or "The record", when there
+   is no further reading, only this) is the one heading over both. */
 .record-line {
   margin: 0 0 0.35rem;
   line-height: 1.5;
 }
 
-/* The link itself is .intro-link's shared rule, near the top of this file. */
+/* The link itself is .elsewhere-link's shared rule, near the top of this file. */
 
 .record-authority,
 .record-note {

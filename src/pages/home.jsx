@@ -32,11 +32,6 @@ import { ObjectSection, ObjectMedia, objectAudio } from './group.jsx'
 import { Tools } from '../components/tools.jsx'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '../components/ui/tabs.jsx'
 
-// 1884.137.33, the Portuguese man o' war. Written down once, by scripts/split.mjs, and shipped in
-// the index — it used to be a constant here as well as there. The fallback keeps a checkout whose
-// chunks predate that field rendering the page rather than throwing on it.
-const ON_DISPLAY = index.onDisplay?.accession ?? '1884.137.33'
-
 // ------------------------------------------------------------------ home
 
 // Everything the audio needs to know about one essay, resolved once. Shared by the essay's own
@@ -169,7 +164,7 @@ function FurtherReading({ layers }) {
         {heading.text}
       </h3>
       {sources.map((s) => (
-        <p key={s.url} className="elsewhere-title" lang="en" dir="ltr">
+        <p key={s.url} className="elsewhere-title record-line" lang="en" dir="ltr">
           <a href={s.url} target="_blank" rel="noreferrer" className="elsewhere-link">
             {s.text}
           </a>
@@ -250,10 +245,6 @@ function Home({ go, route }) {
 
   const intro = tr('ui.collectionIntro')
   const title = t('ui.collectionTitle')
-  // The one object of the 128 that is out of storage and in the gallery — the thing the QR code
-  // beside it points at, and the reason this app exists.
-  const onDisplay = t('ui.collectionIntroOnDisplay')
-  const onDisplayAt = intro.text.indexOf(onDisplay)
 
   // The whole page as one sitting: the standfirst, then both essays in the order they are printed.
   // It plays exactly what each essay's own control plays, because both are built from the same
@@ -305,35 +296,11 @@ function Home({ go, route }) {
         <h1>
           <Spoken text={title} itemId="home/00-intro" block={0} />
         </h1>
-        {/* "One is on display" is the one sentence on this page that points at a real object, so it
-            links to it. The phrase is a per-language key rather than a match on English, and it is
-            looked up as a substring of the intro the visitor is actually reading — if a translation
-            ever stops containing it, the paragraph renders unlinked instead of breaking.
-
-            It is an in-page anchor now, not a route. The object it names is the next thing on this
-            page, and sending a reader to another page to see something printed two screens below
-            them is the navigation this arrangement exists to remove.
-
-            Split into three runs so the link can sit inside the sentence; each run carries its own
-            offset into the block, which is what keeps the read-along highlight landing on the right
-            word (see Spoken in audio.jsx). */}
+        {/* "One is on display" used to link to the object below it, as an in-page anchor. Removed
+            on request; the sentence is plain text now, in one run rather than three, since nothing
+            inside it needs its own offset any more. */}
         <p lang={intro.lang} dir={dirOf(intro.lang)}>
-          {onDisplayAt < 0 ? (
-            <Spoken text={intro.text} itemId="home/00-intro" block={1} />
-          ) : (
-            <>
-              <Spoken text={intro.text.slice(0, onDisplayAt)} itemId="home/00-intro" block={1} />
-              <a className="intro-link" href={`#obj-${ON_DISPLAY}`}>
-                <Spoken text={onDisplay} itemId="home/00-intro" block={1} offset={onDisplayAt} />
-              </a>
-              <Spoken
-                text={intro.text.slice(onDisplayAt + onDisplay.length)}
-                itemId="home/00-intro"
-                block={1}
-                offset={onDisplayAt + onDisplay.length}
-              />
-            </>
-          )}
+          <Spoken text={intro.text} itemId="home/00-intro" block={1} />
         </p>
       </header>
       {/* THE READING COLUMN COMES FIRST IN THE DOM, and that is the change. It used to sit after

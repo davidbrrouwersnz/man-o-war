@@ -156,10 +156,11 @@ function ExternalLink({ link, publishers, variant }) {
        institution BEFORE the title of its own article.
 
        A plain <p>, not a list item: further reading was a <ul> of these on request, now it is not
-       — one flat paragraph per link, the same shape .record-line already used for the catalogue
-       record beneath it, so the two no longer look like two different kinds of list stitched
-       together. */
-    <p className="elsewhere-title" {...english}>
+       — one flat paragraph per link. .record-line alongside .elsewhere-title, on request too, so
+       this line's spacing matches the catalogue record's own lines beneath it exactly rather than
+       its own, wider margin — the two no longer look like different kinds of list stitched
+       together, spacing included. */
+    <p className="elsewhere-title record-line" {...english}>
       {/* The why and the claim used to be printed under the link, always. Moved into a tooltip on
           request; no `aria-hidden` on the content, unlike the Listen button's tooltip, because this
           text is not said anywhere else on the page — hiding it from the accessibility tree too
