@@ -40,8 +40,9 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '../components/ui/tabs.
 // Same arrangement as objectAudio() on the group page, and for the same reason: the tour is built
 // out of the parts rather than beside them, so the two can never drift.
 //
-// `english` is the gate. The narration exists in English only, and offering it beside translated
-// words would break the rule the pipeline is built on: that the spoken words ARE the printed words.
+// Voiced-in-this-language is the gate, asked per segment: each item plays in the language its own
+// text resolved to (§13: the spoken words ARE the printed words), so each is offered only if that
+// language actually voices that segment — see the note on objectAudio in group.jsx.
 function essayAudio(slug, layer, meta, tr) {
   const titleR = tr(`layerTitles.${slug}`, null, meta.title)
   const standfirstR = tr(`layers.${slug}.standfirst`, null, layer.standfirst)
@@ -75,7 +76,7 @@ function essayAudio(slug, layer, meta, tr) {
     })),
   ]
 
-  const available = items.every((i) => hasAudio(i.lang))
+  const available = items.every((i) => hasAudio(i.lang, i.id))
 
   return { titleR, standfirstR, parts, available, items }
 }
@@ -292,7 +293,7 @@ function Home({ go, route }) {
   // the intro translates the essays too — so the button's presence never changes once the rest
   // lands, only whether it can be pressed.
   const introLang = intro.lang
-  const homeAvailable = hasAudio(introLang) && (!displayAudio || displayAudio.available) && essayAudios.every((a) => a.available)
+  const homeAvailable = hasAudio(introLang, 'home/00-intro') && (!displayAudio || displayAudio.available) && essayAudios.every((a) => a.available)
   const homeQueue = {
     key: 'home',
     title,

@@ -420,14 +420,19 @@ for (const p of packs) {
 
 index.languages = packs.map((p) => p.code)
 
-// Which languages have narration, and where each one's files are served from. The player reads
-// `base` rather than hardcoding /audio/en, so moving a language's audio out of the repo and onto
-// blob storage is a value in src/data/audio-index.json — English alone is 44MB and git should not
-// be asked to carry nine of those indefinitely.
+// Which segments have narration in which language, and where each language's files are served
+// from. The player reads `base` rather than hardcoding /audio/en, so moving a language's audio out
+// of the repo and onto blob storage is a value in src/data/audio-index.json — English alone is
+// 44MB and git should not be asked to carry nine of those indefinitely.
+//
+// `segments` is the voiced ids themselves, not a count. A language is not a unit of narration:
+// German's pack translates every story, but its audio is a four-file pilot covering one object —
+// a per-language yes/no offered German visitors 42-section tours that died on their first file.
+// The player asks about the segment it would actually play, so the ids must travel with the index.
 index.audio = Object.fromEntries(
   Object.entries(audioLangs)
     .filter(([, a]) => Object.keys(a.segments ?? {}).length)
-    .map(([code, a]) => [code, { base: a.base ?? `/audio/${code}`, segments: Object.keys(a.segments).length }])
+    .map(([code, a]) => [code, { base: a.base ?? `/audio/${code}`, segments: Object.keys(a.segments) }])
 )
 
 // §7's disclosure, computed rather than declared.

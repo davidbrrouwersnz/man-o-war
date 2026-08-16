@@ -32,7 +32,12 @@ import { useA11y } from './a11y.jsx'
 // And moving audio off the repo later is a change to `base` in a JSON file rather than to this
 // player. English alone is 44MB.
 const AUDIO = index.audio ?? {}
-export const hasAudio = (lang) => !!AUDIO[lang]
+// Availability is per SEGMENT, not per language. German is why: its pack translates every story,
+// so on a German page every item resolves to 'de' — but its narration is a four-file pilot
+// covering one object. A per-language answer offered every German visitor an audio guide that was
+// dead on arrival; the set answers for the file the player would actually request.
+const VOICED = Object.fromEntries(Object.entries(AUDIO).map(([code, a]) => [code, new Set(a.segments)]))
+export const hasAudio = (lang, id) => !!VOICED[lang]?.has(id)
 const baseFor = (lang) => AUDIO[lang]?.base ?? `/audio/${lang}`
 export const RATES = [0.5, 0.75, 1, 1.25, 1.5, 2]
 

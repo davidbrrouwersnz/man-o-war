@@ -16,10 +16,11 @@ import { Missing } from './missing.jsx'
 // Listen control and by the group page's, so that playing a whole group plays exactly what each
 // object would have played on its own — the same files, the same order, the same highlighting.
 //
-// `english` is the gate. The narration exists in English only, and offering it beside translated
-// words would break the rule the pipeline is built on: that the spoken words ARE the printed ones.
-// A visitor reading an untranslated object inside a Samoan session still gets it, because what
-// they are looking at IS the English.
+// Voiced-in-this-language is the gate, asked per segment. Each item plays in the language its own
+// text resolved to (§13: the spoken words ARE the printed ones), so each is offered only if THAT
+// language voices THAT segment — which is what lets German's one-object pilot play without
+// offering the 127 German objects that have no files. A visitor reading an untranslated object
+// inside a Samoan session still gets it, because what they are looking at IS the English.
 function objectAudio(object, tr, t) {
   const story = object.story
   // Array form, not a dot-string: the accession itself contains dots ("1884.137.33"), which a
@@ -78,7 +79,7 @@ function objectAudio(object, tr, t) {
     })),
   ]
 
-  const available = items.every((i) => hasAudio(i.lang))
+  const available = items.every((i) => hasAudio(i.lang, i.id))
 
   return { headlineR, catalogueR, showCatalogue, parts, available, items }
 }
@@ -293,7 +294,7 @@ function GroupPage({ route, go }) {
   // The panel is one file carrying the group title and the panel text, so it is only voiced in the
   // translation when both are translated.
   const panelLang = title.lang === panelR.lang ? panelR.lang : 'en'
-  const tourAvailable = !!data && hasAudio(panelLang) && objectAudios.every((a) => a.available)
+  const tourAvailable = !!data && hasAudio(panelLang, `groups/${group.slug}/00-panel`) && objectAudios.every((a) => a.available)
   const tourQueue = {
     key: `g:${group.slug}`,
     title: title.text,

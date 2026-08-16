@@ -25,9 +25,10 @@ const firstWords = (text, max = 42) => {
 }
 
 // Every page that offers audio needs the same control and the same rule about when to show it, so
-// it lives in one place. `available` is the caller's own check that what is rendered is English —
-// the narration exists in English only, and offering it beside translated words would break the
-// rule the whole pipeline is built on.
+// it lives in one place. `available` is the caller's own check that every section it would queue
+// is actually voiced in the language that section's text resolved to — offering narration that
+// does not exist, or exists only in other words, would break the rule the whole pipeline is built
+// on: the spoken words ARE the printed words.
 //
 // `pending` is for a control whose queue is still being fetched. It holds the button's place and
 // disables it rather than hiding it, because a control that pops into existence a moment after the
