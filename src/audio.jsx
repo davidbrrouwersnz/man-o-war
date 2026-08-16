@@ -73,6 +73,24 @@ function parseVtt(text) {
 // cue is always at or after the previous one. That matters for repeated words - highlighting the
 // first "the" in a paragraph every time the voice says "the" would look broken, and a naive
 // indexOf from zero would do exactly that.
+
+// One kind of cue is damaged rather than genuinely mismatched. buildVtt in scripts/audio.mjs
+// folds Azure's punctuation-only word events into the word before them, and the fold used to keep
+// no space — so a spaced dash arrived as "hydroids—" while the page prints "hydroids —". The fold
+// now reads the separator from the printed text, but 18 English VTTs shipped in the old shape and
+// stay as they are, because regenerating audio costs money. This rebuilds such a cue as a pattern
+// that permits whitespace ahead of punctuation, which recovers exactly that damage and nothing
+// else: a cue that matches verbatim never gets here, and the range it yields covers the printed
+// word and its dash together.
+const reflowed = (needle) => {
+  let src = ''
+  for (const [i, ch] of [...needle].entries()) {
+    if (i && !/[\s\p{L}\p{N}]/u.test(ch)) src += '\\s?'
+    src += ch.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  }
+  return new RegExp(src, 'gu')
+}
+
 function alignCues(cues, blocks) {
   const out = []
   let b = 0
@@ -82,10 +100,20 @@ function alignCues(cues, blocks) {
     if (!needle) continue
     let placed = false
     while (b < blocks.length) {
-      const at = blocks[b].indexOf(needle, pos)
+      let at = blocks[b].indexOf(needle, pos)
+      let len = needle.length
+      if (at === -1) {
+        const re = reflowed(needle)
+        re.lastIndex = pos
+        const m = re.exec(blocks[b])
+        if (m) {
+          at = m.index
+          len = m[0].length
+        }
+      }
       if (at !== -1) {
-        out.push({ ...cue, block: b, from: at, to: at + needle.length })
-        pos = at + needle.length
+        out.push({ ...cue, block: b, from: at, to: at + len })
+        pos = at + len
         placed = true
         break
       }

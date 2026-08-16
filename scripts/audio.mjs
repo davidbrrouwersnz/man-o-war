@@ -411,7 +411,10 @@ const stamp = (ms) => {
 //
 //   Punctuation-only cues. Azure splits "man o' war" into "man", "o", "'", "war" and reports the
 //   bare apostrophe as its own word. Highlighting a lone apostrophe for a tenth of a second reads
-//   as a glitch, so those cues are folded into the word before them.
+//   as a glitch, so those cues are folded into the word before them — keeping whatever separator
+//   the page prints, read from the unit's own text. A fold that assumed adjacency turned the
+//   printed "hydroids —" into the cue "hydroids—", which can never match the page again; 18
+//   English segments shipped that way and src/audio.jsx carries the matching fallback for them.
 //
 //   <sub> segments get ONE cue for the whole line. Azure reports word offsets as positions in the
 //   SSML it was given, and the SDK slices the text out using them - which works while the spoken
@@ -423,15 +426,35 @@ function buildVtt(unit, words, totalMs) {
   const cues = []
 
   {
+    // The blocks as buildSsml assembles them, joined back into one string so the fold below can
+    // read what actually separates a word from its punctuation on the page.
+    const blocks = []
+    if (unit.heading) blocks.push(unit.heading)
+    blocks.push(...unit.text.split(/\n{2,}/))
+    const printed = blocks.map((b) => b.trim()).filter(Boolean).join('\n\n')
+
+    // A forward cursor over the printed text, for the same reason the player's alignCues walks
+    // forwards: the narration reads the text in order, so the next occurrence after the cursor is
+    // the right one even when the word repeats.
+    let pos = 0
     const merged = []
     for (const w of words) {
       const isPunctuation = !/[A-Za-z0-9]/.test(w.text)
       if (isPunctuation && merged.length) {
         const prev = merged[merged.length - 1]
-        prev.text += w.text
+        // The page's separator, not an assumed one: "hydroids —" keeps its space, "war." stays
+        // joined. Where the printed text cannot confirm a separator - the cursor lost its place,
+        // or the event's text is not in the unit at all - the fold joins bare, as it always did,
+        // and the player's fallback still covers that.
+        const at = printed.indexOf(w.text, pos)
+        const between = at === -1 ? null : printed.slice(pos, at)
+        prev.text += (between !== null && /^\s+$/.test(between) ? ' ' : '') + w.text
+        if (at !== -1) pos = at + w.text.length
         prev.duration = w.start + w.duration - prev.start
         continue
       }
+      const at = printed.indexOf(w.text, pos)
+      if (at !== -1) pos = at + w.text.length
       merged.push({ ...w })
     }
     for (const [i, w] of merged.entries()) {
