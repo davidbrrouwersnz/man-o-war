@@ -3407,10 +3407,10 @@
           "kind": "panel"
         },
         "layers/how-it-was-made/00-standfirst": {
-          "hash": "14e6be71c7eab1dc",
-          "durationMs": 8365,
-          "words": 23,
-          "bytes": 50544,
+          "hash": "c1a6054e70ca1aed",
+          "durationMs": 7814,
+          "words": 21,
+          "bytes": 47232,
           "track": "reading",
           "kind": "layer"
         },
@@ -3423,10 +3423,10 @@
           "kind": "layer"
         },
         "layers/how-it-was-made/the-method": {
-          "hash": "152eb8b1f50c4dd9",
-          "durationMs": 38969,
-          "words": 116,
-          "bytes": 234144,
+          "hash": "9a804bdab895e19e",
+          "durationMs": 37875,
+          "words": 114,
+          "bytes": 227664,
           "track": "reading",
           "kind": "layer"
         },
@@ -3463,18 +3463,18 @@
           "kind": "layer"
         },
         "layers/how-it-got-here/the-gap": {
-          "hash": "24c750c1501bbcec",
-          "durationMs": 38865,
-          "words": 101,
-          "bytes": 233568,
+          "hash": "2b8abb3437de2afb",
+          "durationMs": 37667,
+          "words": 97,
+          "bytes": 226368,
           "track": "reading",
           "kind": "layer"
         },
         "layers/how-it-got-here/haast": {
-          "hash": "0594bec94344926d",
-          "durationMs": 33219,
-          "words": 88,
-          "bytes": 199728,
+          "hash": "b7840f16b2a4ac51",
+          "durationMs": 28326,
+          "words": 76,
+          "bytes": 170352,
           "track": "reading",
           "kind": "layer"
         },
@@ -3503,10 +3503,10 @@
           "kind": "layer"
         },
         "layers/how-it-got-here/since": {
-          "hash": "46f585e32a8de953",
-          "durationMs": 47903,
-          "words": 122,
-          "bytes": 287712,
+          "hash": "8791b0ccf502eb4b",
+          "durationMs": 42430,
+          "words": 108,
+          "bytes": 254880,
           "track": "reading",
           "kind": "layer"
         }

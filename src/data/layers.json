@@ -7,7 +7,7 @@
   "layers": {
     "how-it-was-made": {
       "title": "How it was made",
-      "standfirst": "Why an entire museum collection is made of glass, and how two men in Dresden did it.",
+      "standfirst": "Why an entire museum collection is made of glass, and how the Blaschkas did it.",
       "segments": [
         {
           "id": "the-problem",
@@ -17,7 +17,7 @@
         {
           "id": "the-method",
           "heading": "Worked cool, not hot",
-          "text": "Leopold and Rudolf Blaschka worked mostly at low temperatures, softening rod and tube over a flame and shaping it with hand tools rather than blowing it hot.\n\nWorking cool is slower, and it is the reason the detail survives. It let them draw glass out into threads, bend it, and build a form up piece by piece rather than in one breath.\n\nThey built in layers, and some of those layers are thinner than an eggshell. That is how a model can be transparent and still show organs inside it, which is the single thing no other material could do."
+          "text": "The Blaschkas worked mostly at low temperatures, softening rod and tube over a flame and shaping it with hand tools rather than blowing it hot.\n\nWorking cool is slower, and it is the reason the detail survives. It let them draw glass out into threads, bend it, and build a form up piece by piece rather than in one breath.\n\nThey built in layers, and some of those layers are thinner than an eggshell. That is how a model can be transparent and still show organs inside it, which is the single thing no other material could do."
         },
         {
           "id": "colour",
@@ -53,12 +53,12 @@
         {
           "id": "the-gap",
           "heading": "What a museum wanted in 1880",
-          "text": "A museum of this period was meant to be encyclopaedic. The idea was that a visitor who saw a wide enough range of things could draw their own conclusions about the natural world, so the aim was coverage.\n\nCanterbury Museum's founding director, Julius von Haast, worked to exactly that model. He collected local material and foreign material, and he believed the foreign and the rare would raise the Museum's standing and its usefulness.\n\nMeasured by how many people came through the doors, Christchurch agreed with him."
+          "text": "A museum of this period was meant to be encyclopaedic. A visitor who saw a wide enough range of things could draw their own conclusions about the natural world, so the aim was coverage.\n\nCanterbury Museum's founding director, Julius von Haast, worked to exactly that model. He collected local material and foreign material, and he believed the foreign and the rare would raise the Museum's standing and its usefulness.\n\nMeasured by how many people came through the doors, Christchurch agreed with him."
         },
         {
           "id": "haast",
           "heading": "The man who ordered them",
-          "text": "Haast was not a trained zoologist. He was, however, extremely well connected and well informed. He corresponded with Charles Darwin, with the botanist Joseph Hooker, and with Ernst Haeckel, whose ideas about evolution were reshaping the subject.\n\nHis letters show someone following fine zoological detail closely.\n\nSo when he set out to fill the gap where the soft-bodied animals should have been, he knew what he was buying and why it mattered."
+          "text": "Haast was not a trained zoologist. He corresponded with Charles Darwin, with the botanist Joseph Hooker, and with Ernst Haeckel, whose ideas about evolution were reshaping the subject.\n\nHis letters show someone following fine zoological detail closely.\n\nSo when he set out to fill the gap where the soft-bodied animals should have been, he knew what he was buying and why it mattered."
         },
         {
           "id": "otago-first",
@@ -80,7 +80,7 @@
           "noAuto": true,
           "noAutoWhy": "Reported speech from a named publication. §6 keeps quotations out of any automated translation pipeline: a machine-refined quote is a fabricated statement attributed to a real source, and the Opium War Museum precedent is a real politician's words round-tripped through another language and presented as authentic. The Press's October 1883 line is close paraphrase of a real published sentence, so it travels the same road. Translate this one by hand, with the translator credited, or leave it to fall back to English.",
           "heading": "What happened after",
-          "text": "The models went on show in the Technological Room, presented as industrial art applied to science rather than as zoology. A Christchurch newspaper, the Press, told its readers in October 1883 that the Portuguese man o' war appeared in its true colours and resembled nature so closely as to be deceptive.\n\nThat framing did not last. Within two years the models were being shown alongside preserved specimens, and by 1895 the Technological Room had been taken apart and the models placed among the zoological displays, filed by what they depicted rather than by how they were made.\n\nToday one of them is on display. The rest are in storage."
+          "text": "The models went on show in the Technological Room, presented as industrial art applied to science rather than as zoology. A Christchurch newspaper, the Press, told its readers in October 1883 that the Portuguese man o' war appeared in its true colours and resembled nature so closely as to be deceptive.\n\nThat framing did not last. Within two years the models were being shown alongside preserved specimens, and by 1895 the Technological Room had been taken apart and the models placed among the zoological displays, filed by what they depicted rather than by how they were made."
         }
       ],
       "sources": [

@@ -1,5 +1,26 @@
-// The collection page: the eleven category tiles, then all 128 objects, then the two reading
-// essays beside them.
+// The collection page. In order: what this collection is, the one object a visitor can actually
+// see, why it is made of glass, how it reached Christchurch — and then the other 127.
+//
+// THE ORDER IS THE ARGUMENT, so it is worth writing down why it is this one.
+//
+// A visitor holding this page is standing in front of exactly one object: 1884.137.33, the
+// Portuguese man o' war, the single model out of 128 that is out of storage. Their question is not
+// "what is in this collection" — they can see what is in front of them. It is "what am I looking
+// at, what is it made of, and why is it in Christchurch?"
+//
+// This page used to answer that question in three places. The name and the story were a tap away
+// on the group page; the two essays that answer the other two halves sat below 139 tiles. So the
+// one visitor the app is built for had to navigate to assemble an answer that the app already had
+// in full.
+//
+// Now the reading runs straight through: the collection, the object, how it was made, how it got
+// here. Nothing new was written for it — the object is the same component the group page renders,
+// reading the same story, and the essays are unchanged. What changed is that they are consecutive.
+//
+// The grids follow rather than lead, and that is the cost of this arrangement rather than a bonus:
+// on a phone the collection now begins below the reading. It is the right trade for the visitor in
+// the gallery and the wrong one for a visitor who came to browse, and at desktop it stops being a
+// trade at all — the reading is one column and the grid is the other, both visible at once.
 
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { BY_CODE, dirOf } from '../i18n.js'
@@ -7,10 +28,13 @@ import { langAttrs, useLang, useT } from '../lang.jsx'
 import { Spoken, blocksOf, hasAudio } from '../audio.jsx'
 import { GROUPS, PUBLISHERS, index, loadChunk } from '../collection.js'
 import { Elsewhere, Listen, Translated } from '../components/reading.jsx'
+import { ObjectSection, objectAudio } from './group.jsx'
 import { Tools } from '../components/tools.jsx'
 
-// 1884.137.33, the Portuguese man o' war. One object of the 128 is on display; this is it.
-const ON_DISPLAY = '1884.137.33'
+// 1884.137.33, the Portuguese man o' war. Written down once, by scripts/split.mjs, and shipped in
+// the index — it used to be a constant here as well as there. The fallback keeps a checkout whose
+// chunks predate that field rendering the page rather than throwing on it.
+const ON_DISPLAY = index.onDisplay?.accession ?? '1884.137.33'
 
 // ------------------------------------------------------------------ home
 
@@ -105,19 +129,47 @@ function Essay({ slug, layer, meta, code, langName }) {
         )
       })}
 
-      <div className="layer-sources">
-        <h3>{t('ui.sources')}</h3>
-        <ul>
-          {layer.sources.map((s) => (
-            <li key={s.url}>
-              <a href={s.url} target="_blank" rel="noreferrer">
-                {s.text}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
     </section>
+  )
+}
+
+// The sources for the reading, once, after both essays.
+//
+// They used to be printed under each essay, which meant Shaw et al. 2017 — a thirty-word
+// bibliographic citation — appeared twice within a few screens, because both essays draw on it.
+// That was defensible while the essays were separate pages. On one continuous read it is just the
+// same citation twice, and it was the largest piece of duplicated text on the page.
+//
+// Deduplicated on URL and kept in the order the essays declare them, so nothing is dropped: every
+// source either essay cites is still cited, once, and still under the word §7 already translates.
+function ReadingSources({ layers }) {
+  const [t, tr] = useT()
+  const seen = new Set()
+  const sources = []
+  for (const meta of index.layers) {
+    for (const s of layers.layers[meta.slug]?.sources ?? []) {
+      if (seen.has(s.url)) continue
+      seen.add(s.url)
+      sources.push(s)
+    }
+  }
+  if (!sources.length) return null
+  const heading = tr('ui.sources')
+  return (
+    <div className="layer-sources">
+      <h3 {...langAttrs(heading)}>{heading.text}</h3>
+      <ul>
+        {sources.map((s) => (
+          <li key={s.url}>
+            {/* A citation is quoted as printed, so it stays in the language it was published in —
+                the same rule the further-reading titles below follow. */}
+            <a href={s.url} target="_blank" rel="noreferrer" lang="en" dir="ltr">
+              {s.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
 
@@ -127,12 +179,25 @@ function Home({ go, route }) {
   const langName = BY_CODE.get(code)?.endonym ?? 'English'
   const [layers, setLayers] = useState(null)
   const [all, setAll] = useState(null)
+  const [display, setDisplay] = useState(null)
   const allRef = useRef(null)
 
+  // The document title follows whatever language is active, so it has no dependency list at all —
+  // it is one assignment and it is correct on every render.
   useLayoutEffect(() => {
     document.title = `${t('ui.collectionTitle')} — Canterbury Museum`
+  })
+
+  // Scrolling to the top belongs to ARRIVING at this route, not to rendering it.
+  //
+  // These were one effect keyed on [t, route?.at], and `t` is rebuilt by useT() on every render, so
+  // the list changed every time and the scroll ran every time. Every chunk that lands — the essays,
+  // the object on display, the 128-tile grid — re-renders this page, so a visitor who started
+  // reading in the first second was thrown back to the title, twice. Adding the object made it
+  // three times and is how it was noticed.
+  useLayoutEffect(() => {
     if (!route?.at) scrollTo(0, 0)
-  }, [t, route?.at])
+  }, [route?.at])
 
   // 62KB of tiles for 128 objects, and now nothing gates it behind a press. Fetched when the
   // second grid comes within a couple of screens instead — the same treatment the object
@@ -167,6 +232,13 @@ function Home({ go, route }) {
     loadChunk('layers')?.then(setLayers)
   }, [])
 
+  // The object on display. Its own 2KB chunk rather than the 10KB group it belongs to, and fetched
+  // on mount rather than on scroll: it is the second thing on the page and the reason most visitors
+  // opened it. See the note in scripts/split.mjs.
+  useEffect(() => {
+    loadChunk('on-display')?.then(setDisplay)
+  }, [])
+
   // An arrival on /all or on an old /how-it-was-made link cannot scroll until whichever chunk it
   // points at has rendered, so this runs again as each one lands.
   useLayoutEffect(() => {
@@ -195,16 +267,24 @@ function Home({ go, route }) {
   const essayAudios = layers
     ? index.layers.map((meta) => (layers.layers[meta.slug] ? essayAudio(meta.slug, layers.layers[meta.slug], meta, tr) : null)).filter(Boolean)
     : []
-  // Decidable from the intro alone, before the chunk arrives — every language pack that translates
-  // the intro translates the essays too — so the button's presence never changes once the essays
-  // land, only whether it can be pressed.
+  // The object's narration is built by the group page's own objectAudio(), so pressing Listen here
+  // plays exactly what pressing Listen on the object plays — the same files, the same order, the
+  // same highlighting. §13 requires the spoken words to be the printed words, and the printed words
+  // on this page are now that object's.
+  const displayAudio = display ? objectAudio(display.object, tr, t) : null
+  // Decidable from the intro alone, before the chunks arrive — every language pack that translates
+  // the intro translates the essays too — so the button's presence never changes once the rest
+  // lands, only whether it can be pressed.
   const introLang = intro.lang
-  const homeAvailable = hasAudio(introLang) && essayAudios.every((a) => a.available)
+  const homeAvailable = hasAudio(introLang) && (!displayAudio || displayAudio.available) && essayAudios.every((a) => a.available)
   const homeQueue = {
     key: 'home',
     title,
+    // In printed order: the standfirst, the object, then both essays. The tour follows the page
+    // rather than being listed beside it, so re-ordering the page re-orders the narration.
     items: [
       { id: 'home/00-intro', lang: introLang, label: title, blocks: [title, intro.text] },
+      ...(displayAudio?.items ?? []),
       ...essayAudios.flatMap((a) => a.items),
     ],
   }
@@ -216,7 +296,7 @@ function Home({ go, route }) {
             <Listen
               queue={homeQueue}
               available={homeAvailable}
-              pending={!layers}
+              pending={!layers || !display}
               note={code !== 'en' ? t('ui.audioEnglishOnly') : null}
             />
           }
@@ -229,6 +309,10 @@ function Home({ go, route }) {
             looked up as a substring of the intro the visitor is actually reading — if a translation
             ever stops containing it, the paragraph renders unlinked instead of breaking.
 
+            It is an in-page anchor now, not a route. The object it names is the next thing on this
+            page, and sending a reader to another page to see something printed two screens below
+            them is the navigation this arrangement exists to remove.
+
             Split into three runs so the link can sit inside the sentence; each run carries its own
             offset into the block, which is what keeps the read-along highlight landing on the right
             word (see Spoken in audio.jsx). */}
@@ -238,7 +322,7 @@ function Home({ go, route }) {
           ) : (
             <>
               <Spoken text={intro.text.slice(0, onDisplayAt)} itemId="home/00-intro" block={1} />
-              <a className="intro-link" href={`/o/${ON_DISPLAY}`} onClick={go(`/o/${ON_DISPLAY}`)}>
+              <a className="intro-link" href={`#obj-${ON_DISPLAY}`}>
                 <Spoken text={onDisplay} itemId="home/00-intro" block={1} offset={onDisplayAt} />
               </a>
               <Spoken
@@ -251,10 +335,47 @@ function Home({ go, route }) {
           )}
         </p>
       </header>
-      {/* Two wrappers, and they exist for the desktop layout: browsing on the left, reading on the
-          right. `home-head` deliberately stays outside both, first in the DOM, because that is what
-          keeps the phone order intact — head, tabs, tiles, essays — while the desktop grid moves
-          the head into the right-hand column. Same technique as the object page. */}
+      {/* THE READING COLUMN COMES FIRST IN THE DOM, and that is the change. It used to sit after
+          the grids, which on a phone put 139 tiles between the collection's own standfirst and the
+          only object a visitor can actually look at.
+
+          The desktop layout is unaffected: both wrappers are placed by named grid areas, so which
+          one is written first here decides the phone order and nothing else. `home-head` stays
+          outside both, first, because the desktop grid moves it into the right-hand column with
+          the reading. Same technique as the object page. */}
+      <div className="home-read">
+        {/* The object on display, rendered by the group page's own ObjectSection — the same words,
+            translations, narration, further reading and catalogue record it has inside Floating
+            colonies, because it is the same component reading the same data.
+
+            `arrived` is false: nothing was scanned to get here. The flag belongs to the QR route,
+            which still lands on the group page. */}
+        {display && (
+          <div className="home-object">
+            <ObjectSection object={display.object} arrived={false} priority />
+          </div>
+        )}
+
+        {layers && (
+          <div className="home-essays">
+            {index.layers.map((meta) => {
+              const l = layers.layers[meta.slug]
+              if (!l) return null
+              return <Essay key={meta.slug} slug={meta.slug} layer={l} meta={meta} code={code} langName={langName} />
+            })}
+
+            {/* What the reading is built on, once, rather than once per essay. */}
+            <ReadingSources layers={layers} />
+
+            {/* §6's external sources at the widest scale: not this animal or this group, but this
+                collection — the other Blaschka collections, the scholarship on these objects, and
+                what the two men did after they stopped making sea creatures. It sits after both
+                essays because that is where a reader who has finished them is. */}
+            <Elsewhere links={layers.elsewhere} publishers={PUBLISHERS} variant="collection" />
+          </div>
+        )}
+      </div>
+
       <div className="home-browse">
         {/* Two ways into the same 128 objects. §9 kept the full grid as a secondary route rather
             than the front door — it rescues browsing by eye and the completionist — and a tab does
@@ -312,29 +433,6 @@ function Home({ go, route }) {
             <p className="loading loading-dark">{t('ui.loading')}</p>
           )}
         </section>
-      </div>
-
-      {/* The background reading. On a phone it sits below the grid, because the collection is what
-          a visitor came for and this is what they read once something has caught them. At desktop
-          it becomes the right-hand column beside the tiles. Light on dark either way: the grid is
-          a dark field because 79 of the 128 photographs are objects on black, and long-form text
-          does not belong on that ground. */}
-      <div className="home-read">
-        {layers && (
-          <div className="home-essays">
-            {index.layers.map((meta) => {
-              const l = layers.layers[meta.slug]
-              if (!l) return null
-              return <Essay key={meta.slug} slug={meta.slug} layer={l} meta={meta} code={code} langName={langName} />
-            })}
-
-            {/* §6's external sources at the widest scale: not this animal or this group, but this
-                collection — the other Blaschka collections, the scholarship on these objects, and
-                what the two men did after they stopped making sea creatures. It sits after both
-                essays because that is where a reader who has finished them is. */}
-            <Elsewhere links={layers.elsewhere} publishers={PUBLISHERS} variant="collection" />
-          </div>
-        )}
       </div>
     </main>
   )

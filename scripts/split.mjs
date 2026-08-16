@@ -266,6 +266,32 @@ for (const g of groups.groups) {
   console.log(`  ${g.slug.padEnd(24)} ${String(objects.length).padStart(2)} objects  ${(gzipSync(json).length / 1024).toFixed(0)}KB gz  ${String(minutes).padStart(2)} min  (${exact})`)
 }
 
+// ------------------------------------------------------------------ the object on display (§9)
+//
+// One of the 128 is out of storage and in the gallery, and the collection page now carries it in
+// full — name, photograph, story, further reading, record — so a visitor standing in front of it
+// reads the whole thing without navigating. See src/pages/home.jsx.
+//
+// Its own chunk, and that is the whole reason this block exists. The object lives in
+// floating-colonies.json with seven others; fetching that to render one of them would cost 10KB gz
+// on the one route every visitor loads first, to throw away seven eighths of it. This is ~3KB.
+//
+// The accession is written down HERE and shipped in the index, rather than being a constant in the
+// page. It was hardcoded in home.jsx already; two copies of the same accession in two languages of
+// the same repository is exactly the drift this file spends its length avoiding.
+const ON_DISPLAY = '1884.137.33'
+{
+  const g = groups.groups.find((x) => x.accessions.includes(ON_DISPLAY))
+  if (!g) throw new Error(`§9: the object on display (${ON_DISPLAY}) is not in any group`)
+  const chunkFile = new URL(`${g.slug}.json`, dir)
+  const object = JSON.parse(readFileSync(chunkFile, 'utf8')).objects.find((o) => o.accession === ON_DISPLAY)
+  if (!object) throw new Error(`§9: the object on display (${ON_DISPLAY}) was not emitted into ${g.slug}.json`)
+  const json = ship({ object, slug: g.slug })
+  writeFileSync(new URL('on-display.json', dir), json)
+  index.onDisplay = { accession: ON_DISPLAY, slug: g.slug }
+  console.log(`on-display (${ON_DISPLAY})    ${(gzipSync(json).length / 1024).toFixed(0)}KB gz`)
+}
+
 // /all — the full 128-tile grid. §9 keeps it as a secondary route, not the front door, so it is a
 // chunk of its own and costs nothing until someone asks for it. Placeholders only: the real images
 // load lazily, as on a group page.
@@ -467,8 +493,8 @@ console.log(`\nindex (always loaded)   ${(gzipSync(indexJson).length / 1024).toF
 console.log(`chunks (loaded on demand, total across all 11)   ${(chunkTotal / 1024).toFixed(0)}KB gz`)
 console.log(`was: ${(before / 1024).toFixed(0)}KB gz of data in the main bundle, every route`)
 
-// index, all, layers — search.json was the fourth until search was removed.
-if (readdirSync(dir).length !== groups.groups.length + 3 + index.languages.length) throw new Error('chunk count mismatch')
+// index, all, layers, on-display — search.json was one of these until search was removed.
+if (readdirSync(dir).length !== groups.groups.length + 4 + index.languages.length) throw new Error('chunk count mismatch')
 
 // Loud rather than silent. A tile reading "About 3 minutes." when the narration is really eleven is
 // worse than an ugly build log — a visitor deciding whether they have time for a group is the whole

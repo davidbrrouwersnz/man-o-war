@@ -3,7 +3,7 @@
   "reviewed": false,
   "layers": {
     "how-it-was-made": {
-      "standfirst": "Warum eine ganze Museumssammlung aus Glas besteht, und wie zwei Männer in Dresden das machten.",
+      "standfirst": "Warum eine gesamte Museumssammlung aus Glas besteht und wie die Blaschkas das gemacht haben.",
       "segments": {
         "the-problem": {
           "heading": "Das Problem, das Glas löste",
@@ -11,7 +11,7 @@
         },
         "the-method": {
           "heading": "Kalt gearbeitet, nicht heiß",
-          "text": "Leopold und Rudolf Blaschka arbeiteten überwiegend bei niedrigen Temperaturen: Stab und Rohr wurden über der Flamme erweicht und mit Handwerkzeug geformt, nicht heiß geblasen.\n\nKalt zu arbeiten ist langsamer, und genau deshalb überlebt das Detail. So ließ sich Glas zu Fäden ausziehen, biegen und Stück für Stück aufbauen statt in einem einzigen Atemzug.\n\nSie bauten in Schichten, und manche dieser Schichten sind dünner als eine Eierschale. Nur so kann ein Modell durchsichtig sein und zugleich die Organe darin zeigen — das eine, was kein anderes Material konnte."
+          "text": "Die Blaschkas arbeitete meist bei niedrigen Temperaturen, indem Stange und Rohr über einer Flamme weich wurden und mit Handwerkzeugen geformt wurden, anstatt sie heiß zu blasen.\n\nKühles Arbeiten ist langsamer, und das ist der Grund, warum das Detail überlebt hat. So konnten sie Glas zu Fäden ziehen, es biegen und Stück für Stück eine Form aufbauen, statt in einem Atemzug.\n\nSie haben Schichten eingebaut, und einige dieser Schichten sind dünner als eine Eierschale. So kann ein Modell transparent sein und trotzdem Organe darin zeigen, was das Einzige ist, was kein anderes Material leisten könnte."
         },
         "colour": {
           "heading": "Drei Wege, Farbe hinzuzufügen",
@@ -32,11 +32,11 @@
       "segments": {
         "the-gap": {
           "heading": "Was ein Museum 1880 wollte",
-          "text": "Ein Museum dieser Zeit sollte enzyklopädisch sein. Der Gedanke war, dass ein Besucher, der eine ausreichend große Bandbreite sieht, sich sein eigenes Urteil über die Natur bilden kann. Vollständigkeit war das Ziel.\n\nJulius von Haast, der Gründungsdirektor des Canterbury Museum, arbeitete genau nach diesem Modell. Er sammelte Einheimisches wie Fremdes und war überzeugt, dass gerade das Fremde und Seltene Ansehen und Nutzen des Museums heben würde.\n\nGemessen an den Besucherzahlen sah Christchurch das genauso."
+          "text": "Ein Museum aus dieser Zeit sollte enzyklopädisch sein. Ein Besucher, der eine ausreichend breite Palette von Dingen sah, konnte eigene Schlüsse über die Natur ziehen, daher war das Ziel die Berichterstattung.\n\nDer Gründungsdirektor des Canterbury Museums, Julius von Haast, arbeitete genau nach diesem Modell. Er sammelte lokale und ausländische Materialien und glaubte, dass das Fremde und das Seltene den Ansehen und seinen Nutzen des Museums erhöhen würden.\n\nGemessen daran, wie viele Menschen durch die Türen kamen, stimmte Christchurch ihm zu."
         },
         "haast": {
           "heading": "Der Mann, der sie bestellte",
-          "text": "Haast war kein ausgebildeter Zoologe. Er war jedoch außerordentlich gut vernetzt und gut unterrichtet. Er korrespondierte mit Charles Darwin, mit dem Botaniker Joseph Hooker und mit Ernst Haeckel, dessen Vorstellungen von der Evolution das Fach umkrempelten.\n\nSeine Briefe zeigen jemanden, der feine zoologische Einzelheiten genau verfolgte.\n\nAls er also die Lücke füllen wollte, in der die weichhäutigen Tiere hätten stehen sollen, wusste er, was er kaufte und warum es wichtig war."
+          "text": "Haast war kein ausgebildeter Zoologe. Er korrespondierte mit Charles Darwin, mit dem Botaniker Joseph Hooker und mit Ernst Haeckel, dessen Ideen zur Evolution das Thema grundlegend veränderten.\n\nSeine Briefe zeigen jemanden, der feine zoologische Details genau verfolgt.\n\nAls er sich also daran machte, die Lücke zu füllen, wo die weichen Tiere hätten sein sollen, wusste er, was er kaufte und warum es wichtig war."
         },
         "otago-first": {
           "heading": "Otago war zuerst da",
@@ -52,7 +52,7 @@
         },
         "since": {
           "heading": "Was danach geschah",
-          "text": "Die Modelle kamen im Technologischen Saal zur Aufstellung, vorgeführt als industrielle Kunst im Dienst der Wissenschaft, nicht als Zoologie. Eine Christchurcher Zeitung, die Press, teilte ihren Lesern im Oktober 1883 mit, die Portugiesische Galeere erscheine in ihren wahren Farben und gleiche der Natur so sehr, dass es täusche.\n\nDiese Rahmung hielt nicht. Binnen zwei Jahren wurden die Modelle neben Präparaten gezeigt, und 1895 war der Technologische Saal aufgelöst und die Modelle standen in den zoologischen Abteilungen, geordnet nach dem, was sie darstellten, statt danach, wie sie gemacht waren.\n\nHeute ist eines ausgestellt. Der Rest liegt im Depot."
+          "text": "Die Modelle kamen im Technologischen Saal zur Aufstellung, vorgeführt als industrielle Kunst im Dienst der Wissenschaft, nicht als Zoologie. Eine Christchurcher Zeitung, die Press, teilte ihren Lesern im Oktober 1883 mit, die Portugiesische Galeere erscheine in ihren wahren Farben und gleiche der Natur so sehr, dass es täusche.\n\nDiese Rahmung hielt nicht. Binnen zwei Jahren wurden die Modelle neben Präparaten gezeigt, und 1895 war der Technologische Saal aufgelöst und die Modelle standen in den zoologischen Abteilungen, geordnet nach dem, was sie darstellten, statt danach, wie sie gemacht waren."
         }
       }
     }

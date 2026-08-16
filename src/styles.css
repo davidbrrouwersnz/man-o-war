@@ -406,9 +406,40 @@ svg.lucide {
   padding: 0 0 4rem;
 }
 
+/* The reading — the standfirst, the object on display, and both essays — is one light region at
+   every width now, and the dark begins where the browsing does.
+
+   It is not a new idea: this is what the desktop layout has always done, where head and read are
+   the cream column and browse is the dark one. Below 80rem the head sat on black only because
+   before this page carried the object there was nothing under it but tiles. Now the four things a
+   visitor reads run consecutively, so they share a ground, and the one colour boundary on the page
+   falls exactly where reading ends and browsing begins.
+
+   §15 survives intact: the grid is a dark field whatever the device is doing, because 79 of the 128
+   photographs are objects on black; the reading area follows the device. */
+.home-head,
+.home-read {
+  background: var(--paper);
+  color: var(--ink);
+}
+
 .home-head {
   padding: 3.5rem 1.25rem 2rem;
   max-width: var(--measure);
+}
+
+/* The object on display, in the reading column. Same measure and gutters as .essay so the reading
+   has one left edge from the title to the end of the last essay. */
+.home-object {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 1rem 1.25rem 0;
+}
+
+/* Its own bottom rule is the separator before "How it was made", which is why the first essay does
+   not draw one — .essay + .essay only fires between essays. */
+.home-object .object {
+  margin-bottom: 0;
 }
 
 /* ------------------------------------------------- the collection page at desktop
@@ -920,7 +951,7 @@ ol.grid {
    a page with two h1s reads to a screen reader as two documents stapled together. */
 .story h3,
 .essay .layer-section h3,
-.essay .layer-sources h3 {
+.layer-sources h3 {
   font-size: var(--step--1);
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -1212,62 +1243,67 @@ ol.grid-dense {
    §15 warns about, and the same one that left the Listen control at 1.2:1 earlier in this work.
 
    Placed here, after every rule it overrides, rather than scoping eight separate rules with a
-   max-width query. A media query adds no specificity, so order is what decides this. */
+   max-width query. A media query adds no specificity, so order is what decides this.
+
+   These used to be gated behind 80rem, because that was the only width at which the head sat on
+   cream. It sits on cream at every width now — see the note beside .home-head above — so the gate
+   is gone and the rules stayed exactly where they were. */
+
+/* The standfirst. This one has to be here rather than beside the other .home-head rules above:
+   `.home-head p { color: var(--dark-ink-soft) }` comes later in the file, a media query adds no
+   specificity, and the later rule wins — which rendered the collection's opening sentence at
+   2.65:1 on cream. */
+.home-head p {
+  color: var(--ink-soft);
+  max-width: var(--measure);
+}
+
+/* The head is on cream, so the control tokens go back to the reading palette. One declaration
+   covers every shadcn component in the header, because they all resolve their colours through
+   these. */
+.home-head {
+  --control-ink: var(--ink);
+  --control-ink-soft: var(--ink-soft);
+  --control-edge: var(--edge);
+  --control-ground: var(--paper);
+  --control-rule: var(--rule);
+  --control-ring: var(--brand);
+}
+
+.home-head .listen {
+  color: var(--ink);
+  border-color: var(--edge);
+}
+
+.home-head .listen:hover {
+  border-color: var(--ink);
+}
+
+.home-head .listen.is-playing {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.home-head .listen-note {
+  color: var(--ink-meta);
+}
+
+/* .home forces the ring to --dark-brand for the whole page. The reading takes it back. */
+.home-head :focus-visible,
+.home-read :focus-visible {
+  outline-color: var(--brand);
+}
+
+/* The essays were a full-bleed light slab announcing that browsing had ended and reading had begun.
+   The reading region does that now, so the slab loses its own ground and its separating margin. */
+.home-essays {
+  background: none;
+  margin: 0;
+  padding: 0 0 1rem;
+}
+
 @media (min-width: 80rem) {
-  /* The standfirst. This one has to be here rather than beside the other .home-head rules above:
-     `.home-head p { color: var(--dark-ink-soft) }` comes later in the file, a media query adds no
-     specificity, and the later rule wins — which rendered the collection's opening sentence at
-     2.65:1 on cream. */
-  .home-head p {
-    color: var(--ink-soft);
-    max-width: var(--measure);
-  }
-
-  /* The head is on cream at this width, so the control tokens go back to the reading palette. One
-     declaration covers every shadcn component in the header, because they all resolve their colours
-     through these. */
-  .home-head {
-    --control-ink: var(--ink);
-    --control-ink-soft: var(--ink-soft);
-    --control-edge: var(--edge);
-    --control-ground: var(--paper);
-    --control-rule: var(--rule);
-    --control-ring: var(--brand);
-  }
-
-  .home-head .listen {
-    color: var(--ink);
-    border-color: var(--edge);
-  }
-
-  .home-head .listen:hover {
-    border-color: var(--ink);
-  }
-
-  .home-head .listen.is-playing {
-    background: var(--ink);
-    color: var(--paper);
-    border-color: var(--ink);
-  }
-
-  .home-head .listen-note {
-    color: var(--ink-meta);
-  }
-
-    .home-head   /* .home forces the ring to --dark-brand for the whole page. The reading column takes it back. */
-  .home-head :focus-visible,
-  .home-read :focus-visible {
-    outline-color: var(--brand);
-  }
-
-  /* The essays were a full-bleed light slab announcing that browsing had ended and reading had
-     begun. The column does that now, so the slab loses its own ground and its separating margin. */
-  .home-essays {
-    background: none;
-    margin: 0;
-    padding: 0;
-  }
-
   .essay {
     margin: 0;
     padding: 2rem clamp(1.5rem, 3vw, 3rem);
@@ -1282,10 +1318,15 @@ ol.grid-dense {
   margin: 0 0 0.9rem;
 }
 
+/* One list for the whole reading now, so it sits in the reading column rather than inside an essay
+   and needs that column's measure and gutters of its own. */
 .layer-sources {
   border-top: 1px solid var(--rule);
   padding-top: 1.5rem;
-  margin-top: 2.5rem;
+  margin: 2.5rem auto 0;
+  max-width: var(--measure);
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
 /* ------------------------------------------------------------------ further reading (§6)
@@ -1858,10 +1899,9 @@ html:has(.audio-bar) {
     --control-ring: var(--brand);
   }
 
-  /* Both halves of the collection page that stay dark at every width. The head rejoins the reading
-     palette at desktop, further down; the browsing column never does, because the tile grid is a
-     dark field whatever the device is doing (§9). */
-  .home-head,
+  /* The browsing column stays dark at every width, because the tile grid is a dark field whatever
+     the device is doing (§9). The head is no longer listed here: it sits on the reading ground now,
+     and its control tokens are set with the rest of the cream-head rules further up. */
   .home-browse {
     --control-ink: var(--dark-ink);
     --control-ink-soft: var(--dark-ink-soft);

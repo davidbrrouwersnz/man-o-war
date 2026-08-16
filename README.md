@@ -84,13 +84,29 @@ photographs, because only media near the viewport loads.
 ## What is built, and what is not
 
 **Built.** The harvest, with assertions that fail the build if the data shifts — including a
-non-empty story on all 128 (§20). All eleven group pages. `/` — the eleven group tiles, with every
-object as a second tab. `/o/{accession}` for all 128, resolving to the group page and scrolling to
-the object. The two reading essays. Eight languages with RTL, complete: every interface string,
+non-empty story on all 128 (§20). All eleven group pages. `/o/{accession}` for all 128, resolving to
+the group page and scrolling to the object. Eight languages with RTL, complete: every interface string,
 every group panel, both essays, all 128 object stories and all 30 further-reading annotations in
 each. A 438-file audio guide with
 word-level read-along, a scrubber and lock-screen controls. Lazy media, a dark grid, and a reading
 area that follows `prefers-color-scheme`.
+
+**The collection page answers the whole question, in one read.** `/` runs: what this collection is,
+the one object a visitor can actually see, why it is made of glass, how it reached Christchurch —
+and then the other 127, as eleven group tiles and a grid of all 128.
+
+The four are consecutive on purpose. A visitor holding this page is standing in front of exactly
+one object, 1884.137.33, and their question is not *what is in this collection* — they can see what
+is in front of them — but *what am I looking at, what is it made of, and why is it here?* That used
+to be answered in three places: the story was a tap away on the group page, and the two essays sat
+below 139 tiles. Nothing was written for the change; the object is the same component the group
+page renders, reading the same story, and the essays are untouched. What changed is the order.
+
+**The cost is stated rather than hidden.** The reading now comes before the browsing, so on a phone
+the collection begins 6.7 screen-heights down: **12 screen-heights became 13.7**, and 36KB of that
+is the man o' war photograph, which is now the page's own LCP element. That is the right trade for
+the visitor in the gallery and the wrong one for a visitor who came to browse. At 80rem it stops
+being a trade — the reading is one column, the grid is the other, and both are on screen at once.
 
 **A desktop layout.** §10's media-beside-text, at 64rem and above. It roughly halves every group
 page: sea anemones runs 22.8 screen-heights in one column and 14.5 in two.
