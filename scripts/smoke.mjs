@@ -8,7 +8,8 @@ import { existsSync, mkdtempSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 
-const ORIGIN = process.argv[2] ?? 'http://127.0.0.1:4181'
+// localhost, not 127.0.0.1 — vite preview can bind IPv6-only, and then 127.0.0.1 refuses.
+const ORIGIN = process.argv[2] ?? 'http://localhost:4181'
 
 const ROUTES = [
   ['/', 'h1', 'The Blaschka collection'],
@@ -22,8 +23,12 @@ const ROUTES = [
   ['/how-we-know', '.stub-note', null],
   ['/g/jellyfish', '.object', null],
   ['/g/sea-anemones', '.object', null],
-  ['/o/1884.137.33', '.arrived-flag', null],
-  ['/o/1884.137.128', '.arrived-flag', null],
+  // The "object you scanned" badge is gone; what marks the arrived-at object now is the
+  // is-arrived class on its section (src/pages/group.jsx), so assert on that — it still proves
+  // the route resolved the accession and highlighted the right object, not just that the group
+  // page came up.
+  ['/o/1884.137.33', '.object.is-arrived', null],
+  ['/o/1884.137.128', '.object.is-arrived', null],
   ['/g/does-not-exist', '.stub-note', null],
   ['/o/9999.999.9', '.stub-note', null],
 ]
@@ -104,9 +109,10 @@ for (const [path, selector, expectText] of ROUTES) {
 //
 // A route test only proves the markup arrived. These drive the page.
 //
-// The two grids were tabs over one slot and are now sections one after the other. What still
-// matters is what mattered then: both are reachable, the 128-tile chunk is not paid for by someone
-// who never scrolls to it, and the /all path that predates all of this still lands somewhere real.
+// The two grids are tabs over one slot again (they were sections for a while). What still
+// matters is what has always mattered: both are reachable, the 128-tile chunk is not paid for by
+// someone who never opens that tab, and the /all path that predates all of this still lands
+// somewhere real — on the collection page with the all-objects tab open.
 
 const evaluate = async (expression, userGesture = false) => {
   const { result } = await send('Runtime.evaluate', { expression, returnByValue: true, userGesture })
@@ -127,32 +133,40 @@ await wait(1800)
 
 const start = JSON.parse(
   await evaluate(`JSON.stringify({
-    headings: [...document.querySelectorAll('.browse-title')].map((h) => h.textContent.trim()),
+    tabs: [...document.querySelectorAll('[role=tab]')].map((t) => t.textContent.trim()),
+    selected: [...document.querySelectorAll('[role=tab]')].find((t) => t.getAttribute('aria-selected') === 'true')?.textContent.trim() ?? '',
     tiles: document.querySelectorAll('.grid:not(.grid-dense) .tile').length,
     dense: document.querySelectorAll('.grid-dense .tile').length,
     anchor: !!document.getElementById('all-objects'),
-    tabs: document.querySelectorAll('[role=tab]').length,
     scroll: Math.round(scrollY),
   })`)
 )
-tab('both grids are on the one page', start.headings.length === 2, start.headings.join(' / '))
-tab('named Categories and All objects', start.headings[0] === 'Categories' && start.headings[1] === 'All objects')
-tab('no tabs left', start.tabs === 0, `${start.tabs} found`)
+tab('both grids are tabs on the one page', start.tabs.length === 2, start.tabs.join(' / '))
+tab('named Categories and All objects', start.tabs[0] === 'Categories' && start.tabs[1] === 'All objects')
+tab('categories open by default', start.selected === 'Categories', start.selected)
 tab('shows the eleven category tiles', start.tiles === 11, `${start.tiles} tiles`)
-tab('the all-objects section is addressable', start.anchor)
-tab('has not paid for the 128-object grid at the top of the page', start.dense === 0, `${start.dense} tiles`)
+tab('the tab control is addressable as #all-objects', start.anchor)
+tab('has not paid for the 128-object grid on arrival', start.dense === 0, `${start.dense} tiles`)
 
-// Scrolling to it is what fetches it — the same treatment the object photographs get.
-await evaluate(`document.getElementById('all-objects').scrollIntoView(); true`, true)
+// Opening the tab is what fetches the chunk — the same treatment the object photographs get.
+await evaluate(`document.querySelectorAll('[role=tab]')[1].click(); true`, true)
 await wait(2500)
-const scrolled = JSON.parse(
+const opened = JSON.parse(
   await evaluate(`JSON.stringify({
     dense: document.querySelectorAll('.grid-dense .tile').length,
+  })`)
+)
+tab('opening the All objects tab loads all 128 objects', opened.dense === 128, `${opened.dense} tiles`)
+
+// And the round trip: the category grid has to come back when its tab does.
+await evaluate(`document.querySelectorAll('[role=tab]')[0].click(); true`, true)
+await wait(600)
+const back = JSON.parse(
+  await evaluate(`JSON.stringify({
     tiles: document.querySelectorAll('.grid:not(.grid-dense) .tile').length,
   })`)
 )
-tab('scrolling to it loads all 128 objects', scrolled.dense === 128, `${scrolled.dense} tiles`)
-tab('and the category grid is still there', scrolled.tiles === 11, `${scrolled.tiles} tiles`)
+tab('and switching back shows the categories again', back.tiles === 11, `${back.tiles} tiles`)
 
 // The language select shows a globe instead of the word "Language". The word has to survive in the
 // accessibility tree — an unnamed select is announced as "combo box", and this is the one control a
@@ -172,20 +186,20 @@ const globe = JSON.parse(
 tab('globe icon is present', globe.svg)
 tab('globe is decorative, the word is hidden text', globe.decorative && globe.hidden)
 
-// An old link to /all must land on the collection page, at that section.
+// An old link to /all must land on the collection page, with the all-objects tab open.
 await send('Page.navigate', { url: `${ORIGIN}/all` })
 await wait(2500)
 const deep = JSON.parse(
   await evaluate(`JSON.stringify({
     dense: document.querySelectorAll('.grid-dense .tile').length,
     h1: (document.querySelector('h1')||{}).textContent || '',
-    heading: document.getElementById('all-objects-title')?.textContent.trim() || '',
+    selected: [...document.querySelectorAll('[role=tab]')].find((t) => t.getAttribute('aria-selected') === 'true')?.textContent.trim() ?? '',
     scrolledTo: Math.round(scrollY) > 200,
   })`)
 )
 tab('/all still lands on the collection page', deep.h1.includes('Blaschka'), deep.h1)
-tab('...at the all-objects section', deep.scrolledTo && deep.heading === 'All objects', `scrollY moved: ${deep.scrolledTo}`)
-tab('...with all 128 loaded without waiting to be scrolled', deep.dense === 128, `${deep.dense} tiles`)
+tab('...scrolled to the tab control, all-objects tab open', deep.scrolledTo && deep.selected === 'All objects', `scrollY moved: ${deep.scrolledTo}, tab: "${deep.selected}"`)
+tab('...with all 128 loaded without a press', deep.dense === 128, `${deep.dense} tiles`)
 
 console.log(
   failed ? `\n${failed} check(s) failed` : `\nall ${ROUTES.length} routes render, all ${tabChecks} tab checks pass`
