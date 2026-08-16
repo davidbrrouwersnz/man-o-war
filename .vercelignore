@@ -6,3 +6,10 @@ dist
 public/Voice.wav
 public/*Seed Audio*
 public/*.zip
+
+# Private working files live in working/, never uploaded
+working
+
+# The pronunciation QA page is a review tool for the team: scripts/pronunciation-qa.mjs writes it
+# into public/ so the dev server serves it, but a museum visitor should never be handed it.
+public/pronunciation-qa.html
