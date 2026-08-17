@@ -14,7 +14,20 @@ import { existsSync, mkdtempSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 
-const ORIGIN = process.argv[2] ?? 'http://127.0.0.1:4182'
+// localhost, not 127.0.0.1: vite preview binds "localhost", which on this Node resolves to the
+// IPv6 loopback [::1] only. Chrome connects to whichever family answers; a hardcoded 127.0.0.1
+// finds nothing listening and every check then runs against Chrome's connection-error page —
+// which is lang="en", has no app markup, and throws on localStorage (opaque origin), so the
+// failures look like broken locale emulation rather than what they are. Hence the preflight below.
+const ORIGIN = process.argv[2] ?? 'http://localhost:4182'
+
+// Fail here, in one line, rather than sixty lines later with every check measuring an error page.
+try {
+  await fetch(ORIGIN + '/', { signal: AbortSignal.timeout(3000) })
+} catch {
+  console.error(`nothing serving at ${ORIGIN} — run: npm run build && npm run preview -- --port 4182`)
+  process.exit(1)
+}
 
 const CHROME = [
   'C:/Program Files/Google/Chrome/Application/chrome.exe',
@@ -62,6 +75,27 @@ const send = (m, p) => rpc(m, p, sessionId)
 await send('Page.enable')
 await send('Runtime.enable')
 
+// Poll instead of a fixed sleep: re-evaluate until the predicate accepts the value or the deadline
+// passes, and return the last value either way, so a check that then fails reports what the page
+// actually held rather than crashing on what it hoped for. Chunks load on demand and CI machines
+// are slow on bad days; a fixed number is wrong in one direction or the other on both counts.
+// The __stale guard closes a race: Page.navigate resolves before the new document exists, and the
+// OLD page may already satisfy the predicate (it has a .lang-trigger too). nav() brands the old
+// document; the brand does not survive the navigation, so a branded read returns null and polls on.
+async function settle(expression, ready, ms = 8000) {
+  const deadline = Date.now() + ms
+  for (;;) {
+    const { result } = await send('Runtime.evaluate', { expression: `window.__stale ? null : (${expression})`, returnByValue: true })
+    if (ready(result.value) || Date.now() > deadline) return result.value
+    await new Promise((r) => setTimeout(r, 150))
+  }
+}
+
+const nav = async (url) => {
+  await send('Runtime.evaluate', { expression: `window.__stale = true` })
+  await send('Page.navigate', { url })
+}
+
 let failed = 0
 const check = (ok, label, detail) => {
   if (!ok) failed++
@@ -81,22 +115,27 @@ for (const [tag, expect] of [
   await send('Network.setUserAgentOverride', { userAgent: '', acceptLanguage: tag })
   await send('Emulation.setLocaleOverride', { locale: tag })
   await send('Runtime.evaluate', { expression: `try{localStorage.removeItem('lang')}catch{}` })
-  await send('Page.navigate', { url: ORIGIN + '/' })
-  await new Promise((r) => setTimeout(r, 1500))
-  const { result } = await send('Runtime.evaluate', {
-    expression: `document.documentElement.lang`,
-    returnByValue: true,
-  })
-  check(result.value === expect, `BCP 47 lookup: ${tag} → ${result.value}`, `expected ${expect}`)
+  await nav(ORIGIN + '/')
+  // The static shell is already lang="en" before React mounts, so only read the attribute once the
+  // app has rendered something into #root — otherwise the en cases pass vacuously.
+  const lang = await settle(
+    `document.getElementById('root')?.childElementCount ? document.documentElement.lang : null`,
+    (v) => v === expect,
+  )
+  check(lang === expect, `BCP 47 lookup: ${tag} → ${lang}`, `expected ${expect}`)
 }
 
 // §7: dir follows the rendered language, and the media is not mirrored.
 await send('Network.setUserAgentOverride', { userAgent: '', acceptLanguage: 'ar-EG,ar' })
 await send('Emulation.setLocaleOverride', { locale: 'ar-EG' })
-await send('Page.navigate', { url: ORIGIN + '/g/jellyfish' })
-await new Promise((r) => setTimeout(r, 2200))
-const { result: rtl } = await send('Runtime.evaluate', {
-  expression: `JSON.stringify({
+await nav(ORIGIN + '/g/jellyfish')
+// The group page lives in an on-demand chunk. Wait for its markup rather than sleeping a number,
+// and return nothing until both queried elements exist — getComputedStyle on a missing .well is a
+// crash, not a failed check.
+const rtl = await settle(
+  `(() => {
+    if (!document.querySelector('.group-panel') || !document.querySelector('.well')) return null
+    return JSON.stringify({
     root: document.documentElement.dir,
     lang: document.documentElement.lang,
     wellDir: getComputedStyle(document.querySelector('.well')).direction,
@@ -116,11 +155,16 @@ const { result: rtl } = await send('Runtime.evaluate', {
     // §7's marking rule that does not depend on how complete a language happens to be.
     catalogueAll: document.querySelectorAll('.object-catalogue').length,
     catalogueEn: document.querySelectorAll('.object-catalogue[lang="en"][dir="ltr"]').length,
-    panelText: (document.querySelector('.group-panel')||{}).textContent.slice(0,30)
-  })`,
-  returnByValue: true,
-})
-const r = JSON.parse(rtl.value)
+    panelText: (document.querySelector('.group-panel')?.textContent ?? '').slice(0,30)
+    })
+  })()`,
+  (v) => v != null,
+)
+// A page that never produced its markup fails one check loudly here; the substitute object makes
+// every check below fail on its own terms too (NaN equals nothing, and the text is Latin), rather
+// than throwing on undefined — or worse, passing because undefined === undefined.
+check(rtl != null, 'the group page rendered (.group-panel and .well present)', rtl == null ? 'timed out waiting for the chunk' : undefined)
+const r = rtl ? JSON.parse(rtl) : { notices: NaN, strayNotices: NaN, panelText: 'never rendered' }
 check(r.root === 'rtl', 'root dir is rtl for Arabic', r.root)
 check(r.bodyDir === 'rtl', 'layout mirrors', r.bodyDir)
 check(r.wellDir === 'ltr', 'media well is NOT mirrored', r.wellDir)
@@ -145,51 +189,44 @@ check(!/^[A-Za-z]/.test(r.panelText.trim()), 'the group panel is in Arabic', r.p
 
 // The override must beat the device language and survive a reload.
 await send('Runtime.evaluate', { expression: `localStorage.setItem('lang','zh-Hant')` })
-await send('Page.navigate', { url: ORIGIN + '/' })
-await new Promise((r) => setTimeout(r, 1500))
-const { result: ov } = await send('Runtime.evaluate', {
-  expression: `JSON.stringify({lang: document.documentElement.lang, dir: document.documentElement.dir})`,
-  returnByValue: true,
-})
-const o = JSON.parse(ov.value)
+await nav(ORIGIN + '/')
+const ov = await settle(
+  `document.getElementById('root')?.childElementCount
+    ? JSON.stringify({lang: document.documentElement.lang, dir: document.documentElement.dir})
+    : null`,
+  (v) => v != null && JSON.parse(v).lang === 'zh-Hant',
+)
+const o = ov ? JSON.parse(ov) : {}
 check(o.lang === 'zh-Hant', 'stored choice beats the device language', o.lang)
 check(o.dir === 'ltr', 'dir returns to ltr for Chinese', o.dir)
 
-// §7's disclosure. "A museum trades on authority; this is the difference between being trusted and
-// being caught." It lived in the packs for months with nothing reading it, so it is checked in a
-// browser rather than trusted to stay wired — including that it speaks the reader's language, since
-// a disclosure a visitor cannot read discloses nothing.
+// §7's disclosure — "a museum trades on authority; this is the difference between being trusted
+// and being caught" — was removed from the picker on request (2026-08-17, commit 9bc0d74). The
+// translationNotice strings and the per-unit review ledger remain, so restoring it is one footer
+// prop; until then the app ships machine translation with no disclosure, and this comment is the
+// record that §7 is unmet there by choice, not by accident. What stays checkable: the picker
+// opens, lists every language, and renders no orphaned notice out of the strings left behind.
 {
   const open = `(async () => {
     const trigger = document.querySelector('.lang-trigger')
     if (!trigger) return JSON.stringify({ error: 'no language trigger' })
     trigger.click()
     await new Promise((r) => setTimeout(r, 400))
-    const note = document.querySelector('.lang-notice')
-    const list = document.querySelector('[role="listbox"]')
     return JSON.stringify({
-      present: !!note,
-      text: note ? note.textContent.trim() : null,
-      // A note inside the listbox would be neither an option nor announced.
-      insideListbox: !!(note && list && list.contains(note)),
+      notice: !!document.querySelector('.lang-notice'),
       options: document.querySelectorAll('[role="option"]').length,
     })
   })()`
 
-  for (const [lang, expectLatin] of [['zh-Hant', false], ['en', null]]) {
+  for (const lang of ['zh-Hant', 'en']) {
     await send('Runtime.evaluate', { expression: `localStorage.setItem('lang','${lang}')` })
-    await send('Page.navigate', { url: ORIGIN + '/' })
-    await new Promise((r) => setTimeout(r, 1600))
+    await nav(ORIGIN + '/')
+    // The open() expression clicks the trigger, so it has to exist before running it once.
+    await settle(`!!document.querySelector('.lang-trigger')`, (v) => v === true)
     const { result } = await send('Runtime.evaluate', { expression: open, awaitPromise: true, returnByValue: true })
     const d = JSON.parse(result.value)
-
-    if (lang === 'en') {
-      check(!d.present, 'English shows no translation notice', 'it is the source, not a translation')
-    } else {
-      check(d.present, 'a machine-translated language discloses it', d.text?.slice(0, 34))
-      check(!d.insideListbox, 'the notice sits outside the listbox', `${d.options} options`)
-      check(d.text && /[一-鿿]/.test(d.text) === !expectLatin, 'the notice is in the reader\'s language', d.text?.slice(0, 20))
-    }
+    check(d.options === 8, `the picker opens with all eight languages (${lang})`, `${d.options} options`)
+    check(!d.notice, `no orphaned translation notice (${lang})`, 'removed on request 2026-08-17')
   }
 }
 
