@@ -312,7 +312,8 @@ function Home({ go, route }) {
           queue={homeQueue}
           available={homeAvailable}
           pending={!layers || !display}
-          note={code !== 'en' ? t('ui.audioEnglishOnly') : null}
+          // Asked of the queue, not the session — see the matching note on the group page.
+          note={code !== 'en' && homeQueue.items.length > 0 && homeQueue.items.every((i) => i.lang === 'en') ? t('ui.audioEnglishOnly') : null}
         />
       }
     />
