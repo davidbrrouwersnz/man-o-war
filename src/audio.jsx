@@ -20,6 +20,7 @@ import { Slider } from '@/components/ui/slider'
 import { index } from './collection.js'
 import { useLang, useT } from './lang.jsx'
 import { useA11y } from './a11y.jsx'
+import { useTier } from './tier.jsx'
 
 // Where each language's narration is served from, written by scripts/split.mjs from the audio
 // index. Two things follow from it being data rather than a constant.
@@ -360,6 +361,17 @@ export function AudioProvider({ children }) {
     prevCode.current = code
     stop()
   }, [code, stop])
+
+  // Switching the story tier swaps the printed words exactly the way switching language does — the
+  // short telling and the full telling are different text — so the same rule applies for the same
+  // reason: stop, and let a fresh press rebuild the queue from the words now printed.
+  const { tier } = useTier()
+  const prevTier = useRef(tier)
+  useEffect(() => {
+    if (prevTier.current === tier) return
+    prevTier.current = tier
+    stop()
+  }, [tier, stop])
 
   const setRate = useCallback((r) => setRateRaw(r), [])
 

@@ -21,6 +21,43 @@ const drafted = read('stories-drafted.json')
 const OBJECTS = new Map(manifest.objects.map((o) => [o.accession, o]))
 const STORIES = { ...drafted.stories, ...museum.stories }
 
+// The short tier: simpler tellings of the same stories, keyed by accession and slug, segment ids
+// namespaced `short*`. Partial by design — an object with no entry renders its full story and the
+// page says so. Shipped per object as `short` and per group chunk as `panelShort`.
+const SHORT = read('stories-short.json')
+
+// The namespace rule, re-asserted here because this is the build's gate: scripts/units.mjs makes
+// the same checks but scripts/audio.mjs and this file do not import it, and a collision would ship
+// as one tier's translation or audio silently serving the other's text.
+{
+  const bad = []
+  const slugs = new Set(groups.groups.map((g) => g.slug))
+  for (const [accession, s] of Object.entries(SHORT.stories ?? {})) {
+    if (!STORIES[accession]) bad.push(`stories.${accession}: no full story with this accession`)
+    for (const seg of s.segments ?? []) {
+      if (!/^short(-|$)/.test(seg.id)) bad.push(`stories.${accession}: segment id "${seg.id}" must begin with "short"`)
+    }
+  }
+  for (const [accession, s] of Object.entries(STORIES)) {
+    for (const seg of s.segments ?? []) {
+      if (/^short(-|$)/.test(seg.id)) bad.push(`full story ${accession}: segment id "${seg.id}" is inside the short tier's namespace`)
+    }
+  }
+  for (const slug of Object.keys(SHORT.panels ?? {})) if (!slugs.has(slug)) bad.push(`panels.${slug}: not a group`)
+  if (bad.length) throw new Error(`stories-short.json:\n    ${bad.join('\n    ')}`)
+}
+
+// What a translated stories pack may legally contain: the full tier's segment ids AND the short
+// tier's, merged per accession. Short translations live in the same per-language pack as the full
+// ones (see scripts/units.mjs), so validating packs against the full tier alone would reject every
+// backfilled short translation on its first commit.
+const STORIES_EITHER_TIER = Object.fromEntries(
+  Object.entries(STORIES).map(([acc, s]) => [
+    acc,
+    { ...s, segments: [...(s.segments ?? []), ...(SHORT.stories?.[acc]?.segments ?? [])] },
+  ])
+)
+
 // ------------------------------------------------------------------ further reading (§6)
 //
 // Two files meet here and they are kept apart on purpose. src/data/taxa.json is machine-resolved
@@ -119,6 +156,10 @@ const durations = audioLangs.en?.segments ?? null
 // and its story segments. Spelled out rather than pattern-matched on the audio index, because that
 // index still holds units the app retired — 10 group endings, 14 identification notes — and a
 // prefix match would quietly bill visitors for audio no page can play.
+//
+// The FULL tier's queue, deliberately. The tile's "about N minutes" stays measured from the full
+// telling even when the short tier is toggled on — an accepted v1 overstatement for short-tier
+// visitors, and the honest direction to err in. A per-tier minutes figure is a later change here.
 const tourSegments = (slug, panel, objects) => [
   ...(panel ? [`groups/${slug}/00-panel`] : []),
   ...objects.flatMap((o) => [
@@ -220,6 +261,9 @@ for (const g of groups.groups) {
       placeholder: o.placeholder,
       image: { xlarge: o.image.xlarge, large: o.image.large },
       story,
+      // The short telling, only where one is written — undefined drops out of the JSON, and the
+      // page reads its absence as "render the full story and say so".
+      short: SHORT.stories?.[accession]?.segments,
       // Omitted rather than empty where there is nothing to link: an empty array renders as a
       // heading with no list under it, which reads as a section that failed to load.
       elsewhere: elsewhereFor(accession).length ? elsewhereFor(accession) : undefined,
@@ -245,7 +289,7 @@ for (const g of groups.groups) {
   // No ending. The closing line is no longer rendered or narrated, so shipping it would be bytes
   // on a gallery connection that nobody reads. The text stays in src/data/stories.json.
   const groupLinks = (curated.groups[g.slug] ?? []).map(link)
-  const chunk = { slug: g.slug, title: g.title, panel: panel?.panel ?? null, elsewhere: groupLinks, objects }
+  const chunk = { slug: g.slug, title: g.title, panel: panel?.panel ?? null, panelShort: SHORT.panels?.[g.slug]?.panel ?? null, elsewhere: groupLinks, objects }
   const json = ship(chunk)
   writeFileSync(new URL(`${g.slug}.json`, dir), json)
   chunkTotal += gzipSync(json).length
@@ -379,7 +423,7 @@ for (const file of readdirSync(langDir)) {
     const ts = JSON.parse(readFileSync(storyFile, 'utf8'))
     const stray = Object.keys(ts.stories ?? {}).filter((a) => !allAccessions.has(a))
     if (stray.length) throw new Error(`stories/${code}.json: accessions not in the manifest: ${stray.join(', ')}`)
-    assertSegmentIds(`stories/${code}.json`, ts.stories, STORIES)
+    assertSegmentIds(`stories/${code}.json`, ts.stories, STORIES_EITHER_TIER)
     // Same strip as the English chunk above: the identification note is no longer rendered in any
     // language, and German is the heaviest pack in the app at ~37KB gzipped. Translated text nobody
     // can read is the worst kind of payload — it costs the visitor and teaches nothing.

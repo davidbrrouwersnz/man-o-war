@@ -39,6 +39,7 @@ const flat = (o, p = []) =>
 export function collect() {
   const museum = read('stories.json')
   const drafted = read('stories-drafted.json')
+  const short = read('stories-short.json')
   const layers = read('layers.json')
   const groups = read('groups.json')
   const en = read('i18n/en.json')
@@ -46,6 +47,33 @@ export function collect() {
   // Museum-sourced stories win over drafted ones, exactly as scripts/audio.mjs and
   // scripts/audio-scale.mjs merge them. Any other order silently voices the draft.
   const stories = { ...drafted.stories, ...museum.stories }
+
+  // The short tier's one structural rule, asserted where the ids are minted: short segment ids own
+  // the `short*` namespace and full ids must stay out of it. That single convention is what keeps
+  // three id spaces collision-free at once — translation unit ids, pack paths (short translations
+  // merge into the SAME per-language stories pack as the full ones), and mp3/vtt file paths.
+  // scripts/split.mjs repeats these checks, because scripts/audio.mjs builds on the same ids
+  // without importing this file. Slugs and accessions are checked too: a short telling keyed to
+  // nothing would translate and voice text no page can ever render.
+  {
+    const bad = []
+    const slugs = new Set(groups.groups.map((g) => g.slug))
+    for (const [accession, s] of Object.entries(short.stories ?? {})) {
+      if (!stories[accession]) bad.push(`stories.${accession}: no full story with this accession`)
+      for (const seg of s.segments ?? []) {
+        if (!/^short(-|$)/.test(seg.id)) bad.push(`stories.${accession}: segment id "${seg.id}" must begin with "short"`)
+      }
+    }
+    for (const [accession, s] of Object.entries(stories)) {
+      for (const seg of s.segments ?? []) {
+        if (/^short(-|$)/.test(seg.id)) bad.push(`full story ${accession}: segment id "${seg.id}" is inside the short tier's namespace`)
+      }
+    }
+    for (const slug of Object.keys(short.panels ?? {})) {
+      if (!slugs.has(slug)) bad.push(`panels.${slug}: not a group`)
+    }
+    if (bad.length) throw new Error(`stories-short.json:\n    ${bad.join('\n    ')}`)
+  }
 
   const units = []
   const add = (id, text, kind, file, path, extra = {}) => {
@@ -106,6 +134,26 @@ export function collect() {
       add(`story:${accession}:seg:${seg.id}:heading`, seg.heading, 'story', STORIES, [...segAt, 'heading'], extra)
       add(`story:${accession}:seg:${seg.id}:text`, seg.text, 'story', STORIES, [...segAt, 'text'], extra)
     }
+  }
+
+  // ---------------------------------------------------------------- the short tier
+  //
+  // Short tellings are ordinary story and panel units: the same id shapes, and the same pack paths
+  // as the full tier — the `short*` segment-id namespace (asserted above) is the only thing keeping
+  // the two apart, and it is enough. No headline unit: the headline is shared between tiers, so the
+  // full tier's translation already covers it. The short collection intro is `ui.collectionIntroShort`
+  // and is collected with the rest of the interface above.
+  for (const [accession, s] of Object.entries(short.stories ?? {})) {
+    const at = ['stories', accession]
+    for (const seg of s.segments ?? []) {
+      const segAt = [...at, 'segments', seg.id]
+      const extra = { accession, noAuto: !!seg.noAuto, noAutoWhy: seg.noAutoWhy }
+      add(`story:${accession}:seg:${seg.id}:heading`, seg.heading, 'story', STORIES, [...segAt, 'heading'], extra)
+      add(`story:${accession}:seg:${seg.id}:text`, seg.text, 'story', STORIES, [...segAt, 'text'], extra)
+    }
+  }
+  for (const [slug, p] of Object.entries(short.panels ?? {})) {
+    add(`panel:${slug}:short`, p.panel, 'panel', PACK, ['panels', slug, 'short'])
   }
 
   // ---------------------------------------------------------------- further reading (§6)

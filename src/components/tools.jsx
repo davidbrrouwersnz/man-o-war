@@ -4,8 +4,11 @@
 import { Suspense, lazy, useState } from 'react'
 import { GlobeIcon, SettingsIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { useLang, useT } from '../lang.jsx'
+import { useTier } from '../tier.jsx'
 import { SUPPORTED } from '../collection.js'
 
 // Base UI's dialog is ~34KB gzipped — more than half the size of everything else in the main
@@ -112,6 +115,65 @@ function DisplaySettings() {
   )
 }
 
+// The two tellings of the collection: the full stories, and the short tier written for younger
+// listeners and quicker visits. A visible control in the page's own chrome rather than a row in
+// the display dialog, deliberately — most visitors arrive by scanning a code and never open a
+// settings panel, and a choice nobody finds is a choice nobody has.
+//
+// It reflects the visitor's persisted preference, never per-page availability: it is never hidden
+// and never disabled, because a control that appears and disappears between routes reads as a bug,
+// and a disabled one would misreport the pages that do carry short content. Where an object has no
+// short telling yet, the page states the fallback inline (ui.tierFallbackNotice) instead.
+//
+// The same chip-radio arrangement as the display dialog's text sizes: native radio semantics —
+// grouping, arrow keys, state announcement — with the chip carrying the touch target. The label
+// names only the length ("Short", "Full"); who the short tier suits is the tooltip's job, so
+// neither audience reads the other's name on the control.
+//
+// The layout overrides on the RadioGroup (flex w-auto gap-1.5) travel as utilities rather than
+// styles.css rules: the component's own `grid w-full gap-2` lives in the last cascade layer, and
+// cn() resolves the conflict in favour of these. See the .browse-tablist note in styles.css.
+function TierToggle() {
+  const { tier, setTier } = useTier()
+  const [t] = useT()
+
+  return (
+    <div className="tier-toggle">
+      <span className="visually-hidden" id="tier-label">{t('ui.tierLabel')}</span>
+      {/* The hint is real text in the DOM, not only a tooltip: aria-describedby carries it to a
+          screen reader whether or not the pointer ever hovers. */}
+      <span className="visually-hidden" id="tier-hint">{t('ui.tierShortHint')}</span>
+      <Tooltip>
+        <TooltipTrigger
+          render={
+            <RadioGroup
+              className="tier-choices flex w-auto gap-1.5"
+              name="story-tier"
+              value={tier}
+              onValueChange={(v) => v && setTier(v)}
+              aria-labelledby="tier-label"
+              aria-describedby="tier-hint"
+            >
+              {['short', 'full'].map((v) => (
+                <label key={v} className={tier === v ? 'is-current' : ''}>
+                  <RadioGroupItem value={v} />
+                  {t(v === 'short' ? 'ui.tierShort' : 'ui.tierFull')}
+                </label>
+              ))}
+            </RadioGroup>
+          }
+        />
+        {/* aria-hidden for the same reason as the compact Listen control's tooltip: the hint is
+            already the group's accessible description, and a tooltip that is also announced would
+            read the same sentence twice. */}
+        <TooltipContent aria-hidden="true" className="text-[length:var(--step--1)]">
+          {t('ui.tierShortHint')}
+        </TooltipContent>
+      </Tooltip>
+    </div>
+  )
+}
+
 // The language picker used to be rendered by Home and by nothing else. A visitor who scans a code
 // in the gallery lands on /o/{accession}, which is a group page — so the one control §7 is built
 // around was unreachable from the one route §11 is built around, unless they first went "back" to
@@ -125,10 +187,11 @@ function Tools({ listen = null }) {
   return (
     <div className="tools">
       {listen}
+      <TierToggle />
       <LanguagePicker />
       <DisplaySettings />
     </div>
   )
 }
 
-export { LanguagePicker, DisplaySettings, Tools }
+export { LanguagePicker, DisplaySettings, TierToggle, Tools }

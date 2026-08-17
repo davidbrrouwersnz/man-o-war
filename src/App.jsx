@@ -7,6 +7,7 @@ import { Lang, useT } from './lang.jsx'
 import { AudioBar, AudioProvider } from './audio.jsx'
 import { TooltipProvider } from '@/components/ui/tooltip'
 import { A11yProvider } from './a11y.jsx'
+import { TierProvider } from './tier.jsx'
 import englishPack from './data/i18n/en.json'
 import { SUPPORTED, loadChunk } from './collection.js'
 import { useRoute } from './routing.js'
@@ -51,6 +52,9 @@ export default function App() {
   return (
     <Lang.Provider value={{ code, pack, setCode }}>
       <A11yProvider>
+        {/* Above the audio provider, like the language: the player watches the tier and stops when
+            it changes, for the same reason it stops on a language switch. */}
+        <TierProvider>
         <TooltipProvider delay={400}>
         {/* §13: the narration plays across navigation, so the player sits above the router. Moving
             it inside a page would unmount and silence it every time someone opened another object. */}
@@ -60,6 +64,7 @@ export default function App() {
           <AudioBar />
         </AudioProvider>
         </TooltipProvider>
+        </TierProvider>
       </A11yProvider>
     </Lang.Provider>
   )

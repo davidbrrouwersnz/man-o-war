@@ -106,6 +106,9 @@ const INDEX = new URL('../src/data/audio-index.json', import.meta.url)
 
 const museum = read('stories.json')
 const drafted = read('stories-drafted.json')
+// The short tier (see the note in the file): tellings keyed by accession, panels keyed by slug,
+// segment ids namespaced `short*` so their files land beside the full tier's without collision.
+const shortTier = read('stories-short.json')
 const layers = read('layers.json')
 const groups = read('groups.json')
 const MANIFEST = read('manifest.json').objects
@@ -198,6 +201,17 @@ function collect() {
       // exactly the divergence this pipeline exists to prevent. The 28 already-generated
       // 99-identification files under public/audio/en are now unused; they are left in place rather
       // than deleted, since nothing loads them and regenerating audio costs money.
+
+      // The short tier's telling, where one is written. Inside the per-object loop so --only
+      // reaches it, and voiced under exactly the full tier's rules: the translated text comes from
+      // the same stories pack (short segment ids share it — see scripts/units.mjs), and a language
+      // gap is skipped, because the page shows English there and the English file already matches.
+      for (const seg of shortTier.stories?.[accession]?.segments ?? []) {
+        const t = tStory?.segments?.[seg.id]
+        const text = say(seg.text, t?.text)
+        if (!text) continue
+        units.push({ kind: 'story', id: `${accession}/${seg.id}`, track: 'interpretation', heading: null, text })
+      }
     } else if (LANG === 'en') {
       // Defensive: the harvest asserts every object has a story, so this path should never run.
       // If it ever does, the page shows the catalogue's own words and so should the audio. English
@@ -221,6 +235,18 @@ function collect() {
         text: `${title}\n\n${intro}`,
       })
     }
+    // The short tier's standfirst, under the same shared title — the page prints the one title
+    // whichever tier is active, so both intro files open with the same words.
+    const introShort = say(EN.ui.collectionIntroShort, PACK?.ui?.collectionIntroShort)
+    if (title && introShort) {
+      units.push({
+        kind: 'home',
+        id: 'home/00-intro-short',
+        track: 'interpretation',
+        heading: null,
+        text: `${title}\n\n${introShort}`,
+      })
+    }
 
     for (const g of groups.groups) {
       const p = museum.panels[g.slug]
@@ -231,6 +257,13 @@ function collect() {
       const gPanel = say(p.panel, PACK?.panels?.[g.slug]?.panel)
       if (gTitle && gPanel) {
         units.push({ kind: 'panel', id: `groups/${g.slug}/00-panel`, track: 'interpretation', heading: null, text: `${gTitle}\n\n${gPanel}` })
+      }
+      // The short tier's panel, one file in the same shape: the group's title, then the short
+      // telling. Translated from panels.{slug}.short in the same pack the full panel lives in.
+      const pShort = shortTier.panels?.[g.slug]?.panel
+      const gPanelShort = pShort ? say(pShort, PACK?.panels?.[g.slug]?.short) : null
+      if (gTitle && gPanelShort) {
+        units.push({ kind: 'panel', id: `groups/${g.slug}/00-panel-short`, track: 'interpretation', heading: null, text: `${gTitle}\n\n${gPanelShort}` })
       }
       // No ending unit. The closing line is no longer printed, and §13's rule is that the spoken
       // words ARE the printed words. The 20 already-generated 99-ending files under public/audio/en

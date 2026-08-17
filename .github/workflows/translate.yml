@@ -27,6 +27,10 @@ on:
     paths:
       - 'src/data/stories.json'
       - 'src/data/stories-drafted.json'
+      # The short tier — same standing as the other two story files: scripts/units.mjs collects its
+      # tellings and scripts/audio.mjs voices them, so an edit here must reach seven languages and
+      # refresh any stale narration the same way an edit to a full story does.
+      - 'src/data/stories-short.json'
       - 'src/data/layers.json'
       - 'src/data/groups.json'
       - 'src/data/names.json'
