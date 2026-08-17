@@ -72,6 +72,17 @@ export function collect() {
     for (const slug of Object.keys(short.panels ?? {})) {
       if (!slugs.has(slug)) bad.push(`panels.${slug}: not a group`)
     }
+    for (const [slug, l] of Object.entries(short.layers ?? {})) {
+      if (!layers.layers[slug]) bad.push(`layers.${slug}: not an essay`)
+      for (const seg of l.segments ?? []) {
+        if (!/^short(-|$)/.test(seg.id)) bad.push(`layers.${slug}: segment id "${seg.id}" must begin with "short"`)
+      }
+    }
+    for (const [slug, l] of Object.entries(layers.layers)) {
+      for (const seg of l.segments ?? []) {
+        if (/^short(-|$)/.test(seg.id)) bad.push(`full essay ${slug}: segment id "${seg.id}" is inside the short tier's namespace`)
+      }
+    }
     if (bad.length) throw new Error(`stories-short.json:\n    ${bad.join('\n    ')}`)
   }
 
@@ -154,6 +165,14 @@ export function collect() {
   }
   for (const [slug, p] of Object.entries(short.panels ?? {})) {
     add(`panel:${slug}:short`, p.panel, 'panel', PACK, ['panels', slug, 'short'])
+  }
+  for (const [slug, l] of Object.entries(short.layers ?? {})) {
+    for (const seg of l.segments ?? []) {
+      const at = ['layers', slug, 'segments', seg.id]
+      const extra = { noAuto: !!seg.noAuto, noAutoWhy: seg.noAutoWhy }
+      add(`layer:${slug}:seg:${seg.id}:heading`, seg.heading, 'layer', LAYERS, [...at, 'heading'], extra)
+      add(`layer:${slug}:seg:${seg.id}:text`, seg.text, 'layer', LAYERS, [...at, 'text'], extra)
+    }
   }
 
   // ---------------------------------------------------------------- further reading (§6)

@@ -27,7 +27,7 @@ import { BY_CODE, dirOf } from '../i18n.js'
 import { langAttrs, useLang, useT } from '../lang.jsx'
 import { Spoken, blocksOf, hasAudio } from '../audio.jsx'
 import { GROUPS, PUBLISHERS, index, loadChunk } from '../collection.js'
-import { ExternalLink, Listen, Translated } from '../components/reading.jsx'
+import { ElsewhereShell, ExternalLink, Listen, Translated } from '../components/reading.jsx'
 import { ObjectSection, ObjectMedia, objectAudio } from './group.jsx'
 import { Tools } from '../components/tools.jsx'
 import { useTier } from '../tier.jsx'
@@ -44,14 +44,21 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '../components/ui/tabs.
 // Voiced-in-this-language is the gate, asked per segment: each item plays in the language its own
 // text resolved to (§13: the spoken words ARE the printed words), so each is offered only if that
 // language actually voices that segment — see the note on objectAudio in group.jsx.
-function essayAudio(slug, layer, meta, tr) {
+// `tier` follows objectAudio's rule exactly: 'short' swaps in the essay's short telling (shipped
+// on the layer as `short`) where one is written; where none is, the full essay renders silently —
+// the fallback disclaimer was removed on request (2026-08-17), and every essay has a short
+// telling anyway. The standfirst is deliberately shared between tiers — it is already one
+// sentence, and both tellings open with it.
+function essayAudio(slug, layer, meta, tr, tier = 'full') {
+  const shortMode = tier === 'short' && Array.isArray(layer.short) && layer.short.length > 0
   const titleR = tr(`layerTitles.${slug}`, null, meta.title)
   const standfirstR = tr(`layers.${slug}.standfirst`, null, layer.standfirst)
   // Keyed on the segment's own id, never its position — see the note in group.jsx. Array form
   // rather than a dot-string for the same reason it is used there: a path segment that carries an
   // authored identifier should never be interpolated into something that will later be split on a
   // dot, whatever that identifier happens to look like today.
-  const parts = layer.segments.map((s) => ({
+  const segs = shortMode ? layer.short : layer.segments
+  const parts = segs.map((s) => ({
     s,
     heading: tr(['layers', slug, 'segments', s.id, 'heading'], null, s.heading),
     body: tr(['layers', slug, 'segments', s.id, 'text'], null, s.text),
@@ -79,7 +86,7 @@ function essayAudio(slug, layer, meta, tr) {
 
   const available = items.every((i) => hasAudio(i.lang, i.id))
 
-  return { titleR, standfirstR, parts, available, items }
+  return { titleR, standfirstR, parts, available, items, shortMode }
 }
 
 // One of the two reading essays. It was a page of its own until the content moved onto the
@@ -92,9 +99,10 @@ function essayAudio(slug, layer, meta, tr) {
 function Essay({ slug, layer, meta, code, langName }) {
   const [t, tr] = useT()
   const { tier } = useTier()
-  const { titleR, standfirstR, parts, available, items } = essayAudio(slug, layer, meta, tr)
+  const { titleR, standfirstR, parts, available, items, shortMode } = essayAudio(slug, layer, meta, tr, tier)
 
-  const queue = { key: `l:${slug}`, title: titleR.text, items }
+  // Tier on the key when the short telling is rendered — see the matching note in group.jsx.
+  const queue = { key: shortMode ? `l:${slug}:short` : `l:${slug}`, title: titleR.text, items }
 
   return (
     <section className="essay home-col" id={slug}>
@@ -107,9 +115,6 @@ function Essay({ slug, layer, meta, code, langName }) {
         </h2>
         <Listen queue={queue} available={available} compact />
       </div>
-      {/* The essays have no short telling yet — the tier's first wave covers the intro, the panels
-          and the object on display. Stated rather than silent, same as an uncovered object. */}
-      {tier === 'short' && <p className="fallback-notice">{t('ui.tierFallbackNotice')}</p>}
       <Translated className="group-panel" r={standfirstR} itemId={`layers/${slug}/00-standfirst`} block={1} />
 
       {/* No printed section headings. They used to be h3 eyebrows here; removed on request so the
@@ -169,10 +174,9 @@ function FurtherReading({ layers }) {
   if (!sources.length && !links.length) return null
   const heading = tr('ui.elsewhere')
   return (
-    <section className="elsewhere is-collection home-col">
-      <h3 className="elsewhere-head" {...langAttrs(heading)}>
-        {heading.text}
-      </h3>
+    // The same shell as every other Further reading block: open on the full tier, a closed
+    // disclosure on the short tier — see ElsewhereShell in reading.jsx.
+    <ElsewhereShell className="elsewhere is-collection home-col" headingR={heading}>
       {sources.map((s) => (
         <p key={s.url} className="elsewhere-title record-line" lang="en" dir="ltr">
           <a href={s.url} target="_blank" rel="noreferrer" className="elsewhere-link">
@@ -183,7 +187,7 @@ function FurtherReading({ layers }) {
       {links.map((l) => (
         <ExternalLink key={l.url} link={l} publishers={PUBLISHERS} variant="collection" />
       ))}
-    </section>
+    </ElsewhereShell>
   )
 }
 
@@ -291,7 +295,7 @@ function Home({ go, route }) {
   // the whole grid down the page. The essays are fetched on mount, so the wait is short and it is
   // the same wait the reading column is already going through.
   const essayAudios = layers
-    ? index.layers.map((meta) => (layers.layers[meta.slug] ? essayAudio(meta.slug, layers.layers[meta.slug], meta, tr) : null)).filter(Boolean)
+    ? index.layers.map((meta) => (layers.layers[meta.slug] ? essayAudio(meta.slug, layers.layers[meta.slug], meta, tr, tier) : null)).filter(Boolean)
     : []
   // The object's narration is built by the group page's own objectAudio(), so pressing Listen here
   // plays exactly what pressing Listen on the object plays — the same files, the same order, the

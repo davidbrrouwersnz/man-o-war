@@ -1,13 +1,1176 @@
 {
-  "note": "The short tier: simpler, quicker tellings of the same stories, written for younger listeners and for anyone who wants a faster visit. Held to the same read-and-heard standard as stories.json — the spoken words are the printed words — and to one rule of its own: a short telling restates facts from the full story or the panels, it never adds one. Edited from a younger visitor's point of view: keep what makes them look back at the glass, cut the provenance, the taxonomy and the hedging. Coverage is deliberately partial; an object with no entry here renders its full story and says so (ui.tierFallbackNotice). Segment ids MUST begin with 'short' — that namespace is what keeps translation unit ids, pack paths and audio file paths collision-free with the full tier, and scripts/units.mjs and scripts/split.mjs both assert it.",
-  "style": "One main clause per sentence, present tense, concrete verbs, reading level around ages 8 to 10. Stories: one segment, id 'short', 40 to 70 words in one or two \\n\\n paragraphs (the paragraphs are the read-along blocks). Panels: two to four short sentences, 20 to 40 words. No quotations (the §7 carve-outs would hold them back from translation), no printed headings — the heading is only the audio bar's chapter label.",
+  "note": "The short tier: simpler, quicker tellings of the same stories, written for younger listeners and for anyone who wants a faster visit. Held to the same read-and-heard standard as stories.json — the spoken words are the printed words — and to one rule of its own: a short telling restates facts from the full story or the panels, it never adds one. Edited from a younger visitor's point of view: keep what makes them look back at the glass, cut the provenance, the taxonomy and the hedging. Every object, panel and essay has an entry; anything without one renders its full text silently (the inline disclaimer was removed on request, 2026-08-17). Segment ids MUST begin with 'short' — that namespace is what keeps translation unit ids, pack paths and audio file paths collision-free with the full tier, and scripts/units.mjs and scripts/split.mjs both assert it.",
+  "style": "One main clause per sentence, present tense, concrete verbs, reading level around ages 8 to 10. Stories and essays: one segment, id 'short', 40 to 70 words in one or two \\n\\n paragraphs (the paragraphs are the read-along blocks). Panels: two to four short sentences, 20 to 40 words. No quotations (the §7 carve-outs would hold them back from translation), no printed headings — the heading is only the audio bar's chapter label. Essays keep their full standfirst in both tiers; the short segment replaces only the body.",
   "stories": {
+    "1884.137.24": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Count the models. There are fourteen, all on one board. They show a moon jellyfish growing up.\n\nA moon jellyfish changes shape completely. It starts as a tiny swimmer. Then it settles on something solid. It grows into a tiny stalked animal, fixed in place. The stalk splits into a stack of discs. Each disc peels off and swims away. Each one becomes a young jellyfish."
+        }
+      ]
+    },
+    "1884.137.32": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look for the four crescents near the top of the bell. They are almost the animal's only colour. The rest is white, or no colour at all.\n\nThe short rim tentacles sting, and hold food still. The four frilled arms lift it to the mouth. This jellyfish has one more trick. It can go backwards through its own life, back to a stage it already passed."
+        }
+      ]
+    },
+    "1884.137.68": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This jellyfish is a giant. Big ones reach 150 centimetres. Its other name is the dustbin-lid jellyfish, and that is the size people mean.\n\nLook at the eight thick arms. Their frills are full of tiny holes. The animal pulls water through them and strains out its food. That food is plankton. It is the leatherback turtle's favourite meal."
+        }
+      ]
+    },
+    "1884.137.104": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the brown markings on top of the bell. They spread out like the face of a compass. That is how this jellyfish gets its name.\n\nTwo different things hang underneath. The four broad arms are for feeding. The thin tentacles are the weapons. They sting, to catch prey and to fight off hunters. Sunfish and leatherback turtles both eat compass jellyfish."
+        }
+      ]
+    },
+    "1884.137.105": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "The real animal is usually purple. The model is not. This is one place where the glass does not tell you everything.\n\nIt is a small jellyfish, from warm seas all over the world. It has two names, the mauve stinger and the night-light jellyfish. The second name gives away its trick. This jellyfish makes its own light. It glows in the dark."
+        }
+      ]
+    },
+    "1884.137.41": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the tube hanging under the bell. That tube is the mouth and the stomach in one. The animal hangs in open water. Its tentacles catch food and pass it up into the tube.\n\nCount the tentacles. There are eight, curling out from the rim. This model is the female. The male has a model of its own."
+        }
+      ]
+    },
+    "1884.137.42": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the bell. It is made in two layers, with a curved tube hanging beneath. This is the male of a pair. The museum has the female too.\n\nYou cannot tell them apart by size or shape. The difference is hidden inside the bell. Glass can be clear, so a glass model can show what is inside. That is why these models are made of glass."
+        }
+      ]
+    },
+    "1884.137.108": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Here are three models of the same animal, growing up. Read them in order. The first is a small round bell with just six tentacles. The last looks like the adult.\n\nA young one is not just a smaller adult. It adds tentacles as it grows. A real jellyfish in a jar collapses. Glass models can show the whole story."
+        }
+      ]
+    },
+    "1884.137.43": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Try counting the tentacles. There are far too many. They run all the way around the rim, like a fine fringe.\n\nThis jellyfish belongs to a group that makes its own light. The glow comes from a band around the edge of the bell. Scientists learned to use that glow. Now it helps them see inside living cells, in laboratories everywhere."
+        }
+      ]
+    },
+    "1884.137.44": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Count the ribs. Ridges run from the centre of the bell out to the rim, dotted with little bumps. Those ridges give this animal its name.\n\nThe pale yellow is real. It matches the scientific description of the living animal. This one has other names too, crystal jelly and water jelly. And like the man o' war, it is a relative of the true jellyfish, not one of them."
+        }
+      ]
+    },
+    "1884.137.107": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "One of these models looks like a tiny jellyfish. The others look more like plants. Here is the surprise. They are all the same animal.\n\nFor most of the year it stays fixed to a rock, branching like a plant. Then it lets go of tiny swimming bells. They drift away to make the next generation. Scientists once thought the two forms were different species."
+        }
+      ]
+    },
+    "1884.137.113": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the little bell. It is made of two layers of glass, one worked inside the other. The rim is fringed with short glass tentacles.\n\nThis animal's name is about light. Long ago, people on a boat saw small jellyfish like this glowing at night. Many animals in the open sea make their own light. The name has stuck ever since."
+        }
+      ]
+    },
+    "1884.137.72": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Most jellyfish swim or drift. This one does neither. It stays put.\n\nLook at the two trumpet shapes in green glass. Each one is a jellyfish standing on a stalk, fixed to seaweed or rock. It is like an ordinary jellyfish turned upside down and stuck to a stone. It holds its arms up and waits. If it must, it can creep slowly to a new spot."
+        }
+      ]
+    },
     "1884.137.33": {
       "segments": [
         {
           "id": "short",
           "heading": "The short story",
           "text": "Everything you see here is glass. Even the tentacles. This is a Portuguese man o' war, called the bluebottle in New Zealand.\n\nIt looks like one animal. Really it is many separate animals, living together as one. Each has its own job. The top part is a float, and a sail. The wind pushes it across the sea. The tentacles underneath can reach ten metres."
+        }
+      ]
+    },
+    "1884.137.61": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the ring of tentacles hanging down like a skirt. That skirt gives the animal its name.\n\nBut this is not one animal. It is a colony of many small parts, all joined together. Each part has a single job. Some feed, some swim. None could live alone. It lives deep down, where no sunlight ever reaches. The only light there is light made by living things."
+        }
+      ]
+    },
+    "1884.137.40": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Count the models. There are six. They show how this creature builds itself, piece by piece.\n\nIt does not hatch complete. It starts as a single animal. Then it grows new parts and keeps them attached. Each part has just one job. The finished thing looks like one animal. Really it is built from many parts, added one at a time."
+        }
+      ]
+    },
+    "1884.137.36": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Count the floating parts along the stem. There are nine. Long threads trail below them.\n\nThis animal is a drifting fishing net. The swimming parts sit at the top. The stinging threads hang below like a curtain in the water. Anything that swims into the curtain is caught. The real animal is so fragile that nets bring up only broken pieces. Glass keeps it whole."
+        }
+      ]
+    },
+    "1884.137.114": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This clear tube is an engine. It is the swimming end of a drifting colony. The bell squeezes tight and pushes water out behind. That push moves the whole colony along.\n\nIn life there are two bells, one behind the other, beating together. Behind them trails a long chain of other body parts. The chain breaks very easily. That is why this model matters."
+        }
+      ]
+    },
+    "1884.137.54": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the crest standing on top. That is a sail. The wind pushes this animal across the sea. It cannot steer at all.\n\nThe sail sits at an angle. Some animals have it leaning one way, some the other. The same wind pushes the two kinds apart. When the wind blows toward land for long enough, they arrive on beaches in their millions."
+        }
+      ]
+    },
+    "1884.137.111": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Here are two models of one animal, at two points in its life. The first is the sailing disc, painted with blue lines.\n\nThe disc is only half the story. It lets go of tiny young, far too small to notice. They swim down, away from the surface. Down there they make the next generation. Those young come back up and grow into new sailing discs."
+        }
+      ]
+    },
+    "1884.137.59": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This looks like a tiny jellyfish. It is not one. The round disc in the middle is a float. Every arm around the edge is a separate animal. They are all joined together.\n\nIt drifts on warm seas and cannot steer. The weather blows it onto New Zealand beaches, along with the man o' war. The blue colour is real."
+        }
+      ]
+    },
+    "1884.137.52": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the fine lines running down the body. Each line is a row of tiny paddles. There are eight rows. They beat in waves and row the animal along. This is the largest animal in the world to move this way.\n\nThe beating paddles split the light. Bands of colour run along the body. The animal makes no colour of its own. It is bending daylight."
+        }
+      ]
+    },
+    "1884.137.53": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "A jellyfish stings. This animal cannot sting at all. It catches food with glue.\n\nLook at the two long threads. They are covered in sticky cells. A small creature brushes a thread and gets stuck. The thread then reels it in toward the mouth. The animal is round and clear, about the size of a small fruit. It is not a jellyfish at all."
+        }
+      ]
+    },
+    "1884.137.127": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Nothing else here is shaped like this. It is a ribbon, not a blob.\n\nThis animal is a comb jelly stretched out sideways into a band. A big one is more than a metre long. It swims by rippling its whole length. In the water it is nearly invisible. Its name comes from a belt worn by a goddess."
+        }
+      ]
+    },
+    "1884.137.78": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This is a sea snail. It has no shell. It never touches the bottom. It swims by flapping its two little wings, which grew where a snail's foot would be.\n\nIt lives in cold water, even under sea ice. It eats almost nothing but swimming snails called sea butterflies. It hunts them with hooks it pushes out of its head."
+        }
+      ]
+    },
+    "1884.137.95": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Count the models. There are nine. They show one animal growing up.\n\nThis is a snail that flies. In a garden snail, the foot is for crawling. Here the foot has become a pair of wings. The animal beats them to stay up in the water. Many of them build a shell so thin it is almost glass. Fish, whales and seabirds eat these snails in enormous numbers."
+        }
+      ]
+    },
+    "1884.137.99": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This animal does not chase its food. It fishes with a net.\n\nIt hangs still in the water. It spins a sticky sheet, sometimes far wider than its own body. Drifting food sticks to the sheet. Then comes the strange part. The animal eats the whole net, food and all. Then it spins a new one."
+        }
+      ]
+    },
+    "1884.137.100": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Almost every sea slug crawls along the seabed. This one never touches it. It beats two wing-shaped lobes and swims through open water. It is called the sea angel.\n\nThe name sounds gentle. The animal is not. It is a hunter. It shoots out a feeding tube covered in hooks and teeth. It mostly eats sea butterflies, which are swimming sea snails."
+        }
+      ]
+    },
+    "1884.137.103": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Here is a secret about this model. It is a lie, told on purpose. The real animal is often smaller than your fingernail.\n\nThe makers built it bigger so a whole classroom could see it. Look at the wings and the coloured parts inside. The model tells the truth about the animal's shape. It lies only about its size."
+        }
+      ]
+    },
+    "1884.137.14": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the tiny shell. It is far too small to hold the animal. It has shrunk to a thin cap over the gills.\n\nThis is a sea snail that swims upside down. Its foot points up and works as a fin. Its body is almost all see-through. A hunter looking up from below sees mostly water. Yet this snail is a hunter too. It even eats jellyfish."
+        }
+      ]
+    },
+    "1884.137.47": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "One of these models is a single clear barrel. It shows an animal that swims alone.\n\nThat lone animal grows a chain of copies of itself, joined end to end. The whole chain swims as one. Then the chain makes single animals again. The circle starts over. Salps can multiply faster than almost anything else in the sea. Sometimes they arrive in numbers that clog nets."
+        }
+      ]
+    },
+    "1884.137.51": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the bands around each clear body. Those hoops are muscles. They squeeze the barrel. Water is pushed through, from one end to the other.\n\nOne squeeze does two jobs at once. It pushes the animal forward. It also pulls food from the water through a sticky filter inside. Swimming and eating are the same move. The animal cannot do one without the other."
+        }
+      ]
+    },
+    "1884.137.66": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This tube is not one animal. It is thousands of tiny ones, all set into one wall of jelly.\n\nEach little animal pumps water into the tube. All that water pours out of the open end. The push moves the whole tube slowly along. Pyrosomes glow, brightly enough to be seen from a ship at night. A big one can fit a diver's arm inside."
+        }
+      ]
+    },
+    "1884.137.79": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the white bands circling each body. They are muscles, like the hoops around a barrel. When they squeeze, water shoots straight through the animal.\n\nThis creature has one of the strangest life stories in the sea. It passes through several forms that look almost nothing alike. One form works as a nurse. It carries the next generation along with it."
+        }
+      ]
+    },
+    "1884.137.80": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This animal builds its own house. The house is made of mucus, with filters set into it.\n\nLook at the long tail. It beats and pulls water through the filters. Food gets trapped inside. When the filters clog up, the animal leaves the whole house behind. It builds a fresh one, sometimes several times a day. The old houses sink."
+        }
+      ]
+    },
+    "1884.137.4": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "A sea squirt is a bag with two holes. Water goes in one hole. Food is strained out inside. Water leaves by the other hole. It stays put for life.\n\nBut it begins as a tiny swimmer shaped like a tadpole, with a stiff rod down its back. That rod became the backbone in animals like us. When it settles, it absorbs its own tail and brain."
+        }
+      ]
+    },
+    "1884.137.85": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the green stalk. It holds the animal up above the seabed. Higher up there is more current. More current pushes more water through the animal's filter.\n\nNow for the strange part. Its tough outer coat is made from the same stuff plants use to build wood. Almost no other animal can make that material."
+        }
+      ]
+    },
+    "1884.137.58": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Count them. Seven sea squirts, all crowded together, just as they grow on a rock.\n\nYoung sea squirts settle where others already live. A crowded spot is a spot that works. So they spread in sheets and take over fast. They can cover a harbour wall or a boat hull in one season. On ships, some have travelled the whole world."
+        }
+      ]
+    },
+    "1884.137.119": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look inside each clear body. The orange organs seem to glow, like the filament inside a light bulb. That is where the name comes from.\n\nThey grow in clusters, sometimes dozens joined at the base. This species has reached New Zealand on the outside of ships. The glass model got here first, in 1883. The living animal took rather longer."
+        }
+      ]
+    },
+    "1884.137.129": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the black stars. In life, each star is a ring of tiny animals, living in one shared mat of jelly.\n\nEvery animal sucks water in through its own little hole. All of them push their used water out through the one hole in the middle. The star pattern is really plumbing. From above, a rock covered in them looks scattered with flowers."
+        }
+      ]
+    },
+    "1884.137.6": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the two long tentacles behind the eight arms. The squid keeps them coiled and hidden. When prey comes close, they shoot out to full length. They grab the prey and drag it back to the arms. It all takes a fraction of a second.\n\nSquid see well. They move fast. They can change colour in an instant."
+        }
+      ]
+    },
+    "1884.137.38": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This cuttlefish can change the colour and feel of its skin in under a second. Millions of tiny pigment sacs in the skin open and shut.\n\nIt changes to hide, and to send messages. A male can show one pattern on one side of his body and a different pattern on the other. Strangest of all, cuttlefish seem to be colour-blind. They match colours they cannot see."
+        }
+      ]
+    },
+    "1884.137.17": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Most squid hold their catch with rings of suckers. This one uses hooks too. They are hard and curved, set along the arms.\n\nA hooked squid does not need to hold on tight to a struggling fish. It only needs to close. The hooks last after the squid is gone. They turn up in the stomachs of whales."
+        }
+      ]
+    },
+    "1884.137.39": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the eyes. They are not a matching pair. One eye is much bigger than the other. The two point in different directions.\n\nThe big eye looks up. It watches for shapes against the faint light from the surface. The small eye looks down. It watches for the flashes made by animals below. One animal runs two kinds of seeing at once."
+        }
+      ]
+    },
+    "1884.137.67": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This tiny squid hunts at night. On a moonlit night, anything below it can see its dark shape. So it glows on its underside. The glow matches the moonlight coming down. Its shape disappears.\n\nThe squid does not make the light itself. It keeps glowing bacteria in a special organ. It feeds them, then lets most of them out each morning."
+        }
+      ]
+    },
+    "1884.137.10": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "The white shell is the first thing you see. It is not what it looks like. This animal is an octopus. She makes the shell herself. It helps her float, and it holds her eggs.\n\nAn argonaut will also grab a jellyfish and ride it. The jellyfish hides her, carries her, and feeds her, because she eats it a little at a time."
+        }
+      ]
+    },
+    "1884.137.16": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "There are two male paper nautiluses here. Look at the one with the big swollen arm.\n\nThe female is the famous one, with her white shell. The male is tiny and has no shell at all. His swollen arm is loaded with sperm. It breaks off. He leaves it with the female and does not stay. People who first found these arms inside females thought they were worms."
+        }
+      ]
+    },
+    "1884.137.7": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the small trees growing along its back. Those branches are its gills. This slug has no shell. So it carries its gills on the outside.\n\nEvery branch adds more surface for breathing. The whole back takes in oxygen from the water. The bushy shape also helps it hide, by breaking up its outline against the seaweed."
+        }
+      ]
+    },
+    "1884.137.8": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the wide hood at the head end. That hood is the mouth.\n\nMost sea slugs feed with a rough scraping tongue. This one has no tongue at all. Instead it fishes with a net. It opens the hood wide, throws it forward over the seabed, and pulls it shut. Anything small enough is trapped inside. Small crustaceans are what it wants."
+        }
+      ]
+    },
+    "1884.137.88": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Count the studded outgrowths along its back. There are seven pairs.\n\nThis little slug eats hydroids, tiny stinging animals that grow like plants on rocks. Eating them means swallowing their stings whole. The stings pass through the slug's gut without going off. Then the slug stores them in its back. It carries borrowed stings it never made."
+        }
+      ]
+    },
+    "1884.137.89": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the fingers along its back. Each one has a blue tip with red inside. The red is part of the slug's own gut. The blue tip is the dangerous end.\n\nThis slug eats stinging animals. It moves their unfired stings through its body without setting them off. Then it parks them in the tips. A predator meets the stolen stings first. The bright colour is a warning."
+        }
+      ]
+    },
+    "1884.137.46": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "The two horns at the front are smell sensors. They help the slug find food in dark or cloudy water. The feathery rosette at the back is its gill. If anything touches it, the gill pulls into the body in an instant.\n\nSlugs like this mostly eat sponges. Many take their colour straight from the sponge they are eating."
+        }
+      ]
+    },
+    "1884.137.60": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This slug has no shell. It crawls in the open in daylight. A slug like that is either well hidden or well defended.\n\nMany slugs in this group are defended. They take nasty chemicals from the sponges they eat. They store them in their skin. The bold markings are a warning. A predator that tries one and finds it foul remembers the pattern."
+        }
+      ]
+    },
+    "1884.137.93": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look for the two horns at the front, and the rosette of fine gills at the back.\n\nThis animal changes colour as it grows. A young one is pink or orange. An adult is black. It is a very common animal. It lives under stones in shallow sandy pools, in warm seas nearly everywhere in the world."
+        }
+      ]
+    },
+    "1884.137.116": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the lobes standing out along its sides. They are not gills or decoration. This slug flexes them to swim in short bursts.\n\nThat gives it an escape route most sea slugs do not have. Some of its relatives even make light from the tips of those lobes when they are disturbed."
+        }
+      ]
+    },
+    "1884.137.117": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This slug grazes on the mossy mats that coat rocks and seaweed. Those mats look like moss. They are not moss. Each mat is thousands of tiny animals in one shared skeleton. Eating it is closer to eating a hedge than a leaf.\n\nLook at the studs on the slug's back. They may help it hide against that same bumpy surface."
+        }
+      ]
+    },
+    "1884.137.11": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Count the horns on its head. There are four. Two of them stand up like a hare's ears. That is how it gets its name.\n\nIt grazes on seaweed, and takes its colour from what it eats. When something threatens it, it squirts a cloud of deep purple ink. The ink hides it. It also seems to mess up a predator's sense of smell."
+        }
+      ]
+    },
+    "1884.137.94": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "There is a shell in this animal. You cannot see it. It is buried in the flesh of its back.\n\nSnails keep their shell on the outside. Sea slugs have none at all. Sea hares are halfway. They carry a thin plate under the skin, doing very little. Some sea hares lift the flaps along their sides and swim short distances."
+        }
+      ]
+    },
+    "1884.137.12": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the huge hood at the front. The hood is a trap. The animal holds it open above the sand. Then it snaps shut over anything small that moves underneath.\n\nIt has another trick. The outgrowths on its back can drop off. They keep on wriggling after they are gone. That may buy the slug time to escape. Almost the whole animal is see-through. Glass suits it."
+        }
+      ]
+    },
+    "1884.137.76": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "The green is not paint on the surface. It runs right through the animal.\n\nThis slug eats algae. It does not digest all of it. It keeps the parts that turn sunlight into food. They spread through its gut until the whole slug is green. Then it sits in the light. A fed slug can live a long time on very little, partly powered by sunlight."
+        }
+      ]
+    },
+    "1884.137.87": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the leaf-shaped flaps along its back. They are flat and wide for the same reason leaves are. A thin shape spread wide catches more light.\n\nThis slug is a cousin of the solar-powered one. Its relatives keep working algae parts inside those flat flaps. Looking like a plant is not proof of living like one."
+        }
+      ]
+    },
+    "1884.137.5": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "An anemone is a stomach with tentacles on top and a foot underneath. There is very little else to it.\n\nEach tentacle carries stings, coiled threads that fire when touched. Prey is stung and folded down into the opening in the middle. That hole is the mouth, and also the way out. Out of water, this anemone pulls into a smooth blob and waits for the tide."
+        }
+      ]
+    },
+    "1884.137.26": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Count the striped tentacles. There are fourteen. That number matters. Anemones are hard to tell apart. Counting tentacles is one of the few reliable ways to do it.\n\nThe tentacles grow in rings, added in a fixed order. So the number is not random. A preserved anemone shrinks into a lump. Its tentacles are the first thing lost. That is why a model like this is so useful."
+        }
+      ]
+    },
+    "1884.137.27": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the clear bumps on the column. They are sticky. The anemone uses them to hold gravel, bits of shell and sand against its body. That works as camouflage, and as a kind of armour.\n\nThis is a big, cold-water anemone. It can stay in one place for a very long time. Anemones like this are among the longest-lived animals anyone has kept."
+        }
+      ]
+    },
+    "1884.137.28": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Most anemones grip a rock. This one has nothing to grip with. It lives buried in sand.\n\nIts lower end is a swollen bulb that works as an anchor. The animal drives it down and pumps it up. Only the ring of tentacles shows above the sand. What looks like a small flower on the seabed is the top of an animal that may go a long way down."
+        }
+      ]
+    },
+    "1884.137.29": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Do not try to count these tentacles. There are hundreds, packed so tightly the crown looks like a feather duster.\n\nFine tentacles like these are not for wrestling big prey. They work as a net, sieving tiny food out of moving water. That is why it does well on piers and wrecks. It can also split itself in two. One animal becomes a patch of identical copies."
+        }
+      ]
+    },
+    "1884.137.30": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This anemone is green. The green is often not its own.\n\nMany shallow-water anemones keep tiny algae living inside their bodies. The algae soak up sunlight and turn it into sugars. They pass some of the sugar to the anemone. An anemone with a good crop of algae can get much of its food from sunlight. So it parks itself in the light."
+        }
+      ]
+    },
+    "1884.137.34": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the tentacles. Each one ends in a little round knob. Every knob is packed with stinging cells. The stings sit at the tips, waiting.\n\nJewel anemones are small. They live in crowded sheets on shaded rock, in colours that look almost fake. A sheet is usually one animal, over and over. They divide by splitting in two. One anemone can become hundreds of copies."
+        }
+      ]
+    },
+    "1884.137.55": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "An anemone is not fixed down like a barnacle. Its foot is a muscle. It can release its grip.\n\nThey travel slowly. A few centimetres in a day is normal. They move away from bad light, weak current or a pushy neighbour. Some anemones even fight. They carry special stings used only against other anemones that crowd them. The border between two patches can be a real front line."
+        }
+      ]
+    },
+    "1884.137.56": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Most anemones pull their tentacles in when danger comes. This one cannot close properly. It mostly does not try.\n\nSo it stays in bright, shallow water. It depends on the tiny algae living in its body. Its tentacles are often green with purple tips. Small shrimps and fish live among the tentacles, unharmed. They use the sting as protection from everything else."
+        }
+      ]
+    },
+    "1884.137.62": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This anemone is a broad flat disc, not a tall column. The shape tells you how it lives.\n\nA tall column reaches up into the current and catches food drifting past. A wide flat disc spreads the biggest possible surface to the light, for the algae living inside it. The flatter the anemone, the more it likely lives on sunlight instead of hunting."
+        }
+      ]
+    },
+    "1884.137.65": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the yellow blobs studding the stalk. Blobs like these turn up on many kinds of anemones. They do not all do the same job.\n\nOn some anemones they hold sand and bits of shell. On others they are packed with stinging cells. That defends the sides as well as the top. An animal that sits still for years ends up armoured one way or another."
+        }
+      ]
+    },
+    "1884.137.74": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This anemone lives deep down, where there is no light at all. No light means no algae in its body and no living off sunlight. Everything it eats, it has to catch.\n\nIt is a big anemone with a strange trick. It can let its tentacles go. If a predator grabs hold, it sheds a handful of tentacles and keeps the rest of itself. They grow back."
+        }
+      ]
+    },
+    "1884.137.96": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Count the tentacles. There are only ten. That is very few for an anemone.\n\nThis animal spends its life inside sand. It has no use for a wide crown. It needs a narrow body that can pull down fast. It keeps just enough tentacles to work the surface above it. Disturb the sand and the whole animal vanishes. Most people who walk over a bed of them never see one."
+        }
+      ]
+    },
+    "1884.137.115": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the tentacles. There are twenty. Each one branches like a little tree.\n\nA simple tentacle is a tube. A branched one holds far more surface for the same amount of flesh. Anemones like this usually farm algae on that extra surface, or catch very small food from the water. But branched tentacles tear. That is one reason this glass model outlasts a real one in a jar."
+        }
+      ]
+    },
+    "1884.137.122": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at all the short brown tentacles. They crowd across a wide flat top. Seen from above in a rock pool, this animal looks like a daisy lying on the water.\n\nBut it is not a flower. The body below is buried in mud, or wedged into a crack. Sometimes it goes a long way down. The flower is all anyone sees."
+        }
+      ]
+    },
+    "1884.137.123": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This little anemone helped start a craze. Long ago in Britain, people went wild for keeping sea anemones at home. They bought glass tanks. Whole stretches of shore were stripped bare. The word aquarium comes from that time.\n\nBut the real animals mostly died at home. That is why people wanted glass ones instead. Look at the speckled body and the banded tentacles."
+        }
+      ]
+    },
+    "1884.137.124": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This model is mostly clear and frosted, with a yellow-striped stalk. That is not the glassmaker being lazy. Many of these sea animals really are almost colourless. Painting them solid would be making things up.\n\nThe makers put colour inside the clear glass, in layers. That is how a model can be see-through and still show the parts inside."
+        }
+      ]
+    },
+    "1884.137.64": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This looks like a sea anemone. It is not one. It builds a soft tube and lives inside it. The tube is made of its own stinging threads, felted together with slime. It can be metres long, buried in the seabed. The animal can drop out of sight instantly.\n\nLook at the two kinds of tentacle. The long outer ones catch food. The short inner ones handle it."
+        }
+      ]
+    },
+    "1884.137.70": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This is not one animal. It is a colony of small sea anemones, all growing joined together. One member can carry as many as 32 tentacles. Look at their bright white tips.\n\nDisturb this animal and the tentacles pull in. Then there is almost nothing left to see. Its body is often coated in sand. That sandy coat is where the name comes from."
+        }
+      ]
+    },
+    "1884.137.21": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "These pink branches look like tiny bare trees. This is red coral. People have fished it, carved it and traded it for thousands of years.\n\nThe hard branch is a skeleton. In life a thin living layer covers it, dotted with small white polyps. Each polyp is a separate animal with eight feathery tentacles. The coral grows only millimetres a year."
+        }
+      ]
+    },
+    "1884.137.31": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "The skeleton of this coral is a bundle of upright tubes, like the pipes of an organ. Each tube holds one polyp. The polyp can pull itself down inside.\n\nHere is the surprise. That skeleton is deep red. But the living animal never shows it. The polyps covering it are grey-green. The red only appears once the animal is dead."
+        }
+      ]
+    },
+    "1884.137.57": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This animal is called dead man's fingers. Washed up on the shore, it looks like pale swollen fingers. That is where the name comes from.\n\nAlive and underwater, it is different. The whole surface opens into a fur of tiny white polyps. Each polyp has eight tentacles. There is no hard skeleton inside. Mostly, water pressure holds the animal up."
+        }
+      ]
+    },
+    "1884.137.71": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Count the tentacles on one polyp. There are eight, and every one is feathered along its edges. That is the secret mark of this whole group. Red coral, sea fans and sea pens all share it.\n\nEight feathered tentacles make a fine net. These animals do not overpower prey. They catch very small drifting particles instead."
+        }
+      ]
+    },
+    "1884.137.81": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "There are two models here. One shows the whole fan. The other shows a single branch up close, so you can see the tiny polyps.\n\nA sea fan grows flat, like a net. It sets itself across the moving water, to catch as much as it can. It grows very slowly and lives for decades. A broken fan is not replaced in a human lifetime."
+        }
+      ]
+    },
+    "1884.137.118": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This blue disc is not one animal. It is a whole colony, flattened like a lily pad. A short stalk underneath anchors it in the sand. It can even pull itself down out of sight.\n\nHere is the best part. It glows. Touch it at night, and waves of light run out across the disc from that very spot."
+        }
+      ]
+    },
+    "1884.137.121": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This red feather is an animal. Really it is many animals. One giant polyp forms the central stem. Every other one grows off it.\n\nThe base is pushed into the soft seabed and puffed up to anchor it. The rest stands up in the current, like a feather stuck in the sand. Disturb one and it can make light. It can even pull itself down out of sight."
+        }
+      ]
+    },
+    "1884.137.73": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Count the orange polyps. There are twenty-seven. This is a stony coral, the same kind that builds tropical reefs. But it is not building one.\n\nReef corals keep algae inside their bodies, so they need sunlight. This one has no algae. It lives on shaded rock and in dark caves. It catches every bit of food it eats."
+        }
+      ]
+    },
+    "1884.137.106": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Most corals are colonies of many animals. This one is not. It is a single polyp, sitting in a single stony cup. It stays that way.\n\nThe animal builds the cup itself, underneath and around its own body. It lives in cold water, on rocks around Britain. Coral does not have to mean the tropics."
+        }
+      ]
+    },
+    "1884.137.120": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the branches. Eleven polyps grow off one main stalk. This colony solves the same problem as a tree. Every polyp needs moving water. The trunk lifts them clear of each other and of the seabed.\n\nThe trunk is a shared skeleton. The colony builds it as it grows. Deep down, corals like this form thickets that shelter many other animals."
+        }
+      ]
+    },
+    "1884.137.63": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "From a distance this looks like a patch of pale grass growing on a rock. It is not grass. It is an animal.\n\nEach stalk is one individual, joined to the others at the base. On top of every stalk sits a single polyp with two rings of tentacles. It loves strong currents. It settles on piers, on wrecks, on anything that holds still."
+        }
+      ]
+    },
+    "1884.137.126": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Count the clear tubes. There are seven, each topped with a red polyp. This model shows a male.\n\nMany animals like this release tiny swimming bells. The bells drift away and breed elsewhere. This one does not. Its breeding parts stay attached, hanging in clusters below the tentacles. The young are released straight from the parent. You can see the difference on the colony itself."
+        }
+      ]
+    },
+    "1884.137.109": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This model has three parts. Two show a branching colony, fixed in place. The third is a tiny swimming bell. Here is the surprise. They are the same species.\n\nThe colony buds off little bells. The bells swim away and live on their own. Their young settle down and grow into a new colony. For years, scientists gave the two forms two different names."
+        }
+      ]
+    },
+    "1884.137.136": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Count the tentacles. There are eight, and each one is feathered. That points to the soft coral group.\n\nBut that is all anyone knows. This is one single polyp, taken from some colony. Nobody knows which one. Its label holds just two English words. It is a small glass mystery."
+        }
+      ]
+    },
+    "1884.137.92": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This is a single glass spike, covered in studs. It is a broken piece of something bigger. The rest of that model is gone.\n\nNobody knows what animal it showed. Nobody can say. Somewhere there was a whole model, and this piece came off it. The museum keeps it anyway, because a collection records what it holds."
+        }
+      ]
+    },
+    "1884.137.75": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This animal is built on a starfish's plan. Imagine a starfish stood on one arm tip. Stretch it into a sausage. Lay it on its side. Now the five rows of feet run along the body.\n\nLook at the tentacles at one end. They are really giant tube feet. The animal uses them to shovel in sand and mud. It digests whatever is living inside."
+        }
+      ]
+    },
+    "1884.137.2": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the tiny white feet along the body. They are not like your feet. Each one is a little tube filled with seawater. The animal pumps water in to stretch a foot out. It squeezes to pull it back.\n\nThe whole system runs on water pressure. It is slow, and it is powerful. No other group of animals moves this way."
+        }
+      ]
+    },
+    "1884.137.82": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Count the tentacles around the mouth. There are eight. This sea cucumber buries most of its body in the seabed. Only the tentacles stick up into the moving water.\n\nThe tentacles are sticky and branched. Tiny drifting bits of food land on them. Then, one at a time, the animal puts each tentacle into its mouth and wipes it clean. It keeps going while the current runs."
+        }
+      ]
+    },
+    "1884.137.84": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the blue stripes. They mark where the rows of tiny feet run. There are five rows, because the body is built on a plan of five.\n\nUsually three rows face the ground. Their feet grip. Two rows face up, with smaller feet. So the animal does not really have a top and a bottom. It has five sides. Three of them work as its sole."
+        }
+      ]
+    },
+    "1884.137.3": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This sea cucumber has given up its feet. It has none at all. It burrows instead. Waves of muscle travel down its body, and it moves the way an earthworm does.\n\nBut it keeps anchors. Tiny hooks are set in its skin. They catch the sand and stop it sliding backwards. Touch one and it sticks slightly to your skin. That sticking is the hooks."
+        }
+      ]
+    },
+    "1884.137.23": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This animal breaks itself on purpose. Pick one up and it snaps into pieces.\n\nThat is not weakness. It is a defence. A hungry predator gets one small piece, and the rest of the animal escapes. Later, the missing parts grow back. That is why a glass model mattered. A real one arrived in the jar as broken bits, and taught nobody anything."
+        }
+      ]
+    },
+    "1884.137.13": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Count the arms. There are ten, feathered on both edges. The animal holds them open in the current. Sticky grooves carry food down to the mouth.\n\nLong ago, animals built like this stood on stalks all over the sea. Their fossils fill whole beds of rock. A feather star let go of its stalk. Now its roots grip a rock, and it can let go and move."
+        }
+      ]
+    },
+    "1884.137.25": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Count the models. There are nine, showing one animal growing up.\n\nA baby brittle star looks nothing like its parent. It is tiny, see-through and drifting, with a left side and a right side, just like you. Then something strange happens. An adult, built in fives, grows inside the baby and takes over. Most of the baby's body is thrown away. Few things in the sea are stranger."
+        }
+      ]
+    },
+    "1884.137.9": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "You may have seen this animal's work on the beach. The little coiled casts of sand are what it leaves behind.\n\nIt lives in a U-shaped burrow. It eats sand at one end, keeps the good bits, and passes clean sand out the other. Count the feathery gills along its middle. In life they are red, with the same red stuff that carries oxygen in your blood."
+        }
+      ]
+    },
+    "1884.137.20": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look along the sides of the body. Hundreds of little flaps run all the way down, one pair on every segment. Each flap has three jobs. It is a paddle, a leg and a gill.\n\nThis worm is a hunter. Its jaws can shoot out of its head. And on special nights of the year, whole crowds of ragworms rise and swim at the surface together."
+        }
+      ]
+    },
+    "1884.137.18": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the sides of this worm. Hundreds of flat green flaps overlap down the body, like tiles on a roof. The worm breathes through them. All that surface soaks up oxygen. It can live where the water holds very little.\n\nIt is a fast hunter of other worms. It follows their scent trail along the seabed. Then it grabs them with a mouth part it turns inside out."
+        }
+      ]
+    },
+    "1884.137.90": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This worm keeps its jaws inside its throat. To catch prey, it throws them forward. Then it pulls them back to swallow.\n\nThose jaws are tough. They last after the body rots away. They turn up in rocks hundreds of millions of years old. For a long time nobody knew what animal they came from. Some worms in this group grow so long that people can hardly believe it."
+        }
+      ]
+    },
+    "1884.137.91": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the fine bristles along the sides. They are made of the same stuff as an insect's shell. Muscles push them out and pull them back.\n\nThe bristles are grip. Pushed out, they lock the worm against its burrow walls. Then the front end can stretch forward without the body sliding back. In some other worms the bristles are for defence, and long enough to avoid."
+        }
+      ]
+    },
+    "1884.137.48": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This green worm hides its body in a crevice. Look at the long forked arm. It stretches out over the seabed to sweep up food. It can reach many times the length of the animal.\n\nHere is the strange part. A baby that lands on clean seabed becomes a female. A baby that lands on a female becomes a male. He stays tiny and lives inside her body."
+        }
+      ]
+    },
+    "1884.137.15": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Each of these worms lives in a hard twisting tube. The worm builds the tube itself, out of stone-hard material, cemented to rock. It never moves house.\n\nLook at the feathery crown at the open end. The worm breathes with it, and catches food with it. One tentacle works as a stopper. When the crown pulls in, the stopper plugs the tube. The worm is sealed inside."
+        }
+      ]
+    },
+    "1884.137.22": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the coating of sand and small stones. This worm builds its tube out of sand grains and bits of shell. It cements them in place one at a time.\n\nThe top of the tube fans out like a tiny tree. To feed, the worm spreads long sticky threads across the sand. The threads gather food and draw it back."
+        }
+      ]
+    },
+    "1884.137.110": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This model comes in three parts. Each part shows the worm at a different stage of its life.\n\nThe young worm does not build a tube at all. It swims, for weeks, drifting as plankton. Only then does it settle down. Only then does it start gathering sand to build with."
+        }
+      ]
+    },
+    "1884.137.98": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This worm lives in a leathery tube. The feathered crown on top does two jobs at once. It catches food, and it breathes.\n\nNow the strange part. This glass model has been in Christchurch since 1883. The real animal only reached Lyttelton Harbour in 2008. The model got here 125 years before the animal did."
+        }
+      ]
+    },
+    "1884.137.37": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This flat yellow worm hides a weapon inside its head. A long feeding tube runs most of the length of its body. Pressure fires it out, faster than muscle could ever push it. The worm wraps around its prey and does not let go.\n\nRibbon worms are among the longest animals alive. One kind has been measured at lengths longer than any whale."
+        }
+      ]
+    },
+    "1884.137.49": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Ribbon worms live on shores everywhere. Almost nobody notices them. They hide under stones. They also come apart when you handle them.\n\nA disturbed worm may break into several pieces. That is not always the end of it. In some kinds, each piece regrows into a whole animal. One worm becomes several worms."
+        }
+      ]
+    },
+    "1884.137.97": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This animal has no heart. It has no blood, and no gills. Oxygen simply seeps in through its skin.\n\nThat trick only works over tiny distances. So the animal has to be flat. No part of its body can be far from the outside. Even its gut is strange. It has just one opening, used for food going in and waste going out."
+        }
+      ]
+    },
+    "1884.137.112": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the spikes covering its back. They help the animal take in oxygen.\n\nThis flatworm swims by rippling. Waves run along its frilled edges. A swimming one looks like a piece of fabric moving through the water by itself. Many of these flatworms are poisonous. Some harmless animals have evolved to look just like them."
+        }
+      ]
+    },
+    "1884.137.125": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This worm is a very old design. Animals shaped almost like it appear in some of the oldest fossils of complex life. It has barely changed since.\n\nIt burrows through cold seabed mud. It pushes out a spiny head end, then drags itself forward on it. It is a hunter. It survives in mud with almost no oxygen, where most animals cannot live."
+        }
+      ]
+    },
+    "1884.137.1": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This big spotted slug does something almost nothing else does. To mate, a pair climbs a wall or a branch. They make a rope out of slime. Then they lower themselves into the air on it.\n\nThey hang there, twisted together, sometimes for hours. Each slug is male and female at once. So both of them can end up carrying eggs. Afterwards, one of them usually eats the rope."
+        }
+      ]
+    },
+    "1884.137.19": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the black markings. They are painted on the inside of the glass, not the outside. Paint on the outside wears away with handling. Paint sealed inside does not. That is one reason this model still looks new.\n\nThe real slug lives on tree trunks and walls. It grazes the thin film of algae growing there. You mostly see it after rain."
+        }
+      ]
+    },
+    "1884.137.77": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Count the four horns on its head. They are tentacles, and they do different jobs. The top pair carry the eyes, right at the tips. The shorter bottom pair are for touching and smelling. All four can pull back in. They turn inside out as they go.\n\nGardeners know this slug well. It is one of the most widespread pests in the world."
+        }
+      ]
+    },
+    "1884.137.45": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Look at the shield behind its head. That shield is called the mantle. In a snail, the mantle builds the shell. In this slug, the shell is gone, or shrunk to a tiny buried scrap. The mantle stays on.\n\nIts breathing hole sits on the shield's right edge, and it opens and closes. Threaten this slug and it pulls into a dome. Then it rocks from side to side."
+        }
+      ]
+    },
+    "1884.137.50": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "These models show the inside of a slug. They are teaching models, and they do something a real dissection cannot. They last.\n\nA dissected slug lasts about a day. A glass one lasts a century. Every student sees exactly the same thing. And the inside matters here. Some slugs look identical on the outside. Only these inner organs tell them apart."
+        }
+      ]
+    },
+    "1884.137.86": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Not all of this model is glass. The soft body is glass. The shell is a real snail shell.\n\nThe reason is simple. A shell keeps perfectly well by itself. It is hard, and it does not rot. So the makers did not copy it. They made only the soft parts, the parts that decay, and set them inside the real thing."
+        }
+      ]
+    },
+    "1884.137.69": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This model shows the inside of a snail. It reveals the strangest thing about them. A snail's body is twisted.\n\nEarly in its life, the whole back half of the snail turns halfway around. After that, its gut doubles back on itself. Its breathing chamber sits above its head. You can never see any of this from the outside. That is why this model exists."
+        }
+      ]
+    },
+    "1884.137.83": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "This pond snail has red blood. Most snails carry blue-green blood, based on copper. This one uses iron instead, just as we do.\n\nLook at the shell. It coils flat, like a rope laid down in a spiral. The snail breathes air too. It comes up to the surface to fill a lung. That lets it live in still, stale water where gills would fail."
+        }
+      ]
+    },
+    "1884.137.35": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Two leeches share this base. Look through their bodies. The organs inside are painted in red.\n\nA leech has a sucker at each end. This kind lives in fresh water and eats snails. It also does something rare for a worm. It carries its young. The babies ride underneath their parent, holding on. If danger comes, the parent moves off with the whole family still aboard."
+        }
+      ]
+    },
+    "1884.137.128": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Cut this worm in half and it does not die. The front half grows a new tail. The back half grows a whole new head. Both halves carry on living. Even tiny fragments can rebuild the entire animal.\n\nThe secret is a store of cells spread through its body. Each can become any tissue the worm needs."
+        }
+      ]
+    }
+  },
+  "layers": {
+    "how-it-was-made": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "You cannot keep a jellyfish in a jar. It loses its colour in days, and then its shape. So museums had no way to show the soft animals of the sea.\n\nTwo glassmakers solved it. They shaped glass over a flame, in layers thinner than an eggshell. Live sea animals were shipped to their workshop, so they could copy what they saw."
+        }
+      ]
+    },
+    "how-it-got-here": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "These models were made in Dresden, a city far from the sea. The Museum ordered them in 1882. They arrived in October 1883.\n\nFour of them were free. The makers added samples of their newest work: three enlarged heads of sea worms, and one soft coral polyp. A gift from a maker showing off the new range."
         }
       ]
     }

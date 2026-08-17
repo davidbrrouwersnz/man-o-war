@@ -24,13 +24,13 @@ import { Missing } from './missing.jsx'
 // inside a Samoan session still gets it, because what they are looking at IS the English.
 // `tier` is the story tier the visitor asked for. 'short' swaps in the object's short telling
 // (src/data/stories-short.json, shipped on the object as `short`) wherever one has been written;
-// where none has, the full story renders with `tierFellBack` raised so the page can say so inline.
-// Everything downstream — parts, items, availability — is the same code operating on whichever
-// segment array won, which is what keeps the two tiers from drifting.
+// where none has, the full story renders silently — every object now has a short telling, and
+// the inline fallback disclaimer was removed on request (2026-08-17). Everything downstream —
+// parts, items, availability — is the same code operating on whichever segment array won, which
+// is what keeps the two tiers from drifting.
 function objectAudio(object, tr, t, tier = 'full') {
   const story = object.story
   const shortMode = tier === 'short' && Array.isArray(object.short) && object.short.length > 0
-  const tierFellBack = tier === 'short' && !shortMode && !!story
   // Array form, not a dot-string: the accession itself contains dots ("1884.137.33"), which a
   // naive split('.') would shred into bogus path segments — see src/i18n.js.
   const base = ['stories', object.accession]
@@ -92,7 +92,7 @@ function objectAudio(object, tr, t, tier = 'full') {
 
   const available = items.every((i) => hasAudio(i.lang, i.id))
 
-  return { headlineR, catalogueR, showCatalogue, parts, available, items, shortMode, tierFellBack }
+  return { headlineR, catalogueR, showCatalogue, parts, available, items, shortMode }
 }
 
 // The photograph and its credit line, on their own. Split out of ObjectSection so the collection
@@ -161,7 +161,7 @@ function ObjectSection({ object, arrived, registry, priority = arrived, media = 
   const { story } = object
 
   const { tier } = useTier()
-  const { headlineR, catalogueR, showCatalogue, parts, available, items, shortMode, tierFellBack } = objectAudio(object, tr, t, tier)
+  const { headlineR, catalogueR, showCatalogue, parts, available, items, shortMode } = objectAudio(object, tr, t, tier)
   // The key carries the tier when the short telling is rendered, for the same reason a queue stops
   // on a tier switch: the two tiers are different words, and a key that named only the object
   // would let a restarted queue toggle a stale one.
@@ -199,10 +199,6 @@ function ObjectSection({ object, arrived, registry, priority = arrived, media = 
       <div className="object-body">
       {story ? (
         <div className="story">
-          {/* The stated fallback, tier edition: the visitor asked for the short telling and this
-              object's has not been written yet, so the full story follows. Same honesty rule as
-              the language fallback above each passage — degrade visibly, never silently. */}
-          {tierFellBack && <p className="fallback-notice">{t('ui.tierFallbackNotice')}</p>}
           {/* No printed section headings. They used to be h3 eyebrows here; removed on request so
               a story reads as continuous guide prose under the object's name. The heading text
               lives on as the audio bar's chapter label (see objectAudio) — it is no longer printed

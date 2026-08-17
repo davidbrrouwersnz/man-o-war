@@ -4,7 +4,6 @@
 import { Suspense, lazy, useState } from 'react'
 import { GlobeIcon, SettingsIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { useLang, useT } from '../lang.jsx'
@@ -118,27 +117,28 @@ function DisplaySettings() {
 // The two tellings of the collection: the full stories, and the short tier written for younger
 // listeners and quicker visits. A visible control in the page's own chrome rather than a row in
 // the display dialog, deliberately — most visitors arrive by scanning a code and never open a
-// settings panel, and a choice nobody finds is a choice nobody has.
+// settings panel, and a choice nobody finds is a choice nobody has. It reflects the visitor's
+// persisted preference and is never hidden or disabled; every text in the app now has a short
+// telling, and the old per-object fallback notice was removed on request (2026-08-17).
 //
-// It reflects the visitor's persisted preference, never per-page availability: it is never hidden
-// and never disabled, because a control that appears and disappears between routes reads as a bug,
-// and a disabled one would misreport the pages that do carry short content. Where an object has no
-// short telling yet, the page states the fallback inline (ui.tierFallbackNotice) instead.
+// A segmented pair of toggle buttons (on request — it replaced radio chips): two joined halves,
+// exactly one pressed. aria-pressed carries the state, unlike the Listen control's data-playing —
+// there the label already says playing/stopped, here the labels are constant and the pressed
+// state IS the information. The labels name only the length ("Short", "Full"); who the short tier
+// suits is the tooltip's and the described-by hint's job, so neither audience reads the other's
+// name on the control.
 //
-// The same chip-radio arrangement as the display dialog's text sizes: native radio semantics —
-// grouping, arrow keys, state announcement — with the chip carrying the touch target. The label
-// names only the length ("Short", "Full"); who the short tier suits is the tooltip's job, so
-// neither audience reads the other's name on the control.
-//
-// The layout overrides on the RadioGroup (flex w-auto gap-1.5) travel as utilities rather than
-// styles.css rules: the component's own `grid w-full gap-2` lives in the last cascade layer, and
-// cn() resolves the conflict in favour of these. See the .browse-tablist note in styles.css.
+// The joined look travels as utilities (rounded-e-none / rounded-s-none, logical so RTL flips it)
+// because a shadcn Button styles itself in the last cascade layer — see the note in button.jsx.
 function TierToggle() {
   const { tier, setTier } = useTier()
   const [t] = useT()
 
+  const pressed =
+    'aria-pressed:bg-[var(--control-ink)] aria-pressed:text-[var(--control-ground)] aria-pressed:border-[var(--control-ink)]'
+
   return (
-    <div className="tier-toggle">
+    <>
       <span className="visually-hidden" id="tier-label">{t('ui.tierLabel')}</span>
       {/* The hint is real text in the DOM, not only a tooltip: aria-describedby carries it to a
           screen reader whether or not the pointer ever hovers. */}
@@ -146,21 +146,20 @@ function TierToggle() {
       <Tooltip>
         <TooltipTrigger
           render={
-            <RadioGroup
-              className="tier-choices flex w-auto gap-1.5"
-              name="story-tier"
-              value={tier}
-              onValueChange={(v) => v && setTier(v)}
-              aria-labelledby="tier-label"
-              aria-describedby="tier-hint"
-            >
-              {['short', 'full'].map((v) => (
-                <label key={v} className={tier === v ? 'is-current' : ''}>
-                  <RadioGroupItem value={v} />
+            <div className="tier-toggle" role="group" aria-labelledby="tier-label" aria-describedby="tier-hint">
+              {['short', 'full'].map((v, i) => (
+                <Button
+                  key={v}
+                  variant="quiet"
+                  size="touch"
+                  className={`tier-btn ${i === 0 ? 'rounded-e-none border-e-0' : 'rounded-s-none'} ${pressed}`}
+                  aria-pressed={tier === v}
+                  onClick={() => setTier(v)}
+                >
                   {t(v === 'short' ? 'ui.tierShort' : 'ui.tierFull')}
-                </label>
+                </Button>
               ))}
-            </RadioGroup>
+            </div>
           }
         />
         {/* aria-hidden for the same reason as the compact Listen control's tooltip: the hint is
@@ -170,7 +169,7 @@ function TierToggle() {
           {t('ui.tierShortHint')}
         </TooltipContent>
       </Tooltip>
-    </div>
+    </>
   )
 }
 
