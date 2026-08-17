@@ -6778,6 +6778,13 @@
         "engine": "nmt",
         "translatedAt": "2026-08-17",
         "reviewStatus": "unreviewed"
+      },
+      "ui:close": {
+        "hash": "4f3c1c8a229ae6a0",
+        "englishHash": "4f3c1c8a229ae6a0",
+        "engine": "nmt",
+        "translatedAt": "2026-08-17",
+        "reviewStatus": "unreviewed"
       }
     },
     "ja": {
@@ -13574,6 +13581,13 @@
         "engine": "nmt",
         "translatedAt": "2026-08-17",
         "reviewStatus": "unreviewed"
+      },
+      "ui:close": {
+        "hash": "4f3c1c8a229ae6a0",
+        "englishHash": "4f3c1c8a229ae6a0",
+        "engine": "nmt",
+        "translatedAt": "2026-08-17",
+        "reviewStatus": "unreviewed"
       }
     },
     "ko": {
@@ -20338,6 +20352,13 @@
       "layer:how-it-got-here:seg:short:text": {
         "hash": "4639d596af62cb53",
         "englishHash": "4639d596af62cb53",
+        "engine": "nmt",
+        "translatedAt": "2026-08-17",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:close": {
+        "hash": "4f3c1c8a229ae6a0",
+        "englishHash": "4f3c1c8a229ae6a0",
         "engine": "nmt",
         "translatedAt": "2026-08-17",
         "reviewStatus": "unreviewed"
@@ -27154,6 +27175,13 @@
         "engine": "nmt",
         "translatedAt": "2026-08-17",
         "reviewStatus": "unreviewed"
+      },
+      "ui:close": {
+        "hash": "4f3c1c8a229ae6a0",
+        "englishHash": "4f3c1c8a229ae6a0",
+        "engine": "nmt",
+        "translatedAt": "2026-08-17",
+        "reviewStatus": "unreviewed"
       }
     },
     "fr": {
@@ -33963,6 +33991,13 @@
         "engine": "nmt",
         "translatedAt": "2026-08-17",
         "reviewStatus": "unreviewed"
+      },
+      "ui:close": {
+        "hash": "4f3c1c8a229ae6a0",
+        "englishHash": "4f3c1c8a229ae6a0",
+        "engine": "nmt",
+        "translatedAt": "2026-08-17",
+        "reviewStatus": "unreviewed"
       }
     },
     "es": {
@@ -40745,6 +40780,13 @@
         "engine": "nmt",
         "translatedAt": "2026-08-17",
         "reviewStatus": "unreviewed"
+      },
+      "ui:close": {
+        "hash": "4f3c1c8a229ae6a0",
+        "englishHash": "4f3c1c8a229ae6a0",
+        "engine": "nmt",
+        "translatedAt": "2026-08-17",
+        "reviewStatus": "unreviewed"
       }
     },
     "ar": {
@@ -47510,6 +47552,13 @@
       "layer:how-it-got-here:seg:short:text": {
         "hash": "4639d596af62cb53",
         "englishHash": "4639d596af62cb53",
+        "engine": "nmt",
+        "translatedAt": "2026-08-17",
+        "reviewStatus": "unreviewed"
+      },
+      "ui:close": {
+        "hash": "4f3c1c8a229ae6a0",
+        "englishHash": "4f3c1c8a229ae6a0",
         "engine": "nmt",
         "translatedAt": "2026-08-17",
         "reviewStatus": "unreviewed"

@@ -260,10 +260,16 @@ function GroupPage({ route, go }) {
     }
   }, [route.slug])
 
+  // The document title follows whatever language is active, like home.jsx's: no dependency list,
+  // one assignment, correct on every render. It used to be the raw English title plus a hardcoded
+  // suffix, which made the browser tab the one part of a translated page that never translated.
+  useLayoutEffect(() => {
+    if (group) document.title = `${tr(`groups.${group.slug}`, null, group.title).text} — ${t('ui.collectionTitle')}`
+  })
+
   // The scroll has to wait for the chunk: until the objects render there is nothing to scroll to.
   useLayoutEffect(() => {
     if (!group) return
-    document.title = `${group.title} — the Blaschka collection`
     if (!data) return
     if (route.arrivedAt) {
       const el = registry.current.get(route.arrivedAt)
@@ -386,20 +392,31 @@ function GroupPage({ route, go }) {
           ))}
         </>
       ) : (
-        <p className="loading">Loading the objects…</p>
+        <p className="loading">{t('ui.loading')}</p>
       )}
 
       <nav className="group-nav">
+        {/* Translated like the h1 above and the tiles that link here — the raw index title left a
+            translated page ending in two English names. langAttrs on a span around the words, not
+            on the anchor: an anchor-level dir would reorder the arrow against its label. */}
         {prev ? (
           <a href={`/g/${prev.slug}`} onClick={go(`/g/${prev.slug}`)}>
-            <ArrowLeftIcon aria-hidden="true" focusable="false" /> {prev.title}
+            <ArrowLeftIcon aria-hidden="true" focusable="false" />{' '}
+            {(() => {
+              const r = tr(`groups.${prev.slug}`, null, prev.title)
+              return <span {...langAttrs(r)}>{r.text}</span>
+            })()}
           </a>
         ) : (
           <span />
         )}
         {next && (
           <a href={`/g/${next.slug}`} onClick={go(`/g/${next.slug}`)}>
-            {next.title} <ArrowRightIcon aria-hidden="true" focusable="false" />
+            {(() => {
+              const r = tr(`groups.${next.slug}`, null, next.title)
+              return <span {...langAttrs(r)}>{r.text}</span>
+            })()}{' '}
+            <ArrowRightIcon aria-hidden="true" focusable="false" />
           </a>
         )}
       </nav>

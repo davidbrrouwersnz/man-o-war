@@ -64,7 +64,8 @@
     "tierLabel": "스토리 버전",
     "tierShort": "단편",
     "tierFull": "완전",
-    "tierShortHint": "간단히 말하면: 더 간단하고 빠릅니다. 어린 청취자나 빠른 방문 시 좋다."
+    "tierShortHint": "간단히 말하면: 더 간단하고 빠릅니다. 어린 청취자나 빠른 방문 시 좋다.",
+    "close": "닫습니다"
   },
   "groups": {
     "jellyfish": "해파리, 큰 것과 작은 것",

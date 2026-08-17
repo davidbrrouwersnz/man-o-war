@@ -357,6 +357,11 @@ const all = {
   objects: manifest.objects.map((o) => ({
     accession: o.accession,
     name: names.names[o.accession]?.name ?? o.title,
+    // Whether `name` is a plain-English name rather than the catalogue binomial fallback. The
+    // page uses this to translate named tiles through the story headline's existing unit — a
+    // binomial is §6's carve-out and must stay the catalogue's own words, so the flag is what
+    // keeps the two cases apart on the client. Omitted (not false) so JSON drops it.
+    named: names.names[o.accession] ? true : undefined,
     slug: index.groupOf[o.accession],
     placeholder: o.placeholder,
     url: o.image.large.url,

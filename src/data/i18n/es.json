@@ -64,7 +64,8 @@
     "tierLabel": "Versión de la historia",
     "tierShort": "Corto",
     "tierFull": "Completo",
-    "tierShortHint": "Versión corta: más simple y rápida. Ideal para oyentes más jóvenes, o para una visita más rápida."
+    "tierShortHint": "Versión corta: más simple y rápida. Ideal para oyentes más jóvenes, o para una visita más rápida.",
+    "close": "Cierre"
   },
   "groups": {
     "jellyfish": "Medusas, grandes y pequeñas",
