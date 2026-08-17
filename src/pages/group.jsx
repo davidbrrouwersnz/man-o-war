@@ -8,6 +8,7 @@ import { Spoken, blocksOf, hasAudio } from '../audio.jsx'
 import { BY_SLUG, GROUPS, PUBLISHERS, loadChunk } from '../collection.js'
 import { Elsewhere, Listen, Media, Translated } from '../components/reading.jsx'
 import { Tools } from '../components/tools.jsx'
+import { useTier } from '../tier.jsx'
 import { Missing } from './missing.jsx'
 
 // ------------------------------------------------------------------ group page
@@ -21,8 +22,15 @@ import { Missing } from './missing.jsx'
 // language voices THAT segment — which is what lets German's one-object pilot play without
 // offering the 127 German objects that have no files. A visitor reading an untranslated object
 // inside a Samoan session still gets it, because what they are looking at IS the English.
-function objectAudio(object, tr, t) {
+// `tier` is the story tier the visitor asked for. 'short' swaps in the object's short telling
+// (src/data/stories-short.json, shipped on the object as `short`) wherever one has been written;
+// where none has, the full story renders with `tierFellBack` raised so the page can say so inline.
+// Everything downstream — parts, items, availability — is the same code operating on whichever
+// segment array won, which is what keeps the two tiers from drifting.
+function objectAudio(object, tr, t, tier = 'full') {
   const story = object.story
+  const shortMode = tier === 'short' && Array.isArray(object.short) && object.short.length > 0
+  const tierFellBack = tier === 'short' && !shortMode && !!story
   // Array form, not a dot-string: the accession itself contains dots ("1884.137.33"), which a
   // naive split('.') would shred into bogus path segments — see src/i18n.js.
   const base = ['stories', object.accession]
@@ -47,7 +55,10 @@ function objectAudio(object, tr, t) {
   // the English, so a language that has three of an object's five segments gets those three and
   // falls back for the rest — and re-ordering or inserting an English segment can never silently
   // pair one language's heading with another's body.
-  const parts = (story?.segments ?? []).map((s) => ({
+  // Short segment ids live in the same pack path as the full ones (their ids are namespaced
+  // `short*` — see scripts/units.mjs), so the same lookup serves both tiers.
+  const segs = shortMode ? object.short : story?.segments ?? []
+  const parts = segs.map((s) => ({
     s,
     heading: tr([...base, 'segments', s.id, 'heading'], null, s.heading),
     body: tr([...base, 'segments', s.id, 'text'], null, s.text),
@@ -81,7 +92,7 @@ function objectAudio(object, tr, t) {
 
   const available = items.every((i) => hasAudio(i.lang, i.id))
 
-  return { headlineR, catalogueR, showCatalogue, parts, available, items }
+  return { headlineR, catalogueR, showCatalogue, parts, available, items, shortMode, tierFellBack }
 }
 
 // The photograph and its credit line, on their own. Split out of ObjectSection so the collection
@@ -149,8 +160,12 @@ function ObjectSection({ object, arrived, registry, priority = arrived, media = 
 
   const { story } = object
 
-  const { headlineR, catalogueR, showCatalogue, parts, available, items } = objectAudio(object, tr, t)
-  const queue = { key: `o:${object.accession}`, title: headlineR.text, items }
+  const { tier } = useTier()
+  const { headlineR, catalogueR, showCatalogue, parts, available, items, shortMode, tierFellBack } = objectAudio(object, tr, t, tier)
+  // The key carries the tier when the short telling is rendered, for the same reason a queue stops
+  // on a tier switch: the two tiers are different words, and a key that named only the object
+  // would let a restarted queue toggle a stale one.
+  const queue = { key: shortMode ? `o:${object.accession}:short` : `o:${object.accession}`, title: headlineR.text, items }
 
   return (
     <article className={`object${arrived ? ' is-arrived' : ''}`} ref={ref} id={`obj-${object.accession}`}>
@@ -184,6 +199,10 @@ function ObjectSection({ object, arrived, registry, priority = arrived, media = 
       <div className="object-body">
       {story ? (
         <div className="story">
+          {/* The stated fallback, tier edition: the visitor asked for the short telling and this
+              object's has not been written yet, so the full story follows. Same honesty rule as
+              the language fallback above each passage — degrade visibly, never silently. */}
+          {tierFellBack && <p className="fallback-notice">{t('ui.tierFallbackNotice')}</p>}
           {/* No printed section headings. They used to be h3 eyebrows here; removed on request so
               a story reads as continuous guide prose under the object's name. The heading text
               lives on as the audio bar's chapter label (see objectAudio) — it is no longer printed
@@ -229,6 +248,7 @@ function ObjectSection({ object, arrived, registry, priority = arrived, media = 
 function GroupPage({ route, go }) {
   const [t, tr] = useT()
   const { code } = useLang()
+  const { tier } = useTier()
   const group = BY_SLUG.get(route.slug)
   const registry = useRef(new Map())
   const [data, setData] = useState(null)
@@ -286,20 +306,32 @@ function GroupPage({ route, go }) {
   const prev = GROUPS[group.order - 2]
   const next = GROUPS[group.order]
   const title = tr(`groups.${group.slug}`, null, group.title)
-  const panelR = tr(`panels.${group.slug}.panel`, null, data?.panel ?? '')
+  // The short tier's panel, where one has been written (shipped on the chunk as `panelShort`).
+  // Every panel has a short telling from the tier's first wave, so on a loaded page this only
+  // falls to the full panel when the tier is 'full' — but the guard keeps a future group honest.
+  const shortPanel = tier === 'short' && !!data?.panelShort
+  const panelText = shortPanel ? data.panelShort : data?.panel
+  const panelR = shortPanel
+    ? tr(['panels', group.slug, 'short'], null, data.panelShort)
+    : tr(`panels.${group.slug}.panel`, null, data?.panel ?? '')
+  const panelId = shortPanel ? `groups/${group.slug}/00-panel-short` : `groups/${group.slug}/00-panel`
 
   // Built from the objects themselves rather than from a separate list, so the tour can never
-  // drift out of step with what is on the page.
-  const objectAudios = (data?.objects ?? []).map((o) => objectAudio(o, tr, t))
+  // drift out of step with what is on the page. Tier-resolved per object, so a partly-covered
+  // group tours as a mix — the short telling where it exists, the full story where it does not —
+  // which is honest, because the spoken words are always the printed ones.
+  const objectAudios = (data?.objects ?? []).map((o) => objectAudio(o, tr, t, tier))
   // The panel is one file carrying the group title and the panel text, so it is only voiced in the
   // translation when both are translated.
   const panelLang = title.lang === panelR.lang ? panelR.lang : 'en'
-  const tourAvailable = !!data && hasAudio(panelLang, `groups/${group.slug}/00-panel`) && objectAudios.every((a) => a.available)
+  const tourAvailable = !!data && hasAudio(panelLang, panelId) && objectAudios.every((a) => a.available)
   const tourQueue = {
-    key: `g:${group.slug}`,
+    // Tier on the key whenever the short tier is active — the queue's words differ even where
+    // some objects fell back, because the panel and any covered object did not.
+    key: tier === 'short' ? `g:${group.slug}:short` : `g:${group.slug}`,
     title: title.text,
     items: [
-      ...(data?.panel ? [{ id: `groups/${group.slug}/00-panel`, lang: panelLang, label: title.text, blocks: [title.text, panelR.text] }] : []),
+      ...(panelText ? [{ id: panelId, lang: panelLang, label: title.text, blocks: [title.text, panelR.text] }] : []),
       ...objectAudios.flatMap((a) => a.items),
     ],
   }
@@ -325,7 +357,7 @@ function GroupPage({ route, go }) {
         />
       </div>
       <h1 className="group-title" {...langAttrs(title)}>
-        <Spoken text={title.text} itemId={`groups/${group.slug}/00-panel`} block={0} />
+        <Spoken text={title.text} itemId={panelId} block={0} />
       </h1>
       <p className="group-cost">
         {group.size} {t('ui.models')}. {t('ui.aboutMinutes', { m: group.minutes })}
@@ -333,11 +365,11 @@ function GroupPage({ route, go }) {
 
       {data ? (
         <>
-          {data.panel && (
+          {panelText && (
             <Translated
               className="group-panel"
               r={panelR}
-              itemId={`groups/${group.slug}/00-panel`}
+              itemId={panelId}
               block={1}
             />
           )}

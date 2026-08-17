@@ -30,6 +30,7 @@ import { GROUPS, PUBLISHERS, index, loadChunk } from '../collection.js'
 import { ExternalLink, Listen, Translated } from '../components/reading.jsx'
 import { ObjectSection, ObjectMedia, objectAudio } from './group.jsx'
 import { Tools } from '../components/tools.jsx'
+import { useTier } from '../tier.jsx'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '../components/ui/tabs.jsx'
 
 // ------------------------------------------------------------------ home
@@ -90,6 +91,7 @@ function essayAudio(slug, layer, meta, tr) {
 // documents stapled together. Its sections carry no printed headings — see the note inside.
 function Essay({ slug, layer, meta, code, langName }) {
   const [t, tr] = useT()
+  const { tier } = useTier()
   const { titleR, standfirstR, parts, available, items } = essayAudio(slug, layer, meta, tr)
 
   const queue = { key: `l:${slug}`, title: titleR.text, items }
@@ -105,6 +107,9 @@ function Essay({ slug, layer, meta, code, langName }) {
         </h2>
         <Listen queue={queue} available={available} compact />
       </div>
+      {/* The essays have no short telling yet — the tier's first wave covers the intro, the panels
+          and the object on display. Stated rather than silent, same as an uncovered object. */}
+      {tier === 'short' && <p className="fallback-notice">{t('ui.tierFallbackNotice')}</p>}
       <Translated className="group-panel" r={standfirstR} itemId={`layers/${slug}/00-standfirst`} block={1} />
 
       {/* No printed section headings. They used to be h3 eyebrows here; removed on request so the
@@ -205,6 +210,7 @@ function Home({ go, route }) {
   const [t, tr] = useT()
   const wide = useWide()
   const { code } = useLang()
+  const { tier } = useTier()
   const langName = BY_CODE.get(code)?.endonym ?? 'English'
   const [layers, setLayers] = useState(null)
   const [all, setAll] = useState(null)
@@ -268,7 +274,10 @@ function Home({ go, route }) {
     if (el) scrollTo({ top: el.offsetTop - 8, behavior: 'instant' })
   }, [route?.at, layers, all])
 
-  const intro = tr('ui.collectionIntro')
+  // The short tier's standfirst is a UI string like the full one, so it rides the interface
+  // translation tier rather than needing machinery of its own — see scripts/units.mjs.
+  const intro = tier === 'short' ? tr('ui.collectionIntroShort') : tr('ui.collectionIntro')
+  const introId = tier === 'short' ? 'home/00-intro-short' : 'home/00-intro'
   const title = t('ui.collectionTitle')
 
   // The whole page as one sitting: the standfirst, then both essays in the order they are printed.
@@ -288,19 +297,21 @@ function Home({ go, route }) {
   // plays exactly what pressing Listen on the object plays — the same files, the same order, the
   // same highlighting. §13 requires the spoken words to be the printed words, and the printed words
   // on this page are now that object's.
-  const displayAudio = display ? objectAudio(display.object, tr, t) : null
+  const displayAudio = display ? objectAudio(display.object, tr, t, tier) : null
   // Decidable from the intro alone, before the chunks arrive — every language pack that translates
   // the intro translates the essays too — so the button's presence never changes once the rest
   // lands, only whether it can be pressed.
   const introLang = intro.lang
-  const homeAvailable = hasAudio(introLang, 'home/00-intro') && (!displayAudio || displayAudio.available) && essayAudios.every((a) => a.available)
+  const homeAvailable = hasAudio(introLang, introId) && (!displayAudio || displayAudio.available) && essayAudios.every((a) => a.available)
   const homeQueue = {
-    key: 'home',
+    // Tier on the key when short is active — the intro and the object's telling differ, even
+    // though the essays (no short tier yet) do not.
+    key: tier === 'short' ? 'home:short' : 'home',
     title,
     // In printed order: the standfirst, the object, then both essays. The tour follows the page
     // rather than being listed beside it, so re-ordering the page re-orders the narration.
     items: [
-      { id: 'home/00-intro', lang: introLang, label: title, blocks: [title, intro.text] },
+      { id: introId, lang: introLang, label: title, blocks: [title, intro.text] },
       ...(displayAudio?.items ?? []),
       ...essayAudios.flatMap((a) => a.items),
     ],
@@ -323,13 +334,13 @@ function Home({ go, route }) {
     <header className="home-head home-col">
       {toolsRow}
         <h1>
-          <Spoken text={title} itemId="home/00-intro" block={0} />
+          <Spoken text={title} itemId={introId} block={0} />
         </h1>
         {/* "One is on display" used to link to the object below it, as an in-page anchor. Removed
             on request; the sentence is plain text now, in one run rather than three, since nothing
             inside it needs its own offset any more. */}
         <p lang={intro.lang} dir={dirOf(intro.lang)}>
-          <Spoken text={intro.text} itemId="home/00-intro" block={1} />
+          <Spoken text={intro.text} itemId={introId} block={1} />
         </p>
     </header>
   )

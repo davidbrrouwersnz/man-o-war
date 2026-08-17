@@ -1,0 +1,50 @@
+{
+  "note": "The short tier: simpler, quicker tellings of the same stories, written for younger listeners and for anyone who wants a faster visit. Held to the same read-and-heard standard as stories.json — the spoken words are the printed words — and to one rule of its own: a short telling restates facts from the full story or the panels, it never adds one. Edited from a younger visitor's point of view: keep what makes them look back at the glass, cut the provenance, the taxonomy and the hedging. Coverage is deliberately partial; an object with no entry here renders its full story and says so (ui.tierFallbackNotice). Segment ids MUST begin with 'short' — that namespace is what keeps translation unit ids, pack paths and audio file paths collision-free with the full tier, and scripts/units.mjs and scripts/split.mjs both assert it.",
+  "style": "One main clause per sentence, present tense, concrete verbs, reading level around ages 8 to 10. Stories: one segment, id 'short', 40 to 70 words in one or two \\n\\n paragraphs (the paragraphs are the read-along blocks). Panels: two to four short sentences, 20 to 40 words. No quotations (the §7 carve-outs would hold them back from translation), no printed headings — the heading is only the audio bar's chapter label.",
+  "stories": {
+    "1884.137.33": {
+      "segments": [
+        {
+          "id": "short",
+          "heading": "The short story",
+          "text": "Everything you see here is glass. Even the tentacles. This is a Portuguese man o' war, called the bluebottle in New Zealand.\n\nIt looks like one animal. Really it is many separate animals, living together as one. Each has its own job. The top part is a float, and a sail. The wind pushes it across the sea. The tentacles underneath can reach ten metres."
+        }
+      ]
+    }
+  },
+  "panels": {
+    "jellyfish": {
+      "panel": "A jellyfish is a bell of almost pure water, pulsing, trailing threads that sting. Some here are as big as a dinner plate. Others would fit on your fingertip."
+    },
+    "floating-colonies": {
+      "panel": "Each of these looks like one animal. It is not. It is many separate animals joined into one drifting body, and the wind and the current decide where it goes."
+    },
+    "see-through-swimmers": {
+      "panel": "In the open sea there is nowhere to hide. So these animals became invisible. Only glass could ever have shown you what they look like."
+    },
+    "sea-squirts-and-salps": {
+      "panel": "These look like little jelly sacks, pumping seawater in and out. But somewhere in each one's life is a tiny swimmer shaped like a tadpole. Of everything in this collection, these are your closest relatives."
+    },
+    "cephalopods": {
+      "panel": "These are hunters, with arms, suckers, and an eye almost as good as yours. Long ago their family gave up its shell. The argonaut is here twice, and the female builds a paper cradle for her eggs."
+    },
+    "sea-slugs": {
+      "panel": "A snail without a shell needs other tricks. Some of these are poisonous. Some steal stings from the animals they eat. One even runs partly on sunlight."
+    },
+    "sea-anemones": {
+      "panel": "An anemone is a ring of stinging tentacles on top of a stomach, on top of a foot. That is the whole animal. These nineteen show how many different ways it can be done."
+    },
+    "corals-and-sea-fans": {
+      "panel": "Every branch and fan on this page is a city. Each one is thousands of tiny animals sharing one skeleton. That is how a coral can grow like a plant without being a plant."
+    },
+    "sea-cucumbers-and-stars": {
+      "panel": "A sausage, a feather and a star. They look nothing alike, but they are all built on a starfish's plan. Count in fives, and look for hundreds of tiny water-powered feet."
+    },
+    "worms": {
+      "panel": "A worm is a long soft body for pushing through mud and sand. Three of the worms here hide in tubes, and put out crowns so fine they were once mistaken for flowers."
+    },
+    "never-went-to-sea": {
+      "panel": "Not everything here came from the sea. There are garden slugs, a leech from a pond, and a snail cut open to show its insides. Classrooms needed glass models of these animals too."
+    }
+  }
+}

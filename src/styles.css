@@ -1191,6 +1191,32 @@ ol.grid {
   background: #fff;
 }
 
+/* ------------------------------------------------------------------ story tier
+
+   The Short | Full choice, in the page chrome beside the language picker. The same chip-radio
+   arrangement as the display dialog's text sizes (.setting-choices), sized for the tools row.
+   Layout overrides on the RadioGroup itself travel as Tailwind utilities in tools.jsx — a rule
+   here cannot beat the component's own `grid w-full` — but the labels are plain elements, so
+   their dress lives where the setting chips' does. Colours resolve through --control-* with the
+   reading palette as fallback, so the chips flip with whatever ground the tools row sits on. */
+.tier-choices label {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 44px;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--control-edge, var(--edge));
+  border-radius: var(--radius-lg);
+  font-size: var(--step--1);
+  cursor: pointer;
+}
+
+.tier-choices label.is-current {
+  background: var(--control-ink, var(--ink));
+  color: var(--control-ground, var(--paper));
+  border-color: var(--control-ink, var(--ink));
+}
+
 /* The stated fallback. §7: silent degradation reads as a broken app; a stated one reads as an
    honest one, and it also tells the Museum which languages to fund next. */
 .fallback-notice {
