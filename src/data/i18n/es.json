@@ -57,7 +57,14 @@
     "recordSightings": "{n} avistamientos registrados en todo el mundo",
     "recordSightingsNZ": "{n} de ellos en Nueva Zelanda",
     "recordUnresolved": "El nombre del catálogo no se resuelve a una sola especie actual, así que no hay nada aquí a lo que enlazar. Esa es una respuesta real sobre un catálogo de 140 años, no un vacío.",
-    "recordCatalogue": "El nombre en la entrada del catálogo"
+    "recordCatalogue": "El nombre en la entrada del catálogo",
+    "collectionIntroShort": "Pequeños animales hechos de cristal, obra de un padre y un hijo hace más de 140 años. El Museo conserva 128 de ellas. Uno está en exhibición. El resto está almacenado.",
+    "onDisplay": "En exhibición",
+    "browse": "Explora la colección",
+    "tierLabel": "Versión de la historia",
+    "tierShort": "Corto",
+    "tierFull": "Completo",
+    "tierShortHint": "Versión corta: más simple y rápida. Ideal para oyentes más jóvenes, o para una visita más rápida."
   },
   "groups": {
     "jellyfish": "Medusas, grandes y pequeñas",
@@ -80,46 +87,57 @@
   "panels": {
     "jellyfish": {
       "panel": "Una medusa es una campana de agua casi pura que late y arrastra tras de sí hilos urticantes. Ese es todo el diseño. Aquí va desde una del tamaño de un plato hasta otras que cabrían en la yema de un dedo — y tres veces el mismo animal: macho, hembra y cría.",
-      "ending": "Todos los animales de esta página son medusas. La siguiente empieza con la medusa más famosa de todas, que resulta no serlo."
+      "ending": "Todos los animales de esta página son medusas. La siguiente empieza con la medusa más famosa de todas, que resulta no serlo.",
+      "short": "Una medusa es una campana de agua casi pura, con hilos pulsantes y arrastrados que escocen. Algunos aquí son tan grandes como un plato. Otras cabrían en la punta del dedo."
     },
     "floating-colonies": {
       "panel": "Estas son colonias. Cada uno parece un solo animal y no lo es. Cada uno son muchos individuos separados, unidos en un solo cuerpo a la deriva. Algunos escocen, otros digeren, otros se reproducen, y ninguno podría vivir solo. Flotan en aguas abiertas, y el viento y la corriente deciden hacia dónde van.",
-      "ending": "Estos animales van donde va el agua. La página siguiente es de animales que resolvieron el mismo problema — mar abierto, ningún escondite — de una manera completamente distinta."
+      "ending": "Estos animales van donde va el agua. La página siguiente es de animales que resolvieron el mismo problema — mar abierto, ningún escondite — de una manera completamente distinta.",
+      "short": "Cada uno de estos parece un solo animal. No lo es. Son muchos animales separados unidos en un solo cuerpo a la deriva, y el viento y la corriente deciden hacia dónde va."
     },
     "see-through-swimmers": {
       "panel": "En mar abierto no hay dónde esconderse. Por eso estos animales, sin parentesco entre sí y de ramas distintas del árbol, llegaron a las mismas dos respuestas: volverse invisibles y nadar batiendo algo. Solo el vidrio podía enseñarle la primera.",
-      "ending": "La transparencia es una defensa. En la página siguiente, un cuerpo de aspecto de lo más corriente esconde uno de los hechos más extraños de esta colección."
+      "ending": "La transparencia es una defensa. En la página siguiente, un cuerpo de aspecto de lo más corriente esconde uno de los hechos más extraños de esta colección.",
+      "short": "En mar abierto no hay dónde esconderse. Así que estos animales se volvieron invisibles. Solo el cristal podría haberte mostrado cómo son."
     },
     "sea-squirts-and-salps": {
       "panel": "No parecen gran cosa: un saco gelatinoso que bombea agua de mar por una abertura y la expulsa por la otra. Pero en el ciclo vital de cada una hay un animal nadador con forma de renacuajo y una varilla rígida a lo largo del dorso. De todo lo que hay en esta colección, estos son sus parientes más cercanos.",
-      "ending": "Esta página reúne las dos formas de vida. Algunas van a la deriva; el resto está fijado a la roca. Todo lo que sigue vive en el fondo."
+      "ending": "Esta página reúne las dos formas de vida. Algunas van a la deriva; el resto está fijado a la roca. Todo lo que sigue vive en el fondo.",
+      "short": "Parecen pequeños sacos de gelatina, bombeando agua de mar dentro y fuera. Pero en algún momento de la vida de cada uno hay un pequeño nadador con forma de renacuajo. De todo lo que hay en esta colección, estos son tus parientes más cercanos."
     },
     "cephalopods": {
       "panel": "Moluscos que renunciaron a la concha y se hicieron cazadores: brazos, ventosas y un ojo casi tan bueno como el suyo. El argonauta aparece aquí dos veces, a propósito. La hembra construye a sus huevos una cuna de papel. El macho apenas mide un centímetro.",
-      "ending": "Perder la concha compró velocidad, brazos y ojos. En la página siguiente, la misma decisión se pagó de manera muy distinta."
+      "ending": "Perder la concha compró velocidad, brazos y ojos. En la página siguiente, la misma decisión se pagó de manera muy distinta.",
+      "short": "Son cazadores, con brazos, suckers y un ojo casi tan bueno como el tuyo. Hace mucho tiempo, su familia renunció a su caparazón. El argonauta está aquí dos veces, y la hembra construye una cuna de papel para sus huevos."
     },
     "sea-slugs": {
       "panel": "Quítele la concha a un caracol y necesitará otra respuesta. Estas catorce encontraron varias: veneno, un color lo bastante llamativo para servir de advertencia, células urticantes robadas a los animales que comen. Una va más lejos: roba las piezas activas de las algas que ingiere, las mantiene vivas y vive en parte de la luz del sol.",
-      "ending": "Hasta aquí, todos los animales se han movido por su propia fuerza. A partir de ahora, la mayoría se queda donde está."
+      "ending": "Hasta aquí, todos los animales se han movido por su propia fuerza. A partir de ahora, la mayoría se queda donde está.",
+      "short": "Un caracol sin concha necesita otros trucos. Algunos de estos son venenosos. Algunos roban picaduras a los animales que comen. Una incluso funciona parcialmente con luz solar."
     },
     "sea-anemones": {
       "panel": "Una anémona de mar es un anillo de tentáculos venenosos sobre un estómago, sobre un pie. Ese es el animal entero. Estas diecinueve muestran hasta dónde puede llevarse una sola idea sencilla. Es el grupo más numeroso de aquí, y no por casualidad: las anémonas fueron la gran obsesión victoriana, y el único animal que nadie lograba mantener vivo en un frasco.",
-      "ending": "Un animal, diecinueve maneras. A continuación: qué ocurre cuando ese mismo animal deja de ser uno y se convierte en miles."
+      "ending": "Un animal, diecinueve maneras. A continuación: qué ocurre cuando ese mismo animal deja de ser uno y se convierte en miles.",
+      "short": "Una anémona es un anillo de tentáculos punzantes situados sobre el estómago, sobre un pie. Eso es todo el animal. Estos diecinueve muestran cuántas formas diferentes se puede hacer."
     },
     "corals-and-sea-fans": {
       "panel": "Cada rama, cada abanico y cada ramita pétrea de esta página es una ciudad. Cada una son miles de animales diminutos, parecidos a anémonas, que comparten un mismo esqueleto. Así crecen como plantas sin serlo, y por eso un coral puede ser rojo, azul, plumoso o estar enteramente convertido en piedra.",
-      "ending": "Estos construyeron hacia arriba desde la roca. Las dos últimas páginas del mar son de animales que fueron en la dirección contraria: hacia dentro."
+      "ending": "Estos construyeron hacia arriba desde la roca. Las dos últimas páginas del mar son de animales que fueron en la dirección contraria: hacia dentro.",
+      "short": "Cada sucursal y fan en esta página es una ciudad. Cada uno son miles de pequeños animales que comparten un solo esqueleto. Así es como un coral puede crecer como una planta sin ser una planta."
     },
     "sea-cucumbers-and-stars": {
       "panel": "Una salchicha, una pluma y una estrella. Nada en estos ocho parece emparentado, y de eso se trata. Cuente de cinco en cinco, busque los cientos de piececillos movidos por agua, y resulta que todos están construidos según el plano de una estrella de mar. No hay ni una sola estrella de mar entre estos modelos, y la razón es la misma por la que existe esta colección: una estrella de mar se seca y se conserva. Estos no.",
-      "ending": "Construidos como una estrella de mar, con la forma de cualquier otra cosa. La página siguiente es todo un grupo definido igual: por una solución, no por una familia."
+      "ending": "Construidos como una estrella de mar, con la forma de cualquier otra cosa. La página siguiente es todo un grupo definido igual: por una solución, no por una familia.",
+      "short": "Una salchicha, una pluma y una estrella. No se parecen en nada, pero todas están construidas según el plano de una estrella de mar. Cuenta en cinco y busca cientos de pequeños pies movidos por agua."
     },
     "worms": {
       "panel": "Un gusano no es una familia. Es una solución — un cuerpo largo y blando para abrirse paso por el sedimento — a la que llegaron por separado cuatro ramas distintas del reino animal. Tres de los de aquí esconden el cuerpo por completo en un tubo y sacan una corona tan fina que durante mucho tiempo se tomó por una flor.",
-      "ending": "Ahí termina el mar. Queda una página, y ni uno solo de sus animales estuvo nunca en él."
+      "ending": "Ahí termina el mar. Queda una página, y ni uno solo de sus animales estuvo nunca en él.",
+      "short": "Un gusano es un cuerpo largo y blando para abrirse paso entre barro y arena. Tres de los gusanos aquí se esconden en tubos y ponen coronas tan finas que en su día se confundieron con flores."
     },
     "never-went-to-sea": {
-      "panel": "Diez de los modelos de esta colección nunca vieron agua salada: babosas de jardín, un caracol de Borgoña abierto para mostrar sus vísceras, una sanguijuela de estanque. Los Blaschka surtían tanto a las aulas como a los museos, y un aula necesitaba el animal del huerto tanto como el de la bahía de Nápoles."
+      "panel": "Diez de los modelos de esta colección nunca vieron agua salada: babosas de jardín, un caracol de Borgoña abierto para mostrar sus vísceras, una sanguijuela de estanque. Los Blaschka surtían tanto a las aulas como a los museos, y un aula necesitaba el animal del huerto tanto como el de la bahía de Nápoles.",
+      "short": "No todo aquí venía del mar. Hay babosas de jardín, una sanguijuela de un estanque y un caracol cortado para mostrar su interior. Las aulas también necesitaban modelos de cristal de estos animales."
     }
   }
 }

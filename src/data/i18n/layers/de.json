@@ -24,6 +24,10 @@
         "accuracy": {
           "heading": "Woher die Genauigkeit kam",
           "text": "Die Modelle sind genau, weil die Blaschkas nicht aus der Vorstellung arbeiteten. Sie arbeiteten nach den Fachzeichnungen führender Biologen und nach lebenden Tieren.\n\nAnton Dohrn, der die Meeresstation in Neapel leitete, verschickte lebende wirbellose Tiere nach Dresden. Das ist die Verbindung, die das Ganze möglich macht: eine Stadt ohne Meer, ein Becken mit lebenden Mittelmeertieren und zwei Menschen, die eines ansehen und in Glas nachbilden konnten.\n\n1878 boten sie 630 verschiedene Modelle an. Später wurden es über 700."
+        },
+        "short": {
+          "heading": "Die Kurzgeschichte",
+          "text": "Man kann eine Qualle nicht in einem Glas aufbewahren. Er verliert seine Farbe innerhalb von Tagen und dann seine Form. Museen hatten also keine Möglichkeit, die weichen Tiere des Meeres zu zeigen.\n\nZwei Glasmacher haben das Problem gelöst. Sie formten Glas über einer Flamme, in Schichten, die dünner als eine Eierschale waren. Lebende Meerestiere wurden in ihre Werkstatt gebracht, damit sie nachahmen konnten, was sie sahen."
         }
       }
     },
@@ -53,6 +57,10 @@
         "since": {
           "heading": "Was danach geschah",
           "text": "Die Modelle kamen im Technologischen Saal zur Aufstellung, vorgeführt als industrielle Kunst im Dienst der Wissenschaft, nicht als Zoologie. Eine Christchurcher Zeitung, die Press, teilte ihren Lesern im Oktober 1883 mit, die Portugiesische Galeere erscheine in ihren wahren Farben und gleiche der Natur so sehr, dass es täusche.\n\nDiese Rahmung hielt nicht. Binnen zwei Jahren wurden die Modelle neben Präparaten gezeigt, und 1895 war der Technologische Saal aufgelöst und die Modelle standen in den zoologischen Abteilungen, geordnet nach dem, was sie darstellten, statt danach, wie sie gemacht waren."
+        },
+        "short": {
+          "heading": "Die Kurzgeschichte",
+          "text": "Diese Modelle wurden in Dresdenhergestellt, einer Stadt weit vom Meer entfernt. Das Museum bestellte sie 1882. Sie kamen im Oktober 1883 an.\n\nVier von ihnen waren frei. Die Macher fügten Proben ihrer neuesten Arbeiten hinzu: drei vergrößerte Köpfe von Seewürmern und einen soft coral polyp. Ein Geschenk von einem Hersteller, der die neue Serie präsentiert."
         }
       }
     }

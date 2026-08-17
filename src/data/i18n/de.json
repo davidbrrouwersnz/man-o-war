@@ -57,7 +57,14 @@
     "recordSightings": "{n} weltweit dokumentierte Sichtungen",
     "recordSightingsNZ": "{n} von ihnen in Neuseeland",
     "recordUnresolved": "Der Katalogname lässt sich nicht auf eine aktuelle Art festlegen, daher gibt es hier nichts, worauf man verlinken könnte. Das ist eine echte Antwort auf einen 140 Jahre alten Katalog, keine Lücke.",
-    "recordCatalogue": "Der Name im Katalogeintrag"
+    "recordCatalogue": "Der Name im Katalogeintrag",
+    "collectionIntroShort": "Kleine Tiere aus Glas, das Werk eines Vaters und Sohnes vor mehr als 140 Jahren. Das Museum bewahrt 128 davon auf. Einer ist ausgestellt. Der Rest ist im Lager.",
+    "onDisplay": "Ausgestellt",
+    "browse": "Durchstöbern Sie die Sammlung",
+    "tierLabel": "Story-Version",
+    "tierShort": "Kurzfilm",
+    "tierFull": "Voll",
+    "tierShortHint": "Kurzfassung: einfacher und schneller. Gut für jüngere Zuhörer oder ein schnellerer Besuch."
   },
   "groups": {
     "jellyfish": "Quallen, große und kleine",
@@ -80,46 +87,57 @@
   "panels": {
     "jellyfish": {
       "panel": "Eine Qualle ist eine Glocke aus fast reinem Wasser, die pulsiert und nesselnde Fäden hinter sich herzieht. Das ist der ganze Bauplan. Hier reicht er von einer Qualle so groß wie ein Teller bis zu solchen, die auf eine Fingerkuppe passen — und dreimal dasselbe Tier: als Männchen, als Weibchen und als Jungtier.",
-      "ending": "Jedes Tier auf dieser Seite ist eine Qualle. Die nächste Seite beginnt mit der berühmtesten Qualle von allen, die gar keine ist."
+      "ending": "Jedes Tier auf dieser Seite ist eine Qualle. Die nächste Seite beginnt mit der berühmtesten Qualle von allen, die gar keine ist.",
+      "short": "Eine Qualle ist eine Glocke aus fast reinem Wasser, pulsierende, ziehende Fäden, die brennen. Einige hier sind so groß wie ein Essteller. Andere würden auf deine Fingerspitze passen."
     },
     "floating-colonies": {
       "panel": "Das sind Kolonien. Jeder sieht aus wie ein einzelnes Tier und ist es nicht. Jede besteht aus vielen einzelnen Individuen, die zu einem treibenden Körper verbunden sind. Einige stechen, manche verdauen, einige vermehren sich, und keiner könnte allein leben. Sie treiben im offenen Wasser, und Wind und Strömung bestimmen, wohin sie gehen.",
-      "ending": "Diese Tiere gehen dorthin, wohin das Wasser geht. Die nächste Seite gehört Tieren, die dasselbe Problem — offenes Wasser, kein Versteck — auf völlig andere Weise gelöst haben."
+      "ending": "Diese Tiere gehen dorthin, wohin das Wasser geht. Die nächste Seite gehört Tieren, die dasselbe Problem — offenes Wasser, kein Versteck — auf völlig andere Weise gelöst haben.",
+      "short": "Jedes dieser Tiere sieht aus wie ein einziges Tier. Das ist es nicht. Es sind viele einzelne Tiere, die zu einem treibenden Körper vereint sind, und Wind und Strömung bestimmen, wohin sie gehen."
     },
     "see-through-swimmers": {
       "panel": "Im offenen Wasser gibt es kein Versteck. Also kamen diese Tiere, nicht miteinander verwandt und aus verschiedenen Zweigen des Stammbaums, auf dieselben zwei Antworten: unsichtbar werden und sich durch Schlagen fortbewegen. Nur Glas konnte Ihnen die erste je zeigen.",
-      "ending": "Durchsichtigkeit ist eine Verteidigung. Auf der nächsten Seite verbirgt ein völlig unscheinbarer Körper eine der seltsamsten Tatsachen dieser Sammlung."
+      "ending": "Durchsichtigkeit ist eine Verteidigung. Auf der nächsten Seite verbirgt ein völlig unscheinbarer Körper eine der seltsamsten Tatsachen dieser Sammlung.",
+      "short": "Auf offenem Meer gibt es keinen Ort zum Verstecken. So wurden diese Tiere unsichtbar. Nur Glas hätte dir je zeigen können, wie sie aussehen."
     },
     "sea-squirts-and-salps": {
       "panel": "Sie sehen nach wenig aus: ein Gallertsack, der Meerwasser durch die eine Öffnung ein- und durch die andere auspumpt. Doch im Lebenslauf jedes einzelnen steckt ein schwimmendes, kaulquappenförmiges Tier mit einem steifen Stab im Rücken. Von allem in dieser Sammlung sind das Ihre nächsten Verwandten.",
-      "ending": "Diese Seite trägt beide Lebensweisen. Einige treiben, die übrigen sitzen auf dem Fels. Alles von hier an lebt am Meeresboden."
+      "ending": "Diese Seite trägt beide Lebensweisen. Einige treiben, die übrigen sitzen auf dem Fels. Alles von hier an lebt am Meeresboden.",
+      "short": "Diese sehen aus wie kleine Gelee-Säcke, die Meerwasser hinein- und herauspumpen. Aber irgendwo im Leben eines jeden Menschen ist ein winziger Schwimmer in Form einer Kaulquappe. Von allem in dieser Sammlung sind das deine engsten Verwandten."
     },
     "cephalopods": {
       "panel": "Weichtiere, die die Schale aufgaben und stattdessen Jäger wurden: Arme, Saugnäpfe und ein Auge, das dem Ihren kaum nachsteht. Das Papierboot ist hier absichtlich zweimal vertreten. Das Weibchen baut seinen Eiern eine papierdünne Wiege. Das Männchen misst kaum einen Zentimeter.",
-      "ending": "Der Verlust der Schale brachte Schnelligkeit, Arme und Augen. Auf der nächsten Seite wurde dieselbe Entscheidung ganz anders bezahlt."
+      "ending": "Der Verlust der Schale brachte Schnelligkeit, Arme und Augen. Auf der nächsten Seite wurde dieselbe Entscheidung ganz anders bezahlt.",
+      "short": "Das sind Jäger, mit Armen, Saugern und einem Auge, das fast so gut ist wie deins. Vor langer Zeit gab ihre Familie ihre Hülle auf. Der Argonaut ist zweimal hier, und das Weibchen baut eine Papierwiege für ihre Eier."
     },
     "sea-slugs": {
       "panel": "Nimm einer Schnecke das Haus, und sie braucht eine andere Antwort. Diese vierzehn fanden mehrere: Gift, eine Färbung laut genug, um als Warnung zu dienen, und Nesselzellen, gestohlen von den Tieren, die sie fressen. Eine geht weiter: Sie stiehlt die arbeitenden Teile aus den Algen, die sie frisst, hält sie am Leben und lebt teilweise vom Sonnenlicht.",
-      "ending": "Bis hierher hat sich jedes Tier aus eigener Kraft bewegt. Von hier an bleiben die meisten, wo sie sind."
+      "ending": "Bis hierher hat sich jedes Tier aus eigener Kraft bewegt. Von hier an bleiben die meisten, wo sie sind.",
+      "short": "Eine Schnecke ohne Panzer braucht noch andere Tricks. Einige davon sind giftig. Manche stehlen Stiche von den Tieren, die sie fressen. Eines läuft sogar teilweise mit Sonnenlicht."
     },
     "sea-anemones": {
       "panel": "Eine Seeanemone ist ein Kranz vergifteter Tentakel auf einem Magen, der auf einem Fuß sitzt. Mehr ist das Tier nicht. Diese neunzehn zeigen, wie weit sich eine einzige einfache Idee treiben lässt. Es ist die größte Gruppe hier, und das ist kein Zufall: Seeanemonen waren die große viktorianische Besessenheit — und das eine Tier, das niemand im Glas am Leben halten konnte.",
-      "ending": "Ein Tier, neunzehn Arten. Als Nächstes: was geschieht, wenn dasselbe Tier aufhört, eines zu sein, und zu Tausenden wird."
+      "ending": "Ein Tier, neunzehn Arten. Als Nächstes: was geschieht, wenn dasselbe Tier aufhört, eines zu sein, und zu Tausenden wird.",
+      "short": "Eine Anemone ist ein Ring aus stechenden Tentakeln auf einem Bauch, auf einem Fuß. Das ist das ganze Tier. Diese neunzehn zeigen, wie viele verschiedene Wege es möglich sind."
     },
     "corals-and-sea-fans": {
       "panel": "Jeder Zweig, jeder Fächer, jedes steinerne Ästchen auf dieser Seite ist eine Stadt. Jede besteht aus Tausenden winziger, anemonenähnlicher Tiere, die ein Skelett teilen. So wachsen sie wie Pflanzen, ohne welche zu sein, und deshalb kann eine Koralle rot, blau, gefiedert oder ganz zu Stein geworden sein.",
-      "ending": "Diese bauten vom Fels aus nach oben. Die letzten beiden Seiten des Meeres gehören Tieren, die den anderen Weg nahmen: hinein."
+      "ending": "Diese bauten vom Fels aus nach oben. Die letzten beiden Seiten des Meeres gehören Tieren, die den anderen Weg nahmen: hinein.",
+      "short": "Jeder Zweig und jeder Fan auf dieser Seite ist eine Stadt. Jedes einzelne besteht aus Tausenden winziger Tiere, die sich ein Skelett teilen. So kann eine Koralle wie eine Pflanze wachsen, ohne selbst eine Pflanze zu sein."
     },
     "sea-cucumbers-and-stars": {
       "panel": "Eine Wurst, eine Feder und ein Stern. Nichts an diesen acht sieht verwandt aus, und genau darum geht es. Zählen Sie in Fünfern, suchen Sie die Hunderte winziger, wassergetriebener Füßchen, und es zeigt sich: Alle sind nach dem Bauplan eines Seesterns gebaut. Unter diesen Modellen ist kein einziger Seestern, und der Grund ist derselbe, aus dem es diese Sammlung gibt: Ein Seestern trocknet und bleibt erhalten. Diese nicht.",
-      "ending": "Gebaut wie ein Seestern, geformt wie alles andere. Die nächste Seite ist eine ganze Gruppe, die genauso definiert wird — über eine Lösung, nicht über eine Familie."
+      "ending": "Gebaut wie ein Seestern, geformt wie alles andere. Die nächste Seite ist eine ganze Gruppe, die genauso definiert wird — über eine Lösung, nicht über eine Familie.",
+      "short": "Eine Wurst, eine Feder und ein Stern. Sie sehen sich überhaupt nicht ähnlich, aber sie sind alle nach dem Plan eines Seesterns gebaut. Zähle in fünf und achte auf hunderte winzige, wasserbetriebene Füße."
     },
     "worms": {
       "panel": "Ein Wurm ist keine Familie. Er ist eine Lösung — ein langer weicher Körper, um sich durch Sediment zu schieben —, auf die vier verschiedene Zweige des Tierreichs unabhängig voneinander kamen. Drei hier verbergen den Körper ganz in einer Röhre und strecken eine Krone heraus, die so fein ist, dass man sie lange für eine Blume hielt.",
-      "ending": "Damit endet das Meer. Eine Seite bleibt, und kein einziges Tier darauf war je dort."
+      "ending": "Damit endet das Meer. Eine Seite bleibt, und kein einziges Tier darauf war je dort.",
+      "short": "Ein Wurm ist ein langer, weicher Körper, um sich durch Schlamm und Sand zu bewegen. Drei der Würmer hier verstecken sich in Röhren und stellen Kronen auf, die so fein sind, dass sie einst für Blumen gehalten wurden."
     },
     "never-went-to-sea": {
-      "panel": "Zehn der Modelle dieser Sammlung haben nie Salzwasser gesehen: Gartenschnecken, eine aufgeschnittene Weinbergschnecke, die ihr Inneres zeigt, ein Blutegel aus dem Teich. Die Blaschkas belieferten Hörsäle ebenso wie Museen, und ein Hörsaal brauchte das Tier aus dem Kohlbeet genauso wie das aus dem Golf von Neapel."
+      "panel": "Zehn der Modelle dieser Sammlung haben nie Salzwasser gesehen: Gartenschnecken, eine aufgeschnittene Weinbergschnecke, die ihr Inneres zeigt, ein Blutegel aus dem Teich. Die Blaschkas belieferten Hörsäle ebenso wie Museen, und ein Hörsaal brauchte das Tier aus dem Kohlbeet genauso wie das aus dem Golf von Neapel.",
+      "short": "Nicht alles hier kam vom Meer. Es gibt Gartenschnecken, einen Blutegel aus einem Teich und eine Schnecke, die aufgeschnitten ist, um ihr Inneres zu zeigen. Auch die Klassenzimmer benötigten Glasmodelle dieser Tiere."
     }
   }
 }

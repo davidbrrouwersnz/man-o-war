@@ -57,7 +57,14 @@
     "recordSightings": "{n} observations enregistrées dans le monde entier",
     "recordSightingsNZ": "{n} d’entre eux en Nouvelle-Zélande",
     "recordUnresolved": "Le nom du catalogue ne se résout pas à une seule espèce actuelle, il n’y a donc rien ici à lien. C’est une vraie réponse à un catalogue vieux de 140 ans, pas un trou.",
-    "recordCatalogue": "Le nom dans l’entrée du catalogue"
+    "recordCatalogue": "Le nom dans l’entrée du catalogue",
+    "collectionIntroShort": "De petits animaux en verre, œuvre d’un père et d’un fils il y a plus de 140 ans. Le musée en conserve 128. L’un est exposé. Les autres sont en stockage.",
+    "onDisplay": "En exposition",
+    "browse": "Parcourez la collection",
+    "tierLabel": "Version de l’histoire",
+    "tierShort": "Courte",
+    "tierFull": "Plein",
+    "tierShortHint": "Version courte : plus simple et plus rapide. Idéal pour les jeunes auditeurs, ou pour une visite plus rapide."
   },
   "groups": {
     "jellyfish": "Méduses, grandes et petites",
@@ -80,46 +87,57 @@
   "panels": {
     "jellyfish": {
       "panel": "Une méduse est une cloche d'eau presque pure, qui pulse en traînant des filaments urticants. Tout le plan tient là. On passe ici d'une méduse grande comme une assiette à d'autres qui tiendraient sur le bout d'un doigt — et trois fois le même animal : mâle, femelle et juvénile.",
-      "ending": "Tous les animaux de cette page sont des méduses. La suivante s'ouvre sur la plus célèbre de toutes, qui n'en est pas une."
+      "ending": "Tous les animaux de cette page sont des méduses. La suivante s'ouvre sur la plus célèbre de toutes, qui n'en est pas une.",
+      "short": "Une méduse est une cloche d’eau presque pure, des fils pulsants et traînants qui piquent. Certains ici sont aussi gros qu’une assiette. D’autres pouvaient tenir au bout de ton doigt."
     },
     "floating-colonies": {
       "panel": "Ce sont des colonies. Chacun ressemble à un seul animal et ne l’est pas. Chacun est composé de nombreux individus distincts, unis en un seul corps flottant. Certains piquent, d’autres digèrent, d’autres se reproduisent, et aucun ne pourrait vivre seul. Ils flottent en eau libre, et le vent et le courant décident de leur destination.",
-      "ending": "Ces animaux vont où va l'eau. La page suivante appartient à des animaux qui ont résolu le même problème — l'eau libre, aucun abri — d'une tout autre manière."
+      "ending": "Ces animaux vont où va l'eau. La page suivante appartient à des animaux qui ont résolu le même problème — l'eau libre, aucun abri — d'une tout autre manière.",
+      "short": "Chacun de ces animaux ressemble à un seul animal. Ce n’est pas le cas. Ce sont de nombreux animaux séparés réunis en un seul corps flottant, et le vent et le courant décident de sa destination."
     },
     "see-through-swimmers": {
       "panel": "En pleine eau, aucun abri. Ces animaux, sans lien de parenté et venus de branches différentes de l'arbre, sont donc arrivés aux deux mêmes réponses : devenir invisible, et nager en battant quelque chose. Seul le verre pouvait vous montrer la première.",
-      "ending": "La transparence est une défense. À la page suivante, un corps d'apparence tout à fait ordinaire cache l'un des faits les plus étranges de cette collection."
+      "ending": "La transparence est une défense. À la page suivante, un corps d'apparence tout à fait ordinaire cache l'un des faits les plus étranges de cette collection.",
+      "short": "En pleine mer, il n’y a nulle part où se cacher. Ces animaux sont donc devenus invisibles. Seul le verre aurait pu vous montrer à quoi ils ressemblent."
     },
     "sea-squirts-and-salps": {
       "panel": "Elles ne paient pas de mine : un sac gélatineux qui pompe l'eau de mer par une ouverture et la rejette par l'autre. Mais dans le cycle de vie de chacune se tient un animal nageur en forme de têtard, avec une tige rigide dans le dos. De tout ce que contient cette collection, ce sont vos plus proches parents.",
-      "ending": "Cette page réunit les deux modes de vie. Certaines dérivent, les autres sont fixées au rocher. Tout ce qui suit vit sur le fond."
+      "ending": "Cette page réunit les deux modes de vie. Certaines dérivent, les autres sont fixées au rocher. Tout ce qui suit vit sur le fond.",
+      "short": "On dirait de petits sacs de gelée, pompant de l’eau de mer dans et dehors. Mais quelque part dans la vie de chacun, il y a un minuscule nageur en forme de têtard. De tout ce qu’il y a dans cette collection, ce sont vos plus proches parents."
     },
     "cephalopods": {
       "panel": "Des mollusques qui ont abandonné la coquille pour devenir chasseurs : des bras, des ventouses, et un œil presque aussi bon que le vôtre. L'argonaute figure ici deux fois, délibérément. La femelle construit à ses œufs un berceau de papier. Le mâle atteint à peine un centimètre.",
-      "ending": "Perdre la coquille a acheté la vitesse, les bras et les yeux. À la page suivante, la même décision s'est payée très différemment."
+      "ending": "Perdre la coquille a acheté la vitesse, les bras et les yeux. À la page suivante, la même décision s'est payée très différemment.",
+      "short": "Ce sont des chasseurs, avec des bras, des ventouses et un œil presque aussi bon que le tien. Il y a longtemps, leur famille a abandonné sa coquille. L’argonaute est là deux fois, et la femelle construit un berceau en papier pour ses œufs."
     },
     "sea-slugs": {
       "panel": "Ôtez sa coquille à un escargot et il lui faut une autre réponse. Ces quatorze en ont trouvé plusieurs : le poison, une couleur assez forte pour valoir avertissement, des cellules urticantes volées aux animaux qu'ils mangent. L'un va plus loin : il vole les pièces actives des algues qu'il consomme, les garde en vie, et vit en partie de la lumière du soleil.",
-      "ending": "Jusqu'ici, chaque animal se déplaçait par ses propres moyens. À partir d'ici, la plupart restent où ils sont."
+      "ending": "Jusqu'ici, chaque animal se déplaçait par ses propres moyens. À partir d'ici, la plupart restent où ils sont.",
+      "short": "Un escargot sans coquille a besoin d’autres astuces. Certains sont toxiques. Certains volent les piqûres des animaux qu’ils mangent. L’un d’eux fonctionne même en partie à la lumière du soleil."
     },
     "sea-anemones": {
       "panel": "Une anémone de mer, c'est une couronne de tentacules empoisonnés sur un estomac, posé sur un pied. L'animal entier tient là. Ces dix-neuf montrent jusqu'où l'on peut pousser une seule idée simple. C'est le plus grand groupe ici, et ce n'est pas un hasard : les anémones furent la grande obsession victorienne, et le seul animal que personne ne parvenait à garder vivant dans un bocal.",
-      "ending": "Un animal, dix-neuf façons. Ensuite : ce qui arrive quand ce même animal cesse d'être un et devient des milliers."
+      "ending": "Un animal, dix-neuf façons. Ensuite : ce qui arrive quand ce même animal cesse d'être un et devient des milliers.",
+      "short": "Une anémone est un anneau de tentacules piquants sur le dessus d’un ventre, sur un pied. C’est tout le monde. Ces dix-neuf montrent combien de façons différentes cela peut être fait."
     },
     "corals-and-sea-fans": {
       "panel": "Chaque branche, chaque éventail, chaque rameau pierreux de cette page est une cité. Chacun réunit des milliers de petits animaux proches des anémones, partageant un même squelette. Voilà comment ils poussent comme des plantes sans en être, et pourquoi un corail peut être rouge, bleu, plumeux, ou entièrement changé en pierre.",
-      "ending": "Ceux-ci ont bâti vers le haut depuis le rocher. Les deux dernières pages de la mer appartiennent à des animaux qui ont pris l'autre direction : vers l'intérieur."
+      "ending": "Ceux-ci ont bâti vers le haut depuis le rocher. Les deux dernières pages de la mer appartiennent à des animaux qui ont pris l'autre direction : vers l'intérieur.",
+      "short": "Chaque succursale et chaque fan sur cette page est une ville. Chacun est composé de milliers de petits animaux partageant un seul squelette. C’est ainsi qu’un corail peut pousser comme une plante sans être une plante."
     },
     "sea-cucumbers-and-stars": {
       "panel": "Une saucisse, une plume et une étoile. Rien chez ces huit-là n'a l'air apparenté, et c'est tout l'intérêt. Comptez par cinq, cherchez les centaines de petits pieds mus par l'eau, et ils se révèlent bâtis sur le plan d'une étoile de mer. Il n'y a pas une seule étoile de mer parmi ces modèles, et la raison est celle même de l'existence de cette collection : une étoile de mer sèche et se conserve. Pas celles-ci.",
-      "ending": "Bâtis comme une étoile de mer, façonnés comme tout sauf elle. La page suivante est un groupe entier défini de la même façon — par une solution, non par une famille."
+      "ending": "Bâtis comme une étoile de mer, façonnés comme tout sauf elle. La page suivante est un groupe entier défini de la même façon — par une solution, non par une famille.",
+      "short": "Une saucisse, une plume et une étoile. Ils ne se ressemblent en rien, mais ils sont tous construits sur le plan d’une étoile de mer. Comptez en cinq et cherchez des centaines de petits pieds alimentés par l’eau."
     },
     "worms": {
       "panel": "Un ver n'est pas une famille. C'est une solution — un corps long et mou pour se pousser dans le sédiment — trouvée séparément par quatre branches différentes du règne animal. Trois d'entre eux, ici, cachent entièrement le corps dans un tube et déploient une couronne si fine qu'on l'a longtemps prise pour une fleur.",
-      "ending": "Ainsi s'achève la mer. Il reste une page, et pas un seul de ses animaux n'y est jamais allé."
+      "ending": "Ainsi s'achève la mer. Il reste une page, et pas un seul de ses animaux n'y est jamais allé.",
+      "short": "Un ver est un corps long et mou pour pousser à travers la boue et le sable. Trois des vers ici se cachent dans des tubes et produisent des couronnes si fines qu’on les a autrefois prises pour des fleurs."
     },
     "never-went-to-sea": {
-      "panel": "Dix des modèles de cette collection n'ont jamais vu l'eau salée : des limaces de jardin, un escargot de Bourgogne ouvert pour montrer ses organes, une sangsue d'étang. Les Blaschka fournissaient les salles de cours autant que les musées, et une salle de cours avait autant besoin de l'animal du potager que de celui de la baie de Naples."
+      "panel": "Dix des modèles de cette collection n'ont jamais vu l'eau salée : des limaces de jardin, un escargot de Bourgogne ouvert pour montrer ses organes, une sangsue d'étang. Les Blaschka fournissaient les salles de cours autant que les musées, et une salle de cours avait autant besoin de l'animal du potager que de celui de la baie de Naples.",
+      "short": "Tout ici ne venait pas de la mer. On y trouve des limaces de jardin, une sangsue d’un étang, et un escargot ouvert pour montrer ses entrailles. Les classes avaient aussi besoin de modèles en verre de ces animaux."
     }
   }
 }

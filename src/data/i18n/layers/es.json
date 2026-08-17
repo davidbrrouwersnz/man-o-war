@@ -24,6 +24,10 @@
         "accuracy": {
           "heading": "De dónde venía la precisión",
           "text": "Los modelos son precisos porque los Blaschka no trabajaban de imaginación. Trabajaban a partir de los dibujos técnicos de los principales biólogos, y a partir de animales vivos.\n\nAnton Dohrn, que dirigía la estación marina de Nápoles, enviaba invertebrados vivos a Dresde. Ese es el vínculo que hace posible todo el proyecto: una ciudad sin mar, un tanque de animales mediterráneos vivos, y dos personas capaces de mirar uno y rehacerlo en vidrio.\n\nPara 1878 ofrecían 630 modelos distintos. El catálogo acabó superando los 700."
+        },
+        "short": {
+          "heading": "El relato corto",
+          "text": "No puedes guardar una medusa en un tarro. Pierde su color en los días y luego su forma. Así que los museos no tenían forma de mostrar los animales blandos del mar.\n\nDos vidrieros lo solucionaron. Moldeaban el vidrio sobre una llama, en capas más finas que una cáscara de huevo. Se enviaban animales marinos vivos a su taller para que pudieran copiar lo que veían."
         }
       }
     },
@@ -53,6 +57,10 @@
         "since": {
           "heading": "Lo que ocurrió después",
           "text": "Los modelos se exhibieron en la Sala Tecnológica, presentados como arte industrial aplicado a la ciencia y no como zoología. Un periódico de Christchurch, el Press, informó a sus lectores en octubre de 1883 de que la carabela portuguesa aparecía en sus colores verdaderos y se parecía a la naturaleza hasta resultar engañosa.\n\nEsa presentación no duró. En dos años, los modelos se exhibían junto a especímenes conservados, y para 1895 la Sala Tecnológica había sido desmantelada y los modelos colocados entre las exposiciones zoológicas, clasificados por lo que representaban y no por cómo se hicieron."
+        },
+        "short": {
+          "heading": "El relato corto",
+          "text": "Estos modelos se fabricaron en Dresden, una ciudad alejada del mar. El museo los encargó en 1882. Llegaron en octubre de 1883.\n\nCuatro de ellos estaban libres. Los fabricantes añadieron muestras de su trabajo más reciente: tres cabezas agrandadas de gusanos marinos y una soft coral polyp. Un regalo de un fabricante que muestra la nueva gama."
         }
       }
     }

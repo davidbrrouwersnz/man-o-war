@@ -24,6 +24,10 @@
         "accuracy": {
           "heading": "D'où venait la précision",
           "text": "Les modèles sont exacts parce que les Blaschka ne travaillaient pas d'imagination. Ils travaillaient d'après les planches techniques des grands biologistes, et d'après des animaux vivants.\n\nAnton Dohrn, qui dirigeait la station marine de Naples, expédiait des invertébrés vivants à Dresde. C'est ce lien qui rend tout le projet possible : une ville sans mer, un bassin d'animaux méditerranéens vivants, et deux personnes capables de regarder l'un d'eux et de le refaire en verre.\n\nDès 1878, ils proposaient 630 modèles différents. Le catalogue a fini par dépasser les 700."
+        },
+        "short": {
+          "heading": "La nouvelle",
+          "text": "On ne peut pas garder une méduse dans un bocal. Il perd sa couleur en quelques jours, puis sa forme. Ainsi, les musées n’avaient aucun moyen de montrer les animaux doux de la mer.\n\nDeux verriers ont résolu le problème. Ils façonnaient du verre au-dessus d’une flamme, en couches plus fines qu’une coquille d’œuf. Des animaux marins vivants étaient envoyés à leur atelier pour qu’ils puissent copier ce qu’ils voyaient."
         }
       }
     },
@@ -53,6 +57,10 @@
         "since": {
           "heading": "Ce qui s'est passé ensuite",
           "text": "Les modèles furent exposés dans la Salle Technologique, présentés comme un art industriel appliqué à la science plutôt que comme de la zoologie. Un journal de Christchurch, le Press, annonça à ses lecteurs en octobre 1883 que la galère portugaise apparaissait dans ses couleurs véritables et ressemblait à la nature au point d'y être trompeuse.\n\nCette présentation ne dura pas. En deux ans, les modèles furent exposés aux côtés de spécimens conservés, et en 1895 la Salle Technologique avait été démantelée, les modèles placés parmi les collections zoologiques, classés selon ce qu'ils représentaient plutôt que selon leur fabrication."
+        },
+        "short": {
+          "heading": "La nouvelle",
+          "text": "Ces modèles ont été fabriqués à Dresden, une ville éloignée de la mer. Le musée les commanda en 1882. Ils arrivèrent en octobre 1883.\n\nQuatre d’entre eux étaient libres. Les fabricants ont ajouté des échantillons de leurs œuvres les plus récentes : trois têtes agrandies de vers de mer et une soft coral polyp. Un cadeau d’un fabricant présentant la nouvelle gamme."
         }
       }
     }
