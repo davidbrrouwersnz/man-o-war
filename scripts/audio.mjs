@@ -290,6 +290,14 @@ function collect() {
         if (!text) continue
         units.push({ kind: 'layer', id: `layers/${slug}/${seg.id}`, track: 'reading', heading: null, text })
       }
+      // The essay's short telling, voiced under the same rules — the translated text lives in the
+      // same layers pack, keyed by the namespaced segment id.
+      for (const seg of shortTier.layers?.[slug]?.segments ?? []) {
+        const t = tl?.segments?.[seg.id]
+        const text = say(seg.text, t?.text)
+        if (!text) continue
+        units.push({ kind: 'layer', id: `layers/${slug}/${seg.id}`, track: 'reading', heading: null, text })
+      }
     }
     // The sources list at the foot of a layer page is a set of links, not prose. Not voiced.
   }

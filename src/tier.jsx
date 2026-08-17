@@ -8,10 +8,12 @@
 // procured accessibility standard (see the note in src/a11y.jsx), and this toggle must never be
 // presented as it.
 //
-// Coverage is partial by design: src/data/stories-short.json holds only the objects whose short
-// telling has been written. A page whose object has no short version renders the full story and
-// says so inline (ui.tierFallbackNotice) — the toggle always reflects the visitor's choice, never
-// per-page availability, so it cannot flicker between routes.
+// Every text in the app has a short telling (src/data/stories-short.json). If one is ever removed,
+// the page renders the full story silently — the inline fallback disclaimer was removed on request
+// (2026-08-17). The toggle always reflects the visitor's choice, never per-page availability, so
+// it cannot flicker between routes. The short tier also collapses the Further reading sections by
+// default (see ElsewhereShell in components/reading.jsx): a visitor who chose the quick telling is
+// assumed less interested in external links.
 
 import { createContext, useContext, useEffect, useState } from 'react'
 

@@ -44,6 +44,20 @@ const SHORT = read('stories-short.json')
     }
   }
   for (const slug of Object.keys(SHORT.panels ?? {})) if (!slugs.has(slug)) bad.push(`panels.${slug}: not a group`)
+  {
+    const layersSrc = read('layers.json')
+    for (const [slug, l] of Object.entries(SHORT.layers ?? {})) {
+      if (!layersSrc.layers[slug]) bad.push(`layers.${slug}: not an essay`)
+      for (const seg of l.segments ?? []) {
+        if (!/^short(-|$)/.test(seg.id)) bad.push(`layers.${slug}: segment id "${seg.id}" must begin with "short"`)
+      }
+    }
+    for (const [slug, l] of Object.entries(layersSrc.layers)) {
+      for (const seg of l.segments ?? []) {
+        if (/^short(-|$)/.test(seg.id)) bad.push(`full essay ${slug}: segment id "${seg.id}" is inside the short tier's namespace`)
+      }
+    }
+  }
   if (bad.length) throw new Error(`stories-short.json:\n    ${bad.join('\n    ')}`)
 }
 
@@ -409,7 +423,17 @@ for (const file of readdirSync(langDir)) {
   let layersDone = 0
   if (existsSync(layerFile)) {
     const tl = JSON.parse(readFileSync(layerFile, 'utf8'))
-    assertSegmentIds(`layers/${code}.json`, tl.layers, LAYERS.layers)
+    // Merged view, as for the stories: a translated pack may carry the short tier's segment ids.
+    assertSegmentIds(
+      `layers/${code}.json`,
+      tl.layers,
+      Object.fromEntries(
+        Object.entries(LAYERS.layers).map(([slug, l]) => [
+          slug,
+          { ...l, segments: [...(l.segments ?? []), ...(SHORT.layers?.[slug]?.segments ?? [])] },
+        ])
+      )
+    )
     pack.layers = tl.layers
     layersDone = Object.keys(tl.layers ?? {}).length
   }
@@ -512,6 +536,10 @@ for (const p of packs) {
 
 const layersJson = ship({
   ...LAYERS,
+  // Each essay carries its short telling where one is written, same as `short` on an object.
+  layers: Object.fromEntries(
+    Object.entries(LAYERS.layers).map(([slug, l]) => [slug, { ...l, short: SHORT.layers?.[slug]?.segments }])
+  ),
   // Collection-level further reading rides with the essays rather than in the index, because it is
   // printed at the foot of the reading column and arrives when that column does. The index is
   // loaded on every route and this is needed on one.

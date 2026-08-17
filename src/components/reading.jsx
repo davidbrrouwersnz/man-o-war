@@ -2,11 +2,12 @@
 // media well.
 
 import { useEffect, useRef, useState } from 'react'
-import { PauseIcon, PlayIcon } from 'lucide-react'
+import { ChevronRightIcon, PauseIcon, PlayIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { langAttrs, useT } from '../lang.jsx'
 import { Spoken, useAudio } from '../audio.jsx'
+import { useTier } from '../tier.jsx'
 
 function Translated({ r, className, itemId, block = 0 }) {
   return (
@@ -307,6 +308,45 @@ function Record({ taxon }) {
 // Where links exist, the record's own lines (also <p>) follow them under the same heading — a
 // flat run of paragraphs, no boundary in the markup, because either is a valid place for a reader
 // to stop. `Record` takes no heading prop; see the note there.
+// The shell every Further reading block renders through. On the full tier it is the always-open
+// section described above. On the short tier it is a CLOSED disclosure (on request, 2026-08-17):
+// a visitor who chose the quick telling is assumed less interested in external links, so they sit
+// one tap away instead of in the flow. That partially un-retires the closed <details> this block
+// used to be on group pages — but scoped to the tier whose whole premise is "less apparatus",
+// where the page-length argument that originally justified it applies with full force.
+//
+// The two forms swap on tier change, which remounts the details — so entering the short tier
+// always starts closed, and a visitor's manual open is native state the audio bar's re-renders
+// cannot snatch shut.
+function ElsewhereShell({ className, headingR, children }) {
+  const { tier } = useTier()
+
+  if (tier !== 'short') {
+    return (
+      <section className={className}>
+        <h3 className="elsewhere-head" {...langAttrs(headingR)}>
+          {headingR.text}
+        </h3>
+        {children}
+      </section>
+    )
+  }
+
+  return (
+    <details className={className}>
+      <summary className="elsewhere-summary">
+        {/* Points along the reading, so it mirrors under dir="rtl" — same rule as the back arrow.
+            styles.css owns the flip and the open-state rotation. */}
+        <ChevronRightIcon className="elsewhere-chevron" aria-hidden="true" focusable="false" />
+        <h3 className="elsewhere-head" {...langAttrs(headingR)}>
+          {headingR.text}
+        </h3>
+      </summary>
+      {children}
+    </details>
+  )
+}
+
 function Elsewhere({ links = [], taxon = null, publishers, variant = 'group', className = '' }) {
   const [, tr] = useT()
   if (!links.length) return null
@@ -317,15 +357,12 @@ function Elsewhere({ links = [], taxon = null, publishers, variant = 'group', cl
   const headingR = tr('ui.elsewhere')
 
   return (
-    <section className={`elsewhere is-${variant} ${className}`.trim()}>
-      <h3 className="elsewhere-head" {...langAttrs(headingR)}>
-        {headingR.text}
-      </h3>
+    <ElsewhereShell className={`elsewhere is-${variant} ${className}`.trim()} headingR={headingR}>
       {links.map((l) => (
         <ExternalLink key={l.url} link={l} publishers={publishers} variant={variant} />
       ))}
       <Record taxon={taxon} />
-    </section>
+    </ElsewhereShell>
   )
 }
 
@@ -387,4 +424,4 @@ function Media({ object, priority }) {
   )
 }
 
-export { Translated, firstWords, Listen, Media, Elsewhere, ExternalLink }
+export { Translated, firstWords, Listen, Media, Elsewhere, ElsewhereShell, ExternalLink }
