@@ -171,14 +171,25 @@ const durations = audioLangs.en?.segments ?? null
 // index still holds units the app retired — 10 group endings, 14 identification notes — and a
 // prefix match would quietly bill visitors for audio no page can play.
 //
-// The FULL tier's queue, deliberately. The tile's "about N minutes" stays measured from the full
-// telling even when the short tier is toggled on — an accepted v1 overstatement for short-tier
-// visitors, and the honest direction to err in. A per-tier minutes figure is a later change here.
+// One list per tier, because the tile's "about N minutes" follows the toggle now: v1 shipped the
+// full tier's number under both (an accepted overstatement while the short narration did not
+// exist), and the short tier is fully voiced, so its cost is measurable the same way.
 const tourSegments = (slug, panel, objects) => [
   ...(panel ? [`groups/${slug}/00-panel`] : []),
   ...objects.flatMap((o) => [
     `${o.accession}/00-title`,
     ...(o.story?.segments ?? []).map((s) => `${o.accession}/${s.id}`),
+  ]),
+]
+
+// The short tier's queue, mirroring objectAudio's short mode: the short panel file, then each
+// object's title and its short telling. The title files are shared between tiers, exactly as the
+// pages share them.
+const tourSegmentsShort = (slug, panelShort, objects) => [
+  ...(panelShort ? [`groups/${slug}/00-panel-short`] : []),
+  ...objects.flatMap((o) => [
+    `${o.accession}/00-title`,
+    ...(o.short ?? []).map((s) => `${o.accession}/${s.id}`),
   ]),
 ]
 
@@ -300,6 +311,20 @@ for (const g of groups.groups) {
   const minutes = Math.max(1, Math.round(measured ? heardMs / 60000 : total / WPM))
   if (!measured) fellBack.push(`${g.slug} (${durations ? `${missing.length}/${ids.length} segments missing` : 'no audio index'})`)
 
+  // The short tier's cost, held to the same standard: measured from the files a short-tier visitor
+  // would actually hear, and only where ALL of them exist — otherwise the word-count estimate, and
+  // the same loud warning at the foot of the build.
+  const shortPanel = SHORT.panels?.[g.slug]?.panel
+  const shortIds = tourSegmentsShort(g.slug, shortPanel, objects)
+  const shortMissing = durations ? shortIds.filter((id) => !durations[id]) : shortIds
+  const heardShortMs = durations ? shortIds.reduce((t, id) => t + (durations[id]?.durationMs ?? 0), 0) : 0
+  const shortTotal =
+    words(shortPanel) + objects.reduce((t, o) => t + (o.short ?? []).reduce((tt, s) => tt + words(s.text), 0), 0)
+  const shortMeasured = shortMissing.length === 0
+  const minutesShort = Math.max(1, Math.round(shortMeasured ? heardShortMs / 60000 : shortTotal / WPM))
+  if (!shortMeasured)
+    fellBack.push(`${g.slug} short (${durations ? `${shortMissing.length}/${shortIds.length} segments missing` : 'no audio index'})`)
+
   // No ending. The closing line is no longer rendered or narrated, so shipping it would be bytes
   // on a gallery connection that nobody reads. The text stays in src/data/stories.json.
   const groupLinks = (curated.groups[g.slug] ?? []).map(link)
@@ -315,6 +340,7 @@ for (const g of groups.groups) {
     order: g.order,
     size: g.accessions.length,
     minutes,
+    minutesShort,
     words: total,
     representative: { url: rep.image.large.url, placeholder: rep.placeholder },
   })

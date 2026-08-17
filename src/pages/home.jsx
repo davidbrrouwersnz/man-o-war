@@ -427,7 +427,9 @@ function Home({ go, route }) {
                     <div className="tile-text">
                       <h3 {...langAttrs(tr(`groups.${g.slug}`, null, g.title))}>{tr(`groups.${g.slug}`, null, g.title).text}</h3>
                       <p>
-                        {g.size} {t('ui.models')}. {t('ui.aboutMinutes', { m: g.minutes })}
+                        {/* Per-tier, like the group page's own cost line — the number is the
+                            narration the visitor's toggle would actually play. */}
+                        {g.size} {t('ui.models')}. {t('ui.aboutMinutes', { m: tier === 'short' ? g.minutesShort ?? g.minutes : g.minutes })}
                       </p>
                     </div>
                   </a>
