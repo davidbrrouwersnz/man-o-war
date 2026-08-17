@@ -8,10 +8,6 @@ opens the rest of the collection they cannot see.
 
 **▶ Live: <https://manowar.vercel.app>**
 
-It is a working prototype, built to a written specification ([`BUILD-SPEC-v2.md`](BUILD-SPEC-v2.md))
-and instrumented rather than guessed at: the measurements, trade-offs and things the spec got wrong
-are written down in [`docs/prototype-findings.md`](docs/prototype-findings.md).
-
 ![A phone showing the QR arrival: the heading "Portuguese man o' war" with a play button beside it, the catalogue name demoted beneath, the glass model photographed on black, its accession and dimensions, and the story beginning directly below.](docs/screenshot.png)
 
 ---
@@ -29,7 +25,8 @@ are written down in [`docs/prototype-findings.md`](docs/prototype-findings.md).
   on screen, with per-section skip, variable speed, and lock-screen controls — the phone can go
   back in the pocket. Sections are one file each, so "skip this section" can never drift out of
   sync with the page.
-- **Switch to Deutsch and press Anhören.** The full guide exists in German too.
+- **Switch language and press it again.** The full guide exists in all eight languages —
+  Anhören in German, 聆聽 in Traditional Chinese, استمع in Arabic.
 - **Open a group.** Eleven group pages — jellyfish, sea anemones, cephalopods — each a panel, its
   objects inline with their stories, and further reading that says how close each link actually is
   to the object in the glass.
@@ -73,15 +70,17 @@ Arabic — the last fully right-to-left. Three honesty rules hold throughout:
 
 ## The audio guide
 
-Two languages are voiced — English (an Aotearoa voice, en-NZ) and German — 414 sections each,
-about three and a half hours of narration in total, with word-level read-along throughout.
+All eight languages are voiced — 414 sections each, roughly eleven hours of narration in all —
+with word-level read-along throughout: the highlight follows the spoken word in Latin script, in
+unspaced Japanese and Chinese, and right-to-left in Arabic. English reads in an Aotearoa voice
+(en-NZ); each other language has its own Azure Neural voice, chosen with the reasoning recorded.
 
 The rule the whole pipeline enforces: **the spoken words are the printed words, word for word.**
 Narration is synthesised from exactly the text on the page, the build fails if they differ by one
 character, and pronunciation is applied as metadata wrapping a word rather than by changing it.
-Word timings are generated at production time, never guessed in the browser. Languages that are
-not yet voiced simply show no Listen control — availability is checked per section, against files
-that exist.
+Word timings are generated at production time, never guessed in the browser. And availability is
+asked per section, against files that exist — a section whose words are ahead of its narration
+shows no Listen control rather than a broken promise.
 
 ## What it costs to run and change
 
@@ -105,8 +104,9 @@ What needs people rather than software:
 - **A reviewer per language community.** The specification prices verification, not translation,
   as the cost that scales with languages. The review ledger and the in-app disclosure are ready
   for them; the people have not been engaged.
-- **A German pronunciation lexicon.** The scientific names are currently read with German
-  letter-to-sound rules; the file for a reviewer's corrections exists and is empty.
+- **Pronunciation lexicons for the translated languages.** Only English has one; elsewhere the
+  scientific names are read with each voice's own letter-to-sound rules.
+  `src/data/pronunciation/{code}.json` is where a reviewer's corrections go.
 - **Editorial ownership.** Naming choices, the hand-curated further reading, and the carve-outs —
   quotations and anything touching taonga or mana whenua are never machine-translated — are
   recorded with their reasoning, ready to be handed over rather than rediscovered.
