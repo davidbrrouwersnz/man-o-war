@@ -6,7 +6,7 @@ import { GlobeIcon, SettingsIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { useLang, useT } from '../lang.jsx'
-import { REVIEW, SUPPORTED } from '../collection.js'
+import { SUPPORTED } from '../collection.js'
 
 // Base UI's dialog is ~34KB gzipped — more than half the size of everything else in the main
 // bundle — and almost nobody opens a settings panel. §18 makes data cost an equity issue and the
@@ -22,14 +22,6 @@ const DisplayPanel = lazy(() => import('../display-settings.jsx'))
 function LanguagePicker() {
   const { code, setCode } = useLang()
   const [t] = useT()
-
-  // Counted, not declared. Every pack has carried a `reviewed: false` flag since the first
-  // translation landed and nothing ever read it, so the app has been shipping machine translation
-  // with no disclosure at all — the exact failure §7 names. The count comes from the translation
-  // ledger, where scripts/translate.mjs resets a unit to unreviewed whenever it is retranslated, so
-  // reviewing one object's story moves this and changing one English sentence moves it back.
-  const review = REVIEW[code]
-  const machineTranslated = !!review && review.reviewed < review.total
 
   return (
     <div className="lang-picker">
@@ -65,27 +57,11 @@ function LanguagePicker() {
           <GlobeIcon className="lang-globe size-[1.15em]" aria-hidden="true" focusable="false" />
           <SelectValue />
         </SelectTrigger>
-        {/* §7's disclosure: "a quiet line in the language picker where content is machine-translated
-            and human-reviewed. A museum trades on authority; this is the difference between being
-            trusted and being caught."
-
-            It describes the language being read, not the ones on offer, so it sits under the list
-            rather than against each option — seven identical notices would be noise, and the one
-            that matters is about the words already on the page. English never shows it: it is the
-            source, not a translation of anything.
-
-            Rendered through the footer slot so it is a sibling of the listbox rather than a child
-            of it. Marked aria-live=polite because switching language changes it without reopening
-            the popup, and a claim about who checked the text is worth announcing when it changes. */}
-        <SelectContent
-          footer={
-            machineTranslated && (
-              <p className="lang-notice" role="note" aria-live="polite">
-                {t('ui.translationNotice')}
-              </p>
-            )
-          }
-        >
+        {/* §7's machine-translation notice was removed from this picker on request (2026-08-17).
+            The `ui.translationNotice` strings in every pack and the per-unit review ledger remain,
+            so restoring it is one footer prop here — and deleting the strings from en.json would
+            needlessly trigger the translate workflow. */}
+        <SelectContent>
           {SUPPORTED.map((l) => (
             <SelectItem key={l.code} value={l.code} lang={l.code}>
               {l.endonym}

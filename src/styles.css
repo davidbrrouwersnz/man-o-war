@@ -1197,44 +1197,6 @@ ol.grid {
   margin: 0 0 0.8rem;
 }
 
-/* §7's translation disclosure, at the foot of the language picker.
-
-   Quiet, per §7's own word, but not hidden — the whole point is that a visitor can find out who
-   checked the words in front of them. So it takes the popup's own foreground colour at reduced
-   size rather than a grey that would drop it under the 4.5:1 floor; §15 already had to fix control
-   borders at 1.75:1 and repeating that mistake on a sentence about trustworthiness would be a poor
-   joke. It sits below a hairline rule so it reads as a note about the list rather than an eighth
-   option nobody can press.
-
-   Wrapped rather than truncated: it is a full sentence in seven languages and German needs the
-   room.
-   Sticky, and that is the whole reason this works. Eight languages overflow the popup's available
-   height, so the list scrolls — and a note placed after it simply sat below the fold, visible only
-   to someone who scrolled to the bottom of a list they had already found what they wanted in. A
-   disclosure nobody reaches is not a disclosure. Pinned to the foot of the scroll container it is
-   present the moment the picker opens, whatever the list is doing behind it.
-
-   The negative inline margin cancels the popup's own 0.375rem padding so the rule reaches both
-   edges and reads as a division of the popup rather than a box drawn inside it.
-
-   The softening is on `color`, never on `opacity`. opacity fades the element's background along
-   with its text, and a sticky strip with a translucent background lets the options scroll visibly
-   through the sentence — which is both illegible and, on a line about whether the words can be
-   trusted, a particularly bad place to look broken. */
-.lang-notice {
-  position: sticky;
-  bottom: 0;
-  z-index: 1;
-  margin: 0.35rem -0.375rem -0.375rem;
-  padding: 0.5rem 0.75rem 0.55rem;
-  border-top: 1px solid color-mix(in oklab, currentColor 15%, transparent);
-  background: var(--popover, Canvas);
-  color: color-mix(in oklab, currentColor 80%, transparent);
-  font-size: var(--step--2, 0.78rem);
-  line-height: 1.35;
-  text-wrap: pretty;
-}
-
 /* §7: mirror the layout, do not mirror the media. The wells and their images keep LTR so a
    photograph is never flipped, and the reading column mirrors around them. */
 [dir='rtl'] .well,
