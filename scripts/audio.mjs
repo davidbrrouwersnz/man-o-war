@@ -439,7 +439,10 @@ function buildVtt(unit, words, totalMs) {
     let pos = 0
     const merged = []
     for (const w of words) {
-      const isPunctuation = !/[A-Za-z0-9]/.test(w.text)
+      // Letters and digits in ANY script, not just ASCII. The narrower [A-Za-z0-9] read every
+      // Japanese, Korean, Chinese and Arabic word as "punctuation-only" and folded four entire
+      // languages into one cue per paragraph — word-level read-along cannot survive that.
+      const isPunctuation = !/[\p{L}\p{N}]/u.test(w.text)
       if (isPunctuation && merged.length) {
         const prev = merged[merged.length - 1]
         // The page's separator, not an assumed one: "hydroids —" keeps its space, "war." stays
