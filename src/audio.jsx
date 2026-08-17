@@ -18,7 +18,7 @@ import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Slider } from '@/components/ui/slider'
 import { index } from './collection.js'
-import { useT } from './lang.jsx'
+import { useLang, useT } from './lang.jsx'
 import { useA11y } from './a11y.jsx'
 
 // Where each language's narration is served from, written by scripts/split.mjs from the audio
@@ -347,6 +347,19 @@ export function AudioProvider({ children }) {
     setCues([])
     setCue(-1)
   }, [])
+
+  // Switching language swaps every printed word on the page, and a queue is those words captured
+  // at the moment Listen was pressed — labels, blocks and files in the old language. Left playing,
+  // the guide narrates words that are no longer on screen, which is the §13 divergence everything
+  // else here is built to prevent. Stop rather than translate in place: the queue belongs to the
+  // page that built it, and a fresh press rebuilds it in the language now printed.
+  const { code } = useLang()
+  const prevCode = useRef(code)
+  useEffect(() => {
+    if (prevCode.current === code) return
+    prevCode.current = code
+    stop()
+  }, [code, stop])
 
   const setRate = useCallback((r) => setRateRaw(r), [])
 
