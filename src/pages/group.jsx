@@ -356,7 +356,10 @@ function GroupPage({ route, go }) {
         <Spoken text={title.text} itemId={panelId} block={0} />
       </h1>
       <p className="group-cost">
-        {group.size} {t('ui.models')}. {t('ui.aboutMinutes', { m: group.minutes })}
+        {/* The cost follows the toggle: each figure is measured from the narration that tier
+            would actually play (see tourSegmentsShort in scripts/split.mjs). ?? guards a stale
+            chunk from before minutesShort existed. */}
+        {group.size} {t('ui.models')}. {t('ui.aboutMinutes', { m: tier === 'short' ? group.minutesShort ?? group.minutes : group.minutes })}
       </p>
 
       {data ? (
