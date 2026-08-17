@@ -439,7 +439,10 @@ function buildVtt(unit, words, totalMs) {
     let pos = 0
     const merged = []
     for (const w of words) {
-      const isPunctuation = !/[A-Za-z0-9]/.test(w.text)
+      // Letters and digits in ANY script, not just ASCII. The narrower [A-Za-z0-9] read every
+      // Japanese, Korean, Chinese and Arabic word as "punctuation-only" and folded four entire
+      // languages into one cue per paragraph — word-level read-along cannot survive that.
+      const isPunctuation = !/[\p{L}\p{N}]/u.test(w.text)
       if (isPunctuation && merged.length) {
         const prev = merged[merged.length - 1]
         // The page's separator, not an assumed one: "hydroids —" keeps its space, "war." stays
@@ -604,7 +607,21 @@ async function main() {
       continue
     }
 
-    const { audio, words, durationMs } = await synthesise(ssml, key, region)
+    // Azure's websocket occasionally drops mid-batch ("Unable to contact server", code 1006), and
+    // a multi-hour run should survive a blip rather than die a hundred segments in. Three
+    // attempts with a short backoff; a real outage still fails, and says why.
+    let result
+    for (let attempt = 1; ; attempt++) {
+      try {
+        result = await synthesise(ssml, key, region)
+        break
+      } catch (err) {
+        if (attempt >= 3) throw err
+        console.log(`\n  attempt ${attempt} failed for ${unit.id}, retrying: ${String(err.message ?? err).slice(0, 100)}`)
+        await new Promise((r) => setTimeout(r, attempt * 5000))
+      }
+    }
+    const { audio, words, durationMs } = result
     mkdirSync(dirname(mp3.pathname.replace(/^\/([A-Za-z]:)/, '$1')), { recursive: true })
     writeFileSync(mp3, audio)
     writeFileSync(vtt, buildVtt(unit, words, durationMs))
@@ -612,6 +629,10 @@ async function main() {
     section.segments[unit.id] = { hash, durationMs, words: words.length, bytes: audio.length, track: unit.track, kind: unit.kind }
     made++
     bytes += audio.length
+    // Checkpoint the index as the run goes. A crash used to lose every entry made so far, and a
+    // re-run then re-synthesised words that had not changed — money spent producing byte-different
+    // audio of identical sentences. The final write below is still the authoritative one.
+    if (made % 20 === 0) writeFileSync(INDEX, `${JSON.stringify(index, null, 2)}\n`)
     process.stdout.write(`\r  ${made} synthesised, ${cached} cached — ${unit.id}`.padEnd(90))
   }
 

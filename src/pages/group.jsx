@@ -312,7 +312,15 @@ function GroupPage({ route, go }) {
         </a>
         <Tools
           listen={
-            <Listen queue={tourQueue} available={tourAvailable} note={code !== 'en' ? t('ui.audioEnglishOnly') : null} />
+            // The note warns a reader whose page is not in English that pressing play will speak
+            // English. Asked of the queue, not the session: German is voiced now, so a German tour
+            // plays German and must not carry the warning — but a not-yet-translated story falling
+            // back to English text plays English narration inside any session, and then it is true.
+            <Listen
+              queue={tourQueue}
+              available={tourAvailable}
+              note={code !== 'en' && tourQueue.items.length > 0 && tourQueue.items.every((i) => i.lang === 'en') ? t('ui.audioEnglishOnly') : null}
+            />
           }
         />
       </div>
