@@ -404,6 +404,11 @@ function Media({ object, priority }) {
       {near && src && (
         <img
           className={`well-img${loaded ? ' is-loaded' : ''}`}
+          // The alt text is the catalogue's own description falling back to the binomial — §6's
+          // carve-out, so it stays English by design. It was the one carve-out reaching a screen
+          // reader unmarked: without lang, an Arabic session announced English words with Arabic
+          // phonetics. Same rule as the printed catalogue blocks, applied to the attribute.
+          lang="en"
           src={src}
           // Only two derivatives exist, and at 2-3x DPR a phone wants the larger of them anyway.
           // This is worth having for the 1x case — a desktop or a cheap tablet takes the 545px

@@ -6,6 +6,7 @@ import { Dialog as DialogPrimitive } from "@base-ui/react/dialog"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { XIcon } from "lucide-react"
+import { useT } from "@/lang.jsx"
 
 function Dialog({
   ...props
@@ -52,6 +53,10 @@ function DialogContent({
   showCloseButton = true,
   ...props
 }) {
+  // The one string this generated file renders: the close button's screen-reader name. It was the
+  // hardcoded English "Close" — the only untranslated string in the ui primitives — announced in
+  // every language. ui.close rides the interface tier like every other label.
+  const [t] = useT()
   return (
     <DialogPortal>
       <DialogOverlay />
@@ -70,7 +75,7 @@ function DialogContent({
               <Button variant="ghost" className="absolute top-2 end-2" size="icon-sm" />
             }>
             <XIcon />
-            <span className="sr-only">Close</span>
+            <span className="sr-only">{t('ui.close')}</span>
           </DialogPrimitive.Close>
         )}
       </DialogPrimitive.Popup>

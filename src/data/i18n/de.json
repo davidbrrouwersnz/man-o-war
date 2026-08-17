@@ -64,7 +64,8 @@
     "tierLabel": "Story-Version",
     "tierShort": "Kurzfilm",
     "tierFull": "Voll",
-    "tierShortHint": "Kurzfassung: einfacher und schneller. Gut für jüngere Zuhörer oder ein schnellerer Besuch."
+    "tierShortHint": "Kurzfassung: einfacher und schneller. Gut für jüngere Zuhörer oder ein schnellerer Besuch.",
+    "close": "Schließen"
   },
   "groups": {
     "jellyfish": "Quallen, große und kleine",

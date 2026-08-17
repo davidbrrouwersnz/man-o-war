@@ -64,7 +64,8 @@
     "tierLabel": "Version de l’histoire",
     "tierShort": "Courte",
     "tierFull": "Plein",
-    "tierShortHint": "Version courte : plus simple et plus rapide. Idéal pour les jeunes auditeurs, ou pour une visite plus rapide."
+    "tierShortHint": "Version courte : plus simple et plus rapide. Idéal pour les jeunes auditeurs, ou pour une visite plus rapide.",
+    "close": "Fermer"
   },
   "groups": {
     "jellyfish": "Méduses, grandes et petites",

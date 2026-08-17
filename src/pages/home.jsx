@@ -439,19 +439,32 @@ function Home({ go, route }) {
           <TabsContent value="all" className="browse-panel">
             {all ? (
               <ol className="grid grid-dense">
-                {all.objects.map((o) => (
-                  <li key={o.accession} className="tile">
-                    <a href={`/o/${o.accession}`} onClick={go(`/o/${o.accession}`)}>
-                      <div className="tile-well">
-                        <img className="tile-blur" src={o.placeholder} alt="" aria-hidden="true" />
-                        <img className="tile-img" src={o.url} alt="" loading="lazy" decoding="async" />
-                      </div>
-                      <div className="tile-text">
-                        <h3 className="tile-small">{o.name}</h3>
-                      </div>
-                    </a>
-                  </li>
-                ))}
+                {all.objects.map((o) => {
+                  // A named tile translates through the story headline's existing unit — for the
+                  // named objects the two strings are the same words (one differs by a word, and
+                  // takes the headline's wording in translation), so no new units and no second
+                  // translation of 108 names. The binomial-only tiles keep the catalogue's own
+                  // words untranslated, per §6 — `named` from split.mjs is what tells them apart.
+                  // Array path, because the accession contains dots (src/i18n.js).
+                  const nameR = o.named ? tr(['stories', o.accession, 'headline'], null, o.name) : null
+                  return (
+                    <li key={o.accession} className="tile">
+                      <a href={`/o/${o.accession}`} onClick={go(`/o/${o.accession}`)}>
+                        <div className="tile-well">
+                          <img className="tile-blur" src={o.placeholder} alt="" aria-hidden="true" />
+                          <img className="tile-img" src={o.url} alt="" loading="lazy" decoding="async" />
+                        </div>
+                        <div className="tile-text">
+                          {nameR ? (
+                            <h3 className="tile-small" {...langAttrs(nameR)}>{nameR.text}</h3>
+                          ) : (
+                            <h3 className="tile-small">{o.name}</h3>
+                          )}
+                        </div>
+                      </a>
+                    </li>
+                  )
+                })}
               </ol>
             ) : (
               <p className="loading loading-dark">{t('ui.loading')}</p>

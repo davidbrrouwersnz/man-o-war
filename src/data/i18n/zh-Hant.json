@@ -64,7 +64,8 @@
     "tierLabel": "故事版本",
     "tierShort": "短片",
     "tierFull": "全額",
-    "tierShortHint": "簡短版：更簡單且快速。適合年輕聽眾或較快速的聽眾。"
+    "tierShortHint": "簡短版：更簡單且快速。適合年輕聽眾或較快速的聽眾。",
+    "close": "結束"
   },
   "groups": {
     "jellyfish": "水母，大與小",
